@@ -11,6 +11,7 @@ export class BusinessDetailComponent {
 
   business: any;
   bsn_hotel_rooms: any;
+  bsn_hotel_services: any;
   public galleryOptions: GalleryOptions[];
   public galleryImages: GalleryImage[];
 

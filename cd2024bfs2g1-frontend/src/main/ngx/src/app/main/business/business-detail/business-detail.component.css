@@ -11,13 +11,26 @@
 .dataContainer {
     display: flex;
     flex-direction: row;
+    
 }
 
 .left, .right {
     flex: 1;
     padding: 25px;
+    background-color: transparent;
 }
 
-.cif {
-    color: gray;
+.desc {
+    margin-left: 20px;
+}
+
+.o-rows {
+    background-color: transparent;
+}
+
+.list-with-spaces {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90%; 
 }
