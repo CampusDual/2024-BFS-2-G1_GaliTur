@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup xmlns="http://www.ontimize.com/schema/jdbc"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+                 catalog="" schema="${mainschema}" table="bsn_restaurant" datasource="mainDataSource"
+                 sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>rest_id</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>rest_id</Column>
+    </UpdateKeys>
+    <GeneratedKey>rest_id</GeneratedKey>
+    <Queries>
+        <Query id="default">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.bsn_restaurant
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>

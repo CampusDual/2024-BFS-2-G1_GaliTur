@@ -1,4 +1,4 @@
-package com.campusdual.cd2024bfs2g1.model.core.dao;
+package com.campusdual.cd2024bfs2g1.model.core.dao.business;
 
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
@@ -10,7 +10,7 @@ import com.ontimize.jee.server.dao.jdbc.OntimizeJdbcDaoSupport;
 @Lazy
 @Repository(value = "BusinessDao")
 @ConfigurationFile(
-        configurationFile = "dao/BusinessDao.xml",
+        configurationFile = "dao/business/BusinessDao.xml",
         configurationFilePlaceholder = "dao/placeholders.properties")
 public class BusinessDao extends OntimizeJdbcDaoSupport {
 

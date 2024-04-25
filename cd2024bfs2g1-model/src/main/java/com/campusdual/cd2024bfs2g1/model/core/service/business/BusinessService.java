@@ -1,7 +1,7 @@
-package com.campusdual.cd2024bfs2g1.model.core.service;
+package com.campusdual.cd2024bfs2g1.model.core.service.business;
 
-import com.campusdual.cd2024bfs2g1.api.core.service.IBusinessService;
-import com.campusdual.cd2024bfs2g1.model.core.dao.BusinessDao;
+import com.campusdual.cd2024bfs2g1.api.core.service.business.IBusinessService;
+import com.campusdual.cd2024bfs2g1.model.core.dao.business.BusinessDao;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;

@@ -1,4 +1,4 @@
-package com.campusdual.cd2024bfs2g1.api.core.service;
+package com.campusdual.cd2024bfs2g1.api.core.service.business;
 
 import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
