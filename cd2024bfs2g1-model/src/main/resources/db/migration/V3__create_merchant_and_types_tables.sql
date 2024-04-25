@@ -33,7 +33,6 @@ VALUES (
 CREATE TABLE merchant (
     merchant_id serial NOT NULL,
     usr_id integer NOT NULL,
-    is_guide boolean NOT NULL,
     CONSTRAINT merchant_pk PRIMARY KEY (merchant_id)
 );
 ALTER TABLE merchant ADD CONSTRAINT merchant_fk FOREIGN KEY (usr_id) REFERENCES usr_user(usr_id);
