@@ -1,7 +1,8 @@
 CREATE TABLE bsn_business (
 	bsn_id serial NOT NULL,
-	merchant_id serial NOT NULL,
+	merchant_id int4 NOT NULL,
 	bsn_name varchar(100) NOT NULL,
+	bsn_type varchar(50) NOT NULL,
 	bsn_description text NULL,
 	bsn_cif varchar(100) NOT NULL,
 	bsn_address varchar(250) NOT NULL,
@@ -18,7 +19,7 @@ CREATE TABLE bsn_business (
 
 CREATE TABLE bsn_guide_agency (
     gui_id serial NOT NULL,
-	bsn_id serial NOT NULL,
+	bsn_id int4 NOT NULL,
 	gui_language varchar(200) NOT NULL,
 	gui_zone varchar(200) NOT NULL,
 	gui_city varchar(200) NULL,
@@ -27,19 +28,19 @@ CREATE TABLE bsn_guide_agency (
 
 CREATE TABLE bsn_restaurant (
     rest_id serial NOT NULL,
-	bsn_id serial NOT NULL,
+	bsn_id int4 NOT NULL,
 	rest_menu varchar NOT NULL,
 	CONSTRAINT bsn_restaurant_pk PRIMARY KEY (rest_id),
 );
 
 CREATE TABLE bsn_hotel (
     htl_id serial NOT NULL,
-	bsn_id serial NOT NULL,
+	bsn_id int4 NOT NULL,
 	CONSTRAINT bsn_hotel_pk PRIMARY KEY (htl_id),
 );
 
 CREATE TABLE bsn_hotel_rooms (
-    htl_id serial NOT NULL,
+    htl_id int4 NOT NULL,
 	rm_id serial NOT NULL,
 	rm_type varchar(50) NOT NULL,
 	rm_cost double NOT NULL,
@@ -47,7 +48,7 @@ CREATE TABLE bsn_hotel_rooms (
 );
 
 CREATE TABLE bsn_hotel_services (
-    htl_id serial NOT NULL,
+    htl_id int4 NOT NULL,
 	srv_id serial NOT NULL,
 	srv_type varchar(50) NOT NULL,
 	srv_cost double NOT NULL,
