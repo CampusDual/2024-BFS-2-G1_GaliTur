@@ -1,6 +1,6 @@
 CREATE TABLE bsn_business (
 	bsn_id serial NOT NULL,
-	bsn_owner_id serial NOT NULL,
+	merchant_id serial NOT NULL,
 	bsn_name varchar(100) NOT NULL,
 	bsn_description text NULL,
 	bsn_cif varchar(100) NOT NULL,
@@ -11,12 +11,12 @@ CREATE TABLE bsn_business (
 	bsn_down_date timestamp NULL,
 	bsn_photos varchar NOT NULL,
 	bsn_website varchar(50) NULL,
-	bsn_schedule varchar(255) NOT NULL,
+	bsn_schedule text NOT NULL,
 	CONSTRAINT bsn_business_pk PRIMARY KEY (bsn_id),
 	CONSTRAINT bsn_business_un UNIQUE (bsn_cif)
 );
 
-CREATE TABLE bsn_guide (
+CREATE TABLE bsn_guide_agency (
     gui_id serial NOT NULL,
 	bsn_id serial NOT NULL,
 	gui_language varchar(200) NOT NULL,
@@ -54,10 +54,10 @@ CREATE TABLE bsn_hotel_services (
 	CONSTRAINT bsn_hotel_services_pk PRIMARY KEY (srv_id),
 );
 
---ALTER TABLE bsn_business ADD CONSTRAINT bsn_business_fk FOREIGN KEY (bsn_owner_id) REFERENCES ***(**);
+ALTER TABLE bsn_business ADD CONSTRAINT bsn_business_fk FOREIGN KEY (bsn_owner_id) REFERENCES merchant(merchant_id);
 
 
-ALTER TABLE bsn_guide ADD CONSTRAINT bsn_guide_fk FOREIGN KEY (bsn_id) REFERENCES bsn_business(bsn_id);
+ALTER TABLE bsn_guide_agency ADD CONSTRAINT bsn_guide_agency_fk FOREIGN KEY (bsn_id) REFERENCES bsn_business(bsn_id);
 ALTER TABLE bsn_restaurant ADD CONSTRAINT bsn_restaurant_fk FOREIGN KEY (bsn_id) REFERENCES bsn_business(bsn_id);
 ALTER TABLE bsn_hotel ADD CONSTRAINT bsn_hotel_fk FOREIGN KEY (bsn_id) REFERENCES bsn_business(bsn_id);
 ALTER TABLE bsn_hotel_rooms ADD CONSTRAINT bsn_hotel_rooms_fk FOREIGN KEY (htl_id) REFERENCES bsn_hotel(htl_id);
