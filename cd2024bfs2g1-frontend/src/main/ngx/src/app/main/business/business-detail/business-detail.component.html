@@ -1,0 +1,58 @@
+<div class="mainContainer" >
+
+    <div class="nameContainer">
+        <h1 attr="bsn_name" sql-type="STRING">Cabaña Verónica</h1>
+    </div>
+
+    <o-gallery #demoGaleria [gallery-images]="galleryImages" [gallery-options]="galleryOptions"></o-gallery>
+
+    <div class="dataContainer">
+        <div class="left">
+            <h2>Alojamiento: Vigo, España</h2>
+            <p class="desc">Encantadora casita junto a la Ría de Vigo, donde la madera y la calidez se entrelazan para crear un hogar acogedor. Con detalles hogareños y vistas serenas, esta vivienda es un refugio acogedor que abraza la belleza natural de su entorno costero.</p>
+        </div>
+        <div class="right">
+            <h2>Información adicional</h2>
+            <ul>
+                <li><strong>Horario: </strong> Lunes a domingo de 16:30 a 19:00</li>
+                <li><strong>Telefono: </strong> 600 00 00 00</li>
+                <li><strong>Pagina web: </strong> www.google.com</li>
+
+                <li class="cif"><strong>Cif: </strong> 12322323K</li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div *ngIf="business && business.bsn_type === 'restaurante'">
+        
+    </div>
+
+    <!--*ngIf="business && business.bsn_type === 'alojamiento'"-->
+    <div #hotelDiv class="dataContainer">
+        <div class="left">
+            <h2>Habitaciones disponibles</h2>
+            <ul>
+                <li *ngFor="let data of hotelDiv.dataArray">
+                    <strong>{{ bsn_hotel_rooms.rm_type }}: </strong> 
+                    {{ bsn_hotel_rooms.rm_cost }}
+                </li>
+            </ul>
+        </div>
+        <div class="right">
+            <h2>Servicios</h2>
+            <ul>
+                <li><strong>Horario: </strong> Lunes a domingo de 16:30 a 19:00</li>
+                <li><strong>Telefono: </strong> 600 00 00 00</li>
+                <li><strong>Pagina web: </strong> www.google.com</li>
+
+                <li class="cif"><strong>Cif: </strong> 12322323K</li>
+            </ul>
+        </div>
+    </div>
+
+    <div *ngIf="business && business.bsn_type === 'guia'">
+        
+    </div>
+
+</div>

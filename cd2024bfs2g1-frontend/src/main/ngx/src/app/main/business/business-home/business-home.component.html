@@ -1,0 +1,15 @@
+<o-grid #businessGrid attr="businessGrid" title="BUSINESS" service="business" entity="business" keys="bsn_id"
+    columns="ATRIBUTOS DEL OBJETO"
+    query-rows="8" page-size-options="8;10;12" orderable="true"
+    sortable-columns="bsn_type;bsn_name:asc" insert-button="true"
+    pagination-controls="true" gutter-size="8px" fixed-header="yes" grid-item-height="300px" detail-mode="none"
+    insert-button-floatable="no">
+    <o-grid-item *ngFor="let data of businessGrid.dataArray">
+        <div (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-evenly center"
+            class="mat-elevation-z1 employeeCard">
+            <img [src]="getImageSrc(data.bsn_photos)" width="144px" height="200px">
+            <span><strong>{{ data.bsn_name }}</strong></span>
+            <span><em>{{ data.bsn_type }}</em></span>
+        </div>
+    </o-grid-item>
+</o-grid>
