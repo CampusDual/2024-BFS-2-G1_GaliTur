@@ -76,5 +76,9 @@
   "VALIDATOR.HASSPECIALCHARACTERS": "Debe tener al menos un caracter especial",
   "VERSION": "Versión",
   "VIEW": "Vistas",
-  "ROUTE": "Rutas"
+  "ROUTE": "Rutas",
+  "name": "Nombre",
+  "description": "Descripción",
+  "estimated_duration": "Duración Estimada",
+  "difficulty": "Dificultad"
 }

@@ -1,13 +1,8 @@
 <o-form-layout-manager attr="routesHome" title="{{'ROUTES' | oTranslate }}" separator=" " mode="dialog"
-    label-columns="ROUTESPHOTO;ROUTESNAME;ROUTESESTIMATEDDURATION;ROUTESDIFFICULTY">
-    <o-table attr="routesTable" service="routes" entity="route" keys="ROUTE_ID"
-        columns="ROUTESID;ROUTESPHOTO;ROUTESNAME;ROUTESESTIMATEDDURATION;ROUTESDIFFICULTY;"
-        visible-columns="ROUTESID;ROUTESPHOTO;ROUTESNAME;ROUTESESTIMATEDDURATION;ROUTESDIFFICULTY;"
+    label-columns="name;description;estimated_duration;difficulty">
+    <o-table attr="routesTable" service="routes" entity="route" keys="route_id"
+        columns="route_id;name;description;estimated_duration;difficulty"
+        visible-columns="name;description;estimated_duration;difficulty"
         query-rows="15">
-        <o-table-column attr="ROUTESPHOTO" title="ROUTESPHOTO" orderable="no" searchable="no" type="image"
-            avatar="no" empty-image="assets/images/no-image.png" image-type="base64" width="150px"></o-table-column>
-        <o-table-column attr="ROUTESNAME" title="ROUTESNAME" width="150px"></o-table-column>
-        <o-table-column attr="ROUTESESTIMATEDDURATION" title="ROUTESESTIMATEDDURATION" width="150px"></o-table-column>
-        <o-table-column attr="ROUTESDIFFICULTY" title="ROUTESDIFFICULTY" width="150px"></o-table-column>
     </o-table>
 </o-form-layout-manager>
