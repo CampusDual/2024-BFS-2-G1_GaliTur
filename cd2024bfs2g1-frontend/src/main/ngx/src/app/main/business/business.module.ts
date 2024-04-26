@@ -12,9 +12,7 @@ import { GalleryComponent, GalleryImage } from 'ontimize-web-ngx-gallery';
 @NgModule({
   declarations: [
     BusinessHomeComponent,
-    BusinessDetailComponent,
-    
-
+    BusinessDetailComponent
   ],
   imports: [
     CommonModule,

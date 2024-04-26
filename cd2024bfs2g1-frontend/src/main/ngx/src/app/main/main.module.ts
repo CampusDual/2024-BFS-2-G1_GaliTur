@@ -5,7 +5,6 @@ import { SharedModule } from '../shared/shared.module';
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
 import { ProfileComponent } from './profile/profile.component';
-import { BusinessHomeComponent } from './business/business-home/business-home.component';
 
 @NgModule({
   imports: [

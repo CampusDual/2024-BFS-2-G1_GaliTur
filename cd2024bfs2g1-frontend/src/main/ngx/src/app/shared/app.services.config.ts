@@ -5,7 +5,7 @@ export const SERVICE_CONFIG: Object = {
   permissions: {
     'path': '/permissions'
   },
-  'business': {
-    'path': '/business'
+  'businesses': {
+    'path': '/businesses'
   },
 };

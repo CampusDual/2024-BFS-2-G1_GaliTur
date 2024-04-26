@@ -4,8 +4,8 @@
     align-content: center;
     justify-content: center;
     flex-direction: row;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .dataContainer {
