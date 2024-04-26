@@ -8,17 +8,17 @@
         </div>
         <div fxLayout="column" class="routesSecond">
             <span *ngIf="data.description else no_description">
-                <mat-icon></mat-icon><span>{{ data.description }}</span>
+                <mat-icon>description</mat-icon><span>{{ data.description }}</span>
             </span>
             <ng-template  #no_description><span><mat-icon></mat-icon><span>{{ "NO_DATA_AVAILABLE" |
                         oTranslate}}</span></span></ng-template>
             <span *ngIf="data.estimated_duration else no_estimated_duration">
-                <mat-icon></mat-icon><span>{{ data.estimated_duration }}</span>
+                <mat-icon>schedule</mat-icon><span>{{ data.estimated_duration }}</span>
             </span>
             <ng-template #no_estimated_duration><span><mat-icon>clock</mat-icon><span>{{ "NO_DATA_AVAILABLE" |
                         oTranslate}}</span></span></ng-template>
             <span>
-                <mat-icon></mat-icon><span>{{ data.difficulty }}</span>
+                <mat-icon>diversity_1</mat-icon><span>{{ data.difficulty }}</span>
             </span>
             <ng-template><span><mat-icon>home</mat-icon><span>{{ "NO_DATA_AVAILABLE" |
                         oTranslate}}</span></span></ng-template>
