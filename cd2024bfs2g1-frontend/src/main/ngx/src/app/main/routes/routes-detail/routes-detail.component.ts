@@ -10,16 +10,23 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class RoutesDetailComponent implements OnInit {
 
+  galleryImages: string [] = [];
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     protected sanitizer: DomSanitizer
   ) { }
 
-  public getImageSrc(base64: any): any {
+  /*public getImageSrc(base64: any): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64.bytes) : './assets/images/no-image.png';
+  }*/
+
+  ngOnInit(): void  {
+    this.cargarImagenes();
   }
 
-  ngOnInit() {
-  }
+  public cargarImagenes(): void{
+    this.galleryImages = ['assets/images/login_bg.png','assets/images/no-image.png','assets/images/photo3.jpg'];
+  }  
 }
 

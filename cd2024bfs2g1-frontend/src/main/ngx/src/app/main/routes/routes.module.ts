@@ -6,6 +6,7 @@ import { RoutesHomeComponent } from './routes-home/routes-home.component';
 import { RoutesDetailComponent } from './routes-detail/routes-detail.component';
 import { RoutesNewComponent } from './routes-new/routes-new.component';
 import { OntimizeWebModule } from 'ontimize-web-ngx';
+import { OGalleryModule } from 'ontimize-web-ngx-gallery';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { OntimizeWebModule } from 'ontimize-web-ngx';
   imports: [
     CommonModule,
     RoutesRoutingModule,
-    OntimizeWebModule
+    OntimizeWebModule,
+    OGalleryModule
   ]
 })
 export class RoutesModule { }

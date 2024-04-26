@@ -10,6 +10,7 @@
 @include login.login-theme(theme.$theme);
 
 
+
 //Include dark styles option
 .o-dark {
   @include ontimize-style.ontimize-theme-all-component-color(theme.$dark-theme);
