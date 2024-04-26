@@ -19,13 +19,13 @@ export class RoutesHomeComponent implements OnInit {
   }
 
   public getImageSrc(base64: any): any {
-    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64.bytes) : './assets/images/no-image-transparent.png';
+    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:images/*;base64,' + base64.bytes) : './assets/images/no-image.png';
   }
 
   public openDetail(data: any): void {
     this.dialog.open(RoutesDetailComponent, {
-      height: '330px',
-      width: '820px',
+      height: '400px',
+      width: '1000px',
       data: data
     });
   }
