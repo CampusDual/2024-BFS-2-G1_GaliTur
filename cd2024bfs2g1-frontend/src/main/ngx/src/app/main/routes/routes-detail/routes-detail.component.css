@@ -37,7 +37,7 @@
 
 /* Estilos para la imagen */
 .routesFirst img {
-    width: 144px;
+    width: auto;
     height: 200px;
     border-radius: 8px;
     margin-bottom: 12px;
@@ -60,5 +60,10 @@
 
 .routesSecond mat-icon {
     margin-right: 8px;
+}
+
+.windowDetail{
+    width: auto;
+    height: 500px;
 }
 
