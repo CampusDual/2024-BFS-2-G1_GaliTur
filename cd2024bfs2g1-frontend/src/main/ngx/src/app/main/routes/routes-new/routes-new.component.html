@@ -1,35 +1,35 @@
-<h1 class="titulo">Informacion ruta</h1>
+<h2 class="titulo">Información ruta</h2>
 <o-form attr="routesNew" service="routes" entity="route" keys="route_id" title="">
     <o-column>
-        <div fxLayout="row" >
-            <div fxLayout="column">
-                <div>
-                    <div fxLayout="column" fxLayoutGap="8px" fxFlex="50">
-                        <o-text-input class="txt" fxFlex="50" attr="name" sql-type="STRING" enabled="yes"
-                            required="yes"></o-text-input>
-                        <div fxLayout="column" fxLayoutGap="10px">
-                            <o-textarea-input max-length="70" fxFlex="40" class="txt" attr="description" sql-type="STRING" enabled="yes"
-                            required="yes"></o-textarea-input>
-                            <o-text-input fxFlex="40" class="txt" attr="estimated_duration" sql-type="NUMERIC" enabled="yes"
-                            ></o-text-input>
-                        </div>
-                        <div fxLayout="column" fxLayoutGap="8px">
-                            <o-text-input fxFlex="40" class="txt" attr="difficulty" sql-type="NUMERIC" enabled="yes"
-                            required="yes"></o-text-input>
-                        </div>
-                        <div fxLayout="row" fxLayoutGap="16px">
-                            <o-text-input fxFlex="40" class="txt" attr="latitude" sql-type="NUMERIC" enabled="yes"
-                            ></o-text-input>
-                            <o-text-input fxFlex="40" class="txt" attr="longitude" sql-type="NUMERIC" enabled="yes"
-                            ></o-text-input>
-                        </div>  
+        <div fxLayout="row">
+                <div fxLayout="column" class="routeInfo">
+                    <div fxLayout="column" fxLayoutGap="10px">
+                        <o-text-input class="txt"  attr="name" sql-type="STRING"
+                            enabled="yes" required="yes"></o-text-input>
                     </div>
-                 </div>
-                 <div fxLayout="row" fx>
-                    <o-image id="route_imagen" class="img" attr="IMAGEN" sql-type="OTHER"></o-image>
-                 </div>
-            </div>
-            <div>
+                    <div fxLayout="column" fxLayoutGap="10px">
+                        <o-textarea-input  class="txt" attr="description"
+                        sql-type="STRING" enabled="yes" required="yes"></o-textarea-input>
+                    </div>
+                    <div fxLayout="column" fxLayoutGap="10px">
+                        <o-text-input  class="txt" attr="estimated_duration"
+                        sql-type="NUMERIC" enabled="yes"></o-text-input>
+                    </div>
+                    <div fxLayout="column" fxLayoutGap="10px">
+                        <o-text-input  class="txt" attr="difficulty"
+                        sql-type="NUMERIC" enabled="yes" required="yes"></o-text-input>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="10px">
+                        <o-text-input fxFlex="50" class="txt" attr="latitude"
+                        sql-type="NUMERIC" enabled="yes"></o-text-input>
+                        <o-text-input fxFlex="50" class="txt" attr="longitude"
+                        sql-type="NUMERIC" enabled="yes"></o-text-input>
+                    </div>
+                    <div fxLayout="column">
+                        <o-image id="route_imagen" class="img" attr="image" sql-type="OTHER"></o-image>
+                    </div>
+                </div>
+            <div fxLayout="column" class="landmarkInfo">
                 <o-table attr="routesTable" service="routes" entity="route" keys="route_id"
                     columns="route_id;name;description;estimated_duration;difficulty"
                     visible-columns="name;description" query-rows="10">

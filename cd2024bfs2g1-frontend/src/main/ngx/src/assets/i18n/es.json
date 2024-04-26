@@ -80,5 +80,8 @@
   "name": "Nombre",
   "description": "Descripción",
   "estimated_duration": "Duración Estimada",
-  "difficulty": "Dificultad"
+  "difficulty": "Dificultad",
+  "latitude": "Latitud",
+  "longitude": "Longitud",
+  "image": "Imagen"
 }

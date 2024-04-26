@@ -81,5 +81,7 @@
   "description": "Description",
   "estimated_duration": "Estimated Duration",
   "difficulty": "Difficulty",
-  "Duración estimada":"Estimated Duration"
+  "latitude": "Latitude",
+  "longitude": "Longitude",
+  "image": "Image"
 }
