@@ -1,0 +1,13 @@
+o-checkbox {
+    width: 72px;
+}
+
+.price {
+    margin-inline-start: 35px;
+    width: 30%;
+}
+
+.lodging {
+    display: flex;
+}
+

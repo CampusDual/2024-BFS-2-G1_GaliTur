@@ -1,0 +1,159 @@
+<o-form attr="businessHome" service="businesses" entity="business" keys="business_id" fxLayout="column" show-header="yes"
+    header-actions="R;U;D" #oForm after-insert-mode="detail" class="standalone-form-container" undo-button="no">
+ 
+    <o-row attr="business-form" layout-align="start stretch">
+<!-- Titulo del formulario -->
+<o-column title="BUSINESS DATA" layout-align="start stretch" fxFlex="60" layout-padding>
+
+
+<div fxLayout="row" fxLayoutAlign="start center">
+<!-- Datos del negocio -->
+<o-text-input attr="bsn_name" label="Business name" fxFlex.lg="80" fxFlex.xl="80"
+                    fxFlex="100" max-length="100" required="yes"></o-text-input>
+<o-form editable-detail="no" show-header="no" layout-direction="column">
+    
+    <o-nif-input #nif attr="bsn_cif" label="CIF"  read-only="no" required="yes"></o-nif-input>
+    
+</o-form>
+
+<div fxFlex></div>
+</div>
+
+
+<div fxLayout="row" fxLayoutAlign="start center">
+<o-textarea-input attr="bsn_description" label="Description" width="100%" rows="6"
+                    class="form-field"></o-textarea-input>
+<div fxFlex></div>
+</div>
+<br>
+
+<div fxLayout="row" fxLayoutAlign="start center">
+    <o-textarea-input attr="bsn_address" label="Adress" width="100%" rows="1"
+                        class="form-field"></o-textarea-input>
+    <div fxFlex></div>
+    </div>
+<br>
+<!-- Columna phone, website, schedule, email -->
+<div fxLayout="column" fxLayoutAlign="start left">
+    <!-- PHONE -->
+    <o-form editable-detail="no" show-header="no" layout-direction="column">
+        <o-phone-input fxFlex attr="input" label="Phone" ></o-phone-input>
+        <o-phone-input attr="input2" label="Prefix"  read-only="no"required="yes"></o-phone-input>
+      </o-form>
+    <!-- EMAIL -->
+    <o-form editable-detail="no" show-header="no" layout-direction="column">
+        <o-email-input attr="bsn_email" label="Email" read-only="no" required="yes" ></o-email-input>
+      </o-form>
+    <!-- WEBSITE --> <!-- Falta icono -->
+    <o-form editable-detail="no" show-header="no" layout-direction="column">
+    <o-text-input attr="bsn_website" label="Website" fxFlex.lg="80" fxFlex.xl="80" read-only="no"
+            fxFlex="100" max-length="100" required="yes"></o-text-input>
+        </o-form>
+    <!-- SCHEDULE -->
+  <o-form editable-detail="no" show-header="no" layout-direction="column">
+    <div fxLayout="row" fxLayoutAlign="start left">
+        <div class="div" style="margin-right: 20px;">
+            <o-hour-input attr="input2" label="{{ 'Opening' | oTranslate }}" read-only="no" required="yes" clear-button="yes"
+            format="24" value-type="string"></o-hour-input>
+        </div>
+        <div>
+        <o-hour-input attr="input2" label="{{ 'Closing' | oTranslate }}" read-only="no" required="yes" clear-button="yes"
+        format="24" value-type="string"></o-hour-input>   
+        </div>
+    </div>
+  </o-form>
+</div>
+
+<!-- SELECT BUSINESS -->
+<o-form editable-detail="false" show-header="no">
+    <o-radio attr="bsn_type" label="Business" [static-data]="getDataArray()"
+      [data]="getValue()" value-column="key" columns="key;value" visible-columns="value" read-only="no" required="yes"
+       layout="row"></o-radio>
+</o-form>
+
+</o-column>
+
+<!-- PHOTOS -->    
+
+<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px"></div>
+    <o-column fxFlex="40" layout-align="center center">
+        <o-gallery #demoGaleria [gallery-images]="galleryImages" [gallery-options]="galleryOptions"></o-gallery>
+        <o-image attr="usr_photo" sql-type="OTHER" class="avatar" label="PROFILE.EDIT_PHOTO"></o-image>       
+    </o-column>
+</o-row>
+
+<!-- RESTAURANT -->   
+<o-row attr="restaurant-form" layout-align="start stretch" oHidden>
+    <o-column title="RESTAURANT DATA" layout-align="start stretch" fxFlex="60" layout-padding>
+
+        <o-form editable-detail="no" show-header="no" layout-direction="column">
+            <o-file-input attr="rest_menu" label="{{ 'Upload PDF or IMAGE' | oTranslate }}" read-only="no"
+                required="yes" accept-file-type=".pdf;.png" multiple="no" layout-padding>
+            </o-file-input>
+        </o-form>
+    </o-column>
+</o-row>
+
+
+<div class="lodging">
+
+    <o-column>
+        <o-row attr="lodging-form" layout-align="start stretch">
+            <o-column title="LODGING" layout-align="start stretch" layout-padding>
+
+                <o-row>
+                    <o-form editable-detail="no" show-header="no" layout-direction="column">
+
+
+                        <o-column>
+                            <o-row>
+
+                                <o-checkbox attr="rm_type" label="Single" data="Individual" read-only="no"></o-checkbox>
+                                <o-currency-input class="price" attr="rm_cost" label="Price" read-only="no"
+                                    required="yes" min-decimal-digits="2" max-decimal-digits="2"></o-currency-input>
+
+                            </o-row>
+                            <br>
+
+                            <o-row>
+                                <o-checkbox attr="rm_type" label="Double" data="Doble" read-only="no"></o-checkbox>
+                                <o-currency-input class="price" attr="rm_cost" label="Price" read-only="no"
+                                    required="yes" min-decimal-digits="2" max-decimal-digits="2"></o-currency-input>
+                            </o-row>
+                            <br>
+
+                            <o-row>
+                                <o-checkbox attr="rm_type" label="Triple" data="Triple" read-only="no"></o-checkbox>
+                                <o-currency-input class="price" attr="rm_cost" label="Price" read-only="no"
+                                    required="yes" min-decimal-digits="2" max-decimal-digits="2"></o-currency-input>
+                            </o-row>
+                        </o-column>
+                    </o-form>
+                </o-row>
+
+            </o-column>
+
+        </o-row>
+
+    </o-column>
+    <o-column>
+        <o-row attr="srv_type" title="SERVICES" layout-align="start stretch"
+            appearance="none" fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="column" fxLayoutAlign="start">
+                <span style="margin-right: 50px">
+                    <o-slide-toggle  label="WIFI" read-only="no"></o-slide-toggle>
+                </span>
+                <o-slide-toggle  label="PARKING" read-only="no"></o-slide-toggle>
+                <o-slide-toggle  label="POOL" read-only="no"></o-slide-toggle>
+                
+            </div>
+            <div fxLayout="column" fxLayoutAlign="start">
+                <o-slide-toggle label="BREAKFAST" read-only="no"></o-slide-toggle>
+                <o-slide-toggle label="LUCH" read-only="no"></o-slide-toggle>
+                <o-slide-toggle label="DINNER" read-only="no"></o-slide-toggle>
+            </div>
+        </o-row>
+    </o-column>
+</div>
+
+</o-form>
