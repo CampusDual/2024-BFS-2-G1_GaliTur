@@ -19,7 +19,7 @@ export class RoutesHomeComponent implements OnInit {
   }
 
   public getImageSrc(base64: any): any {
-    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64.bytes) : './assets/images/no-image-transparent.png';
+    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:images/*;base64,' + base64.bytes) : './assets/images/no-image.png';
   }
 
   public openDetail(data: any): void {
