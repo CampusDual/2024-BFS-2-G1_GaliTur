@@ -1,69 +1,56 @@
-.mat-divider {
-    border-top-width: 2px;
-    width: 100px;
-  }
+.windowDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
 
-  .employeeFirst {
-    min-width: 200px;
-    max-width: 200px;
-  }
-
-  .employeeFirst span {
-    text-align: center;
-  }
-
-  span {
-    display: flex;
-    align-items: center;
-  }
-
-  span mat-icon {
-    padding-right: 8px;
-  }
-/* Estilos generales */
 .routesFirst,
 .routesSecond {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
 }
 
 .routesFirst:hover,
 .routesSecond:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para la imagen */
 .routesFirst img {
-    width: auto;
-    height: 200px;
-    border-radius: 8px;
-    margin-bottom: 12px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 12px;
 }
 
-/* Estilos para el nombre */
 .routesFirst span strong {
-    font-weight: bold;
-    font-size: 1.2em;
-    display: block;
-    margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 8px;
 }
 
-/* Estilos para el icono y el texto en la segunda columna */
+.routesSecond {
+  min-height: auto;
+  display: flex;
+  align-items: flex-start;
+}
+
 .routesSecond span {
-    display: flex;
-    align-items: center;
-    margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  flex: 1; /* Hacer que el texto ocupe el espacio disponible */
 }
 
 .routesSecond mat-icon {
-    margin-right: 8px;
+  margin-right: 8px; /* Espacio entre el icono y el texto */
 }
 
-.windowDetail{
-    width: auto;
-    height: 500px;
+.routesSecond img {
+  max-width: 24px; /* Ancho máximo del icono */
+  height: auto;
+  margin-right: 8px; /* Espacio entre el icono y el texto */
 }
-
