@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {DialogService} from "ontimize-web-ngx";
 
 @Component({
   selector: 'app-register-home',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class RegisterHomeComponent {
 
+  constructor(
+    protected dialogService: DialogService) {
+  }
+
+  showInfo($event: any) {
+
+  }
 }
