@@ -1,0 +1,12 @@
+.routeCard {
+    width: 300px;
+    background-color: white;
+  }
+  
+.routeCard img {
+    margin-top: 8px;
+  }
+  
+.routeCard .office {
+    font-size: 0.8em;
+  }

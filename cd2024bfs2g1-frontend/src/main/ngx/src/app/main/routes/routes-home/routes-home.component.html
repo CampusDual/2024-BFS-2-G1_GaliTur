@@ -1,8 +1,17 @@
-<o-form-layout-manager attr="routesHome" title="{{'ROUTES' | oTranslate }}" separator=" " mode="dialog"
-    label-columns="name;description;estimated_duration;difficulty">
-    <o-table attr="routesTable" service="routes" entity="route" keys="route_id"
-        columns="route_id;name;description;estimated_duration;difficulty"
-        visible-columns="name;description;estimated_duration;difficulty"
-        query-rows="15">
-    </o-table>
-</o-form-layout-manager>
+
+<o-grid #routesGrid attr="routesHome" title="ROUTES" service="routes" entity="route" keys="route_id"
+    columns="route_id;name;description;estimated_duration;difficulty"
+    query-rows="8" page-size-options="8;10;12" orderable="true"
+    sortable-columns="name;description;estimated_duration;difficulty" insert-button="true"
+    pagination-controls="true" gutter-size="8px" fixed-header="yes" grid-item-height="300px" detail-mode="none"
+    insert-button-floatable="no">
+    <o-grid-item *ngFor="let data of routesGrid.dataArray">
+        <div (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-evenly center"
+            class="mat-elevation-z1 routeCard">
+            <img [src]="getImageSrc(data.routePhoto)" width="144px" height="200px">
+            <span><strong>{{ data.name }} {{data.description}}</strong></span>
+            <span><em>{{ data.estimated_duration }}</em></span>
+            <span class="office">{{ data.difficulty }}</span>
+        </div>
+    </o-grid-item>
+</o-grid>

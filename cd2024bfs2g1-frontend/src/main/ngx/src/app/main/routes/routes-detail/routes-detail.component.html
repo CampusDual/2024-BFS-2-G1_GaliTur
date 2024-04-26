@@ -1,1 +1,27 @@
-<p>routes-detail works!</p>
+
+<div fxFill fxLayout="column" fxLayoutAlign="space-evenly center">
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="4px" class="routesFirst">
+            <img [src]="getImageSrc(data.photo)" width="144px" height="200px">
+            <span><strong>{{ data.name }}</strong></span>
+            <mat-divider></mat-divider>
+        </div>
+        <div fxLayout="column" class="routesSecond">
+            <span>
+                <mat-icon>email</mat-icon><span>{{ data.description }}</span>
+            </span>
+            <ng-template><span><mat-icon>email</mat-icon><span>{{ "NO_DATA_AVAILABLE" |
+                        oTranslate}}</span></span></ng-template>
+            <span>
+                <mat-icon>clock</mat-icon><span>{{ data.estimated_duration }}</span>
+            </span>
+            <ng-template><span><mat-icon>clock</mat-icon><span>{{ "NO_DATA_AVAILABLE" |
+                        oTranslate}}</span></span></ng-template>
+            <span>
+                <mat-icon>home</mat-icon><span>{{ data.difficulty }}</span>
+            </span>
+            <ng-template><span><mat-icon>home</mat-icon><span>{{ "NO_DATA_AVAILABLE" |
+                        oTranslate}}</span></span></ng-template>
+        </div>
+    </div>
+</div>
