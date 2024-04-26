@@ -42,7 +42,7 @@
 .routesSecond span {
   display: flex;
   align-items: center;
-  flex: 1; /* Hacer que el texto ocupe el espacio disponible */
+  flex: 1; /* Hacer que el texto ocupe el espacio disponible. */
 }
 
 .routesSecond mat-icon {
