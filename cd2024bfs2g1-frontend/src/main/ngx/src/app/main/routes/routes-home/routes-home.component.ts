@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { RoutesDetailComponent } from '../routes-detail/routes-detail.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
-import { RoutesDetailComponent } from '../routes-detail/routes-detail.component';
 
 @Component({
   selector: 'app-routes-home',
   templateUrl: './routes-home.component.html',
   styleUrls: ['./routes-home.component.css']
 })
-export class RoutesHomeComponent implements OnInit {
+export class RoutesHomeComponent implements OnInit{
+data: any;
 
   constructor(
     protected dialog: MatDialog,
@@ -24,11 +25,9 @@ export class RoutesHomeComponent implements OnInit {
 
   public openDetail(data: any): void {
     this.dialog.open(RoutesDetailComponent, {
-      height: '330px',
-      width: '520px',
+      height: '500px',
+      width: '800px',
       data: data
     });
   }
-
-
 }

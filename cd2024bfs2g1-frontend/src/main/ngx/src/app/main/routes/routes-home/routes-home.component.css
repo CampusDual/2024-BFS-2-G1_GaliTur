@@ -1,12 +1,27 @@
 .routeCard {
     width: 300px;
-    background-color: white;
-  }
-  
-.routeCard img {
-    margin-top: 8px;
-  }
-  
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.routeCard:hover {
+    background-color: #e0e0e0; 
+}
+
+.routeCard .name {
+    color: #ff9800;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.routeCard span {
+    margin-bottom: 8px;
+}
+
 .routeCard .office {
     font-size: 0.8em;
-  }
+    color: #607d8b;
+}

@@ -1,4 +1,3 @@
-
 <o-grid #routesGrid attr="routesHome" title="ROUTES" service="routes" entity="route" keys="route_id"
     columns="route_id;name;description;estimated_duration;difficulty"
     query-rows="8" page-size-options="8;10;12" orderable="true"
@@ -8,10 +7,10 @@
     <o-grid-item *ngFor="let data of routesGrid.dataArray">
         <div (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-evenly center"
             class="mat-elevation-z1 routeCard">
-            <img [src]="getImageSrc(data.routePhoto)" width="144px" height="200px">
-            <span><strong>{{ data.name }} {{data.description}}</strong></span>
-            <span><em>{{ data.estimated_duration }}</em></span>
-            <span class="office">{{ data.difficulty }}</span>
+            <span class="name"><strong>{{ data.name }} </strong></span>
+           
+            <span><em> Duracion Estimada: {{ data.estimated_duration }}min</em></span>
+            <span class="office">Dificultad: {{ data.difficulty }}</span>
         </div>
     </o-grid-item>
 </o-grid>

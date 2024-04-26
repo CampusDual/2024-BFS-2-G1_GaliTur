@@ -1,0 +1,42 @@
+/* Estilos generales */
+.routesFirst,
+.routesSecond {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.routesFirst:hover,
+.routesSecond:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para la imagen */
+.routesFirst img {
+    width: 144px;
+    height: 200px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+/* Estilos para el nombre */
+.routesFirst span strong {
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* Estilos para el icono y el texto en la segunda columna */
+.routesSecond span {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.routesSecond mat-icon {
+    margin-right: 8px;
+}
+

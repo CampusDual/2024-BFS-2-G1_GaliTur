@@ -7,21 +7,22 @@
             <mat-divider></mat-divider>
         </div>
         <div fxLayout="column" class="routesSecond">
-            <span>
-                <mat-icon>email</mat-icon><span>{{ data.description }}</span>
+            <span *ngIf="data.description else no_description">
+                <mat-icon></mat-icon><span>{{ data.description }}</span>
             </span>
-            <ng-template><span><mat-icon>email</mat-icon><span>{{ "NO_DATA_AVAILABLE" |
+            <ng-template  #no_description><span><mat-icon></mat-icon><span>{{ "NO_DATA_AVAILABLE" |
+                        oTranslate}}</span></span></ng-template>
+            <span *ngIf="data.estimated_duration else no_estimated_duration">
+                <mat-icon></mat-icon><span>{{ data.estimated_duration }}</span>
+            </span>
+            <ng-template #no_estimated_duration><span><mat-icon>clock</mat-icon><span>{{ "NO_DATA_AVAILABLE" |
                         oTranslate}}</span></span></ng-template>
             <span>
-                <mat-icon>clock</mat-icon><span>{{ data.estimated_duration }}</span>
-            </span>
-            <ng-template><span><mat-icon>clock</mat-icon><span>{{ "NO_DATA_AVAILABLE" |
-                        oTranslate}}</span></span></ng-template>
-            <span>
-                <mat-icon>home</mat-icon><span>{{ data.difficulty }}</span>
+                <mat-icon></mat-icon><span>{{ data.difficulty }}</span>
             </span>
             <ng-template><span><mat-icon>home</mat-icon><span>{{ "NO_DATA_AVAILABLE" |
                         oTranslate}}</span></span></ng-template>
         </div>
     </div>
-</div>
+</div> 
+     

@@ -7,7 +7,7 @@ import { RoutesDetailComponent } from './routes-detail/routes-detail.component';
 const routes: Routes = [
   { path: '', component: RoutesHomeComponent },
   { path: 'new', component: RoutesNewComponent },
-  { path: ':ROUTEID', component: RoutesDetailComponent}
+  { path: ':route_id', component: RoutesDetailComponent}
 
 ];
 

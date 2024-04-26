@@ -80,5 +80,6 @@
   "name": "Name",
   "description": "Description",
   "estimated_duration": "Estimated Duration",
-  "difficulty": "Difficulty"
+  "difficulty": "Difficulty",
+  "Duración estimada":"Estimated Duration"
 }
