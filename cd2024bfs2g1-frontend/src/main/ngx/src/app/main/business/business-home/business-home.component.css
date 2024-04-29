@@ -11,3 +11,44 @@ o-checkbox {
     display: flex;
 }
 
+.toggleFirst {
+    margin-bottom: 30px; 
+    margin-top: 25px;
+}
+
+.toggles{
+    margin-bottom: 30px;
+}
+
+.agengy_guide {
+    display: flex;
+}
+
+h3 {
+    text-align: center;
+}
+
+.column-language {
+    width: 20%;
+}
+
+.radiobutton {
+    margin-right: 5%;
+}
+
+mat-radio-group{
+    margin-left: 2%;
+    margin-top: 2%;
+}
+
+.o-image{
+    width: 65%;
+    height: 75%;
+}
+
+o-nif-imput {
+    padding-right: 0px;
+}
+
+
+

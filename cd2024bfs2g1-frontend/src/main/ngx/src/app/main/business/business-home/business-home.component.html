@@ -1,5 +1,5 @@
 <o-form attr="businessHome" service="businesses" entity="business" keys="business_id" fxLayout="column" show-header="yes"
-    header-actions="R;U;D" #oForm after-insert-mode="detail" class="standalone-form-container" undo-button="no">
+    header-actions="R;U;" #oForm after-insert-mode="detail" class="standalone-form-container" undo-button="yes" >
  
     <o-row attr="business-form" layout-align="start stretch">
 <!-- Titulo del formulario -->
@@ -10,11 +10,11 @@
 <!-- Datos del negocio -->
 <o-text-input attr="bsn_name" label="Business name" fxFlex.lg="80" fxFlex.xl="80"
                     fxFlex="100" max-length="100" required="yes"></o-text-input>
-<o-form editable-detail="no" show-header="no" layout-direction="column">
+    <o-form editable-detail="no" show-header="no" layout-direction="column">
     
-    <o-nif-input #nif attr="bsn_cif" label="CIF"  read-only="no" required="yes"></o-nif-input>
+        <o-nif-input #nif attr="bsn_cif" label="CIF"  read-only="no" required="yes"></o-nif-input>
     
-</o-form>
+    </o-form>
 
 <div fxFlex></div>
 </div>
@@ -65,25 +65,24 @@
 </div>
 
 <!-- SELECT BUSINESS -->
-<o-form editable-detail="false" show-header="no">
-    <o-radio attr="bsn_type" label="Business" [static-data]="getDataArray()"
-      [data]="getValue()" value-column="key" columns="key;value" visible-columns="value" read-only="no" required="yes"
-       layout="row"></o-radio>
-</o-form>
+<mat-radio-group attr="bsn_type" [(ngModel)]="selectedOption">
+    <mat-radio-button value="restaurant" class="radiobutton">Restaurant</mat-radio-button>
+    <mat-radio-button value="lodging" class="radiobutton">Lodging</mat-radio-button>
+    <mat-radio-button value="agengy_guide">Agengy Guide</mat-radio-button>
+</mat-radio-group>
 
 </o-column>
 
 <!-- PHOTOS -->    
 
 <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px"></div>
-    <o-column fxFlex="40" layout-align="center center">
-        <o-gallery #demoGaleria [gallery-images]="galleryImages" [gallery-options]="galleryOptions"></o-gallery>
-        <o-image attr="usr_photo" sql-type="OTHER" class="avatar" label="PROFILE.EDIT_PHOTO"></o-image>       
+    <o-column fxFlex="40" layout-align="center center">        
+        <o-image attr="usr_photo" sql-type="OTHER" label="PROFILE.EDIT_PHOTO"></o-image>   
     </o-column>
 </o-row>
 
 <!-- RESTAURANT -->   
-<o-row attr="restaurant-form" layout-align="start stretch" oHidden>
+<o-row attr="restaurant-form" layout-align="start stretch" *ngIf="selectedOption === 'restaurant'">
     <o-column title="RESTAURANT DATA" layout-align="start stretch" fxFlex="60" layout-padding>
 
         <o-form editable-detail="no" show-header="no" layout-direction="column">
@@ -94,8 +93,9 @@
     </o-column>
 </o-row>
 
+<!-- LODGING --> 
 
-<div class="lodging">
+<div class="lodging" *ngIf="selectedOption === 'lodging'">
 
     <o-column>
         <o-row attr="lodging-form" layout-align="start stretch">
@@ -108,23 +108,23 @@
                         <o-column>
                             <o-row>
 
-                                <o-checkbox attr="rm_type" label="Single" data="Individual" read-only="no"></o-checkbox>
-                                <o-currency-input class="price" attr="rm_cost" label="Price" read-only="no"
+                                <o-checkbox attr="single" label="Single" data="Individual" read-only="no"></o-checkbox>
+                                <o-currency-input class="price" attr="price1" label="Price" read-only="no"
                                     required="yes" min-decimal-digits="2" max-decimal-digits="2"></o-currency-input>
 
                             </o-row>
                             <br>
 
                             <o-row>
-                                <o-checkbox attr="rm_type" label="Double" data="Doble" read-only="no"></o-checkbox>
-                                <o-currency-input class="price" attr="rm_cost" label="Price" read-only="no"
+                                <o-checkbox attr="double" label="Double" data="Doble" read-only="no"></o-checkbox>
+                                <o-currency-input class="price" attr="price2" label="Price" read-only="no"
                                     required="yes" min-decimal-digits="2" max-decimal-digits="2"></o-currency-input>
                             </o-row>
                             <br>
 
                             <o-row>
-                                <o-checkbox attr="rm_type" label="Triple" data="Triple" read-only="no"></o-checkbox>
-                                <o-currency-input class="price" attr="rm_cost" label="Price" read-only="no"
+                                <o-checkbox attr="triple" label="Triple" data="Triple" read-only="no"></o-checkbox>
+                                <o-currency-input class="price" attr="price3" label="Price" read-only="no"
                                     required="yes" min-decimal-digits="2" max-decimal-digits="2"></o-currency-input>
                             </o-row>
                         </o-column>
@@ -137,23 +137,62 @@
 
     </o-column>
     <o-column>
-        <o-row attr="srv_type" title="SERVICES" layout-align="start stretch"
-            appearance="none" fxLayout="row" fxLayoutAlign="start center">
-            <div fxLayout="column" fxLayoutAlign="start">
-                <span style="margin-right: 50px">
-                    <o-slide-toggle  label="WIFI" read-only="no"></o-slide-toggle>
-                </span>
-                <o-slide-toggle  label="PARKING" read-only="no"></o-slide-toggle>
-                <o-slide-toggle  label="POOL" read-only="no"></o-slide-toggle>
-                
+        <o-row attr="srv_type" title="SERVICES" layout-align="start stretch" appearance="none" fxLayout="row"
+            fxLayoutAlign="start center">
+            <div fxLayout="column" fxLayoutAlign="start" style="margin-right: 30px;">
+                <o-slide-toggle attr="toggle1" class="toggleFirst" label="WIFI" read-only="no"></o-slide-toggle>
+                <o-slide-toggle attr="toggle2" class="toggles" label="PARKING" read-only="no"></o-slide-toggle>
+                <o-slide-toggle attr="toggle3" class="toggles" label="POOL" read-only="no"></o-slide-toggle>
             </div>
             <div fxLayout="column" fxLayoutAlign="start">
-                <o-slide-toggle label="BREAKFAST" read-only="no"></o-slide-toggle>
-                <o-slide-toggle label="LUCH" read-only="no"></o-slide-toggle>
-                <o-slide-toggle label="DINNER" read-only="no"></o-slide-toggle>
+                <o-slide-toggle attr="toggle4" class="toggleFirst" label="BREAKFAST" read-only="no"></o-slide-toggle>
+                <o-slide-toggle attr="toggle5" class="toggles" label="LUNCH" read-only="no"></o-slide-toggle>
+                <o-slide-toggle attr="toggle6" class="toggles" label="DINNER" read-only="no"></o-slide-toggle>
             </div>
         </o-row>
     </o-column>
+</div>
+
+<div class="agengy_guide" *ngIf="selectedOption === 'agengy_guide'">
+<o-column class="column-language">
+    <h3>LANGUAGE</h3>
+    <o-row layout-align="start stretch" appearance="none" fxLayout="row"
+            fxLayoutAlign="start center">
+            
+        <o-form show-header="no">
+            <o-combo id="language" attr="gui_language" label="Select language" [static-data]="languagesArray"
+            value-column="countryCode" columns="countryCode;countryText"
+            visible-columns="countryText" required="yes" multiple="yes" fxFlex>
+            </o-combo>
+        </o-form>
+    </o-row>
+</o-column>
+
+<o-column>
+    <h3>PROVINCE</h3>
+    <o-row attr="gui_province" layout-align="start stretch" appearance="none" fxLayout="row" fxLayoutAlign="start center">
+        <o-form show-header="no">
+            <o-combo #comboProvince attr="gui_province" label="Select province" [static-data]="provincias" value-column="nombre"
+                columns="nombre" visible-columns="nombre" required="yes" fxFlex null-selection="no"
+                (onChange)="onProvinciaChange($event)">
+            </o-combo>
+        </o-form>
+    </o-row>
+</o-column>
+
+<o-column>
+    <h3>CITY</h3>
+    <o-row attr="gui_city" layout-align="start stretch" appearance="none" fxLayout="row" fxLayoutAlign="start center">
+        <o-form show-header="no">
+            <o-combo *ngIf="ciudadesFiltradas$ | async as ciudades" attr="gui_city" label="Select city" [static-data]="ciudades" value-column="ciudad"
+                columns="ciudad" visible-columns="ciudad" required="yes" fxFlex null-selection="no">
+            </o-combo>
+        </o-form>
+    </o-row>
+</o-column>
+
+
+
 </div>
 
 </o-form>

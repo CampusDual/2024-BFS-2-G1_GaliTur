@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { GalleryImage, GalleryOptions } from 'ontimize-web-ngx-gallery';
 import { GalleryImageSize } from 'ontimize-web-ngx-gallery';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-business-home',
@@ -11,6 +12,7 @@ export class BusinessHomeComponent {
 
 public galleryOptions: GalleryOptions[];
 public galleryImages: GalleryImage[];
+selectedOption: string;
 
   getDataArray() {
     const array: Array<Object> = [];
@@ -35,10 +37,72 @@ public galleryImages: GalleryImage[];
 
 
 
+  public languagesArray = [{
+    countryCode: 1,
+    countryText: 'Spanish'
+  }, {
+    countryCode: 2,
+    countryText: 'Galician'
+  }, {
+    countryCode: 3,
+    countryText: 'English'
+  }, {
+    countryCode: 4,
+    countryText: 'German'
+  }, {
+    countryCode: 5,
+    countryText: 'Portuguese'
+  }, {
+    countryCode: 6,
+    countryText: 'French'
+  }
+
+  ];
+
+
+  provincias = [
+    { nombre: 'A Coruña', ciudades: [
+      {ciudad: 'Coruña'}, 
+      {ciudad: 'Ferrol'}, 
+      {ciudad: 'Santiago de Compostela'}] },
+
+    { nombre: 'Lugo', ciudades: [
+      {ciudad: 'Lugo'}, 
+      {ciudad: 'Monforte de Lemos'}, 
+      {ciudad: 'Viveiro'}] },
+
+    { nombre: 'Ourense', ciudades: [
+      {ciudad: 'Ourense'}, 
+      {ciudad: 'Verín'}, 
+      {ciudad: 'Xinzo de Limia'}] },
+
+    { nombre: 'Pontevedra', ciudades: [
+      {ciudad: 'Pontevedra'}, 
+      {ciudad: 'Vigo'}, 
+      {ciudad: 'Marín'}] }
+  ];
+
+
+  provinciaSeleccionada: any;
+  ciudadesFiltradas$: Observable<string[]> = of([]);
+
+  constructor() {
+    this.provinciaSeleccionada = this.provincias[0]; // Por defecto seleccionamos la primera provincia
+    this.ciudadesFiltradas$ = of(this.provinciaSeleccionada.ciudades);
+  }
+
+  onProvinciaChange(event) {
+    this.provinciaSeleccionada = this.provincias.find((p) => p.nombre === event)
+    this.ciudadesFiltradas$ = of(this.provinciaSeleccionada.ciudades);
+  }
+
+
+  
 
 
 
   ngOnInit(): void {
+    this.selectedOption = 'restaurant';
   
     this.galleryOptions = [
       {
@@ -98,7 +162,11 @@ public galleryImages: GalleryImage[];
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum ex nulla, quis imperdiet ex interdum vel. Duis sit amet placerat purus, quis sodales ante.'
       }
     ];
+
+
   }
+
+  
   
   
 
