@@ -20,7 +20,7 @@ o-checkbox {
     margin-bottom: 30px;
 }
 
-.agengy_guide {
+.agency_guide {
     display: flex;
 }
 
@@ -33,12 +33,17 @@ h3 {
 }
 
 .radiobutton {
-    margin-right: 5%;
+    margin-right: 10%;
+    flex: 1; /* Distribuye el espacio disponible de manera equitativa entre los botones de radio */
+    
 }
 
 mat-radio-group{
     margin-left: 2%;
-    margin-top: 2%;
+    margin-top: 4%;
+    
+    
+    
 }
 
 .o-image{
@@ -46,8 +51,24 @@ mat-radio-group{
     height: 75%;
 }
 
-o-nif-imput {
-    padding-right: 0px;
+#text {
+    padding-right: 15px;
+}
+
+o-phone-input {
+    height: 150%;
+}
+
+span {
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 5%;
+    width: 10px;
+}
+
+#agency-radio {
+    width: 10%;
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
 }
 
 

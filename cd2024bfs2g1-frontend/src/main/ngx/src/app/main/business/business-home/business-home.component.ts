@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { GalleryImage, GalleryOptions } from 'ontimize-web-ngx-gallery';
 import { GalleryImageSize } from 'ontimize-web-ngx-gallery';
 import { Observable, of } from 'rxjs';
@@ -9,6 +10,24 @@ import { Observable, of } from 'rxjs';
   styleUrls: ['./business-home.component.css']
 })
 export class BusinessHomeComponent {
+
+cifDniControl = new FormControl('',[Validators.required, this.cifDniValidator]);
+
+
+cifDniValidator(control: FormControl) {
+    const value = control.value;
+    const cifRegex = /^[A-Z]\d{8}$/; // Expresión regular para CIF
+    const dniRegex = /^\d{8}[A-Za-z]$/; // Expresión regular para DNI
+
+    if (cifRegex.test(value) || dniRegex.test(value)) {
+      return null; // Válido
+    } else {
+      return { cifDniInvalid: true }; // Inválido
+    }
+
+}
+
+
 
 public galleryOptions: GalleryOptions[];
 public galleryImages: GalleryImage[];
@@ -95,6 +114,8 @@ selectedOption: string;
     this.provinciaSeleccionada = this.provincias.find((p) => p.nombre === event)
     this.ciudadesFiltradas$ = of(this.provinciaSeleccionada.ciudades);
   }
+
+  
 
 
   

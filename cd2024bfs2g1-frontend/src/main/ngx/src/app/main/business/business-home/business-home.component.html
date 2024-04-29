@@ -1,3 +1,4 @@
+
 <o-form attr="businessHome" service="businesses" entity="business" keys="business_id" fxLayout="column" show-header="yes"
     header-actions="R;U;" #oForm after-insert-mode="detail" class="standalone-form-container" undo-button="yes" >
  
@@ -6,18 +7,19 @@
 <o-column title="BUSINESS DATA" layout-align="start stretch" fxFlex="60" layout-padding>
 
 
-<div fxLayout="row" fxLayoutAlign="start center">
-<!-- Datos del negocio -->
-<o-text-input attr="bsn_name" label="Business name" fxFlex.lg="80" fxFlex.xl="80"
-                    fxFlex="100" max-length="100" required="yes"></o-text-input>
-    <o-form editable-detail="no" show-header="no" layout-direction="column">
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <!-- Datos del negocio -->
+        <o-text-input id="text" attr="bsn_name" label="Business name" fxFlex="100" max-length="100" required="yes"></o-text-input>      
+        <o-text-input attr="bsn_cif" label="CIF/DNI"  read-only="no" required="yes" [formControl]="cifDniControl" (input)="cifDniControl.updateValueAndValidity()" max-length="9"></o-text-input>
+        <div fxFlex></div>
+        <mat-error *ngIf="cifDniControl.invalid && (cifDniControl.dirty || cifDniControl.touched)">
+            <span *ngIf="cifDniControl.hasError('required')">El CIF/DNI es requerido</span>
+            <span *ngIf="cifDniControl.hasError('cifDniInvalid')">El CIF/DNI es inválido</span>
+        </mat-error>
+    </div>
     
-        <o-nif-input #nif attr="bsn_cif" label="CIF"  read-only="no" required="yes"></o-nif-input>
     
-    </o-form>
-
-<div fxFlex></div>
-</div>
+<br>
 
 
 <div fxLayout="row" fxLayoutAlign="start center">
@@ -34,23 +36,26 @@
     </div>
 <br>
 <!-- Columna phone, website, schedule, email -->
-<div fxLayout="column" fxLayoutAlign="start left">
+
     <!-- PHONE -->
-    <o-form editable-detail="no" show-header="no" layout-direction="column">
+   
         <o-phone-input fxFlex attr="input" label="Phone" ></o-phone-input>
         <o-phone-input attr="input2" label="Prefix"  read-only="no"required="yes"></o-phone-input>
-      </o-form>
+    
+    <br>
     <!-- EMAIL -->
-    <o-form editable-detail="no" show-header="no" layout-direction="column">
+    
         <o-email-input attr="bsn_email" label="Email" read-only="no" required="yes" ></o-email-input>
-      </o-form>
+        <br>
+      
     <!-- WEBSITE --> <!-- Falta icono -->
-    <o-form editable-detail="no" show-header="no" layout-direction="column">
+    
     <o-text-input attr="bsn_website" label="Website" fxFlex.lg="80" fxFlex.xl="80" read-only="no"
             fxFlex="100" max-length="100" required="yes"></o-text-input>
-        </o-form>
+            <br>
+        
     <!-- SCHEDULE -->
-  <o-form editable-detail="no" show-header="no" layout-direction="column">
+  
     <div fxLayout="row" fxLayoutAlign="start left">
         <div class="div" style="margin-right: 20px;">
             <o-hour-input attr="input2" label="{{ 'Opening' | oTranslate }}" read-only="no" required="yes" clear-button="yes"
@@ -61,15 +66,18 @@
         format="24" value-type="string"></o-hour-input>   
         </div>
     </div>
-  </o-form>
-</div>
+
+
+  
+
 
 <!-- SELECT BUSINESS -->
-<mat-radio-group attr="bsn_type" [(ngModel)]="selectedOption">
-    <mat-radio-button value="restaurant" class="radiobutton">Restaurant</mat-radio-button>
-    <mat-radio-button value="lodging" class="radiobutton">Lodging</mat-radio-button>
-    <mat-radio-button value="agengy_guide">Agengy Guide</mat-radio-button>
+<mat-radio-group attr="bsn_type" [(ngModel)]="selectedOption" class="radio-group">
+    <mat-radio-button value="restaurant" class="radiobutton"><span>Restaurant</span></mat-radio-button>
+    <mat-radio-button value="lodging" class="radiobutton"><span>Lodging</span></mat-radio-button>
+    <mat-radio-button id="agency-radio" value="agency_guide" class="radiobutton"><span>Agency Guide</span></mat-radio-button>
 </mat-radio-group>
+
 
 </o-column>
 
@@ -84,12 +92,9 @@
 <!-- RESTAURANT -->   
 <o-row attr="restaurant-form" layout-align="start stretch" *ngIf="selectedOption === 'restaurant'">
     <o-column title="RESTAURANT DATA" layout-align="start stretch" fxFlex="60" layout-padding>
-
-        <o-form editable-detail="no" show-header="no" layout-direction="column">
             <o-file-input attr="rest_menu" label="{{ 'Upload PDF or IMAGE' | oTranslate }}" read-only="no"
                 required="yes" accept-file-type=".pdf;.png" multiple="no" layout-padding>
             </o-file-input>
-        </o-form>
     </o-column>
 </o-row>
 
@@ -110,7 +115,7 @@
 
                                 <o-checkbox attr="single" label="Single" data="Individual" read-only="no"></o-checkbox>
                                 <o-currency-input class="price" attr="price1" label="Price" read-only="no"
-                                    required="yes" min-decimal-digits="2" max-decimal-digits="2"></o-currency-input>
+                                    required="yes" min-decimal-digits="2" max-decimal-digits="2" min="0"></o-currency-input>
 
                             </o-row>
                             <br>
@@ -118,14 +123,14 @@
                             <o-row>
                                 <o-checkbox attr="double" label="Double" data="Doble" read-only="no"></o-checkbox>
                                 <o-currency-input class="price" attr="price2" label="Price" read-only="no"
-                                    required="yes" min-decimal-digits="2" max-decimal-digits="2"></o-currency-input>
+                                    required="yes" min-decimal-digits="2" max-decimal-digits="2" min="0"></o-currency-input>
                             </o-row>
                             <br>
 
                             <o-row>
                                 <o-checkbox attr="triple" label="Triple" data="Triple" read-only="no"></o-checkbox>
                                 <o-currency-input class="price" attr="price3" label="Price" read-only="no"
-                                    required="yes" min-decimal-digits="2" max-decimal-digits="2"></o-currency-input>
+                                    required="yes" min-decimal-digits="2" max-decimal-digits="2" min="0"></o-currency-input>
                             </o-row>
                         </o-column>
                     </o-form>
@@ -153,7 +158,7 @@
     </o-column>
 </div>
 
-<div class="agengy_guide" *ngIf="selectedOption === 'agengy_guide'">
+<div class="agency_guide" *ngIf="selectedOption === 'agency_guide'">
 <o-column class="column-language">
     <h3>LANGUAGE</h3>
     <o-row layout-align="start stretch" appearance="none" fxLayout="row"
