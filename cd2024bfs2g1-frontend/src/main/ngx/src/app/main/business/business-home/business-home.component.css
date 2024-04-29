@@ -1,0 +1,14 @@
+.businessCard {
+    width: 300px;
+    background-color: #eff1f3;
+    border-radius: 10px; /* Agrega el borde redondeado */
+    padding: 16px; /* Añade un poco de espacio interno para que el contenido no esté demasiado cerca del borde */
+}
+
+.businessCard img {
+    margin-top: 8px;
+}
+
+.businessCard .office {
+    font-size: 0.8em;
+}

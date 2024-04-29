@@ -1,6 +1,6 @@
 .mainContainer {
-    max-width: 1000px;
-    min-height: 100%;
+    max-width: 1300px;
+    min-width: 700px;
     align-content: center;
     justify-content: center;
     flex-direction: row;

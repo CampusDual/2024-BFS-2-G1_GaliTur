@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DomSanitizer } from '@angular/platform-browser';
+import { OFormComponent, OTableComponent } from 'ontimize-web-ngx';
 import { GalleryImage, GalleryOptions } from 'ontimize-web-ngx-gallery';
 
 
@@ -9,7 +12,16 @@ import { GalleryImage, GalleryOptions } from 'ontimize-web-ngx-gallery';
 })
 export class BusinessDetailComponent {
 
+  @ViewChild('accountCustomerTable') accountTable: OTableComponent;
+  @ViewChild('form') form: OFormComponent;
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    protected sanitizer: DomSanitizer
+  ) { }
+
   business: any;
+  bsn_hotel: any;
   bsn_hotel_rooms: any;
   bsn_hotel_services: any;
   public galleryOptions: GalleryOptions[];
@@ -17,6 +29,7 @@ export class BusinessDetailComponent {
 
 
 	ngOnInit(): void {
+    
  
     this.galleryOptions = [
       {

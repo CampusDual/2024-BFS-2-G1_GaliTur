@@ -76,6 +76,7 @@
   "VALIDATOR.HASSPECIALCHARACTERS": "Must contain at least 1 Special Character",
   "VERSION": "Version",
   "VIEW": "Views",
-  "BUSINESS": "Business"
+  "BUSINESS": "Business",
+  "BUSINESSES": "Businesses"
   
 }

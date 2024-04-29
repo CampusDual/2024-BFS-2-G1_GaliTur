@@ -1,58 +1,72 @@
-<div class="mainContainer" >
-    <!--DATOS comunes entre negocios-->
-    <div class="nameContainer">
-        <h1 attr="bsn_name" sql-type="STRING">Cabaña Verónica</h1>
-    </div>
 
-    <o-gallery #demoGaleria [gallery-images]="galleryImages" [gallery-options]="galleryOptions"></o-gallery>
+<o-form fxFill attr="businessDetail" service="businesses" title="BUSINESS" entity="business" keys="bsn_id" header-actions="false" 
+    undo-button="false" action show-header-actions-text="false"show-header-navigation="no" class="fill-form" show-header="no" >
 
-    <div class="dataContainer" line-height="2">
+    <div class="mainContainer" >
+        <!--DATOS comunes entre negocios-->
+        <div class="nameContainer">
+            <h1>{{ data.bsn_name }}</h1>
+        </div>
 
-        <o-row class="o-rows" class="left" attr="container" title="Alojamiento: Vigo, España" icon="house" layout-align="start stretch" elevation="1" appearance="outline">
-            <p class="desc">Encantadora casita junto a la Ría de Vigo, donde la madera y la calidez se entrelazan para crear un hogar acogedor. Con detalles hogareños y vistas serenas, esta vivienda es un refugio acogedor que abraza la belleza natural de su entorno costero.</p>
 
-        </o-row>
-        <o-row class="o-rows" class="right" attr="container" title="Información adicional" icon="info" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
-            <ul class="list-with-spaces">
-                <li><strong>Horario: </strong> Lunes a domingo de 16:30 a 19:00</li>
-                <li><strong>Telefono: </strong> 600 00 00 00</li>
-                <li><strong>Pagina web: </strong> www.google.com</li>
+        <div>
+            <o-gallery #demoGaleria [gallery-images]="galleryImages" [gallery-options]="galleryOptions"></o-gallery>
 
-                <li><strong>Cif: </strong> 12322323K</li>
-            </ul>
-        </o-row>
+        </div>
         
+    
+        <div class="dataContainer" line-height="2">
+    
+            <o-row class="o-rows" class="left" attr="container" title="{{ data.bsn_type }}: {{ data.bsn_address}}" icon="house" layout-align="start stretch" elevation="1" appearance="outline">
+                <p class="desc">{{ data.bsn_description }}</p>
+    
+            </o-row>
+            <o-row class="o-rows" class="right" attr="container" title="Información adicional" icon="info" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+                <ul class="list-with-spaces">
+                    <li><strong>Horario: </strong> {{ data.bsn_schedule}} </li>
+                    <li><strong>Telefono: </strong> {{ data.bsn_phone}} </li>
+                    <li><strong>Pagina web: </strong> {{ data.bsn_website}} </li>
+    
+                    <li><strong>Cif: </strong> {{ data.bsn_cif }} </li>
+                </ul>
+            </o-row>
+            
+        </div>
+    
+    
+        <!--DATOS negocio tipo RESTAURANTE-->
+        <div *ngIf="data.bsn_type === 'Restaurante'">
+            
+        </div>
+    
+        <!--DATOS negocio tipo HOTEL/ALOJAMIENTO-->
+        <div *ngIf="data.bsn_type === 'Alojamiento'" #hotelDiv class="dataContainer">
+            <o-form service="hotel" title="HOTELS" keys="bsn_id" entity="hotel">
+                <o-row class="o-rows" class="left" attr="container" title="Habitaciones disponibles" icon="info" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+                    <ul class="list-with-spaces">
+                        <li *ngFor="let secondData of hotelDiv.dataArray">
+                            <strong *ngIf="bsn_hotel_rooms.htl_id === data.bsn_id">
+                                {{ bsn_hotel_rooms.rm_type }}: </strong> 
+                            {{ bsn_hotel_rooms.rm_cost }} $
+                        </li>
+                    </ul>
+                </o-row>
+                <o-row class="o-rows" class="right" attr="container" title="Servicios" icon="info" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+                    <ul class="list-with-spaces">
+                        <li *ngFor="let data of hotelDiv.dataArray">
+                            <strong>{{ bsn_hotel_services.srv_type }}: </strong> 
+                            {{ bsn_hotel_services.srv_cost }} $
+                        </li>
+                    </ul>
+                </o-row>
+            </o-form>
+        </div>
+    
+        <!--DATOS negocio tipo GUIA-->
+        <div *ngIf="business && business.bsn_type === 'Guia'">
+            
+        </div>
+    
     </div>
 
-
-    <!--DATOS negocio tipo RESTAURANTE-->
-    <div *ngIf="business && business.bsn_type === 'restaurante'">
-        
-    </div>
-
-    <!--DATOS negocio tipo HOTEL/ALOJAMIENTO-->
-    <div *ngIf="business && business.bsn_type === 'alojamiento'" #hotelDiv class="dataContainer">
-        <o-row class="o-rows" class="left" attr="container" title="Habitaciones disponibles" icon="info" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
-            <ul class="list-with-spaces">
-                <li *ngFor="let data of hotelDiv.dataArray">
-                    <strong>{{ bsn_hotel_rooms.rm_type }}: </strong> 
-                    {{ bsn_hotel_rooms.rm_cost }} $
-                </li>
-            </ul>
-        </o-row>
-        <o-row class="o-rows" class="right" attr="container" title="Servicios" icon="info" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
-            <ul class="list-with-spaces">
-                <li *ngFor="let data of hotelDiv.dataArray">
-                    <strong>{{ bsn_hotel_services.srv_type }}: </strong> 
-                    {{ bsn_hotel_services.srv_cost }} $
-                </li>
-            </ul>
-        </o-row>
-    </div>
-
-    <!--DATOS negocio tipo GUIA-->
-    <div *ngIf="business && business.bsn_type === 'guia'">
-        
-    </div>
-
-</div>
+</o-form>
