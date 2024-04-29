@@ -100,10 +100,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  openRegisterDialog() {
-    if (this.dialogService) {
-      this.dialogService.info('Choose your user profile',
-        'a');
-    }
+  goToRegistrer() {
+    this.router.navigate([ '../', 'register'], { relativeTo: this.actRoute })
   }
 }
