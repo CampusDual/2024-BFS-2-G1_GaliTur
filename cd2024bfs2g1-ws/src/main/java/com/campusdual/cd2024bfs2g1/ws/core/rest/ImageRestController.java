@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/routes")
+@RequestMapping("/routes2")
 public class ImageRestController extends ORestController<IImageService> {
 
     @Autowired

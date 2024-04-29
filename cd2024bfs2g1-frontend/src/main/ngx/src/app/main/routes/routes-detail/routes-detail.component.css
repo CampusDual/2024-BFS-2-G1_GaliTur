@@ -42,15 +42,15 @@
 .routesSecond span {
   display: flex;
   align-items: center;
-  flex: 1; /* Hacer que el texto ocupe el espacio disponible. */
+  flex: 1;
 }
 
 .routesSecond mat-icon {
-  margin-right: 8px; /* Espacio entre el icono y el texto */
+  margin-right: 8px; 
 }
 
 .routesSecond img {
-  max-width: 24px; /* Ancho máximo del icono */
+  max-width: 24px;
   height: auto;
-  margin-right: 8px; /* Espacio entre el icono y el texto */
+  margin-right: 8px;
 }

@@ -1,4 +1,3 @@
-
 <div fxFill fxLayout="column" fxLayoutAlign="space-evenly center">
     <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
         <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="4px" class="routesFirst">
@@ -7,22 +6,24 @@
             <mat-divider></mat-divider>
         </div>
         <div fxLayout="column" class="routesSecond">
-            <span *ngIf="data.description else no_description">
+            <span *ngIf="data.description; else no_description">
                 <mat-icon>description</mat-icon><span>{{ data.description }}</span>
             </span>
-            <ng-template  #no_description><span><mat-icon></mat-icon><span>{{ "NO_DATA_AVAILABLE" |
-                        oTranslate}}</span></span></ng-template>
-            <span *ngIf="data.estimated_duration else no_estimated_duration">
+            <ng-template #no_description>
+                <span><mat-icon></mat-icon><span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span></span>
+            </ng-template>
+            <span *ngIf="data.estimated_duration; else no_estimated_duration">
                 <mat-icon>schedule</mat-icon><span>{{ data.estimated_duration }}</span>
             </span>
-            <ng-template #no_estimated_duration><span><mat-icon>clock</mat-icon><span>{{ "NO_DATA_AVAILABLE" |
-                        oTranslate}}</span></span></ng-template>
+            <ng-template #no_estimated_duration>
+                <span><mat-icon>clock</mat-icon><span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span></span>
+            </ng-template>
             <span>
                 <mat-icon>diversity_1</mat-icon><span>{{ data.difficulty }}</span>
             </span>
-            <ng-template><span><mat-icon>home</mat-icon><span>{{ "NO_DATA_AVAILABLE" |
-                        oTranslate}}</span></span></ng-template>
+            <ng-template>
+                <span><mat-icon>home</mat-icon><span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span></span>
+            </ng-template>
         </div>
     </div>
 </div>
-
