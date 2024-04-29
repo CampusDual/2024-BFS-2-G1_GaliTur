@@ -20,15 +20,15 @@ export class RoutesDetailComponent implements OnInit {
     this.cargarImagenes();
   }
 
-  /*public getImageSrc(base64: any): any {
-    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64.bytes) : './assets/images/no-image.png';
+ /* public getImageSrc(base64: any): any {
+    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl(this.cargarImagenes + base64.bytes) : './assets/images/no-image.png';
   }*/
 
   public cargarImagenes(): void {
     this.galleryImages = [
-      'assets/images/login_bg.png',
-      'assets/images/no-image.png',
-      'assets/images/photo3.jpg'
+      '../../../assets/images/login_bg.png',
+      '../../../assets/images/no-image.png',
+      '../../../assets/images/photo3.jpg'
     ];
   }  
 }
