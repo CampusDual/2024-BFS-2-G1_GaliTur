@@ -76,12 +76,17 @@
   "VALIDATOR.HASSPECIALCHARACTERS": "Debe tener al menos un caracter especial",
   "VERSION": "Versión",
   "VIEW": "Vistas",
-  "ROUTE": "Rutas",
+  "ROUTE": "Ruta",
+  "ROUTES": "Rutas",
   "name": "Nombre",
   "description": "Descripción",
   "estimated_duration": "Duración Estimada",
   "difficulty": "Dificultad",
   "latitude": "Latitud",
   "longitude": "Longitud",
-  "image": "Imagen"
+  "image": "Imagen",
+  "opening_time": "Horario de apertura",
+  "closing_time": "Horario de cierre",
+  "info_route": "Información de la ruta",
+  "info_landmark": "Información del punto de interés"
 }

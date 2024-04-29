@@ -7,13 +7,15 @@ import { RoutesDetailComponent } from './routes-detail/routes-detail.component';
 import { RoutesNewComponent } from './routes-new/routes-new.component';
 import { OntimizeWebModule } from 'ontimize-web-ngx';
 import { OGalleryModule } from 'ontimize-web-ngx-gallery';
+import { AddLandmarkComponent } from './routes-new/add-landmark/add-landmark.component';
 
 
 @NgModule({
   declarations: [
     RoutesHomeComponent,
     RoutesDetailComponent,
-    RoutesNewComponent
+    RoutesNewComponent,
+    AddLandmarkComponent
   ],
   imports: [
     CommonModule,

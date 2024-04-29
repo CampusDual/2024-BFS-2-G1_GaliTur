@@ -1,0 +1,32 @@
+<h2>{{'info_landmark' | oTranslate }}</h2>
+<o-form attr="landmarkNew" service="landmarks" entity="landmark" keys="landmark_id" title="">
+    <o-column>
+        <div fxLayout="row">
+            <div fxLayout="column" class="landmarkInfo">
+                <div fxLayout="column" fxLayoutGap="10px">
+                    <o-text-input class="txt"  attr="name" sql-type="STRING"
+                        enabled="yes" required="yes"></o-text-input>
+                </div>
+                <div fxLayout="column" fxLayoutGap="10px">
+                    <o-textarea-input  class="txt" attr="description"
+                    sql-type="STRING" enabled="yes" required="yes"></o-textarea-input>
+                </div>
+                <div fxLayout="row" fxLayoutGap="10px">
+                    <o-hour-input fxFlex="50" class="txt" attr="opening_time"
+                    sql-type="TIME" enabled="yes"></o-hour-input>
+                    <o-hour-input fxFlex="50" class="txt" attr="closing_time"
+                    sql-type="TIME" enabled="yes"></o-hour-input>
+                </div>
+                <div fxLayout="row" fxLayoutGap="10px">
+                    <o-text-input fxFlex="50" class="txt" attr="latitude"
+                    sql-type="NUMERIC" enabled="yes"></o-text-input>
+                    <o-text-input fxFlex="50" class="txt" attr="longitude"
+                    sql-type="NUMERIC" enabled="yes"></o-text-input>
+                </div>
+                <div fxLayout="column">
+                    <o-image id="landmark_image" class="img" attr="image" sql-type="OTHER"></o-image>
+                </div>
+            </div>
+        </div>
+    </o-column>
+</o-form>

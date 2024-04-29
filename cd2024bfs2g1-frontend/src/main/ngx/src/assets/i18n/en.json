@@ -76,12 +76,17 @@
   "VALIDATOR.HASSPECIALCHARACTERS": "Must contain at least 1 Special Character",
   "VERSION": "Version",
   "VIEW": "Views",
-  "ROUTE": "Routes",
+  "ROUTE": "Route",
+  "ROUTES": "Routes",
   "name": "Name",
   "description": "Description",
   "estimated_duration": "Estimated Duration",
   "difficulty": "Difficulty",
   "latitude": "Latitude",
   "longitude": "Longitude",
-  "image": "Image"
+  "image": "Image",
+  "opening_time": "Opening time",
+  "closing_time": "Closing time",
+  "info_route": "Information of route",
+  "info_landmark": "Information of landmark"
 }
