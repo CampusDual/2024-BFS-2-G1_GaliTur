@@ -9,7 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class RoutesDetailComponent implements OnInit {
 
-  galleryImages: string[] = [];
+  galleryImages: any[] = [];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -20,15 +20,12 @@ export class RoutesDetailComponent implements OnInit {
     this.cargarImagenes();
   }
 
- /* public getImageSrc(base64: any): any {
-    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl(this.cargarImagenes + base64.bytes) : './assets/images/no-image.png';
-  }*/
-
   public cargarImagenes(): void {
     this.galleryImages = [
-      '../../../assets/images/login_bg.png',
-      '../../../assets/images/no-image.png',
-      '../../../assets/images/photo3.jpg'
+      {
+        medium: 'assets/images/login_bg.png'},
+      {
+        medium: 'assets/images/no-image.png'}
     ];
-  }  
+  }
 }

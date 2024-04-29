@@ -46,11 +46,16 @@
 }
 
 .routesSecond mat-icon {
-  margin-right: 8px; 
+  margin-right: 8px;
 }
 
 .routesSecond img {
   max-width: 24px;
   height: auto;
   margin-right: 8px;
+}
+
+.o-gallery {
+  width: 250px;
+  height: 250px;
 }
