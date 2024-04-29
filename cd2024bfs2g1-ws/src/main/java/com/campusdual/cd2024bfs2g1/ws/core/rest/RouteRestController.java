@@ -13,8 +13,10 @@ public class RouteRestController extends ORestController<IRouteService> {
     @Autowired
     private IRouteService routeService;
 
+
     @Override
     public IRouteService getService() {
         return this.routeService;
     }
+
 }

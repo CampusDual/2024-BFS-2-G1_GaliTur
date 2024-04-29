@@ -10,4 +10,10 @@ public interface IRouteService {
     public EntityResult routeQuery(Map<String, Object> keyMap, List<String> attrList);
     public EntityResult routeInsert(Map<String, Object> attrMap);
 
+    public EntityResult image_routeQuery(Map<String, Object> keyMap, List<String> attrList);
+    public EntityResult image_routeInsert(Map<String, Object> attrMap);
+
+    public EntityResult imageQuery(Map<String, Object> keyMap, List<String> attrList);
+    public EntityResult imageInsert(Map<String, Object> attrMap);
+
 }
