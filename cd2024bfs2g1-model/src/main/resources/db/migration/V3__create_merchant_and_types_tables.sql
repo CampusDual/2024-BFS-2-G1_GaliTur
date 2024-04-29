@@ -1,34 +1,40 @@
-ALTER TABLE usr_role ADD COLUMN end_point varchar;
-
 INSERT INTO usr_role
-    (rol_name, rol_xml_client_permission, rol_json_client_permission, rol_notes, end_point)
+    (rol_name, rol_xml_client_permission, rol_json_client_permission, rol_notes)
     VALUES (
             'client',
             '<?xml version="1.0" encoding="UTF-8"?><security><MENU><ELEMENT attr="admin"><Enabled restricted="yes"/><Visible restricted="yes"/></ELEMENT></MENU></security>',
             '{ "menu": [{ "attr": "admin", "visible": false, "enabled": false }] }',
-            'This is the client role',
-            'register-client'
+            'This is the client role'
             );
 
 INSERT INTO usr_role
-(rol_name, rol_xml_client_permission, rol_json_client_permission, rol_notes, end_point)
+(rol_name, rol_xml_client_permission, rol_json_client_permission, rol_notes)
 VALUES (
            'manager',
            '<?xml version="1.0" encoding="UTF-8"?><security><MENU><ELEMENT attr="admin"><Enabled restricted="yes"/><Visible restricted="yes"/></ELEMENT></MENU></security>',
            '{ "menu": [{ "attr": "admin", "visible": false, "enabled": false }] }',
-           'This is the manager role',
-           'register-manager'
+           'This is the manager role'
        );
 
 INSERT INTO usr_role
-(rol_name, rol_xml_client_permission, rol_json_client_permission, rol_notes, end_point)
+(rol_name, rol_xml_client_permission, rol_json_client_permission, rol_notes)
 VALUES (
            'merchant',
            '<?xml version="1.0" encoding="UTF-8"?><security><MENU><ELEMENT attr="admin"><Enabled restricted="yes"/><Visible restricted="yes"/></ELEMENT></MENU></security>',
            '{ "menu": [{ "attr": "admin", "visible": false, "enabled": false }] }',
-           'This is the client role',
-           'register-merchant'
+           'This is the merchant role'
        );
+
+INSERT INTO usr_role
+(rol_name, rol_xml_client_permission, rol_json_client_permission, rol_notes)
+VALUES (
+           'guide',
+           '<?xml version="1.0" encoding="UTF-8"?><security><MENU><ELEMENT attr="admin"><Enabled restricted="yes"/><Visible restricted="yes"/></ELEMENT></MENU></security>',
+           '{ "menu": [{ "attr": "admin", "visible": false, "enabled": false }] }',
+           'This is the guide role'
+       );
+
+
 
 CREATE TABLE merchant (
     merchant_id serial NOT NULL,
