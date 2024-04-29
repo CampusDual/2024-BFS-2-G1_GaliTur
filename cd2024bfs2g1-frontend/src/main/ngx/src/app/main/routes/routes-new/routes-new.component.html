@@ -24,9 +24,9 @@
                     </div>
                 </div>
             <div fxLayout="column" class="landmarkInfo">
-                <o-table attr="routesTable" service="routes" entity="route" keys="route_id"
-                    columns="route_id;name;description;estimated_duration;difficulty"
-                    visible-columns="name;description" query-rows="10">
+                <o-table attr="landmarkTable" service="routes" entity="getLandmark" keys="landmark_id"
+                    columns="landmark_id;name;description;opening_time;closing_time;coordinates"
+                    visible-columns="name;description;opening_time;closing_time" query-rows="10">
                     <o-table-column attr="description" title="description" type="TEXT" multiline="yes"></o-table-column>
                 </o-table>
             </div>

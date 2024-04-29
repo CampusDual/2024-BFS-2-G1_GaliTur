@@ -3,6 +3,7 @@ package com.campusdual.cd2024bfs2g1.model.core.service;
 import com.campusdual.cd2024bfs2g1.api.core.service.IRouteService;
 import com.campusdual.cd2024bfs2g1.model.core.dao.ImageDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.Image_routeDao;
+import com.campusdual.cd2024bfs2g1.model.core.dao.LandmarkDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.RouteDao;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
@@ -20,6 +21,8 @@ public class RouteService  implements IRouteService {
     @Autowired
     private RouteDao routeDao;
     @Autowired
+    private LandmarkDao landmarkDao;
+    @Autowired
     private ImageDao imageDao;
     @Autowired
     private Image_routeDao image_routeDao;
@@ -33,6 +36,11 @@ public class RouteService  implements IRouteService {
     @Override
     public EntityResult routeInsert(Map<String, Object> attrMap) {
         return this.daoHelper.insert(routeDao, attrMap);
+    }
+
+    @Override
+    public EntityResult getLandmarkQuery(Map<String, Object> keyMap, List<String> attrList) {
+        return this.daoHelper.query(landmarkDao, keyMap, attrList);
     }
 
 

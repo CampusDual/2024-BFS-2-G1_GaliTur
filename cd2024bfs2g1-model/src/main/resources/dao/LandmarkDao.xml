@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+        xmlns="http://www.ontimize.com/schema/jdbc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+        catalog="" schema="${mainschema}" table="landmark"
+        datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>ID</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>ID</Column>
+    </UpdateKeys>
+    <GeneratedKey>ID</GeneratedKey>
+    <Queries>
+        <Query id="getLandmarks">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        l.landmark_id,
+                        l.name,
+                        l.description,
+                        l.opening_time,
+                        l.closing_time,
+                        rl.route_id,
+                        rl.route_landmark_id
+                        FROM ${mainschema}.route_landmark rl
+                        ON rl.route_id=r.route_id
+                        JOIN ${mainschema}.landmark l
+                        ON rl.landmark_id=l.landmark_id;
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>
