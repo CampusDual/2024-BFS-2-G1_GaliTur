@@ -35,16 +35,17 @@ public class MerchantService implements IMerchantService {
         return this.daoHelper.query(this.merchantDao, keyMap, attrList);
     }
 
+    // userIdMap casting warning
+    @SuppressWarnings("unchecked")
     @Override
     public EntityResult merchantInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
         EntityResult entityResult = userAndRoleService.userInsert(attrMap);
 
         if (entityResult.getCode() == EntityResult.OPERATION_SUCCESSFUL) {
-         //   int index = entityResult.getRecordIndex();
             Map<String, Object> userIdMap = (Map<String, Object>) entityResult;
             EntityResult insertMerchant = this.daoHelper.insert(this.merchantDao, userIdMap);
             if (insertMerchant.getCode() == EntityResult.OPERATION_WRONG) {
-                 this.userAndRoleService.userDelete(userIdMap);
+                this.userAndRoleService.userDelete(userIdMap);
             }
             return insertMerchant;
 
@@ -61,5 +62,10 @@ public class MerchantService implements IMerchantService {
     @Override
     public EntityResult merchantDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.delete(this.merchantDao, keyMap);
+    }
+
+    @Override
+    public EntityResult merchantRolesQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.merchantDao, keyMap, attrList);
     }
 }

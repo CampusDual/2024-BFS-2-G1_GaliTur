@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository(value = "MerchantDao")
 @Lazy
-@ConfigurationFile(
-        configurationFile = "dao/MerchantDao.xml",
-        configurationFilePlaceholder = "dao/placeholders.properties")
+@ConfigurationFile(configurationFile = "dao/MerchantDao.xml", configurationFilePlaceholder = "dao/placeholders.properties")
 public class MerchantDao extends OntimizeJdbcDaoSupport {
 
-    public static final String MERCHANT_ID        = "merchant_id";
-    public static final String USR_ID        = "usr_id";
+    public static final String MERCHANT_ID = "merchant_id";
+//    public static final String ROL_ID = "rol_id";
+    public static final String USR_ID = "usr_id";
+    public static final String QUERY_MERCHANT_ROLES = "merchant_roles";
 }
