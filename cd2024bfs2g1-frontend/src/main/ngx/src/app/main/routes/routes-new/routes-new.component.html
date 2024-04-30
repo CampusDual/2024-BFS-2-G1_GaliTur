@@ -20,7 +20,8 @@
                         sql-type="NUMERIC" enabled="yes" required="yes"></o-text-input>
                     </div>
                     <div fxLayout="column">
-                        <o-image id="route_image" class="img" attr="image" sql-type="OTHER"></o-image>
+                        <!-- <o-file-input attr="image" label="{{'image' | oTranslate }}" accept-file-type="image/*" max-file-size="100000000" max-num-files="10" show-info="yes"></o-file-input> -->
+                        <o-file-input attr="image" service="images" entity="upload" accept-file-type="image/*" multiple="yes" show-info="yes"></o-file-input>
                     </div>
                 </div>
             <div fxLayout="column" class="landmarkInfo">
