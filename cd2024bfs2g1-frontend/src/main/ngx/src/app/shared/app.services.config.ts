@@ -5,6 +5,9 @@ export const SERVICE_CONFIG: Object = {
   'routes': {
     'path': '/routes'
   },
+  'landmarks': {
+    'path': '/landmarks'
+  },
   permissions: {
     'path': '/permissions'
   },
