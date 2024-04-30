@@ -55,6 +55,28 @@ CREATE TABLE bsn_hotel_services (
 	CONSTRAINT bsn_hotel_services_pk PRIMARY KEY (srv_id)
 );
 
+CREATE TABLE gui_language(
+      gui_id int4 NOT NULL,
+      gui_l_id serial NOT NULL,
+      gui_l_name varchar(50) NOT NULL,
+      CONSTRAINT gui_l_id_pk PRIMARY KEY (gui_l_id)
+    );
+
+CREATE TABLE gui_zone(
+            gui_id int4 NOT NULL,
+                  gui_z_id serial NOT NULL,
+                  gui_z_name varchar(50) NOT NULL,
+                  CONSTRAINT gui_z_id_pk PRIMARY KEY (gui_z_id)
+    );
+
+        CREATE TABLE gui_cities(
+                   gui_z_id int4 NOT NULL,
+                   gui_c_id serial NOT NULL,
+                                     gui_c_name varchar(50) NOT NULL,
+                                                CONSTRAINT gui_c_id_pk PRIMARY KEY (gui_c_id)
+
+                );
+
 ALTER TABLE bsn_business ADD CONSTRAINT bsn_business_fk FOREIGN KEY (merchant_id) REFERENCES merchant(merchant_id);
 
 
@@ -63,6 +85,12 @@ ALTER TABLE bsn_restaurant ADD CONSTRAINT bsn_restaurant_fk FOREIGN KEY (bsn_id)
 ALTER TABLE bsn_hotel ADD CONSTRAINT bsn_hotel_fk FOREIGN KEY (bsn_id) REFERENCES bsn_business(bsn_id);
 ALTER TABLE bsn_hotel_rooms ADD CONSTRAINT bsn_hotel_rooms_fk FOREIGN KEY (htl_id) REFERENCES bsn_hotel(htl_id);
 ALTER TABLE bsn_hotel_services ADD CONSTRAINT bsn_hotel_services_fk FOREIGN KEY (htl_id) REFERENCES bsn_hotel(htl_id);
+ALTER TABLE gui_languages ADD CONSTRAINT gui_l_id_fk FOREIGN KEY (gui_id) REFERENCES bsn_guide_agency(gui_id);
+ALTER TABLE gui_zones ADD CONSTRAINT gui_z_id_fk FOREIGN KEY (gui_id) REFERENCES bsn_guide_agency(gui_id);
+ALTER TABLE gui_cities ADD CONSTRAINT gui_c_id_fk FOREIGN KEY (gui_z_id) REFERENCES gui_zones(gui_z_id);
+
+
+
 
 
 
