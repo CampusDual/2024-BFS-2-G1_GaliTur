@@ -26,5 +26,20 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="joinIdImage">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        image.image_id,
+                        image.img_code
+                    FROM
+                        ${mainschema}.image image
+                    JOIN image_route
+                    ON image.image_id = image_route.image_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

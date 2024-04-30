@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RoutesDetailComponent } from '../routes-detail/routes-detail.component';
+import { ImageService } from '../../image.service';
 
 @Component({
   selector: 'app-routes-home',
@@ -12,7 +13,8 @@ export class RoutesHomeComponent implements OnInit {
 
   constructor(
     protected dialog: MatDialog,
-    protected sanitizer: DomSanitizer
+    protected sanitizer: DomSanitizer,
+    private imageService: ImageService
   ) { }
 
   ngOnInit() {
@@ -23,11 +25,21 @@ export class RoutesHomeComponent implements OnInit {
   }
 
   public openDetail(data: any): void {
-    this.dialog.open(RoutesDetailComponent, {
-      height: '400px',
-      width: '1000px',
-      data: data
-    });
+    this.imageService.getImage(data.route_id).subscribe((imageData)=> {
+      const images = []
+      if(imageData.data.length){
+        imageData.data.forEach(element => {
+        images.push({ medium: element.img_code})
+        });
+        data['galleryImages'] = images
+      }
+      
+      this.dialog.open(RoutesDetailComponent, {
+        height: '400px',
+        width: '1000px',
+        data: data
+      });
+    })
   }
 
 
