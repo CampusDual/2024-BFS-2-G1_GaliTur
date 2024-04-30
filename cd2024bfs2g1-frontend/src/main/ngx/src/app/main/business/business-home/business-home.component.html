@@ -1,6 +1,6 @@
 
 <o-form attr="businessHome" service="businesses" entity="business" keys="business_id" fxLayout="column" show-header="yes"
-    header-actions="R;U;" #oForm after-insert-mode="detail" class="standalone-form-container" undo-button="yes" >
+    header-actions="R;U;I;" #oForm after-insert-mode="detail" class="standalone-form-container" undo-button="yes" >
  
     <o-row attr="business-form" layout-align="start stretch">
 <!-- Titulo del formulario -->
@@ -19,57 +19,52 @@
     </div>
     
     
-<br>
+    <br>
 
 
-<div fxLayout="row" fxLayoutAlign="start center">
-<o-textarea-input attr="bsn_description" label="Description" width="100%" rows="6"
-                    class="form-field"></o-textarea-input>
-<div fxFlex></div>
-</div>
-<br>
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <o-textarea-input attr="bsn_description" label="Description" width="100%" rows="6"
+            class="form-field"></o-textarea-input>
+        <div fxFlex></div>
+    </div>
+    <br>
 
-<div fxLayout="row" fxLayoutAlign="start center">
+    <div fxLayout="row" fxLayoutAlign="start center">
     <o-textarea-input attr="bsn_address" label="Adress" width="100%" rows="1"
                         class="form-field"></o-textarea-input>
-    <div fxFlex></div>
     </div>
-<br>
+    <br>
 <!-- Columna phone, website, schedule, email -->
 
     <!-- PHONE -->
    
-        <o-phone-input fxFlex attr="input" label="Phone" ></o-phone-input>
-        <o-phone-input attr="input2" label="Prefix"  read-only="no"required="yes"></o-phone-input>
+        <o-phone-input fxFlex attr="bsn_phone" label="Phone" ></o-phone-input>
+        <o-phone-input attr="prefix" label="Prefix"  read-only="no"required="yes"></o-phone-input>
     
     <br>
     <!-- EMAIL -->
     
         <o-email-input attr="bsn_email" label="Email" read-only="no" required="yes" ></o-email-input>
-        <br>
+    <br>
       
     <!-- WEBSITE --> <!-- Falta icono -->
     
     <o-text-input attr="bsn_website" label="Website" fxFlex.lg="80" fxFlex.xl="80" read-only="no"
             fxFlex="100" max-length="100" required="yes"></o-text-input>
-            <br>
+    <br>
         
     <!-- SCHEDULE -->
   
     <div fxLayout="row" fxLayoutAlign="start left">
         <div class="div" style="margin-right: 20px;">
-            <o-hour-input attr="input2" label="{{ 'Opening' | oTranslate }}" read-only="no" required="yes" clear-button="yes"
+            <o-hour-input attr="bsn_schedule" label="{{ 'Opening' | oTranslate }}" read-only="no" required="yes" clear-button="yes"
             format="24" value-type="string"></o-hour-input>
         </div>
         <div>
-        <o-hour-input attr="input2" label="{{ 'Closing' | oTranslate }}" read-only="no" required="yes" clear-button="yes"
+        <o-hour-input attr="bsn_schedule2" label="{{ 'Closing' | oTranslate }}" read-only="no" required="yes" clear-button="yes"
         format="24" value-type="string"></o-hour-input>   
         </div>
     </div>
-
-
-  
-
 
 <!-- SELECT BUSINESS -->
 <mat-radio-group attr="bsn_type" [(ngModel)]="selectedOption" class="radio-group">
@@ -83,30 +78,32 @@
 
 <!-- PHOTOS -->    
 
-<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px"></div>
-    <o-column fxFlex="40" layout-align="center center">        
-        <o-image attr="usr_photo" sql-type="OTHER" label="PROFILE.EDIT_PHOTO"></o-image>   
-    </o-column>
-</o-row>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px"></div>
+        <o-column fxFlex="40" layout-align="center center">        
+            <o-image attr="usr_photo" sql-type="OTHER" label="Upload image"></o-image>  
+        </o-column>
+    </o-row>
 
-<!-- RESTAURANT -->   
-<o-row attr="restaurant-form" layout-align="start stretch" *ngIf="selectedOption === 'restaurant'">
+
+<!-- RESTAURANT --> 
+<div>
+<o-row id="restaurant" attr="restaurant-form" layout-align="start stretch" *ngIf="selectedOption === 'restaurant'">
     <o-column title="RESTAURANT DATA" layout-align="start stretch" fxFlex="60" layout-padding>
             <o-file-input attr="rest_menu" label="{{ 'Upload PDF or IMAGE' | oTranslate }}" read-only="no"
                 required="yes" accept-file-type=".pdf;.png" multiple="no" layout-padding>
             </o-file-input>
     </o-column>
 </o-row>
-
+</div>  
 <!-- LODGING --> 
 
 <div class="lodging" *ngIf="selectedOption === 'lodging'">
 
     <o-column>
         <o-row attr="lodging-form" layout-align="start stretch">
-            <o-column title="LODGING" layout-align="start stretch" layout-padding>
+            <o-column>
 
-                <o-row>
+                <o-row class="lodging-column" title="LODGING" layout-align="start stretch" layout-padding>
                     <o-form editable-detail="no" show-header="no" layout-direction="column">
 
 
@@ -142,7 +139,7 @@
 
     </o-column>
     <o-column>
-        <o-row attr="srv_type" title="SERVICES" layout-align="start stretch" appearance="none" fxLayout="row"
+        <o-row class="lodging-column" attr="srv_type" title="SERVICES" layout-align="start stretch" appearance="none" fxLayout="row"
             fxLayoutAlign="start center">
             <div fxLayout="column" fxLayoutAlign="start" style="margin-right: 30px;">
                 <o-slide-toggle attr="toggle1" class="toggleFirst" label="WIFI" read-only="no"></o-slide-toggle>
@@ -195,8 +192,6 @@
         </o-form>
     </o-row>
 </o-column>
-
-
 
 </div>
 

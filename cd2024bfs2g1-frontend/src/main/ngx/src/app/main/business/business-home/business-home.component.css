@@ -22,6 +22,7 @@ o-checkbox {
 
 .agency_guide {
     display: flex;
+    margin-bottom: 30px;
 }
 
 h3 {
@@ -40,9 +41,7 @@ h3 {
 
 mat-radio-group{
     margin-left: 2%;
-    margin-top: 4%;
-    
-    
+    margin-top: 4%;   
     
 }
 
@@ -69,6 +68,14 @@ span {
 #agency-radio {
     width: 10%;
     white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+
+#restaurant {
+    margin-bottom: 30px;
+}
+
+.lodging-column {
+    text-align: center;
 }
 
 
