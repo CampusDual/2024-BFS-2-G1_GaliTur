@@ -11,7 +11,7 @@
         </div>
         <div fxLayout="column" class="routesSecond">
             <span *ngIf="data.description; else no_description">
-                <mat-icon></mat-icon><span>{{ data.description }}</span>
+                <mat-icon>description</mat-icon><span>{{ data.description }}</span>
             </span>
             <ng-template #no_description>
                 <span><mat-icon></mat-icon><span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span></span>
