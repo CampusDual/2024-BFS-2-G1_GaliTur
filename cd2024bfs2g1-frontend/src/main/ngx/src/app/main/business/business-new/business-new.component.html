@@ -1,8 +1,8 @@
 
-<o-form attr="businessHome" service="businesses" entity="business" keys="bsn_id" fxLayout="column" show-header="yes"
-    header-actions="R;U;I;D" #oFormBusinessNew after-insert-mode="detail" class="standalone-form-container" undo-button="yes" >
+<o-form attr="businessNew" service="businesses" entity="business" keys="bsn_id" fxLayout="column" 
+     #oFormBusinessNew  class="standalone-form-container" keys-sql-types="integer" >
  
-    <o-row attr="business-form" layout-align="start stretch">
+    <o-row layout-align="start stretch">
 <!-- Titulo del formulario -->
 <o-column title="BUSINESS DATA" layout-align="start stretch" fxFlex="60" layout-padding>
 
@@ -38,11 +38,11 @@
 
     <!-- PHONE -->
    
-        <o-phone-input fxFlex attr="bsn_phone" label="Phone" ></o-phone-input>
-        <o-phone-input attr="prefix" label="Prefix"  read-only="no"required="yes"></o-phone-input>
+        <o-phone-input  attr="bsn_phone" label="Phone" sql-type="string"></o-phone-input>
+        
     
     <br>
-    <!-- EMAIL -->
+    <!-- EMAIL <o-phone-input label="Prefix"  read-only="no"required="yes"></o-phone-input> -->
     
         <o-email-input attr="bsn_email" label="Email" read-only="no" required="yes" ></o-email-input>
     <br>
@@ -53,26 +53,38 @@
             fxFlex="100" max-length="100" required="yes"></o-text-input>
     <br>
         
-    <!-- SCHEDULE -->
+    <!-- SCHEDULE 
   
     <div fxLayout="row" fxLayoutAlign="start left">
         <div class="div" style="margin-right: 20px;">
             <o-hour-input attr="bsn_schedule" label="{{ 'Opening' | oTranslate }}" read-only="no" required="yes" clear-button="yes"
-            format="24" value-type="string"></o-hour-input>
+            format="24" value-type="time"></o-hour-input>
         </div>
         <div>
         <o-hour-input attr="bsn_schedule2" label="{{ 'Closing' | oTranslate }}" read-only="no" required="yes" clear-button="yes"
-        format="24" value-type="string"></o-hour-input>   
+        format="24" value-type="time"></o-hour-input>   
         </div>
     </div>
 
-<!-- SELECT BUSINESS -->
+    -->
+
+    <o-text-input attr="bsn_schedule" label="SC" fxFlex.lg="80" fxFlex.xl="80" read-only="no"
+    fxFlex="100" max-length="100" required="yes"></o-text-input>
+
+    <o-text-input attr="merchant_id" label="mid" fxFlex.lg="80" fxFlex.xl="80" read-only="no"
+    fxFlex="100" max-length="100" required="yes"></o-text-input>
+
+<!--  SELECT BUSINESS 
 <mat-radio-group attr="bsn_type" [(ngModel)]="selectedOption" class="radio-group">
     <mat-radio-button value="restaurant" class="radiobutton"><span>Restaurant</span></mat-radio-button>
     <mat-radio-button value="lodging" class="radiobutton"><span>Lodging</span></mat-radio-button>
     <mat-radio-button id="agency-radio" value="agency_guide" class="radiobutton"><span>Agency Guide</span></mat-radio-button>
 </mat-radio-group>
 
+-->
+
+<o-radio attr="bsn_type" label="Radio" [static-data]="getDataArray()" [data]="getValue()"
+value-column="key" columns="key;value" #radioType visible-columns="value" (onChange)="setSelectedOption($event)"></o-radio>
 
 </o-column>
 
@@ -80,27 +92,27 @@
 
     <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px"></div>
         <o-column fxFlex="40" layout-align="center center">        
-            <o-image attr="usr_photo" sql-type="OTHER" label="Upload image"></o-image>  
+            <o-image attr="bsn_photos" sql-type="OTHER" label="Upload image"></o-image>  
         </o-column>
     </o-row>
 
 
 <!-- RESTAURANT --> 
 <div>
-<o-row id="restaurant" attr="restaurant-form" layout-align="start stretch" *ngIf="selectedOption === 'restaurant'">
+<o-row id="restaurant" layout-align="start stretch" *ngIf="selectedOption === 1">
     <o-column title="RESTAURANT DATA" layout-align="start stretch" fxFlex="60" layout-padding>
             <o-file-input attr="rest_menu" label="{{ 'Upload PDF or IMAGE' | oTranslate }}" read-only="no"
-                required="yes" accept-file-type=".pdf;.png" multiple="no" layout-padding>
+                required="yes" accept-file-type=".pdf;.png" multiple="no" layout-padding clear-button="yes">
             </o-file-input>
     </o-column>
 </o-row>
 </div>  
 <!-- LODGING --> 
 
-<div class="lodging" *ngIf="selectedOption === 'lodging'">
+<div class="lodging" *ngIf="selectedOption === 2">
 
     <o-column>
-        <o-row attr="lodging-form" layout-align="start stretch">
+        <o-row layout-align="start stretch">
             <o-column>
 
                 <o-row class="lodging-column" title="LODGING" layout-align="start stretch" layout-padding>
@@ -139,7 +151,7 @@
 
     </o-column>
     <o-column>
-        <o-row class="lodging-column" attr="srv_type" title="SERVICES" layout-align="start stretch" appearance="none" fxLayout="row"
+        <o-row class="lodging-column" title="SERVICES" layout-align="start stretch" appearance="none" fxLayout="row"
             fxLayoutAlign="start center">
             <div fxLayout="column" fxLayoutAlign="start" style="margin-right: 30px;">
                 <o-slide-toggle attr="toggle1" class="toggleFirst" label="WIFI" read-only="no"></o-slide-toggle>
@@ -155,7 +167,7 @@
     </o-column>
 </div>
 
-<div class="agency_guide" *ngIf="selectedOption === 'agency_guide'">
+<div class="agency_guide" *ngIf="selectedOption === 3">
 
     
 
@@ -175,7 +187,7 @@
         </o-column>
 <o-column style="padding-left: 3%;">
     <h3>PROVINCE</h3>
-    <o-row attr="gui_zone" layout-align="start stretch" appearance="none" fxLayout="row" fxLayoutAlign="start center">
+    <o-row layout-align="start stretch" appearance="none" fxLayout="row" fxLayoutAlign="start center">
         
             <o-combo #comboZone attr="comboZone" label="Select Zone" 
             query-method="query" service="guideZones" entity="guideZone" value-column="gui_z_id"
@@ -187,7 +199,7 @@
 
 <o-column  id="formZones">
     <h3>CITY</h3>
-    <o-row attr="gui_city" layout-align="start stretch" appearance="none" fxLayout="row" fxLayoutAlign="start center">
+    <o-row layout-align="start stretch" appearance="none" fxLayout="row" fxLayoutAlign="start center">
             <o-combo id="comboCity" #comboCity attr="comboCity" label="Select City" multiple="yes"
                 query-method="query" service="guideCities" entity="guideCities" value-column="gui_c_id"
                 columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id" [query-on-event]="comboZone.onValueChange" parent-keys="gui_z_id:comboZone[gui_z_id]">
@@ -196,6 +208,6 @@
 </o-column>
 </o-row>
 
-</div>
+</div> 
 
 </o-form>
