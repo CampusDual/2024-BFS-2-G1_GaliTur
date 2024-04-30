@@ -1,6 +1,6 @@
 
-<o-form attr="businessHome" service="businesses" entity="business" keys="business_id" fxLayout="column" show-header="yes"
-    header-actions="R;U;I;" #oForm after-insert-mode="detail" class="standalone-form-container" undo-button="yes" >
+<o-form attr="businessHome" service="businesses" entity="business" keys="bsn_id" fxLayout="column" show-header="yes"
+    header-actions="R;U;I;D" #oFormBusinessNew after-insert-mode="detail" class="standalone-form-container" undo-button="yes" >
  
     <o-row attr="business-form" layout-align="start stretch">
 <!-- Titulo del formulario -->
@@ -156,42 +156,45 @@
 </div>
 
 <div class="agency_guide" *ngIf="selectedOption === 'agency_guide'">
-<o-column class="column-language">
-    <h3>LANGUAGE</h3>
-    <o-row layout-align="start stretch" appearance="none" fxLayout="row"
-            fxLayoutAlign="start center">
-            
-        <o-form show-header="no">
-            <o-combo id="language" attr="gui_language" label="Select language" [static-data]="languagesArray"
-            value-column="countryCode" columns="countryCode;countryText"
-            visible-columns="countryText" required="yes" multiple="yes" fxFlex>
-            </o-combo>
-        </o-form>
-    </o-row>
-</o-column>
 
-<o-column>
+    
+
+    <o-row style="align-content: space-between; width: 200%;  padding-left: 1.5%;">
+        <o-column class="column-language">
+            <h3 id="languageH">LANGUAGE</h3>
+            <o-row layout-align="start stretch" appearance="none" fxLayout="row"
+                    fxLayoutAlign="start center">
+                    
+                    
+                 
+                    <o-combo attr="comboLanguages" oLocker label="Select language" multiple="yes"
+                      service="guideLanguages" entity="guideLanguage" value-column="gui_l_id"
+                      columns="gui_l_id;gui_l_name" visible-columns="gui_l_name" separator=", " fxFlex>
+                    </o-combo>
+            </o-row>
+        </o-column>
+<o-column style="padding-left: 3%;">
     <h3>PROVINCE</h3>
-    <o-row attr="gui_province" layout-align="start stretch" appearance="none" fxLayout="row" fxLayoutAlign="start center">
-        <o-form show-header="no">
-            <o-combo #comboProvince attr="gui_province" label="Select province" [static-data]="provincias" value-column="nombre"
-                columns="nombre" visible-columns="nombre" required="yes" fxFlex null-selection="no"
-                (onChange)="onProvinciaChange($event)">
+    <o-row attr="gui_zone" layout-align="start stretch" appearance="none" fxLayout="row" fxLayoutAlign="start center">
+        
+            <o-combo #comboZone attr="comboZone" label="Select Zone" 
+            query-method="query" service="guideZones" entity="guideZone" value-column="gui_z_id"
+            columns="gui_z_name" visible-columns="gui_z_name" keys="gui_z_id" multiple="no">
             </o-combo>
-        </o-form>
+           
     </o-row>
 </o-column>
 
-<o-column>
+<o-column  id="formZones">
     <h3>CITY</h3>
     <o-row attr="gui_city" layout-align="start stretch" appearance="none" fxLayout="row" fxLayoutAlign="start center">
-        <o-form show-header="no">
-            <o-combo *ngIf="ciudadesFiltradas$ | async as ciudades" attr="gui_city" label="Select city" [static-data]="ciudades" value-column="ciudad"
-                columns="ciudad" visible-columns="ciudad" required="yes" fxFlex null-selection="no">
+            <o-combo id="comboCity" #comboCity attr="comboCity" label="Select City" multiple="yes"
+                query-method="query" service="guideCities" entity="guideCities" value-column="gui_c_id"
+                columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id" [query-on-event]="comboZone.onValueChange" parent-keys="gui_z_id:comboZone[gui_z_id]">
             </o-combo>
-        </o-form>
     </o-row>
 </o-column>
+</o-row>
 
 </div>
 

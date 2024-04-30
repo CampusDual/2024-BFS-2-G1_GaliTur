@@ -56,65 +56,7 @@ selectedOption: string;
 
 
 
-  public languagesArray = [{
-    countryCode: 1,
-    countryText: 'Spanish'
-  }, {
-    countryCode: 2,
-    countryText: 'Galician'
-  }, {
-    countryCode: 3,
-    countryText: 'English'
-  }, {
-    countryCode: 4,
-    countryText: 'German'
-  }, {
-    countryCode: 5,
-    countryText: 'Portuguese'
-  }, {
-    countryCode: 6,
-    countryText: 'French'
-  }
-
-  ];
-
-
-  provincias = [
-    { nombre: 'A Coruña', ciudades: [
-      {ciudad: 'Coruña'}, 
-      {ciudad: 'Ferrol'}, 
-      {ciudad: 'Santiago de Compostela'}] },
-
-    { nombre: 'Lugo', ciudades: [
-      {ciudad: 'Lugo'}, 
-      {ciudad: 'Monforte de Lemos'}, 
-      {ciudad: 'Viveiro'}] },
-
-    { nombre: 'Ourense', ciudades: [
-      {ciudad: 'Ourense'}, 
-      {ciudad: 'Verín'}, 
-      {ciudad: 'Xinzo de Limia'}] },
-
-    { nombre: 'Pontevedra', ciudades: [
-      {ciudad: 'Pontevedra'}, 
-      {ciudad: 'Vigo'}, 
-      {ciudad: 'Marín'}] }
-  ];
-
-
-  provinciaSeleccionada: any;
-  ciudadesFiltradas$: Observable<string[]> = of([]);
-
-  constructor() {
-    this.provinciaSeleccionada = this.provincias[0]; // Por defecto seleccionamos la primera provincia
-    this.ciudadesFiltradas$ = of(this.provinciaSeleccionada.ciudades);
-  }
-
-  onProvinciaChange(event) {
-    this.provinciaSeleccionada = this.provincias.find((p) => p.nombre === event)
-    this.ciudadesFiltradas$ = of(this.provinciaSeleccionada.ciudades);
-  }
-
+  
 
 
   ngOnInit(): void {
