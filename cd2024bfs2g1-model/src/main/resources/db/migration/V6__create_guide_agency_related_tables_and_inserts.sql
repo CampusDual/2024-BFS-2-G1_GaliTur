@@ -20,6 +20,7 @@ CREATE TABLE gui_cities(
 );
 
 
+
 ALTER TABLE gui_language ADD CONSTRAINT gui_l_id_fk FOREIGN KEY (gui_id) REFERENCES bsn_guide_agency(gui_id);
 ALTER TABLE gui_zone ADD CONSTRAINT gui_z_id_fk FOREIGN KEY (gui_id) REFERENCES bsn_guide_agency(gui_id);
 ALTER TABLE gui_cities ADD CONSTRAINT gui_c_id_fk FOREIGN KEY (gui_z_id) REFERENCES gui_zone(gui_z_id);
