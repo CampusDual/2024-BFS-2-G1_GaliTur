@@ -20,7 +20,6 @@
                         sql-type="NUMERIC" enabled="yes" required="yes"></o-text-input>
                     </div>
                     <div fxLayout="column">
-                        <!-- <o-file-input attr="image" label="{{'image' | oTranslate }}" accept-file-type="image/*" max-file-size="100000000" max-num-files="10" show-info="yes"></o-file-input> -->
                         <o-file-input attr="images" accept-file-type="image/*" multiple="yes" sql-type="OTHER"></o-file-input>
                     </div>
                     <div fxLayout="column" fxLayoutGap="10px">
@@ -28,14 +27,6 @@
                         sql-type="BOOLEAN" enabled="yes" required="yes"></o-checkbox>
                     </div>
                 </div>
-            <div fxLayout="column" class="landmarkInfo">
-                <o-table attr="landmarkTable" service="routes" entity="getLandmark" keys="landmark_id"
-                    columns="landmark_id;name;description;opening_time;closing_time;coordinates"
-                    visible-columns="name;description;opening_time;closing_time" query-rows="10"
-                    select-all-checkbox-visible="yes">
-                    <o-table-column attr="description" title="description" type="TEXT" multiline="yes"></o-table-column>
-                </o-table>
-            </div>
         </div>
     </o-column>
 </o-form>

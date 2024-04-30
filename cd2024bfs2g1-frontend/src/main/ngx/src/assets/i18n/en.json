@@ -87,6 +87,7 @@
   "opening_time": "Opening time",
   "closing_time": "Closing time",
   "info_route": "Information of route",
-  "info_landmark": "Information of landmark",
+  "info_landmark": "Landmarks information",
+  "info_new_landmark": "Landmark information",
   "is_draft": "Is draft?"
 }
