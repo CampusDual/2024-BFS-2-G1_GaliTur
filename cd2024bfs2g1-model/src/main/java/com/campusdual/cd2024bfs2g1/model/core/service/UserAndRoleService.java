@@ -56,7 +56,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 	 * (non-Javadoc)
 	 */
 	@Override
-	@Secured({ PermissionsProviderSecured.SECURED })
+//	@Secured({ PermissionsProviderSecured.SECURED })
 	public EntityResult userQuery(final Map<?, ?> keysValues, final List<?> attributes) throws OntimizeJEERuntimeException {
 
 		final EntityResult toRet = this.daoHelper.query(this.userDao, keysValues, attributes);
@@ -274,6 +274,11 @@ public class UserAndRoleService implements IUserAndRoleService {
 	}
 
 	@Override
+	public EntityResult merchantRolesQuery(Map<?, ?> keysValues, List<?> attributes) throws OntimizeJEERuntimeException {
+		return this.daoHelper.query(this.roleDao, keysValues, attributes, RoleDao.QUERY_MERCHANT_ROLES);
+	}
+
+	@Override
 	public String encryptPassword(final String password) throws OntimizeJEERuntimeException {
 		if (this.passwordEncrypter != null) {
 			return this.passwordEncrypter.encrypt(password);
@@ -322,10 +327,10 @@ public class UserAndRoleService implements IUserAndRoleService {
 			return error;
 		}
 	}
-
 	/*
 	 * (non-Javadoc)
 	 */
+
 	@Override
 	public EntityResult profileQuery(final Map<?, ?> keysValues, final List<?> attributes) throws OntimizeJEERuntimeException {
 		final UserInformation userInfo = (UserInformation) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -344,10 +349,10 @@ public class UserAndRoleService implements IUserAndRoleService {
 
 		return toRet;
 	}
-
 	/*
 	 * (non-Javadoc)
 	 */
+
 	@Override
 	@Transactional(rollbackFor = Throwable.class)
 	public EntityResult profileUpdate(final Map<?, ?> attributesValues, final Map<?, ?> keysValues) throws OntimizeJEERuntimeException {

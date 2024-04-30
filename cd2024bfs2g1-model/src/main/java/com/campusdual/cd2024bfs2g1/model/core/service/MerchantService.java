@@ -64,8 +64,4 @@ public class MerchantService implements IMerchantService {
         return this.daoHelper.delete(this.merchantDao, keyMap);
     }
 
-    @Override
-    public EntityResult merchantRolesQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
-        return this.daoHelper.query(this.merchantDao, keyMap, attrList);
-    }
 }

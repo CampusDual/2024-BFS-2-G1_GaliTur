@@ -19,6 +19,7 @@ public class RoleDao extends OntimizeJdbcDaoSupport {
 	public static final String XML_CLIENT_PERMISSION  = "rol_xml_client_permission";
 	public static final String JSON_CLIENT_PERMISSION = "rol_json_client_permission";
 	public static final String NOTES                  = "rol_notes";
+	public static final String QUERY_MERCHANT_ROLES = "merchant_roles";
 
 	public RoleDao() {
 		super();

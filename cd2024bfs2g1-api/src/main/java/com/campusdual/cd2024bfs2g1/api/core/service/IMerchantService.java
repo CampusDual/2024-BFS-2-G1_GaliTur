@@ -18,5 +18,4 @@ public interface IMerchantService {
     EntityResult merchantDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
     // CUSTOM SQL
-    EntityResult merchantRolesQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 }

@@ -305,4 +305,21 @@ public interface IUserAndRoleService {
      * @throws OntimizeJEERuntimeException if occurs
      */
 	EntityResult getClientPermissions() throws OntimizeJEERuntimeException;
+
+	//////////////////////////////////////////////////////////
+	///////////////////// CUSTOM QUERIES /////////////////////
+	//////////////////////////////////////////////////////////
+	/**
+	 * Merchant roles query.
+	 *
+	 * @param keysValues
+	 *            the keys values
+	 * @param attributes
+	 *            the attributes
+	 * @return the entity result
+	 * @throws OntimizeJEERuntimeException
+	 *             the ontimize jee exception
+	 */
+	EntityResult merchantRolesQuery(Map<?, ?> keysValues, List<?> attributes) throws OntimizeJEERuntimeException;
+
 }

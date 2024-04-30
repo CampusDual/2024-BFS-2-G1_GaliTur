@@ -54,5 +54,17 @@
                 ]]>
 			</Sentence>
 		</Query>
+		<Query id="merchant_roles">
+			<Sentence>
+				<![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.usr_role R
+                    WHERE R.rol_name NOT IN ('admin', 'user', 'client', 'manager')
+                    #ORDER#
+                ]]>
+			</Sentence>
+		</Query>
 	</Queries>
 </JdbcEntitySetup>
