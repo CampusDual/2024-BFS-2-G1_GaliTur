@@ -33,17 +33,12 @@ data: any;
       
       if(imageData.data.length){
         imageData.data.forEach(element => {
-        images.push({ medium: element.img_code})
+        images.push({ medium: "data:image/jpeg;base64," + element.img_code})
         });
         data['galleryImages'] = images
       }
 
       //this.landmarkService.getLandmark(data.route_id).subscribe
-
-
-      
-
-     
 
       this.dialog.open(RoutesDetailComponent, {
         height: '500px',
