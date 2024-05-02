@@ -8,26 +8,25 @@
     transition: box-shadow 0.3s ease;
     cursor: pointer;
   }
-  
+
   .routeCard:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
+
   .routeCard span {
     margin-bottom: 8px;
   }
-  
+
   .routeCard strong {
     font-weight: bold;
-    color: #2d3748; /* Color de texto más oscuro */
+    color: #2d3748;
   }
-  
-  /* Colores y decoración */
+
+
   .routeCard {
-    background-color: #f7fafc; /* Color de fondo suave */
+    background-color: #f7fafc;
   }
-  
+
   .routeCard:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hacer hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
-  
