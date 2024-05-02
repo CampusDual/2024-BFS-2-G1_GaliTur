@@ -1,5 +1,6 @@
 <h2>{{'info_route' | oTranslate }}</h2>
-<o-form attr="routesNew" service="routes" entity="route" keys="route_id" title="">
+<o-form attr="routesNew" service="routes" entity="route" keys="route_id" title="" >
+    <button (click)="onClickOk($event)" class="btn"></button>
     <o-column>
         <div fxLayout="row">
                 <div fxLayout="column" class="routeInfo">

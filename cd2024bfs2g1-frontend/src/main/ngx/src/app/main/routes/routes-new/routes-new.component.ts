@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-routes-new',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class RoutesNewComponent {
 
+  constructor(private router:Router){}
+
+  onClickOk($event:Event){
+    this.router.navigate(['../'])
+   
+  }
 }
