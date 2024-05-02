@@ -36,6 +36,7 @@ public class AgencyGuideService implements IAgencyGuideService {
     @Override
     public EntityResult agencyGuideInsert(Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
 
+        /*
         Map<String,Object> agencyMap = new HashMap<>(keysValues);
         agencyMap.remove("merchant_id");
         agencyMap.remove("bsn_name");
@@ -53,8 +54,11 @@ public class AgencyGuideService implements IAgencyGuideService {
 
         agencyMap.put("bsn_id",(int) er.get("bsn_id"));
 
+        */
 
-        return this.daoHelper.insert(this.agencyGuideDao, agencyMap);
+
+
+        return this.daoHelper.insert(this.agencyGuideDao, keysValues);
     }
 
     @Override

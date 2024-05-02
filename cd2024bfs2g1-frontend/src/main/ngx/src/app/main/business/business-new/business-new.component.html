@@ -101,9 +101,7 @@ value-column="key" columns="key;value" #radioType visible-columns="value" (onCha
 <div>
 <o-row id="restaurant" layout-align="start stretch" *ngIf="selectedOption === 1">
     <o-column title="RESTAURANT DATA" layout-align="start stretch" fxFlex="60" layout-padding>
-            <o-file-input attr="rest_menu" label="{{ 'Upload PDF or IMAGE' | oTranslate }}" read-only="no"
-                required="yes" accept-file-type=".pdf;.png" multiple="no" layout-padding clear-button="yes">
-            </o-file-input>
+        <o-image attr="rest_menu" sql-type="OTHER" label="Upload menu"></o-image>  
     </o-column>
 </o-row>
 </div>  
@@ -116,33 +114,39 @@ value-column="key" columns="key;value" #radioType visible-columns="value" (onCha
             <o-column>
 
                 <o-row class="lodging-column" title="LODGING" layout-align="start stretch" layout-padding>
-                    <o-form editable-detail="no" show-header="no" layout-direction="column">
 
 
                         <o-column>
                             <o-row>
 
-                                <o-checkbox attr="single" label="Single" data="Individual" read-only="no"></o-checkbox>
-                                <o-currency-input class="price" attr="price1" label="Price" read-only="no"
-                                    required="yes" min-decimal-digits="2" max-decimal-digits="2" min="0"></o-currency-input>
+                                <o-checkbox #switchDestination type="checkbox" (onValueChange)="getSwitchValue()" attr="roomTypeSingle" label="Single" data="Individual" read-only="no" ></o-checkbox>
+                               
+                                    <o-currency-input #currency1 [required]="switchDestinationState? true : false"
+                                    [enabled]="switchDestinationState? true : false" class="price" attr="priceSingleRoom" label="Price" read-only="no"
+                                    required="no" min-decimal-digits="2" max-decimal-digits="2" min="0"></o-currency-input>
+                                
 
                             </o-row>
                             <br>
 
                             <o-row>
-                                <o-checkbox attr="double" label="Double" data="Doble" read-only="no"></o-checkbox>
-                                <o-currency-input class="price" attr="price2" label="Price" read-only="no"
-                                    required="yes" min-decimal-digits="2" max-decimal-digits="2" min="0"></o-currency-input>
+                                <o-checkbox #switchDestination2 type="checkbox" (onValueChange)="getSwitchValue2()" attr="roomTypeDouble" label="Double" data="Doble" read-only="no" ></o-checkbox>
+                               
+                                    <o-currency-input #currency2 [required]="switchDestinationState2? true : false"
+                                    [enabled]="switchDestinationState2? true : false" class="price" attr="priceDoubleRoom" label="Price" read-only="no"
+                                    required="no" min-decimal-digits="2" max-decimal-digits="2" min="0"></o-currency-input>
+                                
                             </o-row>
                             <br>
 
                             <o-row>
-                                <o-checkbox attr="triple" label="Triple" data="Triple" read-only="no"></o-checkbox>
-                                <o-currency-input class="price" attr="price3" label="Price" read-only="no"
-                                    required="yes" min-decimal-digits="2" max-decimal-digits="2" min="0"></o-currency-input>
+                                <o-checkbox #switchDestination3 type="checkbox" (onValueChange)="getSwitchValue3()" attr="roomTypeTriple" label="Triple" data="Triple" read-only="no" ></o-checkbox>
+                               
+                                    <o-currency-input #currency3 [required]="switchDestinationState3? true : false"
+                                    [enabled]="switchDestinationState3? true : false" class="price" attr="priceTripleRoom" label="Price" read-only="no"
+                                    required="no" min-decimal-digits="2" max-decimal-digits="2" min="0"></o-currency-input>
                             </o-row>
                         </o-column>
-                    </o-form>
                 </o-row>
 
             </o-column>
@@ -154,14 +158,14 @@ value-column="key" columns="key;value" #radioType visible-columns="value" (onCha
         <o-row class="lodging-column" title="SERVICES" layout-align="start stretch" appearance="none" fxLayout="row"
             fxLayoutAlign="start center">
             <div fxLayout="column" fxLayoutAlign="start" style="margin-right: 30px;">
-                <o-slide-toggle attr="toggle1" class="toggleFirst" label="WIFI" read-only="no"></o-slide-toggle>
-                <o-slide-toggle attr="toggle2" class="toggles" label="PARKING" read-only="no"></o-slide-toggle>
-                <o-slide-toggle attr="toggle3" class="toggles" label="POOL" read-only="no"></o-slide-toggle>
+                <o-slide-toggle attr="toggleWifi" class="toggleFirst" label="WIFI" read-only="no"></o-slide-toggle>
+                <o-slide-toggle attr="toggleParking" class="toggles" label="PARKING" read-only="no"></o-slide-toggle>
+                <o-slide-toggle attr="togglePool" class="toggles" label="POOL" read-only="no"></o-slide-toggle>
             </div>
             <div fxLayout="column" fxLayoutAlign="start">
-                <o-slide-toggle attr="toggle4" class="toggleFirst" label="BREAKFAST" read-only="no"></o-slide-toggle>
-                <o-slide-toggle attr="toggle5" class="toggles" label="LUNCH" read-only="no"></o-slide-toggle>
-                <o-slide-toggle attr="toggle6" class="toggles" label="DINNER" read-only="no"></o-slide-toggle>
+                <o-slide-toggle attr="toggleBreakfast" class="toggleFirst" label="BREAKFAST" read-only="no"></o-slide-toggle>
+                <o-slide-toggle attr="toggleLunch" class="toggles" label="LUNCH" read-only="no"></o-slide-toggle>
+                <o-slide-toggle attr="toggleDinner" class="toggles" label="DINNER" read-only="no"></o-slide-toggle>
             </div>
         </o-row>
     </o-column>

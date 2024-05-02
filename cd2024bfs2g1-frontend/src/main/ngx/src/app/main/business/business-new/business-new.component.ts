@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { GalleryImage, GalleryOptions } from 'ontimize-web-ngx-gallery';
-import { GalleryImageSize } from 'ontimize-web-ngx-gallery';
-import { Observable, of } from 'rxjs';
+import { OCheckboxComponent, OCurrencyInputComponent } from 'ontimize-web-ngx';
+
 
 @Component({
   selector: 'app-business-new',
@@ -12,12 +11,51 @@ import { Observable, of } from 'rxjs';
 export class BusinessNewComponent {
 
 
+  selectedOption: number;
+  cifDniControl = new FormControl('',[Validators.required, this.cifDniValidator]);
+
+  
+  public switchDestinationState: boolean = false;
+  @ViewChild('switchDestination', { static: false }) switchDestination: OCheckboxComponent;
+  @ViewChild('currency1', { static: false }) currency1: OCurrencyInputComponent;
+  getSwitchValue(){
+        this.switchDestinationState = this.switchDestination.getValue();
+        this.currency1.setValue(null);
+
+   }
+
+
+   public switchDestinationState2: boolean = false;
+   @ViewChild('switchDestination2', { static: false }) switchDestination2: OCheckboxComponent;
+   @ViewChild('currency2', { static: false }) currency2: OCurrencyInputComponent;
+   getSwitchValue2(){
+         this.switchDestinationState2 = this.switchDestination2.getValue();
+         this.currency2.setValue(null);
+ 
+    }
+
+    public switchDestinationState3: boolean = false;
+    @ViewChild('switchDestination3', { static: false }) switchDestination3: OCheckboxComponent;
+    @ViewChild('currency3', { static: false }) currency3: OCurrencyInputComponent;
+    getSwitchValue3(){
+          this.switchDestinationState3 = this.switchDestination3.getValue();
+          this.currency3.setValue(null);
+  
+     }
+
+
+
+
+
+
+
+
+
 setSelectedOption($event: any) {
   this.selectedOption = $event
 
 }
 
-cifDniControl = new FormControl('',[Validators.required, this.cifDniValidator]);
 
 
 cifDniValidator(control: FormControl) {
@@ -35,9 +73,7 @@ cifDniValidator(control: FormControl) {
 
 
 
-public galleryOptions: GalleryOptions[];
-public galleryImages: GalleryImage[];
-selectedOption: number;
+
 
   getDataArray() :any{
     const array: Array<Object> = [];
@@ -65,11 +101,6 @@ selectedOption: number;
   
 
 
-  ngOnInit(): void {
-  
-
-
-  }
 
   
   

@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 
 
 @Lazy
-@Repository(value = "HotelServiceDao")
+@Repository(value = "HotelServicesDao")
 @ConfigurationFile(
-        configurationFile = "dao/business/HotelServiceDao.xml",
+        configurationFile = "dao/business/HotelServicesDao.xml",
         configurationFilePlaceholder = "dao/placeholders.properties")
 public class HotelServicesDao extends OntimizeJdbcDaoSupport {
 
