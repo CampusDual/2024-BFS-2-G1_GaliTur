@@ -1,0 +1,21 @@
+.o-form{
+  display: flex;
+}
+.o-form .o-column{
+  align-items: center;
+  padding: 4%;
+}
+.o-form .o-column {
+
+}
+/*.o-form .o-column *{*/
+/*  padding-top: 4%;*/
+/*  padding-left: 4%;*/
+/*  padding-right: 4%;*/
+/*}*/
+
+/*.o-form .o-column *:last-child{*/
+/*  padding-bottom: 4%;*/
+/*  padding-left: 4%;*/
+/*  padding-right: 4%;*/
+/*}*/
