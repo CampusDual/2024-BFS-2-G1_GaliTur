@@ -28,6 +28,8 @@ data: any;
   public openDetail(data: any): void {
     this.imageService.getImage(data.route_id).subscribe((imageData)=> {
       const images = []
+      const landmark = []
+      
       if(imageData.data.length){
         imageData.data.forEach(element => {
         images.push({ medium: element.img_code})
@@ -35,7 +37,7 @@ data: any;
         data['galleryImages'] = images
       }
 
-      data['landmarks'] =
+      data['landmarks'] = landmark
 
       this.dialog.open(RoutesDetailComponent, {
         height: '500px',
