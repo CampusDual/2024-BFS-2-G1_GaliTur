@@ -12,8 +12,8 @@
 }
 
 .routesSecond mat-icon {
-  margin-right: 10px;
-  margin-left: 10px; /* Agregar espacio en el margen izquierdo */
+  margin-right: 6px;
+  margin-left: 6px; /* Agregar espacio en el margen izquierdo */
   vertical-align: middle; /* Alineado vertical al centro */
 }
 
@@ -46,19 +46,44 @@
 }
 
 .o-gallery {
-  width: 250px;
-  height: 250px;
+  width: 300px;
+  height: 300px;
 }
 
 /* Colores y decoración */
-.routesFirst {
-  background-color: #f7fafc; /* Color de fondo suave */
-}
-
-.routesSecond {
-  background-color: #f7fafc; /* Color de fondo suave */
-}
 
 .routesSecond mat-icon {
   color: #4a5568; /* Color de los iconos */
+}
+
+.description {
+  flex: 2;
+  padding-left: 16px;
+}
+
+.estimatedDuration {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-left: 45px;
+}
+
+.difficulty {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-left: 15px;
+}
+
+.mainPanel {
+  background-image: url("../../../../assets/images/photoRouteDetails.png");
+  
+}
+
+.routesFirst {
+  background-color: #EFEFEF;
+}
+
+.routesSecond{
+  background-color: #EFEFEF;
 }
