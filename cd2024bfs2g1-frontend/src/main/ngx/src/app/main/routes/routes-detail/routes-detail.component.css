@@ -57,6 +57,7 @@
   color: #4a5568; /* Color de los iconos */
 }
 
+
 .descriptionPanel {
   flex: 2;
   padding-left: 16px;
@@ -78,7 +79,7 @@
 
 .mainPanel {
   background-image: url("../../../../assets/images/photoRouteDetails.png");
-  
+
 }
 
 .routesFirst {
