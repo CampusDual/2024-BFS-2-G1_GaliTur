@@ -33,5 +33,24 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="getLandmarksDetail">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        l.landmark_id,
+                        l.name,
+                        l.description,
+                        l.opening_time,
+                        l.closing_time,
+                        l.coordinates
+                    FROM
+                        ${mainschema}.landmark l
+                    JOIN route_landmark
+                    ON l.landmark_id = route_landmark.route_landmark_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

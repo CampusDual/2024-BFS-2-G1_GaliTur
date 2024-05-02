@@ -36,6 +36,8 @@ public class RouteService  implements IRouteService {
 
     }
 
+
+
     @Override
     public EntityResult routeInsert(Map<String, Object> attrMap) {
         return this.daoHelper.insert(routeDao, attrMap);
@@ -43,7 +45,7 @@ public class RouteService  implements IRouteService {
 
     @Override
     public EntityResult landmarkQuery(Map<String, Object> keyMap, List<String> attrList) {
-        return this.daoHelper.query(landmarkDao, keyMap, attrList);
+        return this.daoHelper.query(landmarkDao, keyMap, attrList, landmarkDao.QUERY_LANDMARK_NAME);
     }
 
 
