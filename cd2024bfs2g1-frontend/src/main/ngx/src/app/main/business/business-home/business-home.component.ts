@@ -26,23 +26,19 @@ export class BusinessHomeComponent {
   }
 
 
-  /** 
+  /**
   public getImageSrc(base64: any): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64.bytes) : './assets/images/no-image-transparent.png';
   }
-  
+
   public openDetail(data: any): void {
     this.router.navigate(['main/businesses/' + data.bsn_id]);
   }
-  
+
   */
-  
+
   public openDetail(data: any): void {
-    this.dialog.open(BusinessDetailComponent, {
-      height: '800px',
-      width: '1300px',
-      data: data,
-    });
+    this.router.navigate(['main/businesses/' + data.bsn_id], { state: { data: data } });
   }
 
 }

@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
-import { OFormComponent, OTableComponent } from 'ontimize-web-ngx';
+import { OFormComponent, OTableComponent, OntimizeService } from 'ontimize-web-ngx';
 import { GalleryImage, GalleryOptions } from 'ontimize-web-ngx-gallery';
 
 
@@ -16,21 +16,17 @@ export class BusinessDetailComponent {
   @ViewChild('form') form: OFormComponent;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
     protected sanitizer: DomSanitizer
-  ) { }
+  ) {
+  }
 
-  business: any;
-  bsn_hotel: any;
-  bsn_hotel_rooms: any;
-  bsn_hotel_services: any;
   public galleryOptions: GalleryOptions[];
   public galleryImages: GalleryImage[];
 
 
 	ngOnInit(): void {
-    
- 
+
+
     this.galleryOptions = [
       {
           width: "100%",
@@ -41,7 +37,7 @@ export class BusinessDetailComponent {
           imageAutoPlayInterval: 5000,
         }
     ];
-   
+
     this.galleryImages = [
       {
         small: 'https://a0.muscache.com/im/pictures/miso/Hosting-749084685607841888/original/dd16a14b-4792-4c5e-a8a7-60902f118086.jpeg?im_w=1200',
