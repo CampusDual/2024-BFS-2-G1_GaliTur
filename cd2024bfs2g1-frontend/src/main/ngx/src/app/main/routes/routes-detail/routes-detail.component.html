@@ -10,7 +10,7 @@
             <o-gallery [gallery-images]="data.galleryImages" class="o-gallery"></o-gallery>
         </div>
         <div fxLayout="column">
-            <div fxLayout="column" class="description">
+            <div fxLayout="column" class="descriptionPanel">
                 <span *ngIf="data.description; else no_description">
                     <mat-icon></mat-icon><span>{{ data.description }}</span>
                 </span>
