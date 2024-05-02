@@ -1,5 +1,5 @@
-<div fxFill fxLayout="column" fxLayoutAlign="space-evenly center">
-    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
+<div fxFill fxLayout="column" fxLayoutAlign="space-evenly center" class="mainPanel">
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px" class="namePanel">
         <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="4px" class="routesFirst">
             <span><strong>{{ data.name }}</strong></span>
             <mat-divider></mat-divider>
@@ -10,17 +10,31 @@
             <o-gallery [gallery-images]="data.galleryImages" class="o-gallery"></o-gallery>
         </div>
         <div fxLayout="column">
-            <div fxLayout="column">
+            <div fxLayout="column" class="descriptionPanel">
                 <span *ngIf="data.description; else no_description">
                     <mat-icon></mat-icon><span>{{ data.description }}</span>
                 </span>
                 <ng-template #no_description>
                     <span><mat-icon></mat-icon><span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span></span>
                 </ng-template>
+                <!-- Aquí puedes agregar una tabla o una lista -->
+    <table *ngIf="data.landmark && data.landmark.length > 0">
+        <thead>
+            <tr>
+                <th>Puntos de Interés</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let point of data.landmark">
+                <td>{{ point }}</td>
+            </tr>
+        </tbody>
+    </table>
+   
             </div>
             <br> <!-- Insertar un salto de línea después de la descripción -->
             <div fxLayout="row" fxLayoutGap="8px">
-                <div fxLayout="column">
+                <div fxLayout="column" class="estimatedDuration">
                     <span *ngIf="data.estimated_duration; else no_estimated_duration">
                         <mat-icon>schedule</mat-icon><span>{{ data.estimated_duration }}</span>
                     </span>
@@ -28,14 +42,17 @@
                         <span><mat-icon>clock</mat-icon><span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span></span>
                     </ng-template>
                 </div>
-                <div fxLayout="column">
+                <div fxLayout="column" class="difficulty">
                     <span>
-                        <mat-icon>diversity_1</mat-icon><span>{{ data.difficulty }}</span>
+                        <mat-icon>star</mat-icon><span>{{ data.difficulty }}</span>
                     </span>
                     <ng-template>
                         <span><mat-icon>home</mat-icon><span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span></span>
                     </ng-template>
                 </div>
+            </div>
+            <div *ngFor="let landmark of data.landmarks" class="landmarkInfo">
+                <span>{{ landmark.name }}</span>
             </div>
         </div>
     </div>

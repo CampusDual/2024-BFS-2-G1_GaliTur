@@ -17,10 +17,11 @@
             <Sentence>
                 <![CDATA[
                     SELECT
-                        image_id,
-                        image_code
+                        im.image_id,
+                        im.image_code
                     FROM
-                        ${mainschema}.image
+                        ${mainschema}.image im
+                        JOIN image_route_id imr
                     #WHERE#
                     #ORDER#
                 ]]>

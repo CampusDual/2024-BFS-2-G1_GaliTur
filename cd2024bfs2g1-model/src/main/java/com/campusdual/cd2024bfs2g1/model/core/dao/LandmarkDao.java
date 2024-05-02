@@ -19,4 +19,6 @@ public class LandmarkDao  extends OntimizeJdbcDaoSupport {
     public static final String ATTR_CLOSING_TIME = "CLOSING_TIME";
     public static final String ATTR_LATITUDE = "LATITUDE";
     public static final String ATTR_LONGITUDE = "LONGITUDE";
+    public static final String QUERY_LANDMARK_NAME = "getLandmarksDetail";
+
 }

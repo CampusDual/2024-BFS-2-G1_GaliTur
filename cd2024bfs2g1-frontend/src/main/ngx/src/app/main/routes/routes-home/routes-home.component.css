@@ -1,33 +1,54 @@
-/* Estilos principales */
 .routeCard {
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .routeCard:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .routeCard span {
-    margin-bottom: 8px;
-  }
-  
-  .routeCard strong {
-    font-weight: bold;
-    color: #2d3748; /* Color de texto más oscuro */
-  }
-  
-  /* Colores y decoración */
-  .routeCard {
-    background-color: #f7fafc; /* Color de fondo suave */
-  }
-  
-  .routeCard:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hacer hover */
-  }
-  
+  background-color: #d02727;
+  border-radius: 8px;
+  padding: 8px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.name {
+  background-color: #d02727;
+  width: 100%;
+  text-align: center;
+
+}
+
+.difficulty-1 {
+
+  background-color: rgb(138, 240, 138);
+}
+
+.difficulty-2 {
+  background-color: rgb(235, 190, 106);
+}
+
+.difficulty-3 {
+  background-color: rgb(236, 83, 83);
+}
+
+.difficulty-4 {
+  background-color: rgb(199, 14, 134); 
+}
+
+.routeCard:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.routeCard span {
+  margin-bottom: 8px;
+}
+
+.routeCard strong {
+  font-weight: bold;
+  color: #2d3748;
+}
+
+.routeCard {
+  background-color: #f7fafc; 
+}
+
+.routeCard:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
