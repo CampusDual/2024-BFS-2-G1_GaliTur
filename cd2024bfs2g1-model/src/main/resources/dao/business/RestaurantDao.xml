@@ -15,10 +15,12 @@
         <Query id="default">
             <Sentence>
                 <![CDATA[
-                    SELECT
+                   SELECT
                         #COLUMNS#
                     FROM
-                        ${mainschema}.bsn_restaurant
+                        ${mainschema}.bsn_restaurant RT
+                        INNER JOIN ${mainschema}.bsn_business B
+                        ON RT.bsn_id=B.bsn_id
                     #WHERE#
                     #ORDER#
                 ]]>

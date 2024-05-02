@@ -18,7 +18,13 @@
                     SELECT
                         #COLUMNS#
                     FROM
-                        ${mainschema}.bsn_hotel
+                        ${mainschema}.bsn_hotel HT
+                        INNER JOIN ${mainschema}.bsn_business B
+                        ON HT.bsn_id=B.bsn_id
+                        INNER JOIN ${mainschema}.bsn_hotel_rooms HTR
+                        ON HT.htl_id=HTR.htl_id
+                        INNER JOIN ${mainschema}.bsn_hotel_services HTS
+                        ON HT.htl_id=HTS.htl_id
                     #WHERE#
                     #ORDER#
                 ]]>

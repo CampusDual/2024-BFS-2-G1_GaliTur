@@ -18,9 +18,9 @@
                     SELECT
                         #COLUMNS#
                     FROM
-                        ${mainschema}.bsn_guide_agency GA
+                        ${mainschema}.bsn_guide_agency GUA
                         INNER JOIN ${mainschema}.bsn_business B
-                        ON GA.bsn_id=B.bsn_id
+                        ON GUA.bsn_id=B.bsn_id
                     #WHERE#
                     #ORDER#
                 ]]>
