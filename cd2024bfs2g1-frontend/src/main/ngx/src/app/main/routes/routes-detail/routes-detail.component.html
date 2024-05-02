@@ -37,6 +37,9 @@
                     </ng-template>
                 </div>
             </div>
+            <div *ngFor="let landmark of data.landmarks" class="landmarkInfo">
+                <span>{{ landmark.name }}</span>
+            </div>
         </div>
     </div>
 </div>

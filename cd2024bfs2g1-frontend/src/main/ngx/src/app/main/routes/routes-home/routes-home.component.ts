@@ -33,7 +33,9 @@ export class RoutesHomeComponent implements OnInit {
         });
         data['galleryImages'] = images
       }
-      
+
+      data['landmarks'] =
+
       this.dialog.open(RoutesDetailComponent, {
         height: '500px',
         width: '1000px',
