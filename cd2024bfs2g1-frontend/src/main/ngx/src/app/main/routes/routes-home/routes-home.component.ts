@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RoutesDetailComponent } from '../routes-detail/routes-detail.component';
 import { ImageService } from '../../image.service';
+import { LandmarksService } from '../../landmarks.service';
 
 @Component({
   selector: 'app-routes-home',
@@ -15,7 +16,8 @@ data: any;
   constructor(
     protected dialog: MatDialog,
     protected sanitizer: DomSanitizer,
-    private imageService: ImageService
+    private imageService: ImageService,
+    //private landmarkService: LandmarksService 
   ) { }
 
   ngOnInit() {
@@ -28,7 +30,6 @@ data: any;
   public openDetail(data: any): void {
     this.imageService.getImage(data.route_id).subscribe((imageData)=> {
       const images = []
-      const landmark = []
       
       if(imageData.data.length){
         imageData.data.forEach(element => {
@@ -37,7 +38,12 @@ data: any;
         data['galleryImages'] = images
       }
 
-      data['landmarks'] = landmark
+      //this.landmarkService.getLandmark(data.route_id).subscribe
+
+
+      
+
+     
 
       this.dialog.open(RoutesDetailComponent, {
         height: '500px',

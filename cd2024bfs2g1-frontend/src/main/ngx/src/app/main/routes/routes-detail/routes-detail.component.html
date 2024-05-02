@@ -17,6 +17,20 @@
                 <ng-template #no_description>
                     <span><mat-icon></mat-icon><span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span></span>
                 </ng-template>
+                <!-- Aquí puedes agregar una tabla o una lista -->
+    <table *ngIf="data.landmark && data.landmark.length > 0">
+        <thead>
+            <tr>
+                <th>Puntos de Interés</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let point of data.landmark">
+                <td>{{ point }}</td>
+            </tr>
+        </tbody>
+    </table>
+   
             </div>
             <br> <!-- Insertar un salto de línea después de la descripción -->
             <div fxLayout="row" fxLayoutGap="8px">
