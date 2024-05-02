@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Lazy
 @Service("RouteService")
@@ -38,7 +35,24 @@ public class RouteService  implements IRouteService {
 
     @Override
     public EntityResult routeInsert(Map<String, Object> attrMap) {
-        return this.daoHelper.insert(routeDao, attrMap);
+        //Map<String,Object> imageMapAttr=new HashMap();
+
+        EntityResult route_id_entity = this.daoHelper.insert(routeDao, attrMap);
+//        if (route_id_entity.getCode()!=EntityResult.OPERATION_WRONG) {
+//            imageMapAttr.put("img_code",attrMap.get("images"));
+//            EntityResult image_id_entity = this.daoHelper.insert(imageDao, imageMapAttr);
+//           if (image_id_entity.getCode()!=EntityResult.OPERATION_WRONG) {
+//              insertImageAux(route_id_entity.get("route_id"),image_id_entity.get("image_id"));
+//           }
+//        }
+        return route_id_entity;
+    }
+
+    public EntityResult insertImageAux(Object id_route,Object id_image) {
+        Map<String,Object> image_RouteMapAttr=new HashMap();
+        image_RouteMapAttr.put("route_id", id_route);
+        image_RouteMapAttr.put("image_id", id_image);
+        return this.daoHelper.insert(image_routeDao, image_RouteMapAttr);
     }
 
     @Override

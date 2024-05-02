@@ -7,11 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./routes-new.component.css']
 })
 export class RoutesNewComponent {
+isChecked = true
+getValue(): any {
+ return true
+}
 
   constructor(private router:Router){}
 
   onClickOk($event:Event){
-    this.router.navigate(['../'])
+    this.router.navigate(['main/routes/ok'])
    
   }
 }
