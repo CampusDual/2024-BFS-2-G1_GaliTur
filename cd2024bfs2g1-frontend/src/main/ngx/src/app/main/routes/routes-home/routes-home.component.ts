@@ -10,6 +10,7 @@ import { ImageService } from '../../image.service';
   styleUrls: ['./routes-home.component.css']
 })
 export class RoutesHomeComponent implements OnInit {
+data: any;
 
   constructor(
     protected dialog: MatDialog,

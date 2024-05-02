@@ -7,7 +7,7 @@
     <o-grid-item *ngFor="let data of routesGrid.dataArray">
         <div *ngIf="!data.isdraft" (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-evenly center"
             class="mat-elevation-z1 routeCard">
-            <span class="name"><strong>{{ data.name }} </strong></span>
+            <span [ngClass]="'difficulty-' + data.difficulty" class="name"><strong>{{ data.name }} </strong></span>
 
             <span><em> Duracion Estimada: {{ data.estimated_duration }}min</em></span>
             <span class="office">Dificultad: {{ data.difficulty }}</span>
