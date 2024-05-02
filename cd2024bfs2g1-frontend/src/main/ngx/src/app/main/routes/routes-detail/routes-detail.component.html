@@ -5,29 +5,38 @@
             <mat-divider></mat-divider>
         </div>
     </div>
-    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
-        <div fxLayout="column" class="routesSecond">
-            <o-gallery [gallery-images]="data.galleryImages" class="o-gallery" ></o-gallery>
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px" class="routesSecond">
+        <div fxLayout="column">
+            <o-gallery [gallery-images]="data.galleryImages" class="o-gallery"></o-gallery>
         </div>
-        <div fxLayout="column" class="routesSecond">
-            <span *ngIf="data.description; else no_description">
-                <mat-icon>description</mat-icon><span>{{ data.description }}</span>
-            </span>
-            <ng-template #no_description>
-                <span><mat-icon></mat-icon><span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span></span>
-            </ng-template>
-            <span *ngIf="data.estimated_duration; else no_estimated_duration">
-                <mat-icon>schedule</mat-icon><span>{{ data.estimated_duration }}</span>
-            </span>
-            <ng-template #no_estimated_duration>
-                <span><mat-icon>clock</mat-icon><span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span></span>
-            </ng-template>
-            <span>
-                <mat-icon>diversity_1</mat-icon><span>{{ data.difficulty }}</span>
-            </span>
-            <ng-template>
-                <span><mat-icon>home</mat-icon><span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span></span>
-            </ng-template>
+        <div fxLayout="column">
+            <div fxLayout="column">
+                <span *ngIf="data.description; else no_description">
+                    <mat-icon></mat-icon><span>{{ data.description }}</span>
+                </span>
+                <ng-template #no_description>
+                    <span><mat-icon></mat-icon><span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span></span>
+                </ng-template>
+            </div>
+            <br> <!-- Insertar un salto de línea después de la descripción -->
+            <div fxLayout="row" fxLayoutGap="8px">
+                <div fxLayout="column">
+                    <span *ngIf="data.estimated_duration; else no_estimated_duration">
+                        <mat-icon>schedule</mat-icon><span>{{ data.estimated_duration }}</span>
+                    </span>
+                    <ng-template #no_estimated_duration>
+                        <span><mat-icon>clock</mat-icon><span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span></span>
+                    </ng-template>
+                </div>
+                <div fxLayout="column">
+                    <span>
+                        <mat-icon>diversity_1</mat-icon><span>{{ data.difficulty }}</span>
+                    </span>
+                    <ng-template>
+                        <span><mat-icon>home</mat-icon><span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span></span>
+                    </ng-template>
+                </div>
+            </div>
         </div>
     </div>
 </div>

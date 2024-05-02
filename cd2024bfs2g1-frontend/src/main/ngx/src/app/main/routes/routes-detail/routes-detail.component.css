@@ -1,49 +1,8 @@
-.windowDetail {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.routesFirst{
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 16px;
-  margin: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-}
-.routesSecond {
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 16px;
-  margin: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-}
-
-.routesFirst:hover,
-.routesSecond:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.routesFirst img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 12px;
-}
-
-.routesFirst span strong {
-  font-weight: bold;
-  font-size: 1.2em;
-  margin-bottom: 8px;
-}
-
+/* Estilos principales */
 .routesSecond {
   min-height: auto;
   display: flex;
-  align-items: flex-start;
+  align-items: center; /* Ajuste el alineado vertical al centro */
 }
 
 .routesSecond span {
@@ -53,16 +12,53 @@
 }
 
 .routesSecond mat-icon {
-  margin-right: 8px;
+  margin-right: 10px;
+  margin-left: 10px; /* Agregar espacio en el margen izquierdo */
+  vertical-align: middle; /* Alineado vertical al centro */
 }
 
 .routesSecond img {
   max-width: 24px;
   height: auto;
   margin-right: 8px;
+  vertical-align: middle; /* Alineado vertical al centro */
+}
+
+/* Estilos de los elementos comunes */
+.routesFirst, .routesSecond {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.routesFirst:hover, .routesSecond:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.routesFirst span strong {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 8px;
+  color: #2d3748;
 }
 
 .o-gallery {
   width: 250px;
   height: 250px;
+}
+
+/* Colores y decoración */
+.routesFirst {
+  background-color: #f7fafc; /* Color de fondo suave */
+}
+
+.routesSecond {
+  background-color: #f7fafc; /* Color de fondo suave */
+}
+
+.routesSecond mat-icon {
+  color: #4a5568; /* Color de los iconos */
 }
