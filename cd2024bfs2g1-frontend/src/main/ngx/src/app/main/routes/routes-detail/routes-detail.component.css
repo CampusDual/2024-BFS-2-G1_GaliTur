@@ -1,11 +1,30 @@
 /* Estilos principales */
-.windowDetail {
+.routesSecond {
+  min-height: auto;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
+  align-items: center; /* Ajuste el alineado vertical al centro */
 }
 
+.routesSecond span {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.routesSecond mat-icon {
+  margin-right: 10px;
+  margin-left: 10px; /* Agregar espacio en el margen izquierdo */
+  vertical-align: middle; /* Alineado vertical al centro */
+}
+
+.routesSecond img {
+  max-width: 24px;
+  height: auto;
+  margin-right: 8px;
+  vertical-align: middle; /* Alineado vertical al centro */
+}
+
+/* Estilos de los elementos comunes */
 .routesFirst, .routesSecond {
   background-color: #ffffff;
   border-radius: 8px;
@@ -16,42 +35,14 @@
 }
 
 .routesFirst:hover, .routesSecond:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.routesFirst img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .routesFirst span strong {
   font-weight: bold;
   font-size: 1.2em;
   margin-bottom: 8px;
-}
-
-.routesSecond {
-  min-height: auto;
-  display: flex;
-  align-items: flex-start;
-}
-
-.routesSecond span {
-  display: flex;
-  align-items: center;
-  flex: 1;
-}
-
-.routesSecond mat-icon {
-  margin-right: 8px;
-}
-
-.routesSecond img {
-  max-width: 24px;
-  height: auto;
-  margin-right: 8px;
+  color: #2d3748;
 }
 
 .o-gallery {
@@ -66,14 +57,6 @@
 
 .routesSecond {
   background-color: #f7fafc; /* Color de fondo suave */
-}
-
-.routesFirst:hover, .routesSecond:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hacer hover */
-}
-
-.routesFirst span strong {
-  color: #2d3748; /* Color de texto más oscuro */
 }
 
 .routesSecond mat-icon {
