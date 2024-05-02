@@ -1,33 +1,57 @@
 /* Estilos principales */
 .routeCard {
-    background-color: #ffffff;
+    background-color: #d02727;
     border-radius: 8px;
-    padding: 16px;
+    padding: 8px;
     margin: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
     cursor: pointer;
   }
   
+  .name {
+   /* background-color: #d02727;*/
+    width: 100%; /* Ancho del elemento .name es igual al 100% del ancho del div padre */
+    text-align: center; /* Centrar el texto dentro del elemento */
+
+}
+
+.difficulty-1 {
+
+    background-color: rgb(138, 240, 138); /* Fondo verde si difficulty es 1 */
+}
+
+.difficulty-2 {
+    background-color: rgb(235, 190, 106); /* Fondo naranja si difficulty es 2 */
+}
+
+.difficulty-3 {
+    background-color: rgb(236, 83, 83); /* Fondo rojo si difficulty es 3 */
+}
+.difficulty-4 {
+    background-color: rgba(199, 14, 134, 0.781); /* Fondo rojo si difficulty es 3 */
+}
+
+
+
   .routeCard:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
+
   .routeCard span {
     margin-bottom: 8px;
   }
-  
+
   .routeCard strong {
     font-weight: bold;
     color: #2d3748; /* Color de texto más oscuro */
   }
-  
+
   /* Colores y decoración */
   .routeCard {
     background-color: #f7fafc; /* Color de fondo suave */
   }
-  
+
   .routeCard:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hacer hover */
   }
-  
