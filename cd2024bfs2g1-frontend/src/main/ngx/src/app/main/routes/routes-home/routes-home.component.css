@@ -1,27 +1,33 @@
+/* Estilos principales */
 .routeCard {
-    width: 300px;
     background-color: #ffffff;
-    border-radius: 4px;
+    border-radius: 8px;
     padding: 16px;
+    margin: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-}
-
-.routeCard:hover {
-    background-color: #e0e0e0; 
-}
-
-.routeCard .name {
-    color: #ff9800;
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-.routeCard span {
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .routeCard:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .routeCard span {
     margin-bottom: 8px;
-}
-
-.routeCard .office {
-    font-size: 0.8em;
-    color: #607d8b;
-}
+  }
+  
+  .routeCard strong {
+    font-weight: bold;
+    color: #2d3748; /* Color de texto más oscuro */
+  }
+  
+  /* Colores y decoración */
+  .routeCard {
+    background-color: #f7fafc; /* Color de fondo suave */
+  }
+  
+  .routeCard:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hacer hover */
+  }
+  

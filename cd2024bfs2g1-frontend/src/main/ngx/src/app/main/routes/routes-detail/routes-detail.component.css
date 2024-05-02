@@ -1,3 +1,4 @@
+/* Estilos principales */
 .windowDetail {
   display: flex;
   flex-direction: column;
@@ -5,16 +6,8 @@
   justify-content: space-evenly;
 }
 
-.routesFirst{
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 16px;
-  margin: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-}
-.routesSecond {
-  background-color: #fff;
+.routesFirst, .routesSecond {
+  background-color: #ffffff;
   border-radius: 8px;
   padding: 16px;
   margin: 10px;
@@ -22,8 +15,7 @@
   transition: box-shadow 0.3s ease;
 }
 
-.routesFirst:hover,
-.routesSecond:hover {
+.routesFirst:hover, .routesSecond:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -65,4 +57,25 @@
 .o-gallery {
   width: 250px;
   height: 250px;
+}
+
+/* Colores y decoración */
+.routesFirst {
+  background-color: #f7fafc; /* Color de fondo suave */
+}
+
+.routesSecond {
+  background-color: #f7fafc; /* Color de fondo suave */
+}
+
+.routesFirst:hover, .routesSecond:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hacer hover */
+}
+
+.routesFirst span strong {
+  color: #2d3748; /* Color de texto más oscuro */
+}
+
+.routesSecond mat-icon {
+  color: #4a5568; /* Color de los iconos */
 }
