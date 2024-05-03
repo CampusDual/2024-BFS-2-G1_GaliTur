@@ -1,0 +1,45 @@
+<div fxFill fxLayout="column" fxLayoutAlign="space-evenly center" class="mainPanel">
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px" class="namePanel">
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="4px" class="routesFirst">
+            <span><strong>{{ data.name }}</strong></span>
+            <mat-divider></mat-divider>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px" class="routesSecond">
+        <div fxLayout="column">
+            <o-gallery [gallery-images]="data.galleryImages" class="o-gallery"></o-gallery>
+        </div>
+        <div fxLayout="column">
+            <div fxLayout="column" class="descriptionPanel">
+                <span *ngIf="data.description; else no_description">
+                    <mat-icon></mat-icon><span>{{ data.description }}</span>
+                </span>
+                <ng-template #no_description>
+                    <span><mat-icon></mat-icon><span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span></span>
+                </ng-template>
+            </div>
+            <br>
+            <div fxLayout="row" fxLayoutGap="8px">
+                <div fxLayout="column" class="estimatedDuration">
+                    <span *ngIf="data.estimated_duration; else no_estimated_duration">
+                        <mat-icon>schedule</mat-icon><span>{{ data.estimated_duration }} min</span>
+                    </span>
+                    <ng-template #no_estimated_duration>
+                        <span><mat-icon>clock</mat-icon><span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span></span>
+                    </ng-template>
+                </div>
+                <div fxLayout="column" class="difficulty">
+                    <span>
+                        <mat-icon>star</mat-icon><span>{{ data.difficulty }}</span>
+                    </span>
+                    <ng-template>
+                        <span><mat-icon>home</mat-icon><span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span></span>
+                    </ng-template>
+                </div>
+            </div>
+            <div *ngFor="let landmark of data.landmarks" class="landmarkInfo">
+                <span>{{ landmark.name }}</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -255,7 +255,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 	public EntityResult rolesForUserUpdate(final Map<?, ?> attributesValues, final Map<?, ?> keysValues)
 			throws OntimizeJEERuntimeException {
 		try {
-			if ("S".equals(attributesValues.get(UserRoleDao.ACTIVED))) {
+			if (!(Boolean) attributesValues.get(UserRoleDao.ACTIVED)) {
 				// insert
 				final Map<String, Object> valuesToInsert = new HashMap<>();
 				valuesToInsert.put(UserRoleDao.USR_ID, keysValues.get(UserRoleDao.USR_ID));

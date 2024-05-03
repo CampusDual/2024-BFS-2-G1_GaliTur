@@ -5,6 +5,12 @@ export const SERVICE_CONFIG: Object = {
   'merchants': {
     'path': '/merchants'
   },
+  'routes': {
+    'path': '/routes'
+  },
+  'landmarks': {
+    'path': '/landmarks'
+  },
   permissions: {
     'path': '/permissions'
   },

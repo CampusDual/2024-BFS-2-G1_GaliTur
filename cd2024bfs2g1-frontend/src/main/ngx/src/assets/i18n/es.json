@@ -80,5 +80,20 @@
   "VERSION": "Versión",
   "VIEW": "Vistas",
   "PASSWORD_TITLE":"Ingresa una contraseña segura (mínimo 8 caracteres, incluyendo una mayúscula, una minúscula, un numero y un caracter especíal mínimo)",
-  "Register_Professional":"Registro Profesional"
+  "Register_Professional":"Registro Profesional",
+  "ROUTE": "Ruta",
+  "ROUTES": "Rutas",
+  "name": "Nombre",
+  "description": "Descripción",
+  "estimated_duration": "Duración Estimada",
+  "difficulty": "Dificultad",
+  "coordinates": "Coordenadas",
+  "images": "Imágenes",
+  "opening_time": "Horario de apertura",
+  "closing_time": "Horario de cierre",
+  "info_route": "Información de la ruta",
+  "info_landmark": "Información de los puntos de interés",
+  "info_new_landmark": "Información del punto de interés",
+  "is_draft": "¿Es un borrador?",
+  "NO_GESTOR": "Lo siento, no eres un gestor"
 }
