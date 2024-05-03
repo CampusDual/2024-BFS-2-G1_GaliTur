@@ -75,5 +75,20 @@
   "VALIDATOR.HASSMALLCASE": "Must contain at least 1 Letter in Small Case",
   "VALIDATOR.HASSPECIALCHARACTERS": "Must contain at least 1 Special Character",
   "VERSION": "Version",
-  "VIEW": "Views"
+  "VIEW": "Views",
+  "ROUTE": "Route",
+  "ROUTES": "Routes",
+  "name": "Name",
+  "description": "Description",
+  "estimated_duration": "Estimated Duration",
+  "difficulty": "Difficulty",
+  "coordinates": "Coordinates",
+  "images": "Images",
+  "opening_time": "Opening time",
+  "closing_time": "Closing time",
+  "info_route": "Information of route",
+  "info_landmark": "Landmarks information",
+  "info_new_landmark": "Landmark information",
+  "is_draft": "Is draft?",
+  "NO_GESTOR": "Sorry, you are not a manager"
 }

@@ -75,5 +75,20 @@
   "VALIDATOR.HASSMALLCASE": "Debe tener al menos 1 minúscula",
   "VALIDATOR.HASSPECIALCHARACTERS": "Debe tener al menos un caracter especial",
   "VERSION": "Versión",
-  "VIEW": "Vistas"
+  "VIEW": "Vistas",
+  "ROUTE": "Ruta",
+  "ROUTES": "Rutas",
+  "name": "Nombre",
+  "description": "Descripción",
+  "estimated_duration": "Duración Estimada",
+  "difficulty": "Dificultad",
+  "coordinates": "Coordenadas",
+  "images": "Imágenes",
+  "opening_time": "Horario de apertura",
+  "closing_time": "Horario de cierre",
+  "info_route": "Información de la ruta",
+  "info_landmark": "Información de los puntos de interés",
+  "info_new_landmark": "Información del punto de interés",
+  "is_draft": "¿Es un borrador?",
+  "NO_GESTOR": "Lo siento, no eres un gestor"
 }
