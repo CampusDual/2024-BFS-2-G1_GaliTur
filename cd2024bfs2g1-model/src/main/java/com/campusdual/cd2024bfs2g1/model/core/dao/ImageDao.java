@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 public class ImageDao extends OntimizeJdbcDaoSupport {
 
     public static final String ATTR_IMAGE_ID = "image_id";
-    public static final String ATTR_IMAGE_CODE = "image_code";
+    public static final String ATTR_IMAGE_CODE = "img_code";
     public static final String QUERY_IMAGE_CODE = "joinIdImage";
 
 
