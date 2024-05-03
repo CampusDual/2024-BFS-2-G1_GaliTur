@@ -1,0 +1,194 @@
+<o-form attr="businessNew" service="businesses" entity="business" keys="bsn_id" fxLayout="column" #oFormBusinessNew
+    class="standalone-form-container" keys-sql-types="integer">
+
+    <o-row layout-align="start stretch">
+        <!-- Titulo del formulario -->
+        <o-column title="BUSINESS DATA" layout-align="start stretch" fxFlex="60" layout-padding>
+
+
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <!-- Datos del negocio -->
+                <o-text-input id="text" attr="bsn_name" label="Business name" fxFlex="100" max-length="100"
+                    required="yes"></o-text-input>
+                <o-text-input attr="bsn_cif" label="CIF/DNI" read-only="no" required="yes"
+                    placeholder="A12345678 or 12345678Z" [validators]="validatorsDniCif">
+                    <o-validator error-name="dniOrCifFormatError"
+                        error-text="Invalid registration format"></o-validator>
+                    <o-validator error-name="invalidDniLetter" error-text="Invalid DNI"></o-validator>
+                </o-text-input>
+            </div>
+
+
+            <br>
+
+
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <o-textarea-input attr="bsn_description" label="Description" width="100%" rows="6"
+                    class="form-field" required="yes"></o-textarea-input>
+                <div fxFlex></div>
+            </div>
+            <br>
+
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <o-text-input attr="bsn_address" label="Adress" width="100%" rows="1" class="form-field" required="yes"></o-text-input>
+            </div>
+            <br>
+            <!-- Columna phone, website, schedule, email -->
+
+            <!-- PHONE -->
+
+            <o-phone-input attr="bsn_phone" label="Phone" sql-type="string" required="yes"></o-phone-input>
+
+
+            <br>
+            <!-- EMAIL-->
+
+            <o-email-input attr="bsn_email" label="Email" read-only="no" required="yes"></o-email-input>
+            <br>
+
+            <!-- WEBSITE -->
+
+            <o-text-input attr="bsn_website" label="Website" fxFlex.lg="80" fxFlex.xl="80" read-only="no" fxFlex="100"
+                max-length="100" required="no"></o-text-input>
+            <br>
+
+            <!-- SCHEDULE -->
+
+            <o-text-input attr="bsn_schedule" placeholder="hh:mm-hh:mm" label="Horario" fxFlex.lg="80" fxFlex.xl="80"
+                read-only="no" fxFlex="100" max-length="100" required="yes"></o-text-input>
+
+            <br>
+
+
+            <!--  SELECT BUSINESS -->
+
+            <o-radio attr="bsn_type" [static-data]="getDataArray()" [data]=null value-column="key"
+                columns="key;value" #radioType visible-columns="value" (onChange)="setSelectedOption($event)"
+                layout="row" selection="null" required="yes" label-visible="no"></o-radio>
+
+        </o-column>
+
+        <!-- PHOTOS -->
+
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px"></div>
+        <o-column fxFlex="40" layout-align="center center">
+            <o-image attr="bsn_photos" sql-type="OTHER" label="Upload image" required="yes"></o-image>
+        </o-column>
+    </o-row>
+
+
+    <!-- RESTAURANT -->
+    <div>
+        <o-row id="restaurant" layout-align="start stretch" *ngIf="selectedOption === 1">
+            <o-column title="RESTAURANT DATA" layout-align="start stretch" fxFlex="60" layout-padding>
+                <o-image id="restaurant_img" attr="rest_menu" sql-type="OTHER" label="Upload menu" required="yes"></o-image>
+            </o-column>
+        </o-row>
+    </div>
+    <!-- LODGING -->
+
+    <div class="lodging" *ngIf="selectedOption === 2">
+
+        <o-column>
+            <o-row layout-align="start stretch">
+                <o-column>
+
+                    <o-row class="lodging-column" title="LODGING" layout-align="start stretch" layout-padding>
+
+
+                        <o-column>
+                            <o-row>
+
+                                <o-checkbox #switchDestination type="checkbox" (onValueChange)="getSwitchValue()"
+                                    attr="roomTypeSingle" label="Single" data="Individual" read-only="no"></o-checkbox>
+
+                                <o-currency-input #currency1 [required]="switchDestinationState? true : false"
+                                    [enabled]="switchDestinationState? true : false" class="price"
+                                    attr="priceSingleRoom" label="Price" read-only="no" required="no"
+                                    min-decimal-digits="2" max-decimal-digits="2" min="0"></o-currency-input>
+
+
+                            </o-row>
+                            <br>
+
+                            <o-row>
+                                <o-checkbox #switchDestination2 type="checkbox" (onValueChange)="getSwitchValue2()"
+                                    attr="roomTypeDouble" label="Double" data="Doble" read-only="no"></o-checkbox>
+
+                                <o-currency-input #currency2 [required]="switchDestinationState2? true : false"
+                                    [enabled]="switchDestinationState2? true : false" class="price"
+                                    attr="priceDoubleRoom" label="Price" read-only="no" required="no"
+                                    min-decimal-digits="2" max-decimal-digits="2" min="0"></o-currency-input>
+
+                            </o-row>
+                            <br>
+
+                            <o-row>
+                                <o-checkbox #switchDestination3 type="checkbox" (onValueChange)="getSwitchValue3()"
+                                    attr="roomTypeTriple" label="Triple" data="Triple" read-only="no"></o-checkbox>
+
+                                <o-currency-input #currency3 [required]="switchDestinationState3? true : false"
+                                    [enabled]="switchDestinationState3? true : false" class="price"
+                                    attr="priceTripleRoom" label="Price" read-only="no" required="no"
+                                    min-decimal-digits="2" max-decimal-digits="2" min="0"></o-currency-input>
+                            </o-row>
+                        </o-column>
+                    </o-row>
+
+                </o-column>
+
+            </o-row>
+
+        </o-column>
+        <o-column>
+            <o-row class="lodging-column" title="SERVICES" layout-align="start stretch" appearance="none" fxLayout="row"
+                fxLayoutAlign="start center">
+                <div fxLayout="column" fxLayoutAlign="start" style="margin-right: 30px;">
+                    <o-slide-toggle attr="toggleWifi" class="toggleFirst" label="WIFI" read-only="no"></o-slide-toggle>
+                    <o-slide-toggle attr="toggleParking" class="toggles" label="PARKING"
+                        read-only="no"></o-slide-toggle>
+                    <o-slide-toggle attr="togglePool" class="toggles" label="POOL" read-only="no"></o-slide-toggle>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="start">
+                    <o-slide-toggle attr="toggleBreakfast" class="toggleFirst" label="BREAKFAST"
+                        read-only="no"></o-slide-toggle>
+                    <o-slide-toggle attr="toggleLunch" class="toggles" label="LUNCH" read-only="no"></o-slide-toggle>
+                    <o-slide-toggle attr="toggleDinner" class="toggles" label="DINNER" read-only="no"></o-slide-toggle>
+                </div>
+            </o-row>
+        </o-column>
+    </div>
+
+    <div class="agency_guide" *ngIf="selectedOption === 3">
+
+
+        <o-row style="align-content: space-between; width: 200%;  padding-left: 1.5%;">
+            <o-column class="column-language">
+                <h3 id="languageH">LANGUAGE</h3>
+                <o-combo attr="comboLanguages" oLocker 
+                oLockerMode="disable" label="Select language" multiple="yes" service="guideLanguages"
+                    entity="guideLanguage" value-column="gui_l_id" columns="gui_l_id;gui_l_name"
+                    visible-columns="gui_l_name" separator=", " fxFlex required="yes">
+                </o-combo>
+            </o-column>
+            <o-column style="padding-left: 3%;" id="formZones">
+                <h3>PROVINCE</h3>
+                <o-combo #comboZone attr="comboZone" label="Select Zone" query-method="query" service="guideZones"
+                    entity="guideZone" value-column="gui_z_id" columns="gui_z_name" visible-columns="gui_z_name"
+                    keys="gui_z_id" multiple="no" null-selection="no" required="yes">
+                </o-combo>
+            </o-column>
+            <o-column id="formZones">
+                <h3>CITY</h3>
+                <o-combo id="comboCity" #comboCity attr="comboCity" label="Select City" multiple="yes"
+                    query-method="query" service="guideCities" entity="guideCities" value-column="gui_c_id"
+                    columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id"
+                    [query-on-event]="comboZone.onValueChange" parent-keys="gui_z_id:comboZone[gui_z_id]">
+                </o-combo>
+
+            </o-column>
+        </o-row>
+
+    </div>
+
+</o-form>

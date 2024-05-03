@@ -30,6 +30,8 @@
   "LANGUAGE_en": "English",
   "LANGUAGE_es": "Spanish",
   "LOGIN": "Login",
+  "REGISTER": "Register",
+  "PROFESSIONAL": "Are you a professional?",
   "LOGIN_TITLE": "Log in to your account",
   "LOGOUT": "Logout",
   "new": "New",
@@ -67,6 +69,7 @@
   "usr_name": "Name",
   "usr_notes": "Notes",
   "usr_password": "Password",
+  "usr_c_password": "Confirm password",
   "usr_phone": "Phone",
   "usr_surname": "Surname",
   "VALIDATION_MATCHPASSWORD": "Old password and new password doesn't match",
@@ -120,9 +123,22 @@
   "GUIDEINFO": "Guide Information",
   "AgencyGuide": "Agency Guide",
   "Lodging": "Lodging",
-  "Restaurant": "Restaurant"
-
-
-
-
+  "Restaurant": "Restaurant",
+  "PASSWORD_TITLE":"Enter a strong password (minimum 8 characters, including an uppercase letter, a lowercase letter, a number, and at least one special character)",
+  "Register_Professional": "Register Professional",
+  "ROUTE": "Route",
+  "ROUTES": "Routes",
+  "name": "Name",
+  "description": "Description",
+  "estimated_duration": "Estimated Duration",
+  "difficulty": "Difficulty",
+  "coordinates": "Coordinates",
+  "images": "Images",
+  "opening_time": "Opening time",
+  "closing_time": "Closing time",
+  "info_route": "Information of route",
+  "info_landmark": "Landmarks information",
+  "info_new_landmark": "Landmark information",
+  "is_draft": "Is draft?",
+  "NO_GESTOR": "Sorry, you are not a manager"
 }

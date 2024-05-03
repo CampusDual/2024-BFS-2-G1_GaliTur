@@ -1,0 +1,24 @@
+<o-form #form show-header="no" service="clients" entity="client" matchPassword keys="usr_id">
+  <o-column layout-gap="20px" fxFlex="60%">
+    <p class="titulo">Register</p>
+    <o-text-input #login attr="usr_login" label="Username" required="yes"></o-text-input>
+    <o-text-input #name attr="usr_name" label="Name" required="yes"></o-text-input>
+    <o-text-input #surname attr="usr_surname" label="Surname" required="yes"></o-text-input>
+    <o-date-input #birth_date attr="birth_date" label="Birth date" required="yes"></o-date-input>
+    <o-phone-input attr="usr_phone" label="Phone" read-only="no"></o-phone-input>
+    <o-email-input #email attr="usr_email" label="Email" read-only="no" required="yes"></o-email-input>
+    <o-password-input #password attr="usr_password" required="yes" min-length="8"
+                      [validators]="validatorsNewPasswordArray">
+      <o-validator error-name="hasCapitalCase" error-text="VALIDATOR.HASCAPITALCASE"></o-validator>
+      <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>
+      <o-validator error-name="hasSmallCase" error-text="VALIDATOR.HASSMALLCASE"></o-validator>
+      <o-validator error-name="hasSpecialCharacters" error-text="VALIDATOR.HASSPECIALCHARACTERS"></o-validator>
+    </o-password-input>
+    <o-password-input #newPassword attr="confirm_new_password" required="yes" min-length="8">
+      <o-validator error-name="matchNewPassword" error-text="VALIDATION_MATCHPASSWORD"
+                   [validator-function]="newPasswordMatchValidator"></o-validator>
+    </o-password-input>
+
+    <o-button attr="raised3" (click)="register()" type="RAISED" label="Accent" layout-padding color="accent"></o-button>
+  </o-column>
+</o-form>

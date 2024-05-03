@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+        xmlns="http://www.ontimize.com/schema/jdbc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+        catalog="" schema="${mainschema}" table="image"
+        datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>image_id</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>image_id</Column>
+    </UpdateKeys>
+    <GeneratedKey>image_id</GeneratedKey>
+    <Queries>
+        <Query id="allColumns">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        im.image_id,
+                        im.image_code
+                    FROM
+                        ${mainschema}.image im
+                        JOIN image_route_id imr
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="joinIdImage">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        image.image_id,
+                        image.img_code
+                    FROM
+                        ${mainschema}.image image
+                    JOIN image_route
+                    ON image.image_id = image_route.image_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>
