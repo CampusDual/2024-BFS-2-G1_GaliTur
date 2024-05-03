@@ -12,7 +12,7 @@ CREATE TABLE landmark (
     description TEXT,
     opening_time TIME,
     closing_time TIME,
-    coordinates POINT
+    coordinates VARCHAR
 );
 
 CREATE TABLE route_landmark (
@@ -23,7 +23,7 @@ CREATE TABLE route_landmark (
 
 CREATE TABLE image (
     image_id SERIAL PRIMARY KEY NOT NULL,
-    img_code BYTEA NOT NULL
+    img_code VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE image_route (
