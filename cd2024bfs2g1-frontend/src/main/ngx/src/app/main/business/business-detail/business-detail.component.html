@@ -1,256 +1,173 @@
 
-<mat-card class="mainCard" style="background-color: white; border-radius: 10px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); padding: 40px; margin: 10px;">
-  <o-form class="mainForm" #form attr="businessDetail" service="businesses" title="BUSINESS" entity="business" keys="bsn_id" header-actions="false"
-      undo-button="false" action show-header-actions-text="false" show-header-navigation="no" class="fill-form" show-header="no" >
-      <div class="mainContainer">
+<div class="page">
+    <mat-card class="mainCard" style="background-color: #eff1f3; border-radius: 10px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); padding: 40px; margin: 10px;">
+
+        <o-form class="mainForm" #form attr="businessDetail" service="businesses" entity="business"
+            keys="bsn_id" header-actions="false" undo-button="false" action show-header-actions-text="false"
+            show-header-navigation="no" class="fill-form" show-header="no">
+
+
+            <!-- Almaceno el negocio que he clicado -->
+            <o-grid #businessForm attr="businessDetail" service="businesses" entity="business" keys="bsn_id"
+                columns="bsn_id;merchant_id;bsn_name;bsn_type;bsn_description;bsn_cif;bsn_address;bsn_phone;bsn_email;bsn_creation_date;bsn_down_date;bsn_photos;bsn_website;bsn_schedule"
+                visible-columns="bsn_id;merchant_id;bsn_name;bsn_type;bsn_description;bsn_cif;bsn_address;bsn_phone;bsn_email;bsn_creation_date;bsn_down_date;bsn_photos;bsn_website;bsn_schedule"
+                parent-keys="bsn_id" refresh-button="false" quick-filter="false" oHidden/>
+
+            <!-- Div que contendrá toda la informacion del negocio -->
+            <div class="main-container">
+
+                <!-- Nombre del business -->
+                <div class="name-container">
+                    <o-text-input #businessID read-only="yes" class="o-text-input" appearance="outline" attr="bsn_id" sql-type="INTEGER"
+                        label="Nombre" enabled="no" oHidden></o-text-input>
+                    <h1 *ngFor="let business of businessForm.dataArray"> {{business.bsn_name}}</h1>
+                </div>
+
+                <!-- Imagen del business -->
+                <div class="data-container">
+                    <div class="div-image-container">
+                        <img class="image" *ngFor="let business of businessForm.dataArray" [src]="getImageSrc(business.bsn_photos)">
+                    </div>
+                </div>
+
+                <!-- Informacion adicional del business divididos en dos columnas (o-rows) -->
+                <div class="data-container" *ngFor="let business of businessForm.dataArray" line-height="2">
+
+                    <!-- Direccion y descripcion -->
+                    <o-row  class="o-rows" class="left" attr="container" icon="explore" title="{{'DESCR_&_ADDR' | oTranslate }}"
+                        layout-align="start stretch" elevation="1" aria-orientation="vertical" appearance="outline" >
+                        <ul class="list-with-spaces">
+                            <li><strong><i>{{'ADDRESS' | oTranslate }}: </i></strong>{{business.bsn_address}}</li>
+                            <li><strong><i>{{'DESCRIPTION' | oTranslate }}: </i></strong>{{business.bsn_description}}</li>
+                        </ul>
+                    </o-row>
+
+                    <!-- Horario, telefono, website y el cif -->
+                    <o-row class="o-rows" class="right" attr="container" title="{{'INFO_EXTRA' | oTranslate }}" icon="info"
+                        layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+                        <ul class="list-with-spaces">
+                            <li><strong><i>{{'SCHEDULE' | oTranslate }}: </i></strong>{{business.bsn_schedule}}</li>
+                            <li><strong><i>{{'PHONE' | oTranslate }}: </i></strong>{{business.bsn_phone}}</li>
+                            <li><strong><i>{{'WEBSITE' | oTranslate }}: </i></strong>{{business.bsn_website}}</li>
+                            <li class="business-cif"><strong><i>Cif: </i></strong>{{business.bsn_cif}}</li>
+                        </ul>
+                    </o-row>
+
+                </div>
+
+
+                <!-- Almaceno el tipo de negocio para verificarlo después y mostrar la informacion correspondiente -->
+                <o-text-input #type read-only="yes" class="o-text-input" appearance="outline" attr="bsn_type"
+                    sql-type="STRING" label="Nombre" enabled="no" oHidden></o-text-input>
+
+
+                <!-- Restaurante -->
+                <div *ngIf="type.getValue() === 'Restaurant'">
+
+                    <o-grid #restaurantForm attr="restaurantDetail" service="restaurants" keys="rest_id;bsn_id" parent-keys="bsn_id"
+                        entity="restaurant" columns="rest_id;bsn_id;rest_menu" visible-columns="rest_id;bsn_id;rest_menu"
+                        refresh-button="false" quick-filter="false" oHidden />
+
+                    <o-row class="o-rows" class="right" attr="container" title="Carta" icon="menu_book"
+                        layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+                        <div class="row-image-container">
+
+                            <img class="image" *ngFor="let restaurant of restaurantForm.dataArray"
+                            [src]="getImageSrc(restaurant.rest_menu)">
+
+                        </div>
+
+                    </o-row>
+                </div>
+
+
+                <!-- Alojamiento -->
+                <div *ngIf="type.getValue() === 'Lodging'">
+                    <!-- Creo un formulario para trabajar con los datos de la tabla hotel -->
+                    <o-form attr="hotelDetail" service="hotel" entity="hotel" keys="htl_id;bsn_id" parent-keys="bsn_id"
+                        columns="bsn_id;htl_id" visible-columns="bsn_id;htl_id" header-actions="false" undo-button="false"
+                        action show-header-actions-text="false" show-header-navigation="no" class="fill-form"
+                        show-header="no">
+                        <div class="data-container" line-height="2">
+                            <!-- Obtengo los datos necesarios para trabajar con ellos mas abajo -->
+                            <o-text-input #type read-only="yes" class="o-text-input" appearance="outline" attr="bsn_id"
+                                sql-type="INTEGER" label="bsn_id" enabled="no" oHidden></o-text-input>
+                            <o-text-input #type read-only="yes" class="o-text-input" appearance="outline" attr="htl_id"
+                                sql-type="INTEGER" label="htl_id" enabled="no" oHidden></o-text-input>
+
+                            <o-grid #hotelRoomForm attr="hotelRoomsDetail" service="hotelRooms" entity="hotelRooms"
+                                keys="rm_id;htl_id" parent-keys="htl_id" columns="rm_id;htl_id;rm_type;rm_cost"
+                                visible-columns="rm_id;htl_id;rm_type;rm_cost" refresh-button="false" quick-filter="false"
+                                oHidden />
+
+                            <o-grid #hotelServiceForm attr="hotelServiceDetail" service="hotelServices"
+                                entity="hotelServices" keys="srv_id;htl_id" parent-keys="htl_id"
+                                columns="srv_id;htl_id;srv_type;srv_cost" visible-columns="srv_id;htl_id;srv_type;srv_cost"
+                                refresh-button="false" quick-filter="false" oHidden />
+
+
+                            <!--Muestro las habitaciones disponibles del hotel seleccionado -->
+                            <o-row class="left" icon="meeting_room" title="{{'FREEROOMS' | oTranslate }}"
+                                layout-align="start stretch" elevation="1" aria-orientation="vertical" appearance="outline">
+                                <ul class="list-with-spaces">
+                                    <li *ngFor="let room of hotelRoomForm.dataArray"><strong><i>{{room.rm_type}}: </i></strong>{{room.rm_cost}}$</li>
+                                </ul>
+                            </o-row>
+
+                            <!-- Muestro los servicios disponibles del hotel seleccionado -->
+                            <o-row class="right" icon="restaurant" title="{{'FREESERVICES' | oTranslate }}"
+                                layout-align="start stretch" elevation="1" aria-orientation="vertical" appearance="outline">
+                                <ul class="list-with-spaces">
+                                    <li *ngFor="let service of hotelServiceForm.dataArray"><strong><i>{{service.srv_type}}: </i></strong>{{service.srv_cost}}$</li>
+                                </ul>
+                            </o-row>
+
+                            <!-- EJEMPLOS -->
+                            <!-- EJEMPLO DE COMO SE MOSTRARIAN LOS DATOS SIN EL O-GRID, UNICAMENTE CON EL O-FORM
+                            <o-row class="left" icon="meeting_room" title="Habitaciones Disponibles" layout-align="start stretch" elevation="1"
+                                aria-orientation="vertical" appearance="outline">
+                                <ul class="list-with-spaces">
+
+                                    <o-text-input *ngFor="let room of hotelRoomForm.dataArray" read-only="yes" class="o-text-input"
+                                        appearance="outline" label="{{room.rm_type}}" attr="{{room.rm_type}}" data="{{room.rm_cost}}$"
+                                        enabled="yes"> </o-text-input>
+
+                                </ul>
+                            </o-row>
+                            -->
+                            <!-- EJEMPLO DE COMO SE MOSTRARIAN LOS DATOS CON EL O-TABLE
+                            <o-table class="mainForm" attr="hotelDetail" service="hotel" entity="hotel" keys="htl_id;bsn_id" parent-keys="bsn_id"
+                                columns="bsn_id;htl_id">
+                                <o-text-input #type read-only="yes" class="o-text-input" appearance="outline" attr="htl_id" sql-type="INTEGER" label="Nombre" enabled="no" oHidden ></o-text-input>
+                                <o-text-input #type read-only="yes" class="o-text-input" appearance="outline" attr="bsn_id" sql-type="INTEGER" label="Nombre" enabled="no" oHidden ></o-text-input>
+                            </o-table>
+                            -->
+                        </div>
+                    </o-form>
+                </div>
+
+                <!-- Agencia de guias -->
+                <div class="data-container" *ngIf="type.getValue() === 'AgencyGuide'">
+                    <!-- Obtengo los datos necesarios para trabajar con ellos mas abajo -->
+                    <o-grid #agencyGuideForm attr="agencyGuideDetail" service="agencyGuides" entity="agencyGuide" keys="gui_id;bsn_id"
+                        parent-keys="bsn_id" columns="gui_id;bsn_id;gui_language;gui_zone;gui_city"
+                        visible-columns="gui_id;bsn_id;gui_language;gui_zone;gui_city"
+                        refresh-button="false" quick-filter="false" oHidden />
+
+                    <!-- Muestro los idiomas, las zonas y las ciudades disponibles en la agencia -->
+                    <o-row class="o-rows" class="right" title="{{'GUIDEINFO' | oTranslate }}" icon="map" layout-align="start stretch"
+                        elevation="1" appearance="outline" opacity="0">
+                        <ul class="list-with-spaces">
+                            <li *ngFor="let agencyGuide of agencyGuideForm.dataArray"><strong><i>{{'LANGUAGE' | oTranslate }}: </i></strong>{{agencyGuide.gui_language}}</li>
+                            <li *ngFor="let agencyGuide of agencyGuideForm.dataArray"><strong><i>{{'ZONE' | oTranslate }}: </i></strong>{{agencyGuide.gui_zone}}</li>
+                            <li *ngFor="let agencyGuide of agencyGuideForm.dataArray"><strong><i>{{'CITY' | oTranslate }}: </i></strong>{{agencyGuide.gui_city}}</li>
+                        </ul>
+                    </o-row>
+                </div>
+            </div>
+        </o-form>
+    </mat-card>
+
+</div>
 
-          <div class="nameContainer">
-              <o-text-input read-only="yes" class="o-text-input" appearance="outline" attr="bsn_id" sql-type="INTEGER" label="Nombre" enabled="no" oHidden></o-text-input>
-              <o-text-input read-only="yes" class="o-text-input" appearance="outline" attr="bsn_name" sql-type="STRING" label="Nombre" enabled="yes"></o-text-input>
-          </div>
-          <div>
-              <o-gallery #demoGaleria [gallery-images]="galleryImages" [gallery-options]="galleryOptions"></o-gallery>
 
-          </div>
-
-          <div class="dataContainer" line-height="2">
-
-              <o-row class="o-rows" class="left" attr="container" icon="explore" title="Dirección y descripción" layout-align="start stretch" elevation="1" aria-orientation="vertical" appearance="outline">
-                  <ul class="list-with-spaces">
-
-                      <o-text-input read-only="yes" class="o-text-input" appearance="outline" attr="bsn_address" sql-type="STRING" label="Direccion" enabled="yes"></o-text-input>
-                      <o-textarea-input read-only="yes" class="o-text-input" appearance="outline" attr="bsn_description" sql-type="STRING" label="Descripción" enabled="yes"></o-textarea-input>
-
-                  </ul>
-              </o-row>
-
-
-              <o-row class="o-rows" class="right" attr="container" title="Información adicional" icon="info" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
-                  <ul class="list-with-spaces">
-                      <o-text-input read-only="yes" class="o-text-input" appearance="outline" attr="bsn_schedule" sql-type="STRING" label="Horario" enabled="yes"></o-text-input>
-                      <o-text-input read-only="yes" class="o-text-input" appearance="outline" attr="bsn_phone" sql-type="STRING" label="Telefono" enabled="yes"></o-text-input>
-                      <o-text-input read-only="yes" class="o-text-input" appearance="outline" attr="bsn_website" sql-type="STRING" label="Pagina Web" enabled="yes"></o-text-input>
-                      <o-text-input read-only="yes" class="o-text-input" appearance="outline" attr="bsn_cif" sql-type="STRING" label="Cif" enabled="yes"></o-text-input>
-
-
-                  </ul>
-              </o-row>
-
-          </div>
-
-
-
-          <o-text-input #type read-only="yes" class="o-text-input" appearance="outline" attr="bsn_type" sql-type="STRING" label="Nombre" enabled="no" oHidden ></o-text-input>
-
-
-
-          <div *ngIf="type.getValue() === 'Restaurante'">
-              <o-row class="o-rows" attr="restaurantDetail" service="restaurants" title="RESTAURANTS"  keys="rest_id" parent-keys="bsn_id" entity="restaurant" class="right" attr="container" title="Información adicional" icon="info" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
-                  <ul class="list-with-spaces">
-                      <o-text-input read-only="yes" class="o-text-input" appearance="outline" attr="rest_menu" sql-type="STRING" label="Carta" enabled="yes"></o-text-input>
-                  </ul>
-              </o-row>
-          </div>
-
-
-
-
-          <o-form *ngIf="type.getValue() === 'Alojamiento'" attr="hotelDetail" service="hotel" entity="hotel" keys="htl_id;bsn_id" parent-keys="bsn_id"
-          columns="bsn_id;htl_id" visible-columns="bsn_id;htl_id" header-actions="false" undo-button="false"
-          action show-header-actions-text="false" show-header-navigation="no" class="fill-form" show-header="no" >
-              <div class="dataContainer"  line-height="2" >
-
-                  <!--Obtengo los datos necesarios para trabajar con ellos mas abajo-->
-                  <o-text-input #type read-only="yes" class="o-text-input" appearance="outline" attr="bsn_id" sql-type="INTEGER" label="bsn_id" enabled="no" oHidden></o-text-input>
-                  <o-text-input #type read-only="yes" class="o-text-input" appearance="outline" attr="htl_id" sql-type="INTEGER" label="htl_id" enabled="no" oHidden></o-text-input>
-
-                  <o-grid #hotelRoomForm attr="hotelRoomsDetail" service="hotelRooms" entity="hotelRooms" keys="rm_id;htl_id" parent-keys="htl_id"
-                      columns="rm_id;htl_id;rm_type;rm_cost" visible-columns="rm_id;htl_id;rm_type;rm_cost" refresh-button="false" quick-filter="false" oHidden/>
-
-                  <o-grid #hotelServiceForm attr="hotelServiceDetail" service="hotelServices" entity="hotelServices" keys="srv_id;htl_id" parent-keys="htl_id"
-                      columns="srv_id;htl_id;srv_type;srv_cost" visible-columns="srv_id;htl_id;srv_type;srv_cost" refresh-button="false" quick-filter="false" oHidden/>
-
-
-                  <!--Muestro las habitaciones disponibles-->
-                  <o-row class="left" icon="meeting_room" title="Habitaciones Disponibles" layout-align="start stretch"
-                      elevation="1" aria-orientation="vertical" appearance="outline">
-                      <ul class="list-with-spaces">
-                          <o-text-input *ngFor="let room of hotelRoomForm.dataArray" read-only="yes" class="o-text-input" appearance="outline"  label="{{room.rm_type}}" attr="{{room.rm_type}}" data="{{room.rm_cost}}$" enabled="yes">  </o-text-input>
-
-                      </ul>
-                  </o-row>
-
-                  <!--Muestro los servicios disponibles-->
-                  <o-row class="right" icon="restaurant" title="Servicios Disponibles" layout-align="start stretch"
-                      elevation="1" aria-orientation="vertical" appearance="outline">
-                      <ul class="list-with-spaces">
-                          <o-text-input *ngFor="let service of hotelServiceForm.dataArray" read-only="yes" class="o-text-input" appearance="outline"  label="{{service.srv_type}}" attr="{{service.srv_type}}" data="{{service.srv_cost}}$" enabled="yes">  </o-text-input>
-                      </ul>
-                  </o-row>
-
-
-
-
-                  <!--
-                  <o-row class="left" icon="meeting_room" title="Habitaciones Disponibles" layout-align="start stretch"
-                      elevation="1" aria-orientation="vertical" appearance="outline">
-                      <ul class="list-with-spaces">
-                          <li *ngFor="let room of hotelRoomForm.dataArray"> <strong><i>{{room.rm_type}}:</i></strong> {{room.rm_cost}}$</li>
-                      </ul>
-                  </o-row>
-                  -->
-
-
-
-
-                  <!--
-                  <o-table class="mainForm" attr="hotelDetail" service="hotel" entity="hotel" keys="htl_id;bsn_id" parent-keys="bsn_id"
-                      columns="bsn_id;htl_id">
-                      <o-text-input #type read-only="yes" class="o-text-input" appearance="outline" attr="htl_id" sql-type="INTEGER" label="Nombre" enabled="no" oHidden ></o-text-input>
-                      <o-text-input #type read-only="yes" class="o-text-input" appearance="outline" attr="bsn_id" sql-type="INTEGER" label="Nombre" enabled="no" oHidden ></o-text-input>
-                  </o-table>
-                  -->
-              </div>
-          </o-form>
-
-
-
-          <div class="dataContainer"  *ngIf="type.getValue() === 'AgencyGuide'">
-
-
-              <o-form attr="agencyGuideDetail" service="agencyGuides" entity="agencyGuide" keys="gui_id;bsn_id" parent-keys="bsn_id"
-              columns="gui_id;bsn_id;gui_language;gui_zone;gui_city" visible-columns="gui_id;bsn_id;gui_language;gui_zone;gui_city" header-actions="false" undo-button="false"
-              action show-header-actions-text="false" show-header-navigation="no" class="fill-form" show-header="no" >
-
-                  <o-text-input read-only="yes" class="o-text-input" appearance="outline" attr="bsn_id" sql-type="INTEGER" label="bsn_id" enabled="no" oHidden></o-text-input>
-                  <o-text-input read-only="yes" class="o-text-input" appearance="outline" attr="gui_id" sql-type="INTEGER" label="gui_id" enabled="no" oHidden></o-text-input>
-
-                  <o-row class="o-rows" class="right" attr="map" title="Información de la guia" icon="info" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
-                      <ul class="list-with-spaces">
-                          <o-text-input read-only="yes" class="o-text-input" appearance="outline" attr="gui_language" sql-type="STRING" label="Idioma" enabled="yes"></o-text-input>
-                          <o-text-input read-only="yes" class="o-text-input" appearance="outline" attr="gui_zone" sql-type="STRING" label="Zona" enabled="yes"></o-text-input>
-                          <o-text-input read-only="yes" class="o-text-input" appearance="outline" attr="gui_city" sql-type="STRING" label="Ciudad" enabled="yes"></o-text-input>
-                      </ul>
-                  </o-row>
-              </o-form>
-
-              <!--
-              <o-grid #guideAgencyForm attr="agencyGuideDetail" service="agencyGuides" entity="agencyGuide" keys="gui_id;bsn_id" parent-keys="bsn_id"
-              columns="gui_id;bsn_id;gui_language;gui_zone;gui_city" visible-columns="gui_id;bsn_id;gui_language;gui_zone;gui_city" refresh-button="false" quick-filter="false" oHidden/>
-
-
-              <o-row class="left" icon="meeting_room" title="Habitaciones Disponibles" layout-align="start stretch"
-                  elevation="1" aria-orientation="vertical" appearance="outline">
-                  <ul class="list-with-spaces"  *ngFor="let row of guideAgencyForm.dataArray">
-                      <li> <strong><i>Idiomas:</i></strong> {{guideAgencyForm[0].gui_language}}$</li>
-                      <li> <strong><i>Zona:</i></strong> {{guideAgencyForm[0].gui_zone}}$</li>
-                      <li> <strong><i>Cuidad:</i></strong> {{guideAgencyForm[0].gui_city}}$</li>
-                  </ul>
-              </o-row>
-              -->
-          </div>
-
-          <!--
-          <o-table class="mainForm" attr="hotelDetail" service="hotel" entity="hotel" keys="htl_id;bsn_id" parent-keys="bsn_id"
-              columns="bsn_id;htl_id" visible-columns="bsn_id;htl_id">
-          </o-table>
-
-          <div class="dataContainer">
-
-                      <o-form #hotelRooms attr="hotelRoomDetail" service="hotelRooms" title="HOTELROOMS" keys="rm_id" parent-keys="htl_id" entity="hotelRoom" header-actions="false"
-                          undo-button="false" action show-header-actions-text="false"show-header-navigation="no" class="fill-form" show-header="no">
-                          <o-row class="o-rows" class="left" attr="container" title="Información adicional" icon="info" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
-                              <ul *ngFor="let data of hotelRooms.getKeysValues" class="list-with-spaces">
-                                  <o-text-input  read-only="yes" class="o-text-input" appearance="outline" attr="rm_type" sql-type="STRING" label="Tipo" enabled="yes"></o-text-input>
-                              </ul>
-                          </o-row>
-                      </o-form>
-
-                      <o-row class="o-rows" attr="hotelServiceDetail" service="hotelServices" title="HOTELSERVICES"  keys="srv_id" parent-keys="htl_id" entity="hotelService" class="right" attr="container" title="Información adicional" icon="info" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
-                          <ul class="list-with-spaces">
-                              <o-text-input read-only="yes" class="o-text-input" appearance="outline" attr="rest_menu" sql-type="STRING" label="Carta" enabled="yes"></o-text-input>
-                          </ul>
-                      </o-row>
-                  </div>
-          -->
-
-      </div>
-  </o-form>
-</mat-card>
-
-<!--
-<o-form fxFill attr="businessDetail" service="businesses" title="BUSINESS" entity="business" keys="bsn_id" header-actions="false"
-  undo-button="false" show-header-actions-text="false" show-header-navigation="no" class="fill-form" show-header="no" >
-
-  <div class="mainContainer" >
-      <div class="nameContainer">
-          <h1>{{ data.bsn_name }}</h1>
-      </div>
-
-
-      <div>
-          <o-gallery #demoGaleria [gallery-images]="galleryImages" [gallery-options]="galleryOptions"></o-gallery>
-
-      </div>
-
-
-      <div class="dataContainer" line-height="2">
-
-          <o-row class="o-rows" class="left" attr="container" title="{{ data.bsn_type }}: {{ data.bsn_address}}" icon="house" layout-align="start stretch" elevation="1" appearance="outline">
-              <p class="desc">{{ data.bsn_description }}</p>
-
-          </o-row>
-          <o-row class="o-rows" class="right" attr="container" title="Información adicional" icon="info" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
-              <ul class="list-with-spaces">
-                  <li><strong>Horario: </strong> {{ data.bsn_schedule }} </li>
-                  <li><strong>Telefono: </strong> {{ data.bsn_phone }} </li>
-                  <li><strong>Pagina web: </strong> {{ data.bsn_website }} </li>
-
-                  <li><strong>Cif: </strong> {{ data.bsn_cif }} </li>
-              </ul>
-          </o-row>
-
-      </div>
-
-
-      <div *ngIf="data.bsn_type === 'Restaurante'">
-          <o-form service="restaurants" title="RESTAURANTS" keys="rest_id" entity="restaurant" show-header-actions-text="false" show-header-navigation="no" class="fill-form" show-header="no" >
-
-          </o-form>
-      </div>
-
-      <div *ngIf="data.bsn_type === 'Alojamiento'" #hotelDiv class="dataContainer">
-          <o-form service="hotel" title="HOTELS" keys="bsn_id" entity="hotel" show-header-actions-text="false" show-header-navigation="no" class="fill-form" show-header="no" >
-              <o-form service="hotelRooms" title="HOTELROOMS" keys="htl_id" entity="hotelRoom" actions="null" show-header-actions-text="false" show-header-navigation="no" class="fill-form" show-header="no" >
-                  <o-row class="o-rows" class="left" attr="container" title="Habitaciones disponibles" icon="info" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
-                      <ul class="list-with-spaces">
-                          <li *ngFor="let secondData of hotelDiv.dataArray">
-                              <strong *ngIf="bsn_hotel_rooms.htl_id === data.bsn_id">
-                                  {{ bsn_hotel_rooms.rm_type }}: </strong>
-                              {{ bsn_hotel_rooms.rm_cost }} $
-                          </li>
-                      </ul>
-                  </o-row>
-              </o-form>
-              <o-form service="hotelRooms" title="HOTELROOMS" keys="htl_id" entity="hotelRoom" actions="null" show-header-actions-text="false" show-header-navigation="no" class="fill-form" show-header="no" >
-                  <o-row class="o-rows" class="right" attr="container" title="Servicios" icon="info" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
-                      <ul class="list-with-spaces">
-                          <li *ngFor="let data of hotelDiv.dataArray">
-                              <strong>{{ bsn_hotel_services.srv_type }}: </strong>
-                              {{ bsn_hotel_services.srv_cost }} $
-                          </li>
-                      </ul>
-                  </o-row>
-              </o-form>
-
-          </o-form>
-      </div>
-
-      <div *ngIf="business && business.bsn_type === 'Guia'">
-
-      </div>
-
-  </div>
-
-</o-form>
--->

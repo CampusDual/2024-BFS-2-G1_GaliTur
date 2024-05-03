@@ -12,3 +12,9 @@
 .businessCard .office {
     font-size: 0.8em;
 }
+
+.preview-image {
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
