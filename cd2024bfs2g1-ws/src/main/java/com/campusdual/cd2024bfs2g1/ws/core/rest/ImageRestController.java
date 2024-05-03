@@ -30,6 +30,7 @@ public class ImageRestController extends ORestController<IImageService> {
         return this.imageService;
     }
 
+    //TODO necesario para cuando subamos más de una imagen
     @PostMapping(value = "/upload")
     public ResponseEntity upload(@RequestParam("name") String[] names, @RequestParam("file") MultipartFile[] files, @RequestParam("data") String data) throws JsonProcessingException {
 

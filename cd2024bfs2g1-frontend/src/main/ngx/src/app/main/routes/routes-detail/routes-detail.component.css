@@ -1,9 +1,9 @@
-/* Estilos principales */
+
 .routesSecond {
   min-height: auto;
   display: flex;
-  align-items: center; /* Ajuste el alineado vertical al centro */
-  border-radius: 90px;
+  align-items: center;
+  border-radius: 150px;
 }
 
 .routesSecond span {
@@ -14,18 +14,18 @@
 
 .routesSecond mat-icon {
   margin-right: 6px;
-  margin-left: 6px; /* Agregar espacio en el margen izquierdo */
-  vertical-align: middle; /* Alineado vertical al centro */
+  margin-left: 6px; 
+  vertical-align: middle; 
 }
 
 .routesSecond img {
   max-width: 24px;
   height: auto;
   margin-right: 8px;
-  vertical-align: middle; /* Alineado vertical al centro */
+  vertical-align: middle; 
 }
 
-/* Estilos de los elementos comunes */
+
 .routesFirst, .routesSecond {
   background-color: #ffffff;
   border-radius: 8px;
@@ -51,10 +51,10 @@
   height: 300px;
 }
 
-/* Colores y decoración */
+
 
 .routesSecond mat-icon {
-  color: #4a5568; /* Color de los iconos */
+  color: #4a5568; /
 }
 
 
@@ -89,3 +89,4 @@
 .routesSecond{
   background-color: #EFEFEF;
 }
+

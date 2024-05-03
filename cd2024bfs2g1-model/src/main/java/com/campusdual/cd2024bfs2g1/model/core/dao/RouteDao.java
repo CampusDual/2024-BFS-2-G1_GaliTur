@@ -13,10 +13,10 @@ import org.springframework.stereotype.Repository;
 
 public class RouteDao extends OntimizeJdbcDaoSupport {
 
-    public static final String ATTR_ID = "ROUTE_ID";
-    public static final String ATTR_NAME = "NAME";
-    public static final String ATTR_DESCRIPTION = "DESCRIPTION";
-    public static final String ATTR_ESTIMATED_DURATION = "ESTIMATED_DURATION";
-    public static final String ATTR_DIFFICULTY = "DIFFICULTY";
+    public static final String ATTR_ID = "route_id";
+    public static final String ATTR_NAME = "name";
+    public static final String ATTR_DESCRIPTION = "description";
+    public static final String ATTR_ESTIMATED_DURATION = "estimated_duration";
+    public static final String ATTR_DIFFICULTY = "difficulty";
 
 }

@@ -20,16 +20,22 @@ import java.util.*;
 @Service("RouteService")
 public class RouteService  implements IRouteService {
 
-    @Autowired
+
     private RouteDao routeDao;
-    @Autowired
     private LandmarkDao landmarkDao;
-    @Autowired
     private ImageDao imageDao;
-    @Autowired
     private ImageRouteDao image_routeDao;
-    @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
+
+    @Autowired
+    public RouteService(RouteDao routeDao, LandmarkDao landmarkDao, ImageDao imageDao, ImageRouteDao image_routeDao, DefaultOntimizeDaoHelper daoHelper) {
+        this.routeDao = routeDao;
+        this.landmarkDao = landmarkDao;
+        this.imageDao = imageDao;
+        this.image_routeDao = image_routeDao;
+        this.daoHelper = daoHelper;
+    }
+
     @Override
     public EntityResult routeQuery(Map<String, Object> keyMap, List<String> attrList) {
         return this.daoHelper.query(routeDao, keyMap, attrList);

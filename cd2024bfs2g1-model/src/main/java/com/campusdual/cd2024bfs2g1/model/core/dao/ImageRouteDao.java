@@ -13,9 +13,9 @@ import org.springframework.stereotype.Repository;
 
 public class ImageRouteDao extends OntimizeJdbcDaoSupport {
 
-    public static final String ATTR_IMAGE_ROUTE_ID = "IMAGE_ROUTE_ID";
-    public static final String ATTR_ROUTE_ID = "ROUTE_ID";
-    public static final String ATTR_IMAGE_ID = "IMAGE_ID";
+    public static final String ATTR_IMAGE_ROUTE_ID = "image_route_id";
+    public static final String ATTR_ROUTE_ID = "route_id";
+    public static final String ATTR_IMAGE_ID = "image_id";
 
 
 }

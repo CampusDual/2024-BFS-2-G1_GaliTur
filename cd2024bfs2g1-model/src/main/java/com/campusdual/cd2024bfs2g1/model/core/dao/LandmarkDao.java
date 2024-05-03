@@ -12,13 +12,13 @@ import org.springframework.stereotype.Repository;
         configurationFile = "dao/LandmarkDao.xml",
         configurationFilePlaceholder = "dao/placeholders.properties")
 public class LandmarkDao  extends OntimizeJdbcDaoSupport {
-    public static final String ATTR_ID = "LANDMARK_ID";
-    public static final String ATTR_NAME = "NAME";
-    public static final String ATTR_DESCRIPTION = "DESCRIPTION";
-    public static final String ATTR_OPENING_TIME = "OPENING_TIME";
-    public static final String ATTR_CLOSING_TIME = "CLOSING_TIME";
-    public static final String ATTR_LATITUDE = "LATITUDE";
-    public static final String ATTR_LONGITUDE = "LONGITUDE";
+    public static final String ATTR_ID = "landmark_id";
+    public static final String ATTR_NAME = "name";
+    public static final String ATTR_DESCRIPTION = "description";
+    public static final String ATTR_OPENING_TIME = "opening_time";
+    public static final String ATTR_CLOSING_TIME = "closing_time";
+    public static final String ATTR_LATITUDE = "latitude";
+    public static final String ATTR_LONGITUDE = "longitude";
     public static final String QUERY_LANDMARK_NAME = "getLandmarksDetail";
 
 }
