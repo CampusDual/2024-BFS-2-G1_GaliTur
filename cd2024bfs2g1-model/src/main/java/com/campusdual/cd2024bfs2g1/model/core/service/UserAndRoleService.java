@@ -115,7 +115,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 	 * (non-Javadoc)
 	 */
 	@Override
-//	@Secured({ PermissionsProviderSecured.SECURED })
+	// TODO	@Secured({ PermissionsProviderSecured.SECURED })
 	@Transactional(rollbackFor = Throwable.class)
 	public EntityResult userInsert(final Map<?, ?> keysValues) throws OntimizeJEERuntimeException {
 		return this.daoHelper.insert(this.userDao, this.encryptPassword(keysValues));
@@ -255,7 +255,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 	public EntityResult rolesForUserUpdate(final Map<?, ?> attributesValues, final Map<?, ?> keysValues)
 			throws OntimizeJEERuntimeException {
 		try {
-			if ("S".equals(attributesValues.get(UserRoleDao.ACTIVED))) {
+			if (!(Boolean) attributesValues.get(UserRoleDao.ACTIVED)) {
 				// insert
 				final Map<String, Object> valuesToInsert = new HashMap<>();
 				valuesToInsert.put(UserRoleDao.USR_ID, keysValues.get(UserRoleDao.USR_ID));
@@ -271,6 +271,11 @@ public class UserAndRoleService implements IUserAndRoleService {
 		} finally {
 			this.invalidateSecurityManager();
 		}
+	}
+
+	@Override
+	public EntityResult merchantRolesQuery(Map<?, ?> keysValues, List<?> attributes) throws OntimizeJEERuntimeException {
+		return this.daoHelper.query(this.roleDao, keysValues, attributes, RoleDao.QUERY_MERCHANT_ROLES);
 	}
 
 	@Override
@@ -322,10 +327,10 @@ public class UserAndRoleService implements IUserAndRoleService {
 			return error;
 		}
 	}
-
 	/*
 	 * (non-Javadoc)
 	 */
+
 	@Override
 	public EntityResult profileQuery(final Map<?, ?> keysValues, final List<?> attributes) throws OntimizeJEERuntimeException {
 		final UserInformation userInfo = (UserInformation) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -344,10 +349,10 @@ public class UserAndRoleService implements IUserAndRoleService {
 
 		return toRet;
 	}
-
 	/*
 	 * (non-Javadoc)
 	 */
+
 	@Override
 	@Transactional(rollbackFor = Throwable.class)
 	public EntityResult profileUpdate(final Map<?, ?> attributesValues, final Map<?, ?> keysValues) throws OntimizeJEERuntimeException {

@@ -8,7 +8,25 @@ export const SERVICE_CONFIG: Object = {
   'merchants': {
     'path': '/merchants'
   },
+  'routes': {
+    'path': '/routes'
+  },
+  'landmarks': {
+    'path': '/landmarks'
+  },
   permissions: {
     'path': '/permissions'
   },
+  businesses:{
+    'path':'/businesses'
+  },
+  guideLanguages:{
+    'path':'/guideLanguages'
+  },
+  guideZones:{
+    'path':'/guideZones'
+  },
+  guideCities:{
+    'path':'/guideCities'
+  }
 };

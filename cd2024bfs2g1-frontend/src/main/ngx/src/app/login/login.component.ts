@@ -100,6 +100,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  goToRegistrerProfesional() {
+    this.router.navigate([ '../', 'register', 'professional'], { relativeTo: this.actRoute })
+  }
   goToRegistrer() {
     this.router.navigate([ '../', 'register'], { relativeTo: this.actRoute })
   }
