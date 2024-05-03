@@ -2,8 +2,6 @@ import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { OFormComponent, OTableComponent, OntimizeService } from 'ontimize-web-ngx';
-import { GalleryImage, GalleryOptions } from 'ontimize-web-ngx-gallery';
-
 
 @Component({
   selector: 'app-business-detail',
@@ -19,10 +17,6 @@ export class BusinessDetailComponent {
     protected sanitizer: DomSanitizer
   ) {
   }
-
-  public galleryOptions: GalleryOptions[];
-  public galleryImages: GalleryImage[];
-
 
 	ngOnInit(): void {
   }
