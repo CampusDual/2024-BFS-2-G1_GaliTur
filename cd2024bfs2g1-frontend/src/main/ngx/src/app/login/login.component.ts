@@ -2,7 +2,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService, NavigationService, ServiceResponse, OUserInfoService } from 'ontimize-web-ngx';
+import {AuthService, NavigationService, ServiceResponse, OUserInfoService, DialogService} from 'ontimize-web-ngx';
 import { Observable } from 'rxjs';
 import { MainService } from '../shared/services/main.service';
 import { UserInfoService } from '../shared/services/user-info.service';
@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private actRoute: ActivatedRoute,
     private router: Router,
+    protected dialogService: DialogService,
     @Inject(NavigationService) private navigationService: NavigationService,
     @Inject(AuthService) private authService: AuthService,
     @Inject(MainService) private mainService: MainService,
@@ -97,5 +98,9 @@ export class LoginComponent implements OnInit {
         break;
       default: break;
     }
+  }
+
+  goToRegistrer() {
+    this.router.navigate([ '../', 'register'], { relativeTo: this.actRoute })
   }
 }
