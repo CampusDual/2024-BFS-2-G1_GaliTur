@@ -23,7 +23,7 @@ CREATE TABLE route_landmark (
 
 CREATE TABLE image (
     image_id SERIAL PRIMARY KEY NOT NULL,
-    img_code VARCHAR(255) NOT NULL
+    img_code VARCHAR NOT NULL
 );
 
 CREATE TABLE image_route (
