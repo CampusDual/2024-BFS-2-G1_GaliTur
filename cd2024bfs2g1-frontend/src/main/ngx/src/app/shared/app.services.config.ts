@@ -2,6 +2,9 @@ export const SERVICE_CONFIG: Object = {
   'users': {
     'path': '/users'
   },
+  'clients': {
+    'path': '/clients'
+  },
   'merchants': {
     'path': '/merchants'
   },
@@ -11,19 +14,34 @@ export const SERVICE_CONFIG: Object = {
   'landmarks': {
     'path': '/landmarks'
   },
-  permissions: {
+  'permissions': {
     'path': '/permissions'
   },
-  businesses:{
+  'hotels': {
+    'path': '/hotels'
+  },
+  'hotelRooms': {
+    'path': '/hotelRooms'
+  },
+  'hotelServices': {
+    'path': '/hotelServices'
+  },
+  'restaurants': {
+    'path': '/restaurants'
+  },
+  'agencyGuides': {
+    'path': '/agencyGuides'
+  },
+  'businesses':{
     'path':'/businesses'
   },
-  guideLanguages:{
+  'guideLanguages':{
     'path':'/guideLanguages'
   },
-  guideZones:{
+  'guideZones':{
     'path':'/guideZones'
   },
-  guideCities:{
+  'guideCities':{
     'path':'/guideCities'
   }
 };
