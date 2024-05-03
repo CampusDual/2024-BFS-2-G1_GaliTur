@@ -1,6 +1,6 @@
 import {Component, Inject, ViewChild} from '@angular/core';
 import {AbstractControl, FormControl, ValidationErrors, ValidatorFn} from "@angular/forms";
-import {DialogService, OFormComponent, OTextInputComponent, OValidators} from "ontimize-web-ngx";
+import {DialogService, OFormComponent, OPasswordInputComponent, OTextInputComponent, OValidators} from "ontimize-web-ngx";
 import {Router} from "@angular/router";
 import {MainService} from "../../shared/services/main.service";
 
@@ -14,8 +14,12 @@ export class RegisterMerchantComponent {
   @ViewChild('form') form: OFormComponent;
   @ViewChild('login') login: OTextInputComponent;
   @ViewChild('email') email: OTextInputComponent;
+  @ViewChild('name') name: OTextInputComponent;
+  @ViewChild('surname') surname: OTextInputComponent;
+  @ViewChild('password') password: OPasswordInputComponent;
+  @ViewChild('newPassword') newPassword: OPasswordInputComponent;
 
-  constructor(private router: Router, @Inject(MainService) private mainService: MainService, private dialogService: DialogService){
+  constructor(private router: Router, @Inject(MainService) private mainService: MainService, private dialogService: DialogService,){
     // check whether the entered password has a number
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/\d/, 'hasNumber'));
     // check whether the entered password has upper case letter
@@ -27,6 +31,18 @@ export class RegisterMerchantComponent {
   }
 
   public register(){
+    let isRegisterOk: boolean = true
+
+    if (this.login.getValue() === undefined || this.name.getValue() === undefined ||
+      this.surname.getValue() === undefined  ||
+      this.email.getValue() === undefined || this.password.getValue() === undefined ||
+      this.newPassword.getValue() === undefined){
+      this.dialogService.error('Register Error', 'Some required fields are empty')
+      isRegisterOk = false
+    }
+    if(isRegisterOk){
+      return
+    }
     this.mainService.getUserInfoByLoginAndId(this.login.getValue(), this.email.getValue()).subscribe(
       (result) => {
         if (result.data[0] === undefined){
