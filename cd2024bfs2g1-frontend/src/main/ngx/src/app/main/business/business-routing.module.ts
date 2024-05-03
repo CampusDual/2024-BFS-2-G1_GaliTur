@@ -5,9 +5,13 @@ import { BusinessDetailComponent } from './business-detail/business-detail.compo
 import { BusinessNewComponent } from './business-new/business-new.component';
 
 
-const routes: Routes = [{
-  path: '', component: BusinessNewComponent},
-  {path: 'new', component: BusinessNewComponent},
+const routes: Routes = [
+  {
+    path: '', component: BusinessHomeComponent
+  },
+  {
+    path: 'new', component: BusinessNewComponent
+  },
   {
     path: ':bsn_id',
     component: BusinessDetailComponent

@@ -17,8 +17,8 @@ export const SERVICE_CONFIG: Object = {
   'permissions': {
     'path': '/permissions'
   },
-  'hotel': {
-    'path': '/hotel'
+  'hotels': {
+    'path': '/hotels'
   },
   'hotelRooms': {
     'path': '/hotelRooms'

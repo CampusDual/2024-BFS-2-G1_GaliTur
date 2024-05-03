@@ -84,7 +84,7 @@
                 <!-- Alojamiento -->
                 <div *ngIf="type.getValue() === 'Lodging'">
                     <!-- Creo un formulario para trabajar con los datos de la tabla hotel -->
-                    <o-form attr="hotelDetail" service="hotel" entity="hotel" keys="htl_id;bsn_id" parent-keys="bsn_id"
+                    <o-form attr="hotelDetail" service="hotels" entity="hotel" keys="htl_id;bsn_id" parent-keys="bsn_id"
                         columns="bsn_id;htl_id" visible-columns="bsn_id;htl_id" header-actions="false" undo-button="false"
                         action show-header-actions-text="false" show-header-navigation="no" class="fill-form"
                         show-header="no">
