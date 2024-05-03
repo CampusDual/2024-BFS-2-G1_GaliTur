@@ -1,0 +1,27 @@
+<h2>{{'info_new_landmark' | oTranslate }}</h2>
+<o-form attr="landmarksNew" service="landmarks" entity="landmark" keys="landmark_id" title="">
+    <o-column>
+        <div fxLayout="row">
+            <div fxLayout="column" class="landmarkInfo">
+                <div fxLayout="column" fxLayoutGap="10px">
+                    <o-text-input class="txt"  attr="name" sql-type="STRING"
+                        enabled="yes" required="yes"></o-text-input>
+                </div>
+                <div fxLayout="column" fxLayoutGap="10px">
+                    <o-textarea-input  class="txt" attr="description"
+                    sql-type="STRING" enabled="yes" required="yes"></o-textarea-input>
+                </div>
+                <div fxLayout="row" fxLayoutGap="10px">
+                    <o-hour-input fxFlex="50" class="txt" attr="opening_time"
+                    sql-type="TIME" enabled="yes"></o-hour-input>
+                    <o-hour-input fxFlex="50" class="txt" attr="closing_time"
+                    sql-type="TIME" enabled="yes"></o-hour-input>
+                </div>
+                <div fxLayout="column" fxLayoutGap="10px">
+                    <o-text-input class="txt" attr="coordinates"
+                    sql-type="STRING" enabled="yes"></o-text-input>
+                </div>
+            </div>
+        </div>
+    </o-column>
+</o-form>
