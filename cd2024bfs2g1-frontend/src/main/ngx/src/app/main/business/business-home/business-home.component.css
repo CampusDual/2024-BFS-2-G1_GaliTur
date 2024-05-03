@@ -1,8 +1,8 @@
 .businessCard {
     width: 300px;
     background-color: #eff1f3;
-    border-radius: 10px; /* Agrega el borde redondeado */
-    padding: 16px; /* Añade un poco de espacio interno para que el contenido no esté demasiado cerca del borde */
+    border-radius: 10px; 
+    padding: 16px;
 }
 
 .businessCard img {

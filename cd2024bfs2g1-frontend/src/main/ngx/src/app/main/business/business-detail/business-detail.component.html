@@ -121,27 +121,6 @@
                                     <li *ngFor="let service of hotelServiceForm.dataArray"><strong><i>{{service.srv_type}}: </i></strong>{{service.srv_cost}}$</li>
                                 </ul>
                             </o-row>
-
-                            <!-- EJEMPLOS -->
-                            <!-- EJEMPLO DE COMO SE MOSTRARIAN LOS DATOS SIN EL O-GRID, UNICAMENTE CON EL O-FORM
-                            <o-row class="left" icon="meeting_room" title="Habitaciones Disponibles" layout-align="start stretch" elevation="1"
-                                aria-orientation="vertical" appearance="outline">
-                                <ul class="list-with-spaces">
-
-                                    <o-text-input *ngFor="let room of hotelRoomForm.dataArray" read-only="yes" class="o-text-input"
-                                        appearance="outline" label="{{room.rm_type}}" attr="{{room.rm_type}}" data="{{room.rm_cost}}$"
-                                        enabled="yes"> </o-text-input>
-
-                                </ul>
-                            </o-row>
-                            -->
-                            <!-- EJEMPLO DE COMO SE MOSTRARIAN LOS DATOS CON EL O-TABLE
-                            <o-table class="mainForm" attr="hotelDetail" service="hotel" entity="hotel" keys="htl_id;bsn_id" parent-keys="bsn_id"
-                                columns="bsn_id;htl_id">
-                                <o-text-input #type read-only="yes" class="o-text-input" appearance="outline" attr="htl_id" sql-type="INTEGER" label="Nombre" enabled="no" oHidden ></o-text-input>
-                                <o-text-input #type read-only="yes" class="o-text-input" appearance="outline" attr="bsn_id" sql-type="INTEGER" label="Nombre" enabled="no" oHidden ></o-text-input>
-                            </o-table>
-                            -->
                         </div>
                     </o-form>
                 </div>
@@ -167,7 +146,6 @@
             </div>
         </o-form>
     </mat-card>
-
 </div>
 
 

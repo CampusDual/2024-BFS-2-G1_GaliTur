@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./business-home.component.css']
 })
 export class BusinessHomeComponent {
-  //@ViewChild('businessGrid') businessGrid: OGridComponent;
   public showWaitForLongTask = false;
 
   constructor(
@@ -25,18 +24,9 @@ export class BusinessHomeComponent {
   ngOnInit() {
   }
 
-
-
   public getImageSrc(base64: any): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image-transparent.png';
   }
-/*
-  public openDetail(data: any): void {
-    this.router.navigate(['main/businesses/' + data.bsn_id]);
-  }
-
-  */
-
 
   public openDetail(data: any): void {
     this.router.navigate(['main/businesses/' + data.bsn_id]);

@@ -56,8 +56,8 @@
 .image {
     width: 100%;
     height: auto;
-    max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
-    max-height: 100%; /* Asegura que la imagen no exceda la altura del contenedor */
+    max-width: 100%; 
+    max-height: 100%;
     border-radius: 10px;
 }
 
