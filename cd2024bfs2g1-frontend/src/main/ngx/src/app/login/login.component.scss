@@ -77,11 +77,21 @@
 
         button {
           width: 100%;
-          margin: 32px 0 0;
+          margin: 8px 0 0;
           height: 42px;
           font-size: 16px;
         }
-
+        #professional{
+          background-color: white;
+          color: blue;
+          font-size: 16px;
+          padding: 10px 20px;
+          border: none; 
+          border-radius: 5px;
+          cursor: pointer; 
+          box-shadow: none; 
+          transition: background-color 0.3s ease;
+        }
         .dark_text {
           color: #c5c5c5;
           font-size: 9pt;
