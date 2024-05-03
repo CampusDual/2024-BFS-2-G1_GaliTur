@@ -9,7 +9,7 @@
         <div *ngIf="!data.isdraft" (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-evenly center"
             class="mat-elevation-z1 routeCard">
             <span [ngClass]="'difficulty-' + data.difficulty" class="name"><strong>{{ data.name }} </strong></span>
-            <span><em> {{"estimated_duration" | oTranslate}}: {{ data.estimated_duration }}min</em></span>
+            <span> {{"estimated_duration" | oTranslate}}: {{ data.estimated_duration }} min </span>
             <span class="office">{{"difficulty" | oTranslate}}: {{ data.difficulty }}</span>
         </div>
     </o-grid-item>
