@@ -2,13 +2,16 @@ package com.campusdual.cd2024bfs2g1.model.core.service;
 
 import com.campusdual.cd2024bfs2g1.api.core.service.IRouteService;
 import com.campusdual.cd2024bfs2g1.model.core.dao.ImageDao;
-import com.campusdual.cd2024bfs2g1.model.core.dao.Image_routeDao;
+import com.campusdual.cd2024bfs2g1.model.core.dao.ImageRouteDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.LandmarkDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.RouteDao;
 import com.ontimize.jee.common.dto.EntityResult;
+import com.ontimize.jee.common.dto.EntityResultMapImpl;
+import com.ontimize.jee.common.services.user.UserInformation;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -24,7 +27,7 @@ public class RouteService  implements IRouteService {
     @Autowired
     private ImageDao imageDao;
     @Autowired
-    private Image_routeDao image_routeDao;
+    private ImageRouteDao image_routeDao;
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
     @Override
@@ -37,17 +40,25 @@ public class RouteService  implements IRouteService {
 
     @Override
     public EntityResult routeInsert(Map<String, Object> attrMap) {
-        //Map<String,Object> imageMapAttr=new HashMap();
+        UserInformation userInformation =(UserInformation) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        EntityResult route_id_entity = this.daoHelper.insert(routeDao, attrMap);
-//        if (route_id_entity.getCode()!=EntityResult.OPERATION_WRONG) {
-//            imageMapAttr.put("img_code",attrMap.get("images"));
-//            EntityResult image_id_entity = this.daoHelper.insert(imageDao, imageMapAttr);
-//           if (image_id_entity.getCode()!=EntityResult.OPERATION_WRONG) {
-//              insertImageAux(route_id_entity.get("route_id"),image_id_entity.get("image_id"));
-//           }
-//        }
-        return route_id_entity;
+        if(userInformation.getAuthorities().stream().anyMatch(c->c.toString().equals("manager"))){
+            Map<String,Object> imageMapAttr=new HashMap();
+
+            EntityResult route_id_entity = this.daoHelper.insert(routeDao, attrMap);
+            if (route_id_entity.getCode()!=EntityResult.OPERATION_WRONG) {
+                imageMapAttr.put("img_code",attrMap.get("images"));
+                EntityResult image_id_entity = this.daoHelper.insert(imageDao, imageMapAttr);
+                if (image_id_entity.getCode()!=EntityResult.OPERATION_WRONG) {
+                    insertImageAux(route_id_entity.get("route_id"),image_id_entity.get("image_id"));
+                }
+            }
+
+            return  route_id_entity;
+        }else{
+            EntityResultMapImpl entity = new EntityResultMapImpl(EntityResult.OPERATION_WRONG,1,"NO_GESTOR");
+            return entity;
+        }
     }
 
     public EntityResult insertImageAux(Object id_route,Object id_image) {

@@ -6,12 +6,12 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 
 @Lazy
-@Repository(value = "Image_routeDao")
+@Repository(value = "ImageRouteDao")
 @ConfigurationFile(
-        configurationFile = "dao/Image_routeDao.xml",
+        configurationFile = "dao/ImageRouteDao.xml",
         configurationFilePlaceholder = "dao/placeholders.properties")
 
-public class Image_routeDao extends OntimizeJdbcDaoSupport {
+public class ImageRouteDao extends OntimizeJdbcDaoSupport {
 
     public static final String ATTR_IMAGE_ROUTE_ID = "IMAGE_ROUTE_ID";
     public static final String ATTR_ROUTE_ID = "ROUTE_ID";
