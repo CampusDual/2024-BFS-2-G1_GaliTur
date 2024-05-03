@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Component, Injector, ViewChild } from '@angular/core';
+import { AbstractControl, FormControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { OCheckboxComponent, OCurrencyInputComponent } from 'ontimize-web-ngx';
 
 
@@ -12,7 +12,13 @@ export class BusinessNewComponent {
 
 
   selectedOption: number;
-  cifDniControl = new FormControl('',[Validators.required, this.cifDniValidator]);
+
+  validatorsDniCif: ValidatorFn[] = [];
+
+  constructor(public injector: Injector) {
+  
+    this.validatorsDniCif.push(this.dniAndCifValidator);
+  }
 
   
   public switchDestinationState: boolean = false;
@@ -58,17 +64,36 @@ setSelectedOption($event: any) {
 
 
 
-cifDniValidator(control: FormControl) {
-    const value = control.value;
-    const cifRegex = /^([A-Z])(\d{8})$/; // Expresión regular para CIF
-    const dniRegex = /^(\d{8}[A-Za-z])$/; // Expresión regular para DNI
 
-    if (cifRegex.test(value) || dniRegex.test(value)) {
-      return null; // Válido
-    } else {
-      return { cifDniInvalid: true }; // Inválido
+
+  dniAndCifValidator(control: AbstractControl): ValidationErrors | null {
+    try {
+        const cifRegex = /^([A-Z])(\d{8})$/;
+        const dniRegex = /^(\d{8}[A-Za-z])$/;
+        const inputValue = control.value.trim();
+
+        if (cifRegex.test(inputValue) || dniRegex.test(inputValue)) {
+            if (dniRegex.test(inputValue)) {
+                const dniNumber = Number(inputValue.substring(0, 8));
+                const dniLetter = inputValue.substring(8).toUpperCase();
+                const letterIndex = dniNumber % 23;
+                const letters = 'TRWAGMYFPDXBNJZSQVHLCKE';
+                const expectedLetter = letters.charAt(letterIndex);
+
+                if (dniLetter === expectedLetter) {
+                    return null;
+                } else {
+                    return { invalidDniLetter: true };
+                }
+            } else {
+                return null;
+            }
+        } else {
+            return { dniOrCifFormatError: true };
+        }
+    } catch (e) {
+        
     }
-
 }
 
 

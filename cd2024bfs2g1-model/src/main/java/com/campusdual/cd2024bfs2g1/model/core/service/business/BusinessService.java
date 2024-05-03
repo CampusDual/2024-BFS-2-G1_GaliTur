@@ -7,6 +7,7 @@ import com.campusdual.cd2024bfs2g1.model.core.dao.business.HotelServicesDao;
 import com.campusdual.cd2024bfs2g1.model.core.service.MerchantService;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
+import com.ontimize.jee.common.services.user.UserInformation;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import liquibase.pro.packaged.A;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,20 +61,23 @@ public class BusinessService implements IBusinessService {
 
         Object merchant = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        String idMerch = "";
-        if (merchant instanceof UserDetails) {
-             idMerch = ((UserDetails)merchant).getUsername();
-        } else {
-             idMerch = merchant.toString();
-        }
+        //int userId = ((UserInformation) merchant).otherData.get("usr_id");
+
+        int userId = (int) ((UserInformation) merchant).getOtherData().get("usr_id");
+
 
         List <String> qKeys = new ArrayList<String>();
-        qKeys.add("M.merchant_id");
+        qKeys.add("merchant_id");
 
-        //merchantService.merchantQuery()
+        Map<String,Object> emptyMap = new HashMap<>();
+        emptyMap.put("M.usr_id",userId);
 
 
-        keysValues.replace("merchant_id",idMerch);
+        EntityResult merchantEr = merchantService.merchantQuery(emptyMap,qKeys);
+        ArrayList<Integer> al = (ArrayList<Integer>) merchantEr.get("merchant_id");
+        int idMerchant = al.get(0);
+
+        keysValues.put("merchant_id",idMerchant);
 
         Map<String,Object> dataMap = new HashMap<>(keysValues);
         dataMap.remove("merchant_id");
@@ -90,6 +94,10 @@ public class BusinessService implements IBusinessService {
 
         String businessType = getBusinessType(keysValues);
         keysValues.replace("bsn_type",businessType);
+
+        if(!keysValues.containsKey("bsn_website")){
+            keysValues.put("bsn_website","Sin especificar");
+        }
 
         EntityResult er = this.daoHelper.insert(this.businessDao, keysValues);
 

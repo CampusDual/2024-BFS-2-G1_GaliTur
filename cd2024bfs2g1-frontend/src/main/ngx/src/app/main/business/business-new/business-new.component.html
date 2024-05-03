@@ -10,12 +10,11 @@
     <div fxLayout="row" fxLayoutAlign="start center">
         <!-- Datos del negocio -->
         <o-text-input id="text" attr="bsn_name" label="Business name" fxFlex="100" max-length="100" required="yes"></o-text-input>      
-        <o-text-input attr="bsn_cif" label="CIF/DNI"  read-only="no" required="yes" [formControl]="cifDniControl" (input)="cifDniControl.updateValueAndValidity()" max-length="9"></o-text-input>
-        <div fxFlex></div>
-        <mat-error *ngIf="cifDniControl.invalid && (cifDniControl.dirty || cifDniControl.touched)">
-            <span *ngIf="cifDniControl.hasError('required')">El CIF/DNI es requerido</span>
-            <span *ngIf="cifDniControl.hasError('cifDniInvalid')">El CIF/DNI es inválido</span>
-        </mat-error>
+        <o-text-input attr="bsn_cif" label="CIF/DNI"  read-only="no" required="yes" placeholder="A12345678 or 12345678Z"
+        [validators]="validatorsDniCif">
+            <o-validator error-name="dniOrCifFormatError" error-text="Invalid registration format"></o-validator>
+            <o-validator error-name="invalidDniLetter" error-text="Invalid DNI"></o-validator>
+</o-text-input>
     </div>
     
     
@@ -30,8 +29,8 @@
     <br>
 
     <div fxLayout="row" fxLayoutAlign="start center">
-    <o-textarea-input attr="bsn_address" label="Adress" width="100%" rows="1"
-                        class="form-field"></o-textarea-input>
+    <o-text-input attr="bsn_address" label="Adress" width="100%" rows="1"
+                        class="form-field"></o-text-input>
     </div>
     <br>
 <!-- Columna phone, website, schedule, email -->
@@ -50,7 +49,7 @@
     <!-- WEBSITE --> <!-- Falta icono -->
     
     <o-text-input attr="bsn_website" label="Website" fxFlex.lg="80" fxFlex.xl="80" read-only="no"
-            fxFlex="100" max-length="100" required="yes"></o-text-input>
+            fxFlex="100" max-length="100" required="no"></o-text-input>
     <br>
         
     <!-- SCHEDULE 
@@ -69,7 +68,7 @@
     -->
 
 
-    <o-text-input attr="bsn_schedule" label="Horario" fxFlex.lg="80" fxFlex.xl="80" read-only="no"
+    <o-text-input attr="bsn_schedule" placeholder="hh:mm-hh:mm"  label="Horario" fxFlex.lg="80" fxFlex.xl="80" read-only="no"
     fxFlex="100" max-length="100" required="yes"></o-text-input>
 
     <br>
@@ -187,7 +186,7 @@ value-column="key" columns="key;value" #radioType visible-columns="value" (onCha
 
                 <o-combo #comboZone attr="comboZone" label="Select Zone" query-method="query" service="guideZones"
                     entity="guideZone" value-column="gui_z_id" columns="gui_z_name" visible-columns="gui_z_name"
-                    keys="gui_z_id" multiple="no">
+                    keys="gui_z_id" multiple="no" null-selection="no">
                 </o-combo>
 
            
