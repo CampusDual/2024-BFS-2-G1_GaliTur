@@ -4,6 +4,7 @@ import com.campusdual.cd2024bfs2g1.api.core.service.business.IBusinessService;
 import com.campusdual.cd2024bfs2g1.model.core.dao.business.AgencyGuideDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.business.BusinessDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.business.HotelServicesDao;
+import com.campusdual.cd2024bfs2g1.model.core.service.MerchantService;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
@@ -31,12 +32,6 @@ public class BusinessService implements IBusinessService {
     private BusinessDao businessDao;
 
     @Autowired
-    private HotelServicesDao hotelServicesDao;
-
-    @Autowired
-    private AgencyGuideDao agencyGuideDao;
-
-    @Autowired
     private AgencyGuideService agencyGuideService;
 
     @Autowired
@@ -50,6 +45,9 @@ public class BusinessService implements IBusinessService {
 
     @Autowired
     private RestaurantService restaurantService;
+
+    @Autowired
+    private MerchantService merchantService;
 
     @Override
     public EntityResult businessQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
@@ -68,6 +66,12 @@ public class BusinessService implements IBusinessService {
         } else {
              idMerch = merchant.toString();
         }
+
+        List <String> qKeys = new ArrayList<String>();
+        qKeys.add("M.merchant_id");
+
+        //merchantService.merchantQuery()
+
 
         keysValues.replace("merchant_id",idMerch);
 
@@ -292,7 +296,6 @@ public class BusinessService implements IBusinessService {
 
         }
 
-        //security context holder . get context . getautentication . get principal
 
         return er;
 

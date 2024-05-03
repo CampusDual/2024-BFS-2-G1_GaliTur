@@ -68,23 +68,17 @@
 
     -->
 
-    <o-text-input attr="bsn_schedule" label="SC" fxFlex.lg="80" fxFlex.xl="80" read-only="no"
+
+    <o-text-input attr="bsn_schedule" label="Horario" fxFlex.lg="80" fxFlex.xl="80" read-only="no"
     fxFlex="100" max-length="100" required="yes"></o-text-input>
 
-    <o-text-input attr="merchant_id" label="mid" fxFlex.lg="80" fxFlex.xl="80" read-only="no"
-    fxFlex="100" max-length="100" required="yes"></o-text-input>
+    <br>
 
-<!--  SELECT BUSINESS 
-<mat-radio-group attr="bsn_type" [(ngModel)]="selectedOption" class="radio-group">
-    <mat-radio-button value="restaurant" class="radiobutton"><span>Restaurant</span></mat-radio-button>
-    <mat-radio-button value="lodging" class="radiobutton"><span>Lodging</span></mat-radio-button>
-    <mat-radio-button id="agency-radio" value="agency_guide" class="radiobutton"><span>Agency Guide</span></mat-radio-button>
-</mat-radio-group>
 
--->
+<!--  SELECT BUSINESS -->
 
-<o-radio attr="bsn_type" label="Radio" [static-data]="getDataArray()" [data]="getValue()"
-value-column="key" columns="key;value" #radioType visible-columns="value" (onChange)="setSelectedOption($event)"></o-radio>
+<o-radio attr="bsn_type" label="" [static-data]="getDataArray()" [data]=null
+value-column="key" columns="key;value" #radioType visible-columns="value" (onChange)="setSelectedOption($event)" layout="row" selection="null"></o-radio>
 
 </o-column>
 
@@ -101,7 +95,7 @@ value-column="key" columns="key;value" #radioType visible-columns="value" (onCha
 <div>
 <o-row id="restaurant" layout-align="start stretch" *ngIf="selectedOption === 1">
     <o-column title="RESTAURANT DATA" layout-align="start stretch" fxFlex="60" layout-padding>
-        <o-image attr="rest_menu" sql-type="OTHER" label="Upload menu"></o-image>  
+        <o-image id="restaurant_img" attr="rest_menu" sql-type="OTHER" label="Upload menu"></o-image>  
     </o-column>
 </o-row>
 </div>  
@@ -173,45 +167,44 @@ value-column="key" columns="key;value" #radioType visible-columns="value" (onCha
 
 <div class="agency_guide" *ngIf="selectedOption === 3">
 
-    
 
     <o-row style="align-content: space-between; width: 200%;  padding-left: 1.5%;">
         <o-column class="column-language">
             <h3 id="languageH">LANGUAGE</h3>
-            <o-row layout-align="start stretch" appearance="none" fxLayout="row"
-                    fxLayoutAlign="start center">
-                    
-                    
-                 
-                    <o-combo attr="comboLanguages" oLocker label="Select language" multiple="yes"
-                      service="guideLanguages" entity="guideLanguage" value-column="gui_l_id"
-                      columns="gui_l_id;gui_l_name" visible-columns="gui_l_name" separator=", " fxFlex>
-                    </o-combo>
-            </o-row>
+            
+
+
+
+                <o-combo attr="comboLanguages" oLocker label="Select language" multiple="yes" service="guideLanguages"
+                    entity="guideLanguage" value-column="gui_l_id" columns="gui_l_id;gui_l_name"
+                    visible-columns="gui_l_name" separator=", " fxFlex>
+                </o-combo>
+            
         </o-column>
-<o-column style="padding-left: 3%;">
-    <h3>PROVINCE</h3>
-    <o-row layout-align="start stretch" appearance="none" fxLayout="row" fxLayoutAlign="start center">
-        
-            <o-combo #comboZone attr="comboZone" label="Select Zone" 
-            query-method="query" service="guideZones" entity="guideZone" value-column="gui_z_id"
-            columns="gui_z_name" visible-columns="gui_z_name" keys="gui_z_id" multiple="no">
-            </o-combo>
+        <o-column style="padding-left: 3%;" id="formZones">
+            <h3>PROVINCE</h3>
+            
+
+                <o-combo #comboZone attr="comboZone" label="Select Zone" query-method="query" service="guideZones"
+                    entity="guideZone" value-column="gui_z_id" columns="gui_z_name" visible-columns="gui_z_name"
+                    keys="gui_z_id" multiple="no">
+                </o-combo>
+
            
-    </o-row>
-</o-column>
+        </o-column>
 
-<o-column  id="formZones">
-    <h3>CITY</h3>
-    <o-row layout-align="start stretch" appearance="none" fxLayout="row" fxLayoutAlign="start center">
-            <o-combo id="comboCity" #comboCity attr="comboCity" label="Select City" multiple="yes"
-                query-method="query" service="guideCities" entity="guideCities" value-column="gui_c_id"
-                columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id" [query-on-event]="comboZone.onValueChange" parent-keys="gui_z_id:comboZone[gui_z_id]">
-            </o-combo>
+        <o-column id="formZones">
+            <h3>CITY</h3>
+            
+                <o-combo id="comboCity" #comboCity attr="comboCity" label="Select City" multiple="yes"
+                    query-method="query" service="guideCities" entity="guideCities" value-column="gui_c_id"
+                    columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id"
+                    [query-on-event]="comboZone.onValueChange" parent-keys="gui_z_id:comboZone[gui_z_id]">
+                </o-combo>
+            
+        </o-column>
     </o-row>
-</o-column>
-</o-row>
 
-</div> 
+</div>
 
 </o-form>

@@ -9,6 +9,7 @@ o-checkbox {
 
 .lodging {
     display: flex;
+    margin-left: 3%;
 }
 
 .toggleFirst {
@@ -23,6 +24,7 @@ o-checkbox {
 .agency_guide {
     display: flex;
     margin-bottom: 30px;
+    flex: 1;
 }
 
 h3 {
@@ -86,9 +88,18 @@ span {
     width: 20%;
 }
 
-#languageH3{
 
+#restaurant_img{
+    width: 100%;
+    height: 100%;
 }
+
+
+
+
+
+
+
 
 
 
