@@ -89,5 +89,6 @@
   "info_route": "Información de la ruta",
   "info_landmark": "Información de los puntos de interés",
   "info_new_landmark": "Información del punto de interés",
-  "is_draft": "¿Es un borrador?"
+  "is_draft": "¿Es un borrador?",
+  "NO_GESTOR": "Lo siento, no eres un gestor"
 }
