@@ -46,7 +46,7 @@
                     FROM
                         ${mainschema}.landmark l
                     JOIN route_landmark
-                    ON l.landmark_id = route_landmark.route_landmark_id
+                    ON l.landmark_id = route_landmark.landmark_id
                     #WHERE#
                     #ORDER#
                 ]]>
