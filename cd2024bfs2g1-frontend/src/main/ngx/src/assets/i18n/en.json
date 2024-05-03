@@ -89,6 +89,6 @@
   "info_route": "Information of route",
   "info_landmark": "Landmarks information",
   "info_new_landmark": "Landmark information",
-  "is_draft": "Is draft?"
-  
+  "is_draft": "Is draft?",
+  "NO_GESTOR": "Sorry, you are not a manager"
 }
