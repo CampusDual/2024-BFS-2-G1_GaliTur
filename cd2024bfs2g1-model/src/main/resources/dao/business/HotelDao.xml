@@ -18,6 +18,18 @@
                     SELECT
                         #COLUMNS#
                     FROM
+                        ${mainschema}.bsn_hotel
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="multi">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
                         ${mainschema}.bsn_hotel HT
                         INNER JOIN ${mainschema}.bsn_business B
                         ON HT.bsn_id=B.bsn_id

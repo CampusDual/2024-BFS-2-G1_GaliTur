@@ -18,6 +18,18 @@
                     SELECT
                         #COLUMNS#
                     FROM
+                        ${mainschema}.bsn_guide_agency
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="multi">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
                         ${mainschema}.bsn_guide_agency GUA
                         INNER JOIN ${mainschema}.bsn_business B
                         ON GUA.bsn_id=B.bsn_id
