@@ -108,8 +108,8 @@
   "srv_id": "ID del Servicio",
   "srv_type": "Tipo de Servicio",
   "srv_cost": "Costo del Servicio",
-  "ADDRESS": "Direccion",
-  "DESCRIPTION": "Descripcion",
+  "ADDRESS": "Dirección",
+  "DESCRIPTION": "Descripción",
   "DESCR_&_ADDR": "Dirección y descripción",
   "INFO_EXTRA": "Información adicional",
   "SCHEDULE": "Horario",
@@ -141,5 +141,16 @@
   "info_landmark": "Información de los puntos de interés",
   "info_new_landmark": "Información del punto de interés",
   "is_draft": "¿Es un borrador?",
-  "NO_GESTOR": "Lo siento, no eres un gestor"
+  "NO_GESTOR": "Lo siento, no eres un gestor",
+  "Single": "Individual",
+  "Double": "Doble",
+  "Triple": "Triple",
+  "Dinner": "Cena",
+  "Breakfast": "Desayuno",
+  "Lunch": "Comida",
+  "Pool": "Piscina",
+  "Wifi": "Wifi",
+  "Parking": "Parking",
+  "MENU": "Carta"
+
 }
