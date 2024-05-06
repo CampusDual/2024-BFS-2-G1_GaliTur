@@ -131,6 +131,7 @@
   "name": "Nombre",
   "description": "Descripción",
   "estimated_duration": "Duración Estimada",
+  "estimated_duration_min": "Duración Estimada (min)",
   "difficulty": "Dificultad",
   "coordinates": "Coordenadas",
   "images": "Imágenes",
