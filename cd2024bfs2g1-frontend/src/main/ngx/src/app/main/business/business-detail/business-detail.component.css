@@ -73,8 +73,7 @@
 
 .o-rows {
     background-color: transparent;
-
-
+    
 }
 
 .list-with-spaces {
@@ -83,6 +82,8 @@
     height: auto;
     width: 90%;
     row-gap: 10px;
+    height: 125px;
+    overflow-y: auto;
 }
 
 
