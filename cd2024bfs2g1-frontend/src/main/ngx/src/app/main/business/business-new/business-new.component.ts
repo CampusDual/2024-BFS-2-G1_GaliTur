@@ -2,9 +2,11 @@ import { Component, Injector, ViewChild } from "@angular/core";
 import {
   AbstractControl,
   ValidationErrors,
-  ValidatorFn
+  ValidatorFn,
+  Validators
 } from "@angular/forms";
-import { OCheckboxComponent, OCurrencyInputComponent } from "ontimize-web-ngx";
+import { Router } from "@angular/router";
+import { OCheckboxComponent, OCurrencyInputComponent, OTranslateService } from "ontimize-web-ngx";
 
 @Component({
   selector: "app-business-new",
@@ -13,9 +15,27 @@ import { OCheckboxComponent, OCurrencyInputComponent } from "ontimize-web-ngx";
 })
 export class BusinessNewComponent {
 
+  businessType = [
+    {key: 1,
+      value: "Restaurant"
+    },{
+      key: 2,
+      value: "LODGING"
+    },{
+      key: 3,
+      value: "Agency guide"
+    }
+  ]
+
+  insertBusiness($event:Event){
+    this.router.navigate(['main/businesses/'])
+   
+  }
+
   selectedOption: number;
   validatorsDniCif: ValidatorFn[] = [];
-  
+  blankValidator: ValidatorFn[] = [];
+
   public switchDestinationState: boolean = false;
   @ViewChild("switchDestination", { static: false })
   switchDestination: OCheckboxComponent;
@@ -31,23 +51,26 @@ export class BusinessNewComponent {
   switchDestination3: OCheckboxComponent;
   @ViewChild("currency3", { static: false }) currency3: OCurrencyInputComponent;
 
-  constructor(public injector: Injector) {
+  constructor(public injector: Injector, private translate: OTranslateService, private router:Router) {
     this.validatorsDniCif.push(this.dniAndCifValidator);
+    this.blankValidator.push(this.blanksValidator)
+
+
   }
 
-  
+
   getSwitchValue() {
     this.switchDestinationState = this.switchDestination.getValue();
     this.currency1.setValue(null);
   }
 
-  
+
   getSwitchValue2() {
     this.switchDestinationState2 = this.switchDestination2.getValue();
     this.currency2.setValue(null);
   }
 
-  
+
   getSwitchValue3() {
     this.switchDestinationState3 = this.switchDestination3.getValue();
     this.currency3.setValue(null);
@@ -85,19 +108,33 @@ export class BusinessNewComponent {
     } catch (e) {}
   }
 
+
+  blanksValidator(control: AbstractControl): ValidationErrors | null{
+    try{
+      const blank = /^[a-zA-Z].*/;
+      const inputValue = control.value.trim();
+
+      if(blank.test(inputValue)){
+        return null;
+      } else {
+        return { blankInvalid: true };
+      }
+    } catch (e){}
+  }
+
   getDataArray(): any {
     const array: Array<Object> = [];
     array.push({
       key: 1,
-      value: "Restaurant",
+      value: this.translate.get("Restaurant"),
     });
     array.push({
       key: 2,
-      value: "Lodging",
+      value: this.translate.get("Lodging"),
     });
     array.push({
       key: 3,
-      value: "Agency guide",
+      value: this.translate.get("AgencyGuide"),
     });
     return array;
   }
