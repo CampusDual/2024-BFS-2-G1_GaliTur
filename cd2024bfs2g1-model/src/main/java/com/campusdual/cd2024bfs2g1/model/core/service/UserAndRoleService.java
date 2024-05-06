@@ -278,6 +278,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 		return this.daoHelper.query(this.roleDao, keysValues, attributes, RoleDao.QUERY_MERCHANT_ROLES);
 	}
 
+
 	@Override
 	public String encryptPassword(final String password) throws OntimizeJEERuntimeException {
 		if (this.passwordEncrypter != null) {

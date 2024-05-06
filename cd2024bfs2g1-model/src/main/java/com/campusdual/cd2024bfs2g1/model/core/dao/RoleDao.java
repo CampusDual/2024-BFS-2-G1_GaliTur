@@ -24,4 +24,5 @@ public class RoleDao extends OntimizeJdbcDaoSupport {
 	public RoleDao() {
 		super();
 	}
+
 }
