@@ -2,10 +2,10 @@ package com.campusdual.cd2024bfs2g1.model.core.service;
 
 import com.campusdual.cd2024bfs2g1.api.core.service.IClientService;
 import com.campusdual.cd2024bfs2g1.model.core.dao.ClientDao;
+import com.campusdual.cd2024bfs2g1.model.core.dao.UserRoleDao;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
-import liquibase.pro.packaged.C;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
@@ -16,12 +16,14 @@ import java.util.*;
 @Service("ClientService")
 public class ClientService implements IClientService {
     private final ClientDao clientDao;
+    private final UserRoleDao userRoleDao;
     private final DefaultOntimizeDaoHelper daoHelper;
     private final UserAndRoleService userAndRoleService;
 
     @Autowired
-    public ClientService(ClientDao clientDao, DefaultOntimizeDaoHelper daoHelper, UserAndRoleService userAndRoleService) {
+    public ClientService(ClientDao clientDao, UserRoleDao userRoleDao, DefaultOntimizeDaoHelper daoHelper, UserAndRoleService userAndRoleService) {
         this.clientDao = clientDao;
+        this.userRoleDao = userRoleDao;
         this.daoHelper = daoHelper;
         this.userAndRoleService = userAndRoleService;
     }
@@ -36,13 +38,18 @@ public class ClientService implements IClientService {
         Object birthDate = attrMap.get(ClientDao.BIRTH_DATE);
         attrMap.remove(ClientDao.BIRTH_DATE);
         EntityResult userEntityResult = userAndRoleService.userInsert(attrMap);
+
         if (userEntityResult.getCode() == EntityResult.OPERATION_SUCCESSFUL) {
             Map<String, Object> clientMap = (Map<String, Object>) userEntityResult;
             clientMap.put(ClientDao.BIRTH_DATE, birthDate);
             EntityResult clientEntityResult = this.daoHelper.insert(this.clientDao, clientMap);
+            clientMap.remove(ClientDao.BIRTH_DATE);
+
             if (clientEntityResult.getCode() == EntityResult.OPERATION_WRONG) {
-                clientMap.remove(ClientDao.BIRTH_DATE);
                 this.userAndRoleService.userDelete(clientMap);
+            } else if (clientEntityResult.getCode() == EntityResult.OPERATION_SUCCESSFUL) {
+                clientMap.put(UserRoleDao.ROL_ID, 3);
+                this.daoHelper.insert(this.userRoleDao, clientMap);
             }
             return clientEntityResult;
         }
