@@ -2,6 +2,7 @@ package com.campusdual.cd2024bfs2g1.model.core.service;
 
 import com.campusdual.cd2024bfs2g1.api.core.service.IMerchantService;
 import com.campusdual.cd2024bfs2g1.model.core.dao.MerchantDao;
+import com.campusdual.cd2024bfs2g1.model.core.dao.UserRoleDao;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
@@ -16,18 +17,18 @@ import java.util.Map;
 @Lazy
 @Service("MerchantService")
 public class MerchantService implements IMerchantService {
+    private final UserRoleDao userRoleDao;
     private final MerchantDao merchantDao;
     private final DefaultOntimizeDaoHelper daoHelper;
     private final UserAndRoleService userAndRoleService;
 
     @Autowired
-    public MerchantService(MerchantDao merchantDao, DefaultOntimizeDaoHelper daoHelper, UserAndRoleService userAndRoleService) {
-
+    public MerchantService(UserRoleDao userRoleDao, MerchantDao merchantDao, DefaultOntimizeDaoHelper daoHelper, UserAndRoleService userAndRoleService) {
+        this.userRoleDao = userRoleDao;
         this.merchantDao = merchantDao;
         this.daoHelper = daoHelper;
         this.userAndRoleService = userAndRoleService;
     }
-
 
     @Override
     public EntityResult merchantQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
@@ -46,6 +47,9 @@ public class MerchantService implements IMerchantService {
             EntityResult insertMerchant = this.daoHelper.insert(this.merchantDao, userIdMap);
             if (insertMerchant.getCode() == EntityResult.OPERATION_WRONG) {
                 this.userAndRoleService.userDelete(userIdMap);
+            } else if (insertMerchant.getCode() == EntityResult.OPERATION_SUCCESSFUL) {
+                userIdMap.put(UserRoleDao.ROL_ID, 5);
+                this.daoHelper.insert(this.userRoleDao, userIdMap);
             }
             return insertMerchant;
 
