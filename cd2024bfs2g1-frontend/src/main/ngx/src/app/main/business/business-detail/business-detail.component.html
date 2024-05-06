@@ -4,8 +4,9 @@
 
         <o-form class="mainForm" #form attr="businessDetail" service="businesses" entity="business"
             keys="bsn_id" header-actions="false" undo-button="false" action show-header-actions-text="false"
-            show-header-navigation="no" class="fill-form" show-header="no">
+            show-header-navigation="no" class="fill-form" show-header="no" >
 
+            <o-button class="back-button" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary" (click)="openBusinesses()" ></o-button>
 
             <!-- Almaceno el negocio que he clicado -->
             <o-grid #businessForm attr="businessDetail" service="businesses" entity="business" keys="bsn_id"
@@ -49,7 +50,7 @@
                             <li><strong><i>{{'SCHEDULE' | oTranslate }}: </i></strong>{{business.bsn_schedule}}</li>
                             <li><strong><i>{{'PHONE' | oTranslate }}: </i></strong>{{business.bsn_phone}}</li>
                             <li><strong><i>{{'WEBSITE' | oTranslate }}: </i></strong>{{business.bsn_website}}</li>
-                            <li class="business-cif"><strong><i>Cif: </i></strong>{{business.bsn_cif}}</li>
+                            <li><strong><i>CIF: </i></strong>{{business.bsn_cif}}</li>
                         </ul>
                     </o-row>
 
@@ -110,7 +111,7 @@
                             <o-row class="left" icon="meeting_room" title="{{'FREEROOMS' | oTranslate }}"
                                 layout-align="start stretch" elevation="1" aria-orientation="vertical" appearance="outline">
                                 <ul class="list-with-spaces">
-                                    <li *ngFor="let room of hotelRoomForm.dataArray"><strong><i>{{room.rm_type | oTranslate }}: </i></strong>{{room.rm_cost}}$</li>
+                                    <li *ngFor="let room of hotelRoomForm.dataArray"><strong><i>{{room.rm_type | oTranslate }}: </i></strong>{{room.rm_cost}}€</li>
                                 </ul>
                             </o-row>
 
@@ -118,7 +119,7 @@
                             <o-row class="right" icon="restaurant" title="{{'FREESERVICES' | oTranslate }}"
                                 layout-align="start stretch" elevation="1" aria-orientation="vertical" appearance="outline">
                                 <ul class="list-with-spaces">
-                                    <li *ngFor="let service of hotelServiceForm.dataArray"><strong><i>{{service.srv_type | oTranslate }}: </i></strong>{{service.srv_cost}}$</li>
+                                    <li *ngFor="let service of hotelServiceForm.dataArray"><i>{{service.srv_type | oTranslate }}</i></li>
                                 </ul>
                             </o-row>
                         </div>

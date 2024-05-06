@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { OFormComponent, OTableComponent, OntimizeService } from 'ontimize-web-ngx';
 
 @Component({
@@ -14,7 +15,8 @@ export class BusinessDetailComponent {
   @ViewChild('form') form: OFormComponent;
 
   constructor(
-    protected sanitizer: DomSanitizer
+    protected sanitizer: DomSanitizer,
+    private router: Router,
   ) {
   }
 
@@ -23,5 +25,9 @@ export class BusinessDetailComponent {
 
   public getImageSrc(base64: any): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image-transparent.png';
+  }
+
+  public openBusinesses(): void {
+    this.router.navigate(['main/businesses']);
   }
 }
