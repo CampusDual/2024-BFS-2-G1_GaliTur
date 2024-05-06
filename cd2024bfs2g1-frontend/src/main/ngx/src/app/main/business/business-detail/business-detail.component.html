@@ -68,7 +68,7 @@
                         entity="restaurant" columns="rest_id;bsn_id;rest_menu" visible-columns="rest_id;bsn_id;rest_menu"
                         refresh-button="false" quick-filter="false" oHidden />
 
-                    <o-row class="o-rows" class="right" attr="container" title="Carta" icon="menu_book"
+                    <o-row class="o-rows" class="right" attr="container" title="{{'MENU' | oTranslate }}" icon="menu_book"
                         layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
                         <div class="row-image-container">
 
@@ -110,7 +110,7 @@
                             <o-row class="left" icon="meeting_room" title="{{'FREEROOMS' | oTranslate }}"
                                 layout-align="start stretch" elevation="1" aria-orientation="vertical" appearance="outline">
                                 <ul class="list-with-spaces">
-                                    <li *ngFor="let room of hotelRoomForm.dataArray"><strong><i>{{room.rm_type}}: </i></strong>{{room.rm_cost}}$</li>
+                                    <li *ngFor="let room of hotelRoomForm.dataArray"><strong><i>{{room.rm_type | oTranslate }}: </i></strong>{{room.rm_cost}}$</li>
                                 </ul>
                             </o-row>
 
@@ -118,7 +118,7 @@
                             <o-row class="right" icon="restaurant" title="{{'FREESERVICES' | oTranslate }}"
                                 layout-align="start stretch" elevation="1" aria-orientation="vertical" appearance="outline">
                                 <ul class="list-with-spaces">
-                                    <li *ngFor="let service of hotelServiceForm.dataArray"><strong><i>{{service.srv_type}}: </i></strong>{{service.srv_cost}}$</li>
+                                    <li *ngFor="let service of hotelServiceForm.dataArray"><strong><i>{{service.srv_type | oTranslate }}: </i></strong>{{service.srv_cost}}$</li>
                                 </ul>
                             </o-row>
                         </div>

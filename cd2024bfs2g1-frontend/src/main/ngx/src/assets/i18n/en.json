@@ -140,5 +140,15 @@
   "info_landmark": "Landmarks information",
   "info_new_landmark": "Landmark information",
   "is_draft": "Is draft?",
-  "NO_GESTOR": "Sorry, you are not a manager"
+  "NO_GESTOR": "Sorry, you are not a manager",
+  "Single": "Single",
+  "Double": "Double",
+  "Triple": "Triple",
+  "Dinner": "Dinner",
+  "Breakfast": "Breakfast",
+  "Lunch": "Lunch",
+  "Pool": "Pool",
+  "Wifi": "Wifi",
+  "Parking": "Parking",
+  "MENU": "Menu"
 }
