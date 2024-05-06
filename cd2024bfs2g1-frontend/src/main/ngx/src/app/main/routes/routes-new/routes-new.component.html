@@ -1,0 +1,36 @@
+<h2>{{'info_route' | oTranslate }}</h2>
+<o-form attr="routesNew" service="routes" entity="route" keys="route_id" title="" (onInsert)="onClickOk($event)">
+    <o-column>
+        <div fxLayout="row">
+                <div fxLayout="column" class="routeInfo">
+                    <div fxLayout="column" fxLayoutGap="10px">
+                        <o-text-input class="txt"  attr="name" sql-type="STRING"
+                            enabled="yes" required="yes"></o-text-input>
+                    </div>
+                    <div fxLayout="column" fxLayoutGap="10px">
+                        <o-textarea-input  class="txt" attr="description"
+                        sql-type="STRING" enabled="yes" required="yes"></o-textarea-input>
+                    </div>
+                    <div fxLayout="column" fxLayoutGap="10px">
+                        <o-integer-input  class="txt" attr="estimated_duration"
+                        sql-type="NUMERIC" enabled="yes" min="1" max="9999"></o-integer-input>
+                    </div>
+                    <div fxLayout="column" fxLayoutGap="10px">
+                        <o-integer-input  class="txt" attr="difficulty"
+                        sql-type="NUMERIC" enabled="yes" required="yes" min="1" max="4"></o-integer-input>
+                    </div>
+                    <div fxLayout="column" fxLayoutGap="10px">
+                        <o-checkbox  class="txt" attr="is_draft" sql-type="BOOLEAN" enabled="yes" required="yes"></o-checkbox>
+                    </div>
+                </div>
+                <div fxLayout="column" class="imageInput">
+                    <div fxLayout="column">
+                        <o-image id="image"  class="img" attr="images" sql-type="OTHER" entity="image" service="images" image-type="base64"></o-image>
+                    </div>
+                </div>
+        </div>
+    </o-column>
+</o-form>
+
+
+

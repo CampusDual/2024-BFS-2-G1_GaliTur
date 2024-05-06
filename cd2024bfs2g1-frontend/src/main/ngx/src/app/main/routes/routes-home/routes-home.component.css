@@ -1,0 +1,86 @@
+/* Estilos principales */
+.routeCard {
+    background-color: #f5f3f3;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 500px;
+    height: 200px;
+  
+
+  }
+
+  
+
+  .name {
+   
+    width: 100%; 
+    text-align: center; 
+    font-size: 22px;
+    padding: 25px 0px;
+    border-radius: 5px;
+    font-family: Arial;
+    
+    
+}
+
+
+
+
+
+.gridbackground{
+background-color: red;
+}
+
+
+
+
+
+.difficulty-1 {
+
+    background-color: rgb(15, 240, 15); 
+}
+
+.difficulty-2 {
+    background-color: rgb(247, 235, 15); 
+}
+
+.difficulty-3 {
+    background-color: rgb(248, 124, 30); 
+}
+.difficulty-4 {
+    background-color: rgba(255, 1, 1, 0.94); 
+}
+
+
+
+  .routeCard:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .routeCard span {
+    margin-bottom: 8px;
+  }
+
+  .routeCard strong {
+    font-weight: bold;
+    color: hsla(0, 0%, 3%, 0.725); /* Color de texto más oscuro */
+  }
+
+  /* Colores y decoración */
+  .routeCard {
+    background-color: rgba(255, 255, 255, 0.978);
+  }
+
+  .routeCard:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hacer hover */
+  }
+
+  mat-icon {
+    margin-right: 6px;
+    margin-left: 6px; 
+    vertical-align: middle; 
+  }
