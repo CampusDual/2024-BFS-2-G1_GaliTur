@@ -153,5 +153,7 @@
   "AGENCY_GUIDE": "Agencia de guías",
   "UPLOAD_MENU": "Subir menu",
   "SINGLE": "Individual",
-  "BLANK_ERROR": "Espacios en blanco o caracteres especiales no permitidos"
+  "BLANK_ERROR": "No se permiten espacios en blanco o caracteres especiales al principio del campo",
+  "RESTAURANT_DATA": "Datos del restaurante",
+  "SERVICES": "Servicios"
 }

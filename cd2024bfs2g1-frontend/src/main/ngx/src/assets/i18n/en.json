@@ -143,12 +143,13 @@
   "is_draft": "Is draft?",
   "NO_GESTOR": "Sorry, you are not a manager",
   "BUSINESS_DATA": "BUSINESS DATA",
-  "BUSINESS_NAME": "Business name",
   "INVALID_FORMAT": "Invalid CIF or DNI format",
   "INVALID_LETTER": "Invalid DNI letter",
   "BSN_EMAIL": "Email",
   "IMAGE": "Upload image",
   "UPLOAD_MENU": "Upload menu",
   "SINGLE": "Single",
-  "BLANK_ERROR": "No blanks or special characters allowed"
+  "BLANK_ERROR": "Blanks and special characters are not allowed at the beginning of the field",
+  "RESTAURANT_DATA": "Restaurant data",
+  "SERVICES": "Services"
 }

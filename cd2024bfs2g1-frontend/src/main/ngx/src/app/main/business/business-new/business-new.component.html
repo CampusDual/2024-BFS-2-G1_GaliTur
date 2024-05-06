@@ -8,7 +8,7 @@
 
             <div fxLayout="row" fxLayoutAlign="start center">
                 <!-- Datos del negocio -->
-                <o-text-input id="text" attr="bsn_name" max-length="100" label="{{ 'BUSINESS_NAME' | oTranslate }}" fxFlex="100"
+                <o-text-input id="text" attr="bsn_name" max-length="100" label="{{ 'bsn_name' | oTranslate }}" fxFlex="100"
                     required="yes" [validators]="blankValidator">
                     <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
                 </o-text-input>
@@ -25,13 +25,18 @@
 
             <div fxLayout="row" fxLayoutAlign="start center">
                 <o-textarea-input attr="bsn_description" label="{{ 'DESCRIPTION' | oTranslate }}" width="100%" rows="6"
-                    class="form-field" required="yes" max-length="250"></o-textarea-input>
+                    class="form-field" required="yes" max-length="250"  [validators]="blankValidator">
+                    <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
+                </o-textarea-input>
                 <div fxFlex></div>
             </div>
             <br>
 
             <div fxLayout="row" fxLayoutAlign="start center">
-                <o-text-input attr="bsn_address" label="{{ 'ADDRESS' | oTranslate }}" max-length="150" width="100%" rows="1" class="form-field" required="yes"></o-text-input>
+                <o-text-input attr="bsn_address" label="{{ 'ADDRESS' | oTranslate }}" max-length="150" width="100%" rows="1" class="form-field" required="yes"
+                [validators]="blankValidator">
+                <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
+                </o-text-input>
             </div>
             <br>
             <!-- Columna phone, website, schedule, email -->
@@ -50,7 +55,9 @@
             <!-- WEBSITE -->
 
             <o-text-input attr="bsn_website" label="{{ 'WEBSITE' | oTranslate }}" fxFlex.lg="80" fxFlex.xl="80" read-only="no" fxFlex="100"
-                max-length="50" required="no"></o-text-input>
+                max-length="50" required="no" [validators]="blankValidator">
+                <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
+            </o-text-input>
             <br>
 
             <!-- SCHEDULE -->
@@ -81,7 +88,7 @@
     <!-- RESTAURANT -->
     <div>
         <o-row id="restaurant" layout-align="start stretch" *ngIf="selectedOption === 1">
-            <o-column title="RESTAURANT DATA" layout-align="start stretch" fxFlex="60" layout-padding>
+            <o-column title="{{ 'RESTAURANT_DATA' | oTranslate }}" layout-align="start stretch" fxFlex="60" layout-padding>
                 <o-image id="restaurant_img" attr="rest_menu" sql-type="OTHER" label="{{ 'UPLOAD_MENU' | oTranslate }}" required="yes"></o-image>
             </o-column>
         </o-row>
@@ -142,7 +149,7 @@
 
         </o-column>
         <o-column>
-            <o-row class="lodging-column" title="SERVICES" layout-align="start stretch" appearance="none" fxLayout="row"
+            <o-row class="lodging-column" title="{{ 'SERVICES' | oTranslate }}" layout-align="start stretch" appearance="none" fxLayout="row"
                 fxLayoutAlign="start center">
                 <div fxLayout="column" fxLayoutAlign="start" style="margin-right: 30px;">
                     <o-slide-toggle attr="toggleWifi" class="toggleFirst" label="WIFI" read-only="no"></o-slide-toggle>
