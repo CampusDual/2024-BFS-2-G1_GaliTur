@@ -15,7 +15,7 @@ getValue(): any {
   constructor(private router:Router){}
 
   onClickOk($event:Event){
-    this.router.navigate(['main/routes/ok'])
+    this.router.navigate(['main/routes'])
    
   }
 }
