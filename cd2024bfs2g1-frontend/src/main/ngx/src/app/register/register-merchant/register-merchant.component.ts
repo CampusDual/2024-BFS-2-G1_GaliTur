@@ -40,7 +40,7 @@ export class RegisterMerchantComponent {
       this.dialogService.error('Register Error', 'Some required fields are empty')
       isRegisterOk = false
     }
-    if(isRegisterOk){
+    if(!isRegisterOk){
       return
     }
     this.mainService.getUserInfoByLoginAndId(this.login.getValue(), this.email.getValue()).subscribe(
