@@ -6,7 +6,7 @@
       <o-text-input #surname attr="usr_surname" label="Surname" required="yes"></o-text-input>
       <o-phone-input attr="usr_phone" label="Phone" read-only="no"></o-phone-input>
       <o-email-input #email attr="usr_email" label="Email" read-only="no" required="yes"></o-email-input>
-      <o-password-input #password attr="usr_password" title="{{ 'PASSWORD_TITLE' | oTranslate }}" required="yes" min-length="8"
+      <o-password-input #password attr="usr_password" required="yes" min-length="8"
                         [validators]="validatorsNewPasswordArray">
         <o-validator error-name="hasCapitalCase"></o-validator>
         <o-validator error-name="hasNumber"></o-validator>

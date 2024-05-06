@@ -3,6 +3,7 @@
     <o-column>
         <div fxLayout="row">
             <div fxLayout="column" class="landmarkInfo">
+                <h4>{{'available_landmark' | oTranslate }}</h4>
                 <o-table attr="landmarkTable" service="landmarks" entity="landmark" keys="landmark_id"
                     columns="landmark_id;name;description;opening_time;closing_time;coordinates"
                     visible-columns="name;description;opening_time;closing_time" query-rows="10"
