@@ -25,7 +25,7 @@
 
             <div fxLayout="row" fxLayoutAlign="start center">
                 <o-textarea-input attr="bsn_description" label="{{ 'DESCRIPTION' | oTranslate }}" width="100%" rows="6"
-                    class="form-field" required="yes" max-length="250"  [validators]="blankValidator">
+                    class="form-field" required="yes" max-length="250" [validators]="blankValidator">
                     <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
                 </o-textarea-input>
                 <div fxFlex></div>
@@ -33,8 +33,7 @@
             <br>
 
             <div fxLayout="row" fxLayoutAlign="start center">
-                <o-text-input attr="bsn_address" label="{{ 'ADDRESS' | oTranslate }}" max-length="150" width="100%" rows="1" class="form-field" required="yes"
-                [validators]="blankValidator">
+                <o-text-input attr="bsn_address" label="{{ 'ADDRESS' | oTranslate }}" max-length="150" width="100%" rows="1" class="form-field" required="yes" [validators]="blankValidator">
                 <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
                 </o-text-input>
             </div>
@@ -63,7 +62,7 @@
             <!-- SCHEDULE -->
 
             <o-text-input attr="bsn_schedule" placeholder="hh:mm-hh:mm" label="{{ 'SCHEDULE' | oTranslate }}" fxFlex.lg="80" fxFlex.xl="80"
-                read-only="no" fxFlex="100" max-length="100" required="yes"></o-text-input>
+                read-only="no" fxFlex="100" max-length="100" required="yes" max-length="11"></o-text-input>
 
             <br>
 
@@ -108,11 +107,11 @@
                             <o-row>
 
                                 <o-checkbox #switchDestination type="checkbox" (onValueChange)="getSwitchValue()"
-                                    attr="roomTypeSingle" label="{{ 'SINGLE' | oTranslate }}" data="Individual" read-only="no"></o-checkbox>
+                                    attr="roomTypeSingle" label="{{ 'Single' | oTranslate }}" data="Individual" read-only="no"></o-checkbox>
 
                                 <o-currency-input #currency1 [required]="switchDestinationState? true : false"
                                     [enabled]="switchDestinationState? true : false" class="price"
-                                    attr="priceSingleRoom" label="Price" read-only="no" required="no"
+                                    attr="priceSingleRoom" label="{{ 'Price' | oTranslate }}" read-only="no" required="no"
                                     min-decimal-digits="2" max-decimal-digits="2" min="0" max="1000"></o-currency-input>
 
 
@@ -121,11 +120,11 @@
 
                             <o-row>
                                 <o-checkbox #switchDestination2 type="checkbox" (onValueChange)="getSwitchValue2()"
-                                    attr="roomTypeDouble" label="Double" data="Doble" read-only="no"></o-checkbox>
+                                    attr="roomTypeDouble" label="{{ 'Double' | oTranslate }}" data="Doble" read-only="no"></o-checkbox>
 
                                 <o-currency-input #currency2 [required]="switchDestinationState2? true : false"
                                     [enabled]="switchDestinationState2? true : false" class="price"
-                                    attr="priceDoubleRoom" label="Price" read-only="no" required="no"
+                                    attr="priceDoubleRoom" label="{{ 'Price' | oTranslate }}" read-only="no" required="no"
                                     min-decimal-digits="2" max-decimal-digits="2" min="0" max="1000"></o-currency-input>
 
                             </o-row>
@@ -133,11 +132,11 @@
 
                             <o-row>
                                 <o-checkbox #switchDestination3 type="checkbox" (onValueChange)="getSwitchValue3()"
-                                    attr="roomTypeTriple" label="Triple" data="Triple" read-only="no"></o-checkbox>
+                                    attr="roomTypeTriple" label="{{ 'Triple' | oTranslate }}" data="Triple" read-only="no"></o-checkbox>
 
                                 <o-currency-input #currency3 [required]="switchDestinationState3? true : false"
                                     [enabled]="switchDestinationState3? true : false" class="price"
-                                    attr="priceTripleRoom" label="Price" read-only="no" required="no"
+                                    attr="priceTripleRoom" label="{{ 'Price' | oTranslate }}" read-only="no" required="no"
                                     min-decimal-digits="2" max-decimal-digits="2" min="0" max="1000"></o-currency-input>
                             </o-row>
                         </o-column>
@@ -152,16 +151,14 @@
             <o-row class="lodging-column" title="{{ 'SERVICES' | oTranslate }}" layout-align="start stretch" appearance="none" fxLayout="row"
                 fxLayoutAlign="start center">
                 <div fxLayout="column" fxLayoutAlign="start" style="margin-right: 30px;">
-                    <o-slide-toggle attr="toggleWifi" class="toggleFirst" label="WIFI" read-only="no"></o-slide-toggle>
-                    <o-slide-toggle attr="toggleParking" class="toggles" label="PARKING"
-                        read-only="no"></o-slide-toggle>
-                    <o-slide-toggle attr="togglePool" class="toggles" label="POOL" read-only="no"></o-slide-toggle>
+                    <o-slide-toggle attr="toggleWifi" class="toggleFirst" label="{{ 'Wifi' | oTranslate }}" read-only="no"></o-slide-toggle>
+                    <o-slide-toggle attr="toggleParking" class="toggles" label="{{ 'Parking' | oTranslate }}" read-only="no"></o-slide-toggle>
+                    <o-slide-toggle attr="togglePool" class="toggles" label="{{ 'Pool' | oTranslate }}" read-only="no"></o-slide-toggle>
                 </div>
                 <div fxLayout="column" fxLayoutAlign="start">
-                    <o-slide-toggle attr="toggleBreakfast" class="toggleFirst" label="BREAKFAST"
-                        read-only="no"></o-slide-toggle>
-                    <o-slide-toggle attr="toggleLunch" class="toggles" label="LUNCH" read-only="no"></o-slide-toggle>
-                    <o-slide-toggle attr="toggleDinner" class="toggles" label="DINNER" read-only="no"></o-slide-toggle>
+                    <o-slide-toggle attr="toggleBreakfast" class="toggleFirst" label="{{ 'Breakfast' | oTranslate }}" read-only="no"></o-slide-toggle>
+                    <o-slide-toggle attr="toggleLunch" class="toggles" label="{{ 'Lunch' | oTranslate }}" read-only="no"></o-slide-toggle>
+                    <o-slide-toggle attr="toggleDinner" class="toggles" label="{{ 'Dinner' | oTranslate }}" read-only="no"></o-slide-toggle>
                 </div>
             </o-row>
         </o-column>
@@ -172,23 +169,23 @@
 
         <o-row style="align-content: space-between; width: 200%;  padding-left: 1.5%;">
             <o-column class="column-language">
-                <h3 id="languageH">LANGUAGE</h3>
+                <h3 id="languageH">{{ 'BSN_LANGUAGE' | oTranslate }}</h3>
                 <o-combo attr="comboLanguages" oLocker
-                oLockerMode="disable" label="Select language" multiple="yes" service="guideLanguages"
+                oLockerMode="disable" label="{{ 'SELECT_LANGUAGE' | oTranslate }}" multiple="yes" service="guideLanguages" translate="yes"
                     entity="guideLanguage" value-column="gui_l_id" columns="gui_l_id;gui_l_name"
                     visible-columns="gui_l_name" separator=", " fxFlex required="yes">
                 </o-combo>
             </o-column>
             <o-column style="padding-left: 3%;" id="formZones">
-                <h3>PROVINCE</h3>
-                <o-combo #comboZone attr="comboZone" label="Select Zone" query-method="query" service="guideZones"
+                <h3>{{ 'BSN_PROVINCE' | oTranslate }}</h3>
+                <o-combo #comboZone attr="comboZone" label="{{ 'SELECT_PROVINCE' | oTranslate }}" query-method="query" service="guideZones" translate="yes"
                     entity="guideZone" value-column="gui_z_id" columns="gui_z_name" visible-columns="gui_z_name"
                     keys="gui_z_id" multiple="no" null-selection="no" required="yes">
                 </o-combo>
             </o-column>
             <o-column id="formZones">
-                <h3>CITY</h3>
-                <o-combo id="comboCity" #comboCity attr="comboCity" label="Select City" multiple="yes"
+                <h3>{{ 'BSN_CITY' | oTranslate }}</h3>
+                <o-combo id="comboCity" #comboCity attr="comboCity" label="{{ 'SELECT_CITY' | oTranslate }}" multiple="yes" translate="yes"
                     query-method="query" service="guideCities" entity="guideCities" value-column="gui_c_id"
                     columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id"
                     [query-on-event]="comboZone.onValueChange" parent-keys="gui_z_id:comboZone[gui_z_id]">

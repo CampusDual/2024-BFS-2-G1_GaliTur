@@ -111,7 +111,7 @@ export class BusinessNewComponent {
 
   blanksValidator(control: AbstractControl): ValidationErrors | null{
     try{
-      const blank = /^[^-\s][a-zA-Z0-9_\s-]+$/;
+      const blank = /^[a-zA-Z].*/;
       const inputValue = control.value.trim();
 
       if(blank.test(inputValue)){
