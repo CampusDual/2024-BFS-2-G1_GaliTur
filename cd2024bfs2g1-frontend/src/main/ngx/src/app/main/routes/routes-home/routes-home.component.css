@@ -78,3 +78,9 @@ background-color: red;
   .routeCard:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hacer hover */
   }
+
+  mat-icon {
+    margin-right: 6px;
+    margin-left: 6px; 
+    vertical-align: middle; 
+  }

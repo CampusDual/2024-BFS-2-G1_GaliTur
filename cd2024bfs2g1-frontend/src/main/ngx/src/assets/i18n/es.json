@@ -108,8 +108,8 @@
   "srv_id": "ID del Servicio",
   "srv_type": "Tipo de Servicio",
   "srv_cost": "Costo del Servicio",
-  "ADDRESS": "Direccion",
-  "DESCRIPTION": "Descripcion",
+  "ADDRESS": "Dirección",
+  "DESCRIPTION": "Descripción",
   "DESCR_&_ADDR": "Dirección y descripción",
   "INFO_EXTRA": "Información adicional",
   "SCHEDULE": "Horario",
@@ -130,8 +130,7 @@
   "ROUTES": "Rutas",
   "name": "Nombre",
   "description": "Descripción",
-  "estimated_duration": "Duración Estimada",
-  "estimated_duration_min": "Duración Estimada (min)",
+  "estimated_duration": "Duración Estimada (min)",
   "difficulty": "Dificultad",
   "coordinates": "Coordenadas",
   "images": "Imágenes",
@@ -180,5 +179,6 @@
   "FRENCH": "FRANCÉS",
   "CORUNA": "A CORUÑA",
   "VERIN": "VERÍN",
-  "MARIN": "MARÍN"
+  "MARIN": "MARÍN",
+  "MENU": "Carta"
 }

@@ -112,7 +112,7 @@
   "DESCRIPTION": "Description",
   "DESCR_&_ADDR": "Address and description",
   "INFO_EXTRA": "Additional information",
-  "SCHEDULE": "Schedule",
+  "SCHEDULE": "Opening hours",
   "PHONE": "Phone",
   "WEBSITE": "Website",
   "LANGUAGE": "Language",
@@ -130,8 +130,7 @@
   "ROUTES": "Routes",
   "name": "Name",
   "description": "Description",
-  "estimated_duration": "Estimated Duration",
-  "estimated_duration_min": "Estimated Duration (min)",
+  "estimated_duration": "Estimated Duration (min)",
   "difficulty": "Difficulty",
   "coordinates": "Coordinates",
   "images": "Images",
@@ -176,4 +175,5 @@
   "CORUNA": "A CORUÑA",
   "VERIN": "VERIN",
   "MARIN": "MARIN"
+  "MENU": "Menu"
 }
