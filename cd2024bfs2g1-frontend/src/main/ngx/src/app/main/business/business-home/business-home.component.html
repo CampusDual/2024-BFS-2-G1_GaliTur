@@ -1,0 +1,20 @@
+
+<o-grid #businessGrid attr="businessGrid" title="BUSINESSES" service="businesses" entity="business" keys="bsn_id"
+    columns="bsn_id;merchant_id;bsn_name;bsn_type;bsn_description;bsn_cif;bsn_address;bsn_phone;bsn_email;bsn_creation_date;bsn_down_date;bsn_photos;bsn_website;bsn_schedule"
+    query-rows="16" page-size-options="16;32;48" orderable="true"
+    sortable-columns="bsn_type;bsn_name:asc" insert-button="false" refresh-button="false"
+    pagination-controls="false" gutter-size="8px" fixed-header="yes" grid-item-height="320px" detail-mode="none"
+    insert-button-floatable="no">
+    <o-grid-item *ngFor="let data of businessGrid.dataArray">
+        <div (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-evenly center"
+            class="mat-elevation-z1 businessCard">
+            <img class="preview-image" [src]="getImageSrc(data.bsn_photos)" width="250px" height="200px">
+            <span><strong>{{ data.bsn_name }}</strong></span>
+            <span><em>{{data.bsn_type | oTranslate }}</em></span>
+        </div>
+    </o-grid-item>
+</o-grid>
+
+
+
+

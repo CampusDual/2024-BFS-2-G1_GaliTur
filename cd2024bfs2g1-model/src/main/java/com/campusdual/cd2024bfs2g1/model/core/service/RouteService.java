@@ -53,7 +53,7 @@ public class RouteService  implements IRouteService {
 
             EntityResult route_id_entity = this.daoHelper.insert(routeDao, attrMap);
             if (route_id_entity.getCode()!=EntityResult.OPERATION_WRONG) {
-                imageMapAttr.put(ImageDao.ATTR_IMAGE_ID,attrMap.get("images"));
+                imageMapAttr.put(ImageDao.ATTR_IMAGE_CODE,attrMap.get("images"));
                 EntityResult image_id_entity = this.daoHelper.insert(imageDao, imageMapAttr);
                 if (image_id_entity.getCode()!=EntityResult.OPERATION_WRONG) {
                     insertImageAux(route_id_entity.get(RouteDao.ATTR_ID),image_id_entity.get(ImageDao.ATTR_IMAGE_ID));
