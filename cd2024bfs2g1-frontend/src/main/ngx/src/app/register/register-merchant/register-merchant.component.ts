@@ -19,6 +19,14 @@ export class RegisterMerchantComponent {
   @ViewChild('password') password: OPasswordInputComponent;
   @ViewChild('newPassword') newPassword: OPasswordInputComponent;
 
+  private regexNumber = /\d/;
+
+  private regexSpecialChar = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+
+  private regexSmallCase = /[a-z]/;
+
+  private regexCaps = /[A-Z]/;
+
   constructor(private router: Router, @Inject(MainService) private mainService: MainService, private dialogService: DialogService,){
     // check whether the entered password has a number
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/\d/, 'hasNumber'));
@@ -39,6 +47,21 @@ export class RegisterMerchantComponent {
       this.newPassword.getValue() === undefined){
       this.dialogService.error('Register Error', 'Some required fields are empty')
       isRegisterOk = false
+    } else if (!this.regexSpecialChar.test(this.form.formGroup.controls['usr_password'].value)) {
+      this.dialogService.error('Password Error', 'Missing special character on password');
+      return;
+    }else if (!this.regexNumber.test(this.form.formGroup.controls['usr_password'].value)) {
+      this.dialogService.error('Password Error', 'Missing number on password');
+      return;
+    }else if (!this.regexSmallCase.test(this.form.formGroup.controls['usr_password'].value)) {
+      this.dialogService.error('Password Error', 'Missing small case character on password');
+      return;
+    }else if (!this.regexCaps.test(this.form.formGroup.controls['usr_password'].value)) {
+      this.dialogService.error('Password Error', 'Missing capital case character on password');
+      return;
+    } else if (this.form.formGroup.controls['usr_password'].value !== this.form.formGroup.controls['confirm_new_password'].value) {
+      this.dialogService.error('Password Error', 'Passwords doesnt match');
+      return;
     }
     if(!isRegisterOk){
       return
