@@ -13,17 +13,19 @@
                     </div>
                     <div fxLayout="column" fxLayoutGap="10px">
                         <o-integer-input  class="txt" attr="estimated_duration_min"
-                        sql-type="NUMERIC" enabled="yes" max-length="3"></o-integer-input>
+                        sql-type="NUMERIC" enabled="yes" min="1" max="9999"></o-integer-input>
                     </div>
                     <div fxLayout="column" fxLayoutGap="10px">
                         <o-integer-input  class="txt" attr="difficulty"
-                        sql-type="NUMERIC" enabled="yes" required="yes" max="4"></o-integer-input>
-                    </div>
-                   <div fxLayout="column">
-                        <o-image id="image"  class="img" attr="images" sql-type="OTHER" entity="image" service="images" image-type="base64"></o-image>
+                        sql-type="NUMERIC" enabled="yes" required="yes" min="1" max="4"></o-integer-input>
                     </div>
                     <div fxLayout="column" fxLayoutGap="10px">
                         <o-checkbox  class="txt" attr="is_draft" sql-type="BOOLEAN" enabled="yes" required="yes"></o-checkbox>
+                    </div>
+                </div>
+                <div fxLayout="column" class="imageInput">
+                    <div fxLayout="column">
+                        <o-image id="image"  class="img" attr="images" sql-type="OTHER" entity="image" service="images" image-type="base64"></o-image>
                     </div>
                 </div>
         </div>
