@@ -141,5 +141,17 @@
   "info_landmark": "Información de los puntos de interés",
   "info_new_landmark": "Información del punto de interés",
   "is_draft": "¿Es un borrador?",
-  "NO_GESTOR": "Lo siento, no eres un gestor"
+  "NO_GESTOR": "Lo siento, no eres un gestor",
+  "BUSINESS_DATA": "DATOS DEL NEGOCIO",
+  "BUSINESS_NAME": "Nombre del negocio",
+  "INVALID_FORMAT": "Formato CIF o DNI incorrecto",
+  "INVALID_LETTER": "Letra del DNI incorrecta",
+  "BSN_EMAIL": "Correo Electrónico",
+  "IMAGE": "Subir imagen",
+  "LODGING": "Alojamiento",
+  "RESTAURANT": "Restaurante",
+  "AGENCY_GUIDE": "Agencia de guías",
+  "UPLOAD_MENU": "Subir menu",
+  "SINGLE": "Individual",
+  "BLANK_ERROR": "Espacios en blanco o caracteres especiales no permitidos"
 }

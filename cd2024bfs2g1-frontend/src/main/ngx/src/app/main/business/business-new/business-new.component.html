@@ -1,20 +1,21 @@
 <o-form attr="businessNew" service="businesses" entity="business" keys="bsn_id" fxLayout="column" #oFormBusinessNew
-    class="standalone-form-container" keys-sql-types="integer">
+    class="standalone-form-container" keys-sql-types="integer" (onInsert)="insertBusiness($event)" confirm-exit="false">
 
     <o-row layout-align="start stretch">
         <!-- Titulo del formulario -->
-        <o-column title="BUSINESS DATA" layout-align="start stretch" fxFlex="60" layout-padding>
+        <o-column title="{{ 'BUSINESS_DATA' | oTranslate }}" layout-align="start stretch" fxFlex="60" layout-padding>
 
 
             <div fxLayout="row" fxLayoutAlign="start center">
                 <!-- Datos del negocio -->
-                <o-text-input id="text" attr="bsn_name" label="Business name" fxFlex="100" max-length="100"
-                    required="yes"></o-text-input>
+                <o-text-input id="text" attr="bsn_name" max-length="100" label="{{ 'BUSINESS_NAME' | oTranslate }}" fxFlex="100"
+                    required="yes" [validators]="blankValidator">
+                    <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
+                </o-text-input>
                 <o-text-input attr="bsn_cif" label="CIF/DNI" read-only="no" required="yes"
                     placeholder="A12345678 or 12345678Z" [validators]="validatorsDniCif">
-                    <o-validator error-name="dniOrCifFormatError"
-                        error-text="Invalid registration format"></o-validator>
-                    <o-validator error-name="invalidDniLetter" error-text="Invalid DNI"></o-validator>
+                    <o-validator error-name="dniOrCifFormatError" error-text="{{ 'INVALID_FORMAT' | oTranslate }}"></o-validator>
+                    <o-validator error-name="invalidDniLetter" error-text="{{ 'INVALID_LETTER' | oTranslate }}"></o-validator>
                 </o-text-input>
             </div>
 
@@ -23,38 +24,38 @@
 
 
             <div fxLayout="row" fxLayoutAlign="start center">
-                <o-textarea-input attr="bsn_description" label="Description" width="100%" rows="6"
-                    class="form-field" required="yes"></o-textarea-input>
+                <o-textarea-input attr="bsn_description" label="{{ 'DESCRIPTION' | oTranslate }}" width="100%" rows="6"
+                    class="form-field" required="yes" max-length="250"></o-textarea-input>
                 <div fxFlex></div>
             </div>
             <br>
 
             <div fxLayout="row" fxLayoutAlign="start center">
-                <o-text-input attr="bsn_address" label="Adress" width="100%" rows="1" class="form-field" required="yes"></o-text-input>
+                <o-text-input attr="bsn_address" label="{{ 'ADDRESS' | oTranslate }}" max-length="150" width="100%" rows="1" class="form-field" required="yes"></o-text-input>
             </div>
             <br>
             <!-- Columna phone, website, schedule, email -->
 
             <!-- PHONE -->
 
-            <o-phone-input attr="bsn_phone" label="Phone" sql-type="string" required="yes"></o-phone-input>
+            <o-phone-input attr="bsn_phone" label="{{ 'PHONE' | oTranslate }}" sql-type="string" required="yes"></o-phone-input>
 
 
             <br>
             <!-- EMAIL-->
 
-            <o-email-input attr="bsn_email" label="Email" read-only="no" required="yes"></o-email-input>
+            <o-email-input attr="bsn_email" max-length="100" label="{{ 'BSN_EMAIL' | oTranslate }}" read-only="no" required="yes"></o-email-input>
             <br>
 
             <!-- WEBSITE -->
 
-            <o-text-input attr="bsn_website" label="Website" fxFlex.lg="80" fxFlex.xl="80" read-only="no" fxFlex="100"
-                max-length="100" required="no"></o-text-input>
+            <o-text-input attr="bsn_website" label="{{ 'WEBSITE' | oTranslate }}" fxFlex.lg="80" fxFlex.xl="80" read-only="no" fxFlex="100"
+                max-length="50" required="no"></o-text-input>
             <br>
 
             <!-- SCHEDULE -->
 
-            <o-text-input attr="bsn_schedule" placeholder="hh:mm-hh:mm" label="Horario" fxFlex.lg="80" fxFlex.xl="80"
+            <o-text-input attr="bsn_schedule" placeholder="hh:mm-hh:mm" label="{{ 'SCHEDULE' | oTranslate }}" fxFlex.lg="80" fxFlex.xl="80"
                 read-only="no" fxFlex="100" max-length="100" required="yes"></o-text-input>
 
             <br>
@@ -72,7 +73,7 @@
 
         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px"></div>
         <o-column fxFlex="40" layout-align="center center">
-            <o-image attr="bsn_photos" sql-type="OTHER" label="Upload image" required="yes"></o-image>
+            <o-image attr="bsn_photos" sql-type="OTHER" label="{{ 'IMAGE' | oTranslate }}" required="yes"></o-image>
         </o-column>
     </o-row>
 
@@ -81,7 +82,7 @@
     <div>
         <o-row id="restaurant" layout-align="start stretch" *ngIf="selectedOption === 1">
             <o-column title="RESTAURANT DATA" layout-align="start stretch" fxFlex="60" layout-padding>
-                <o-image id="restaurant_img" attr="rest_menu" sql-type="OTHER" label="Upload menu" required="yes"></o-image>
+                <o-image id="restaurant_img" attr="rest_menu" sql-type="OTHER" label="{{ 'UPLOAD_MENU' | oTranslate }}" required="yes"></o-image>
             </o-column>
         </o-row>
     </div>
@@ -100,12 +101,12 @@
                             <o-row>
 
                                 <o-checkbox #switchDestination type="checkbox" (onValueChange)="getSwitchValue()"
-                                    attr="roomTypeSingle" label="Single" data="Individual" read-only="no"></o-checkbox>
+                                    attr="roomTypeSingle" label="{{ 'SINGLE' | oTranslate }}" data="Individual" read-only="no"></o-checkbox>
 
                                 <o-currency-input #currency1 [required]="switchDestinationState? true : false"
                                     [enabled]="switchDestinationState? true : false" class="price"
                                     attr="priceSingleRoom" label="Price" read-only="no" required="no"
-                                    min-decimal-digits="2" max-decimal-digits="2" min="0"></o-currency-input>
+                                    min-decimal-digits="2" max-decimal-digits="2" min="0" max="1000"></o-currency-input>
 
 
                             </o-row>
@@ -118,7 +119,7 @@
                                 <o-currency-input #currency2 [required]="switchDestinationState2? true : false"
                                     [enabled]="switchDestinationState2? true : false" class="price"
                                     attr="priceDoubleRoom" label="Price" read-only="no" required="no"
-                                    min-decimal-digits="2" max-decimal-digits="2" min="0"></o-currency-input>
+                                    min-decimal-digits="2" max-decimal-digits="2" min="0" max="1000"></o-currency-input>
 
                             </o-row>
                             <br>
@@ -130,7 +131,7 @@
                                 <o-currency-input #currency3 [required]="switchDestinationState3? true : false"
                                     [enabled]="switchDestinationState3? true : false" class="price"
                                     attr="priceTripleRoom" label="Price" read-only="no" required="no"
-                                    min-decimal-digits="2" max-decimal-digits="2" min="0"></o-currency-input>
+                                    min-decimal-digits="2" max-decimal-digits="2" min="0" max="1000"></o-currency-input>
                             </o-row>
                         </o-column>
                     </o-row>
@@ -165,7 +166,7 @@
         <o-row style="align-content: space-between; width: 200%;  padding-left: 1.5%;">
             <o-column class="column-language">
                 <h3 id="languageH">LANGUAGE</h3>
-                <o-combo attr="comboLanguages" oLocker 
+                <o-combo attr="comboLanguages" oLocker
                 oLockerMode="disable" label="Select language" multiple="yes" service="guideLanguages"
                     entity="guideLanguage" value-column="gui_l_id" columns="gui_l_id;gui_l_name"
                     visible-columns="gui_l_name" separator=", " fxFlex required="yes">
