@@ -50,16 +50,12 @@ public class RouteService  implements IRouteService {
 
         if(userInformation.getAuthorities().stream().anyMatch(c->c.toString().equals("manager"))){
             Map<String,Object> imageMapAttr=new HashMap();
-
             EntityResult route_id_entity = this.daoHelper.insert(routeDao, attrMap);
-            if (route_id_entity.getCode()!=EntityResult.OPERATION_WRONG) {
+            if (attrMap.get("images")!=null) {
                 imageMapAttr.put(ImageDao.ATTR_IMAGE_CODE,attrMap.get("images"));
                 EntityResult image_id_entity = this.daoHelper.insert(imageDao, imageMapAttr);
-                if (image_id_entity.getCode()!=EntityResult.OPERATION_WRONG) {
-                    insertImageAux(route_id_entity.get(RouteDao.ATTR_ID),image_id_entity.get(ImageDao.ATTR_IMAGE_ID));
-                }
+                insertImageAux(route_id_entity.get(RouteDao.ATTR_ID),image_id_entity.get(ImageDao.ATTR_IMAGE_ID));
             }
-
             return  route_id_entity;
         }else{
             EntityResultMapImpl entity = new EntityResultMapImpl(EntityResult.OPERATION_WRONG,1,"NO_GESTOR");
