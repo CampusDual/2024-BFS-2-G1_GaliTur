@@ -165,7 +165,6 @@
   "Lunch": "Comida",
   "Pool": "Piscina",
   "Wifi": "Wifi",
-  "Parking": "Aparcamiento",
   "BSN_PROVINCE": "PROVINCIA",
   "BSN_LANGUAGE": "IDIOMA",
   "BSN_CITY": "CIUDAD",
@@ -181,5 +180,8 @@
   "CORUNA": "A CORUÑA",
   "VERIN": "VERÍN",
   "MARIN": "MARÍN",
-  "MENU": "Carta"
+  "Parking": "Parking",
+  "MENU": "Carta",
+  "MESSAGES_INSERTED_ROUTE": "Ruta insertada correctamente",
+  "MESSAGES_FORM_CHANGES_WILL_BE_LOST_ROUTE": "¿Estás realmente seguro de que quieres hacer esto? Todos los cambios se perderán."
 }
