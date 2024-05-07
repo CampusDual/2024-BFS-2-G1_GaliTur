@@ -11,6 +11,7 @@ import { MainService } from './shared/services/main.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OGalleryModule } from 'ontimize-web-ngx-gallery';
+import { CustomMessageServiceRoutes } from './shared/services/customMessageRoutes.service';
 
 // Standard providers...
 // Defining custom providers (if needed)...
@@ -39,7 +40,8 @@ export const customProviders: any = [
   providers: [
     { provide: APP_CONFIG, useValue: CONFIG },
     ONTIMIZE_PROVIDERS,
-    ...customProviders
+    ...customProviders,
+    { provide: 'customMessageServiceTypeRoutes', useValue: CustomMessageServiceRoutes }
   ],
 })
 export class AppModule { }
