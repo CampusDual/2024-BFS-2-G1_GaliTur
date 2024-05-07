@@ -1,5 +1,5 @@
 <o-form attr="businessNew" service="businesses" entity="business" keys="bsn_id" fxLayout="column" #oFormBusinessNew
-    class="standalone-form-container" keys-sql-types="integer" (onInsert)="insertBusiness($event)" confirm-exit="false">
+    class="standalone-form-container" keys-sql-types="integer" (onInsert)="insertBusiness($event)" confirm-exit="false" message-service-type="customMessageServiceTypeBusiness">
 
     <o-row layout-align="start stretch">
         <!-- Titulo del formulario -->

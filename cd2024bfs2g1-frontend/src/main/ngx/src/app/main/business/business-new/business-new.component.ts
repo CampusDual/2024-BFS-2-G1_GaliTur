@@ -11,7 +11,7 @@ import { OCheckboxComponent, OCurrencyInputComponent, OTranslateService } from "
 @Component({
   selector: "app-business-new",
   templateUrl: "./business-new.component.html",
-  styleUrls: ["./business-new.component.css"],
+  styleUrls: ["./business-new.component.css"]
 })
 export class BusinessNewComponent {
 
@@ -29,7 +29,7 @@ export class BusinessNewComponent {
 
   insertBusiness($event:Event){
     this.router.navigate(['main/businesses/'])
-   
+
   }
 
   selectedOption: number;

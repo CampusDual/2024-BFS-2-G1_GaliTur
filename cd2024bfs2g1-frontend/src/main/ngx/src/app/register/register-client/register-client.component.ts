@@ -41,6 +41,8 @@ export class RegisterClientComponent{
 
   private regexCaps = /[A-Z]/;
 
+  private regexEmail = /^[\w.%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
   constructor(private router: Router, @Inject(MainService) private mainService: MainService,
               private dialogService: DialogService){
     // check whether the entered password has a number
@@ -57,12 +59,27 @@ export class RegisterClientComponent{
   public register(){
     let isRegisterOk = true
 
-    if (this.login.getValue() === undefined || this.name.getValue() === undefined  ||
-      this.surname.getValue() === undefined || this.birth_date.getValue() === undefined ||
-      this.email.getValue() === undefined || this.password.getValue() === undefined ||
-      this.newPassword.getValue() === undefined){
+    if (
+      this.login.getValue() === undefined ||
+      this.login.getValue().trim() === '' ||
+      this.name.getValue() === undefined  ||
+      this.name.getValue().trim() === ''  ||
+      this.surname.getValue() === undefined ||
+      this.surname.getValue().trim() === '' ||
+      this.birth_date.getValue() === undefined ||
+      this.birth_date.getValue().trim() === '' ||
+      this.email.getValue() === undefined ||
+      this.email.getValue().trim() === '' ||
+      this.password.getValue() === undefined ||
+      this.password.getValue().trim() === '' ||
+      this.newPassword.getValue() === undefined ||
+      this.newPassword.getValue().trim() === ''
+    ){
       this.dialogService.error('Register Error', 'Some required fields are empty')
       isRegisterOk = false
+    } else if (!this.regexEmail.test(this.email.getValue().trim())){
+      this.dialogService.error('Email Error', 'The email is not valid');
+      return;
     } else if (!this.regexSpecialChar.test(this.form.formGroup.controls['usr_password'].value)) {
       this.dialogService.error('Password Error', 'Missing special character on password');
       return;
@@ -101,5 +118,9 @@ export class RegisterClientComponent{
     const newPassword = control.parent?.get('usr_password') as FormControl;
     const confirmNewPassword = control.parent?.get('confirm_new_password') as FormControl;
     return newPassword && confirmNewPassword && newPassword.value === confirmNewPassword.value ? null : { matchNewPassword: true };
+  }
+
+  getTime() {
+    return new Date(new Date().getTime() - (18 * 60 * 60 * 1000)).toISOString();
   }
 }
