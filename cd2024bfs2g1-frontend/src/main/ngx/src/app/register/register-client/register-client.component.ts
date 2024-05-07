@@ -67,7 +67,6 @@ export class RegisterClientComponent{
       this.surname.getValue() === undefined ||
       this.surname.getValue().trim() === '' ||
       this.birth_date.getValue() === undefined ||
-      this.birth_date.getValue().trim() === '' ||
       this.email.getValue() === undefined ||
       this.email.getValue().trim() === '' ||
       this.password.getValue() === undefined ||
