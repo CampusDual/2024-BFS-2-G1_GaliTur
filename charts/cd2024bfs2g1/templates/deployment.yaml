@@ -71,7 +71,7 @@ spec:
         {{- end }}
 #        {{- if .Values.flyway.enabled }}
           - name: FLYWAY_ENABLED
-            value: '{{ .Values.flyway.enabled }}'
+            value: {{ .Values.flyway.enabled | quote }}
 #        {{- end }}
           - name: DATABASE_URL
             value: {{ .Values.database.url }}
