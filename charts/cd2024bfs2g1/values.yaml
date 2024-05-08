@@ -161,7 +161,7 @@ storage:
 jvmOptions: "-Xmx300m -Xms100m"  ## adjust according to pod requests
 
 flyway:
-  enabled: 'true'
+  enabled: true
 
 postgresql:
   enabled: true
