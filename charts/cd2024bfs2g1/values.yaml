@@ -160,6 +160,9 @@ storage:
 
 jvmOptions: "-Xmx300m -Xms100m"  ## adjust according to pod requests
 
+flyway:
+  enabled: true
+
 postgresql:
   enabled: true
   # PostgreSQL Database to create
