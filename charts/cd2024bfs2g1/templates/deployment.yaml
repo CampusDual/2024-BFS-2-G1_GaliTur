@@ -69,7 +69,7 @@ spec:
           - name: DATABASE_SERVICE
             value: {{ .Values.database.service }}
         {{- end }}
-        {{- if and .Values.flyway .Values.flyway.enabled }}
+        {{- if .Values.flyway.enabled }}
           - name: FLYWAY_ENABLED
             value: {{ .Values.flyway.enabled }}
         {{- end }}
