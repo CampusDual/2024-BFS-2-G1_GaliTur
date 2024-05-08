@@ -9,6 +9,7 @@ import { OntimizeWebModule } from 'ontimize-web-ngx';
 import { OGalleryModule } from 'ontimize-web-ngx-gallery';
 import { AddLandmarkComponent } from './routes-new/add-landmark/add-landmark.component';
 import { ViewAllLandmarkComponent } from './routes-new/view-all-landmark/view-all-landmark.component';
+import { ViewLandmarkDetailComponent } from './routes-detail/view-landmark-detail/view-landmark-detail.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ViewAllLandmarkComponent } from './routes-new/view-all-landmark/view-al
     RoutesDetailComponent,
     RoutesNewComponent,
     AddLandmarkComponent,
-    ViewAllLandmarkComponent
+    ViewAllLandmarkComponent,
+    ViewLandmarkDetailComponent
   ],
   imports: [
     CommonModule,

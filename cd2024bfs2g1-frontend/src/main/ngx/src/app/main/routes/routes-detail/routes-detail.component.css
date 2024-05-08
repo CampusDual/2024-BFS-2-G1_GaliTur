@@ -77,6 +77,13 @@
   padding-left: 15px;
 }
 
+.landmarkInfo {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-left: 15px;
+}
+
 .mainPanel {
   background-image: url("../../../../assets/images/photoRouteDetails.png");
 

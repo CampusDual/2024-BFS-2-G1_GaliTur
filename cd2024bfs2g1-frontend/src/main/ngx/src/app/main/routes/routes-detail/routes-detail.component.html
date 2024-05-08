@@ -36,9 +36,11 @@
                         <span><mat-icon>home</mat-icon><span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span></span>
                     </ng-template>
                 </div>
-            </div>
-            <div *ngFor="let landmark of data.landmarks" class="landmarkInfo">
-                <span>{{ landmark.name }}</span>
+                <div fxLayout="column" class="landmarkInfo">
+                    <button  (click)="openDetailLandmark(data)">
+                        <mat-icon> location_on </mat-icon><span><strong>Puntos de Interes</strong></span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
