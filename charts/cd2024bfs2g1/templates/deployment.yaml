@@ -71,7 +71,7 @@ spec:
         {{- end }}
         {{- if not .Values.flyway.enabled }}
           - name: FLYWAY_ENABLED
-            value: false
+            value: 'false'
         {{- end }}
           - name: DATABASE_URL
             value: {{ .Values.database.url }}
