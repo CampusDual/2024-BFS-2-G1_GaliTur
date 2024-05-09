@@ -9,22 +9,22 @@
     cursor: pointer;
     width: 500px;
     height: 200px;
-  
+
 
   }
 
-  
+
 
   .name {
-   
-    width: 100%; 
-    text-align: center; 
+
+    width: 100%;
+    text-align: center;
     font-size: 22px;
     padding: 25px 0px;
     border-radius: 5px;
     font-family: Arial;
-    
-    
+
+
 }
 
 
@@ -41,18 +41,18 @@ background-color: red;
 
 .difficulty-1 {
 
-    background-color: rgb(15, 240, 15); 
+    background-color: #059905b6;
 }
 
 .difficulty-2 {
-    background-color: rgb(247, 235, 15); 
+    background-color: rgb(247, 235, 15);
 }
 
 .difficulty-3 {
-    background-color: rgb(248, 124, 30); 
+    background-color: rgb(248, 124, 30);
 }
 .difficulty-4 {
-    background-color: rgba(255, 1, 1, 0.94); 
+    background-color: rgba(255, 1, 1, 0.94);
 }
 
 
@@ -81,6 +81,6 @@ background-color: red;
 
   mat-icon {
     margin-right: 6px;
-    margin-left: 6px; 
-    vertical-align: middle; 
+    margin-left: 6px;
+    vertical-align: middle;
   }
