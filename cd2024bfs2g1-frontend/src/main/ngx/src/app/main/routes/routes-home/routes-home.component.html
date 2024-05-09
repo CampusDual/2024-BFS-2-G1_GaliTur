@@ -3,24 +3,26 @@
     query-rows="8" page-size-options="8;10;12" orderable="true"
     sortable-columns="name;description;estimated_duration;difficulty" insert-button="true"
     pagination-controls="true" gutter-size="8px" fixed-header="yes" grid-item-height="300px" detail-mode="none"
-    insert-button-floatable="no">
+    insert-button-floatable="no" class="grid">
     <o-grid-item *ngFor="let data of routesGrid.dataArray">
         <div *ngIf="!data.isdraft" (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-evenly center"
             class="mat-elevation-z1 routeCard">
             <span [ngClass]="'difficulty-' + data.difficulty" class="name"><strong>{{ data.name }} </strong></span>
-            <span *ngIf="data.estimated_duration; else no_estimated_duration"> 
-                <mat-icon>schedule</mat-icon> {{"estimated_duration" | oTranslate}}: {{ data.estimated_duration }} </span>
+            <span *ngIf="data.estimated_duration; else no_estimated_duration" > 
+                <mat-icon>schedule</mat-icon> {{"estimated_duration" | oTranslate}}: {{ convertTime(data.estimated_duration) }}</span>
             <ng-template #no_estimated_duration>
                 <span><span></span></span>
             </ng-template>
-            <div class="difficulty">
-                <span *ngIf="data.difficulty; else no_difficulty">
-                    <mat-icon *ngFor="let _ of [].constructor(data.difficulty)">local_fire_department</mat-icon>
-                </span>
-                <ng-template #no_difficulty>
-                    <span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span>
-                </ng-template>
-            </div>
+            <div>
+                <div class="difficulty">
+                    <span *ngIf="data.difficulty; else no_difficulty">
+                        <mat-icon *ngFor="let _ of [].constructor(data.difficulty)">local_fire_department</mat-icon>
+                    </span>
+                    <ng-template #no_difficulty>
+                        <span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span>
+                    </ng-template>
+                </div>
+            </div>   
         </div>
     </o-grid-item>
 </o-grid>
