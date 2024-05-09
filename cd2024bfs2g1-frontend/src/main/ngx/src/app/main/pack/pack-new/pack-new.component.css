@@ -1,0 +1,54 @@
+.price {
+    margin-inline-start: 35px;
+    width: 30%;
+}
+
+.lodging {
+    display: flex;
+    margin-left: 3%;
+}
+
+.toggleFirst {
+    margin-bottom: 30px; 
+    margin-top: 25px;
+}
+
+.toggles{
+    margin-bottom: 30px;
+}
+
+.column-language {
+    width: 20%;
+}
+
+.o-image{
+    width: 65%;
+    height: 75%;
+}
+
+
+span {
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 5%;
+    width: 10px;
+}
+
+#comboCity{
+    margin-left: 15%;
+}
+
+#formZones{
+    width: 20%;
+}
+#margin *:not(div){
+    padding-bottom: 3%;
+}
+
+
+
+
+
+
+
+
