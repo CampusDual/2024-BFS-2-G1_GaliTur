@@ -94,6 +94,13 @@ span {
     height: 100%;
 }
 
+.description-textarea {
+    .mat-textarea {
+        resize: none;
+    }
+}
+
+
 
 
 
