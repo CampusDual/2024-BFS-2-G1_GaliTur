@@ -19,7 +19,7 @@ CREATE TABLE image_pack
     imp_id serial,
     pck_id integer NOT NULL,
     img_id integer NOT NULL,
-    CONSTRAINT pack_pk PRIMARY KEY (imp_id)
+    CONSTRAINT image_pack_pk PRIMARY KEY (imp_id)
 );
 ALTER TABLE image_pack
     ADD CONSTRAINT image_pack_pck_id_fk FOREIGN KEY (pck_id) REFERENCES pack (pck_id);
