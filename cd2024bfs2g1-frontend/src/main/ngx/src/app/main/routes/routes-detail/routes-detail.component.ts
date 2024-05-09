@@ -13,7 +13,7 @@ import { ViewLandmarkDetailComponent } from './view-landmark-detail/view-landmar
 export class RoutesDetailComponent implements OnInit{
 
   galleryImages: any[] = [];
-landmark: any;
+  landmark: any;
 
 
   constructor(
