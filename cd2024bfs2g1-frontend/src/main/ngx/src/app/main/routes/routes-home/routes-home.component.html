@@ -10,7 +10,7 @@
             class="mat-elevation-z1 routeCard">
             <span [ngClass]="'difficulty-' + data.difficulty" class="name"><strong>{{ data.name }} </strong></span>
             <span *ngIf="data.estimated_duration; else no_estimated_duration"> 
-                <mat-icon>schedule</mat-icon> {{"estimated_duration" | oTranslate}}: {{ data.estimated_duration }} </span>
+                <mat-icon>schedule</mat-icon> {{"estimated_duration" | oTranslate}}: {{ data.estimated_duration }} min </span>
             <ng-template #no_estimated_duration>
                 <span><span></span></span>
             </ng-template>
