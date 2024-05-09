@@ -16,6 +16,6 @@ getValue(): any {
 
   onClickOk($event:Event){
     this.router.navigate(['main/routes'])
-   
+
   }
 }

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { RoutesRoutingModule } from './routes-routing.module';
 import { RoutesHomeComponent } from './routes-home/routes-home.component';
 import { RoutesDetailComponent } from './routes-detail/routes-detail.component';
