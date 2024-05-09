@@ -1,27 +1,38 @@
-<h2>{{'info_route' | oTranslate }}</h2>
-<o-form attr="routesNew" service="routes" entity="route" keys="route_id" title="" (onInsert)="onClickOk($event)" message-service-type="customMessageServiceTypeRoutes">
-    <o-column>
+
+<o-form attr="routesNew" label-header="{{'info_route' | oTranslate }}" label-header-align="start" service="routes" entity="route" keys="route_id" title="" (onInsert)="onClickOk($event)" message-service-type="customMessageServiceTypeRoutes">
+    <o-column title=" ">
+       
         <div fxLayout="row">
                 <div fxLayout="column" class="routeInfo">
-                    <div fxLayout="column" fxLayoutGap="10px">
+                    <div fxLayout="column">
                         <o-text-input class="txt"  attr="name" sql-type="STRING"
-                            enabled="yes" required="yes"></o-text-input>
+                            enabled="yes" required="yes" [validators]="blankValidator">
+                            <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
+                        </o-text-input>
                     </div>
-                    <div fxLayout="column" fxLayoutGap="10px">
-                        <o-textarea-input  class="txt" attr="description"
-                        sql-type="STRING" enabled="yes" required="yes"></o-textarea-input>
+                    <br>
+                    <div fxLayout="column">
+                        <o-textarea-input attr="description" sql-type="STRING" width="100%"
+                        class="description-textarea" required="yes" max-length="500" [validators]="blankValidator" rows="9">
+                        <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
+                    </o-textarea-input>
                     </div>
-                    <div fxLayout="column" fxLayoutGap="10px">
+                    <br>
+                    <div fxLayout="column">
                         <o-integer-input  class="txt" attr="estimated_duration"
                         sql-type="NUMERIC" enabled="yes" min="1" max="9999"></o-integer-input>
                     </div>
-                    <div fxLayout="column" fxLayoutGap="10px">
-                        <o-integer-input  class="txt" attr="difficulty"
-                        sql-type="NUMERIC" enabled="yes" required="yes" min="1" max="4"></o-integer-input>
+                    <br>
+                    <div fxLayout="column">
+                        <o-combo attr="difficulty" label="Select country" enabled="yes" [static-data]="difficultyArray"
+                         value-column="difficultyCode" columns="difficultyCode;difficultyText" null-selection="no"
+                        visible-columns="difficultyText"></o-combo>
                     </div>
-                    <div fxLayout="column" fxLayoutGap="10px">
+                    <br>
+                    <div fxLayout="column">
                         <o-checkbox  class="txt" attr="is_draft" sql-type="BOOLEAN" enabled="yes" required="yes"></o-checkbox>
                     </div>
+                    
                 </div>
                 <div fxLayout="column" class="imageInput">
                     <div fxLayout="column">
