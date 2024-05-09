@@ -1,16 +1,33 @@
 <h2>{{'info_landmark' | oTranslate }}</h2>
 <o-form attr="landmarksNew" service="landmarks" entity="landmark" keys="landmark_id" title="">
-    <o-column>
-        <div fxLayout="row">
-            <div fxLayout="column" class="landmarkInfo">
-                <h4>{{'available_landmark' | oTranslate }}</h4>
-                <o-table attr="landmarkTable" service="landmarks" entity="landmark" keys="landmark_id"
-                    columns="landmark_id;name;description;opening_time;closing_time;coordinates"
-                    visible-columns="name;description;opening_time;closing_time" query-rows="10"
-                    select-all-checkbox-visible="yes" detail-mode="none">
-                    <o-table-column attr="description" title="description" type="TEXT" multiline="yes"></o-table-column>
-                </o-table>
-            </div>
+    <filter title="FILTER_USERS">
+        <div fxLayout="row" fxLayoutGap="15px">
+            <o-text-input attr="name" label="name"></o-text-input>
+            <o-text-input attr="description" label="description"></o-text-input>
+            <o-text-input attr="opening_time" label="opening_time" min-length="1"></o-text-input>
+            <o-text-input attr="closing_time" label="closing_time" min-length="1"></o-text-input>
+            <o-text-input attr="coordinates" label="coordinates" min-length="1"></o-text-input>
+
+            <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="FLAT" color="primary"
+                label="BUTTON.FILTER">
+            </o-button>
+            <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="BASIC" label="BUTTON.CLEARFILTERS"
+                icon="clear"></o-button>
         </div>
-    </o-column>
+        <o-filter-builder #filterBuilder attr="thefilter" filters="name;surname;login" [target]="landmarkTable"
+            query-on-change="no" query-on-change-delay="500" [expression-builder]="createFilter">
+        </o-filter-builder>
+    </filter>
+
+    <o-table #landmarkTable attr="landmarkTable" service="landmarks" entity="landmark" keys="landmark_id"
+        columns="landmark_id;name;description;opening_time;closing_time;coordinates"
+        visible-columns="name;description;opening_time;closing_time" query-rows="10" select-all-checkbox="yes"
+        export-button="no" insert-button="no" delete-button="no" refresh-button="no" fixed-header="yes"
+        detail-mode="none" edition-mode="click" selection-mode="none" export-mode="local">
+        <o-table-columns-filter columns="name;description"></o-table-columns-filter>
+        <o-table-column attr="description" title="description" type="TEXT" multiline="yes">
+            <o-table-cell-editor-boolean true-value="S" false-value="N" boolean-type="string">
+            </o-table-cell-editor-boolean>
+        </o-table-column>
+    </o-table>
 </o-form>
