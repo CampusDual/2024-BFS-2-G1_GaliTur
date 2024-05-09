@@ -1,14 +1,74 @@
 /* Estilos principales */
-body {
-  background-color: #f5deb3; /* Marrón claro */
+.routeCard {
+    background-color: white;
+    border-radius: 8px;
+    padding: 0px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 500px;
+    height: 200px;
+    background-image: url('../../../../assets/images/fondo2.jpeg');
+    background-size: cover; /* Ajusta la imagen de fondo para que cubra todo el contenedor */
+    background-position: center;
+  }
+
+
+  .name {
+    width: 270px;
+    text-align: left;
+    font-size: 22px;
+    border-radius: 5px;
+    font-family: Arial;
+    align-items: center;
 }
 
-.routeCard {
-  background-color: #ffffff; /* Color de fondo para las cartas */
-  border: 2px solid #CEC7C7;
-  border-radius: 15px;
-  padding: 15px;
-  margin: 15px;
+.gridbackground{
+background-color: red;
+}
+
+
+.container-1{
+  background-color: #28ec39;
+  padding: 0px;
+  border-radius: 5px;
+  display: flex; /* Convertir el contenedor en un contenedor flexible */
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  text-align: center; /* Centrar el texto horizontalmente dentro del contenedor */
+}
+
+.container-2{
+  display: flex;
+  align-items: center;
+  background-color: #e7f713;
+  padding: 0px;
+  border-radius: 5px;
+}
+
+.container-3{
+  display: flex;
+  align-items: center;
+  background-color: #ffa600;
+  padding: 0px;
+  border-radius: 5px;
+}
+
+.container-4{
+  display: flex;
+  align-items: center;
+  background-color: #e72222;
+  padding: 0px;
+  border-radius: 5px;
+}
+
+
+.card-1{
+  background-color: #06fd1a ;
+  border-radius: 8px;
+  padding: 8px;
+  margin: 0px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
   cursor: pointer;
@@ -16,58 +76,120 @@ body {
   height: 200px;
 }
 
-.name {
-  width: 100%;
-  text-align: center;
-  font-size: 22px;
-  padding: 25px 0px;
+.card-2{
+  background-color: #b1a934;
+  border-radius: 8px;
+  padding: 8px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+  width: 500px;
+  height: 200px;
+}
+
+.card-3{
+  background-color: #e67b1d;
+  border-radius: 8px;
+  padding: 8px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+  width: 500px;
+  height: 200px;
+}
+
+.card-4{
+  background-color: #ca4242;
+  border-radius: 8px;
+  padding: 8px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+  width: 500px;
+  height: 200px;
+}
+
+
+.d-1{
+  background-color: white;
   border-radius: 5px;
-  font-family: Arial;
+  padding: 10px 10px;
+  width: 300px;
+  align-items: center;
+}
+.d-2{
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px 10px;
+  align-items: center;
+  width: 300px;
+}
+.d-3{
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px 10px;
+  align-items: center;
+  width: 300px;
+}
+.d-4{
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px 10px;
+  align-items: center; /* Centrar verticalmente */
+  width: 300px;
 }
 
-.gridbackground {
-  background-color: red; /* Cambiar el color de fondo */
+
+.img{
+  height: 50px;
+  max-width: 100%; /* Asegurar que la imagen no supere el ancho del contenedor */
+  display: block; /* Evitar que haya espacio extra debajo de la imagen */
+  margin: auto;
+  padding: 5px;
 }
 
-.grid {
-  background-color: #E67E22; /* Cambiar el color de fondo */
-}
+  .routeCard:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 
-.difficulty-1 {
-  background-color: #1E8449;
-  border-radius: 15px;
-}
+  .routeCard span {
+    margin-bottom: 8px;
+  }
 
-.difficulty-2 {
-  background-color: #F1C40F;
-  border-radius: 15px;
-}
+  .routeCard strong {
+    font-weight: bold;
+    color: hsla(0, 0%, 3%, 0.725);
+  }
 
-.difficulty-3 {
-  background-color: #E67E22;
-  border-radius: 15px;
-}
 
-.difficulty-4 {
-  background-color: #CD5C5C;
-  border-radius: 15px;
-}
+  .di-1{
+    padding: 0px 0px 0px 120px;
+  }
 
-.routeCard:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+  .di-2{
+    padding: 0px 0px 0px 100px;
+  }
 
-.routeCard span {
-  margin-bottom: 8px;
-}
+  .di-3{
+    padding: 0px 0px 0px 90px;
+  }
 
-.routeCard strong {
-  font-weight: bold;
-  color: hsla(0, 0%, 3%, 0.725);
-}
+  .di-4{
+    padding: 0px 0px 0px 70px;
+  }
 
-.mat-icon {
-  margin-right: 6px;
-  margin-left: 6px;
-  vertical-align: middle;
-}
+
+
+
+  .routeCard:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  mat-icon {
+    margin-right: 6px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }

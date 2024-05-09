@@ -63,6 +63,16 @@ public class RouteService  implements IRouteService {
         }
     }
 
+    @Override
+    public boolean UserRolQuery(Map<String, Object> attrMap){
+        UserInformation userInformation =(UserInformation) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(userInformation.getAuthorities().stream().anyMatch(c->c.toString().equals("manager"))){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public EntityResult insertImageAux(Object id_route,Object id_image) {
         Map<String,Object> image_RouteMapAttr=new HashMap();
         image_RouteMapAttr.put(RouteDao.ATTR_ID, id_route);
