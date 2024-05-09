@@ -1,0 +1,35 @@
+.businessCard {
+    width: 600px;
+    min-width: 300px;
+    background-color: #eff1f3;
+    border-radius: 10px; 
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.businessCard img {
+    margin-top: 8px;
+}
+
+.businessCard .office {
+    font-size: 0.8em;
+
+}
+
+.preview-image {
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.cardImg{
+    align-content: center;
+    width: 275px;
+}
+
+.cardInfo{
+    align-self: flex-end;
+    width: 275px;
+}
