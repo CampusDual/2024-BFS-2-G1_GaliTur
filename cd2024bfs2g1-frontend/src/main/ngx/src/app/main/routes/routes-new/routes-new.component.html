@@ -1,5 +1,5 @@
 
-<o-form attr="routesNew" label-header="{{'info_route' | oTranslate }}" label-header-align="start" service="routes" entity="route" keys="route_id" title="" (onInsert)="onClickOk($event)" message-service-type="customMessageServiceTypeRoutes">
+<o-form attr="routesNew" label-header="{{'info_route' | oTranslate }}" label-header-align="start" service="routes" entity="route" keys="route_id" title="" (onInsert)="onClickOk($event)" confirm-exit="false" message-service-type="customMessageServiceTypeRoutes">
     <o-column title=" ">
        
         <div fxLayout="row">
@@ -20,23 +20,23 @@
                     <br>
                     <div fxLayout="column">
                         <o-integer-input  class="txt" attr="estimated_duration"
-                        sql-type="NUMERIC" enabled="yes" min="1" max="9999"></o-integer-input>
+                        sql-type="NUMERIC" enabled="yes" min="1" max="5000"></o-integer-input>
                     </div>
                     <br>
                     <div fxLayout="column">
-                        <o-combo attr="difficulty" label="Select country" enabled="yes" [static-data]="difficultyArray"
+                        <o-combo attr="difficulty" label="{{ 'COMBO_DIFFICULTY' | oTranslate }}" enabled="yes" [static-data]="difficultyArray"
                          value-column="difficultyCode" columns="difficultyCode;difficultyText" null-selection="no"
                         visible-columns="difficultyText"></o-combo>
                     </div>
                     <br>
                     <div fxLayout="column">
-                        <o-checkbox  class="txt" attr="is_draft" sql-type="BOOLEAN" enabled="yes" required="yes"></o-checkbox>
+                        <o-slide-toggle attr="is_draft" class="txt" label="{{ 'is_draft' | oTranslate }}" read-only="no"></o-slide-toggle>
                     </div>
                     
                 </div>
                 <div fxLayout="column" class="imageInput">
                     <div fxLayout="column">
-                        <o-image id="image"  class="img" attr="images" sql-type="OTHER" entity="image" service="images" image-type="base64"></o-image>
+                        <o-image id="image" label="{{ 'IMAGE' | oTranslate }}" height="50" auto-fit="yes" class="img" attr="images" sql-type="OTHER" entity="image" service="images" image-type="base64"></o-image>
                     </div>
                 </div>
         </div>

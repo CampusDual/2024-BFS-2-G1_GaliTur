@@ -40,15 +40,15 @@ getValue(): any {
 
   public difficultyArray = [{
     difficultyCode: 1,
-    difficultyText: this.translate.get("Restaurant")
+    difficultyText: this.translate.get("EASY")
   }, {
     difficultyCode: 2,
-    difficultyText: 'United States'
+    difficultyText:  this.translate.get("INTERMEDIATE")
   }, {
     difficultyCode: 3,
-    difficultyText: 'United Kingdom'
+    difficultyText:  this.translate.get("HARD")
   }, {
     difficultyCode: 4,
-    difficultyText: 'Germany'
+    difficultyText:  this.translate.get("EXTREME")
   }]
 }

@@ -10,7 +10,7 @@
 }
 
 .imageInput div {
-    padding: 5px;
+    height: 96%;
 }
 
 .description-textarea {
@@ -19,3 +19,4 @@
         resize: none;
     }
 }
+
