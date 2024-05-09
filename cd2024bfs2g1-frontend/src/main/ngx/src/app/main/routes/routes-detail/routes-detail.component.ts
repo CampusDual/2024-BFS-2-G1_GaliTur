@@ -10,7 +10,7 @@ import { ViewLandmarkDetailComponent } from './view-landmark-detail/view-landmar
   templateUrl: './routes-detail.component.html',
   styleUrls: ['./routes-detail.component.css']
 })
-export class RoutesDetailComponent {
+export class RoutesDetailComponent implements OnInit{
 
   galleryImages: any[] = [];
 landmark: any;
@@ -22,10 +22,13 @@ landmark: any;
     protected dialog: MatDialog
   ) { }
 
+  ngOnInit(){
+  }
+
   public openDetailLandmark(data: any): void {
       this.dialog.open(ViewLandmarkDetailComponent, {
-        height: '500px',
-        width: '1000px',
+        height: '800px',
+        width: '1200px',
         data: data
       });
     
