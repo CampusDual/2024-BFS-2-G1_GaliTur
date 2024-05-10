@@ -1,4 +1,4 @@
-<o-form attr="packNew" keys="pck_id" fxLayout="column" #oFormPackNew 
+<o-form attr="packNew" keys="pck_id" fxLayout="column" #oFormPackNew service="packs" entity="pack"
      keys-sql-types="integer" (onInsert)="insertPacks($event)" confirm-exit="false">
      <o-row layout-align="start stretch">
         <o-column id="pack" title="{{ 'PACKS' | oTranslate }}" layout-align="start stretch" fxFlex="50" layout-padding>
