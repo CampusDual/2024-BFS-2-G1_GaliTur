@@ -62,7 +62,7 @@ export class BusinessDetailComponent {
     if(BusinessHomeComponent.page==1){
       this.router.navigate(['main/businesses']);
     }else{
-      this.router.navigate(['main/businesses/business-merchant']);
+      this.router.navigate(['main/business-merchant']);
     }
   }
 

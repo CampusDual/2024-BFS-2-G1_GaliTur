@@ -1,13 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
-import { BusinessDetailComponent } from '../business-detail/business-detail.component';
 import { OGridComponent, OntimizeService } from 'ontimize-web-ngx';
 import { Router } from '@angular/router';
-import { BusinessHomeComponent } from '../business-home/business-home.component';
+import { BusinessHomeComponent } from '../../business/business-home/business-home.component';
 
 @Component({
-  selector: 'app-business-home',
+  selector: 'app-business-merchant',
   templateUrl: './business-merchant.component.html',
   styleUrls: ['./business-merchant.component.css']
 })
@@ -33,5 +32,13 @@ export class BusinessMerchantComponent {
     BusinessHomeComponent.page = 2;
     this.router.navigate(['main/businesses/' + data.bsn_id]);
   }
+
+  truncateName(name: string): string {
+    if (name.length > 25) {
+        return name.substr(0, 25) + '...';
+    } else {
+        return name;
+    }
+}
 
 }
