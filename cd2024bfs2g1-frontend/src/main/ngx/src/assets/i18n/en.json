@@ -187,5 +187,14 @@
   "MESSAGES_INSERTED_ROUTE": "Route inserted succefully",
   "MESSAGES_FORM_CHANGES_WILL_BE_LOST_ROUTE": "Are you really sure you want to do this? All changes will be lost",
   "Message-insert": "Business insterted successfully",
-  "Message-error": "Can't insert business"
+  "Message-error": "Can't insert business",
+  "PACK_NAME": "Name pack",
+  "PACKS": "Packs",
+  "DATE_BEGIN": "Starting Date",
+  "DATE_END": "Ending Date",
+  "PRICE": "Price",
+  "PARTICIPANTS": "Participants"
+
+
+
 }
