@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { PackRoutingModule } from './pack-routing.module';
 import { PackHomeComponent } from './pack-home/pack-home.component';
+import { PackDetailComponent } from './pack-detail/pack-detail.component';
 
 
 @NgModule({
   declarations: [
-    PackHomeComponent
+    PackHomeComponent,
+    PackDetailComponent
   ],
   imports: [
     CommonModule,
