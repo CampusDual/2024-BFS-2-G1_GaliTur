@@ -1,0 +1,39 @@
+.landmark-map {
+    height: 780%;
+    width: 100%;
+}
+.mat-dialog-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .landmark-dialog-content {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .landmark-details {
+    width: 100%;
+    height: 100%;
+    margin: 50px, 20px, 20px, 20px;
+  }
+  .dialog-content-margin {
+    margin: 20px;
+  }
+  [fxFlex="30%"]{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    font-weight: bold;
+  }
+
+  .landmarkName{
+    width: 300px;
+    height: 300px;
+  }

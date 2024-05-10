@@ -8,7 +8,7 @@ import { CONFIG } from '../app.config';
 })
 export class LandmarksService {
 
-  constructor(private http: HttpClient) { }  
+  constructor(private http: HttpClient) { }
 
   getLandmark(route_id: number): Observable<any> {
     const url = CONFIG.apiEndpoint + '/routes/landmark/search'
@@ -20,9 +20,6 @@ export class LandmarksService {
       columns: [
         "landmark_id",
         "name",
-        "description",
-        "opening_time",
-        "closing_time",
         "coordinates"
       ]
     }

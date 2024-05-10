@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OGalleryModule } from 'ontimize-web-ngx-gallery';
 import { CustomMessageServiceRoutes } from './shared/services/customMessageRoutes.service';
 import { CustomMessageBusinessService } from './shared/services/customMessageBusiness.service';
-import { OMapModule } from 'ontimize-web-ngx-map';
+
 
 // Standard providers...
 // Defining custom providers (if needed)...
@@ -32,7 +32,7 @@ export const customProviders: any = [
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     OGalleryModule,
-    OMapModule
+
   ],
   declarations: [
     AppComponent
