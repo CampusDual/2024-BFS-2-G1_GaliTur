@@ -19,6 +19,7 @@ onChangeValue() {
   routeId:number = 10
 
   constructor(private routeService:RouteService){}
+
   ngAfterViewInit(): void {
     this.routeIdInput.setData(this.routeId)
     // this.routeIdInput.setData(this.routeId)
@@ -39,7 +40,6 @@ onChangeValue() {
   ngOnInit(): void {
     this.routeId=this.routeService.getActualRouteId()
     console.log('Al addLandmark le llego el id: ' + this.routeId)
-    this.routeIdInput.setData('pito')
   }
 
 

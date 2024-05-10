@@ -1,6 +1,6 @@
 <h2>{{'info_new_landmark' | oTranslate }}</h2>
 <o-form attr="landmarksNew" service="landmarks" entity="landmark" keys="landmark_id" title="">
-    <o-column>
+    <o-row>
         <div fxLayout="row">
             <div fxLayout="column" class="landmarkInfo">
                 <div fxLayout="column" fxLayoutGap="10px">
@@ -26,5 +26,14 @@
                 </div>
             </div>
         </div>
-    </o-column>
+        <!-- <div class="divMapa">
+            <o-map class="mapa" #oMapBasic center="42.240599, -8.720727" zoom="8" min-zoom="3" max-zoom="20"
+            zoom-control="no" search-control="no" layer-panel-visible="no"></o-map>
+        </div> -->
+        <div class="landmark-map">
+            <o-map #oMapMarker center="42.940599, -7.120727" zoom="8" min-zoom="3" max-zoom="20" zoom-control="yes"
+                search-control="no" layer-panel-visible="no" style="width: 100%; height: 100%;" fxFlex>
+            </o-map>
+        </div>
+    </o-row>
 </o-form>

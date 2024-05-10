@@ -9,6 +9,8 @@ import { OGalleryModule } from 'ontimize-web-ngx-gallery';
 import { AddLandmarkComponent } from './routes-new/add-landmark/add-landmark.component';
 import { ViewAllLandmarkComponent } from './routes-new/view-all-landmark/view-all-landmark.component';
 import { RouteService } from 'src/app/shared/services/route.service';
+import { OMapModule } from 'ontimize-web-ngx-map';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { RouteService } from 'src/app/shared/services/route.service';
     ViewAllLandmarkComponent
   ],
   imports: [
+    SharedModule,
+    OMapModule,
     CommonModule,
     RoutesRoutingModule,
     OntimizeWebModule,
