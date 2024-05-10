@@ -5,7 +5,7 @@
     pagination-controls="true" gutter-size="8px" fixed-header="yes" grid-item-height="300px" detail-mode="none"
     insert-button-floatable="no">
     <o-grid-item *ngFor="let data of routesGrid.dataArray">
-        <div *ngIf="!data.isdraft" (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-evenly center" [ngClass]="'card-' + data.difficulty"
+        <div *ngIf="!data.isdraft" (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-evenly center" [ngClass]="'card-'"
             class="routeCard">
                 <div [ngClass]="'container-' + data.difficulty" class="container">
                     <img src="assets/images/punto.png" class="img" alt="Imagen fácil">

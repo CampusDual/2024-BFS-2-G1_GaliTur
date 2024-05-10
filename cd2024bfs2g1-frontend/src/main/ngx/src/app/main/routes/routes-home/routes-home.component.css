@@ -1,61 +1,24 @@
 /* Estilos principales */
 .routeCard {
-    background-color: white;
     border-radius: 8px;
     padding: 0px;
     margin: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
     cursor: pointer;
     width: 500px;
     height: 200px;
-    background-image: url('../../../../assets/images/fondo2.jpeg');
+    background-image: url('../../../../assets/images/photoRouteDetails.jpg');
     background-size: cover; /* Ajusta la imagen de fondo para que cubra todo el contenedor */
     background-position: center;
 
 
   }
 
-  /*
-.img{
-  height: 50px;
-  max-width: 100%;
-  display: flex;
-
-  margin: 0,auto;
-  padding: 5px;
-}
-
-
-  .name {
-    width: 270px;
-    text-align: center;
-    font-size: 22px;
-    border-radius: 5px;
-    font-family: Arial;
-    align-items: center;
-    text-align: center;
-}
-
-.container .img
- {
-  height: 50px;
-  max-width: 100%;
-  display: flex;
-
-  margin: 0,auto;
-  padding: 5px;
-  display: block;
-  margin: 0 auto;
-}
-*/
-
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 10px;
+  padding: 4px;
   border-radius: 5px;
   &.container-1{
 
@@ -63,13 +26,13 @@
   }
 
   &.container-2{
-    background-color: #D8D016;
+    background-color: #d7bd05;
   }
   &.container-3{
-    background-color: #E7860C;
+    background-color: #d37009;
   }
   &.container-4{
-    background-color: #C83521;
+    background-color: #a3200e;
   }
 }
 
@@ -96,50 +59,15 @@
 background-color: red;
 }
 
-.card{
+.duration{
+text-align: center;
 
 }
-.card-1{
-  background-color: #84A45A ;
+
+.card{
   border-radius: 8px;
   padding: 8px;
   margin: 0px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-  cursor: pointer;
-  width: 500px;
-  height: 200px;
-}
-
-.card-2{
-  background-color: #D8D016;
-  border-radius: 8px;
-  padding: 8px;
-  margin: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-  cursor: pointer;
-  width: 500px;
-  height: 200px;
-}
-
-.card-3{
-  background-color: #E7860C;
-  border-radius: 8px;
-  padding: 8px;
-  margin: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-  cursor: pointer;
-  width: 500px;
-  height: 200px;
-}
-
-.card-4{
-  background-color: #C83521;
-  border-radius: 8px;
-  padding: 8px;
-  margin: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
   cursor: pointer;
@@ -175,57 +103,32 @@ background-color: red;
   padding: 10px 10px;
   align-items: center;
   width: 300px;
+  
+}
+
+.difficulty{
+  text-align: center;
+  
+  
+}
+
+
+
+mat-icon {
+  margin-right: 6px;
+  margin-left: 6px;
+  vertical-align: middle;
 }
 
 
 
 
-
-
-  .routeCard:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  .routeCard span {
-    margin-bottom: 8px;
-  }
-
   .routeCard strong {
     font-weight: bold;
+    
     color: hsla(0, 0%, 3%, 0.725);
   }
 
 
-  .di-1{
-    padding: 0px 0px 0px 120px;
-  }
+  
 
-  .di-2{
-    padding: 0px 0px 0px 120px;
-  }
-
-  .di-3{
-    padding: 0px 0px 0px 120px;
-  }
-
-  .di-4{
-    padding: 0px 0px 0px 120px;
-  }
-
-  .routeCard:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-
-
-  mat-icon {
-    margin-right: 6px;
-    margin-left: 6px;
-    vertical-align: middle;
-  }
-
-/*
-  .container mat-icon {
-    margin: 0;
-    vertical-align: middle;
-  }
-*/
