@@ -2,11 +2,13 @@
 <div class="page">
     <mat-card class="mainCard" style="background-color: #eff1f3; border-radius: 10px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); padding: 40px; margin: 10px;">
 
-        <o-form class="mainForm" #form attr="businessDetail" service="businesses" entity="business"
+        <o-form #packForm class="mainForm" #form attr="businessDetail" service="businesses" entity="business"
             keys="bsn_id" header-actions="false" undo-button="false" action show-header-actions-text="false"
-            show-header-navigation="no" class="fill-form" show-header="no" >
+            show-header-navigation="no" class="fill-form" show-header="no">
 
             <o-button class="back-button" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary" (click)="openBusinesses()" ></o-button>
+            <o-button  *ngFor="let business of businessForm.dataArray" class="back-button" attr="booking" type="ICON" icon="booking" layout-padding color="primary" (click)="bookPack($event, business)" ></o-button>
+
 
             <!-- Almaceno el negocio que he clicado -->
             <o-grid #businessForm attr="businessDetail" service="businesses" entity="business" keys="bsn_id"
@@ -23,6 +25,9 @@
                         label="Nombre" enabled="no" oHidden></o-text-input>
                     <h1 *ngFor="let business of businessForm.dataArray"> {{business.bsn_name}}</h1>
                 </div>
+
+                
+
 
                 <!-- Imagen del business -->
                 <div class="data-container">

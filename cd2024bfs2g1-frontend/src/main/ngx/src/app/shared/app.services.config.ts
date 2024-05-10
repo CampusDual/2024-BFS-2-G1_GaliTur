@@ -43,5 +43,8 @@ export const SERVICE_CONFIG: Object = {
   },
   'guideCities':{
     'path':'/guideCities'
+  },
+  'packBookings':{
+    'path':'/packBookings'
   }
 };
