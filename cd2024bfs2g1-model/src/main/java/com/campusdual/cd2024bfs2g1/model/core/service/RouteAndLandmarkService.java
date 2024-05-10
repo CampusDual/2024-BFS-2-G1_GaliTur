@@ -48,16 +48,16 @@ public class RouteAndLandmarkService implements IRouteAndLandmarkService {
     @Transactional(rollbackFor = Throwable.class)
     public EntityResult landmarksForRouteUpdate(final Map<?, ?> attributesValues, final Map<?, ?> keysValues) throws OntimizeJEERuntimeException {
         try {
-            if (!(Boolean) attributesValues.get(RouteLandmarkDao.ACTIVED)) {
+            if (!(Boolean) attributesValues.get(RouteLandmarkDao.ATTR_ACTIVED)) {
                 // insert
                 final Map<String, Object> valuesToInsert = new HashMap<>();
-                valuesToInsert.put(RouteLandmarkDao.ROUTE_ID, keysValues.get(RouteLandmarkDao.ROUTE_ID));
-                valuesToInsert.put(RouteLandmarkDao.LANDMARK_ID, keysValues.get(RouteLandmarkDao.LANDMARK_ID));
+                valuesToInsert.put(RouteLandmarkDao.ATTR_ROUTE_ID, keysValues.get(RouteLandmarkDao.ATTR_ROUTE_ID));
+                valuesToInsert.put(RouteLandmarkDao.ATTR_LANDMARK_ID, keysValues.get(RouteLandmarkDao.ATTR_LANDMARK_ID));
                 return this.daoHelper.insert(this.routeLandmarkDao, valuesToInsert);
-            } else if (keysValues.get(RouteLandmarkDao.ROUTE_LANDMARK_ID) != null) {
+            } else if (keysValues.get(RouteLandmarkDao.ATTR_ROUTE_LANDMARK_ID) != null) {
                 // delete
                 final Map<String, Object> valuesToDelete = new HashMap<>();
-                valuesToDelete.put(RouteLandmarkDao.ROUTE_LANDMARK_ID, keysValues.get(RouteLandmarkDao.ROUTE_LANDMARK_ID));
+                valuesToDelete.put(RouteLandmarkDao.ATTR_ROUTE_LANDMARK_ID, keysValues.get(RouteLandmarkDao.ATTR_ROUTE_LANDMARK_ID));
                 return this.daoHelper.delete(this.routeLandmarkDao, valuesToDelete);
             }
             return new EntityResultMapImpl();

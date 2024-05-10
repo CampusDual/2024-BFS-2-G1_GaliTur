@@ -14,11 +14,11 @@ export class ViewAllLandmarkComponent implements AfterViewInit{
   datosTabla: Landmark[] = [];
 
   protected configureService() {
-    const conf = this.ontimizeService.getDefaultServiceConfiguration('landmarks');
-    this.ontimizeService.configureService(conf);
+    const conf = this.ontimizelandmarkService.getDefaultServiceConfiguration('landmarks');
+    this.ontimizelandmarkService.configureService(conf);
   }
 
-  constructor(private ontimizeService: OntimizeService,private routeService:RouteService) { 
+  constructor(private ontimizelandmarkService: OntimizeService,private routeService:RouteService) { 
     this.configureService()
   }
   ngAfterViewInit(): void {
@@ -28,7 +28,7 @@ export class ViewAllLandmarkComponent implements AfterViewInit{
   }
 
   consultarDatosPorId(id: any): void {
-    this.ontimizeService.query({landmark_id:id},['landmark_id','name'],'landmark').subscribe((response) => {
+    this.ontimizelandmarkService.query({route_id: id},['landmark_id','name'],'landmark').subscribe((response) => {
       this.datosTabla.push(...response.data);
       console.log(this.datosTabla)
     });

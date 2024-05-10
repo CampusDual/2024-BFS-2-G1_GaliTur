@@ -6,12 +6,12 @@
         catalog="" schema="${mainschema}" table="route_landmark"
         datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
     <DeleteKeys>
-        <Column>uro_id</Column>
+        <Column>route_landmark_id</Column>
     </DeleteKeys>
     <UpdateKeys>
-        <Column>uro_id</Column>
+        <Column>route_landmark_id</Column>
     </UpdateKeys>
-    <GeneratedKey>uro_id</GeneratedKey>
+    <GeneratedKey>route_landmark_id</GeneratedKey>
     <Queries>
         <Query id="default">
             <Sentence>

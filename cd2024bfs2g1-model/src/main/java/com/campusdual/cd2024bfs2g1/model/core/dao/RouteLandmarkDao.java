@@ -8,13 +8,13 @@ import org.springframework.stereotype.Repository;
 @Repository(value = "RouteLandmarkDao")
 @Lazy
 @ConfigurationFile(
-        configurationFile = "dao/RouteLandmark.xml",
+        configurationFile = "dao/RouteLandmarkDao.xml",
         configurationFilePlaceholder = "dao/placeholders.properties")
 public class RouteLandmarkDao extends OntimizeJdbcDaoSupport {
-    public static final String ROUTE_LANDMARK_ID = "route_landmark_id";
-    public static final String ROUTE_ID = "route_id";
-    public static final String LANDMARK_ID = "landmark_id";
-    public static final String ACTIVED = "actived";
+    public static final String ATTR_ROUTE_LANDMARK_ID = "route_landmark_id";
+    public static final String ATTR_ROUTE_ID = "route_id";
+    public static final String ATTR_LANDMARK_ID = "landmark_id";
+    public static final String ATTR_ACTIVED = "actived";
 
 
 }

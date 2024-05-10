@@ -1,24 +1,18 @@
 .landmarkInfo{
     margin: 10px;
-    width: 50%;
+    width: 100%;
 }
 
 .landmarkInfo div {
     padding: 5px;
 }
 
-.divMapa{
-    width: 90%;
-    height: 500px;
-    margin: 10px;
-}
-
-.mapa{
-    height: 100%;
-    display: inherit;
-}
-
 .landmark-map {
-    height: 100%;
+    margin: 15px;
+    height: 90%;
     width: 100%;
+}
+
+.container{
+    height: 500px;
 }

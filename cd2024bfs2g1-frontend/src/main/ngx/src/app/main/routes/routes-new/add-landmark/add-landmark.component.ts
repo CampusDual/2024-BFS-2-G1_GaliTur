@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { RouteModel } from '../../route.model';
 import { RouteService } from 'src/app/shared/services/route.service';
 import { FormValueOptions, OTextInputComponent } from 'ontimize-web-ngx';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-landmark',
@@ -16,9 +17,9 @@ onChangeValue() {
 
   @ViewChild('routeIdInput') routeIdInput: OTextInputComponent
 
-  routeId:number = 10
+  routeId:number 
 
-  constructor(private routeService:RouteService){}
+  constructor(private routeService:RouteService, private router: Router, private route: ActivatedRoute){}
 
   ngAfterViewInit(): void {
     this.routeIdInput.setData(this.routeId)
@@ -40,6 +41,10 @@ onChangeValue() {
   ngOnInit(): void {
     this.routeId=this.routeService.getActualRouteId()
     console.log('Al addLandmark le llego el id: ' + this.routeId)
+  }
+
+  onClickOk(){
+    this.router.navigate(['../'],{relativeTo:this.route})
   }
 
 
