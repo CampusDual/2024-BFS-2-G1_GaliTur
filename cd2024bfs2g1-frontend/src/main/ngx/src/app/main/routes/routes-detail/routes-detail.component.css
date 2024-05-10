@@ -47,7 +47,7 @@
 }
 
 .o-gallery {
-  width: 300px;
+  
   height: 300px;
 }
 
@@ -82,7 +82,7 @@
 
 .mainPanel {
   background-image: url("../../../../assets/images/photoRouteDetails.jpg");
-  background-size: cover; /* Ajusta la imagen de fondo para que cubra todo el contenedor */
+  background-size: cover;
   background-position: center;
 
 }

@@ -6,10 +6,10 @@
         </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px" class="routesSecond">
-        <div fxLayout="column">
+        <div fxLayout="column" fxFlex="30">
             <o-gallery [gallery-images]="data.galleryImages" class="o-gallery"></o-gallery>
         </div>
-        <div fxLayout="column">
+        <div fxLayout="column" fxFlex="70">
             <div fxLayout="column" class="descriptionPanel" style="max-height: 200px; overflow-y: auto;">
                 <span *ngIf="data.description; else no_description">
                     <mat-icon></mat-icon><span>{{ data.description }}</span>
