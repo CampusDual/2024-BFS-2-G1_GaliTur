@@ -1,6 +1,7 @@
 /* Estilos principales */
 .routeCard {
-    border-radius: 8px;
+  border: 5px solid #64ac04d0;
+    border-radius: 20px;
     padding: 0px;
     margin: 10px;
     cursor: pointer;
@@ -19,21 +20,14 @@
   align-items: center;
   text-align: center;
   padding: 4px;
-  border-radius: 5px;
-  &.container-1{
+  border-radius: 15px;
+  background-color: #E4EBF2;
+  height: 45px;
+  
+}
 
-    background-color: #84A45A ;
-  }
-
-  &.container-2{
-    background-color: #d7bd05;
-  }
-  &.container-3{
-    background-color: #d37009;
-  }
-  &.container-4{
-    background-color: #a3200e;
-  }
+.mat-icon-color{
+    color:#70b317;
 }
 
 
@@ -49,23 +43,23 @@
   width: 270px;
   text-align: left;
   font-size: 22px;
-  border-radius: 5px;
+  border-radius: 20px;
   font-family: Arial;
   align-items: center;
   text-align: center;
 }
 
-.gridbackground{
-background-color: red;
-}
+
 
 .duration{
 text-align: center;
 
 }
 
+
+
 .card{
-  border-radius: 8px;
+  border-radius: 20px;
   padding: 8px;
   margin: 0px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -78,31 +72,36 @@ text-align: center;
 
 .d-1{
   background-color: #E4EBF2;
-  border-radius: 5px;
+  border-radius: 20px;
   padding: 10px 10px;
+  height: 70px;
   width: 300px;
   align-items: center;
 }
 .d-2{
   background-color: #E4EBF2;
-  border-radius: 5px;
+  border-radius: 20px;
+  height: 70px;
   padding: 10px 10px;
   align-items: center;
   width: 300px;
 }
 .d-3{
   background-color: #E4EBF2;
-  border-radius: 5px;
+  border-radius: 20px;
+  height: 70px;
   padding: 10px 10px;
   align-items: center;
   width: 300px;
 }
 .d-4{
   background-color: #E4EBF2;
-  border-radius: 5px;
+  border-radius: 20px;
+  height: 70px;
   padding: 10px 10px;
   align-items: center;
   width: 300px;
+  
   
 }
 
@@ -110,6 +109,22 @@ text-align: center;
   text-align: center;
   
   
+}
+
+.icon-difficulty-1 {
+  color: #69b704e7; /* Cambia el color según la dificultad */
+}
+
+.icon-difficulty-2 {
+  color: #d1cb1fde;
+}
+
+.icon-difficulty-3 {
+  color: #f69c15;
+}
+
+.icon-difficulty-4 {
+  color: #dc1d0f;
 }
 
 

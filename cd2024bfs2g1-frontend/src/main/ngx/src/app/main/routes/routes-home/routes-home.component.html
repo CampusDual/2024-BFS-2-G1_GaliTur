@@ -8,7 +8,7 @@
         <div *ngIf="!data.isdraft" (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-evenly center" [ngClass]="'card-'"
             class="routeCard">
                 <div [ngClass]="'container-' + data.difficulty" class="container">
-                    <img src="assets/images/punto.png" class="img" alt="Imagen fácil">
+                    <mat-icon>location_on</mat-icon> 
                     <span [ngClass]="'difficulty-' + data.difficulty" class="name"><strong>{{ data.name }} </strong></span>
                 </div>
                 <div [ngClass]="'d-' + data.difficulty">
@@ -19,7 +19,7 @@
                 </ng-template>
                 <div class="difficulty" [ngClass]="'di-' + data.difficulty">
                     <span *ngIf="data.difficulty; else no_difficulty">
-                        <mat-icon *ngFor="let _ of [].constructor(data.difficulty)">local_fire_department</mat-icon>
+                        <mat-icon  [ngClass]="getIconColorClass(data.difficulty)" *ngFor="let _ of [].constructor(data.difficulty)">local_fire_department</mat-icon>
                     </span>
                     <ng-template #no_difficulty>
                         <span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span>
