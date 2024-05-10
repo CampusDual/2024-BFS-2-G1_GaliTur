@@ -10,7 +10,7 @@
             <o-gallery [gallery-images]="data.galleryImages" class="o-gallery"></o-gallery>
         </div>
         <div fxLayout="column">
-            <div fxLayout="column" class="descriptionPanel">
+            <div fxLayout="column" class="descriptionPanel" style="max-height: 200px; overflow-y: auto;">
                 <span *ngIf="data.description; else no_description">
                     <mat-icon></mat-icon><span>{{ data.description }}</span>
                 </span>
@@ -38,7 +38,7 @@
                 </div>
                 
                 <div fxLayout="column" class="landmarkInfo">
-                    <button  (click)="openDetailLandmark(data)">
+                    <button>
                         <mat-icon> location_on </mat-icon><span><strong>Puntos de Interes</strong></span>
                     </button>
                 </div>

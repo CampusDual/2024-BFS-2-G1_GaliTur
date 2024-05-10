@@ -61,7 +61,10 @@
 .descriptionPanel {
   flex: 2;
   padding-left: 16px;
+  max-height: 200px;
+  overflow-y: auto; 
 }
+
 
 .estimatedDuration {
   display: flex;
