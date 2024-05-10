@@ -30,7 +30,7 @@ export class RoutesDetailComponent implements OnInit{
     const landmarkCoordinates= []
 
        this.ontimizeService.query({route_id: data.route_id}, ['name', 'l.landmark_id', 'coordinates'], 'landmark' ).subscribe((landmarkData) => {
-        data['landmarkName'] = landmarkData.data
+        data['landmark'] = landmarkData.data
         this.dialog.open(ViewLandmarkDetailComponent, {
           height: '800px',
           width: '1200px',

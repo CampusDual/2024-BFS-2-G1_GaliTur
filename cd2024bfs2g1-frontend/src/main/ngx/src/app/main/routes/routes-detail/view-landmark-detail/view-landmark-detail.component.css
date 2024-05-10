@@ -1,5 +1,5 @@
 .landmark-map {
-    height: 190%;
+    height: 250%;
     width: 100%;
 }
 .mat-dialog-container {
@@ -35,5 +35,5 @@
 
   .landmarkName{
     width: 300px;
-    height: 300px;
+    height: 50px;
   }
