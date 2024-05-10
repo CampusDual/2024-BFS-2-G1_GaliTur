@@ -2,20 +2,24 @@
      keys-sql-types="integer" (onInsert)="insertPacks($event)" confirm-exit="false">
      <o-row layout-align="start stretch">
         <o-column id="pack" title="{{ 'PACKS' | oTranslate }}" layout-align="start stretch" fxFlex="50" layout-padding>
-           
-                <o-text-input id="text" attr="pck_name" max-length="100" label="{{ 'PACK_NAME' | oTranslate }}" 
+
+                <o-text-input id="text" attr="pck_name" max-length="100" label="{{ 'PACK_NAME' | oTranslate }}"
                     required="yes" [validators]="blankValidator">
                     <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
                 </o-text-input>
-
-                <o-textarea-input attr="pck_description" label="{{ 'DESCRIPTION' | oTranslate }}" width="100%" rows="6"
+                <o-textarea-input id="description" attr="pck_description" label="{{ 'DESCRIPTION' | oTranslate }}" width="100%" rows="6"
                     class="form-field" required="yes" max-length="250" [validators]="blankValidator">
-                    <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
+                    <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}" ></o-validator>
                 </o-textarea-input>
             <div id="Fechas_Precio" fxLayout="row">
-                <o-date-input attr="pck_date_begin" label="{{ 'DATE_BEGIN' | oTranslate }}" sql-type="93" required="yes"></o-date-input>
-                <o-date-input attr="pck_date_end" label="{{ 'DATE_END' | oTranslate }}" sql-type="93" required="yes"></o-date-input>
-                <o-currency-input attr="pck_price" min="1" max="5000" label="{{ 'PRICE' | oTranslate }}" fxFlex.lg="80" fxFlex.xl="80" read-only="no"
+                <o-date-input attr="pck_date_begin" [min]="getDate()" #dateBegin (onChange)="dateChange()"
+                label="{{ 'DATE_BEGIN' | oTranslate }}" required="yes" [validators]="blankValidator">
+                    <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
+                </o-date-input>
+                <o-date-input attr="pck_date_end"  [min]="getDateEnd()" #dateEnd enabled="no" label="{{ 'DATE_END' | oTranslate }}" required="yes" [validators]="blankValidator">
+                    <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
+                </o-date-input>
+                <o-currency-input [step]="1" attr="pck_price" min="0" max="5000" label="{{ 'PRICE' | oTranslate }}" fxFlex.lg="80" fxFlex.xl="80" read-only="no"
                     required="no">
                 </o-currency-input>
             </div>
@@ -38,7 +42,7 @@
         </div>
         </o-column>
     <o-column fxFlex="50" layout-align="center center">
-        <o-image attr="img_id" sql-type="OTHER" label="{{ 'IMAGE' | oTranslate }}" required="no"></o-image>
+        <o-image attr="img_code" sql-type="OTHER" label="{{ 'IMAGE' | oTranslate }}" required="no"></o-image>
     </o-column>
 </o-row>
 </o-form>
