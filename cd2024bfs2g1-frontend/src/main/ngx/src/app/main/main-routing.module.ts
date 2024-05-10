@@ -17,6 +17,7 @@ export const routes: Routes = [
       { path: 'businesses', loadChildren: () => import('./business/business.module').then(m => m.BusinessModule) },
       { path: 'profile', component: ProfileComponent },
       { path: 'routes', loadChildren: () => import('./routes/routes.module').then(m => m.RoutesModule) },
+      { path: 'pack', loadChildren: () => import('./pack/pack.module').then(m => m.PackModule) }
     ]
   }
 ];

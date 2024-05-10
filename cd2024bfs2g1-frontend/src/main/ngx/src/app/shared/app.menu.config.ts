@@ -12,5 +12,11 @@ export const MENU_CONFIG: MenuRootItem[] = [
       { id: 'users', name: 'USERS', tooltip: 'USERS', route: '/main/admin/users', icon: 'person' }
     ]
   },
+  {
+    id: 'packs', name: 'PACKS', tooltip: 'PACKS', icon: 'hiking',
+    items: [
+      { id: 'myPacks', name: 'MY PACKS', tooltip: 'MY PACKS', route: '/main/pack/pack-client', icon: 'backpack' },
+    ]
+  },
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' }
 ];
