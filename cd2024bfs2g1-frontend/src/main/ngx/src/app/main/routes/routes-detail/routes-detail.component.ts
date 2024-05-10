@@ -29,9 +29,9 @@ export class RoutesDetailComponent implements OnInit{
 
       if(landmarkData.data.length){
         landmarkData.data.forEach(element => {
-          landmarkData.push(element.name)
+          landmark.push(element.name)
         });
-        data['landmark'] = landmark
+        data['landmarkName'] = landmark
       } 
 
       this.dialog.open(ViewLandmarkDetailComponent, {

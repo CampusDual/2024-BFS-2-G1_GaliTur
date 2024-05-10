@@ -11,6 +11,7 @@ export class ViewLandmarkDetailComponent {
 
   @ViewChild('oMap')
   protected oMap: OMapComponent;
+data: any;
 
   constructor() { }
 
