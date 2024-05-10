@@ -4,15 +4,15 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { BusinessDetailComponent } from '../business-detail/business-detail.component';
 import { OGridComponent, OntimizeService } from 'ontimize-web-ngx';
 import { Router } from '@angular/router';
+import { BusinessHomeComponent } from '../business-home/business-home.component';
 
 @Component({
   selector: 'app-business-home',
-  templateUrl: './business-home.component.html',
-  styleUrls: ['./business-home.component.css']
+  templateUrl: './business-merchant.component.html',
+  styleUrls: ['./business-merchant.component.css']
 })
-export class BusinessHomeComponent {
+export class BusinessMerchantComponent {
   public showWaitForLongTask = false;
-  public static page = 0;
 
   constructor(
     private ontimizeService: OntimizeService,
@@ -30,7 +30,7 @@ export class BusinessHomeComponent {
   }
 
   public openDetail(data: any): void {
-    BusinessHomeComponent.page = 1;
+    BusinessHomeComponent.page = 2;
     this.router.navigate(['main/businesses/' + data.bsn_id]);
   }
 

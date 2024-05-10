@@ -7,12 +7,14 @@ import { GalleryComponent, GalleryImage } from 'ontimize-web-ngx-gallery';
 import { BusinessRoutingModule } from './business-routing.module';
 import { BusinessNewComponent } from './business-new/business-new.component';
 import { OFormModule, OntimizeWebModule } from 'ontimize-web-ngx';
+import { BusinessMerchantComponent } from './business-merchant/business-merchant.component';
 
 @NgModule({
   declarations: [
     BusinessHomeComponent,
     BusinessDetailComponent,
-    BusinessNewComponent
+    BusinessNewComponent,
+    BusinessMerchantComponent
   ],
   imports: [
     CommonModule,

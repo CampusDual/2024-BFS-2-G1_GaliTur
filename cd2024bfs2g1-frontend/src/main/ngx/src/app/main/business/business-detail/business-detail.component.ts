@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { DialogService, ODialogConfig, OFormComponent, OTableComponent, OntimizeService } from 'ontimize-web-ngx';
+import { BusinessHomeComponent } from '../business-home/business-home.component';
 
 @Component({
   selector: 'app-business-detail',
@@ -57,7 +58,12 @@ export class BusinessDetailComponent {
   }
 
   public openBusinesses(): void {
-    this.router.navigate(['main/businesses']);
+
+    if(BusinessHomeComponent.page==1){
+      this.router.navigate(['main/businesses']);
+    }else{
+      this.router.navigate(['main/businesses/business-merchant']);
+    }
   }
 
   bookPack(event: any, data) {
