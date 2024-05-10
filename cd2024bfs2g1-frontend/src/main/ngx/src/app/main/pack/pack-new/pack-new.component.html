@@ -15,12 +15,12 @@
             <div id="Fechas_Precio" fxLayout="row">
                 <o-date-input attr="pck_date_begin" label="{{ 'DATE_BEGIN' | oTranslate }}" sql-type="93" required="yes"></o-date-input>
                 <o-date-input attr="pck_date_end" label="{{ 'DATE_END' | oTranslate }}" sql-type="93" required="yes"></o-date-input>
-                <o-currency-input attr="pck_price" label="{{ 'PRICE' | oTranslate }}" fxFlex.lg="80" fxFlex.xl="80" read-only="no"
+                <o-currency-input attr="pck_price" min="1" max="5000" label="{{ 'PRICE' | oTranslate }}" fxFlex.lg="80" fxFlex.xl="80" read-only="no"
                     required="no">
                 </o-currency-input>
             </div>
             <o-integer-input attr="pck_participants" label="{{ 'PARTICIPANTS' | oTranslate }}"
-                read-only="no" max-length="20" required="no" max-length="11"></o-integer-input>
+                read-only="no" required="no" max="100" min="1"></o-integer-input>
         <div fxLayout="row">
             <o-column  class="formZones">
                 <o-combo #comboZone attr="comboZone" label="{{ 'SELECT_PROVINCE' | oTranslate }}" query-method="query"  translate="yes" service="guideZones"
