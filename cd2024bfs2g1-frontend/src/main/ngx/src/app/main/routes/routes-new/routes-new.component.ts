@@ -1,21 +1,37 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { OSlideToggleComponent, OTextInputComponent, OTextareaInputComponent } from 'ontimize-web-ngx';
+import { RouteService } from 'src/app/shared/services/route.service';
+import { RouteModel } from '../route.model';
 
 @Component({
   selector: 'app-routes-new',
   templateUrl: './routes-new.component.html',
   styleUrls: ['./routes-new.component.css']
 })
-export class RoutesNewComponent {
-isChecked = true
-getValue(): any {
- return true
+export class RoutesNewComponent{
+onTest() {
+  this.router.navigate(['ok'],{relativeTo:this.route})
 }
 
-  constructor(private router:Router){}
+  @ViewChild("nameInput") nameInput: OTextInputComponent;
+  @ViewChild("descriptionInput") descriptionInput: OTextareaInputComponent;
 
-  onClickOk($event:Event){
-    this.router.navigate(['main/routes'])
 
+  constructor(private router:Router,private routeService:RouteService,private route: ActivatedRoute){
   }
+
+  show= false
+  isChecked = true
+
+  getValue(): any {
+  return true
+  }
+  
+  onClickOk(){
+    this.routeService.setActualRoute(this.nameInput.getValue(),this.descriptionInput.getValue())
+    this.router.navigate(['ok'],{relativeTo:this.route})
+    
+  }
+  
 }

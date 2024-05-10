@@ -9,9 +9,10 @@ import { ViewAllLandmarkComponent } from './routes-new/view-all-landmark/view-al
 const routes: Routes = [
   { path: '', component: RoutesHomeComponent },
   { path: 'new', component: RoutesNewComponent },
-  { path: 'ok', component: ViewAllLandmarkComponent},
+  { path: 'new/ok', component: ViewAllLandmarkComponent},
+  { path: 'new/ok/:landmark_id', component: AddLandmarkComponent},
   { path: ':route_id', component: RoutesDetailComponent},
-  { path: ':route_id/new', component: AddLandmarkComponent}
+ 
   
 ];
 

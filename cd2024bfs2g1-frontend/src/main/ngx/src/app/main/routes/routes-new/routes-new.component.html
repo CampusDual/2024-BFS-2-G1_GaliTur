@@ -1,14 +1,14 @@
 <h2>{{'info_route' | oTranslate }}</h2>
-<o-form attr="routesNew" service="routes" entity="route" keys="route_id" title="" (onInsert)="onClickOk($event)" message-service-type="customMessageServiceTypeRoutes">
+<o-form attr="routesNew" service="routes" entity="route" keys="route_id" title="" (onInsert)="onClickOk();$event.stopPropagation()" message-service-type="customMessageServiceTypeRoutes">
     <o-column>
         <div fxLayout="row">
                 <div fxLayout="column" class="routeInfo">
                     <div fxLayout="column" fxLayoutGap="10px">
-                        <o-text-input class="txt"  attr="name" sql-type="STRING"
+                        <o-text-input #nameInput class="txt"  attr="name" sql-type="STRING" 
                             enabled="yes" required="yes"></o-text-input>
                     </div>
                     <div fxLayout="column" fxLayoutGap="10px">
-                        <o-textarea-input  class="txt" attr="description"
+                        <o-textarea-input #descriptionInput  class="txt" attr="description"
                         sql-type="STRING" enabled="yes" required="yes"></o-textarea-input>
                     </div>
                     <div fxLayout="column" fxLayoutGap="10px">
@@ -31,6 +31,36 @@
         </div>
     </o-column>
 </o-form>
+<button (click)="onTest()">Pruebas</button>
+<!-- <button (click)="show= !show">Mostrar puntos de interes</button>
+<div *ngIf="show">
+    <h2>{{'info_landmark' | oTranslate }}</h2>
+<o-form #form attr="landmarksNew" service="landmarks" entity="landmark" keys="landmark_id" title="">
 
+     <o-table #landmarkTable attr="landmarkTable" service="routes" entity="landmarksForRoute" keys="route_id,landmark_id,route_landmark_id" parent-keys="route_id"
+        columns="route_id;landmark_id;route_landmark_id;activated;name"
+        visible-columns="route_id;landmark_id;route_landmark_id;activated;name" query-rows="10" select-all-checkbox="yes"
+        export-button="no" insert-button="yes" delete-button="yes" refresh-button="no" fixed-header="yes" [enabled]="!form.isInInsertMode()"
+        detail-mode="none" edition-mode="click" selection-mode="none" export-mode="local">
+        <o-table-columns-filter columns="name;description"></o-table-columns-filter>
+        <o-table-column attr="actived" title="active">
+            <o-table-cell-renderer-boolean boolean-type="string" true-value="S" false-value="N" true-value-type="icon" render-type="icon"
+              render-true-value="check_box" render-false-value="check_box_outline_blank">
+            </o-table-cell-renderer-boolean>
+            <o-table-cell-editor-boolean true-value="S" false-value="N" boolean-type="string">
+            </o-table-cell-editor-boolean>
+          </o-table-column>
+    </o-table> 
+
+    <o-table #landmarkTable attr="landmarkTable" service="landmarks" entity="landmark" keys="landmark_id"
+        columns="landmark_id;name;description"
+        visible-columns="landmark_id;name;description" query-rows="10" select-all-checkbox="yes"
+        export-button="no" insert-button="yes" delete-button="yes" refresh-button="no" fixed-header="yes"
+        detail-mode="none" edition-mode="click" export-mode="local">
+    </o-table>
+    
+</o-form>
+
+</div> -->
 
 

@@ -21,6 +21,9 @@
                     <o-text-input class="txt" attr="coordinates"
                     sql-type="STRING" enabled="yes"></o-text-input>
                 </div>
+                <div>
+                    <o-text-input #routeIdInput attr="input" label="Text" (onChange)="onChangeValue()" oHidden></o-text-input>
+                </div>
             </div>
         </div>
     </o-column>
