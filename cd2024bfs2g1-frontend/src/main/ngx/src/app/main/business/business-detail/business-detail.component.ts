@@ -44,7 +44,7 @@ export class BusinessDetailComponent {
     this.service.configureService(conf);
   }
 
-  getMovements(data) {
+  insertBooking(data) {
    
     this.service.insert({ "pck_id": data.bsn_id }, "packBooking")
     .subscribe(resp => {
@@ -72,7 +72,7 @@ export class BusinessDetailComponent {
       this.dialogService.confirm('Confirme reserva del pack', '¿Quiere confirmar la reserva?', config);
       this.dialogService.dialogRef.afterClosed().subscribe( result => {
         if(result) {
-          this.getMovements(data);
+          this.insertBooking(data);
 
           // Actions on confirmation
         } else {

@@ -10,13 +10,13 @@ import org.springframework.stereotype.Repository;
 @ConfigurationFile(configurationFile = "dao/pack/PackDao.xml", configurationFilePlaceholder = "dao/placeholders.properties")
 public class PackDao extends OntimizeJdbcDaoSupport {
 
-    private String PCK_ID = "pck_id";
-    private String PCK_NAME = "pck_name";
-    private String PCK_DESCRIPTION = "pck_description";
-    private String PCK_DATE_BEGIN = "pck_date_begin";
-    private String PCK_DATE_END = "pck_date_end";
-    private String PCK_ACTIVE = "pck_active";
-    private String PCK_PRICE = "pck_price";
-    private String PCK_PARTICIPANTS = "pck_participants";
-    private String PCK_GUI_C_ID = "gui_c_id";
+    public static String PCK_ID = "pck_id";
+    public static String PCK_NAME = "pck_name";
+    public static String PCK_DESCRIPTION = "pck_description";
+    public static String PCK_DATE_BEGIN = "pck_date_begin";
+    public static String PCK_DATE_END = "pck_date_end";
+    public static String PCS_ID = "pcs_id";
+    public static String PCK_PRICE = "pck_price";
+    public static String PCK_PARTICIPANTS = "pck_participants";
+    public static String PCK_GUI_C_ID = "gui_c_id";
 }
