@@ -1,4 +1,9 @@
 <div class="dialog-content-margin">
+    <div>
+        <button class="backButton" (click)="backToDetail(data) "><mat-icon class="arrow_back"><strong>arrow_back</strong></mat-icon></button>
+        <p class="titulo"><strong>PUNTOS DE INTERÉS</strong> </p>
+    </div>
+    <br>
     <div class="landmark-details">
         <div fxLayout="row" style="height: 100%;">
             <div fxFlex="70%">
@@ -10,19 +15,14 @@
                             [layer-center]="landmark.coordinates"                   
                             [layer-menu-label]="landmark.name">
                         </o-map-layer>
-
                     </o-map>
                 </div>
             </div>
         
             <div fxFlex="30%">
-                <p>PUNTOS DE INTERÉS</p>
+              
                 <div *ngFor="let landmark of data.landmark" class="landmarkName">{{ landmark.name }}</div>
-            </div>
-
-            <div>
-                <button class="backButton" (click)="backToDetail(data) "><mat-icon>arrow_back</mat-icon></button>
-            </div>
+            </div> 
         </div>
     </div>
 </div>

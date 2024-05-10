@@ -1,39 +1,48 @@
+/*Tamaño Mapa*/
 .landmark-map {
-    height: 250%;
+    height: 210%;
     width: 100%;
 }
-.mat-dialog-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .landmark-dialog-content {
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-  }
 
-  .landmark-details {
-    width: 100%;
-    height: 100%;
-    margin: 50px, 20px, 20px, 20px;
-  }
-  .dialog-content-margin {
+.dialog-content-margin {
     margin: 20px;
-  }
+    background-color: #ffe0c89c;
+    align-items: center;
+    height: 750px;
+}
+
+
   [fxFlex="30%"]{
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     height: 100%;
-    font-weight: bold;
+
   }
 
+/*Lusta de nombres de los puntos de interes*/
   .landmarkName{
-    width: 300px;
+    width: auto;
     height: 50px;
+    margin: 15px, 15px, 15px, 15px;
+    background-color: rgb(251, 255, 249);
+  }
+
+  /*Modificar Botón*/
+  .backButton{
+    height: 30px;
+  }
+  .arrow_back{
+    margin: auto;
+    color: #0c0c0c;
+  }
+
+  .titulo {
+    font-size: 24px; 
+    font-weight: bold; 
+    text-align: center;
+    margin-bottom: 20px; 
+    color: #020202; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
   }
