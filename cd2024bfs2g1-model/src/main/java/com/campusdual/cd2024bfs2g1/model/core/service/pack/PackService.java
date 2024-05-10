@@ -40,14 +40,14 @@ public class PackService implements IPackService {
     @Override
     @Transactional(rollbackFor = Throwable.class)
     public EntityResult packInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
-
         Object imgCode = attrMap.get(ImageDao.ATTR_IMAGE_CODE);
         attrMap.remove(ImageDao.ATTR_IMAGE_CODE);
-        EntityResult erInsertImage = imageService.imageInsert(Map.of(ImageDao.ATTR_IMAGE_CODE, imgCode));
-        if (erInsertImage.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertImage;
 
         EntityResult erInsertPack = this.daoHelper.insert(this.packDao, attrMap);
-        if (erInsertPack.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertPack;
+        if (erInsertPack.getCode() != EntityResult.OPERATION_SUCCESSFUL || imgCode == null) return erInsertPack;
+
+        EntityResult erInsertImage = imageService.imageInsert(Map.of(ImageDao.ATTR_IMAGE_CODE, imgCode));
+        if (erInsertImage.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertImage;
 
         Object packId = erInsertPack.get(PackDao.PCK_ID);
         Object imgId = erInsertImage.get(ImageDao.ATTR_IMAGE_ID);
