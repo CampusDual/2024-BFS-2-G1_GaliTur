@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { OMapComponent } from 'ontimize-web-ngx-map';
 
 @Component({
@@ -11,9 +12,10 @@ export class ViewLandmarkDetailComponent {
 
   @ViewChild('oMap')
   protected oMap: OMapComponent;
-data: any;
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+  private dialogRef: MatDialogRef<ViewLandmarkDetailComponent>  
+) { }
 
 
   ngAfterViewInit() {
@@ -34,6 +36,10 @@ data: any;
 
   set eventsArray(arg: Array<any>) {
     this._eventsArray = arg;
+  }
+
+  public backToDetail(data: any): void {
+    this.dialogRef.close()
   }
 
 }

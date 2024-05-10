@@ -14,7 +14,10 @@
         
         <div fxFlex="30%" style="padding: 20px;">
             <p>PUNTOS DE INTERÉS</p>
-            <div *ngFor="let landmark of data.landmarks" class="landmarkName">{{ landmark }}</div>
+            <div *ngFor="let landmark of data.landmarkName" class="landmarkName">{{ landmark.name }}</div>
+        </div>
+        <div>
+            <button class="backButton" (click)="backToDetail(data) "><mat-icon>arrow_back</mat-icon></button>
         </div>
         
     </div>

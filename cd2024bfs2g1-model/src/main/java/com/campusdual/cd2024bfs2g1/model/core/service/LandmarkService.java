@@ -23,7 +23,7 @@ public class LandmarkService implements ILandmarkService {
 
     @Override
     public EntityResult landmarkQuery(Map<String, Object> keyMap, List<String> attrList) {
-        return this.daoHelper.query(landmarkDao, keyMap, attrList);
+        return this.daoHelper.query(landmarkDao, keyMap, attrList, LandmarkDao.QUERY_LANDMARK_NAME);
     }
 
     @Override
