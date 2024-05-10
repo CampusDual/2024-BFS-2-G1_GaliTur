@@ -30,7 +30,8 @@ background-color: red;
 
 
 .container-1{
-  background-color: #28ec39;
+  
+  background-color: #84A45A ;
   padding: 0px;
   border-radius: 5px;
   display: flex; /* Convertir el contenedor en un contenedor flexible */
@@ -42,7 +43,7 @@ background-color: red;
 .container-2{
   display: flex;
   align-items: center;
-  background-color: #e7f713;
+  background-color: #D8D016;
   padding: 0px;
   border-radius: 5px;
 }
@@ -50,7 +51,7 @@ background-color: red;
 .container-3{
   display: flex;
   align-items: center;
-  background-color: #ffa600;
+  background-color: #E7860C;
   padding: 0px;
   border-radius: 5px;
 }
@@ -58,14 +59,14 @@ background-color: red;
 .container-4{
   display: flex;
   align-items: center;
-  background-color: #e72222;
+  background-color: #C83521;
   padding: 0px;
   border-radius: 5px;
 }
 
 
 .card-1{
-  background-color: #06fd1a ;
+  background-color: #84A45A ;
   border-radius: 8px;
   padding: 8px;
   margin: 0px;
@@ -77,7 +78,7 @@ background-color: red;
 }
 
 .card-2{
-  background-color: #b1a934;
+  background-color: #D8D016;
   border-radius: 8px;
   padding: 8px;
   margin: 10px;
@@ -89,7 +90,7 @@ background-color: red;
 }
 
 .card-3{
-  background-color: #e67b1d;
+  background-color: #E7860C;
   border-radius: 8px;
   padding: 8px;
   margin: 10px;
@@ -101,7 +102,7 @@ background-color: red;
 }
 
 .card-4{
-  background-color: #ca4242;
+  background-color: #C83521;
   border-radius: 8px;
   padding: 8px;
   margin: 10px;
@@ -114,28 +115,28 @@ background-color: red;
 
 
 .d-1{
-  background-color: white;
+  background-color: #E4EBF2;
   border-radius: 5px;
   padding: 10px 10px;
   width: 300px;
   align-items: center;
 }
 .d-2{
-  background-color: white;
+  background-color: #E4EBF2;
   border-radius: 5px;
   padding: 10px 10px;
   align-items: center;
   width: 300px;
 }
 .d-3{
-  background-color: white;
+  background-color: #E4EBF2;
   border-radius: 5px;
   padding: 10px 10px;
   align-items: center;
   width: 300px;
 }
 .d-4{
-  background-color: white;
+  background-color: #E4EBF2;
   border-radius: 5px;
   padding: 10px 10px;
   align-items: center; /* Centrar verticalmente */
