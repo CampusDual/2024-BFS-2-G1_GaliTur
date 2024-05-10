@@ -10,7 +10,7 @@ import { OMapComponent } from 'ontimize-web-ngx-map';
 export class ViewLandmarkDetailComponent {
   _eventsArray: Array<any> = [];
 
-  @ViewChild('oMap')
+  @ViewChild('oMapMarker')
   protected oMap: OMapComponent;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
@@ -19,6 +19,7 @@ export class ViewLandmarkDetailComponent {
 
 
   ngAfterViewInit() {
+    this.oMap.addMarker("1","42.940599","-7.120727",{},true,false,true,"1")
     this.getDrawLayer();
   }
 

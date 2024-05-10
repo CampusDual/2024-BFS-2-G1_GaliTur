@@ -1,30 +1,28 @@
 <div class="dialog-content-margin">
     <div class="landmark-details">
         <div fxLayout="row" style="height: 100%;">
-        <div fxFlex="70%">
-            <div class="landmark-map">
-            <o-map #oMapMarker center="42.940599, -7.120727" zoom="8" min-zoom="3" max-zoom="20" zoom-control="yes"
-                search-control="no" layer-panel-visible="no" style="width: 100%; height: 100%;">
+            <div fxFlex="70%">
+                <div class="landmark-map">
+                    <o-map #oMapMarker center="42.940599, -7.120727" zoom="8" min-zoom="3" max-zoom="20" zoom-control="yes"
+                        search-control="no" layer-panel-visible="no" fxFlex>
 
-                <o-map-layer    layer-type="marker" 
-                layer-id="office_marker" 
-                *ngFor="let landmark of data.landmark"
-                [layer-center]="landmark.coordinates"
-                layer-menu-label="Office headquarters" 
-                layer-menu-label-secondary="Location of office headquarters">
-                </o-map-layer>
+                        <o-map-layer   *ngFor="let landmark of data.landmark" layer-type="marker" layer-id="{{landmark.landmark_id}}" 
+                            [layer-center]="landmark.coordinates"                   
+                            [layer-menu-label]="landmark.name">
+                        </o-map-layer>
 
-            </o-map>
+                    </o-map>
+                </div>
+            </div>
+        
+            <div fxFlex="30%">
+                <p>PUNTOS DE INTERÉS</p>
+                <div *ngFor="let landmark of data.landmark" class="landmarkName">{{ landmark.name }}</div>
+            </div>
+
+            <div>
+                <button class="backButton" (click)="backToDetail(data) "><mat-icon>arrow_back</mat-icon></button>
             </div>
         </div>
-        
-        <div fxFlex="30%" >
-            <p>PUNTOS DE INTERÉS</p>
-            <div *ngFor="let landmark of data.landmark" class="landmarkName">{{ landmark.name }}</div>
-        </div>
-        <div>
-            <button class="backButton" (click)="backToDetail(data) "><mat-icon>arrow_back</mat-icon></button>
-        </div>
-        
     </div>
 </div>
