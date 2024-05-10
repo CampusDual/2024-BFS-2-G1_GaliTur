@@ -29,3 +29,17 @@ INSERT INTO pack_state(pcs_state)
 VALUES ('active');
 INSERT INTO pack_state(pcs_state)
 VALUES ('reserved');
+
+INSERT INTO usr_server_permission(srp_name)
+VALUES ('com.campusdual.cd2024bfs2g1.api.core.service.IPackService/packInsert');
+
+INSERT INTO usr_role_server_permission(rol_id, srp_id)
+VALUES ((SELECT usr_role.rol_id FROM usr_role WHERE rol_name = 'manager'),
+        (SELECT usr_server_permission.srp_id
+         FROM usr_server_permission
+         WHERE srp_name = 'com.campusdual.cd2024bfs2g1.api.core.service.IPackService/packInsert'));
+INSERT INTO usr_role_server_permission(rol_id, srp_id)
+VALUES ((SELECT usr_role.rol_id FROM usr_role WHERE rol_name = 'admin'),
+        (SELECT usr_server_permission.srp_id
+         FROM usr_server_permission
+         WHERE srp_name = 'com.campusdual.cd2024bfs2g1.api.core.service.IPackService/packInsert'));
