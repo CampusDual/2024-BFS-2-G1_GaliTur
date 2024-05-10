@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository("PackStateDao")
 @ConfigurationFile(configurationFile = "dao/pack/PackStateDao.xml", configurationFilePlaceholder = "dao/placeholders.properties")
 public class PackStateDao extends OntimizeJdbcDaoSupport {
+
     private String PCS_ID = "pcs_id";
     private String PCS_STATE = "pcs_state";
 }

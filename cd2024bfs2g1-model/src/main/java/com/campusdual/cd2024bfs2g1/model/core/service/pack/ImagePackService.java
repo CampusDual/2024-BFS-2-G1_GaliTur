@@ -15,6 +15,7 @@ import java.util.Map;
 @Lazy
 @Service("ImagePackService")
 public class ImagePackService implements IImagePackService {
+
     private final DefaultOntimizeDaoHelper daoHelper;
     private final ImagePackDao imagePackDao;
 
