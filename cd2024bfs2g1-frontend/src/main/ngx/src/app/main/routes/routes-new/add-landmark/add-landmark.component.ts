@@ -10,16 +10,18 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./add-landmark.component.css']
 })
 export class AddLandmarkComponent implements OnInit,AfterViewInit{
-  
+
 onChangeValue() {
   this.routeIdInput.setData(this.routeId)
 }
 
   @ViewChild('routeIdInput') routeIdInput: OTextInputComponent
 
-  routeId:number 
+  routeId:number
 
-  constructor(private routeService:RouteService, private router: Router, private route: ActivatedRoute){}
+  constructor(private routeService:RouteService,
+     private router: Router, private route: ActivatedRoute,
+     private activeRoute:ActivatedRoute){}
 
   ngAfterViewInit(): void {
     this.routeIdInput.setData(this.routeId)
@@ -28,18 +30,18 @@ onChangeValue() {
     ///////////////////////
     // if (this.routeIdInput) {
     //   const options: FormValueOptions = {
-    //     emitModelToViewChange: true, 
-    //     emitViewToModelChange: false, 
-    //     emitModelToViewValueChange: true 
+    //     emitModelToViewChange: true,
+    //     emitViewToModelChange: false,
+    //     emitModelToViewValueChange: true
     //   };
     //   this.routeIdInput.setValue(this.routeId.toString(), options);
     // }
     ///////////////////////
-    
+
   }
 
   ngOnInit(): void {
-    this.routeId=this.routeService.getActualRouteId()
+    this.routeId=this.activeRoute.snapshot.params['route_id']
     console.log('Al addLandmark le llego el id: ' + this.routeId)
   }
 
