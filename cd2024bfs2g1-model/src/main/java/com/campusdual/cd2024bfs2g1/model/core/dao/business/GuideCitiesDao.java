@@ -17,5 +17,4 @@ public class GuideCitiesDao extends OntimizeJdbcDaoSupport {
     public static final String GUI_Z_ID        = "gui_z_id";
     public static final String GUI_C_NAME         = "gui_c_name";
 
-
-}
+    }
