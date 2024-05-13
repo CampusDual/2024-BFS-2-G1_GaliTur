@@ -20,8 +20,8 @@ getValue(): any {
   }
 
   onClickOk($event:Event){
-    this.router.navigate(['main/routes'])
-
+    console.log('El id de la ruta es: '+$event['route_id']);
+    this.router.navigate(['main','routes', 'new', $event['route_id']])
   }
 
   blankValidator: ValidatorFn[] = [];
