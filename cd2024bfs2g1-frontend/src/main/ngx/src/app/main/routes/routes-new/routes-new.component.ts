@@ -24,6 +24,10 @@ getValue(): any {
     this.router.navigate(['main','routes', 'new', $event['route_id']])
   }
 
+  onClickCancel(){
+    this.router.navigate(['main','routes'])
+  }
+
   blankValidator: ValidatorFn[] = [];
   blanksValidator(control: AbstractControl): ValidationErrors | null{
     try{
