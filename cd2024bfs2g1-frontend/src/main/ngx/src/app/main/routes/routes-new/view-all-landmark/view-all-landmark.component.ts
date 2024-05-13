@@ -36,7 +36,7 @@ export class ViewAllLandmarkComponent implements AfterViewInit{
   }
 
   consultarDatosPorId(id: any): void {
-    this.ontimizelandmarkService.query({route_id: id},['l.landmark_id','l.name'],'landmark').subscribe((response) => {
+    this.ontimizelandmarkService.query({route_id: id},['l.landmark_id','l.name','l.description'],'landmark').subscribe((response) => {
       this.datosTabla.push(...response.data);
       console.log(this.datosTabla)
     });
