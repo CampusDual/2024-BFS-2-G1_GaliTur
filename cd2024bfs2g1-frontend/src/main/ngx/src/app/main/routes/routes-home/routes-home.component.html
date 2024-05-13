@@ -19,7 +19,8 @@
                 </ng-template>
                 <div class="difficulty" [ngClass]="'di-' + data.difficulty">
                     <span *ngIf="data.difficulty; else no_difficulty">
-                        <mat-icon  [ngClass]="getIconColorClass(data.difficulty)" *ngFor="let _ of [].constructor(data.difficulty)">local_fire_department</mat-icon>
+                        <mat-icon  [ngClass]="getIconColorClass(data.difficulty)" *ngFor="let _ of [].constructor(data.difficulty)">eco</mat-icon>
+                        <mat-icon  *ngFor="let _ of [].constructor(4 - data.difficulty)">eco</mat-icon>
                     </span>
                     <ng-template #no_difficulty>
                         <span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span>
