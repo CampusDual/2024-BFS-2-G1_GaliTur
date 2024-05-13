@@ -1,23 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PackNewComponent } from './pack-new/pack-new.component';
+import { PackDetailComponent } from './pack-detail/pack-detail.component';
 import { PackHomeComponent } from './pack-home/pack-home.component';
-import { PackClientComponent } from './pack-client/pack-client.component';
 
 const routes: Routes = [
-  {
-    path: '', component: PackHomeComponent,
-    
-  },
-  {
-    path: 'pack-client',
-    component: PackClientComponent
-  }
-// {
-//   path: 'pack-client/:pck_id',
-//   component: PackClientComponent  //aqui seria PackDetailComponent
-// }
-  
-  
+  {path:'', component: PackHomeComponent},
+  {path: 'new', component: PackNewComponent},
+  {path: ':pck_id', component: PackDetailComponent},
 ];
 
 @NgModule({

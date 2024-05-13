@@ -112,6 +112,10 @@
   "DESCRIPTION": "Description",
   "DESCR_&_ADDR": "Address and description",
   "INFO_EXTRA": "Additional information",
+  "INFO": "Information",
+  "START_DATE":"Start Date",
+  "END_DATE":"End Date",
+  "DAYS":"Number of Days",
   "SCHEDULE": "Opening hours",
   "PHONE": "Phone",
   "WEBSITE": "Website",
@@ -155,6 +159,9 @@
   "Double": "Double",
   "Triple": "Triple",
   "Price": "Price",
+  "TRAVELLERS":"Number of Travellers",
+  "PCK_CITY": "City",
+  "PCK_PROVINCE": "Province",
   "Dinner": "Dinner",
   "Breakfast": "Breakfast",
   "Lunch": "Lunch",
@@ -180,5 +187,14 @@
   "MESSAGES_INSERTED_ROUTE": "Route inserted succefully",
   "MESSAGES_FORM_CHANGES_WILL_BE_LOST_ROUTE": "Are you really sure you want to do this? All changes will be lost",
   "Message-insert": "Business insterted successfully",
-  "Message-error": "Can't insert business"
+  "Message-error": "Can't insert business",
+  "PACK_NAME": "Name pack",
+  "PACKS": "Packs",
+  "DATE_BEGIN": "Starting Date",
+  "DATE_END": "Ending Date",
+  "PRICE": "Price",
+  "PARTICIPANTS": "Participants"
+
+
+
 }

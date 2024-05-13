@@ -112,6 +112,11 @@
   "DESCRIPTION": "Descripción",
   "DESCR_&_ADDR": "Dirección y descripción",
   "INFO_EXTRA": "Información adicional",
+  "INFO": "Información",
+  "START_DATE":"Fecha de Inicio",
+  "END_DATE":"Fecha de Fin",
+  "DAYS":"Número de Días",
+  "TRAVELLERS":"Número de Viajeros",
   "SCHEDULE": "Horario",
   "PHONE": "Teléfono",
   "WEBSITE": "Página Web",
@@ -169,6 +174,8 @@
   "BSN_PROVINCE": "PROVINCIA",
   "BSN_LANGUAGE": "IDIOMA",
   "BSN_CITY": "CIUDAD",
+  "PCK_CITY": "Ciudad",
+  "PCK_PROVINCE": "Provincia",
   "SELECT_LANGUAGE": "Seleccione Idioma",
   "SELECT_PROVINCE": "Seleccione Provincia",
   "SELECT_CITY": "Seleccione Ciudad",
@@ -185,5 +192,11 @@
   "MESSAGES_INSERTED_ROUTE": "Ruta insertada correctamente",
   "MESSAGES_FORM_CHANGES_WILL_BE_LOST_ROUTE": "¿Estás realmente seguro de que quieres hacer esto? Todos los cambios se perderán.",
   "Message-insert": "Negocio insertado correctamente",
-  "Message-error": "No se ha podido insertar el negocio"
+  "Message-error": "No se ha podido insertar el negocio",
+  "PACK_NAME": "Nombre del pack",
+  "PACKS": "Paquetes",
+  "DATE_BEGIN": "Fecha de inicio",
+  "DATE_END": "Fecha final",
+  "PRICE": "Precio",
+  "PARTICIPANTS": "Participantes"
 }

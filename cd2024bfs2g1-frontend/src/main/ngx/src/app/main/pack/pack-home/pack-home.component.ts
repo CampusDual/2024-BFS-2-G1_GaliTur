@@ -1,42 +1,22 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
-import { OGridComponent, OntimizeService } from 'ontimize-web-ngx';
 import { Router } from '@angular/router';
+import { OntimizeService } from 'ontimize-web-ngx';
 
 @Component({
-  selector: 'app-business-home',
+  selector: 'app-pack-home',
   templateUrl: './pack-home.component.html',
   styleUrls: ['./pack-home.component.css']
 })
 export class PackHomeComponent {
-  public showWaitForLongTask = false;
-
   constructor(
     private ontimizeService: OntimizeService,
     protected dialog: MatDialog,
     protected sanitizer: DomSanitizer,
     private router: Router,
   ) {
-    this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration("businesses"));
+    this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration("PackService"));
   }
-  ngOnInit() {
-  }
-
-  public getImageSrc(base64: any): any {
-    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image-transparent.png';
-  }
-
-  public openDetail(data: any): void {
-    this.router.navigate(['main/businesses/' + data.bsn_id]);
-  }
-
-  truncateName(name: string): string {
-    if (name.length > 25) {
-        return name.substr(0, 25) + '...';
-    } else {
-        return name;
-    }
-}
 
 }

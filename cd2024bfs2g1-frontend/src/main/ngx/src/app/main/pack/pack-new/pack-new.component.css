@@ -1,0 +1,40 @@
+.price {
+    margin-inline-start: 35px;
+    width: 30%;
+}
+
+.o-image{
+    width: 90%;
+    height: 90%;
+}
+
+
+span {
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 5%;
+    width: 10px;
+}
+
+#comboCity{
+    margin-left: 15%;
+}
+
+.formZones{
+    width: 25%;
+}
+#pack *:not(div){
+    padding-bottom: 3%;
+
+}
+#pack{
+    width: 50%;
+}
+
+#Fechas_Precio *:not(o-currency-input){
+    padding-right: 3%;
+}
+
+
+
+
