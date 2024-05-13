@@ -1,7 +1,8 @@
-import { AfterViewInit, Component} from '@angular/core';
+import { AfterViewInit, Component, OnInit} from '@angular/core';
 import { Expression, FilterExpressionUtils, OntimizeService, Util } from 'ontimize-web-ngx';
 import { Landmark } from './landmark-model';
 import { RouteService } from 'src/app/shared/services/route.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-view-all-landmark',
@@ -10,21 +11,28 @@ import { RouteService } from 'src/app/shared/services/route.service';
 })
 export class ViewAllLandmarkComponent implements AfterViewInit{
 
-  
+  constructor(private ontimizelandmarkService: OntimizeService,
+    private routeService:RouteService, private activeRoute:ActivatedRoute) {
+    this.configureService()
+  }
+
   datosTabla: Landmark[] = [];
+  idRutaActual:number
 
   protected configureService() {
     const conf = this.ontimizelandmarkService.getDefaultServiceConfiguration('landmarks');
     this.ontimizelandmarkService.configureService(conf);
   }
 
-  constructor(private ontimizelandmarkService: OntimizeService,private routeService:RouteService) { 
-    this.configureService()
+  getRouteId():number{
+    return +this.activeRoute.snapshot.params['route_id']
   }
+
   ngAfterViewInit(): void {
-    const routeId=this.routeService.getActualRouteId()
-    this.consultarDatosPorId(routeId)
-    console.log('Mostando el id ' + routeId)
+    // const routeId=this.routeService.getActualRouteId()
+    this.idRutaActual = +this.getRouteId()
+    this.consultarDatosPorId(this.idRutaActual)
+    console.log('El id de mi ruta es :', +this.idRutaActual)
   }
 
   consultarDatosPorId(id: any): void {
@@ -33,18 +41,6 @@ export class ViewAllLandmarkComponent implements AfterViewInit{
       console.log(this.datosTabla)
     });
   }
-
-  // consultarDatosDirectamente(){
-  //   this.ontimizeService.query({
-  //     sql: this.query
-  //   }).subscribe((response) => {
-  //     if (response && response.data) {
-  //       this.datosTabla = response.data;
-  //     } else {
-  //       this.datosTabla = [];
-  //     }
-  //   });
-  // }
 
 
   createFilter(values: Array<{ attr; value }>): Expression {
@@ -56,7 +52,7 @@ export class ViewAllLandmarkComponent implements AfterViewInit{
           fil.attr === "description" ||
           fil.attr === "opening_time" ||
           fil.attr === "closing_time" ||
-          fil.attr === "coordinates" 
+          fil.attr === "coordinates"
         ) {
           filters.push(
             FilterExpressionUtils.buildExpressionLike(
