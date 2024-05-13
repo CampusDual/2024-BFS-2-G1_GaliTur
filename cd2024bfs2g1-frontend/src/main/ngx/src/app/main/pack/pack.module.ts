@@ -6,19 +6,21 @@ import { PackHomeComponent } from './pack-home/pack-home.component';
 import { PackDetailComponent } from './pack-detail/pack-detail.component';
 import { PackNewComponent } from './pack-new/pack-new.component';
 import { OFormModule, OntimizeWebModule } from 'ontimize-web-ngx';
+import { OGalleryModule } from 'ontimize-web-ngx-gallery';
 
 
 @NgModule({
   declarations: [
     PackHomeComponent,
-    PackDetailComponent
-    PackNewComponent
+    PackDetailComponent,
+    PackNewComponent,
   ],
   imports: [
     CommonModule,
     OntimizeWebModule,
     OFormModule,
-    PackRoutingModule
+    PackRoutingModule,
+    OGalleryModule
   ]
 })
 export class PackModule { }

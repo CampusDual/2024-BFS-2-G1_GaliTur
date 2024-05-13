@@ -1,71 +1,72 @@
 <div class="page">
     <mat-card class="mainCard" style="background-color: #eff1f3; border-radius: 10px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); padding: 40px; margin: 10px;">
 
-        <o-form class="mainForm" #form attr="businessDetail" service="businesses" entity="business"
-            keys="bsn_id" header-actions="false" undo-button="false" action show-header-actions-text="false"
+        <o-form class="mainForm" #form attr="packDetail" service="PackService" entity="packs"
+            keys="pck_id" header-actions="false" undo-button="false" action show-header-actions-text="false"
             show-header-navigation="no" class="fill-form" show-header="no" >
 
-            <o-button class="back-button" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary" (click)="openBusinesses()" ></o-button>
+            <o-button class="back-button" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary" (click)="openPacks()" ></o-button>
 
             <!-- Almaceno el negocio que he clicado -->
-            <o-grid #businessForm attr="businessDetail" service="businesses" entity="business" keys="bsn_id"
-                columns="bsn_id;merchant_id;bsn_name;bsn_type;bsn_description;bsn_cif;bsn_address;bsn_phone;bsn_email;bsn_creation_date;bsn_down_date;bsn_photos;bsn_website;bsn_schedule"
-                visible-columns="bsn_id;merchant_id;bsn_name;bsn_type;bsn_description;bsn_cif;bsn_address;bsn_phone;bsn_email;bsn_creation_date;bsn_down_date;bsn_photos;bsn_website;bsn_schedule"
-                parent-keys="bsn_id" refresh-button="false" quick-filter="false" oHidden/>
+            <o-grid #packForm attr="packDetail" service="PackService" entity="packs" keys="pck_id"
+                columns="pck_id;pck_name;pck_description;pck_date_begin;pck_date_end;pck_price;pck_participants;gui_c_id;pcs_id"
+                visible-columns="pck_id;pck_name;pck_description;pck_date_begin;pck_date_end;pck_price;pck_participants;gui_c_id;pcs_id"
+                parent-keys="pck_id" refresh-button="false" quick-filter="false" oHidden/>
 
             <!-- Div que contendrá toda la informacion del negocio -->
             <div class="main-container">
 
                 <!-- Nombre del business -->
                 <div class="name-container">
-                    <o-text-input #businessID read-only="yes" class="o-text-input" appearance="outline" attr="bsn_id" sql-type="INTEGER"
+                    <o-text-input #pck_id read-only="yes" class="o-text-input" appearance="outline" attr="pck_id" sql-type="INTEGER"
                         label="Nombre" enabled="no" oHidden></o-text-input>
-                    <h1 *ngFor="let business of businessForm.dataArray" oHidden> {{business.bsn_name}}</h1>
+                    <h1 *ngFor="let packs of packForm.dataArray" oHidden> {{packs.pck_name}}</h1>
                 </div>
 
-                <!-- Imagen del business -->
-                <div class="data-container">
+                
+                <!-- <div class="data-container">
                     <div class="div-image-container">
-                        <h1 class="image-title" *ngFor="let business of businessForm.dataArray"> {{business.bsn_name}} </h1>
-                        <img class="image" *ngFor="let business of businessForm.dataArray" [src]="getImageSrc(business.bsn_photos)">
-                    </div>
+                        <h1 class="image-title" *ngFor="let packs of packForm.dataArray"> {{packs.pck_name}} </h1>
+                        <img class="image" *ngFor="let packs of packForm.dataArray" [src]="">
+                        getImageSrc(business.bsn_photos)
+                     </div> 
 
                     
-                </div>
+                </div> --> 
 
                 <div class="div-active-pack-container">
                     <p class="active-title-pack">Activo</p>
                 </div>
 
                 <!-- Informacion adicional del business divididos en dos columnas (o-rows) -->
-                <div class="data-container" *ngFor="let business of businessForm.dataArray" line-height="2">
+                <div class="data-container" *ngFor="let packs of packForm.dataArray" line-height="2">
 
                     <!-- Direccion y descripcion -->
                     <o-row  class="o-rows" class="left" attr="container" icon="description" mat title="{{'DESCRIPTION' | oTranslate }}"
                         layout-align="start stretch" elevation="1" aria-orientation="vertical" appearance="outline" >
-                        <p>Descripción del pack chulísimo</p>
+                        <p *ngFor="let packs of packForm.dataArray"> {{packs.pck_description}} </p>
                     </o-row>
 
                     <!-- Horario, telefono, website y el cif -->
                     <o-row class="o-rows" class="right" attr="container" title="{{'INFO' | oTranslate }}" icon="info"
                         layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
                         <ul class="list-with-spaces">
-                            <li><strong><i>{{'START_DATE' | oTranslate }}: </i></strong>{{business.bsn_schedule}}</li>
-                            <li><strong><i>{{'END_DATE' | oTranslate }}: </i></strong>{{business.bsn_phone}}</li>
-                            <li><strong><i>{{'DAYS' | oTranslate }}: </i></strong>{{business.bsn_website}}</li>
-                            <li><strong><i>{{'Price' | oTranslate }}: </i></strong>{{business.bsn_website}}</li>
-                            <li><strong><i>{{'TRAVELLERS' | oTranslate }}: </i></strong>{{business.bsn_website}}</li>
-                            <li><strong><i>{{'PCK_PROVINCE' | oTranslate }}: </i></strong>{{business.bsn_website}}</li>
-                            <li><strong><i>{{'PCK_CITY' | oTranslate }}: </i></strong>{{business.bsn_website}}</li>
+                            <li><strong><i>{{'START_DATE' | oTranslate }}: </i></strong>{{packs.pck_date_begin}}</li>
+                            <li><strong><i>{{'END_DATE' | oTranslate }}: </i></strong>{{packs.pck_date_end}}</li>
+                            <li><strong><i>{{'DAYS' | oTranslate }}: </i></strong>{{packs.pck_name}}</li>
+                            <li><strong><i>{{'Price' | oTranslate }}: </i></strong>{{packs.pck_price}}</li>
+                            <li><strong><i>{{'TRAVELLERS' | oTranslate }}: </i></strong>{{packs.pck_participants}}</li>
+                            <li><strong><i>{{'PCK_PROVINCE' | oTranslate }}: </i></strong>{{packs.pck_name}}</li>
+                            <li><strong><i>{{'PCK_CITY' | oTranslate }}: </i></strong>{{packs.pck_name}}</li>
                         </ul>
                     </o-row>
 
                 </div>
 
 
-                <!-- Almaceno el tipo de negocio para verificarlo después y mostrar la informacion correspondiente -->
+                <!-- Almaceno el tipo de negocio para verificarlo después y mostrar la informacion correspondiente
                 <o-text-input #type read-only="yes" class="o-text-input" appearance="outline" attr="bsn_type"
-                    sql-type="STRING" label="Nombre" enabled="no" oHidden></o-text-input>
+                    sql-type="STRING" label="Nombre" enabled="no" oHidden></o-text-input> -->
 
             </div>
         </o-form>
