@@ -4,7 +4,10 @@
     background-color: #cbd3c5 ;
     align-items: center;
     height: 800px;
-}
+    background-image: url("../../../../../assets/images/photoRouteDetails.jpg");
+    background-size: cover;
+    background-position: center;
+  }
 
 /*Botón para vovler a Ruta*/
 .backButton{
