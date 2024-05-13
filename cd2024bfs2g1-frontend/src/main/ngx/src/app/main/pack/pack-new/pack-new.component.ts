@@ -1,6 +1,7 @@
 import { Component, Injector, ViewChild } from '@angular/core';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
+import moment from 'moment';
 import { ODateInputComponent, OTranslateService } from 'ontimize-web-ngx';
 
 @Component({
@@ -38,26 +39,8 @@ export class PackNewComponent {
       }
     } catch (e){}
   }
-  getDate(): number {
-    const fechaActual: Date = new Date();
-    return Math.floor(fechaActual.getTime());
+  getDate(): moment.Moment {
+    return moment()
   }
-  dateChange() {
-    if(this.dateBegin.getValue() === undefined){
-      this.dateEnd.enabled = "no"
-      this.dateEnd.setValue(null)
-    }else{
-      this.dateEnd.enabled = "yes"
-      this.numero = this.dateBegin.getValue()
-    }
-  }
-  getDateEnd(): number {
-    if (this.dateEnd !== null) {
-      return this.dateBegin.getValue();
-    } else {
-      return this.getDate();
-    }
-  }
-
 
 }

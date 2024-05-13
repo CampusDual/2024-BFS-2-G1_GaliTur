@@ -183,11 +183,8 @@
   "Message-error": "Can't insert business",
   "PACK_NAME": "Name pack",
   "PACKS": "Packs",
-  "DATE_BEGIN": "Starting Date",
-  "DATE_END": "Ending Date",
   "PRICE": "Price",
-  "PARTICIPANTS": "Participants"
-
-
-
+  "PARTICIPANTS": "Participants",
+  "DATE_RANGE": "Start and end date",
+  "SEPARATOR": " to "
 }

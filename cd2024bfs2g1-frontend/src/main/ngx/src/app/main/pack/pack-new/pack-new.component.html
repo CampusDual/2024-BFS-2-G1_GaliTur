@@ -11,34 +11,27 @@
                     class="form-field" required="yes" max-length="250" [validators]="blankValidator">
                     <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}" ></o-validator>
                 </o-textarea-input>
-            <div id="Fechas_Precio" fxLayout="row">
-                <o-date-input attr="pck_date_begin" [min]="getDate()" #dateBegin (onChange)="dateChange()"
-                label="{{ 'DATE_BEGIN' | oTranslate }}" required="yes" [validators]="blankValidator">
-                    <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
-                </o-date-input>
-                <o-date-input attr="pck_date_end"  [min]="getDateEnd()" #dateEnd enabled="no" label="{{ 'DATE_END' | oTranslate }}" required="yes" [validators]="blankValidator">
-                    <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
-                </o-date-input>
-                <o-currency-input [step]="1" attr="pck_price" min="0" max="5000" label="{{ 'PRICE' | oTranslate }}" fxFlex.lg="80" fxFlex.xl="80" read-only="no"
+                <o-daterange-input attr="dates" [min]="getDate()" label="{{ 'DATE_RANGE' | oTranslate }}" read-only="no"
+                                 required="yes"  format="DD/MM/YYYY" format="LL" separator="{{ 'SEPARATOR' | oTranslate }}"
+                                 show-week-numbers="true" mode="mobile">
+              </o-daterange-input>
+            <div id="Precio_participants" fxLayout="row">
+            <o-currency-input [step]="1" attr="pck_price" min="0" max="5000" label="{{ 'PRICE' | oTranslate }}" read-only="no"
                     required="no">
                 </o-currency-input>
-            </div>
             <o-integer-input attr="pck_participants" label="{{ 'PARTICIPANTS' | oTranslate }}"
                 read-only="no" required="no" max="100" min="1"></o-integer-input>
+            </div>
         <div fxLayout="row">
-            <o-column  class="formZones">
                 <o-combo #comboZone attr="comboZone" label="{{ 'SELECT_PROVINCE' | oTranslate }}" query-method="query"  translate="yes" service="guideZones"
                 entity="guideZone" value-column="gui_z_id"  columns="gui_z_name" visible-columns="gui_z_name"
                     keys="gui_z_id" multiple="no" null-selection="no" required="yes">
                 </o-combo>
-            </o-column>
-            <o-column class="formZones">
                 <o-combo id="comboCity" #comboCity attr="gui_c_id" label="{{ 'SELECT_CITY' | oTranslate }}"  translate="yes"
-                    query-method="query" value-column="gui_c_id" required="yes" service="guideCities" multiple="no" entity="guideCities"
+                    query-method="query" value-column="gui_c_id" required="yes" service="guideCities" multiple="no" null-selection="no" entity="guideCities"
                     columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id"
                     [query-on-event]="comboZone.onValueChange" parent-keys="gui_z_id:comboZone[gui_z_id]">
                 </o-combo>
-            </o-column>
         </div>
         </o-column>
     <o-column fxFlex="50" layout-align="center center">
