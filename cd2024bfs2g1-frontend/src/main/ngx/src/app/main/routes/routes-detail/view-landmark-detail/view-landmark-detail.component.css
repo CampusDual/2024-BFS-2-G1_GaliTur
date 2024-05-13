@@ -24,7 +24,7 @@
   background-color: #8d7561;
   margin: 0px 200px 0px 200px;
   color: #ffffff;
-  border: 10px solid;
+  border: 5px solid;
   border-color: #5f6652;
   border-radius: 6px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -34,8 +34,8 @@
 .landmark-map {
   height: 140%;
   width: 100%;
-  border: 10px solid;
-  border-radius: 10px;
+  border: 5px solid;
+  border-radius: 5px;
   border-color: #16a085
 }
 
