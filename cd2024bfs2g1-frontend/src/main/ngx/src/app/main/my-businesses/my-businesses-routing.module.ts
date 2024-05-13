@@ -4,7 +4,12 @@ import { BusinessMerchantComponent } from './business-merchant/business-merchant
 
 const routes: Routes = [
   {
-    path: '', component: BusinessMerchantComponent
+    path: '', component: BusinessMerchantComponent,  data: {
+      oPermission: {
+        permissionId: 'my-businesses-permissions',
+        restrictedPermissionsRedirect: '403'
+      }
+    }
   }
 ];
 

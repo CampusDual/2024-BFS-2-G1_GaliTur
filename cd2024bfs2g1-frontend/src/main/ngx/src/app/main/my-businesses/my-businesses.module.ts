@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MyBusinessesRoutingModule } from './my-businesses-routing.module';
 import { BusinessMerchantComponent } from './business-merchant/business-merchant.component';
-import { OGridComponent, OGridModule, OTranslateModule, OntimizeWebModule } from 'ontimize-web-ngx';
+import { OntimizeWebModule } from 'ontimize-web-ngx';
 
 
 @NgModule({
