@@ -18,16 +18,16 @@
 
 /*Titulo Puntos de Interes*/
 .titulo {
-  font-size: 24px; 
-  font-weight: bold; 
+  font-size: 24px;
+  font-weight: bold;
   text-align: center;
   background-color: #8d7561;
   margin: 0px 200px 0px 200px;
-  color: #ffffff; 
+  color: #ffffff;
   border: 10px solid;
   border-color: #5f6652;
   border-radius: 6px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /*Mapa*/
@@ -47,6 +47,8 @@
   background-color: #16a085;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow-y: scroll; 
+
 }
 
 /*Nombres de los puntos de interes*/
