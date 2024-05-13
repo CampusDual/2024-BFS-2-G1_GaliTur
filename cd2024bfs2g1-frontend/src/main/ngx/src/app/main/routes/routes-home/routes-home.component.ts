@@ -35,13 +35,13 @@ export class RoutesHomeComponent implements OnInit {
         images.push({ medium: "data:image/jpeg;base64," + element.img_code})
         });
         data['galleryImages'] = images
-      } 
+      }
 
       //this.landmarkService.getLandmark(data.route_id).subscribe
 
       this.dialog.open(RoutesDetailComponent, {
-        height: '550px',
-        width: '1000px',
+        height: '600px',
+        width: '1200px',
         data: data
       });
     })

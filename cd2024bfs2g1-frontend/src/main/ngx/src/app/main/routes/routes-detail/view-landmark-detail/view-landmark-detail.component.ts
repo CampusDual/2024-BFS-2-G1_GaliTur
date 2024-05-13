@@ -14,7 +14,7 @@ export class ViewLandmarkDetailComponent {
   protected oMap: OMapComponent;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-  private dialogRef: MatDialogRef<ViewLandmarkDetailComponent>  
+  private dialogRef: MatDialogRef<ViewLandmarkDetailComponent>
 ) { }
 
 
@@ -43,8 +43,6 @@ export class ViewLandmarkDetailComponent {
     this.dialogRef.close()
   }
 
-  zoomPointlandmark(data: any): void {
-    
-  }
+  zoomPointlandmark(data: any): void {}
 
 }
