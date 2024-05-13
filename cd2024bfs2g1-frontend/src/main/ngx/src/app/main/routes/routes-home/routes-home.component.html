@@ -8,7 +8,7 @@
         <div *ngIf="!data.isdraft" (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-evenly center" [ngClass]="'card-'"
             class="routeCard">
                 <div [ngClass]="'container-' + data.difficulty" class="container">
-                    <mat-icon>location_on</mat-icon> 
+                    <mat-icon>location_on</mat-icon>
                     <span [ngClass]="'difficulty-' + data.difficulty" class="name"><strong>{{ data.name }} </strong></span>
                 </div>
                 <div [ngClass]="'d-' + data.difficulty">
