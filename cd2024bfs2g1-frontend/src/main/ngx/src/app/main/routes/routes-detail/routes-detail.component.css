@@ -18,9 +18,9 @@
 }
 
 .routesSecond img {
-  max-width: 24px;
-  height: auto;
-  margin-right: 8px;
+  width: 250px;
+  height: 220px;
+  padding: 0px 0px 0px 30px;
   vertical-align: middle;
 }
 
@@ -46,7 +46,6 @@
 }
 
 .o-gallery {
-  
   height: 300px;
 }
 
@@ -61,7 +60,7 @@
   flex: 2;
   padding-left: 16px;
   max-height: 200px;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 
@@ -103,10 +102,10 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px; 
+  font-size: 16px;
   cursor: pointer;
-  border-radius: 5px; 
-  transition: background-color 0.3s; 
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
 .custom-button:hover {
