@@ -27,7 +27,7 @@ export class RoutesDetailComponent implements OnInit{
 
 
   public convertTime(minutos: number):  string {
-    
+
     const horas = Math.floor(minutos / 60);
     const minutosRestantes = minutos % 60;
     if(horas == 0 && minutosRestantes != 0){
@@ -37,9 +37,23 @@ export class RoutesDetailComponent implements OnInit{
     }else{
        return horas + "h " + minutosRestantes + "min";
     }
-   
-  
+
+
   }
+
+  getIconColorClass(difficulty: number): string {
+    switch(difficulty) {
+      case 1:
+          return 'icon-difficulty-1';
+      case 2:
+          return 'icon-difficulty-2';
+      case 3:
+          return 'icon-difficulty-3';
+      case 4:
+          return 'icon-difficulty-4';
+
+  }
+}
 
 }
 

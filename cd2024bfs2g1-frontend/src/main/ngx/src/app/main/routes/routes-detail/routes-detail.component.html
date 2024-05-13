@@ -33,13 +33,12 @@
                 </div>
                 <div fxLayout="column" class="difficulty">
                     <span *ngIf="data.difficulty; else no_difficulty">
-                        <mat-icon *ngFor="let _ of [].constructor(data.difficulty)">local_fire_department</mat-icon>
+                        <mat-icon [ngClass]="getIconColorClass(data.difficulty)" *ngFor="let _ of [].constructor(data.difficulty)">local_fire_department</mat-icon>
                     </span>
                     <ng-template #no_difficulty>
                         <span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span>
                     </ng-template>
                 </div>
-
                 <div fxLayout="column" class="landmarkInfo">
                     <button button class="custom-button">
                         <mat-icon> location_on </mat-icon><strong>Puntos de Interés</strong>
