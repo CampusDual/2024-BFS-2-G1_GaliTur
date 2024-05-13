@@ -136,7 +136,7 @@
   "images": "Imágenes",
   "opening_time": "Horario de apertura",
   "closing_time": "Horario de cierre",
-  "info_route": "Nueva ruta: información basica",
+  "info_route": "DATOS DE LA RUTA",
   "info_landmark": "Nueva ruta: puntos de interés",
   "info_new_landmark": "Nuevo punto de interés: información basica",
   "available_landmark": "Puntos de interés disponibles",
@@ -185,5 +185,10 @@
   "MESSAGES_INSERTED_ROUTE": "Ruta insertada correctamente",
   "MESSAGES_FORM_CHANGES_WILL_BE_LOST_ROUTE": "¿Estás realmente seguro de que quieres hacer esto? Todos los cambios se perderán.",
   "Message-insert": "Negocio insertado correctamente",
-  "Message-error": "No se ha podido insertar el negocio"
+  "Message-error": "No se ha podido insertar el negocio",
+  "COMBO_DIFFICULTY": "Seleccione dificultad",
+  "EASY": "Fácil",
+  "INTERMEDIATE": "Intermedio",
+  "HARD": "Difícil",
+  "EXTREME": "Extremo"
 }
