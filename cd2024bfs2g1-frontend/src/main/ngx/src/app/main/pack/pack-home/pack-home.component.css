@@ -1,8 +1,8 @@
 .businessCard {
-    width: 600px;
+    width: 520px;
     min-width: 300px;
     background-color: #eff1f3;
-    border-radius: 10px; 
+    border-radius: 10px;
     padding: 16px;
     display: flex;
     flex-direction: row;
@@ -28,7 +28,7 @@
 
 .cardImg{
     align-content: center;
-    width: 275px;
+    width: 250px;
     height: 250px;
 }
 
@@ -50,9 +50,9 @@
 }
 
 .not-available {
-    opacity: 0.5; 
-    filter: grayscale(100%); 
-    position: relative; 
+    opacity: 0.5;
+    filter: grayscale(100%);
+    position: relative;
 }
 
 .unavailable-message {
@@ -64,4 +64,8 @@
     padding: 8px 16px;
     border-radius: 4px;
     font-size: 20px;
+}
+
+.pack-name {
+    color: #52733B;
 }

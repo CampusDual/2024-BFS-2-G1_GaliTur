@@ -43,5 +43,15 @@ export const SERVICE_CONFIG: Object = {
   },
   'guideCities':{
     'path':'/guideCities'
-  }
+  },
+  'packs':{
+    'path':'/packs'
+  },
+  'imagePacks':{
+    'path':'/imagePacks'
+  },
+  'images':{
+    'path':'/images'
+  },
+
 };
