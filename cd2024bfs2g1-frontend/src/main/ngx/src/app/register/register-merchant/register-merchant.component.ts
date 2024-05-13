@@ -87,7 +87,7 @@ export class RegisterMerchantComponent {
           this.form.insert()
           this.router.navigate(['/login'])
         } else if (result.data[0].usr_login === this.login.getValue()){
-          this.dialogService.error('Login error', 'Username already exists'); 
+          this.dialogService.error('Login error', 'Username already exists');
         } else if (result.data[0].usr_email === this.email.getValue()){
           this.dialogService.error('Email error', 'Email already exists')
         }
@@ -98,5 +98,9 @@ export class RegisterMerchantComponent {
     const newPassword = control.parent?.get('usr_password') as FormControl;
     const confirmNewPassword = control.parent?.get('confirm_new_password') as FormControl;
     return newPassword && confirmNewPassword && newPassword.value === confirmNewPassword.value ? null : { matchNewPassword: true };
+  }
+
+  navLogin() {
+    this.router.navigate(['/login'])
   }
 }

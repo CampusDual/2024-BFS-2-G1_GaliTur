@@ -122,4 +122,8 @@ export class RegisterClientComponent{
   getTime() {
     return new Date(new Date().getTime() - (18 * 60 * 60 * 1000)).toISOString();
   }
+
+  navLogin() {
+    this.router.navigate(['/login'])
+  }
 }
