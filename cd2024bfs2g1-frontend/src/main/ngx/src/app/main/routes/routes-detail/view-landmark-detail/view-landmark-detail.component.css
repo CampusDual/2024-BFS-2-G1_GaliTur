@@ -1,0 +1,67 @@
+
+/* Contenedor principal */
+.dialog-content-margin {
+    background-color: #cbd3c5 ;
+    align-items: center;
+    height: 800px;
+}
+
+/*Botón para vovler a Ruta*/
+.backButton{
+  height: 30px;
+  margin: 15px 15px 15px 15px;
+}
+.arrow_back{
+  margin: auto;
+  color: #0c0c0c;
+}
+
+/*Titulo Puntos de Interes*/
+.titulo {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  background-color: #8d7561;
+  margin: 0px 200px 0px 200px;
+  color: #ffffff;
+  border: 5px solid;
+  border-color: #5f6652;
+  border-radius: 6px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/*Mapa*/
+.landmark-map {
+  height: 118%;
+  width: 100%;
+  border: 5px solid;
+  border-radius: 5px;
+  border-color: #16a085
+}
+
+/* Lista de nombres */
+.landmark-list {
+  width: 32%;
+  margin-top: 120px;
+  padding: 15px;
+  background-color: #16a085;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow-y: scroll; 
+
+}
+
+/*Nombres de los puntos de interes*/
+.landmarkName {
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px;
+  margin-top: 15px;
+  margin-left: 50px;
+  background-color: #fcfbfb;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+

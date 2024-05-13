@@ -37,12 +37,7 @@
             <Sentence>
                 <![CDATA[
                     SELECT
-                        l.landmark_id,
-                        l.name,
-                        l.description,
-                        l.opening_time,
-                        l.closing_time,
-                        l.coordinates
+                        #COLUMNS#
                     FROM
                         ${mainschema}.landmark l
                     JOIN route_landmark

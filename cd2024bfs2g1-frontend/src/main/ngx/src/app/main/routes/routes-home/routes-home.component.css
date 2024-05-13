@@ -23,7 +23,7 @@
   border-radius: 15px;
   background-color: #E4EBF2;
   height: 45px;
-  
+
 }
 
 .mat-icon-color{
@@ -101,14 +101,14 @@ text-align: center;
   padding: 10px 10px;
   align-items: center;
   width: 300px;
-  
-  
+
+
 }
 
 .difficulty{
   text-align: center;
-  
-  
+
+
 }
 
 .icon-difficulty-1 {
@@ -140,10 +140,10 @@ mat-icon {
 
   .routeCard strong {
     font-weight: bold;
-    
+
     color: hsla(0, 0%, 3%, 0.725);
   }
 
 
-  
+
 

@@ -14,6 +14,7 @@ import { OGalleryModule } from 'ontimize-web-ngx-gallery';
 import { CustomMessageServiceRoutes } from './shared/services/customMessageRoutes.service';
 import { CustomMessageBusinessService } from './shared/services/customMessageBusiness.service';
 
+
 // Standard providers...
 // Defining custom providers (if needed)...
 export const customProviders: any = [
@@ -30,7 +31,8 @@ export const customProviders: any = [
     OntimizeWebModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    OGalleryModule
+    OGalleryModule,
+
   ],
   declarations: [
     AppComponent

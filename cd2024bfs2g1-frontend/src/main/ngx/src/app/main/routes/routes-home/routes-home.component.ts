@@ -11,7 +11,6 @@ import { LandmarksService } from '../../landmarks.service';
   styleUrls: ['./routes-home.component.css']
 })
 export class RoutesHomeComponent implements OnInit {
-data: any;
 
   constructor(
     protected dialog: MatDialog,
@@ -36,7 +35,7 @@ data: any;
         images.push({ medium: "data:image/jpeg;base64," + element.img_code})
         });
         data['galleryImages'] = images
-      }
+      } 
 
       //this.landmarkService.getLandmark(data.route_id).subscribe
 
