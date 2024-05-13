@@ -40,7 +40,7 @@ export class RoutesHomeComponent implements OnInit {
       //this.landmarkService.getLandmark(data.route_id).subscribe
 
       this.dialog.open(RoutesDetailComponent, {
-        height: '500px',
+        height: '550px',
         width: '1000px',
         data: data
       });
