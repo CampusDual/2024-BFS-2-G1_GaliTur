@@ -5,24 +5,25 @@
     </div>
     <br>
     <div class="landmark-container">
-        
+
         <div fxLayout="row" style="height: 100%;">
             <div fxFlex="5%"></div>
             <div fxFlex="65%">
                 <div class="landmark-map">
                     <o-map #oMapMarker center="42.940599, -7.120727" zoom="8" min-zoom="3" max-zoom="20" zoom-control="yes"search-control="no" layer-panel-visible="no" fxFlex>
-
-                        <o-map-layer   *ngFor="let landmark of data.landmark" layer-type="marker" layer-id="{{landmark.landmark_id}}" 
-                            [layer-center]="landmark.coordinates"                   
+                        <ng-container *ngIf="data.landmark.length">
+                        <o-map-layer   *ngFor="let landmark of data.landmark" layer-type="marker" layer-id="{{landmark.landmark_id}}"
+                            [layer-center]="landmark.coordinates"
                             [layer-menu-label]="landmark.name">
                         </o-map-layer>
+                    </ng-container>
                     </o-map>
                 </div>
             </div>
             <div fxFlex="5%"></div>
             <div fxFlex="20%" class="landmark-list">
                 <p><button *ngFor="let landmark of data.landmark" (click)="zoomPointlandmark(data)" class="landmarkName">{{ landmark.name }}</button><p>
-            </div> 
+            </div>
         </div>
     </div>
 </div>
