@@ -4,12 +4,13 @@
         <p class="titulo"><strong>PUNTOS DE INTERÉS</strong> </p>
     </div>
     <br>
-    <div class="landmark-details">
+    <div class="landmark-container">
+        
         <div fxLayout="row" style="height: 100%;">
-            <div fxFlex="70%">
+            <div fxFlex="5%"></div>
+            <div fxFlex="65%">
                 <div class="landmark-map">
-                    <o-map #oMapMarker center="42.940599, -7.120727" zoom="8" min-zoom="3" max-zoom="20" zoom-control="yes"
-                        search-control="no" layer-panel-visible="no" fxFlex>
+                    <o-map #oMapMarker center="42.940599, -7.120727" zoom="8" min-zoom="3" max-zoom="20" zoom-control="yes"search-control="no" layer-panel-visible="no" fxFlex>
 
                         <o-map-layer   *ngFor="let landmark of data.landmark" layer-type="marker" layer-id="{{landmark.landmark_id}}" 
                             [layer-center]="landmark.coordinates"                   
@@ -18,11 +19,12 @@
                     </o-map>
                 </div>
             </div>
-        
-            <div fxFlex="30%">
-              
+            <div fxFlex="5%"></div>
+            <div fxFlex="20%" class="landmark-list">
                 <div *ngFor="let landmark of data.landmark" class="landmarkName">{{ landmark.name }}</div>
             </div> 
         </div>
     </div>
 </div>
+
+
