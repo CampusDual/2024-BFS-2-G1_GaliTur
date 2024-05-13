@@ -1,5 +1,5 @@
 <h2>{{'info_new_landmark' | oTranslate }}</h2>
-<o-form attr="landmarksNew" service="landmarks" entity="landmark" keys="landmark_id" title="" (onInsert)="onClickOk();$event.stopPropagation()" message-service-type="customMessageServiceTypeLandmarks">
+<o-form attr="landmarksNew" service="landmarks" entity="landmark" keys="landmark_id" title="" (onInsert)="onClickOk();$event.stopPropagation()" confirm-exit="false" message-service-type="customMessageServiceTypeLandmarks">
     <o-row class="container">
         <div fxLayout="row">
             <div fxLayout="column" class="landmarkInfo">
