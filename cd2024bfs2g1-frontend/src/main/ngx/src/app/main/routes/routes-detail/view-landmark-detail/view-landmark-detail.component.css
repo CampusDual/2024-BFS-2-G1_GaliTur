@@ -32,7 +32,7 @@
 
 /*Mapa*/
 .landmark-map {
-  height: 140%;
+  height: 118%;
   width: 100%;
   border: 5px solid;
   border-radius: 5px;
@@ -41,9 +41,9 @@
 
 /* Lista de nombres */
 .landmark-list {
-  width: 25%;
+  width: 32%;
   margin-top: 120px;
-  padding: 10px;
+  padding: 15px;
   background-color: #16a085;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -54,12 +54,12 @@
 /*Nombres de los puntos de interes*/
 .landmarkName {
   font-family: "Arial", sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   text-align: center;
-  padding: 10px;
-  margin: 5px 0;
+  padding: 15px;
   margin-top: 15px;
+  margin-left: 50px;
   background-color: #fcfbfb;
   border-radius: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

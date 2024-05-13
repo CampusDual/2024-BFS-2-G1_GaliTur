@@ -43,4 +43,8 @@ export class ViewLandmarkDetailComponent {
     this.dialogRef.close()
   }
 
+  zoomPointlandmark(data: any): void {
+    
+  }
+
 }

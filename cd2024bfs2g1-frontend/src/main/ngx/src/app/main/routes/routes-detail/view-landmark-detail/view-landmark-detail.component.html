@@ -1,6 +1,6 @@
 <div class="dialog-content-margin">
     <div>
-        <button class="backButton" (click)="backToDetail(data) "><mat-icon class="arrow_back"><strong>arrow_back</strong></mat-icon></button>
+        <button class="backButton" (click)="backToDetail(data)"><mat-icon class="arrow_back"><strong>arrow_back</strong></mat-icon></button>
         <p class="titulo"><strong>PUNTOS DE INTERÉS</strong> </p>
     </div>
     <br>
@@ -21,7 +21,7 @@
             </div>
             <div fxFlex="5%"></div>
             <div fxFlex="20%" class="landmark-list">
-                <div *ngFor="let landmark of data.landmark" class="landmarkName">{{ landmark.name }}</div>
+                <p><button *ngFor="let landmark of data.landmark" (click)="zoomPointlandmark(data)" class="landmarkName">{{ landmark.name }}</button><p>
             </div> 
         </div>
     </div>
