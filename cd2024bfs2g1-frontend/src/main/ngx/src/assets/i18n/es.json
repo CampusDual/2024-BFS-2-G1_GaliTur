@@ -188,8 +188,10 @@
   "Message-error": "No se ha podido insertar el negocio",
   "PACK_NAME": "Nombre del pack",
   "PACKS": "Paquetes",
-  "DATE_BEGIN": "Fecha de inicio",
-  "DATE_END": "Fecha final",
   "PRICE": "Precio",
-  "PARTICIPANTS": "Participantes"
+  "PARTICIPANTS": "Participantes",
+  "DATE_RANGE": "Fecha de inicio y final",
+  "SEPARATOR": " a ",
+  "DATERANGE.APPLYLABEL": "Sellecionar fecha",
+  "DATERANGE.W": "S"
 }
