@@ -84,7 +84,7 @@ public class PackBookingService implements IPackBookingService {
      * Gets logged client ID
      * @return Client ID
      */
-    private int getClientId() {
+    public int getClientId() {
         //Gets client object
         Object client = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
