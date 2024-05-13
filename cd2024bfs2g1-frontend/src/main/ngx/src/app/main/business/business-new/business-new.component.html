@@ -4,7 +4,9 @@
     <o-row id="principalRow" layout-align="start stretch">
         <!-- Titulo del formulario -->
         
+
         <o-column layout-align="start stretch" fxFlex="60" layout-padding>
+
 
 
             <div fxLayout="row" fxLayoutAlign="start center">
@@ -25,11 +27,10 @@
 
 
             <div fxLayout="row" fxLayoutAlign="start center">
-                <o-textarea-input attr="bsn_description" label="{{ 'DESCRIPTION' | oTranslate }}" width="100%" rows="6"
-                    class="form-field" required="yes" max-length="250" [validators]="blankValidator">
+                <o-textarea-input attr="bsn_description" label="{{ 'DESCRIPTION' | oTranslate }}" width="100%"
+                    class="description-textarea" required="yes" max-length="500" [validators]="blankValidator" rows="9">
                     <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
                 </o-textarea-input>
-                <div fxFlex></div>
             </div>
             <br>
 
@@ -55,7 +56,7 @@
             <!-- WEBSITE -->
 
             <o-text-input attr="bsn_website" label="{{ 'WEBSITE' | oTranslate }}" fxFlex.lg="80" fxFlex.xl="80" read-only="no" fxFlex="100"
-                max-length="50" required="no" [validators]="blankValidator">
+                max-length="200" required="no" [validators]="blankValidator">
                 <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
             </o-text-input>
             <br>

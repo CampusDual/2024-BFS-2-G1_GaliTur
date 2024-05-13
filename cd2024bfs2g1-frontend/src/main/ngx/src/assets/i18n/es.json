@@ -130,7 +130,7 @@
   "ROUTES": "Rutas",
   "name": "Nombre",
   "description": "Descripción",
-  "estimated_duration": "Duración Estimada (min)",
+  "estimated_duration": "Duración Estimada",
   "difficulty": "Dificultad",
   "coordinates": "Coordenadas",
   "images": "Imágenes",
