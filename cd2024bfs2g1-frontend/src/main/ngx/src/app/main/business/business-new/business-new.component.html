@@ -1,9 +1,12 @@
-<o-form attr="businessNew" service="businesses" entity="business" keys="bsn_id" fxLayout="column" #oFormBusinessNew
+<o-form attr="businessNew" label-header="{{ 'BUSINESS_DATA' | oTranslate }}" label-header-align="start" service="businesses" entity="business" keys="bsn_id" fxLayout="column" #oFormBusinessNew
     class="standalone-form-container" keys-sql-types="integer" (onInsert)="insertBusiness($event)" confirm-exit="false" message-service-type="customMessageServiceTypeBusiness">
 
-    <o-row layout-align="start stretch">
+    <o-row id="principalRow" layout-align="start stretch">
         <!-- Titulo del formulario -->
-        <o-column title="{{ 'BUSINESS_DATA' | oTranslate }}" layout-align="start stretch" fxFlex="60" layout-padding>
+        
+
+        <o-column layout-align="start stretch" fxFlex="60" layout-padding>
+
 
 
             <div fxLayout="row" fxLayoutAlign="start center">
@@ -24,11 +27,10 @@
 
 
             <div fxLayout="row" fxLayoutAlign="start center">
-                <o-textarea-input attr="bsn_description" label="{{ 'DESCRIPTION' | oTranslate }}" width="100%" rows="6"
-                    class="form-field" required="yes" max-length="250" [validators]="blankValidator">
+                <o-textarea-input attr="bsn_description" label="{{ 'DESCRIPTION' | oTranslate }}" width="100%"
+                    class="description-textarea" required="yes" max-length="500" [validators]="blankValidator" rows="9">
                     <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
                 </o-textarea-input>
-                <div fxFlex></div>
             </div>
             <br>
 
@@ -54,7 +56,7 @@
             <!-- WEBSITE -->
 
             <o-text-input attr="bsn_website" label="{{ 'WEBSITE' | oTranslate }}" fxFlex.lg="80" fxFlex.xl="80" read-only="no" fxFlex="100"
-                max-length="50" required="no" [validators]="blankValidator">
+                max-length="200" required="no" [validators]="blankValidator">
                 <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
             </o-text-input>
             <br>
@@ -77,7 +79,7 @@
 
         <!-- PHOTOS -->
 
-        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px"></div>
+        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="16px"></div>
         <o-column fxFlex="40" layout-align="center center">
             <o-image attr="bsn_photos" sql-type="OTHER" label="{{ 'IMAGE' | oTranslate }}" required="yes"></o-image>
         </o-column>
