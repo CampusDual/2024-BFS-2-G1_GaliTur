@@ -1,111 +1,67 @@
 /* Estilos principales */
 .routeCard {
-    background-color: white;
-    border-radius: 8px;
+  border: 5px solid #64ac04d0;
+    border-radius: 20px;
     padding: 0px;
     margin: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
     cursor: pointer;
     width: 500px;
     height: 200px;
-    background-image: url('../../../../assets/images/fondo2.jpeg');
+    background-image: url('../../../../assets/images/photoRouteDetails.jpg');
     background-size: cover; /* Ajusta la imagen de fondo para que cubra todo el contenedor */
     background-position: center;
+
+
   }
 
-
-  .name {
-    width: 270px;
-    text-align: left;
-    font-size: 22px;
-    border-radius: 5px;
-    font-family: Arial;
-    align-items: center;
-}
-
-.gridbackground{
-background-color: red;
-}
-
-
-.container-1{
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4px;
+  border-radius: 15px;
+  background-color: #E4EBF2;
+  height: 45px;
   
-  background-color: #84A45A ;
-  padding: 0px;
-  border-radius: 5px;
-  display: flex; /* Convertir el contenedor en un contenedor flexible */
-  justify-content: center; /* Centrar horizontalmente */
-  align-items: center; /* Centrar verticalmente */
-  text-align: center; /* Centrar el texto horizontalmente dentro del contenedor */
 }
 
-.container-2{
-  display: flex;
+.mat-icon-color{
+    color:#70b317;
+}
+
+
+.container .img {
+  height: 50px;
+  max-width: 100%;
+  display: block;
+
+
+}
+
+.name {
+  width: 270px;
+  text-align: left;
+  font-size: 22px;
+  border-radius: 20px;
+  font-family: Arial;
   align-items: center;
-  background-color: #D8D016;
-  padding: 0px;
-  border-radius: 5px;
-}
-
-.container-3{
-  display: flex;
-  align-items: center;
-  background-color: #E7860C;
-  padding: 0px;
-  border-radius: 5px;
-}
-
-.container-4{
-  display: flex;
-  align-items: center;
-  background-color: #C83521;
-  padding: 0px;
-  border-radius: 5px;
+  text-align: center;
 }
 
 
-.card-1{
-  background-color: #84A45A ;
-  border-radius: 8px;
+
+.duration{
+text-align: center;
+
+}
+
+
+
+.card{
+  border-radius: 20px;
   padding: 8px;
   margin: 0px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-  cursor: pointer;
-  width: 500px;
-  height: 200px;
-}
-
-.card-2{
-  background-color: #D8D016;
-  border-radius: 8px;
-  padding: 8px;
-  margin: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-  cursor: pointer;
-  width: 500px;
-  height: 200px;
-}
-
-.card-3{
-  background-color: #E7860C;
-  border-radius: 8px;
-  padding: 8px;
-  margin: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-  cursor: pointer;
-  width: 500px;
-  height: 200px;
-}
-
-.card-4{
-  background-color: #C83521;
-  border-radius: 8px;
-  padding: 8px;
-  margin: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
   cursor: pointer;
@@ -116,81 +72,78 @@ background-color: red;
 
 .d-1{
   background-color: #E4EBF2;
-  border-radius: 5px;
+  border-radius: 20px;
   padding: 10px 10px;
+  height: 70px;
   width: 300px;
   align-items: center;
 }
 .d-2{
   background-color: #E4EBF2;
-  border-radius: 5px;
+  border-radius: 20px;
+  height: 70px;
   padding: 10px 10px;
   align-items: center;
   width: 300px;
 }
 .d-3{
   background-color: #E4EBF2;
-  border-radius: 5px;
+  border-radius: 20px;
+  height: 70px;
   padding: 10px 10px;
   align-items: center;
   width: 300px;
 }
 .d-4{
   background-color: #E4EBF2;
-  border-radius: 5px;
+  border-radius: 20px;
+  height: 70px;
   padding: 10px 10px;
-  align-items: center; /* Centrar verticalmente */
+  align-items: center;
   width: 300px;
+  
+  
+}
+
+.difficulty{
+  text-align: center;
+  
+  
+}
+
+.icon-difficulty-1 {
+  color: #69b704e7; /* Cambia el color según la dificultad */
+}
+
+.icon-difficulty-2 {
+  color: #d1cb1fde;
+}
+
+.icon-difficulty-3 {
+  color: #f69c15;
+}
+
+.icon-difficulty-4 {
+  color: #dc1d0f;
 }
 
 
-.img{
-  height: 50px;
-  max-width: 100%; /* Asegurar que la imagen no supere el ancho del contenedor */
-  display: block; /* Evitar que haya espacio extra debajo de la imagen */
-  margin: auto;
-  padding: 5px;
+
+mat-icon {
+  margin-right: 6px;
+  margin-left: 6px;
+  vertical-align: middle;
 }
 
-  .routeCard:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
 
-  .routeCard span {
-    margin-bottom: 8px;
-  }
+
 
   .routeCard strong {
     font-weight: bold;
+    
     color: hsla(0, 0%, 3%, 0.725);
   }
 
 
-  .di-1{
-    padding: 0px 0px 0px 120px;
-  }
+  
 
-  .di-2{
-    padding: 0px 0px 0px 100px;
-  }
-
-  .di-3{
-    padding: 0px 0px 0px 90px;
-  }
-
-  .di-4{
-    padding: 0px 0px 0px 70px;
-  }
-
-
-
-
-  .routeCard:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-
-  mat-icon {
-    margin-right: 6px;
-    margin-left: 6px;
-    vertical-align: middle;
-  }

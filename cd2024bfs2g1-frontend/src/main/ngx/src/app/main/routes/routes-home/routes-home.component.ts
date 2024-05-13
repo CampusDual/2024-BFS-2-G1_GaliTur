@@ -66,6 +66,20 @@ data: any;
   
   }
 
+  getIconColorClass(difficulty: number): string {
+    switch(difficulty) {
+      case 1:
+          return 'icon-difficulty-1';
+      case 2:
+          return 'icon-difficulty-2';
+      case 3:
+          return 'icon-difficulty-3';
+      case 4:
+          return 'icon-difficulty-4';
+      
+  }
+}
+
 
 
 
