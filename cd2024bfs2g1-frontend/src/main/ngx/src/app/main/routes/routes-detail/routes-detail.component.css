@@ -93,3 +93,22 @@
 .routesSecond{
   background-color: #EFEFEF;
 }
+
+.custom-button {
+  margin-left: 180px;
+  background-color: #78af7bfd;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px; 
+  cursor: pointer;
+  border-radius: 5px; 
+  transition: background-color 0.3s; 
+}
+
+.custom-button:hover {
+  background-color: #5f9b62; /* Cambio de color al pasar el cursor */
+}
