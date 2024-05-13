@@ -66,5 +66,5 @@ export class RoutesDetailComponent implements OnInit{
             return 'icon-difficulty-4';
 
     }
-
+  }
 }
