@@ -130,13 +130,13 @@
   "ROUTES": "Routes",
   "name": "Name",
   "description": "Description",
-  "estimated_duration": "Estimated Duration (min)",
+  "estimated_duration": "Estimated Duration",
   "difficulty": "Difficulty",
   "coordinates": "Coordinates",
   "images": "Images",
   "opening_time": "Opening time",
   "closing_time": "Closing time",
-  "info_route": "New route: basic information",
+  "info_route": "ROUTE DATA",
   "info_landmark": "New route: landmarks",
   "info_new_landmark": "New landmark: basic information",
   "available_landmark": "Available landmarks",
@@ -181,7 +181,9 @@
   "MESSAGES_FORM_CHANGES_WILL_BE_LOST_ROUTE": "Are you really sure you want to do this? All changes will be lost",
   "Message-insert": "Business insterted successfully",
   "Message-error": "Can't insert business",
-  "landmark_id": "Id",
-  "MESSAGES_INSERTED_LANDMARK": "Landmark inserted succefully",
-  "MESSAGES_FORM_CHANGES_WILL_BE_LOST_LANDMARK": "Are you really sure you want to do this? All changes will be lost"
+  "COMBO_DIFFICULTY": "Select difficulty",
+  "EASY": "Easy",
+  "INTERMEDIATE": "Intermediate",
+  "HARD": "Hard",
+  "EXTREME": "Extreme"
 }
