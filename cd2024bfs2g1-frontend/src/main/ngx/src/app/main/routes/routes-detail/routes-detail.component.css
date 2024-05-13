@@ -49,6 +49,13 @@
   height: 300px;
 }
 
+
+/*
+.routesSecond mat-icon {
+  color: #4a5568;
+}
+*/
+
 .descriptionPanel {
   flex: 2;
   padding-left: 16px;
@@ -94,7 +101,7 @@
 }
 
 .custom-button {
-  margin-left: 180px;
+  margin-left: 140px;
   background-color: #78af7bfd;
   border: none;
   color: white;
@@ -109,63 +116,9 @@
 }
 
 .custom-button:hover {
-  background-color: #5f9b62; /* Cambio de color al pasar el cursor */
+  background-color: #5f9b62; 
 }
 
-.d-1{
-  background-color: #E4EBF2;
-  border-radius: 20px;
-  padding: 10px 10px;
-  height: 70px;
-  width: 300px;
-  align-items: center;
-}
-.d-2{
-  background-color: #E4EBF2;
-  border-radius: 20px;
-  height: 70px;
-  padding: 10px 10px;
-  align-items: center;
-  width: 300px;
-}
-.d-3{
-  background-color: #E4EBF2;
-  border-radius: 20px;
-  height: 70px;
-  padding: 10px 10px;
-  align-items: center;
-  width: 300px;
-}
-.d-4{
-  background-color: #E4EBF2;
-  border-radius: 20px;
-  height: 70px;
-  padding: 10px 10px;
-  align-items: center;
-  width: 300px;
-
-
-}
-
-.difficulty{
-  text-align: center;
-
-
-}
-
-/* Cambia el color según la dificultad */
 .icon-difficulty-1 {
-  color: #0f8819e7; 
-}
-
-.icon-difficulty-2 {
   color: #d1cb1fde;
-}
-
-.icon-difficulty-3 {
-  color: #f69c15;
-}
-
-.icon-difficulty-4 {
-  color: #dc1d0f;
 }
