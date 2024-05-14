@@ -24,6 +24,18 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="imageForPack">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.image_pack IP JOIN image I ON I.image_id = IP.img_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>
 
