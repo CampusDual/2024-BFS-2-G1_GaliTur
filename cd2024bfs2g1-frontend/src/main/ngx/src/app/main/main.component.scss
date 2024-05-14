@@ -1,4 +1,6 @@
-o-app-layout-header{
-  background-color: #e74c3c;
-  align-self: auto;
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
 }
