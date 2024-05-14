@@ -49,8 +49,8 @@ export class ViewLandmarkDetailComponent {
 
   async zoomPointlandmark(data: any): Promise<void> {
     this.oMap.setCenter(data.coordinates)
-    await this.delay(500);
-    this.oMap.getMapService().setZoom(10)
+    await this.delay(300);
+    this.oMap.getMapService().setZoom(11)
   }
 
 }

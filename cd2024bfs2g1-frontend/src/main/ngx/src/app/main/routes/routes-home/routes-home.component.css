@@ -1,18 +1,19 @@
 /* Estilos principales */
 .routeCard {
   border: 4px solid #000000d0;
-    border-radius: 20px;
-    padding: 0px;
-    margin: 10px;
-    cursor: pointer;
-    width: 500px;
-    height: 200px;
-    background-image: url('../../../../assets/images/photoRouteDetails.jpg');
-    background-size: cover; /* Ajusta la imagen de fondo para que cubra todo el contenedor */
-    background-position: center;
+  border-radius: 20px;
+  padding: 0px;
+  margin: 10px;
+  cursor: pointer;
+  width: 500px;
+  height: 200px;
+  background-image: url('../../../../assets/images/photoRouteDetails.jpg');
+  background-size: cover;
+  /* Ajusta la imagen de fondo para que cubra todo el contenedor */
+  background-position: center;
 
 
-  }
+}
 
 .container {
   display: flex;
@@ -26,10 +27,25 @@
 
 }
 
-.mat-icon-color{
-    color:#70b317;
+.mat-icon-color {
+  color: #70b317;
 }
 
+.botonInfo {
+  border: none;
+  color: #3a3b39;
+  height: 10px;
+  transition: transform 0.2s ease;
+  outline: none;
+  /* Transición suave */
+}
+
+.botonInfo:hover {
+  transform: scale(1.2);
+  background-color: #E4EBF2;
+  padding: 0px 0px 0px 0px;
+  /* Ajusta el valor según desees */
+}
 
 .container .img {
   height: 50px;
@@ -54,14 +70,14 @@
 
 
 
-.duration{
-text-align: center;
+.duration {
+  text-align: center;
 
 }
 
 
 
-.card{
+.card {
   border-radius: 20px;
   padding: 8px;
   margin: 0px;
@@ -73,7 +89,7 @@ text-align: center;
 }
 
 
-.d-1{
+.d-1 {
   background-color: #E4EBF2;
   border-radius: 20px;
   padding: 10px 10px;
@@ -87,7 +103,8 @@ text-align: center;
   */
 
 }
-.d-2{
+
+.d-2 {
   background-color: #E4EBF2;
   border-radius: 20px;
   height: 70px;
@@ -95,16 +112,18 @@ text-align: center;
   align-items: center;
   width: 300px;
 }
-.d-3{
+
+.d-3 {
   background-color: #E4EBF2;
   border-radius: 20px;
   height: 70px;
   padding: 10px 10px;
   align-items: center;
   width: 300px;
-  
+
 }
-.d-4{
+
+.d-4 {
   background-color: #E4EBF2;
   border-radius: 20px;
   height: 70px;
@@ -115,18 +134,19 @@ text-align: center;
 
 }
 
-.difficulty{
+.difficulty {
   text-align: center;
   margin-top: 12px;
 
 }
 
-.duration{
+.duration {
   margin-left: 15px;
 }
 
 .icon-difficulty-1 {
-  color: #69b704e7; /* Cambia el color según la dificultad */
+  color: #69b704e7;
+  /* Cambia el color según la dificultad */
 }
 
 .icon-difficulty-2 {
@@ -152,12 +172,8 @@ mat-icon {
 
 
 
-  .routeCard strong {
-    font-weight: bold;
+.routeCard strong {
+  font-weight: bold;
 
-    color: hsla(0, 0%, 3%, 0.725);
-  }
-
-
-
-
+  color: hsla(0, 0%, 3%, 0.725);
+}
