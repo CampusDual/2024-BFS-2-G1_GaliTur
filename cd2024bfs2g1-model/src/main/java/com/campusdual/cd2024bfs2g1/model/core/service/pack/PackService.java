@@ -1,22 +1,29 @@
 package com.campusdual.cd2024bfs2g1.model.core.service.pack;
 
+import com.campusdual.cd2024bfs2g1.api.core.service.IPackBookingService;
 import com.campusdual.cd2024bfs2g1.api.core.service.pack.IPackService;
 import com.campusdual.cd2024bfs2g1.model.core.dao.ClientDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.ImageDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.MerchantDao;
+import com.campusdual.cd2024bfs2g1.model.core.dao.UserDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.business.GuideCitiesDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDao;
+import com.campusdual.cd2024bfs2g1.model.core.service.ClientService;
 import com.campusdual.cd2024bfs2g1.model.core.service.ImageService;
 import com.campusdual.cd2024bfs2g1.model.core.service.PackBookingService;
 import com.campusdual.cd2024bfs2g1.model.core.service.business.GuideCitiesService;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
+import com.ontimize.jee.common.services.user.UserInformation;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -30,11 +37,13 @@ public class PackService implements IPackService {
     private final ImageService imageService;
     private final GuideCitiesService cityService;
     private final ImagePackService imagePackService;
-    private final PackBookingService packBookingService;
+    private final ClientService clientService;
+
+
 
     @Autowired
     public PackService(DefaultOntimizeDaoHelper daoHelper, PackDao packDao, ImageDao imageDao, GuideCitiesDao cityDao,
-                       ImageService imageService, GuideCitiesService cityService, ImagePackService imagePackService, PackBookingService packBookingService) {
+                       ImageService imageService, GuideCitiesService cityService, ImagePackService imagePackService, ClientService clientService) {
         this.daoHelper = daoHelper;
         this.packDao = packDao;
         this.imageDao = imageDao;
@@ -42,7 +51,7 @@ public class PackService implements IPackService {
         this.imageService = imageService;
         this.cityService = cityService;
         this.imagePackService = imagePackService;
-        this.packBookingService = packBookingService;
+        this.clientService = clientService;
     }
 
     @Override
@@ -60,7 +69,7 @@ public class PackService implements IPackService {
      */
     @Override
     public EntityResult packClientQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
-        keysValues.put(ClientDao.CLIENT_ID, packBookingService.getClientId());
+        keysValues.put(ClientDao.CLIENT_ID, getClientId());
         return this.daoHelper.query(this.packDao, keysValues, attributes);
     }
 
@@ -90,5 +99,30 @@ public class PackService implements IPackService {
     @Override
     public EntityResult packDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.delete(this.packDao, keyMap);
+    }
+
+    /**
+     * Gets logged client ID
+     * @return Client ID
+     */
+    public int getClientId() {
+        //Gets client object
+        Object client = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        //Gets logged user id
+        int userId = (int) ((UserInformation) client).getOtherData().get(UserDao.USR_ID);
+
+
+        List<String> qKeys = new ArrayList<String>();
+        qKeys.add(ClientDao.CLIENT_ID);
+
+        Map<String, Object> emptyMap = new HashMap<>();
+        emptyMap.put("CL." + ClientDao.USR_ID, userId);
+
+
+
+        EntityResult clientEr = clientService.clientQuery(emptyMap, qKeys);
+        ArrayList<Integer> al = (ArrayList<Integer>) clientEr.get(ClientDao.CLIENT_ID);
+        return al.get(0);
     }
 }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MyPacksRoutingModule } from './my-packs-routing.module';
 import { PackClientComponent } from './pack-client/pack-client.component';
+import { OntimizeWebModule } from 'ontimize-web-ngx';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { PackClientComponent } from './pack-client/pack-client.component';
   ],
   imports: [
     CommonModule,
-    MyPacksRoutingModule
+    MyPacksRoutingModule,
+    OntimizeWebModule
   ]
 })
 export class MyPacksModule { }

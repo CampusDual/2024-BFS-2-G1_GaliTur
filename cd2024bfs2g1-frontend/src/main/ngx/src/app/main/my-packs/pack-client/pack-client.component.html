@@ -1,1 +1,27 @@
-<p>pack-client works!</p>
+<o-grid #packGrid attr="packGrid" title="PACKS" service="packs" entity="packClient" keys="P.pck_id"
+    columns="P.pck_id;pck_name;pck_description;pck_date_begin;pck_date_end;pck_price;pck_participants;gui_c_name;pcs_id;img_code"
+    query-rows="16" page-size-options="4;8;16;24" orderable="true" cols="3"
+    sortable-columns="pck_name" insert-button="true" refresh-button="true"
+    pagination-controls="true" gutter-size="20px" fixed-header="yes" grid-item-height="320px" detail-mode="none"
+    insert-button-floatable="no" >
+    <o-grid-item *ngFor="let data of packGrid.dataArray">
+        <div (click)="openDetail(data)" fxLayout="row" fxLayoutAlign="space-evenly center"
+            class="mat-elevation-z1 businessCard" >
+                            <div class="cardImg" >
+                                <img  class="preview-image" [src]="getImageSrc(data.img_code)" >
+                            </div>              
+            <div class="cardInfo">
+                <span><strong class="pack-name">{{ truncateName(data.pck_name) }}</strong></span>
+                <ul style="list-style-type: none;" class="list">
+                    <li><mat-icon class="icon">event</mat-icon> {{getDate(data.pck_date_begin)}}</li>
+                    <li><mat-icon class="icon">event_busy</mat-icon> {{getDate(data.pck_date_end)}} </li>
+                    <li><mat-icon class="icon">timer</mat-icon> {{diferenciaDias(data.pck_date_begin,data.pck_date_end)}} days</li>
+                    <li><mat-icon class="icon">groups</mat-icon> {{data.pck_participants}} </li>
+                        <li><mat-icon class="icon">pin_drop</mat-icon> {{data.gui_c_name}}</li>
+                    <li><mat-icon class="icon">payments</mat-icon> {{data.pck_price}} €</li>
+                </ul>
+            </div>
+        </div>
+    </o-grid-item>
+</o-grid>
+
