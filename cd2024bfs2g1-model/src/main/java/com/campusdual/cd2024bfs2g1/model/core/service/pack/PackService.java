@@ -52,7 +52,7 @@ public class PackService implements IPackService {
     @Override
     public EntityResult packQuery(Map<String, Object> keyMap, List<String> attrList)
             throws OntimizeJEERuntimeException {
-        return this.daoHelper.query(this.packDao, keyMap, attrList, this.packDao.PCK_MULTI_QUERY);
+        return this.daoHelper.query(this.packDao, keyMap, attrList);
     }
 
     /**
@@ -72,6 +72,7 @@ public class PackService implements IPackService {
     public EntityResult allPacksQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.packDao, keysValues, attributes, this.packDao.PCK_ALL_QUERY);
     }
+
 
     @Override
     @Transactional(rollbackFor = Throwable.class)

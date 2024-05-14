@@ -12,6 +12,8 @@ import moment from 'moment';
 })
 export class PackHomeComponent {
   public showWaitForLongTask = false;
+  public static page = 0;
+
 
   constructor(
     private ontimizeService: OntimizeService,
@@ -19,7 +21,7 @@ export class PackHomeComponent {
     protected sanitizer: DomSanitizer,
     private router: Router,
   ) {
-    this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration("businesses"));
+    this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration("packs"));
   }
   ngOnInit() {
   }
@@ -29,7 +31,8 @@ export class PackHomeComponent {
   }
 
   public openDetail(data: any): void {
-    this.router.navigate(['main/businesses/' + data.bsn_id]);
+    PackHomeComponent.page = 1;
+    this.router.navigate(['main/packs/' + data.pck_id]);
   }
 
   truncateName(name: string): string {
