@@ -22,7 +22,7 @@
             </div>
             <div fxFlex="5%"></div>
             <div fxFlex="20%" class="landmark-list">
-                <p><button *ngFor="let landmark of data.landmark" (click)="zoomPointlandmark(data)" class="landmarkName">{{ landmark.name }}</button><p>
+                <p><button *ngFor="let landmark of data.landmark" (click)="zoomPointlandmark(landmark)" class="landmarkName">{{ landmark.name }}</button><p>
             </div>
         </div>
     </div>

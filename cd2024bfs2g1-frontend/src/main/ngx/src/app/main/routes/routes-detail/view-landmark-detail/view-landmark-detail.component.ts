@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { OMapComponent } from 'ontimize-web-ngx-map';
+import { OMapBase } from 'ontimize-web-ngx-map/lib/components/map/o-map-base.class';
 
 @Component({
   selector: 'app-view-landmark-detail',
@@ -23,6 +24,7 @@ export class ViewLandmarkDetailComponent {
     this.getDrawLayer();
   }
 
+
   getDrawLayer() {
     console.log(this.oMap.getMapService().getDrawLayer());
   }
@@ -43,6 +45,9 @@ export class ViewLandmarkDetailComponent {
     this.dialogRef.close()
   }
 
-  zoomPointlandmark(data: any): void {}
+  zoomPointlandmark(data: any): void {
+    this.oMap.setCenter(data.coordinates)
+    this.oMap.sZoomControl = '100'
+  }
 
 }
