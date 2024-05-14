@@ -39,12 +39,12 @@ public class LandmarkService implements ILandmarkService {
     public EntityResult landmarkInsert(Map<String, Object> attrMap) {
         EntityResult insertLandmarkId = this.daoHelper.insert(landmarkDao, attrMap);
         Map<String,Object> landmarkRouteMapAttr=new HashMap();
-        Map<String,Object> imageMapAttr=new HashMap();
-        if (attrMap.get("images")!=null) {
-            imageMapAttr.put(ImageDao.ATTR_IMAGE_CODE,attrMap.get("images"));
-            EntityResult image_id_entity = this.daoHelper.insert(imageDao, imageMapAttr);
-            insertImageAux(insertLandmarkId.get(LandmarkDao.ATTR_ID),image_id_entity.get(ImageDao.ATTR_IMAGE_ID));
-        }
+//        Map<String,Object> imageMapAttr=new HashMap();
+//        if (attrMap.get("images")!=null) {
+//            imageMapAttr.put(ImageDao.ATTR_IMAGE_CODE,attrMap.get("images"));
+//            EntityResult image_id_entity = this.daoHelper.insert(imageDao, imageMapAttr);
+//            insertImageAux(insertLandmarkId.get(LandmarkDao.ATTR_ID),image_id_entity.get(ImageDao.ATTR_IMAGE_ID));
+//        }
         if (attrMap.get("inputIdRoute")!=null) {
             landmarkRouteMapAttr.put(RouteDao.ATTR_ID,attrMap.get("inputIdRoute"));
             landmarkRouteMapAttr.put(LandmarkDao.ATTR_ID, insertLandmarkId.get(LandmarkDao.ATTR_ID));
@@ -52,10 +52,10 @@ public class LandmarkService implements ILandmarkService {
         return this.daoHelper.insert(routeLandmarkDao, landmarkRouteMapAttr);
     }
 
-    public EntityResult insertImageAux(Object id_landmark,Object id_image) {
-        Map<String,Object> imageLandmarkMapAttr=new HashMap();
-        imageLandmarkMapAttr.put(LandmarkDao.ATTR_ID, id_landmark);
-        imageLandmarkMapAttr.put(ImageDao.ATTR_IMAGE_ID, id_image);
-        return this.daoHelper.insert(imageLandmarkDao, imageLandmarkMapAttr);
-    }
+//    public EntityResult insertImageAux(Object id_landmark,Object id_image) {
+//        Map<String,Object> imageLandmarkMapAttr=new HashMap();
+//        imageLandmarkMapAttr.put(LandmarkDao.ATTR_ID, id_landmark);
+//        imageLandmarkMapAttr.put(ImageDao.ATTR_IMAGE_ID, id_image);
+//        return this.daoHelper.insert(imageLandmarkDao, imageLandmarkMapAttr);
+//    }
 }

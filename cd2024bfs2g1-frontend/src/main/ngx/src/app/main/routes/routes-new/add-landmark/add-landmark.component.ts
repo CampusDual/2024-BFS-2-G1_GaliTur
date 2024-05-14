@@ -1,8 +1,9 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { RouteModel } from '../../route.model';
 import { RouteService } from 'src/app/shared/services/route.service';
-import { FormValueOptions, OTextInputComponent } from 'ontimize-web-ngx';
+import { FormValueOptions, OFormComponent, OTextInputComponent } from 'ontimize-web-ngx';
 import { ActivatedRoute, Router } from '@angular/router';
+import { OMapComponent, OMarkerComponent } from 'ontimize-web-ngx-map';
 
 @Component({
   selector: 'app-add-landmark',
@@ -11,33 +12,24 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AddLandmarkComponent implements OnInit,AfterViewInit{
 
-onChangeValue() {
-  this.routeIdInput.setData(this.routeId)
-}
 
   @ViewChild('routeIdInput') routeIdInput: OTextInputComponent
+  @ViewChild('oMarker') marker: OMarkerComponent
+  @ViewChild('landmarksNew') landmarksNew: OFormComponent
 
   routeId:number
+  _eventsArray: Array<any> = [];
 
-  constructor(private routeService:RouteService,
-     private router: Router, private route: ActivatedRoute,
+
+  @ViewChild('oMap')
+
+  protected oMap: OMapComponent;
+
+  constructor(private router: Router, private route: ActivatedRoute,
      private activeRoute:ActivatedRoute){}
 
   ngAfterViewInit(): void {
     this.routeIdInput.setData(this.routeId)
-    // this.routeIdInput.setData(this.routeId)
-    // console.log(this.routeId)
-    ///////////////////////
-    // if (this.routeIdInput) {
-    //   const options: FormValueOptions = {
-    //     emitModelToViewChange: true,
-    //     emitViewToModelChange: false,
-    //     emitModelToViewValueChange: true
-    //   };
-    //   this.routeIdInput.setValue(this.routeId.toString(), options);
-    // }
-    ///////////////////////
-
   }
 
   ngOnInit(): void {
@@ -45,9 +37,17 @@ onChangeValue() {
     console.log('Al addLandmark le llego el id: ' + this.routeId)
   }
 
+  onChangeValue() {
+    this.routeIdInput.setData(this.routeId)
+  }
+
   onClickOk(){
     this.router.navigate(['../'],{relativeTo:this.route})
   }
 
-
+  onClickMap(e){
+    this.oMap.addMarker(1,e.latlng.lat,e.latlng.lng,{},{},false,{},{})
+    this.landmarksNew.setFieldValues({"coordinates": e.latlng.lat+","+e.latlng.lng})
+  }
+  
 }

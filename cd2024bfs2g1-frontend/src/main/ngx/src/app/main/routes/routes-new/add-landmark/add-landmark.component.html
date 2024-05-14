@@ -1,4 +1,4 @@
-<o-form attr="landmarksNew" label-header="{{'info_new_landmark' | oTranslate }}" label-header-align="start" service="landmarks" entity="landmark" keys="landmark_id" title="" (onInsert)="onClickOk();$event.stopPropagation()" confirm-exit="false" message-service-type="customMessageServiceTypeLandmarks">
+<o-form #landmarksNew attr="landmarksNew" label-header="{{'info_new_landmark' | oTranslate }}" label-header-align="start" service="landmarks" entity="landmark" keys="landmark_id" title="" (onInsert)="onClickOk();$event.stopPropagation()" confirm-exit="false" message-service-type="customMessageServiceTypeLandmarks">
     <o-row class="container">
         <div fxLayout="row">
             <div fxLayout="column" class="landmarkInfo">
@@ -20,21 +20,20 @@
                     <o-text-input class="txt" attr="coordinates"
                     sql-type="STRING" enabled="yes"></o-text-input>
                 </div>
-                <div fxLayout="column" class="imageInput">
+                <!-- <div fxLayout="column" class="imageInput">
                     <o-image id="image"  class="img" attr="images" sql-type="OTHER" entity="image" service="images" image-type="base64"></o-image>
-                </div>
+                </div> -->
                 <div>
                     <o-text-input #routeIdInput attr="inputIdRoute" label="Text" (onChange)="onChangeValue()" oHidden></o-text-input>
                 </div>
             </div>
         </div>
-        <!-- <div class="divMapa">
-            <o-map class="mapa" #oMapBasic center="42.240599, -8.720727" zoom="8" min-zoom="3" max-zoom="20"
-            zoom-control="no" search-control="no" layer-panel-visible="no"></o-map>
-        </div> -->
         <div class="landmark-map">
-            <o-map #oMapMarker center="42.940599, -7.120727" zoom="8" min-zoom="3" max-zoom="20" zoom-control="yes"
-                search-control="yes" layer-panel-visible="no" fxFlex>
+            <o-map #oMap attr="mapInput" center="42.940599,-7.120727" zoom="8" min-zoom="3" max-zoom="20" zoom-control="yes" 
+                search-control="no" layer-panel-visible="no" fxFlex (onClick)="onClickMap($event)">
+                <!-- [crs-configuration]="objeto" -->
+                <o-map-crs crs="EPSG4326"></o-map-crs>
+                <!--<o-map-draw-controls></o-map-draw-controls>-->
             </o-map>
         </div>
     </o-row>
