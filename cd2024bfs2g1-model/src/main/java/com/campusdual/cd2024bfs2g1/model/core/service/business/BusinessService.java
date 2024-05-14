@@ -55,7 +55,7 @@ public class BusinessService implements IBusinessService {
 
     @Override
     public EntityResult businessMerchantQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
-        keysValues.put(MerchantDao.MERCHANT_ID, getMerchantId());
+        keysValues.put(MerchantDao.MERCHANT_ID, merchantService.getMerchantId());
 
 
 
@@ -68,7 +68,7 @@ public class BusinessService implements IBusinessService {
     public EntityResult businessInsert(Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
 
 
-        keysValues.put(MerchantDao.MERCHANT_ID, getMerchantId());
+        keysValues.put(MerchantDao.MERCHANT_ID, merchantService.getMerchantId());
 
         Map<String, Object> dataMap = new HashMap<>(keysValues);
 
@@ -303,28 +303,7 @@ public class BusinessService implements IBusinessService {
         return null;
     }
 
-    /**
-     * Returns merchant id from logged user
-     *
-     * @return merchant_id
-     */
-    private int getMerchantId() {
-        Object merchant = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        int userId = (int) ((UserInformation) merchant).getOtherData().get(UserDao.USR_ID);
-
-
-        List<String> qKeys = new ArrayList<String>();
-        qKeys.add(MerchantDao.MERCHANT_ID);
-
-        Map<String, Object> emptyMap = new HashMap<>();
-        emptyMap.put("M." + UserDao.USR_ID, userId);
-
-
-        EntityResult merchantEr = merchantService.merchantQuery(emptyMap, qKeys);
-        ArrayList<Integer> al = (ArrayList<Integer>) merchantEr.get(MerchantDao.MERCHANT_ID);
-        return al.get(0);
-    }
 
 
     @Override

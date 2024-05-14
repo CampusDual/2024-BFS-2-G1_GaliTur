@@ -12,7 +12,7 @@
     </UpdateKeys>
     <GeneratedKey>pck_id</GeneratedKey>
     <Queries>
-        <Query id="asd">
+        <Query id="default">
             <Sentence>
                 <![CDATA[
                     SELECT
@@ -24,7 +24,25 @@
                 ]]>
             </Sentence>
         </Query>
-        <Query id="default">
+        <Query id="allPacks">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.pack P
+                        INNER JOIN ${mainschema}.image_pack IP
+                        ON P.pck_id=IP.pck_id
+                        INNER JOIN ${mainschema}.image I
+                        ON IP.img_id=I.image_id
+                        INNER JOIN ${mainschema}.gui_cities GC
+                        ON P.gui_c_id=GC.gui_c_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="multi">
             <Sentence>
                 <![CDATA[
                     SELECT

@@ -64,7 +64,7 @@ public class PackBookingService implements IPackBookingService {
         packService.packUpdate(values, filtro);
 
         //Get Logged Client Id
-        keysValues.put(ClientDao.CLIENT_ID, getClientId());
+        keysValues.put(ClientDao.CLIENT_ID, clientService.getClientId());
 
 
         return this.daoHelper.insert(this.packBookingDao, keysValues);
@@ -80,27 +80,5 @@ public class PackBookingService implements IPackBookingService {
         return this.daoHelper.delete(this.packBookingDao, keysValues);
     }
 
-    /**
-     * Gets logged client ID
-     * @return Client ID
-     */
-    public int getClientId() {
-        //Gets client object
-        Object client = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        //Gets logged user id
-        int userId = (int) ((UserInformation) client).getOtherData().get(UserDao.USR_ID);
-
-
-        List<String> qKeys = new ArrayList<String>();
-        qKeys.add(ClientDao.CLIENT_ID);
-
-        Map<String, Object> emptyMap = new HashMap<>();
-        emptyMap.put("CL." + ClientDao.USR_ID, userId);
-
-
-        EntityResult clientEr = clientService.clientQuery(emptyMap, qKeys);
-        ArrayList<Integer> al = (ArrayList<Integer>) clientEr.get(ClientDao.CLIENT_ID);
-        return al.get(0);
-    }
 }

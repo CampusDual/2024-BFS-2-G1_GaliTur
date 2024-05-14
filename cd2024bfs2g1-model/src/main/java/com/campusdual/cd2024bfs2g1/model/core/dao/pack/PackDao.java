@@ -19,4 +19,8 @@ public class PackDao extends OntimizeJdbcDaoSupport {
     public static String PCK_PRICE = "pck_price";
     public static String PCK_PARTICIPANTS = "pck_participants";
     public static String PCK_GUI_C_ID = "gui_c_id";
+
+    public static String PCK_MULTI_QUERY = "multi";
+    public static String PCK_ALL_QUERY = "allPacks";
+
 }
