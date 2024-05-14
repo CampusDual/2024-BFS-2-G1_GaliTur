@@ -1,14 +1,14 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { DomSanitizer } from '@angular/platform-browser';
-import { OGridComponent, OntimizeService } from 'ontimize-web-ngx';
-import { Router } from '@angular/router';
-import moment from 'moment';
+import { Component, ViewChild } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
+import { DomSanitizer } from "@angular/platform-browser";
+import { OGridComponent, OntimizeService } from "ontimize-web-ngx";
+import { Router } from "@angular/router";
+import moment from "moment";
 
 @Component({
-  selector: 'app-business-home',
-  templateUrl: './pack-home.component.html',
-  styleUrls: ['./pack-home.component.css']
+  selector: "app-business-home",
+  templateUrl: "./pack-home.component.html",
+  styleUrls: ["./pack-home.component.css"],
 })
 export class PackHomeComponent {
   public showWaitForLongTask = false;
@@ -17,29 +17,33 @@ export class PackHomeComponent {
     private ontimizeService: OntimizeService,
     protected dialog: MatDialog,
     protected sanitizer: DomSanitizer,
-    private router: Router,
+    private router: Router
   ) {
-    this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration("businesses"));
+    this.ontimizeService.configureService(
+      this.ontimizeService.getDefaultServiceConfiguration("businesses")
+    );
   }
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   public getImageSrc(base64: any): any {
-    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image-transparent.png';
+    return base64
+      ? this.sanitizer.bypassSecurityTrustResourceUrl(
+          "data:image/*;base64," + base64
+        )
+      : "./assets/images/no-image-transparent.png";
   }
 
   public openDetail(data: any): void {
-    this.router.navigate(['main/businesses/' + data.bsn_id]);
+    this.router.navigate(["main/businesses/" + data.bsn_id]);
   }
 
   truncateName(name: string): string {
     if (name.length > 19) {
-        return name.substr(0, 19) + '...';
+      return name.substr(0, 19) + "...";
     } else {
-        return name;
+      return name;
     }
   }
-
 
   diferenciaDias(fechaInicio: number, fechaFin: number): number {
     const unDia = 24 * 60 * 60 * 1000; // Número de milisegundos en un día
@@ -47,13 +51,8 @@ export class PackHomeComponent {
     return Math.round(diferencia / unDia);
   }
 
-
-  getDate (fechaNumber: number): string {
-    const tempFecha = new Date(fechaNumber)
-
+  getDate(fechaNumber: number): string {
+    const tempFecha = new Date(fechaNumber);
     return tempFecha.toLocaleDateString();
   }
-
-
-
 }
