@@ -25,7 +25,7 @@ public class ImagePackService implements IImagePackService {
     }
     @Override
     public EntityResult imagePackQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
-        return this.daoHelper.query(this.imagePackDao, keyMap, attrList);
+        return this.daoHelper.query(this.imagePackDao, keyMap, attrList, "imageForPack");
     }
 
     @Override
