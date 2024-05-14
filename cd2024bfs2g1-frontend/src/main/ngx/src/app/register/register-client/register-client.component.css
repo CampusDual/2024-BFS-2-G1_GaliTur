@@ -25,8 +25,7 @@
   padding-right: 4%;
 }
 
-.o-form .o-column:last-child{
-  padding-bottom: 4%;
-  padding-left: 4%;
-  padding-right: 4%;
+o-row o-button {
+  width: 50%;
 }
+
