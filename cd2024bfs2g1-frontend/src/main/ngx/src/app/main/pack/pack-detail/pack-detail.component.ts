@@ -29,4 +29,19 @@ export class PackDetailComponent {
     this.router.navigate(['main/pack']);
   }
 
+  diferenciaDias(fechaInicio: number, fechaFin: number): number {
+    const unDia = 24 * 60 * 60 * 1000; // Número de milisegundos en un día
+    const diferencia = Math.abs(fechaFin - fechaInicio);
+    return Math.round(diferencia / unDia);
+  }
+
+
+  getDate (fechaNumber: number): string {
+    const tempFecha = new Date(fechaNumber)
+    const day = tempFecha.getDay()
+    const month = tempFecha.getMonth()
+    const year = tempFecha.getFullYear()
+    return `${day}/${month}/${year}`;
+  }
+
 }
