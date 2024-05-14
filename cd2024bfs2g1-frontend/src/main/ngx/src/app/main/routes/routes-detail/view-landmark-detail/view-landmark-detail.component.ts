@@ -10,9 +10,7 @@ import { OMapBase } from 'ontimize-web-ngx-map/lib/components/map/o-map-base.cla
 })
 export class ViewLandmarkDetailComponent {
   _eventsArray: Array<any> = [];
-
-  @ViewChild('oMapMarker')
-  protected oMap: OMapComponent;
+  @ViewChild('oMapMarker') protected oMap: OMapComponent;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
   private dialogRef: MatDialogRef<ViewLandmarkDetailComponent>
@@ -45,9 +43,14 @@ export class ViewLandmarkDetailComponent {
     this.dialogRef.close()
   }
 
-  zoomPointlandmark(data: any): void {
+  async delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
+  async zoomPointlandmark(data: any): Promise<void> {
     this.oMap.setCenter(data.coordinates)
-    this.oMap.sZoomControl = '100'
+    await this.delay(500);
+    this.oMap.getMapService().setZoom(10)
   }
 
 }

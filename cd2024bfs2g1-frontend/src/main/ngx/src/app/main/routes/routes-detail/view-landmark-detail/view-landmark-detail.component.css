@@ -34,12 +34,22 @@
 }
 
 /*Mapa*/
-.landmark-map {
+.landmark-map  {
   height: 118%;
   width: 100%;
   border: 5px solid;
   border-radius: 5px;
-  border-color: #000000
+  border-color: #000000;
+  overflow: hidden;
+}
+
+.landmark-map {
+  cursor: pointer; /* Cambia el cursor al puntero */
+}
+
+#landmark-map:hover {
+  transform: scale(1.2); /* Zoom al 120% cuando se pasa el mouse sobre la ventana */
+  transition: transform 0.3s ease; /* Agrega una transición suave */
 }
 
 /* Lista de nombres */
