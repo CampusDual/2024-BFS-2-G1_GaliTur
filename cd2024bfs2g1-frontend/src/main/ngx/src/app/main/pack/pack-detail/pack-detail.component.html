@@ -1,13 +1,20 @@
 <div class="page">
+   
+
     <o-button class="back-button" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary" (click)="openPacks()" ></o-button>
+   
 
     <mat-card class="mainCard"
         style="background-color: #eff1f3; border-radius: 10px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); padding: 40px; margin: 10px;">
 
-        <o-form class="mainForm" #form attr="packDetail" service="packs" entity="pack" keys="pck_id;gui_c_id;pcs_id"
+        
+
+        <o-form #pform class="mainForm" #form attr="packDetail" service="packs" entity="pack" keys="pck_id;gui_c_id;pcs_id"
             header-actions="false" undo-button="false" action show-header-actions-text="false"
             columns="pck_id;pck_name;pck_description;pck_date_begin;pck_date_end;pck_price;pck_participants;gui_c_id;pcs_id"
             show-header-navigation="no" class="fill-form" show-header="no">
+
+            
 
             <!-- Almaceno el pack que he clicado -->
             <o-grid #packForm attr="packDetail" service="packs" entity="pack" keys="pck_id"
@@ -96,6 +103,9 @@
                     </o-row>
                 </div>
             </div>
+            <span *ngFor="let pack of packForm.dataArray" style="align-self: end;">
+                <o-button *ngIf="pack.pcs_id == 1" id="booking-button"  icon-position="right" label="BOOK" attr="booking" type="RAISED" icon="booking" layout-padding color="primary" (click)="bookPack($event, pack)" ></o-button>
+            </span>
         </o-form>
     </mat-card>
 </div>

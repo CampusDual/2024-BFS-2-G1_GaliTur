@@ -1,7 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Injector, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { OFormComponent, OTableComponent, OTranslateModule } from 'ontimize-web-ngx';
+import { DialogService, ODialogConfig, OFormComponent, OTableComponent, OTranslateModule, OntimizeService } from 'ontimize-web-ngx';
 import { PackHomeComponent } from '../pack-home/pack-home.component';
 
 @Component({
@@ -16,11 +16,16 @@ export class PackDetailComponent {
   constructor(
     protected sanitizer: DomSanitizer,
     private router: Router,
-    private oTranslate: OTranslateModule
+    private oTranslate: OTranslateModule,
+    protected dialogService: DialogService,
+    protected injector: Injector,
+    protected service: OntimizeService
   ) {
+    this.service = this.injector.get(OntimizeService);
   }
 
 	ngOnInit(): void {
+    this.configureService();
   }
 
   public getImageSrc(base64: any): any {
@@ -49,5 +54,44 @@ export class PackDetailComponent {
     const year = tempFecha.getFullYear()
     return `${day}/${month}/${year}`;
   }
+
+  bookPack(event: any, data) {
+
+    const config: ODialogConfig = {
+      icon: 'warning',
+      alertType: 'warn',
+
+    };
+    
+    if (this.dialogService) {
+      this.dialogService.confirm('Confirme reserva del pack', '¿Quiere confirmar la reserva?', config);
+      this.dialogService.dialogRef.afterClosed().subscribe( result => {
+        if(result) {
+          this.insertBooking(data);
+
+          // Actions on confirmation
+        } else {
+          // Actions on cancellation
+        }
+      })
+    }
+
+
+  }
+
+  protected configureService() {
+    // Configure the service using the configuration defined in the `app.services.config.ts` file
+    const conf = this.service.getDefaultServiceConfiguration('packBookings');
+    this.service.configureService(conf);
+  }
+
+  
+    insertBooking(data) {
+   
+      this.service.insert({ "pck_id": data.pck_id }, "packBooking")
+      .subscribe(resp => {
+       this.form.reload(true);
+      });
+      }
 
 }

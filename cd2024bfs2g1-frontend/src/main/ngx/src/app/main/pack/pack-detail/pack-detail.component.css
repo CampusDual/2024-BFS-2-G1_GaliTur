@@ -181,6 +181,14 @@
     margin-top: 10px;
 }
 
+#booking-button{
+    
+    background-color: #52733B;
+    .mat-mdc-raised-button:not(:disabled) {
+        background-color:  #84A45A; 
+    }
+}
+
 
 
 
