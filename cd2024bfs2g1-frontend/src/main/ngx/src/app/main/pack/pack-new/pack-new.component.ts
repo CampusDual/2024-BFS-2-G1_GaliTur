@@ -10,17 +10,9 @@ import { ODateInputComponent, OTranslateService } from 'ontimize-web-ngx';
   styleUrls: ['./pack-new.component.css']
 })
 export class PackNewComponent {
-  numero: number = 0;
-  @ViewChild("dateBegin", { static: false })
-  dateBegin: ODateInputComponent;
-  @ViewChild("dateEnd", { static: false })
-  dateEnd: ODateInputComponent;
   blankValidator: ValidatorFn[] = [];
   constructor(public injector: Injector, private translate: OTranslateService, private router:Router) {
     this.blankValidator.push(this.blanksValidator)
-    this.dateBegin = null;
-    this.dateEnd = null;
-
   }
   insertPacks($event:Event){
     this.router.navigate(['main/packs/'])
@@ -29,7 +21,7 @@ export class PackNewComponent {
 
   blanksValidator(control: AbstractControl): ValidationErrors | null{
     try{
-      const blank = /^[a-zA-Z\d][a-zA-Z\s\d]*[a-zA-Z\d]$/;
+      const blank = /^\S*.+\S*$/;
       const inputValue = control.value;
 
       if(blank.test(inputValue)){
