@@ -1,0 +1,56 @@
+<o-grid #citiesForm attr="cities" service="guideCities" entity="guideCities" keys="gui_c_id"
+    columns="gui_z_id;gui_c_id;gui_c_name" visible-columns="gui_z_id;gui_c_id;gui_c_name"
+    refresh-button="false" quick-filter="false" oHidden/>
+
+<o-grid #imagesPackForm attr="imagePacks" service="imagePacks" entity="imagePack" keys="imp_id;pck_id;img_id"
+    columns="imp_id;pck_id;img_id" visible-columns="imp_id;pck_id;img_id"
+    refresh-button="false" quick-filter="false" oHidden/>
+
+<o-grid #imagesForm attr="images" service="images" entity="image" keys="image_id"
+    columns="image_id;img_code" visible-columns="image_id;img_code"
+    refresh-button="false" quick-filter="false" oHidden/>
+
+<o-grid #packGrid attr="packGrid" title="PACKS" service="packs" entity="pack" keys="pck_id;gui_c_id;pcs_id"
+    columns="pck_id;pck_name;pck_description;pck_date_begin;pck_date_end;pck_price;pck_participants;gui_c_id;pcs_id"
+    query-rows="16" page-size-options="4;8;16;24" orderable="true" cols="3"
+    sortable-columns="pck_name" insert-button="true" refresh-button="true"
+    pagination-controls="true" gutter-size="20px" fixed-header="yes" grid-item-height="320px" detail-mode="none"
+    insert-button-floatable="no" >
+    <!--Business card item-->
+    <o-grid-item *ngFor="let data of packGrid.dataArray">
+        <!--Global business card div-->
+        <div (click)="openDetail(data)" fxLayout="row" fxLayoutAlign="space-evenly center"
+            class="mat-elevation-z1 businessCard" [ngClass]="{'not-available': data.pcs_id == 2}">
+            <span *ngIf="data.pcs_id == 2" class="unavailable-message">Pack Reservado</span>
+            <!--Card image div (left)-->
+            <!--!--TODO: Implement redirect to detail onClick-->
+
+            <span *ngFor="let imagePack of imagesPackForm.dataArray">
+                <span *ngIf="data.pck_id == imagePack.pck_id">
+                    <span *ngFor="let image of imagesForm.dataArray">
+                        <span *ngIf="imagePack.img_id == image.image_id">
+                            <div class="cardImg" >
+                                <img  class="preview-image" [src]="getImageSrc(image.img_code)" >
+                            </div>
+                        </span>
+                    </span>
+                </span>
+            </span>
+
+            <!--Card info div (right)-->
+            <div class="cardInfo">
+                <span><strong class="pack-name">{{ truncateName(data.pck_name) }}</strong></span>
+                <ul style="list-style-type: none;" class="list">
+                    <li><mat-icon class="icon">event</mat-icon> {{getDate(data.pck_date_begin)}}</li>
+                    <li><mat-icon class="icon">event_busy</mat-icon> {{getDate(data.pck_date_end)}} </li>
+                    <li><mat-icon class="icon">timer</mat-icon> {{diferenciaDias(data.pck_date_begin,data.pck_date_end)}} days</li>
+                    <li><mat-icon class="icon">groups</mat-icon> {{data.pck_participants}} </li>
+                    <span *ngFor="let city of citiesForm.dataArray">
+                        <li *ngIf="data.gui_c_id == city.gui_c_id"><mat-icon class="icon">pin_drop</mat-icon> {{city.gui_c_name}}</li>
+                    </span>
+                    <li><mat-icon class="icon">payments</mat-icon> {{data.pck_price}} €</li>
+                </ul>
+            </div>
+        </div>
+    </o-grid-item>
+</o-grid>

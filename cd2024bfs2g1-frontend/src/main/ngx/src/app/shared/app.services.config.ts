@@ -1,53 +1,62 @@
 export const SERVICE_CONFIG: Object = {
-  users: {
-    path: "/users",
+  'users': {
+    'path': '/users'
   },
-  clients: {
-    path: "/clients",
+  'clients': {
+    'path': '/clients'
   },
-  merchants: {
-    path: "/merchants",
+  'merchants': {
+    'path': '/merchants'
   },
-  routes: {
-    path: "/routes",
+  'routes': {
+    'path': '/routes'
   },
-  landmarks: {
-    path: "/landmarks",
+  'landmarks': {
+    'path': '/landmarks'
   },
-  permissions: {
-    path: "/permissions",
+  'permissions': {
+    'path': '/permissions'
   },
-  hotels: {
-    path: "/hotels",
+  'hotels': {
+    'path': '/hotels'
   },
-  hotelRooms: {
-    path: "/hotelRooms",
+  'hotelRooms': {
+    'path': '/hotelRooms'
   },
-  hotelServices: {
-    path: "/hotelServices",
+  'hotelServices': {
+    'path': '/hotelServices'
   },
-  restaurants: {
-    path: "/restaurants",
+  'restaurants': {
+    'path': '/restaurants'
   },
-  agencyGuides: {
-    path: "/agencyGuides",
+  'agencyGuides': {
+    'path': '/agencyGuides'
   },
-  businesses: {
-    path: "/businesses",
+  'businesses':{
+    'path':'/businesses'
   },
-  guideLanguages: {
-    path: "/guideLanguages",
+  'guideLanguages':{
+    'path':'/guideLanguages'
   },
-  guideZones: {
-    path: "/guideZones",
+  'guideZones':{
+    'path':'/guideZones'
   },
-  guideCities: {
-    path: "/guideCities",
+  'guideCities':{
+    'path':'/guideCities'
+  },
+  'packs':{
+    'path':'/packs'
+  },
+  'imagePacks':{
+    'path':'/imagePacks'
+  },
+  'images':{
+    'path':'/images'
   },
   packBookings: {
     path: "/packBookings",
   },
   pack: {
     path: "/pack",
-  },
+  }
 };
