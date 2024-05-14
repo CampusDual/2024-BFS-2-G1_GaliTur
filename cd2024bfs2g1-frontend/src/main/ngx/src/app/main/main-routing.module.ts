@@ -15,9 +15,11 @@ export const routes: Routes = [
       { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
       { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
       { path: 'businesses', loadChildren: () => import('./business/business.module').then(m => m.BusinessModule) },
+      { path: 'packs', loadChildren: () => import('./pack/pack.module').then(m => m.PackModule) },
+      { path: 'pack-client', loadChildren: () => import('./my-packs/my-packs.module').then(m => m.MyPacksModule) },
       { path: 'profile', component: ProfileComponent },
       { path: 'routes', loadChildren: () => import('./routes/routes.module').then(m => m.RoutesModule) },
-      { path: 'pack', loadChildren: () => import('./pack/pack.module').then(m => m.PackModule) }
+      { path: 'pack', loadChildren: () => import('./pack/pack.module').then(m => m.PackModule) },
     ]
   }
 ];

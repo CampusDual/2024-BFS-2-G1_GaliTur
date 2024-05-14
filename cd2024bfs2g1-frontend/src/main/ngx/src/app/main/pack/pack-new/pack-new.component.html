@@ -1,9 +1,10 @@
-<o-form attr="packNew" keys="pck_id" fxLayout="column" #oFormPackNew service="packs" entity="pack"
+<o-form attr="packNew" keys="pck_id" fxLayout="column" #oFormPackNew
      keys-sql-types="integer" (onInsert)="insertPacks($event)" confirm-exit="false">
-     <o-row layout-align="start stretch">
-        <o-column id="pack" title="{{ 'PACKS' | oTranslate }}" layout-align="start stretch" fxFlex="50" layout-padding>
-           
-                <o-text-input id="text" attr="pck_name" max-length="100" label="{{ 'PACK_NAME' | oTranslate }}" 
+
+    <o-row layout-align="start stretch" >
+        <o-column id="margin" title="{{ 'PACKS' | oTranslate }}" layout-align="start stretch" fxFlex="60" layout-padding>
+
+                <o-text-input id="text" attr="pck_name" max-length="100" label="{{ 'PACK_NAME' | oTranslate }}" fxFlex="100"
                     required="yes" [validators]="blankValidator">
                     <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
                 </o-text-input>
@@ -12,33 +13,37 @@
                     class="form-field" required="yes" max-length="250" [validators]="blankValidator">
                     <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
                 </o-textarea-input>
-            <div id="Fechas_Precio" fxLayout="row">
-                <o-date-input attr="pck_date_begin" label="{{ 'DATE_BEGIN' | oTranslate }}" sql-type="93" required="yes"></o-date-input>
-                <o-date-input attr="pck_date_end" label="{{ 'DATE_END' | oTranslate }}" sql-type="93" required="yes"></o-date-input>
-                <o-currency-input attr="pck_price" min="1" max="5000" label="{{ 'PRICE' | oTranslate }}" fxFlex.lg="80" fxFlex.xl="80" read-only="no"
-                    required="no">
-                </o-currency-input>
+            <div id="div" fxLayout="row" fxLayoutAlign="start center">
+            <o-date-input attr="pck_date_begin" label="{{ 'DATE_BEGIN' | oTranslate }}" sql-type="string" required="yes"></o-date-input>
+            <o-date-input attr="pck_date_end" label="{{ 'DATE_END' | oTranslate }}" max-length="100"  read-only="no" required="yes"></o-date-input>
             </div>
-            <o-integer-input attr="pck_participants" label="{{ 'PARTICIPANTS' | oTranslate }}"
-                read-only="no" required="no" max="100" min="1"></o-integer-input>
-        <div fxLayout="row">
-            <o-column  class="formZones">
+            <o-currency-input attr="pck_price" label="{{ 'PRICE' | oTranslate }}" fxFlex.lg="80" fxFlex.xl="80" read-only="no" fxFlex="100"
+                max-length="50" required="no" [validators]="blankValidator">
+                <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
+            </o-currency-input>
+            <o-integer-input attr="pck_participants" label="{{ 'PARTICIPANTS' | oTranslate }}" fxFlex.lg="80" fxFlex.xl="80"
+                read-only="no" fxFlex="100" max-length="100" required="no" max-length="11"></o-integer-input>
+            <div fxLayout="row" fxLayoutAlign="start center">
+            <o-column  id="formZones">
                 <o-combo #comboZone attr="comboZone" label="{{ 'SELECT_PROVINCE' | oTranslate }}" query-method="query"  translate="yes" service="guideZones"
                 entity="guideZone" value-column="gui_z_id"  columns="gui_z_name" visible-columns="gui_z_name"
                     keys="gui_z_id" multiple="no" null-selection="no" required="yes">
                 </o-combo>
             </o-column>
-            <o-column class="formZones">
-                <o-combo id="comboCity" #comboCity attr="gui_c_id" label="{{ 'SELECT_CITY' | oTranslate }}"  translate="yes"
-                    query-method="query" value-column="gui_c_id" required="yes" service="guideCities" multiple="no" entity="guideCities"
+            <o-column id="formZones">
+                <o-combo id="comboCity" #comboCity attr="comboCity" label="{{ 'SELECT_CITY' | oTranslate }}" multiple="yes" translate="yes"
+                    query-method="query" value-column="gui_c_id" required="yes" service="guideCities" entity="guideCities"
                     columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id"
                     [query-on-event]="comboZone.onValueChange" parent-keys="gui_z_id:comboZone[gui_z_id]">
                 </o-combo>
+
             </o-column>
         </div>
         </o-column>
-    <o-column fxFlex="50" layout-align="center center">
-        <o-image attr="img_id" sql-type="OTHER" label="{{ 'IMAGE' | oTranslate }}" required="no"></o-image>
-    </o-column>
-</o-row>
+
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px"></div>
+        <o-column fxFlex="40" layout-align="center center">
+            <o-image attr="imp_id" sql-type="OTHER" label="{{ 'IMAGE' | oTranslate }}" required="no"></o-image>
+        </o-column>
+    </o-row>
 </o-form>

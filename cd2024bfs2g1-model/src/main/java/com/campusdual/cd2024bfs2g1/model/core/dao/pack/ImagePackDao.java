@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository("ImagePackDao")
 @ConfigurationFile(configurationFile = "dao/pack/ImagePackDao.xml", configurationFilePlaceholder = "dao/placeholders.properties")
 public class ImagePackDao extends OntimizeJdbcDaoSupport {
+
     public static final  String IMP_ID = "imp_id";
     public static final String PCK_ID = "pck_id";
     public static final String IMG_ID = "img_id";

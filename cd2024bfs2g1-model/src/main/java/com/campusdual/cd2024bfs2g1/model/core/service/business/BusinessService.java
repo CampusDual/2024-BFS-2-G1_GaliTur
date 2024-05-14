@@ -46,8 +46,23 @@ public class BusinessService implements IBusinessService {
 
     @Override
     public EntityResult businessQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+
+
+
+
         return this.daoHelper.query(this.businessDao, keysValues, attributes);
     }
+
+    @Override
+    public EntityResult businessMerchantQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        keysValues.put(MerchantDao.MERCHANT_ID, getMerchantId());
+
+
+
+        return this.daoHelper.query(this.businessDao, keysValues, attributes);
+    }
+
+
 
     @Override
     public EntityResult businessInsert(Map<String, Object> keysValues) throws OntimizeJEERuntimeException {

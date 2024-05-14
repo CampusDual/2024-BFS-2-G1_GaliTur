@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class BusinessHomeComponent {
   public showWaitForLongTask = false;
+  public static page = 0;
 
   constructor(
     private ontimizeService: OntimizeService,
@@ -29,6 +30,7 @@ export class BusinessHomeComponent {
   }
 
   public openDetail(data: any): void {
+    BusinessHomeComponent.page = 1;
     this.router.navigate(['main/businesses/' + data.bsn_id]);
   }
 

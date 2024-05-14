@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/packs")
 public class PackController extends ORestController<IPackService> {
+
     @Autowired
     private IPackService packService;
 

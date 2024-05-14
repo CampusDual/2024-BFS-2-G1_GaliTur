@@ -3,9 +3,27 @@
     width: 30%;
 }
 
+.lodging {
+    display: flex;
+    margin-left: 3%;
+}
+
+.toggleFirst {
+    margin-bottom: 30px;
+    margin-top: 25px;
+}
+
+.toggles{
+    margin-bottom: 30px;
+}
+
+.column-language {
+    width: 20%;
+}
+
 .o-image{
-    width: 90%;
-    height: 90%;
+    width: 65%;
+    height: 75%;
 }
 
 
@@ -20,20 +38,16 @@ span {
     margin-left: 15%;
 }
 
-.formZones{
-    width: 25%;
+#formZones{
+    width: 20%;
 }
-#pack *:not(div){
+#margin *:not(div){
     padding-bottom: 3%;
-
-}
-#pack{
-    width: 50%;
 }
 
-#Fechas_Precio *:not(o-currency-input){
-    padding-right: 3%;
-}
+
+
+
 
 
 

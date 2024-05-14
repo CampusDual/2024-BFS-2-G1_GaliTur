@@ -44,7 +44,19 @@ export const SERVICE_CONFIG: Object = {
   'guideCities':{
     'path':'/guideCities'
   },
-  'pack':{
-    'path':'/pack'
+  'packs':{
+    'path':'/packs'
+  },
+  'imagePacks':{
+    'path':'/imagePacks'
+  },
+  'images':{
+    'path':'/images'
+  },
+  packBookings: {
+    path: "/packBookings",
+  },
+  pack: {
+    path: "/pack",
   }
 };
