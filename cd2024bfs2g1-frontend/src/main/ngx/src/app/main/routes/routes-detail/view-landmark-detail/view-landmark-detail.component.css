@@ -28,7 +28,7 @@
   margin: 0px 200px 0px 200px;
   color: #ffffff;
   border: 5px solid;
-  border-color: #5f6652;
+  border-color: #000000;
   border-radius: 6px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -39,25 +39,33 @@
   width: 100%;
   border: 5px solid;
   border-radius: 5px;
-  border-color: #16a085
+  border-color: #000000
 }
 
 /* Lista de nombres */
 .landmark-list {
-  width: 32%;
+
+  width: 300px;
+  height: 425px;
   margin-top: 120px;
-  padding: 15px;
-  background-color: #16a085;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow-y: scroll; 
+  padding: 10px;
+  background-color: #9d8b7d;
+  border: 5px solid;
+  border-color: #000000;
+  border-radius: 18px;
+  box-shadow: 0 50px 50px rgba(2, 2, 2, 0.2);
+  overflow-y: auto;
+  opacity: 80%;
 
 }
 
 /*Nombres de los puntos de interes*/
 .landmarkName {
+
   font-family: "Arial", sans-serif;
   font-size: 20px;
+  border: solid 3px;
+  border-color: black;
   font-weight: bold;
   text-align: center;
   padding: 15px;
