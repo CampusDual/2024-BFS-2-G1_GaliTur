@@ -180,5 +180,16 @@
   "MESSAGES_INSERTED_ROUTE": "Route inserted succefully",
   "MESSAGES_FORM_CHANGES_WILL_BE_LOST_ROUTE": "Are you really sure you want to do this? All changes will be lost",
   "Message-insert": "Business insterted successfully",
-  "Message-error": "Can't insert business"
+  "Message-error": "Can't insert business",
+  "P.pck_id": "ID",
+  "pck_name": "Name",
+  "pck_description": "Description",
+  "pck_date_begin": "Start Date",
+  "pck_date_end": "End Date",
+  "pck_price": "Price",
+  "pck_participants": "Participants",
+  "gui_c_name": "Guide Name",
+  "pcs_id": "Participant ID",
+  "img_code": "Image Code",
+  "PACKS": "Packs"
 }

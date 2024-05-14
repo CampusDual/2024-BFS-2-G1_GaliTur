@@ -185,5 +185,16 @@
   "MESSAGES_INSERTED_ROUTE": "Ruta insertada correctamente",
   "MESSAGES_FORM_CHANGES_WILL_BE_LOST_ROUTE": "¿Estás realmente seguro de que quieres hacer esto? Todos los cambios se perderán.",
   "Message-insert": "Negocio insertado correctamente",
-  "Message-error": "No se ha podido insertar el negocio"
+  "Message-error": "No se ha podido insertar el negocio",
+  "P.pck_id": "ID",
+  "pck_name": "Nombre",
+  "pck_description": "Descripción",
+  "pck_date_begin": "Fecha de Inicio",
+  "pck_date_end": "Fecha de Fin",
+  "pck_price": "Precio",
+  "pck_participants": "Participantes",
+  "gui_c_name": "Nombre del Guía",
+  "pcs_id": "ID del Participante",
+  "img_code": "Código de Imagen",
+  "PACKS": "Paquetes"
 }
