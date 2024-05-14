@@ -1,13 +1,13 @@
 /*packCard structure*/
 .packCard {
-    width: 520px;
+    width: 400px;
     min-width: 300px;
     background-color: #eff1f3;
     border-radius: 10px;
     padding: 16px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
 
 }
 
@@ -34,16 +34,16 @@
 /*image styles*/
 .cardImg{
     align-content: center;
-    width: 400px;
+    width: 225px;
     height: 250px;
 }
 
 /*info styles*/
 .cardInfo{
     align-content: center;
-    width: 275px;
+    width: 175px;
     margin-top: 7.5px;
-    padding: 35px;
+    padding: 20px;
 }
 
 /*icon styles*/
@@ -81,3 +81,11 @@
 .pack-name {
     color: #52733B;
 }
+
+:host ::ng-deep .o-grid-sort {
+    min-width: 300px;
+    mat-form-field {
+        min-width: 300px;
+    }
+}
+
