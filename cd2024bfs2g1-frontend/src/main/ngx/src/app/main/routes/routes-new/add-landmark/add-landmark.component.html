@@ -1,40 +1,25 @@
 <o-form #landmarksNew attr="landmarksNew" label-header="{{'info_new_landmark' | oTranslate }}" label-header-align="start" service="landmarks" entity="landmark" keys="landmark_id" title="" (onInsert)="onClickOk();$event.stopPropagation()" confirm-exit="false" message-service-type="customMessageServiceTypeLandmarks">
-    <o-row class="container">
-        <div fxLayout="row">
-            <div fxLayout="column" class="landmarkInfo">
-                <div fxLayout="column" fxLayoutGap="10px">
-                    <o-text-input class="txt"  attr="name" sql-type="STRING"
-                        enabled="yes" required="yes"></o-text-input>
-                </div>
-                <div fxLayout="column" fxLayoutGap="10px">
-                    <o-textarea-input  class="txt" attr="description"
-                    sql-type="STRING" enabled="yes" required="yes"></o-textarea-input>
-                </div>
-                <div fxLayout="row" fxLayoutGap="10px">
-                    <o-hour-input fxFlex="50" class="txt" attr="opening_time"
-                    sql-type="TIME" enabled="yes"></o-hour-input>
-                    <o-hour-input fxFlex="50" class="txt" attr="closing_time"
-                    sql-type="TIME" enabled="yes"></o-hour-input>
-                </div>
-                <div fxLayout="column" fxLayoutGap="10px">
-                    <o-text-input class="txt" attr="coordinates"
-                    sql-type="STRING" enabled="yes"></o-text-input>
-                </div>
-                <!-- <div fxLayout="column" class="imageInput">
-                    <o-image id="image"  class="img" attr="images" sql-type="OTHER" entity="image" service="images" image-type="base64"></o-image>
-                </div> -->
-                <div>
-                    <o-text-input #routeIdInput attr="inputIdRoute" label="Text" (onChange)="onChangeValue()" oHidden></o-text-input>
-                </div>
+    <o-column class="container">
+        <div fxLayout="row" class="landmarkInfo">
+            <div fxLayout="column" fxLayoutGap="10px" class="noHidden">
+                <o-text-input class="txt"  attr="name" sql-type="STRING"
+                    enabled="yes" required="yes"></o-text-input>
+            </div>
+            <div fxLayout="column" fxLayoutGap="10px" class="noHidden">
+                <o-text-input class="txt" attr="coordinates"
+                sql-type="STRING" enabled="yes" read-only="yes"></o-text-input>
+            </div>
+            <div>
+                <o-text-input class="hidden" #routeIdInput attr="inputIdRoute" label="Text" (onChange)="onChangeValue()" oHidden></o-text-input>
             </div>
         </div>
-        <div class="landmark-map">
+        <div fxLayout="row" class="landmark-map">
             <o-map #oMap attr="mapInput" center="42.940599,-7.120727" zoom="8" min-zoom="3" max-zoom="20" zoom-control="yes" 
                 search-control="no" layer-panel-visible="no" fxFlex (onClick)="onClickMap($event)">
                 <!-- [crs-configuration]="objeto" -->
-                <o-map-crs crs="EPSG4326"></o-map-crs>
+                <o-map-crs crs="EPSG:4326"></o-map-crs>
                 <!--<o-map-draw-controls></o-map-draw-controls>-->
             </o-map>
         </div>
-    </o-row>
+    </o-column>
 </o-form>

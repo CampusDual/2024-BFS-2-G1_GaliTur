@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit} from '@angular/core';
 import { Expression, FilterExpressionUtils, OntimizeService, Util } from 'ontimize-web-ngx';
 import { Landmark } from './landmark-model';
 import { RouteService } from 'src/app/shared/services/route.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-all-landmark',
@@ -11,8 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ViewAllLandmarkComponent implements AfterViewInit{
 
-  constructor(private ontimizelandmarkService: OntimizeService,
-    private routeService:RouteService, private activeRoute:ActivatedRoute) {
+  constructor(private ontimizelandmarkService: OntimizeService, private activeRoute:ActivatedRoute,
+  private router:Router) {
     this.configureService()
   }
 
@@ -36,7 +36,7 @@ export class ViewAllLandmarkComponent implements AfterViewInit{
   }
 
   consultarDatosPorId(id: any): void {
-    this.ontimizelandmarkService.query({route_id: id},['l.landmark_id','l.name','l.description'],'landmark').subscribe((response) => {
+    this.ontimizelandmarkService.query({route_id: id},['l.landmark_id','l.name','l.coordinates'],'landmark').subscribe((response) => {
       this.datosTabla.push(...response.data);
       console.log(this.datosTabla)
     });
@@ -76,6 +76,10 @@ export class ViewAllLandmarkComponent implements AfterViewInit{
     } else {
       return null;
     }
+  }
+
+  onClickBackToRoutes(){
+    this.router.navigate(['main','routes']);
   }
 
 }

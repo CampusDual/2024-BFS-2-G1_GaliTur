@@ -1,7 +1,8 @@
 <h2>{{'info_landmark' | oTranslate }}</h2>
 <o-table #landmarkTable attr="landmarkTable" [static-data]="datosTabla"
-    columns="landmark_id;name;description"
-    visible-columns="landmark_id;name;description" query-rows="10" select-all-checkbox="yes"
-    export-button="no" insert-button="yes" delete-button="yes" refresh-button="no" fixed-header="yes"
+    columns="landmark_id;name;coordinates"
+    visible-columns="landmark_id;name;coordinates" query-rows="10" select-all-checkbox="yes"
+    export-button="no" insert-button="yes" delete-button="no" refresh-button="no" fixed-header="yes"
     detail-mode="none" edition-mode="click" export-mode="local">
+    <o-table-button label="{{'button_table_finish' | oTranslate }}" icon="route" (click)="onClickBackToRoutes()"></o-table-button>
 </o-table>

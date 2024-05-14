@@ -39,6 +39,7 @@ public class LandmarkService implements ILandmarkService {
     public EntityResult landmarkInsert(Map<String, Object> attrMap) {
         EntityResult insertLandmarkId = this.daoHelper.insert(landmarkDao, attrMap);
         Map<String,Object> landmarkRouteMapAttr=new HashMap();
+        //TODO uso posterior en el siguiente sprint
 //        Map<String,Object> imageMapAttr=new HashMap();
 //        if (attrMap.get("images")!=null) {
 //            imageMapAttr.put(ImageDao.ATTR_IMAGE_CODE,attrMap.get("images"));
@@ -52,6 +53,7 @@ public class LandmarkService implements ILandmarkService {
         return this.daoHelper.insert(routeLandmarkDao, landmarkRouteMapAttr);
     }
 
+    //TODO uso posterior en el siguiente sprint
 //    public EntityResult insertImageAux(Object id_landmark,Object id_image) {
 //        Map<String,Object> imageLandmarkMapAttr=new HashMap();
 //        imageLandmarkMapAttr.put(LandmarkDao.ATTR_ID, id_landmark);
