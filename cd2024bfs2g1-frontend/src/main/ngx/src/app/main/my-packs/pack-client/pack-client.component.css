@@ -1,4 +1,4 @@
-.businessCard {
+.packCard {
     width: 520px;
     min-width: 300px;
     background-color: #eff1f3;
@@ -10,13 +10,13 @@
 
 }
 
-.businessCard img {
+.packCard img {
     margin-top: 7.5px;
     width: 100%;
     height: 100%;
 }
 
-.businessCard .office {
+.packCard .office {
     font-size: 0.8em;
 
 }
