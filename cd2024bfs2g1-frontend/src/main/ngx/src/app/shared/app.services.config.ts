@@ -47,10 +47,10 @@ export const SERVICE_CONFIG: Object = {
   'packs':{
     'path':'/packs'
   },
-  'images':{
-    'path':'/images'
-  },
   'imagePacks':{
     'path':'/imagePacks'
+  },
+  'images':{
+    'path':'/images'
   },
 };

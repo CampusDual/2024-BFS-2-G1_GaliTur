@@ -4,6 +4,7 @@ import { BusinessHomeComponent } from '../main/business/business-home/business-h
 export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'home', name: 'HOME', icon: 'home', route: '/main/home' },
   { id: 'businesses', name: 'BUSINESSES', tooltip: 'BUSINESSES', route: '/main/businesses', icon: 'business'},
+  { id: 'packs', name: 'PACKS', tooltip: 'PACKS', route: '/main/packs', icon: 'inventory_2'},
   { id: 'routes', name: 'ROUTES', icon: 'route', route: '/main/routes' },
   { id: 'packs', name:'PACKS', icon: 'inventory_2', route: '/main/packs'},
   {

@@ -21,7 +21,10 @@ public class ImageService implements IImageService {
     private ImageDao imageDao;
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
-
+    @Override
+    public EntityResult imageQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.imageDao,keyMap,attrList);
+    }
     @Override
     public EntityResult imageInsert(Map<String, Object> attrMap) {
         return this.daoHelper.insert(imageDao, attrMap);
