@@ -10,9 +10,6 @@
   background-image: url('../../../../assets/images/photoRouteDetails.jpg');
   background-size: cover;
   background-position: center;
-
-
-
 }
 
 .container {
@@ -31,20 +28,6 @@
   color: #70b317;
 }
 
-.botonInfo {
-  border: none;
-  color: #3a3b39;
-  height: 10px;
-  background-color: #E4EBF2;
-  transition: transform 0.2s ease;
-  outline: none;
-}
-
-.botonInfo:hover {
-  transform: scale(1.2);
-  background-color: #E4EBF2;
-  padding: 0px 0px 0px 0px;
-}
 
 .container .img {
   height: 50px;
@@ -78,8 +61,14 @@
   transition: opacity 0.3s;
 }
 
+.tooltip:hover{
+  transform: scale(1.2);
+  padding: 0px 0px 0px 0px;
+}
+
 .tooltip:hover .tooltiptext {
   visibility: visible;
+  transform: scale(0.9);
   opacity: 1;
 }
 

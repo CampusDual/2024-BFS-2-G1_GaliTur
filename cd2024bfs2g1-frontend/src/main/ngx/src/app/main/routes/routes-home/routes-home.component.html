@@ -20,7 +20,6 @@
                 <div class="difficulty" [ngClass]="'di-' + data.difficulty">
                     <div class="tooltip">
                         <mat-icon>help</mat-icon>
-                        <!-- Texto del tooltip -->
                         <span class="tooltiptext">{{getDifficultad(data.difficulty)}}</span>
                     </div>
                     <span *ngIf="data.difficulty; else no_difficulty">
