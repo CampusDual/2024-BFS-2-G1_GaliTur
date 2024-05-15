@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
-import { RoutesDetailComponent } from '../routes-detail/routes-detail.component';
 import { ImageService } from '../../image.service';
 import { LandmarksService } from '../../landmarks.service';
+import { RoutesDetailComponent } from '../routes-detail/routes-detail.component';
+
 
 @Component({
   selector: 'app-routes-home',
@@ -75,12 +76,18 @@ export class RoutesHomeComponent implements OnInit {
           return 'icon-difficulty-3';
       case 4:
           return 'icon-difficulty-4';
-
   }
 }
-
-
-
-
-
+getDifficultad(difficulty: number): string {
+  switch(difficulty) {
+    case 1:
+        return 'Dificultad: Fácil';
+    case 2:
+        return 'Dificultad: Medio';
+    case 3:
+        return 'Dificultad: Difícil';
+    case 4:
+        return 'Dificultad: Experto';
+}
+}
 }

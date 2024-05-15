@@ -13,6 +13,7 @@ import { ViewLandmarkDetailComponent } from './routes-detail/view-landmark-detai
 import { SharedModule } from '../../shared/shared.module';
 
 
+
 @NgModule({
   declarations: [
     RoutesHomeComponent,
@@ -20,7 +21,7 @@ import { SharedModule } from '../../shared/shared.module';
     RoutesNewComponent,
     AddLandmarkComponent,
     ViewAllLandmarkComponent,
-    ViewLandmarkDetailComponent
+    ViewLandmarkDetailComponent,
   ],
   imports: [
     CommonModule,
