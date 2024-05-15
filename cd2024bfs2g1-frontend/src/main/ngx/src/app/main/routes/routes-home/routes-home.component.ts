@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ImageService } from '../../image.service';
-import { LandmarksService } from '../../landmarks.service';
+
 import { RoutesDetailComponent } from '../routes-detail/routes-detail.component';
+import { ImageService } from 'src/app/shared/services/image.service';
 
 
 @Component({
@@ -17,7 +17,6 @@ export class RoutesHomeComponent implements OnInit {
     protected dialog: MatDialog,
     protected sanitizer: DomSanitizer,
     private imageService: ImageService,
-    //private landmarkService: LandmarksService
   ) { }
 
   ngOnInit() {
@@ -38,7 +37,6 @@ export class RoutesHomeComponent implements OnInit {
         data['galleryImages'] = images
       }
 
-      //this.landmarkService.getLandmark(data.route_id).subscribe
 
       this.dialog.open(RoutesDetailComponent, {
         height: '600px',
