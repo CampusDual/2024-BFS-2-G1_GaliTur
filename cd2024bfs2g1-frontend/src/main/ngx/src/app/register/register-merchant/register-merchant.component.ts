@@ -103,4 +103,8 @@ export class RegisterMerchantComponent {
   navLogin() {
     this.router.navigate(['/login'])
   }
+
+  navRegister() {
+    this.router.navigate(['/register'])
+  }
 }

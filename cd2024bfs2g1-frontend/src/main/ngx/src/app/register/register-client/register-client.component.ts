@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {
   AbstractControl, FormControl,
   ValidationErrors,
@@ -125,5 +125,9 @@ export class RegisterClientComponent{
 
   navLogin() {
     this.router.navigate(['/login'])
+  }
+
+  navRegisterProfessional() {
+    this.router.navigate(['/register', 'professional'])
   }
 }
