@@ -105,51 +105,17 @@
 }
 
 
-.d-1 {
-  background-color: #E4EBF2;
-  border-radius: 20px;
-  padding: 10px 10px;
-  height: 70px;
-  width: 300px;
-  align-items: center;
-  /*
-  .mat-icon {
-    color: #69b704e7;
-  }
-  */
 
-}
-
-.d-2 {
+.d{
   background-color: #E4EBF2;
   border-radius: 20px;
   height: 70px;
   padding: 10px 10px;
   align-items: center;
   width: 300px;
-
 }
 
-.d-3 {
-  background-color: #E4EBF2;
-  border-radius: 20px;
-  height: 70px;
-  padding: 10px 10px;
-  align-items: center;
-  width: 300px;
 
-}
-
-.d-4 {
-  background-color: #E4EBF2;
-  border-radius: 20px;
-  height: 70px;
-  padding: 10px 10px;
-  align-items: center;
-  width: 300px;
-
-
-}
 
 .difficulty {
   text-align: center;
