@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import moment from 'moment';
 
 @Component({
-  selector: 'app-business-home',
+  selector: 'app-pack-home',
   templateUrl: './pack-home.component.html',
   styleUrls: ['./pack-home.component.css']
 })

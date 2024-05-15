@@ -7,22 +7,18 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    :hover{
+        cursor: pointer;
 
-}
-
-.packCard:hover{
-    cursor: pointer;
-}
-
-.packCard img {
-    margin-top: 7.5px;
-    width: 100%;
-    height: 100%;
-}
-
-.packCard .office {
-    font-size: 0.8em;
-
+    }
+    img {
+        margin-top: 7.5px;
+        width: 100%;
+        height: 100%;
+    }
+    .office {
+        font-size: 0.8em;
+    }
 }
 
 .preview-image {
