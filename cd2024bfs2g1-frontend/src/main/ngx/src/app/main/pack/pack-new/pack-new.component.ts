@@ -21,7 +21,7 @@ export class PackNewComponent {
 
   blanksValidator(control: AbstractControl): ValidationErrors | null{
     try{
-      const blank = /^\S*.+\S*$/;
+      const blank = /^\S+.+\S*$/;
       const inputValue = control.value;
 
       if(blank.test(inputValue)){
