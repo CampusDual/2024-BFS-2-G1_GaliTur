@@ -6,7 +6,7 @@ import { Router } from "@angular/router";
 import moment from "moment";
 
 @Component({
-  selector: "app-business-home",
+  selector: "app-pack-home",
   templateUrl: "./pack-home.component.html",
   styleUrls: ["./pack-home.component.css"],
 })
@@ -20,7 +20,7 @@ export class PackHomeComponent {
     private router: Router
   ) {
     this.ontimizeService.configureService(
-      this.ontimizeService.getDefaultServiceConfiguration("businesses")
+      this.ontimizeService.getDefaultServiceConfiguration("packs")
     );
   }
   ngOnInit() {}
@@ -34,7 +34,7 @@ export class PackHomeComponent {
   }
 
   public openDetail(data: any): void {
-    this.router.navigate(["main/businesses/" + data.bsn_id]);
+    this.router.navigate(["main/packs/" + data.pck_id]);
   }
 
   truncateName(name: string): string {
