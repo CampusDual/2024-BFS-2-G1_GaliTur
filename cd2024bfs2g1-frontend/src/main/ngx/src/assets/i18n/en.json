@@ -191,5 +191,7 @@
   "gui_c_name": "Guide Name",
   "pcs_id": "Participant ID",
   "img_code": "Image Code",
-  "PACKS": "Packs"
+  "PACKS": "Packs",
+  "DAYS": "Days",
+  "DAY": "Day"
 }

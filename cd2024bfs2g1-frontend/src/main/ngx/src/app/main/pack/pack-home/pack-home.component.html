@@ -1,22 +1,23 @@
 <o-grid #packGrid attr="packGrid" title="PACKS" service="packs" entity="allPacks" keys="P.pck_id"
     columns="P.pck_id;pck_name;pck_description;pck_date_begin;pck_date_end;pck_price;pck_participants;gui_c_name;pcs_id;img_code"
-    query-rows="12" page-size-options="3;6;12" orderable="true"
+    query-rows="16" page-size-options="8;16;32" orderable="true"
     sortable-columns="pck_name" insert-button="true" refresh-button="true"
     pagination-controls="true" gutter-size="8px" fixed-header="yes" grid-item-height="320px" detail-mode="none"
     insert-button-floatable="no" >
     <o-grid-item *ngFor="let data of packGrid.dataArray" >
-        <div (click)="data.pcs_id != 2 && openDetail(data)" fxLayout="row" fxLayoutAlign="space-evenly center" [ngClass]="{ 'not-available': data.pcs_id == 2 }"
+        <div (click)="openDetail(data)" fxLayout="row" fxLayoutAlign="space-evenly center" [ngClass]="{ 'not-available': data.pcs_id == 2 }"
             class="mat-elevation-z1 packCard" >
             <span *ngIf="data.pcs_id == 2" class="unavailable-message">Pack Reservado</span>
             <div class="cardImg" >
                 <img  class="preview-image" [src]="getImageSrc(data.img_code)" >
-            </div>              
+            </div>
             <div class="cardInfo">
                 <span><strong class="pack-name">{{ truncateName(data.pck_name) }}</strong></span>
                 <ul style="list-style-type: none;" class="list">
                     <li><mat-icon class="icon">event</mat-icon> {{truncateInfo(getDate(data.pck_date_begin))}}</li>
                     <li><mat-icon class="icon">event_busy</mat-icon> {{truncateInfo(getDate(data.pck_date_end))}} </li>
-                    <li><mat-icon class="icon">timer</mat-icon> {{diferenciaDias(data.pck_date_begin,data.pck_date_end)}} days</li>
+                    <li *ngIf="diferenciaDias(data.pck_date_begin,data.pck_date_end) <= 1"><mat-icon class="icon">timer</mat-icon> {{diferenciaDias(data.pck_date_begin,data.pck_date_end)}} {{'DAY' | oTranslate }}</li>
+                    <li *ngIf="diferenciaDias(data.pck_date_begin,data.pck_date_end) > 1"><mat-icon class="icon">timer</mat-icon> {{diferenciaDias(data.pck_date_begin,data.pck_date_end)}} {{'DAYS' | oTranslate }}</li>
                     <li><mat-icon class="icon">groups</mat-icon> {{data.pck_participants}} </li>
                         <li><mat-icon class="icon">pin_drop</mat-icon> {{truncateInfo(data.gui_c_name)}}</li>
                     <li><mat-icon class="icon">payments</mat-icon> {{data.pck_price}} €</li>

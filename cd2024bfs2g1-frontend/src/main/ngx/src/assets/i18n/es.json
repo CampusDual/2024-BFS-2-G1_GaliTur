@@ -196,5 +196,7 @@
   "gui_c_name": "Nombre del Guía",
   "pcs_id": "ID del Participante",
   "img_code": "Código de Imagen",
-  "PACKS": "Paquetes"
+  "PACKS": "Paquetes",
+  "DAYS": "Días",
+  "DAY": "Día"
 }
