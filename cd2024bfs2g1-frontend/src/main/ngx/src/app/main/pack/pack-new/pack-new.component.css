@@ -1,0 +1,45 @@
+.price {
+    margin-inline-start: 35px;
+    width: 30%;
+}
+
+.o-image{
+    width: 90%;
+    height: 90%;
+}
+
+
+span {
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 5%;
+    width: 10px;
+}
+
+#pack *:not(div){
+    padding-bottom: 3%;
+
+}
+#pack{
+    width: 50%;
+    margin-left: 2%;
+}
+
+#description{
+    .mat-textarea {
+        resize: none;
+    }
+}
+#text{
+  margin-top: 2%;
+}
+div *{
+    width: 58.5%;
+}
+div *:first-child{
+    margin-right: 3%;
+}
+
+
+
+

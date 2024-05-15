@@ -3,10 +3,6 @@
     width: 50%;
 }
 
-.routeInfo div {
-    padding: 5px;
-}
-
 
 .imageInput{
     margin: 10px;
@@ -14,5 +10,20 @@
 }
 
 .imageInput div {
-    padding: 5px;
+    height: 96%;
 }
+
+.description-textarea {
+
+    .mat-textarea {
+        resize: none;
+    }
+}
+
+.divPrincipal{
+    padding-top: 1.7%;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-bottom: 1.7%;
+}
+

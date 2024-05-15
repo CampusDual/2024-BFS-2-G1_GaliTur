@@ -19,7 +19,7 @@ export const routes: Routes = [
       { path: 'pack-client', loadChildren: () => import('./my-packs/my-packs.module').then(m => m.MyPacksModule) },
       { path: 'profile', component: ProfileComponent },
       { path: 'routes', loadChildren: () => import('./routes/routes.module').then(m => m.RoutesModule) },
-      { path: 'pack', loadChildren: () => import('./pack/pack.module').then(m => m.PackModule) },
+      { path: 'packs', loadChildren: () => import('./pack/pack.module').then(m => m.PackModule) },
     ]
   }
 ];

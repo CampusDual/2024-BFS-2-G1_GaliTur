@@ -1,4 +1,3 @@
-
 <o-grid #routesGrid attr="routesHome" title="ROUTES" service="routes" entity="route" keys="route_id"
     columns="route_id;name;description;estimated_duration;difficulty"
     query-rows="8" page-size-options="8;10;12" orderable="true"
@@ -9,7 +8,7 @@
         <div *ngIf="!data.isdraft" (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-evenly center"
             class="mat-elevation-z1 routeCard">
             <span [ngClass]="'difficulty-' + data.difficulty" class="name"><strong>{{ data.name }} </strong></span>
-            <span *ngIf="data.estimated_duration; else no_estimated_duration"> 
+            <span *ngIf="data.estimated_duration; else no_estimated_duration">
                 <mat-icon>schedule</mat-icon> {{"estimated_duration" | oTranslate}}: {{ data.estimated_duration }} </span>
             <ng-template #no_estimated_duration>
                 <span><span></span></span>
