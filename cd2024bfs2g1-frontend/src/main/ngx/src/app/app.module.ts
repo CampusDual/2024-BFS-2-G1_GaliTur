@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OGalleryModule } from 'ontimize-web-ngx-gallery';
 import { CustomMessageServiceRoutes } from './shared/services/customMessageRoutes.service';
 import { CustomMessageBusinessService } from './shared/services/customMessageBusiness.service';
+import { CustomMessageServiceLandmarks } from './shared/services/customMessageLandmarks.service';
 
 // Standard providers...
 // Defining custom providers (if needed)...
@@ -43,6 +44,7 @@ export const customProviders: any = [
     ONTIMIZE_PROVIDERS,
     ...customProviders,
     { provide: 'customMessageServiceTypeRoutes', useValue: CustomMessageServiceRoutes },
+    { provide: 'customMessageServiceTypeLandmarks', useValue: CustomMessageServiceLandmarks },
     { provide: 'customMessageServiceTypeBusiness', useValue: CustomMessageBusinessService }
   ],
 })

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+        xmlns="http://www.ontimize.com/schema/jdbc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+        catalog="" schema="${mainschema}" table="route_landmark"
+        datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>route_landmark_id</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>route_landmark_id</Column>
+    </UpdateKeys>
+    <GeneratedKey>route_landmark_id</GeneratedKey>
+    <Queries>
+        <Query id="default">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.route_landmark
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+
+        <Query id="fullLandmarkWithRoute">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="route_id" prefix="fulljoin" />
+                <AmbiguousColumn name="landmark_id" prefix="fulljoin" />
+            </AmbiguousColumns>
+            <FunctionColumns>
+                <FunctionColumn name="actived"
+                                value="(CASE WHEN tur.rol_id IS NOT NULL THEN 'S' ELSE 'N' END)" />
+            </FunctionColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        (
+                            SELECT
+                                tu.*,
+                                tr.*
+                            FROM
+                                ${mainschema}.route tu,
+                                ${mainschema}.landmark tr
+                        ) fulljoin
+                        LEFT JOIN ${mainschema}.route_landmark tur ON fulljoin.landmark_id = tur.landmark_id AND fulljoin.route_id = tur.route_id
+                    #WHERE#
+                    #ORDER#
+                    ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>

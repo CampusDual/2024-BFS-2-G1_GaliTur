@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RoutesDetailComponent } from '../routes-detail/routes-detail.component';
-import { ImageService } from '../../image.service';
-import { LandmarksService } from '../../landmarks.service';
+import { ImageService } from '../../../shared/services/image.service';
+import { LandmarksService } from '../../../shared/services/landmarks.service';
 
 @Component({
   selector: 'app-routes-home',

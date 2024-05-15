@@ -16,23 +16,28 @@ span {
     width: 10px;
 }
 
-#comboCity{
-    margin-left: 15%;
-}
-
-.formZones{
-    width: 25%;
-}
 #pack *:not(div){
     padding-bottom: 3%;
 
 }
 #pack{
     width: 50%;
+    margin-left: 2%;
 }
 
-#Fechas_Precio *:not(o-currency-input){
-    padding-right: 3%;
+#description{
+    .mat-textarea {
+        resize: none;
+    }
+}
+#text{
+  margin-top: 2%;
+}
+div *{
+    width: 58.5%;
+}
+div *:first-child{
+    margin-right: 3%;
 }
 
 
