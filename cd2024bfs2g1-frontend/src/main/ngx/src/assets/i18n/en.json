@@ -192,5 +192,6 @@
   "pck_name": "Name",
   "pck_date_begin": "Start date",
   "gui_c_name": "City",
-  "PACKS": "Packs"
+  "PACKS": "Packs",
+  "BOOK": "Reserve"
 }
