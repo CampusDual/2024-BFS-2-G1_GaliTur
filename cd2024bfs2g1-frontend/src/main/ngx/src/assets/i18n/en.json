@@ -193,5 +193,9 @@
   "pck_date_begin": "Start date",
   "gui_c_name": "City",
   "PACKS": "Packs",
-  "BOOK": "Reserve"
+  "BOOK": "Reserve",
+  "BOOKING.CONFIRMED": "Booking confirmed",
+  "BOOKED": "Reserved",
+  "BOOKING-DIALOG": "Confirm Booking",
+  "BOOKING-DIALOG-B": "Do you wish to book this pack?"
 }

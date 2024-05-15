@@ -123,6 +123,10 @@
   
   }
 
+  .active-pack:hover{
+    cursor: pointer;
+  }
+
 .left, .right {
     flex: 1;
     padding: 25px;
@@ -187,7 +191,6 @@
         background-color:  #84A45A;     
     }
 }
-
 
 
 

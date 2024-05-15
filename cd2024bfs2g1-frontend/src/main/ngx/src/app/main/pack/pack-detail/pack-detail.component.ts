@@ -1,7 +1,7 @@
 import { Component, Injector, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { DialogService, ODialogConfig, OFormComponent, OTableComponent, OTranslateModule, OntimizeService } from 'ontimize-web-ngx';
+import { DialogService, ODialogConfig, OFormComponent, OSnackBarConfig, OTableComponent, OTranslateModule, OTranslateService, OntimizeService, SnackBarService } from 'ontimize-web-ngx';
 import { PackHomeComponent } from '../pack-home/pack-home.component';
 
 @Component({
@@ -16,10 +16,11 @@ export class PackDetailComponent {
   constructor(
     protected sanitizer: DomSanitizer,
     private router: Router,
-    private oTranslate: OTranslateModule,
+    private oTranslate: OTranslateService,
     protected dialogService: DialogService,
     protected injector: Injector,
-    protected service: OntimizeService
+    protected service: OntimizeService,
+    protected snackBarService: SnackBarService
   ) {
     this.service = this.injector.get(OntimizeService);
   }
@@ -64,10 +65,18 @@ export class PackDetailComponent {
     };
     
     if (this.dialogService) {
-      this.dialogService.confirm('Confirme reserva del pack', '¿Quiere confirmar la reserva?', config);
+      this.dialogService.confirm(this.oTranslate.get('BOOKING-DIALOG'), this.oTranslate.get('BOOKING-DIALOG-B'), config);
       this.dialogService.dialogRef.afterClosed().subscribe( result => {
         if(result) {
           this.insertBooking(data);
+
+          const config: OSnackBarConfig = {
+            action: "",
+            milliseconds: 2000,
+            icon: 'booking',
+            iconPosition: 'left',
+          };
+          this.snackBarService.open("BOOKING.CONFIRMED", config);
 
           // Actions on confirmation
         } else {
@@ -87,11 +96,15 @@ export class PackDetailComponent {
 
   
     insertBooking(data) {
+
    
       this.service.insert({ "pck_id": data.pck_id }, "packBooking")
       .subscribe(resp => {
        this.form.reload(true);
       });
       }
+
+   
+
 
 }
