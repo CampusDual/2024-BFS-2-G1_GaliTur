@@ -18,7 +18,6 @@ export const routes: Routes = [
       { path: 'packs', loadChildren: () => import('./pack/pack.module').then(m => m.PackModule) },
       { path: 'profile', component: ProfileComponent },
       { path: 'routes', loadChildren: () => import('./routes/routes.module').then(m => m.RoutesModule) },
-      { path: 'packs', loadChildren: () => import('./pack/pack.module').then(m => m.PackModule) },
     ]
   }
 ];
