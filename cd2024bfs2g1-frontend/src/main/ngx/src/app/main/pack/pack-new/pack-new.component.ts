@@ -23,6 +23,7 @@ export class PackNewComponent {
     try{
       const blank = /^\S+.+\S*$/;
       const inputValue = control.value;
+      
 
       if(blank.test(inputValue)){
         return null;

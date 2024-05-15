@@ -1,7 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { OFormComponent, OTableComponent } from 'ontimize-web-ngx';
+import { OFormComponent, OTableComponent, OTranslateModule } from 'ontimize-web-ngx';
+import { PackHomeComponent } from '../pack-home/pack-home.component';
+
 
 @Component({
   selector: 'app-pack-detail',
@@ -15,6 +17,7 @@ export class PackDetailComponent {
   constructor(
     protected sanitizer: DomSanitizer,
     private router: Router,
+    private oTranslate: OTranslateModule
   ) {
   }
 
@@ -26,7 +29,14 @@ export class PackDetailComponent {
   }
 
   public openPacks(): void {
+    if(PackHomeComponent.page==1){
+      this.router.navigate(['main/packs']);
+    }else{
+      this.router.navigate(['main/pack-client']);
+    }
+
     this.router.navigate(['main/pack']);
+
   }
 
   diferenciaDias(fechaInicio: number, fechaFin: number): number {
@@ -35,9 +45,11 @@ export class PackDetailComponent {
     return Math.round(diferencia / unDia);
   }
 
+
   getDate(fechaNumber: number): string {
     const tempFecha = new Date(fechaNumber);
     return tempFecha.toLocaleDateString();
+
   }
 
 }

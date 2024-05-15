@@ -8,12 +8,9 @@ const routes: Routes = [
   {
     path: '', component: PackHomeComponent
   },
-  {
-    path: 'new', component: PackNewComponent
-  },
-  {
-    path: ':pck_id', component: PackDetailComponent
-  },
+  {path: 'new', component: PackNewComponent},
+  {path: ':pck_id', component: PackDetailComponent}
+
 ];
 
 

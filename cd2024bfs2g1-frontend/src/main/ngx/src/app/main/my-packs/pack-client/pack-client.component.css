@@ -1,5 +1,3 @@
-
-/*packCard structure*/
 .packCard {
     width: 400px;
     min-width: 300px;
@@ -8,42 +6,32 @@
     padding: 16px;
     display: flex;
     flex-direction: row;
-}
-.businessCard img {
-
     justify-content: center;
+    :hover{
+        cursor: pointer;
 
+    }
+    img {
+        margin-top: 7.5px;
+        width: 100%;
+        height: 100%;
+    }
+    .office {
+        font-size: 0.8em;
+    }
 }
 
-/*Image div for pack card structure*/
-.packCard img {
-    margin-top: 7.5px;
-    width: 100%;
-    height: 100%;
-}
-
-/*pack card structure font size*/
-.packCard .office {
-    font-size: 0.8em;
-
-}
-
-
-/*Image modifiers for pack card image*/
 .preview-image {
     border-radius: 10px;
     object-fit: cover;
 }
 
-
-/*image styles*/
 .cardImg{
     align-content: center;
     width: 225px;
     height: 250px;
 }
 
-/*info styles*/
 .cardInfo{
     align-content: center;
     width: 175px;
@@ -51,28 +39,22 @@
     padding: 20px;
 }
 
-/*icon styles*/
 .icon{
     margin-bottom:-10px ;
     font-size: 16px;
     color: #84A45A;
 }
 
-/*info list styles*/
 .list{
     margin-left: -30px;
 }
 
-
-/*pack not avaliable card styles*/
 .not-available {
     opacity: 0.5;
     filter: grayscale(100%);
     position: relative;
 }
 
-
-/*pack not avaliable message styles */
 .unavailable-message {
     position: absolute;
     top: 50%;
@@ -84,8 +66,6 @@
     font-size: 20px;
 }
 
-
-/*pack name styles*/
 .pack-name {
     color: #52733B;
 }
@@ -96,4 +76,3 @@
         min-width: 300px;
     }
 }
-

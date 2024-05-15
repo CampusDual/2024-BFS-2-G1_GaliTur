@@ -127,7 +127,7 @@
     flex: 1;
     padding: 25px;
     background-color: transparent;
-        mat-icon{
+        mat-icon{ 
             color:#84A45A; 
         }
 }
@@ -178,10 +178,6 @@
 .li-with-margin {
     margin-top: 10px;
 }
-
-
-
-
 
 
 

@@ -34,4 +34,5 @@ public class ImageService implements IImageService {
     public EntityResult imageQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.imageDao,keyMap,attrList);
     }
+
 }

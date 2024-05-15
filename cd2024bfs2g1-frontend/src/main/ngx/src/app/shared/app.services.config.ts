@@ -53,4 +53,7 @@ export const SERVICE_CONFIG: Object = {
   'images':{
     'path':'/images'
   },
+  'packBookings': {
+    'path': "/packBookings",
+  }
 };

@@ -1,9 +1,11 @@
+
 import { Component, ViewChild } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { DomSanitizer } from "@angular/platform-browser";
 import { OGridComponent, OntimizeService } from "ontimize-web-ngx";
 import { Router } from "@angular/router";
 import moment from "moment";
+
 
 @Component({
   selector: "app-pack-home",
@@ -13,7 +15,9 @@ import moment from "moment";
 export class PackHomeComponent {
   public showWaitForLongTask = false;
 
-  constructor(
+  public static page = 0;
+
+    constructor(
     private ontimizeService: OntimizeService,
     protected dialog: MatDialog,
     protected sanitizer: DomSanitizer,
@@ -25,6 +29,13 @@ export class PackHomeComponent {
   }
   ngOnInit() {}
 
+  public openDetail(data: any): void {
+    PackHomeComponent.page = 1;
+    this.router.navigate(['main/packs/' + data.pck_id]);
+  }
+
+
+
   public getImageSrc(base64: any): any {
     return base64
       ? this.sanitizer.bypassSecurityTrustResourceUrl(
@@ -33,9 +44,6 @@ export class PackHomeComponent {
       : "./assets/images/no-image-transparent.png";
   }
 
-  public openDetail(data: any): void {
-    this.router.navigate(["main/packs/" + data.pck_id]);
-  }
 
   truncateName(name: string): string {
     if (name.length > 16) {
