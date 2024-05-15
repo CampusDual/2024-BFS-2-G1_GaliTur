@@ -1,4 +1,3 @@
-
 .routesSecond {
   min-height: auto;
   display: flex;
@@ -14,15 +13,15 @@
 
 .routesSecond mat-icon {
   margin-right: 6px;
-  margin-left: 6px; 
-  vertical-align: middle; 
+  margin-left: 6px;
+  vertical-align: middle;
 }
 
 .routesSecond img {
-  max-width: 24px;
-  height: auto;
-  margin-right: 8px;
-  vertical-align: middle; 
+  width: 250px;
+  height: 220px;
+  padding: 0px 0px 0px 30px;
+  vertical-align: middle;
 }
 
 
@@ -47,21 +46,17 @@
 }
 
 .o-gallery {
-  width: 300px;
   height: 300px;
-}
-
-
-
-.routesSecond mat-icon {
-  color: #4a5568; 
 }
 
 
 .descriptionPanel {
   flex: 2;
   padding-left: 16px;
+  max-height: 200px;
+  overflow-y: auto;
 }
+
 
 .estimatedDuration {
   display: flex;
@@ -77,8 +72,17 @@
   padding-left: 15px;
 }
 
+.landmarkInfo {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-left: 14px;
+}
+
 .mainPanel {
-  background-image: url("../../../../assets/images/photoRouteDetails.png");
+  background-image: url("../../../../assets/images/photoRouteDetails.jpg");
+  background-size: cover;
+  background-position: center;
 
 }
 
@@ -90,3 +94,82 @@
   background-color: #EFEFEF;
 }
 
+.custom-button {
+  margin-left: 140px;
+  background-color: #78af7bfd;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.custom-button:hover {
+  background-color: #5f9b62;
+}
+
+.d-1{
+  background-color: #E4EBF2;
+  border-radius: 20px;
+  padding: 10px 10px;
+  height: 70px;
+  width: 300px;
+  align-items: center;
+  /*
+  .mat-icon {
+    color: #69b704e7;
+  }
+  */
+
+}
+.d-2{
+  background-color: #E4EBF2;
+  border-radius: 20px;
+  height: 70px;
+  padding: 10px 10px;
+  align-items: center;
+  width: 300px;
+}
+.d-3{
+  background-color: #E4EBF2;
+  border-radius: 20px;
+  height: 70px;
+  padding: 10px 10px;
+  align-items: center;
+  width: 300px;
+}
+
+.d-4{
+  background-color: #E4EBF2;
+  border-radius: 20px;
+  height: 70px;
+  padding: 10px 10px;
+  align-items: center;
+  width: 300px;
+}
+
+.difficulty{
+  text-align: center;
+}
+
+.icon-difficulty-1 {
+  color: #69b704e7;
+}
+
+.icon-difficulty-2 {
+  color: #d1cb1fde;
+}
+
+
+.icon-difficulty-3 {
+  color: #f69c15;
+}
+
+.icon-difficulty-4 {
+  color: #dc1d0f;
+}

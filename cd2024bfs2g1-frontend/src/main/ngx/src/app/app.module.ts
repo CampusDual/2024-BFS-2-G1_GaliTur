@@ -15,6 +15,7 @@ import { CustomMessageServiceRoutes } from './shared/services/customMessageRoute
 import { CustomMessageBusinessService } from './shared/services/customMessageBusiness.service';
 import { CustomMessageServiceLandmarks } from './shared/services/customMessageLandmarks.service';
 
+
 // Standard providers...
 // Defining custom providers (if needed)...
 export const customProviders: any = [
@@ -31,7 +32,8 @@ export const customProviders: any = [
     OntimizeWebModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    OGalleryModule
+    OGalleryModule,
+
   ],
   declarations: [
     AppComponent

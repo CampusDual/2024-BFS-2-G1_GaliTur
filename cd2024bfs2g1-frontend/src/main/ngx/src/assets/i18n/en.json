@@ -191,6 +191,7 @@
   "MESSAGES_FORM_CHANGES_WILL_BE_LOST_ROUTE": "Are you really sure you want to do this? All changes will be lost",
   "Message-insert": "Business insterted successfully",
   "Message-error": "Can't insert business",
+  "landmark": "Landmarks",
   "P.pck_id": "ID",
   "pck_name": "Name",
   "pck_description": "Description",
