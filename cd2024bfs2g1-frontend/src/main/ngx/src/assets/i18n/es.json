@@ -33,6 +33,8 @@
   "REGISTER": "Registro",
   "ALREADY_REGISTERED": "Ya estoy registrado",
   "PROFESSIONAL": "¿Eres un profesional?",
+  "IM_PROFESSIONAL": "Soy un profesional",
+  "IM_NOT_PROFESSIONAL": "No soy un profesional",
   "LOGIN_TITLE": "Inicia sesión en tu cuenta",
   "LOGOUT": "Salir",
   "new": "Nuevo",
