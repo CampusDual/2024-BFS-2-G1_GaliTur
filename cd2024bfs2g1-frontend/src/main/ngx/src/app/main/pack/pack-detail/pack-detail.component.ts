@@ -34,9 +34,6 @@ export class PackDetailComponent {
     }else{
       this.router.navigate(['main/pack-client']);
     }
-
-    this.router.navigate(['main/pack']);
-
   }
 
   diferenciaDias(fechaInicio: number, fechaFin: number): number {
