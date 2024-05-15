@@ -1,7 +1,7 @@
 import { Component, Injector, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { DialogService, ODialogConfig, OFormComponent, OSnackBarConfig, OTableComponent, OTranslateModule, OTranslateService, OntimizeService, SnackBarService } from 'ontimize-web-ngx';
+import { AuthService, DialogService, ODialogConfig, OFormComponent, OSnackBarConfig, OTableComponent, OTranslateModule, OTranslateService, OntimizeService, SnackBarService } from 'ontimize-web-ngx';
 import { PackHomeComponent } from '../pack-home/pack-home.component';
 
 @Component({
@@ -20,13 +20,18 @@ export class PackDetailComponent {
     protected dialogService: DialogService,
     protected injector: Injector,
     protected service: OntimizeService,
-    protected snackBarService: SnackBarService
+    protected snackBarService: SnackBarService,
+    private authService: AuthService
   ) {
     this.service = this.injector.get(OntimizeService);
   }
 
+  id: string = "";
+
 	ngOnInit(): void {
     this.configureService();
+    let sessionData = localStorage.getItem("com.ontimize.web.ngx.jee.seed");
+    this.id = JSON.parse(sessionData).session["usr_id"];
   }
 
   public getImageSrc(base64: any): any {
@@ -69,15 +74,6 @@ export class PackDetailComponent {
       this.dialogService.dialogRef.afterClosed().subscribe( result => {
         if(result) {
           this.insertBooking(data);
-
-          const config: OSnackBarConfig = {
-            action: "",
-            milliseconds: 2000,
-            icon: 'booking',
-            iconPosition: 'left',
-          };
-          this.snackBarService.open("BOOKING.CONFIRMED", config);
-
           // Actions on confirmation
         } else {
           // Actions on cancellation
@@ -100,7 +96,27 @@ export class PackDetailComponent {
    
       this.service.insert({ "pck_id": data.pck_id }, "packBooking")
       .subscribe(resp => {
-       this.form.reload(true);
+        this.form.reload(true);
+        if(resp != null){
+          const config: OSnackBarConfig = {
+            action: "",
+            milliseconds: 2000,
+            icon: 'booking',
+            iconPosition: 'left',
+            cssClass: "snackbar"
+          };
+          this.snackBarService.open("BOOKING.CONFIRMED", config);
+        }
+       else {
+        const config: OSnackBarConfig = {
+          action: "",
+          milliseconds: 2000,
+          icon: 'booking',
+          iconPosition: 'left',
+          cssClass: "snackbar"
+        };
+        this.snackBarService.open("falsdas", config);
+       }
       });
       }
 

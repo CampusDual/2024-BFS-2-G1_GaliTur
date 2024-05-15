@@ -73,7 +73,7 @@ public class ClientService implements IClientService {
      * Gets logged client ID
      * @return Client ID
      */
-    public int getClientId() {
+    public Integer getClientId() {
         //Gets client object
         Object client = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -91,6 +91,12 @@ public class ClientService implements IClientService {
 
         EntityResult clientEr = clientQuery(emptyMap, qKeys);
         ArrayList<Integer> al = (ArrayList<Integer>) clientEr.get(ClientDao.CLIENT_ID);
-        return al.get(0);
+
+        if(al == null){
+            return -1;
+        }else {
+            return al.get(0);
+        }
+
     }
 }
