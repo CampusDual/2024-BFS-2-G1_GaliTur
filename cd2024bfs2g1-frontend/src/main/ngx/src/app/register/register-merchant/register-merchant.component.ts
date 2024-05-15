@@ -10,6 +10,8 @@ import {MainService} from "../../shared/services/main.service";
   styleUrls: ['./register-merchant.component.css']
 })
 export class RegisterMerchantComponent {
+  validatorsUsernameArray: ValidatorFn[] = [];
+  validatorsNameArray: ValidatorFn[] = [];
   validatorsNewPasswordArray: ValidatorFn[] = [];
   @ViewChild('form') form: OFormComponent;
   @ViewChild('login') login: OTextInputComponent;
@@ -38,49 +40,15 @@ export class RegisterMerchantComponent {
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[a-z]/, 'hasSmallCase'));
     // check whether the entered password has a special character
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/, 'hasSpecialCharacters'));
+
+    this.validatorsUsernameArray.push(this.usernameLengthValidator)
+    this.validatorsUsernameArray.push(this.blanksValidator)
+    this.validatorsUsernameArray.push(this.usernameCharsValidator)
+
+    this.validatorsNameArray.push(this.nameBlanksBetweenValidator)
   }
 
   public register(){
-    let isRegisterOk: boolean = true
-
-    if (
-      this.login.getValue() === undefined ||
-      this.login.getValue().trim() === '' ||
-      this.name.getValue() === undefined ||
-      this.name.getValue().trim() === '' ||
-      this.surname.getValue() === undefined  ||
-      this.surname.getValue().trim() === '' ||
-      this.email.getValue() === undefined ||
-      this.email.getValue().trim() === '' ||
-      this.password.getValue() === undefined ||
-      this.password.getValue().trim() === '' ||
-      this.newPassword.getValue().trim() === undefined ||
-      this.newPassword.getValue().trim() === ''
-    ){
-      this.dialogService.error('Register Error', 'Some required fields are empty')
-      return;
-    } else if (!this.regexEmail.test(this.email.getValue().trim())){
-      this.dialogService.error('Email Error', 'The email is not valid');
-      return;
-    } else if (!this.regexSpecialChar.test(this.form.formGroup.controls['usr_password'].value)) {
-      this.dialogService.error('Password Error', 'Missing special character on password');
-      return;
-    }else if (!this.regexNumber.test(this.form.formGroup.controls['usr_password'].value)) {
-      this.dialogService.error('Password Error', 'Missing number on password');
-      return;
-    }else if (!this.regexSmallCase.test(this.form.formGroup.controls['usr_password'].value)) {
-      this.dialogService.error('Password Error', 'Missing small case character on password');
-      return;
-    }else if (!this.regexCaps.test(this.form.formGroup.controls['usr_password'].value)) {
-      this.dialogService.error('Password Error', 'Missing capital case character on password');
-      return;
-    } else if (this.form.formGroup.controls['usr_password'].value !== this.form.formGroup.controls['confirm_new_password'].value) {
-      this.dialogService.error('Password Error', 'Passwords doesnt match');
-      return;
-    }
-    if(!isRegisterOk){
-      return
-    }
     this.mainService.getUserInfoByLoginAndId(this.login.getValue(), this.email.getValue()).subscribe(
       (result) => {
         if (result.data[0] === undefined){
@@ -106,5 +74,57 @@ export class RegisterMerchantComponent {
 
   navRegister() {
     this.router.navigate(['/register'])
+  }
+
+  blanksValidator(control: AbstractControl): ValidationErrors | null{
+    try{
+      const regex = /^\S*$/;
+      const inputValue = control.value;
+
+      if(regex.test(inputValue)){
+        return null;
+      } else {
+        return { blanks: true };
+      }
+    } catch (e){}
+  }
+
+  usernameLengthValidator(control: AbstractControl): ValidationErrors | null{
+    try{
+      const regex = /^.{6,20}$/;
+      const inputValue = control.value;
+
+      if(regex.test(inputValue)){
+        return null;
+      } else {
+        return { usernameLength: true };
+      }
+    } catch (e){}
+  }
+
+  usernameCharsValidator(control: AbstractControl): ValidationErrors | null{
+    try{
+      const regex = /^[A-Za-z_\-.]*$/
+      const inputValue = control.value;
+
+      if(regex.test(inputValue)){
+        return null;
+      } else {
+        return { usernameChars: true };
+      }
+    } catch (e){}
+  }
+
+  nameBlanksBetweenValidator(control: AbstractControl): ValidationErrors | null{
+    try{
+      const regex = /^\S(?:.*\S)?$/
+      const inputValue = control.value;
+
+      if(regex.test(inputValue)){
+        return null;
+      } else {
+        return { nameBlanksBetween: true };
+      }
+    } catch (e){}
   }
 }

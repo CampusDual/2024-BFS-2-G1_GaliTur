@@ -1,28 +1,64 @@
-<o-form #form show-header="no" service="clients" entity="client" matchPassword keys="usr_id" after-insert-mode="new">
-  <o-column layout-gap="20px" fxFlex="60%">
-    <p class="titulo">Register</p>
-    <o-text-input #login attr="usr_login" label="Username" required="yes"></o-text-input>
-    <o-text-input #name attr="usr_name" label="Name" required="yes"></o-text-input>
-    <o-text-input #surname attr="usr_surname" label="Surname" required="yes"></o-text-input>
-    <o-date-input #birth_date attr="birth_date" label="Birth date" required="yes"></o-date-input>
-    <o-phone-input attr="usr_phone" label="Phone" read-only="no"></o-phone-input>
-    <o-email-input #email attr="usr_email" label="Email" read-only="no" required="yes"></o-email-input>
-    <o-password-input #password attr="usr_password" required="yes" min-length="8"
-                      [validators]="validatorsNewPasswordArray">
-      <o-validator error-name="hasCapitalCase" ></o-validator>
-      <o-validator error-name="hasNumber" ></o-validator>
-      <o-validator error-name="hasSmallCase" ></o-validator>
-      <o-validator error-name="hasSpecialCharacters" ></o-validator>
-    </o-password-input>
-    <o-password-input #newPassword attr="confirm_new_password" required="yes" min-length="8">
-      <o-validator error-name="matchNewPassword"
-                   [validator-function]="newPasswordMatchValidator"></o-validator>
-    </o-password-input>
+<o-form #form show-header="no" service="clients" entity="client" (onInsert)="navigate()" matchPassword keys="usr_id" after-insert-mode="new">
+    <div class="contenedor">
+      <o-column>
+        <div class="register-container">
+          <div class="titulo">{{ 'REGISTER' | oTranslate }}</div>
+          <div>
+            <o-text-input #login attr="usr_login" label="usr_login" required="yes" [validators]="validatorsUsernameArray">
+              <o-validator error-name="usernameLength" error-text="{{ 'USERNAME.LENGTH.INVALID' | oTranslate }}"></o-validator>
+              <o-validator error-name="blanks" error-text="{{ 'NO.BLANKS' | oTranslate }}"></o-validator>
+              <o-validator error-name="usernameChars" error-text="{{ 'USERNAME.CHARS.INVALID' | oTranslate }}"></o-validator>
+            </o-text-input>
 
-    <o-button attr="raised3" (click)="register()" type="RAISED" label="{{ 'REGISTER' | oTranslate }}" layout-padding color="accent"></o-button>
-    <o-row>
-      <o-button attr="raised3" (click)="navLogin()" type="STROKED" label="{{ 'ALREADY_REGISTERED' | oTranslate }}" layout-padding color="accent"></o-button>
-      <o-button attr="raised3" (click)="navRegisterProfessional()" type="STROKED" label="{{ 'IM_PROFESSIONAL' | oTranslate }}" layout-padding color="accent"></o-button>
-    </o-row>
-  </o-column>
-</o-form>
+            <o-text-input #name attr="usr_name" label="usr_name" required="yes" [validators]="validatorsNameArray">
+              <o-validator error-name="nameBlanksBetween" error-text="{{ 'NAME.BLANK.BETWEEN.INVALID' | oTranslate }}"></o-validator>
+            </o-text-input>
+
+            <o-text-input #surname attr="usr_surname" label="Surname" required="yes" [validators]="validatorsNameArray">
+              <o-validator error-name="nameBlanksBetween" error-text="{{ 'NAME.BLANK.BETWEEN.INVALID' | oTranslate }}"></o-validator>
+            </o-text-input>
+
+            <o-date-input #birth_date attr="birth_date" label="Birth date" required="yes" value-type="date" [max]="getMinAge()"></o-date-input>
+
+            <o-phone-input attr="usr_phone" label="usr_phone" read-only="no"></o-phone-input>
+
+            <o-email-input #email attr="usr_email" label="usr_email" read-only="no" required="yes"></o-email-input>
+
+            <o-password-input #password attr="usr_password" label="usr_password" required="yes" min-length="8"
+                              [validators]="validatorsNewPasswordArray">
+              <o-validator error-name="hasCapitalCase" error-text="{{'VALIDATOR.HASCAPITALCASE' | oTranslate}}" ></o-validator>
+              <o-validator error-name="hasNumber" error-text="{{'VALIDATOR.HASNUMBER' | oTranslate}}" ></o-validator>
+              <o-validator error-name="hasSmallCase" error-text="{{'VALIDATOR.HASSMALLCASE' | oTranslate}}" ></o-validator>
+              <o-validator error-name="hasSpecialCharacters" error-text="{{'VALIDATOR.HASSPECIALCHARACTERS' | oTranslate}}" ></o-validator>
+            </o-password-input>
+            <o-password-input #newPassword attr="confirm_new_password" label="usr_c_password" required="yes" min-length="8">
+              <o-validator error-name="matchNewPassword"
+                           [validator-function]="newPasswordMatchValidator" error-text="{{'VALIDATION.MATCHPASSWORD' | oTranslate}}"></o-validator>
+            </o-password-input>
+          </div>
+          <div class="contenedor-boton-registro">
+            <o-button class="boton-registro" attr="raised3" (click)="register()" type="RAISED" label="Register"
+                      layout-padding color="accent"></o-button>
+          </div>
+          <div class="contenedor-boton-navegacion">
+            <o-button attr="raised3" (click)="navLogin()" type="STROKED" label="{{ 'ALREADY_REGISTERED' | oTranslate }}"
+                      layout-padding color="accent"></o-button>
+            <o-button class="button-register" attr="raised3" (click)="navRegisterProfessional()" type="STROKED"
+                      label="{{ 'IM_NOT_PROFESSIONAL' | oTranslate }}" layout-padding color="accent"></o-button>
+          </div>
+        </div>
+      </o-column>
+      <div class="carrusel-container">
+      </div>
+    </div>
+  </o-form>
+
+  <div id="footer" class="footer-container">
+    <div fxLayout="row" fxLayoutAlign="end center">
+      <span>{{ 'FOOTER_CREATED_BY' | oTranslate }}</span>
+      <span> &copy; 2024 </span>
+      <span>{{ 'FOOTER_RIGHTS' | oTranslate }}</span>
+    </div>
+  </div>
+
+

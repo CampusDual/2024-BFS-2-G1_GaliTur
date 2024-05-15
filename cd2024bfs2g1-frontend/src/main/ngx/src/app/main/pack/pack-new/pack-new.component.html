@@ -1,6 +1,6 @@
 <o-form attr="packNew" label-header-align="start"
         label-header="{{ 'PACKS_NEW' | oTranslate }}" keys="pck_id" fxLayout="column" #oFormPackNew service="packs" entity="pack"
-     keys-sql-types="integer" (onInsert)="insertPacks($event)" confirm-exit="false">
+     keys-sql-types="integer" (onInsert)="insertPacks($event)" confirm-exit="false" >
      <o-row layout-align="start stretch">
         <o-column id="pack" layout-align="start stretch" fxFlex="50" layout-padding>
 
