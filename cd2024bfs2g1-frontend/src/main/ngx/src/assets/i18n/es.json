@@ -202,6 +202,7 @@
   "INTERMEDIATE": "Intermedio",
   "HARD": "Difícil",
   "EXTREME": "Extremo",
+  "CLICK_MENU": "Haga clic para ver el menu del restaurante",
   "MESSAGES_INSERTED_LANDMARK": "Punto de interés insertado correctamente",
   "MESSAGES_FORM_CHANGES_WILL_BE_LOST_LANDMARK": "¿Estás realmente seguro de que quieres hacer esto? Todos los cambios se perderán.",
   "landmark_id": "Id",

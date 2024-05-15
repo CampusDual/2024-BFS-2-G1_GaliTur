@@ -195,6 +195,7 @@
   "INTERMEDIATE": "Intermediate",
   "HARD": "Hard",
   "EXTREME": "Extreme",
+  "CLICK_MENU": "Click to see the restaurant menu",
   "MESSAGES_INSERTED_LANDMARK": "Landmark inserted succefully",
   "MESSAGES_FORM_CHANGES_WILL_BE_LOST_LANDMARK": "Are you really sure you want to do this? All changes will be lost",
   "landmark_id": "Id",
