@@ -5,6 +5,7 @@ import com.campusdual.cd2024bfs2g1.api.core.util.Utils;
 import com.campusdual.cd2024bfs2g1.model.core.dao.ClientDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.ImageDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.business.GuideCitiesDao;
+import com.campusdual.cd2024bfs2g1.model.core.dao.pack.ImagePackDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDao;
 import com.campusdual.cd2024bfs2g1.model.core.service.ClientService;
 import com.campusdual.cd2024bfs2g1.model.core.service.ImageService;

@@ -17,8 +17,6 @@ public interface IPackService {
 
     EntityResult allPacksQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 
-    EntityResult packInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException;
-
     EntityResult packUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
     EntityResult packDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
