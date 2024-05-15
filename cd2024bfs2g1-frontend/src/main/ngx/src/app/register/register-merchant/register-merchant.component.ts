@@ -72,6 +72,10 @@ export class RegisterMerchantComponent {
     this.router.navigate(['/login'])
   }
 
+  navRegister() {
+    this.router.navigate(['/register'])
+  }
+
   blanksValidator(control: AbstractControl): ValidationErrors | null{
     try{
       const regex = /^\S*$/;

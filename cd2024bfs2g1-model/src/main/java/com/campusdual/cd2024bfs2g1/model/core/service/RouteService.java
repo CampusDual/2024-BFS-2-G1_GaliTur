@@ -50,23 +50,6 @@ public class RouteService  implements IRouteService {
 
         if(userInformation.getAuthorities().stream().anyMatch(c->c.toString().equals("manager"))){
             Map<String,Object> imageMapAttr=new HashMap();
-
-            String routeDifficulty = (String) attrMap.get("difficulty");
-            switch (routeDifficulty){
-                case "EASY":
-                    attrMap.replace("difficulty",1);
-                    break;
-                case "INTERMEDIATE":
-                    attrMap.replace("difficulty",2);
-                    break;
-                case "HARD":
-                    attrMap.replace("difficulty",3);
-                    break;
-                case "EXTREME":
-                    attrMap.replace("difficulty",4);
-                    break;
-            }
-
             EntityResult route_id_entity = this.daoHelper.insert(routeDao, attrMap);
             if (attrMap.get("images")!=null) {
                 imageMapAttr.put(ImageDao.ATTR_IMAGE_CODE,attrMap.get("images"));
@@ -77,6 +60,16 @@ public class RouteService  implements IRouteService {
         }else{
             EntityResultMapImpl entity = new EntityResultMapImpl(EntityResult.OPERATION_WRONG,1,"NO_GESTOR");
             return entity;
+        }
+    }
+
+    @Override
+    public boolean UserRolQuery(Map<String, Object> attrMap){
+        UserInformation userInformation =(UserInformation) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(userInformation.getAuthorities().stream().anyMatch(c->c.toString().equals("manager"))){
+            return true;
+        }else{
+            return false;
         }
     }
 

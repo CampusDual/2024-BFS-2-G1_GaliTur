@@ -1,5 +1,5 @@
-import {Component, Inject, ViewChild} from '@angular/core';
 import {AbstractControl, FormControl, ValidationErrors, ValidatorFn} from '@angular/forms';
+import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {
   DialogService,
   ODateInputComponent,
@@ -76,6 +76,10 @@ export class RegisterClientComponent{
 
   navLogin() {
     this.router.navigate(['/login'])
+  }
+
+  navRegisterProfessional() {
+    this.router.navigate(['/register', 'professional'])
   }
 
   navigate() {

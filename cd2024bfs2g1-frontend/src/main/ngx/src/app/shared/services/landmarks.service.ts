@@ -1,14 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CONFIG } from '../app.config';
+import { CONFIG } from '../../app.config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LandmarksService {
 
-  constructor(private http: HttpClient) { }  
+  constructor(private http: HttpClient) { }
 
   getLandmark(route_id: number): Observable<any> {
     const url = CONFIG.apiEndpoint + '/routes/landmark/search'
@@ -20,9 +20,6 @@ export class LandmarksService {
       columns: [
         "landmark_id",
         "name",
-        "description",
-        "opening_time",
-        "closing_time",
         "coordinates"
       ]
     }
