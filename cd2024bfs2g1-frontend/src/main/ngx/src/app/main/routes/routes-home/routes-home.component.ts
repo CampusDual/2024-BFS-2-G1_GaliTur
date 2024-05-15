@@ -83,11 +83,11 @@ getDifficultad(difficulty: number): string {
     case 1:
         return 'Dificultad: Fácil';
     case 2:
-        return 'Dificultad: Medio';
+        return 'Dificultad: Intermedio';
     case 3:
         return 'Dificultad: Difícil';
     case 4:
-        return 'Dificultad: Experto';
+        return 'Dificultad: Extremo';
 }
 }
 }
