@@ -193,7 +193,10 @@
   "DATE_BEGIN": "Starting Date",
   "DATE_END": "Ending Date",
   "PRICE": "Price",
-  "PARTICIPANTS": "Participants"
+  "PARTICIPANTS": "Participants",
+  "ACTIVE": "Active",
+  "RESERVED": "Reserved",
+  "PLACE": "Place"
 
 
 

@@ -35,13 +35,9 @@ export class PackDetailComponent {
     return Math.round(diferencia / unDia);
   }
 
-
-  getDate (fechaNumber: number): string {
-    const tempFecha = new Date(fechaNumber)
-    const day = tempFecha.getDay()
-    const month = tempFecha.getMonth()
-    const year = tempFecha.getFullYear()
-    return `${day}/${month}/${year}`;
+  getDate(fechaNumber: number): string {
+    const tempFecha = new Date(fechaNumber);
+    return tempFecha.toLocaleDateString();
   }
 
 }

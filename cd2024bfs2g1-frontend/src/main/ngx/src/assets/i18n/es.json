@@ -198,5 +198,8 @@
   "DATE_BEGIN": "Fecha de inicio",
   "DATE_END": "Fecha final",
   "PRICE": "Precio",
-  "PARTICIPANTS": "Participantes"
+  "PARTICIPANTS": "Participantes",
+  "ACTIVE": "Activo",
+  "RESERVED": "Reservado",
+  "PLACE": "Lugar"
 }
