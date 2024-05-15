@@ -9,8 +9,8 @@
   height: 200px;
   background-image: url('../../../../assets/images/photoRouteDetails.jpg');
   background-size: cover;
-  /* Ajusta la imagen de fondo para que cubra todo el contenedor */
   background-position: center;
+  
 
 
 }
@@ -37,14 +37,12 @@
   height: 10px;
   transition: transform 0.2s ease;
   outline: none;
-  /* Transición suave */
 }
 
 .botonInfo:hover {
   transform: scale(1.2);
   background-color: #E4EBF2;
   padding: 0px 0px 0px 0px;
-  /* Ajusta el valor según desees */
 }
 
 .container .img {
@@ -111,6 +109,7 @@
   padding: 10px 10px;
   align-items: center;
   width: 300px;
+
 }
 
 .d-3 {
@@ -146,7 +145,6 @@
 
 .icon-difficulty-1 {
   color: #69b704e7;
-  /* Cambia el color según la dificultad */
 }
 
 .icon-difficulty-2 {
