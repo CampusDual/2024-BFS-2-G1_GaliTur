@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PackHomeComponent } from './pack-home/pack-home.component';
-import { PackDetailComponent } from './pack-detail/pack-detail.component';
 import { PackNewComponent } from './pack-new/pack-new.component';
+import { PackDetailComponent } from './pack-detail/pack-detail.component';
 
 const routes: Routes = [
   {
@@ -10,7 +10,9 @@ const routes: Routes = [
   },
   {path: 'new', component: PackNewComponent},
   {path: ':pck_id', component: PackDetailComponent}
+
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

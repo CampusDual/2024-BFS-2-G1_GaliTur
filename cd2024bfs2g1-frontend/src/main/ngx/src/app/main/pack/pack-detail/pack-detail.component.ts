@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { OFormComponent, OTableComponent, OTranslateModule } from 'ontimize-web-ngx';
 import { PackHomeComponent } from '../pack-home/pack-home.component';
 
+
 @Component({
   selector: 'app-pack-detail',
   templateUrl: './pack-detail.component.html',
@@ -33,6 +34,9 @@ export class PackDetailComponent {
     }else{
       this.router.navigate(['main/pack-client']);
     }
+
+    this.router.navigate(['main/pack']);
+
   }
 
   diferenciaDias(fechaInicio: number, fechaFin: number): number {
@@ -42,12 +46,10 @@ export class PackDetailComponent {
   }
 
 
-  getDate (fechaNumber: number): string {
-    const tempFecha = new Date(fechaNumber)
-    const day = tempFecha.getDay()
-    const month = tempFecha.getMonth()
-    const year = tempFecha.getFullYear()
-    return `${day}/${month}/${year}`;
+  getDate(fechaNumber: number): string {
+    const tempFecha = new Date(fechaNumber);
+    return tempFecha.toLocaleDateString();
+
   }
 
 }

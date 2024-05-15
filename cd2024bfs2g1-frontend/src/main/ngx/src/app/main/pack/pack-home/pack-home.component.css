@@ -1,60 +1,78 @@
-.businessCard {
-    width: 520px;
+
+/*packCard structure*/
+.packCard {
+    width: 400px;
     min-width: 300px;
     background-color: #eff1f3;
     border-radius: 10px;
     padding: 16px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+}
+.businessCard img {
+
+    justify-content: center;
 
 }
 
-.businessCard img {
+/*Image div for pack card structure*/
+.packCard img {
     margin-top: 7.5px;
     width: 100%;
     height: 100%;
 }
 
-.businessCard .office {
+/*pack card structure font size*/
+.packCard .office {
     font-size: 0.8em;
 
 }
 
+
+/*Image modifiers for pack card image*/
 .preview-image {
     border-radius: 10px;
     object-fit: cover;
 }
 
+
+/*image styles*/
 .cardImg{
     align-content: center;
-    width: 250px;
+    width: 225px;
     height: 250px;
 }
 
+/*info styles*/
 .cardInfo{
     align-content: center;
-    width: 275px;
+    width: 175px;
     margin-top: 7.5px;
-    padding: 35px;
+    padding: 20px;
 }
 
+/*icon styles*/
 .icon{
     margin-bottom:-10px ;
     font-size: 16px;
     color: #84A45A;
 }
 
+/*info list styles*/
 .list{
     margin-left: -30px;
 }
 
+
+/*pack not avaliable card styles*/
 .not-available {
     opacity: 0.5;
     filter: grayscale(100%);
     position: relative;
 }
 
+
+/*pack not avaliable message styles */
 .unavailable-message {
     position: absolute;
     top: 50%;
@@ -66,6 +84,16 @@
     font-size: 20px;
 }
 
+
+/*pack name styles*/
 .pack-name {
     color: #52733B;
 }
+
+:host ::ng-deep .o-grid-sort {
+    min-width: 300px;
+    mat-form-field {
+        min-width: 300px;
+    }
+}
+

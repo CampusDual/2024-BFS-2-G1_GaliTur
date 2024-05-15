@@ -53,8 +53,8 @@
                 </span>
 
                 <div class="div-active-pack-container" *ngFor="let packs of packForm.dataArray">
-                    <p class="active-pack" *ngIf="packs.pcs_id == 1">Activo</p>
-                    <p class="reserve-pack" *ngIf="packs.pcs_id == 2">Reservado</p>
+                    <p class="active-pack" *ngIf="packs.pcs_id == 1">{{'ACTIVE' | oTranslate }}</p>
+                    <p class="reserve-pack" *ngIf="packs.pcs_id == 2">{{'RESERVED' | oTranslate }}</p>
                 </div>
 
                 <!-- Informacion adicional del business divididos en dos columnas (o-rows) -->
@@ -81,14 +81,13 @@
                         <ul class="list-with-spaces">
                             <li><strong><i>{{'START_DATE' | oTranslate }}: </i></strong>{{getDate(packs.pck_date_begin)}}</li>
                             <li><strong><i>{{'END_DATE' | oTranslate }}: </i></strong>{{getDate(packs.pck_date_end)}}</li>
-                            <li><strong><i>{{'DAYS' | oTranslate }}: </i></strong>{{diferenciaDias(packs.pck_date_begin,packs.pck_date_end)}}</li>
-                            <li><strong><i>{{'Price' | oTranslate }}: </i></strong>{{packs.pck_price}}</li>
+                            <li><strong><i>{{'DAYS' | oTranslate }}: </i></strong>{{diferenciaDias(packs.pck_date_begin,packs.pck_date_end)}}</li>                     
+                            <li><strong><i>{{'Price' | oTranslate }}: </i></strong>{{packs.pck_price}} €</li>
                             <li><strong><i>{{'TRAVELLERS' | oTranslate }}: </i></strong>{{packs.pck_participants}}</li>
                             <span *ngFor="let city of gui_cities.dataArray">
                                 <span *ngIf="packs.gui_c_id == city.gui_c_id">
-                                    <li ><strong>Ciudad: </strong> {{city.gui_c_name}}</li>
                                     <span *ngFor="let zone of gui_zones.dataArray">
-                                        <li class="li-with-margin" *ngIf="city.gui_z_id == zone.gui_z_id"><strong>Provincia: </strong> {{zone.gui_z_name}}</li>
+                                        <li *ngIf="city.gui_z_id == zone.gui_z_id"><strong>{{'PLACE' | oTranslate }}: </strong> {{city.gui_c_name}}, {{zone.gui_z_name}}</li>
                                     </span>
                                 </span>
                             </span>

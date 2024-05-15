@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { PackRoutingModule } from './pack-routing.module';
 import { PackHomeComponent } from './pack-home/pack-home.component';
 import { OFormModule, OGridComponent, OTranslateModule, OntimizeWebModule } from 'ontimize-web-ngx';
@@ -13,7 +12,7 @@ import { PackNewComponent } from './pack-new/pack-new.component';
   declarations: [
     PackHomeComponent,
     PackDetailComponent,
-    PackNewComponent
+    PackNewComponent,
   ],
   imports: [
     CommonModule,

@@ -32,4 +32,12 @@ export class BusinessHomeComponent {
     this.router.navigate(['main/businesses/' + data.bsn_id]);
   }
 
+  truncateName(name: string): string {
+    if (name.length > 30) {
+        return name.substr(0, 30) + '...';
+    } else {
+        return name;
+    }
+  }
+
 }
