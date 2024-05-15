@@ -139,7 +139,7 @@
   "images": "Images",
   "opening_time": "Opening time",
   "closing_time": "Closing time",
-  "info_route": "ROUTE DATA",
+  "info_route": "New route: basic information",
   "info_landmark": "New route: landmarks",
   "info_new_landmark": "New landmark: basic information",
   "available_landmark": "Available landmarks",
@@ -194,5 +194,9 @@
   "EASY": "Easy",
   "INTERMEDIATE": "Intermediate",
   "HARD": "Hard",
-  "EXTREME": "Extreme"
+  "EXTREME": "Extreme",
+  "MESSAGES_INSERTED_LANDMARK": "Landmark inserted succefully",
+  "MESSAGES_FORM_CHANGES_WILL_BE_LOST_LANDMARK": "Are you really sure you want to do this? All changes will be lost",
+  "landmark_id": "Id",
+  "button_table_finish": "Finish"
 }

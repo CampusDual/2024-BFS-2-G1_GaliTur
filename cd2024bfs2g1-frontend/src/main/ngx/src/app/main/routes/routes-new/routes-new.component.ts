@@ -20,8 +20,12 @@ getValue(): any {
   }
 
   onClickOk($event:Event){
-    this.router.navigate(['main/routes'])
-   
+    console.log('El id de la ruta es: '+$event['route_id']);
+    this.router.navigate(['main','routes', 'new', $event['route_id']])
+  }
+
+  onClickCancel(){
+    this.router.navigate(['main','routes'])
   }
 
   blankValidator: ValidatorFn[] = [];
@@ -51,4 +55,5 @@ getValue(): any {
     difficultyCode: 4,
     difficultyText:  this.translate.get("EXTREME")
   }]
+
 }
