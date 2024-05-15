@@ -17,9 +17,7 @@
             <Sentence>
                 <![CDATA[
                     SELECT
-                        image_landmark_id,
-                        landmark_id,
-                        image_id
+                        #COLUMNS#
                     FROM
                         ${mainschema}.image_landmark
                     #WHERE#

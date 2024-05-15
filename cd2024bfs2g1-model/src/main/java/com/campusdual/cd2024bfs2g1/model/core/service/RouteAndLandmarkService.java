@@ -40,7 +40,7 @@ public class RouteAndLandmarkService implements IRouteAndLandmarkService {
 
     @Override
     public EntityResult landmarksForRouteQuery(final Map<?, ?> keysValues, final List<?> attributes) throws OntimizeJEERuntimeException {
-        return this.daoHelper.query(this.routeLandmarkDao, keysValues, attributes, "fullLandmarkWithRoute");
+        return this.daoHelper.query(this.routeLandmarkDao, keysValues, attributes, RouteLandmarkDao.QUERY_ROUTE_LANDMARK_NAME);
     }
 
     @Override

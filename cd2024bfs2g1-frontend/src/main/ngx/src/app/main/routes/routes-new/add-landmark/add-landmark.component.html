@@ -16,9 +16,7 @@
         <div fxLayout="row" class="landmark-map">
             <o-map #oMap attr="mapInput" center="42.940599,-7.120727" zoom="8" min-zoom="3" max-zoom="20" zoom-control="yes" 
                 search-control="no" layer-panel-visible="no" fxFlex (onClick)="onClickMap($event)">
-                <!-- [crs-configuration]="objeto" -->
                 <o-map-crs crs="EPSG:4326"></o-map-crs>
-                <!--<o-map-draw-controls></o-map-draw-controls>-->
             </o-map>
         </div>
     </o-column>

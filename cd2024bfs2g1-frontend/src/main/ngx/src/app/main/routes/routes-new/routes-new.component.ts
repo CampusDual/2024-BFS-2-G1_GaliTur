@@ -55,4 +55,5 @@ getValue(): any {
     difficultyCode: 4,
     difficultyText:  this.translate.get("EXTREME")
   }]
+
 }

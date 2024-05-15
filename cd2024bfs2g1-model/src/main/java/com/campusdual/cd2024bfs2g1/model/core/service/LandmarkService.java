@@ -17,22 +17,26 @@ import java.util.Map;
 @Service("LandmarkService")
 public class LandmarkService implements ILandmarkService {
 
-    @Autowired
     private LandmarkDao landmarkDao;
-    @Autowired
     private ImageDao imageDao;
-    @Autowired
     private ImageLandmarkDao imageLandmarkDao;
-    @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
-    @Autowired
     private RouteAndLandmarkService routeAndLandmarkService;
-    @Autowired
     private RouteLandmarkDao routeLandmarkDao;
+
+    @Autowired
+    public LandmarkService(LandmarkDao landmarkDao, ImageDao imageDao, ImageLandmarkDao imageLandmarkDao, DefaultOntimizeDaoHelper daoHelper, RouteAndLandmarkService routeAndLandmarkService, RouteLandmarkDao routeLandmarkDao) {
+        this.landmarkDao = landmarkDao;
+        this.imageDao = imageDao;
+        this.imageLandmarkDao = imageLandmarkDao;
+        this.daoHelper = daoHelper;
+        this.routeAndLandmarkService = routeAndLandmarkService;
+        this.routeLandmarkDao = routeLandmarkDao;
+    }
 
     @Override
     public EntityResult landmarkQuery(Map<String, Object> keyMap, List<String> attrList) {
-        return this.daoHelper.query(landmarkDao, keyMap, attrList, "getLandmarksDetail");
+        return this.daoHelper.query(landmarkDao, keyMap, attrList, LandmarkDao.QUERY_LANDMARK_NAME);
     }
 
     @Override

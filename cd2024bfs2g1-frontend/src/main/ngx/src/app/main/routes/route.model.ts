@@ -1,9 +1,7 @@
-export class RouteModel{
-    constructor(
-        public route_id,
-        public name,
-        public description,
-        public estimated_duration,
-        public difficulty
-    ){}
+export interface RouteModel{
+    route_id: number
+    name: string
+    description: string
+    estimated_duration: number
+    difficulty: number
 }

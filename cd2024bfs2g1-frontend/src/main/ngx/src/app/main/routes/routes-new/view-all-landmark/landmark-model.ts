@@ -1,10 +1,8 @@
-export class Landmark{
-    constructor(
-        public landmark_id,
-        public name,
-        public description,
-        public opening_time,
-        public closing_time,
-        public coordinates
-    ){}
+export interface Landmark{
+    landmark_id: number
+    name: string
+    description: string
+    opening_time: string
+    closing_time: string
+    coordinates: string
 }

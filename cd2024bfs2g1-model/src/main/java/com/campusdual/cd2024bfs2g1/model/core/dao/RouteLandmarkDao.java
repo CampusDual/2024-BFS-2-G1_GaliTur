@@ -15,6 +15,7 @@ public class RouteLandmarkDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_ROUTE_ID = "route_id";
     public static final String ATTR_LANDMARK_ID = "landmark_id";
     public static final String ATTR_ACTIVED = "actived";
+    public static final String QUERY_ROUTE_LANDMARK_NAME = "fullLandmarkWithRoute";
 
 
 }
