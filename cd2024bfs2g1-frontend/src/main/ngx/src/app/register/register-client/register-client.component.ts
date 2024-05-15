@@ -59,57 +59,56 @@ export class RegisterClientComponent{
   public register(){
     let isRegisterOk = true
 
-    if (
-      this.login.getValue() === undefined ||
-      this.login.getValue().trim() === '' ||
-      this.name.getValue() === undefined  ||
-      this.name.getValue().trim() === ''  ||
-      this.surname.getValue() === undefined ||
-      this.surname.getValue().trim() === '' ||
-      this.birth_date.getValue() === undefined ||
-      this.email.getValue() === undefined ||
-      this.email.getValue().trim() === '' ||
-      this.password.getValue() === undefined ||
-      this.password.getValue().trim() === '' ||
-      this.newPassword.getValue() === undefined ||
-      this.newPassword.getValue().trim() === ''
-    ){
-      this.dialogService.error('Register Error', 'Some required fields are empty')
-      isRegisterOk = false
-    } else if (!this.regexEmail.test(this.email.getValue().trim())){
-      this.dialogService.error('Email Error', 'The email is not valid');
-      return;
-    } else if (!this.regexSpecialChar.test(this.form.formGroup.controls['usr_password'].value)) {
-      this.dialogService.error('Password Error', 'Missing special character on password');
-      return;
-    }else if (!this.regexNumber.test(this.form.formGroup.controls['usr_password'].value)) {
-      this.dialogService.error('Password Error', 'Missing number on password');
-      return;
-    }else if (!this.regexSmallCase.test(this.form.formGroup.controls['usr_password'].value)) {
-      this.dialogService.error('Password Error', 'Missing small case character on password');
-      return;
-    }else if (!this.regexCaps.test(this.form.formGroup.controls['usr_password'].value)) {
-      this.dialogService.error('Password Error', 'Missing capital case character on password');
-      return;
-    } else if (this.form.formGroup.controls['usr_password'].value !== this.form.formGroup.controls['confirm_new_password'].value) {
-      this.dialogService.error('Password Error', 'Passwords doesnt match');
-      return;
-    }
-
-    if (!isRegisterOk) {
-      return
-    }
+    // if (
+    //   this.login.getValue() === undefined ||
+    //   this.login.getValue().trim() === '' ||
+    //   this.name.getValue() === undefined  ||
+    //   this.name.getValue().trim() === ''  ||
+    //   this.surname.getValue() === undefined ||
+    //   this.surname.getValue().trim() === '' ||
+    //   this.birth_date.getValue() === undefined ||
+    //   this.email.getValue() === undefined ||
+    //   this.email.getValue().trim() === '' ||
+    //   this.password.getValue() === undefined ||
+    //   this.password.getValue().trim() === '' ||
+    //   this.newPassword.getValue() === undefined ||
+    //   this.newPassword.getValue().trim() === ''
+    // ){
+    //   this.dialogService.error('Register Error', 'Some required fields are empty')
+    //   isRegisterOk = false
+    // } else if (!this.regexEmail.test(this.email.getValue().trim())){
+    //   this.dialogService.error('Email Error', 'The email is not valid');
+    //   return;
+    // } else if (!this.regexSpecialChar.test(this.form.formGroup.controls['usr_password'].value)) {
+    //   this.dialogService.error('Password Error', 'Missing special character on password');
+    //   return;
+    // }else if (!this.regexNumber.test(this.form.formGroup.controls['usr_password'].value)) {
+    //   this.dialogService.error('Password Error', 'Missing number on password');
+    //   return;
+    // }else if (!this.regexSmallCase.test(this.form.formGroup.controls['usr_password'].value)) {
+    //   this.dialogService.error('Password Error', 'Missing small case character on password');
+    //   return;
+    // }else if (!this.regexCaps.test(this.form.formGroup.controls['usr_password'].value)) {
+    //   this.dialogService.error('Password Error', 'Missing capital case character on password');
+    //   return;
+    // } else if (this.form.formGroup.controls['usr_password'].value !== this.form.formGroup.controls['confirm_new_password'].value) {
+    //   this.dialogService.error('Password Error', 'Passwords doesnt match');
+    //   return;
+    // }
+    //
+    // if (!isRegisterOk) {
+    //   return
+    // }
 
      this.mainService.getUserInfoByLoginAndId(this.login.getValue(), this.email.getValue()).subscribe(
        (result) => {
-        if (result.data[0] === undefined){
-          this.form.insert()
-          this.router.navigate(['/login'])
-        } else if (result.data[0].usr_login === this.login.getValue()){
-          this.dialogService.error('Username error', 'Username already exists'); // Use DialogService to show error
-          } else if (result.data[0].usr_email === this.email.getValue()){
-          this.dialogService.error('Email error', 'Email already exists')
-        }
+         this.form.insert()
+        //  if (result.data[0] === undefined){
+        // } else if (result.data[0].usr_login === this.login.getValue()){
+        //   this.dialogService.error('Username error', 'Username already exists'); // Use DialogService to show error
+        //   } else if (result.data[0].usr_email === this.email.getValue()){
+        //   this.dialogService.error('Email error', 'Email already exists')
+        // }
       }
     )
   }
@@ -125,5 +124,18 @@ export class RegisterClientComponent{
 
   navLogin() {
     this.router.navigate(['/login'])
+  }
+
+  navigate() {
+    this.router.navigate(['/main'])
+  }
+
+  getMinAge() {
+    const currentDate = new Date();
+
+    const subtractedDate = new Date(currentDate);
+    subtractedDate.setFullYear(currentDate.getFullYear() - 18);
+
+    return `${subtractedDate.getDate().toString().padStart(2, '0')}/${(subtractedDate.getMonth() + 1).toString().padStart(2, '0')}/${subtractedDate.getFullYear()}`;
   }
 }
