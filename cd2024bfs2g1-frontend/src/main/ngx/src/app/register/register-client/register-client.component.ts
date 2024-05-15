@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {
   AbstractControl, FormControl,
   ValidationErrors,
@@ -121,5 +121,13 @@ export class RegisterClientComponent{
 
   getTime() {
     return new Date(new Date().getTime() - (18 * 60 * 60 * 1000)).toISOString();
+  }
+
+  navLogin() {
+    this.router.navigate(['/login'])
+  }
+
+  navRegisterProfessional() {
+    this.router.navigate(['/register', 'professional'])
   }
 }

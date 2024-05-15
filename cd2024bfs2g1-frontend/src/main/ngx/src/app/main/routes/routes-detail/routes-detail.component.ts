@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ImageService } from '../../image.service';
+import { ImageService } from '../../../shared/services/image.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

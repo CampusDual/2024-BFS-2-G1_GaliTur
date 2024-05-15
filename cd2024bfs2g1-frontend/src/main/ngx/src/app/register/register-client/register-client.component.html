@@ -20,5 +20,9 @@
     </o-password-input>
 
     <o-button attr="raised3" (click)="register()" type="RAISED" label="{{ 'REGISTER' | oTranslate }}" layout-padding color="accent"></o-button>
+    <o-row>
+      <o-button attr="raised3" (click)="navLogin()" type="STROKED" label="{{ 'ALREADY_REGISTERED' | oTranslate }}" layout-padding color="accent"></o-button>
+      <o-button attr="raised3" (click)="navRegisterProfessional()" type="STROKED" label="{{ 'IM_PROFESSIONAL' | oTranslate }}" layout-padding color="accent"></o-button>
+    </o-row>
   </o-column>
 </o-form>

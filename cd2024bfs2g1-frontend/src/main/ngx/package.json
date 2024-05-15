@@ -39,6 +39,7 @@
     "ngx-material-timepicker": "5.4.3",
     "ontimize-web-ngx": "15.0.2",
     "ontimize-web-ngx-gallery": "^15.1.0",
+    "ontimize-web-ngx-map": "^15.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
