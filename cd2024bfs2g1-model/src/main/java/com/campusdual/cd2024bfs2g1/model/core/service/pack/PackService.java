@@ -17,10 +17,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
 @Lazy
 @Service("PackService")
@@ -56,15 +54,17 @@ public class PackService implements IPackService {
         attrMap.put(PackDao.PCK_DATE_END, Utils.iso8601Format.parse((String) dates.get("endDate")));
 
         EntityResult erInsertPack = this.daoHelper.insert(this.packDao, attrMap);
-        if (erInsertPack.getCode() != EntityResult.OPERATION_SUCCESSFUL || imgCode == null) return erInsertPack;
+        if (erInsertPack.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertPack;
 
-        EntityResult erInsertImage = imageService.imageInsert(Map.of(ImageDao.ATTR_IMAGE_CODE, imgCode));
-        if (erInsertImage.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertImage;
+        EntityResult erInsertImage = null;
+        if (imgCode != null) {
+            erInsertImage = imageService.imageInsert(Map.of(ImageDao.ATTR_IMAGE_CODE, imgCode));
+            if (erInsertImage.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertImage;
+        }
 
         Object packId = erInsertPack.get(PackDao.PCK_ID);
-        Object imgId = erInsertImage.get(ImageDao.ATTR_IMAGE_ID);
-        return this.imagePackService.imagePackInsert(Map.of(ImagePackDao.PCK_ID, packId, ImagePackDao.IMG_ID, imgId));
-    }
+        Object imgId = erInsertImage == null ? ImageDao.DEFAULT_IMG_ID : erInsertImage.get(ImageDao.ATTR_IMAGE_ID);
+        return this.imagePackService.imagePackInsert(Map.of(ImagePackDao.PCK_ID, packId, ImagePackDao.IMG_ID, imgId));}
 
     @Override
     public EntityResult packUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {

@@ -6,16 +6,16 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 
 @Lazy
-@Repository(value = "ImageDao")
+@Repository(value = "ImageLandmarkDao")
 @ConfigurationFile(
-        configurationFile = "dao/ImageDao.xml",
+        configurationFile = "dao/ImageLandmarkDao.xml",
         configurationFilePlaceholder = "dao/placeholders.properties")
 
-public class ImageDao extends OntimizeJdbcDaoSupport {
+public class ImageLandmarkDao extends OntimizeJdbcDaoSupport {
 
+    public static final String ATTR_IMAGE_LANDMARK_ID = "image_landmark_id";
+    public static final String ATTR_LANDMARK_ID = "landmark_id";
     public static final String ATTR_IMAGE_ID = "image_id";
-    public static final String ATTR_IMAGE_CODE = "img_code";
-    public static final String QUERY_IMAGE_CODE = "joinIdImage";
 
-    public static final Integer DEFAULT_IMG_ID = 67; // TODO:
+
 }

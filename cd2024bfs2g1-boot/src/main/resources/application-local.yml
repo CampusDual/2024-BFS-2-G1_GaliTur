@@ -7,3 +7,4 @@ spring:
     enabled: false
 environment:
   profile: local
+
