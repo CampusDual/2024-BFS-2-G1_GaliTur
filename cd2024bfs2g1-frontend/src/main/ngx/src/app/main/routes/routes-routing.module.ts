@@ -11,9 +11,10 @@ const routes: Routes = [
   { path: '', component: RoutesHomeComponent },
   { path: 'landmark', component: ViewLandmarkDetailComponent},
   { path: 'new', component: RoutesNewComponent },
-  { path: 'ok', component: ViewAllLandmarkComponent},
+  { path: 'new/:route_id', component: ViewAllLandmarkComponent},
+  { path: 'new/:route_id/:landmark_id', component: AddLandmarkComponent},
   { path: ':route_id', component: RoutesDetailComponent},
-  { path: ':route_id/new', component: AddLandmarkComponent}
+ 
   
 ];
 

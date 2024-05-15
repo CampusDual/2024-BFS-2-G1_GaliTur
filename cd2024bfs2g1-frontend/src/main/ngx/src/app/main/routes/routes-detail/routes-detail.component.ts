@@ -4,6 +4,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ViewLandmarkDetailComponent } from './view-landmark-detail/view-landmark-detail.component';
 import { LandmarksService } from '../../landmarks.service';
 import { OntimizeService } from 'ontimize-web-ngx';
+import { ImageService } from '../../../shared/services/image.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-routes-detail',

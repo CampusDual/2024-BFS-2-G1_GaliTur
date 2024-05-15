@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { RoutesRoutingModule } from './routes-routing.module';
 import { RoutesHomeComponent } from './routes-home/routes-home.component';
 import { RoutesDetailComponent } from './routes-detail/routes-detail.component';
@@ -12,6 +11,9 @@ import { ViewAllLandmarkComponent } from './routes-new/view-all-landmark/view-al
 import { ViewLandmarkDetailComponent } from './routes-detail/view-landmark-detail/view-landmark-detail.component';
 import { SharedModule } from '../../shared/shared.module';
 
+import { RouteService } from 'src/app/shared/services/route.service';
+import { OMapModule } from 'ontimize-web-ngx-map';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -24,11 +26,14 @@ import { SharedModule } from '../../shared/shared.module';
     ViewLandmarkDetailComponent,
   ],
   imports: [
+    SharedModule,
+    OMapModule,
     CommonModule,
     RoutesRoutingModule,
     OntimizeWebModule,
     OGalleryModule,
     SharedModule
-  ]
+  ],
+  providers:[RouteService]
 })
 export class RoutesModule { }
