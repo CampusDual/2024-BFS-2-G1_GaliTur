@@ -141,4 +141,5 @@ export class RegisterClientComponent{
       }
     } catch (e){}
   }
+
 }
