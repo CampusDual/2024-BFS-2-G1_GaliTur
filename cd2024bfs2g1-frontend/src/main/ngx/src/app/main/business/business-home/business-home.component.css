@@ -1,8 +1,10 @@
 .businessCard {
-    width: 300px;
+    width: 350px;
     background-color: #eff1f3;
     border-radius: 10px; 
     padding: 16px;
+    overflow-x: hidden;
+
 }
 
 .businessCard img {
@@ -16,5 +18,26 @@
 .preview-image {
     border-radius: 10px;
     margin-bottom: 15px;
+    object-fit: cover;
 }
 
+.text-style {
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.type-icon {
+    margin-bottom: -6.5px;
+    margin-right: 5px;
+    color: #84A45A;
+    font-size: 22px;
+
+}
+
+:host ::ng-deep .o-grid-sort {
+    min-width: 300px;
+    mat-form-field {
+        min-width: 300px;
+    }
+}

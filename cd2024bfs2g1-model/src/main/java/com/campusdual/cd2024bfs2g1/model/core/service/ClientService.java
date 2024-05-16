@@ -2,12 +2,15 @@ package com.campusdual.cd2024bfs2g1.model.core.service;
 
 import com.campusdual.cd2024bfs2g1.api.core.service.IClientService;
 import com.campusdual.cd2024bfs2g1.model.core.dao.ClientDao;
+import com.campusdual.cd2024bfs2g1.model.core.dao.UserDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.UserRoleDao;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
+import com.ontimize.jee.common.services.user.UserInformation;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -64,5 +67,30 @@ public class ClientService implements IClientService {
     @Override
     public EntityResult clientDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.delete(this.clientDao, keyMap);
+    }
+
+    /**
+     * Gets logged client ID
+     * @return Client ID
+     */
+    public int getClientId() {
+        //Gets client object
+        Object client = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        //Gets logged user id
+        int userId = (int) ((UserInformation) client).getOtherData().get(UserDao.USR_ID);
+
+
+        List<String> qKeys = new ArrayList<String>();
+        qKeys.add(ClientDao.CLIENT_ID);
+
+        Map<String, Object> emptyMap = new HashMap<>();
+        emptyMap.put("CL." + ClientDao.USR_ID, userId);
+
+
+
+        EntityResult clientEr = clientQuery(emptyMap, qKeys);
+        ArrayList<Integer> al = (ArrayList<Integer>) clientEr.get(ClientDao.CLIENT_ID);
+        return al.get(0);
     }
 }

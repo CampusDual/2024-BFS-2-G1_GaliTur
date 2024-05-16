@@ -16,6 +16,7 @@ const routes: Routes = [
     path: ':bsn_id',
     component: BusinessDetailComponent
   },
+ 
 ];
 
 @NgModule({

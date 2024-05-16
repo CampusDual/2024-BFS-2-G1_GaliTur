@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface IPackStateService {
+
     EntityResult packStateQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 
     EntityResult packStateInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException;
