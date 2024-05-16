@@ -22,7 +22,7 @@
 
 
             <!-- Almaceno el pack que he clicado -->
-            <o-grid #packForm attr="packDetailGrid" service="packs" entity="pack" keys="pck_id"
+            <o-grid #packForm attr="packDetail" service="packs" entity="pack" keys="pck_id"
                 columns="pck_id;pck_name;pck_description;pck_date_begin;pck_date_end;pck_price;pck_participants;gui_c_id;pcs_id"
                 visible-columns="pck_id;pck_name;pck_description;pck_date_begin;pck_date_end;pck_price;pck_participants;gui_c_id;pcs_id"
                 parent-keys="pck_id" refresh-button="false" quick-filter="false" oHidden />
@@ -98,20 +98,15 @@
                     <o-row class="o-rows" class="right" attr="container" title="{{'INFO' | oTranslate }}" icon="info"
                         layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
                         <ul class="list-with-spaces">
-                            <li><strong><i>{{'START_DATE' | oTranslate }}:
-                                    </i></strong>{{getDate(packs.pck_date_begin)}}</li>
-                            <li><strong><i>{{'END_DATE' | oTranslate }}: </i></strong>{{getDate(packs.pck_date_end)}}
-                            </li>
-                            <li><strong><i>{{'DAYS' | oTranslate }}:
-                                    </i></strong>{{diferenciaDias(packs.pck_date_begin,packs.pck_date_end)}}</li>
-                            <li><strong><i>{{'Price' | oTranslate }}: </i></strong>{{packs.pck_price}}</li>
+                            <li><strong><i>{{'START_DATE' | oTranslate }}: </i></strong>{{getDate(packs.pck_date_begin)}}</li>
+                            <li><strong><i>{{'END_DATE' | oTranslate }}: </i></strong>{{getDate(packs.pck_date_end)}}</li>
+                            <li><strong><i>{{'DAYS' | oTranslate }}: </i></strong>{{diferenciaDias(packs.pck_date_begin,packs.pck_date_end)}}</li>
+                            <li><strong><i>{{'Price' | oTranslate }}: </i></strong>{{packs.pck_price}} €</li>
                             <li><strong><i>{{'TRAVELLERS' | oTranslate }}: </i></strong>{{packs.pck_participants}}</li>
                             <span *ngFor="let city of gui_cities.dataArray">
                                 <span *ngIf="packs.gui_c_id == city.gui_c_id">
-                                    <li><strong>Ciudad: </strong> {{city.gui_c_name}}</li>
                                     <span *ngFor="let zone of gui_zones.dataArray">
-                                        <li class="li-with-margin" *ngIf="city.gui_z_id == zone.gui_z_id">
-                                            <strong>Provincia: </strong> {{zone.gui_z_name}}</li>
+                                        <li *ngIf="city.gui_z_id == zone.gui_z_id"><strong>{{'PLACE' | oTranslate }}: </strong> {{city.gui_c_name}}, {{zone.gui_z_name}}</li>
                                     </span>
                                 </span>
                             </span>

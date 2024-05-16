@@ -5,6 +5,10 @@
     width: 100%;
 }
 
+.back-button {
+    margin-top: 60px;
+}
+
 .mainCard {
     display: flex;
     justify-content: center;
@@ -21,7 +25,8 @@
     flex-direction: row;
     margin-left: 50px;
     margin-right: 50px;
-    margin-top: 10px;
+    margin-top: -15px;
+    overflow-x: hidden;
 
 }
 
@@ -57,6 +62,15 @@
     width: 100%;
     height: auto;
     max-width: 100%; 
+    max-height: 500px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.menu {
+    width: 100%;
+    height: auto;
+    max-width: 100%; 
     max-height: 100%;
     border-radius: 10px;
 }
@@ -65,6 +79,7 @@
     flex: 1;
     padding: 25px;
     background-color: transparent;
+    overflow:hidden; 
 }
 
 .desc {
@@ -84,6 +99,7 @@
     row-gap: 10px;
     max-height: 135px;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 
@@ -99,6 +115,10 @@
     height: 100%;
 }
 
+.details {
+    margin-left: 30px;
+    padding-right: 30px;
+}
 
 
 

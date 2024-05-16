@@ -60,12 +60,11 @@ export class PackDetailComponent {
     return Math.round(diferencia / unDia);
   }
 
+
   getDate(fechaNumber: number): string {
     const tempFecha = new Date(fechaNumber);
-    const day = tempFecha.getDay();
-    const month = tempFecha.getMonth();
-    const year = tempFecha.getFullYear();
-    return `${day}/${month}/${year}`;
+    return tempFecha.toLocaleDateString();
+
   }
 
   bookPack(event: any, data) {
