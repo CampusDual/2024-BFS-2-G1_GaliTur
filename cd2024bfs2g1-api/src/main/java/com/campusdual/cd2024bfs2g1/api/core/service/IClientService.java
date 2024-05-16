@@ -10,6 +10,8 @@ public interface IClientService {
     // CLIENT
     EntityResult clientQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 
+    EntityResult isClientQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
+
     EntityResult clientInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException;
 
     EntityResult clientUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;

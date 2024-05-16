@@ -9,7 +9,13 @@ const routes: Routes = [
     path: '', component: PackHomeComponent
   },
   {path: 'new', component: PackNewComponent},
-  {path: ':pck_id', component: PackDetailComponent}
+  {path: ':pck_id', component: PackDetailComponent, 
+  data: {
+    oPermission: {
+      permissionId: 'packs-detail-permissions'
+    }
+  }
+  }
 ];
 
 @NgModule({
