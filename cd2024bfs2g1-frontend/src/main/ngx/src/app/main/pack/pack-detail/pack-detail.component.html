@@ -83,11 +83,12 @@
                             <li><strong><i>{{'END_DATE' | oTranslate }}: </i></strong>{{getDate(packs.pck_date_end)}}</li>
                             <li><strong><i>{{'DAYS' | oTranslate }}: </i></strong>{{diferenciaDias(packs.pck_date_begin,packs.pck_date_end)}}</li>                     
                             <li><strong><i>{{'Price' | oTranslate }}: </i></strong>{{packs.pck_price}} €</li>
-                            <li><strong><i>{{'TRAVELLERS' | oTranslate }}: </i></strong>{{packs.pck_participants}}</li>
+                            <li *ngIf="packs.pck_participants "><strong><i>{{'TRAVELLERS' | oTranslate }}: </i></strong>{{packs.pck_participants}}</li>
+                            <li *ngIf="!packs.pck_participants"><strong><i>{{'TRAVELLERS' | oTranslate }}: </i></strong>{{'NOT_SPECIFIED' | oTranslate}}</li>
                             <span *ngFor="let city of gui_cities.dataArray">
                                 <span *ngIf="packs.gui_c_id == city.gui_c_id">
                                     <span *ngFor="let zone of gui_zones.dataArray">
-                                        <li *ngIf="city.gui_z_id == zone.gui_z_id"><strong>{{'PLACE' | oTranslate }}: </strong> {{city.gui_c_name}}, {{zone.gui_z_name}}</li>
+                                        <li *ngIf="city.gui_z_id == zone.gui_z_id"><strong><i>{{'PLACE' | oTranslate }}: </i></strong> {{city.gui_c_name | oTranslate}}, {{zone.gui_z_name | oTranslate}}</li>
                                     </span>
                                 </span>
                             </span>

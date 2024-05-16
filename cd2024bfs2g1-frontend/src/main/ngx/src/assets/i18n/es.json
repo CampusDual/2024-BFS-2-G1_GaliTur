@@ -241,5 +241,6 @@
   "pck_name": "Nombre",
   "pck_date_begin": "Inicio",
   "gui_c_name": "Ciudad",
-  "PACKS": "Packs"
+  "PACKS": "Packs",
+  "NOT_SPECIFIED": "No especificado"
 }
