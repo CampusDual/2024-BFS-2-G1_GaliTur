@@ -7,9 +7,9 @@
     </div>
     <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px" class="routesSecond">
         <div fxLayout="column" fxFlex="30">
-            <o-gallery *ngIf="data.galleryImages; else no_photo" [gallery-images]="data.galleryImages" class="o-gallery"></o-gallery>
+            <o-gallery *ngIf="data.galleryImages; else no_photo" [gallery-images]="data.galleryImages"  [gallery-options]="galleryOptions" class="o-gallery"></o-gallery>
             <ng-template #no_photo>
-                <img src="../../../../assets/images/no-image.png" class="noImageRoute">
+                <img src="./assets/images/no-image.png" class="noImageRoute">
             </ng-template>
         </div>
         <div fxLayout="column" fxFlex="70">
@@ -22,7 +22,7 @@
                 </ng-template>
             </div>
             <br>
-            <div fxLayout="row" fxLayoutGap="8px">
+            <div fxLayout="row" fxLayoutGap="8px" class="divDeBotones">
                 <div fxLayout="column" class="estimatedDuration">
                     <span *ngIf="data.estimated_duration; else no_estimated_duration">
                         <mat-icon>schedule</mat-icon><span>  {{ convertTime(data.estimated_duration) }}</span>

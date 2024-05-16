@@ -199,5 +199,9 @@
   "MESSAGES_INSERTED_LANDMARK": "Landmark inserted succefully",
   "MESSAGES_FORM_CHANGES_WILL_BE_LOST_LANDMARK": "Are you really sure you want to do this? All changes will be lost",
   "landmark_id": "Id",
-  "button_table_finish": "Finish"
+  "button_table_finish": "Finish",
+  "Dificultad: Intermedio": "Difficulty: Intermediate",
+  "Dificultad: Fácil": "Difficulty: Easy",
+  "Dificultad: Difícil": "Difficulty: Hard",
+  "Dificultad: Extremo": "Difficulty: Extreme"
 }
