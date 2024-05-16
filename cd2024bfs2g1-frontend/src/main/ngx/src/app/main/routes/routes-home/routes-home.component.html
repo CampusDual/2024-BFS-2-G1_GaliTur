@@ -20,7 +20,7 @@
                 <div class="difficulty" [ngClass]="'di-' + data.difficulty">
                     <div class="tooltip">
                         <mat-icon>help</mat-icon>
-                        <span class="tooltiptext">{{getDifficultad(data.difficulty)}}</span>
+                        <span class="tooltiptext">{{getDifficultad(data.difficulty)  | oTranslate }}</span>
                     </div>
                     <span *ngIf="data.difficulty; else no_difficulty">
                         <mat-icon  [ngClass]="getIconColorClass(data.difficulty)" *ngFor="let _ of [].constructor(data.difficulty)">eco</mat-icon>

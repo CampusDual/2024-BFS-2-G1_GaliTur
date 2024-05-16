@@ -237,10 +237,19 @@
   "MESSAGES_FORM_CHANGES_WILL_BE_LOST_LANDMARK": "¿Estás realmente seguro de que quieres hacer esto? Todos los cambios se perderán.",
   "landmark_id": "Id",
   "button_table_finish": "Finalizar",
+  "Dificultad: Intermedio": "Dificultad: Intermedio",
+  "Dificultad: Fácil": "Dificultad: Fácil",
+  "Dificultad: Difícil": "Dificultad: Difícil",
+  "Dificultad: Extremo": "Dificultad: Extremo",
   "MYPACKS": "Mis Packs",
   "pck_name": "Nombre",
   "pck_date_begin": "Inicio",
   "gui_c_name": "Ciudad",
   "PACKS": "Packs",
-  "NOT_SPECIFIED": "No especificado"
+  "NOT_SPECIFIED": "No especificado",
+  "BOOK": "Reservar",
+  "BOOKING.CONFIRMED": "Reserva confirmada",
+  "BOOKED": "Reservado",
+  "BOOKING-DIALOG": "Confirme Reserva",
+  "BOOKING-DIALOG-B": "¿Quiere confirmar la reserva?"
 }

@@ -5,6 +5,7 @@ import com.campusdual.cd2024bfs2g1.model.core.dao.ClientDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.UserDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.UserRoleDao;
 import com.ontimize.jee.common.dto.EntityResult;
+import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.common.services.user.UserInformation;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 @Lazy
@@ -34,6 +36,21 @@ public class ClientService implements IClientService {
     @Override
     public EntityResult clientQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.clientDao, keyMap, attrList);
+    }
+
+    @Override
+    public EntityResult isClientQuery(Map<String, Object> keymap, List<String> attrList) {
+        EntityResult er = this.daoHelper.query(this.clientDao, keymap, attrList);
+        int clientid = getClientId();
+
+
+        List<Object> dataArray = new ArrayList<>();
+
+        dataArray.add(clientid);
+
+
+        er.put("data", dataArray);
+        return er;
     }
 
     @Override
@@ -69,17 +86,17 @@ public class ClientService implements IClientService {
         return this.daoHelper.delete(this.clientDao, keyMap);
     }
 
+
     /**
      * Gets logged client ID
      * @return Client ID
      */
-    public int getClientId() {
+    public Integer getClientId() {
         //Gets client object
         Object client = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         //Gets logged user id
         int userId = (int) ((UserInformation) client).getOtherData().get(UserDao.USR_ID);
-
 
         List<String> qKeys = new ArrayList<String>();
         qKeys.add(ClientDao.CLIENT_ID);
@@ -88,9 +105,14 @@ public class ClientService implements IClientService {
         emptyMap.put("CL." + ClientDao.USR_ID, userId);
 
 
-
         EntityResult clientEr = clientQuery(emptyMap, qKeys);
         ArrayList<Integer> al = (ArrayList<Integer>) clientEr.get(ClientDao.CLIENT_ID);
-        return al.get(0);
+
+        if(al == null){
+            return -1;
+        }else {
+            return al.get(0);
+        }
+
     }
 }

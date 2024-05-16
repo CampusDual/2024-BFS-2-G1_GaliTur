@@ -14,6 +14,7 @@ import { LandmarksService } from 'src/app/shared/services/landmarks.service';
   styleUrls: ['./routes-detail.component.css']
 })
 export class RoutesDetailComponent implements OnInit{
+  galleryOptions: any;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -23,6 +24,16 @@ export class RoutesDetailComponent implements OnInit{
     protected landmarkService: LandmarksService
   ) {
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration("landmarks"));
+    this.galleryOptions = [
+      {
+        image: true,
+        height: "200px",
+        width: "300px",
+        thumbnails: data.galleryImages && data.galleryImages.length > 1 ? true : false,
+        imageArrows: data.galleryImages && data.galleryImages.length > 1 ? true : false,
+        preview: false
+      }
+    ];
    }
 
   ngOnInit(){
@@ -70,5 +81,7 @@ export class RoutesDetailComponent implements OnInit{
 
     }
 
-}
+
+
+  }
 }
