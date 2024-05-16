@@ -79,6 +79,7 @@
     flex: 1;
     padding: 25px;
     background-color: transparent;
+    overflow:hidden; 
 }
 
 .desc {
@@ -98,6 +99,7 @@
     row-gap: 10px;
     max-height: 135px;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 
