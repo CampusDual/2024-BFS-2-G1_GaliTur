@@ -29,8 +29,8 @@ export class RoutesDetailComponent implements OnInit{
         image: true,
         height: "200px",
         width: "300px",
-        thumbnails: data.galleryImages.length > 1 ? true : false,
-        imageArrows:  data.galleryImages.length > 1 ? true : false,
+        thumbnails: data.galleryImages && data.galleryImages.length > 1 ? true : false,
+        imageArrows: data.galleryImages && data.galleryImages.length > 1 ? true : false,
         preview: false
       }
     ];
