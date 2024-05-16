@@ -17,7 +17,6 @@
 }
 
 .main-container {
-
     min-width: 700px;
     align-content: center;
     justify-content: center;
@@ -25,7 +24,6 @@
     margin-left: 50px;
     margin-right: 50px;
     margin-top: 10px;
-
 }
 
 .name-container {
@@ -38,7 +36,6 @@
     flex-direction: row;
     justify-content: center;
     width: 100%;
-
 }
 
 .div-image-container {
@@ -49,7 +46,6 @@
     height: 400px;
     margin-bottom: 30px;
     align-items: center;
-
 }
 
 .div-active-pack-container{
@@ -95,7 +91,6 @@
     border-radius: 10px;
     padding-left: 10px;
     padding-right: 10px;
-
 }
 
 .reserve-pack{
@@ -120,10 +115,13 @@
     align-items: center;
     justify-content: center;
     font-size: 20px;
-
   }
 
-  .left, .right {
+  .active-pack:hover{
+    cursor: pointer;
+  }
+
+.left, .right {
     flex: 1;
     padding: 25px;
     background-color: transparent;
@@ -140,7 +138,6 @@
 
 .o-rows {
     background-color: transparent;
-
 }
 
 .list-with-spaces {
@@ -171,7 +168,6 @@
     width: 100%;
     height: 100%;
     margin-top: 15px;
-
 }
 
 .o-grid-items {
@@ -182,6 +178,26 @@
 .li-with-margin {
     margin-top: 10px;
 }
+
+#booking-button{
+    background-color:  #52733B;
+    .mat-mdc-raised-button:not(:disabled) {
+        background-color:  #84A45A;
+    }
+}
+
+
+::ng-deep .mdc-snackbar__surface{
+        background-color: #52733B !important;
+}
+
+
+
+
+
+
+
+
 
 
 

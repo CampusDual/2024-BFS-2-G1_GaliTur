@@ -1,38 +1,56 @@
-import { Component, ViewChild } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-import { OFormComponent, OTableComponent, OTranslateModule } from 'ontimize-web-ngx';
-import { PackHomeComponent } from '../pack-home/pack-home.component';
-
+import { Component, Injector, ViewChild } from "@angular/core";
+import { DomSanitizer } from "@angular/platform-browser";
+import { Router } from "@angular/router";
+import {
+  DialogService,
+  ODialogConfig,
+  OFormComponent,
+  OSnackBarConfig,
+  OTableComponent,
+  OTranslateService,
+  OntimizeService,
+  SnackBarService,
+} from "ontimize-web-ngx";
+import { PackHomeComponent } from "../pack-home/pack-home.component";
 
 @Component({
-  selector: 'app-pack-detail',
-  templateUrl: './pack-detail.component.html',
-  styleUrls: ['./pack-detail.component.css']
+  selector: "app-pack-detail",
+  templateUrl: "./pack-detail.component.html",
+  styleUrls: ["./pack-detail.component.css"],
 })
 export class PackDetailComponent {
-  @ViewChild('accountCustomerTable') accountTable: OTableComponent;
-  @ViewChild('form') form: OFormComponent;
+  @ViewChild("accountCustomerTable") accountTable: OTableComponent;
+  @ViewChild("form") form: OFormComponent;
 
   constructor(
     protected sanitizer: DomSanitizer,
     private router: Router,
-    private oTranslate: OTranslateModule
+    private oTranslate: OTranslateService,
+    protected dialogService: DialogService,
+    protected injector: Injector,
+    protected service: OntimizeService,
+    protected snackBarService: SnackBarService
   ) {
+    this.service = this.injector.get(OntimizeService);
   }
 
-	ngOnInit(): void {
+  ngOnInit(): void {
+    this.configureService();
   }
 
   public getImageSrc(base64: any): any {
-    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image-transparent.png';
+    return base64
+      ? this.sanitizer.bypassSecurityTrustResourceUrl(
+          "data:image/*;base64," + base64
+        )
+      : "./assets/images/no-image-transparent.png";
   }
 
   public openPacks(): void {
-    if(PackHomeComponent.page==1){
-      this.router.navigate(['main/packs']);
-    }else{
-      this.router.navigate(['main/pack-client']);
+    if (PackHomeComponent.page == 1) {
+      this.router.navigate(["main/packs"]);
+    } else {
+      this.router.navigate(["main/pack-client"]);
     }
   }
 
@@ -49,4 +67,49 @@ export class PackDetailComponent {
 
   }
 
+  bookPack(event: any, data) {
+    const config: ODialogConfig = {
+      icon: "warning",
+      alertType: "warn",
+    };
+
+    if (this.dialogService) {
+      this.dialogService.confirm(
+        this.oTranslate.get("BOOKING-DIALOG"),
+        this.oTranslate.get("BOOKING-DIALOG-B"),
+        config
+      );
+      this.dialogService.dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          this.insertBooking(data);
+          // Actions on confirmation
+        } else {
+          // Actions on cancellation
+        }
+      });
+    }
+  }
+
+  protected configureService() {
+    // Configure the service using the configuration defined in the `app.services.config.ts` file
+    const conf = this.service.getDefaultServiceConfiguration("packBookings");
+    this.service.configureService(conf);
+  }
+
+  insertBooking(data) {
+    this.service
+      .insert({ pck_id: data.pck_id }, "packBooking")
+      .subscribe((resp) => {
+        this.form.reload(true);
+
+        const config: OSnackBarConfig = {
+          action: "",
+          milliseconds: 2000,
+          icon: "booking",
+          iconPosition: "left",
+          cssClass: "snackbar",
+        };
+        this.snackBarService.open("BOOKING.CONFIRMED", config);
+      });
+  }
 }
