@@ -10,7 +10,7 @@ CREATE TABLE pack
     pck_description  text        NOT NULL,
     pck_date_begin   timestamp   NOT NULL,
     pck_date_end     timestamp   NOT NULL,
-    pck_price        decimal(10, 2),
+    pck_price        decimal(10, 2) DEFAULT 0,
     pck_participants integer,
     gui_c_id         integer     NOT NULL REFERENCES gui_cities (gui_c_id),
     pcs_id           integer     NOT NULL DEFAULT 1 REFERENCES pack_state (pcs_id),

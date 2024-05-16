@@ -1,31 +1,83 @@
-.o-form{
-  background-image: url('^assets/images/login_bg.png');
-  background-repeat: no-repeat;
-  background-size: cover;
+o-form{
+  background-image: url('^assets/images/background_pattern.jpg');
+  background-repeat: repeat;
+  background-size: 600px;
   background-position: center;
-  height: 90vh;
-  margin: 0;
+  padding: 0 15%;
+  padding-top: 7.5%;
+  height: 85vh;
+}
+
+.contenedor {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 15px;
+
+}
+.register-container,
+.carrusel-container {
+  overflow: hidden;
+}
+.carrusel-container{
+  background-image: url('^assets/images/hercules_tower.png');
+  background-size: cover;
+  border-radius: 0 15px 15px 0;
+}
+.register-container *{
+  margin: 1%;
+}
+o-column{
+  margin-top: 5%;
+  margin-left: 15%;
+  margin-right: 15%;
+  background-color: transparent;
+}
+.contenedor-boton-registro{
+  width: 100%;
+  height: 60px;
   display: flex;
-  align-items: center;
-  padding-top: 5%;
+  justify-content: center;
+}
+.boton-registro{
+  width: 40%;
+  padding-top: 2%;
+  button {
+    height: 100%;
+
+  }
+
+}
+.contenedor-boton-navegacion{
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .titulo {
-  align-self: center;
+  justify-content: center;
   font-weight: bold;
   font-size: 30px;
+  display:flex;
 }
 
-.o-form .o-column{
-  align-items: center;
-  padding: 4%;
-}
-.o-form .o-column {
-  padding-top: 4%;
-  padding-left: 4%;
-  padding-right: 4%;
-}
+.footer-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 2;
 
-o-row o-button {
-  width: 50%;
-}
+  div {
+    height: 40px;
+    margin-right: 138px;
 
+    span {
+      font-size: 11px;
+      padding-right: 4px;
+    }
+  }
+
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup xmlns="http://www.ontimize.com/schema/jdbc"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+                 catalog="" schema="${mainschema}" table="pack_booking" datasource="mainDataSource"
+                 sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>pbk_booking_id</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>pbk_booking_id</Column>
+    </UpdateKeys>
+    <GeneratedKey>pbk_booking_id</GeneratedKey>
+    <Queries>
+        <Query id="default">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.pack_booking
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="multi">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.pack_booking PB
+                        INNER JOIN ${mainschema}.pack PK
+                        ON PB.pck_id=PK.pack_id
+                        INNER JOIN ${mainschema}.client CL
+                        ON PB.client_id=CL.client_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>

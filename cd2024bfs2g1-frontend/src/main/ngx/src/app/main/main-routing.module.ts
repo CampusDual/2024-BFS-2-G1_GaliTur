@@ -17,6 +17,7 @@ export const routes: Routes = [
       { path: 'profile', canActivate: [AuthGuardService], component: ProfileComponent },
       { path: 'routes', canActivate: [AuthGuardService], loadChildren: () => import('./routes/routes.module').then(m => m.RoutesModule) },
       { path: 'packs', loadChildren: () => import('./pack/pack.module').then(m => m.PackModule) },
+      { path: 'pack-client', canActivate: [AuthGuardService], loadChildren: () => import('./my-packs/my-packs.module').then(m => m.MyPacksModule) },
     ]
   }
 ];
