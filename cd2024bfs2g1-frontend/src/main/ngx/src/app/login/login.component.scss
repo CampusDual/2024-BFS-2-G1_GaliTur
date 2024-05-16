@@ -9,7 +9,7 @@ $primary-color: #909f43; // Color verde neutro
 $secondary-color: #495635; // Color verde oscuro 
 $background-color: #F0F4C3; // Color de fondo claro 
 $text-color: #715e4e; // Color marron oscuro 
-$input-bg-color: #FFFFFF;
+$input-bg-color: #dbded0;
 $input-border-color: #AED581;
 $button-color: #715e4e;
 $card-bg-color: rgba(255, 255, 255, 0.8);
@@ -80,7 +80,6 @@ $card-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       mat-form-field {
         width: 100%;
         margin-bottom: 16px;
-
         .mat-input {
           background-color: $input-bg-color;
           border: 1px solid $input-border-color;
@@ -91,6 +90,9 @@ $card-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         mat-error {
           color: $secondary-color;
         }
+      }
+      .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+        background-color: $input-bg-color;
       }
 
       //Estilos del checkbox
@@ -114,7 +116,7 @@ $card-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
           &:checked::before {
             content: '\2713';
             font-size: 14px;
-            color: #715e4e;
+            color: $secondary-color;
             position: absolute;
             top: 50%;
             left: 50%;
