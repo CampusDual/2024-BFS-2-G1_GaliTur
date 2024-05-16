@@ -41,13 +41,13 @@
           </div>
           <div class="contenedor-boton-registro">
             <button class="boton-registro" attr="raised3" (click)="register()" type="RAISED" 
-                      layout-padding color="accent">Register</button>
+                      layout-padding color="accent">{{ 'REGISTER_BUTTON' | oTranslate }}</button>
           </div>
           <div class="contenedor-boton-navegacion">
             <button attr="raised3" (click)="navLogin()" type="STROKED" 
                       layout-padding color="accent" class="option-button">{{ 'ALREADY_REGISTERED' | oTranslate }}</button>
-            <button class="button-register" attr="raised3" (click)="navRegisterProfessional()" type="STROKED"
-                     layout-padding color="accent" class="option-button">{{ 'IM_NOT_PROFESSIONAL' | oTranslate }}</button>
+            <button attr="raised3" (click)="navRegisterProfessional()" type="STROKED"
+                     layout-padding color="accent" class="option-button">{{ 'IM_PROFESSIONAL' | oTranslate }}</button>
           </div>
         </div>
       </o-column>
@@ -63,7 +63,7 @@
 
 <div class="header">
   <div class="logo-text-container">
-    <img src="../../../../assets/images/logo-walking.png" alt="Logo" class="logo-image"> <!-- Ruta de la imagen del logo -->
+    <img src="./assets/images/logo-walking.png" alt="Logo" class="logo-image"> <!-- Ruta de la imagen del logo -->
     <span class="app-name">GaliTur</span>
   </div>
 </div>
