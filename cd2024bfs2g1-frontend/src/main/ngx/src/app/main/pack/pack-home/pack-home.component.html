@@ -18,7 +18,8 @@
                     <li><mat-icon class="icon">event_busy</mat-icon> {{truncateInfo(getDate(data.pck_date_end))}} </li>
                     <li *ngIf="diferenciaDias(data.pck_date_begin,data.pck_date_end) <= 1"><mat-icon class="icon">timer</mat-icon> {{diferenciaDias(data.pck_date_begin,data.pck_date_end)}} {{'DAY' | oTranslate }}</li>
                     <li *ngIf="diferenciaDias(data.pck_date_begin,data.pck_date_end) > 1"><mat-icon class="icon">timer</mat-icon> {{diferenciaDias(data.pck_date_begin,data.pck_date_end)}} {{'DAYS' | oTranslate }}</li>
-                    <li><mat-icon class="icon">groups</mat-icon> {{data.pck_participants}} </li>
+                    <li *ngIf="!data.pck_participants  "><mat-icon class="icon">groups</mat-icon> {{'-' | oTranslate }} </li>
+                    <li *ngIf="data.pck_participants is not null"><mat-icon class="icon">groups</mat-icon> {{data.pck_participants}} </li>
                         <li><mat-icon class="icon">pin_drop</mat-icon> {{truncateInfo(data.gui_c_name)}}</li>
                     <li><mat-icon class="icon">payments</mat-icon> {{data.pck_price}} €</li>
                 </ul>
