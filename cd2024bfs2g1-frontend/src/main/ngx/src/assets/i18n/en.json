@@ -152,7 +152,7 @@
   "available_landmark": "Available landmarks",
   "is_draft": "Is draft?",
   "NO_GESTOR": "Sorry, you are not a manager",
-  "BUSINESS_DATA": "BUSINESS DATA",
+  "BUSINESS_DATA": "New business: basic information",
   "INVALID_FORMAT": "Invalid CIF or DNI format",
   "INVALID_LETTER": "Invalid DNI letter",
   "BSN_EMAIL": "Email",
