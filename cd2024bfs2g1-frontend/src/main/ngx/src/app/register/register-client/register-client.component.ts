@@ -68,7 +68,7 @@ export class RegisterClientComponent{
          this.form.insert()
          if (result.data[0] === undefined){
         } else if (result.data[0].usr_login === this.login.getValue()){
-          this.dialogService.error('Username error', 'Username already exists'); // Use DialogService to show error
+          this.dialogService.error('Username error', 'Username already exists');
           } else if (result.data[0].usr_email === this.email.getValue()){
           this.dialogService.error('Email error', 'Email already exists')
         }

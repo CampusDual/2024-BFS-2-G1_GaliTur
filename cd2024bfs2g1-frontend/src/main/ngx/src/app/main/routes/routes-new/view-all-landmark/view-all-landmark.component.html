@@ -1,7 +1,7 @@
 <h2>{{'info_landmark' | oTranslate }}</h2>
 <o-table #landmarkTable attr="landmarkTable" [static-data]="datosTabla"
     keys="landmark_id"
-    columns="name;coordinates"
+    columns="landmark_id;name;coordinates"
     visible-columns="name;coordinates" query-rows="10" select-all-checkbox="yes"
     export-button="no" insert-button="yes" delete-button="no" refresh-button="no" fixed-header="yes"
     detail-mode="none" edition-mode="click" export-mode="local">

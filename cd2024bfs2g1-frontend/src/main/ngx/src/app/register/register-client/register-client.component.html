@@ -1,8 +1,6 @@
 
 <div class="full-page">
-  
-  <o-form class="register-form" message-service-type="customMessageServiceTypeRegister" 
-  #form show-header="no" service="clients" entity="client" (onInsert)="navigate()" matchPassword keys="usr_id" after-insert-mode="new">
+  <o-form class="register-form" #form show-header="no" service="clients" entity="client" (onInsert)="navigate()" matchPassword keys="usr_id" after-insert-mode="new" message-service-type="customMessageServiceTypeRegister">
     <div class="contenedor">
       <o-column>
         <div class="register-container">
@@ -18,11 +16,11 @@
               <o-validator error-name="nameBlanksBetween" error-text="{{ 'NAME.BLANK.BETWEEN.INVALID' | oTranslate }}"></o-validator>
             </o-text-input>
 
-            <o-text-input #surname attr="usr_surname" label="Surname" required="yes" [validators]="validatorsNameArray">
+            <o-text-input #surname attr="usr_surname" label="usr_surname" required="yes" [validators]="validatorsNameArray">
               <o-validator error-name="nameBlanksBetween" error-text="{{ 'NAME.BLANK.BETWEEN.INVALID' | oTranslate }}"></o-validator>
             </o-text-input>
 
-            <o-date-input #birth_date attr="birth_date" label="Birth date" required="yes" value-type="date" [max]="getMinAge()"></o-date-input>
+            <o-date-input #birth_date attr="birth_date" label="birth_date" required="yes" value-type="date" [max]="getMinAge()"></o-date-input>
 
             <o-phone-input attr="usr_phone" label="usr_phone" read-only="no"></o-phone-input>
 
@@ -41,11 +39,11 @@
             </o-password-input>
           </div>
           <div class="contenedor-boton-registro">
-            <button class="boton-registro" attr="raised3" (click)="register()" type="RAISED" 
+            <button class="boton-registro" attr="raised3" (click)="register()" type="RAISED"
                       layout-padding color="accent">{{ 'REGISTER_BUTTON' | oTranslate }}</button>
           </div>
           <div class="contenedor-boton-navegacion">
-            <button attr="raised3" (click)="navLogin()" type="STROKED" 
+            <button attr="raised3" (click)="navLogin()" type="STROKED"
                       layout-padding color="accent" class="option-button">{{ 'ALREADY_REGISTERED' | oTranslate }}</button>
             <button attr="raised3" (click)="navRegisterProfessional()" type="STROKED"
                      layout-padding color="accent" class="option-button">{{ 'IM_PROFESSIONAL' | oTranslate }}</button>
@@ -57,7 +55,7 @@
         <span>{{'Developed by GaliTur'}} &copy; 2024 {{'All rights reserved'}}</span>
       </div>
     </div>
-    
+
 </o-form>
 
 </div>

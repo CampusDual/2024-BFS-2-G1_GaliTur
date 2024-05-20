@@ -1,6 +1,7 @@
 import { Component, Injector, ViewChild } from "@angular/core";
 import {
   AbstractControl,
+  FormControl,
   ValidationErrors,
   ValidatorFn,
   Validators
@@ -54,8 +55,7 @@ export class BusinessNewComponent {
   constructor(public injector: Injector, private translate: OTranslateService, private router:Router) {
     this.validatorsDniCif.push(this.dniAndCifValidator);
     this.blankValidator.push(this.blanksValidator)
-
-
+    this.blankValidator.push(this.lengthInvalid)
   }
 
 
@@ -75,6 +75,12 @@ export class BusinessNewComponent {
     this.switchDestinationState3 = this.switchDestination3.getValue();
     this.currency3.setValue(null);
   }
+
+  lengthInvalid = (control: FormControl) => {
+    const isTooLong = (control.value || '').length > 500;
+    const isValid = !isTooLong;
+    return isValid ? null : {'lengthInvalid': true};
+  };
 
   setSelectedOption($event: any) {
     this.selectedOption = $event;

@@ -15,7 +15,8 @@
                         <o-textarea-input attr="description" sql-type="STRING" width="100%"
                         class="description-textarea" required="yes" max-length="500" [validators]="blankValidator" rows="9">
                         <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
-                    </o-textarea-input>
+                        <o-validator error-name="lengthInvalid" error-text="{{ 'LENGTH_ERROR' | oTranslate }}"></o-validator>
+                        </o-textarea-input>
                     </div>
                     <br>
                     <div fxLayout="column">
@@ -26,7 +27,7 @@
                     <div fxLayout="column">
                         <o-combo attr="difficulty" label="{{ 'COMBO_DIFFICULTY' | oTranslate }}" enabled="yes" [static-data]="difficultyArray"
                          value-column="difficultyCode" columns="difficultyCode;difficultyText" null-selection="no"
-                        visible-columns="difficultyText"></o-combo>
+                        visible-columns="difficultyText" required="yes"></o-combo>
                     </div>
                     <br>
                     <div fxLayout="column">

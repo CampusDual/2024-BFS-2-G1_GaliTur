@@ -8,6 +8,10 @@
     padding: 16px;
     display: flex;
     flex-direction: row;
+    :hover{
+        cursor: pointer;
+
+    }
 }
 .businessCard img {
     justify-content: center;
@@ -15,7 +19,6 @@
 
 /*Image div for pack card structure*/
 .packCard img {
-    margin-top: 7.5px;
     width: 100%;
     height: 100%;
 }
@@ -45,7 +48,6 @@
 .cardInfo{
     align-content: center;
     width: 175px;
-    margin-top: 7.5px;
     padding: 20px;
 }
 
@@ -89,9 +91,15 @@
 }
 
 :host ::ng-deep .o-grid-sort {
-    min-width: 300px;
+    min-width: 325px;
     mat-form-field {
-        min-width: 300px;
+        min-width: 325px;
+    }
+}
+
+:host ::ng-deep .o-search-input {
+    span {
+        color: whitesmoke;
     }
 }
 
