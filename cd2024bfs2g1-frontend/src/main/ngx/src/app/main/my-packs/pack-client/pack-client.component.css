@@ -66,9 +66,9 @@
 }
 
 :host ::ng-deep .o-grid-sort {
-    min-width: 300px;
+    min-width: 325px;
     mat-form-field {
-        min-width: 300px;
+        min-width: 325px;
     }
 }
 
