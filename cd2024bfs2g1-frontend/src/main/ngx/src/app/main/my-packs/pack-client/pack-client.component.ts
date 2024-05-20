@@ -20,7 +20,7 @@ export class PackClientComponent {
     protected sanitizer: DomSanitizer,
     private router: Router,
   ) {
-    this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration("businesses"));
+    this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration("packs"));
   }
   ngOnInit() {
   }
@@ -39,6 +39,14 @@ export class PackClientComponent {
         return name.substr(0, 13) + '...';
     } else {
         return name;
+    }
+  }
+
+  truncateInfo(name: string): string {
+    if (name.length > 10) {
+      return name.substr(0, 10) + "...";
+    } else {
+      return name;
     }
   }
 
