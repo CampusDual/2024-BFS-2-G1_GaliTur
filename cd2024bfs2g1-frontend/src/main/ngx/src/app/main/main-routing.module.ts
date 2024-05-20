@@ -8,17 +8,16 @@ export const routes: Routes = [
   {
     path: '',
     component: MainComponent,
-    canActivate: [AuthGuardService],
     children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '', redirectTo: 'packs', pathMatch: 'full' },
       { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
-      { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
-      { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
-      { path: 'businesses', loadChildren: () => import('./business/business.module').then(m => m.BusinessModule) },
+      { path: 'admin', canActivate: [AuthGuardService], loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
+      { path: 'settings', canActivate: [AuthGuardService], loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
+      { path: 'businesses', canActivate: [AuthGuardService], loadChildren: () => import('./business/business.module').then(m => m.BusinessModule) },
+      { path: 'profile', canActivate: [AuthGuardService], component: ProfileComponent },
+      { path: 'routes', canActivate: [AuthGuardService], loadChildren: () => import('./routes/routes.module').then(m => m.RoutesModule) },
       { path: 'packs', loadChildren: () => import('./pack/pack.module').then(m => m.PackModule) },
-      { path: 'pack-client', loadChildren: () => import('./my-packs/my-packs.module').then(m => m.MyPacksModule) },
-      { path: 'profile', component: ProfileComponent },
-      { path: 'routes', loadChildren: () => import('./routes/routes.module').then(m => m.RoutesModule) },
+      { path: 'pack-client', canActivate: [AuthGuardService], loadChildren: () => import('./my-packs/my-packs.module').then(m => m.MyPacksModule) },
     ]
   }
 ];

@@ -46,8 +46,8 @@ export class PackHomeComponent {
 
 
   truncateName(name: string): string {
-    if (name.length > 16) {
-      return name.substr(0, 16) + "...";
+    if (name.length > 13) {
+      return name.substr(0, 13) + "...";
     } else {
       return name;
     }

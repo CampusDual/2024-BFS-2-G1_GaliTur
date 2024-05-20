@@ -4,13 +4,15 @@
      <o-row layout-align="start stretch">
         <o-column id="pack" layout-align="start stretch" fxFlex="50" layout-padding>
 
-                <o-text-input id="text" attr="pck_name" max-length="100" label="{{ 'PACK_NAME' | oTranslate }}"
-                    required="yes" [validators]="blankValidator">
+                <o-text-input id="text" attr="pck_name" max-length="50" label="{{ 'PACK_NAME' | oTranslate }}"
+                    required="yes" [validators]="nameValidators">
                     <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
                 </o-text-input>
                 <o-textarea-input id="description" attr="pck_description" label="{{ 'DESCRIPTION' | oTranslate }}" width="100%" rows="6"
-                    class="form-field" required="yes" max-length="250" [validators]="blankValidator">
+                    class="form-field" required="yes" max-length="250" [validators]="descValidators">
                     <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}" ></o-validator>
+                  <o-validator error-name="descLengthInvalid" error-text="{{ 'VALIDATOR.PACK_DESC_MAX_LENGTH' | oTranslate }}" ></o-validator>
+
                 </o-textarea-input>
                 <o-daterange-input attr="dates" [min]="getDate()" label="{{ 'DATE_RANGE' | oTranslate }}" read-only="no"
                                  required="yes"  format="DD/MM/YYYY" format="LL" separator="{{ 'SEPARATOR' | oTranslate }}"

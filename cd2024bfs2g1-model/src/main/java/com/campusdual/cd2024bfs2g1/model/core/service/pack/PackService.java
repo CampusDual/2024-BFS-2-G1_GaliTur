@@ -24,7 +24,6 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
-
 @Lazy
 @Service("PackService")
 public class PackService implements IPackService {
@@ -36,9 +35,6 @@ public class PackService implements IPackService {
     private final GuideCitiesService cityService;
     private final ImagePackService imagePackService;
     private final ClientService clientService;
-
-
-
 
     @Autowired
     public PackService(DefaultOntimizeDaoHelper daoHelper, PackDao packDao, ImageDao imageDao, GuideCitiesDao cityDao,
@@ -77,7 +73,6 @@ public class PackService implements IPackService {
         return this.daoHelper.query(this.packDao, keysValues, attributes, this.packDao.PCK_ALL_QUERY);
     }
 
-
     @Override
     @Secured(PermissionsProviderSecured.SECURED)
     @Transactional(rollbackFor = Throwable.class)
@@ -113,6 +108,4 @@ public class PackService implements IPackService {
     public EntityResult packDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.delete(this.packDao, keyMap);
     }
-
-
 }
