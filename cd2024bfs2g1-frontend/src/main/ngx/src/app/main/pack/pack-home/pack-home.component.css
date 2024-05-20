@@ -15,7 +15,6 @@
 
 /*Image div for pack card structure*/
 .packCard img {
-    margin-top: 7.5px;
     width: 100%;
     height: 100%;
 }
@@ -45,7 +44,6 @@
 .cardInfo{
     align-content: center;
     width: 175px;
-    margin-top: 7.5px;
     padding: 20px;
 }
 
@@ -92,6 +90,12 @@
     min-width: 300px;
     mat-form-field {
         min-width: 300px;
+    }
+}
+
+:host ::ng-deep .o-search-input {
+    span {
+        color: whitesmoke;
     }
 }
 
