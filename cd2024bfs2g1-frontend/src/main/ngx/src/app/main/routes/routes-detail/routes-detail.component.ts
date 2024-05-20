@@ -84,7 +84,7 @@ export class RoutesDetailComponent implements OnInit{
 
   }
 
-public backToDetail(data: any): void {
+public backToHome(data: any): void {
   this.dialogRef.close()
 }
 }
