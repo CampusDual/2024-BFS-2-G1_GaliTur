@@ -1,4 +1,4 @@
-import { Component, Injector, ViewChild } from "@angular/core";
+import {Component, Inject, Injector, ViewChild} from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
 import { Router } from "@angular/router";
 import {
@@ -9,7 +9,7 @@ import {
   OTableComponent,
   OTranslateService,
   OntimizeService,
-  SnackBarService,
+  SnackBarService, AuthService,
 } from "ontimize-web-ngx";
 import { PackHomeComponent } from "../pack-home/pack-home.component";
 
@@ -29,7 +29,8 @@ export class PackDetailComponent {
     protected dialogService: DialogService,
     protected injector: Injector,
     protected service: OntimizeService,
-    protected snackBarService: SnackBarService
+    protected snackBarService: SnackBarService,
+    @Inject(AuthService) private authService: AuthService
   ) {
     this.service = this.injector.get(OntimizeService);
   }
@@ -111,5 +112,9 @@ export class PackDetailComponent {
         };
         this.snackBarService.open("BOOKING.CONFIRMED", config);
       });
+  }
+
+  isLogged() {
+    return this.authService.isLoggedIn()
   }
 }

@@ -246,6 +246,8 @@
   "BOOKED": "Reservado",
   "BOOKING-DIALOG": "Confirme Reserva",
   "BOOKING-DIALOG-B": "¿Quiere confirmar la reserva?",
+  "MESSAGES_INSERTED_PACK": "Pack insertado correctamente",
+  "MESSAGES_INSERTED_REGISTER": "Registro terminado con exito",
   "LENGTH_ERROR": "No puede superar 500 caracteres",
   "pck_reserved":"Pack Reservado"
 }
