@@ -50,7 +50,7 @@ export class ViewAllLandmarkComponent implements AfterViewInit {
     this.ontimizelandmarkService
       .query(
         { route_id: id },
-        ["l.landmark_id", "l.name", "l.coordinates"],
+        ["l.name", "l.coordinates"],
         "landmark"
       )
       .subscribe((response) => {
