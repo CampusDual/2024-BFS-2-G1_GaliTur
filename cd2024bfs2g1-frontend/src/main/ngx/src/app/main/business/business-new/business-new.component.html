@@ -30,6 +30,7 @@
                 <o-textarea-input attr="bsn_description" label="{{ 'DESCRIPTION' | oTranslate }}" width="100%"
                     class="description-textarea" required="yes" max-length="500" [validators]="blankValidator" rows="9">
                     <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
+                    <o-validator error-name="lengthInvalid" error-text="{{ 'LENGTH_ERROR' | oTranslate }}"></o-validator>
                 </o-textarea-input>
             </div>
             <br>
