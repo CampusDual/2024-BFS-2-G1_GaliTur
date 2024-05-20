@@ -16,11 +16,6 @@
             columns="pck_id;pck_name;pck_description;pck_date_begin;pck_date_end;pck_price;pck_participants;gui_c_id;pcs_id"
             show-header-navigation="no" class="fill-form" show-header="no">
 
-            <o-grid *ngIf="isLogged()" #isCliente attr="isclient" service="clients" entity="isClient" columns="client_id"
-                visible-columns="client_id" refresh-button="false" quick-filter="false" oHidden />
-
-
-
             <!-- Almaceno el pack que he clicado -->
             <o-grid #packForm attr="packDetail" service="packs" entity="pack" keys="pck_id"
                 columns="pck_id;pck_name;pck_description;pck_date_begin;pck_date_end;pck_price;pck_participants;gui_c_id;pcs_id"
@@ -63,7 +58,10 @@
 
                     </span>
                 </span>
-                <ng-container *ngIf="isLogged()">
+                <ng-container *ngIf="isLogged()"> 
+                    <o-grid #isCliente attr="isclient" service="clients" entity="isClient" columns="client_id"
+                    visible-columns="client_id" refresh-button="false" quick-filter="false" oHidden />
+    
                   <span *ngFor="let clients of isCliente.dataArray">
 
 
