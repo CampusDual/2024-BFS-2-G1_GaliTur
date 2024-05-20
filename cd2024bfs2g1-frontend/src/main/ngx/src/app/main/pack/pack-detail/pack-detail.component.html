@@ -16,7 +16,7 @@
             columns="pck_id;pck_name;pck_description;pck_date_begin;pck_date_end;pck_price;pck_participants;gui_c_id;pcs_id"
             show-header-navigation="no" class="fill-form" show-header="no">
 
-            <o-grid #isCliente attr="isclient" service="clients" entity="isClient" columns="client_id"
+            <o-grid *ngIf="isLogged()" #isCliente attr="isclient" service="clients" entity="isClient" columns="client_id"
                 visible-columns="client_id" refresh-button="false" quick-filter="false" oHidden />
 
 
@@ -63,19 +63,21 @@
 
                     </span>
                 </span>
-                <span *ngFor="let clients of isCliente.dataArray">
+                <ng-container *ngIf="isLogged()">
+                  <span *ngFor="let clients of isCliente.dataArray">
 
 
                     <div class="div-active-pack-container" *ngFor="let packs of packForm.dataArray">
 
                         <span *ngIf="clients.data != -1">
                             <p class="active-pack" *ngIf="packs.pcs_id == 1" (click)="bookPack($event, packs)">{{'BOOK'
-                                | oTranslate }}</p>
+                              | oTranslate }}</p>
                             <p class="reserve-pack" *ngIf="packs.pcs_id == 2">{{'BOOKED' | oTranslate }}</p>
                         </span>
                     </div>
 
                 </span>
+                </ng-container>
                 <!-- Informacion adicional del business divididos en dos columnas (o-rows) -->
                 <div class="data-container" *ngFor="let packs of packForm.dataArray" line-height="2">
 

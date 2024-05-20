@@ -1,16 +1,19 @@
 import {AbstractControl, FormControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {
+  AuthService,
   DialogService,
   ODateInputComponent,
   OEmailInputComponent,
   OFormComponent,
   OPasswordInputComponent,
-  OTextInputComponent,
-  OValidators
+  OTextInputComponent, OUserInfoService,
+  OValidators, ServiceResponse
 } from 'ontimize-web-ngx';
 import {Router} from "@angular/router";
 import {MainService} from "../../shared/services/main.service";
+import {UserInfoService} from "../../shared/services/user-info.service";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-register-client',
@@ -37,7 +40,11 @@ export class RegisterClientComponent{
   private regexCaps = /[A-Z]/;
 
   constructor(private router: Router, @Inject(MainService) private mainService: MainService,
-              private dialogService: DialogService){
+              private dialogService: DialogService,
+              @Inject(OUserInfoService) private oUserInfoService: OUserInfoService,
+              @Inject(AuthService) private authService: AuthService,
+              @Inject(UserInfoService) private userInfoService: UserInfoService,
+              @Inject(DomSanitizer) private domSanitizer: DomSanitizer){
     // check whether the entered password has a number
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(this.regexNumber, 'hasNumber'));
     // check whether the entered password has upper case letter
@@ -83,7 +90,28 @@ export class RegisterClientComponent{
   }
 
   navigate() {
-    this.router.navigate(['/main'])
+    const login = this.login.getValue();
+    const password = this.password.getValue();
+    if (login && login.length > 0 && password && password.length > 0) {
+      this.authService.login(login, password)
+        .subscribe(() => {
+          this.mainService.getUserInfo()
+            .subscribe(
+              (result: ServiceResponse) => {
+                let avatar = './assets/images/user_profile.png';
+                this.userInfoService.storeUserInfo(result.data);
+                if (result.data['usr_photo']) {
+                  (avatar as any) = this.domSanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + result.data['usr_photo']);
+                }
+                this.oUserInfoService.setUserInfo({
+                  username: result.data['usr_name'],
+                  avatar: avatar
+                });
+              }
+            );
+          this.router.navigate(['main']);
+        });
+    }
   }
 
   getMinAge() {
@@ -118,7 +146,7 @@ export class RegisterClientComponent{
 
   usernameCharsValidator(control: AbstractControl): ValidationErrors | null{
     try{
-      const regex = /^[A-Za-z_\-.]*$/
+        const regex = /^[A-Za-z_\-.]*$/
       const inputValue = control.value;
 
       if(regex.test(inputValue)){

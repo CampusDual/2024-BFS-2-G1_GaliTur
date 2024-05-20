@@ -1,8 +1,18 @@
 import {Component, Inject, ViewChild} from '@angular/core';
 import {AbstractControl, FormControl, ValidationErrors, ValidatorFn} from "@angular/forms";
-import {DialogService, OFormComponent, OPasswordInputComponent, OTextInputComponent, OValidators} from "ontimize-web-ngx";
+import {
+  AuthService,
+  DialogService,
+  OFormComponent,
+  OPasswordInputComponent,
+  OTextInputComponent, OUserInfoService,
+  OValidators,
+  ServiceResponse
+} from "ontimize-web-ngx";
 import {Router} from "@angular/router";
 import {MainService} from "../../shared/services/main.service";
+import {UserInfoService} from "../../shared/services/user-info.service";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-register-merchant',
@@ -31,7 +41,11 @@ export class RegisterMerchantComponent {
 
   private regexEmail = /^[\w.%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-  constructor(private router: Router, @Inject(MainService) private mainService: MainService, private dialogService: DialogService,){
+  constructor(private router: Router, @Inject(MainService) private mainService: MainService, private dialogService: DialogService,
+              @Inject(OUserInfoService) private oUserInfoService: OUserInfoService,
+              @Inject(AuthService) private authService: AuthService,
+              @Inject(UserInfoService) private userInfoService: UserInfoService,
+              @Inject(DomSanitizer) private domSanitizer: DomSanitizer){
     // check whether the entered password has a number
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/\d/, 'hasNumber'));
     // check whether the entered password has upper case letter
@@ -126,5 +140,30 @@ export class RegisterMerchantComponent {
         return { nameBlanksBetween: true };
       }
     } catch (e){}
+  }
+
+  navigate() {
+    const login = this.login.getValue();
+    const password = this.password.getValue();
+    if (login && login.length > 0 && password && password.length > 0) {
+      this.authService.login(login, password)
+        .subscribe(() => {
+          this.mainService.getUserInfo()
+            .subscribe(
+              (result: ServiceResponse) => {
+                let avatar = './assets/images/user_profile.png';
+                this.userInfoService.storeUserInfo(result.data);
+                if (result.data['usr_photo']) {
+                  (avatar as any) = this.domSanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + result.data['usr_photo']);
+                }
+                this.oUserInfoService.setUserInfo({
+                  username: result.data['usr_name'],
+                  avatar: avatar
+                });
+              }
+            );
+          this.router.navigate(['main']);
+        });
+    }
   }
 }
