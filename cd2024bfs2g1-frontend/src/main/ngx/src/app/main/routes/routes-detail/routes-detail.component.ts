@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ViewLandmarkDetailComponent } from './view-landmark-detail/view-landmark-detail.component';
 
@@ -21,8 +21,9 @@ export class RoutesDetailComponent implements OnInit{
     private ontimizeService: OntimizeService,
     protected sanitizer: DomSanitizer,
     protected dialog: MatDialog,
-    protected landmarkService: LandmarksService
-  ) {
+    protected landmarkService: LandmarksService,
+    private dialogRef: MatDialogRef<RoutesDetailComponent>
+    ) {
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration("landmarks"));
     this.galleryOptions = [
       {
@@ -81,7 +82,9 @@ export class RoutesDetailComponent implements OnInit{
 
     }
 
-
-
   }
+
+public backToHome(data: any): void {
+  this.dialogRef.close()
+}
 }
