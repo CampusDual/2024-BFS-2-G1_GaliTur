@@ -7,7 +7,7 @@
     <o-grid-item *ngFor="let data of packGrid.dataArray" >
         <div (click)="openDetail(data)" fxLayout="row" fxLayoutAlign="space-evenly center" [ngClass]="{ 'not-available': data.pcs_id == 2 }"
             class="mat-elevation-z1 packCard" >
-            <span *ngIf="data.pcs_id == 2" class="unavailable-message">Pack Reservado</span>
+            <span *ngIf="data.pcs_id == 2" class="unavailable-message"> {{'pck_reserved' | oTranslate }}</span>
             <div class="cardImg" >
                 <img  class="preview-image" [src]="getImageSrc(data.img_code)" >
             </div>

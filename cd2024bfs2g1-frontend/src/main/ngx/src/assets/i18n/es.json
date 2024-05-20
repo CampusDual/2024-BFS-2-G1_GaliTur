@@ -244,5 +244,6 @@
   "BOOKING.CONFIRMED": "Reserva confirmada",
   "BOOKED": "Reservado",
   "BOOKING-DIALOG": "Confirme Reserva",
-  "BOOKING-DIALOG-B": "¿Quiere confirmar la reserva?"
+  "BOOKING-DIALOG-B": "¿Quiere confirmar la reserva?",
+  "pck_reserved":"Pack Reservado"
 }
