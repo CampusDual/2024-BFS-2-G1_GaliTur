@@ -59,6 +59,19 @@
   width: 700px;
   overflow-y: auto;
 }
+.titulo {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  background-color: #8d7561;
+  margin: 0px 200px 0px 200px;
+  color: #ffffff;
+  border: 5px solid;
+  border-color: #000000;
+  border-radius: 6px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+}
 
 
 .estimatedDuration {

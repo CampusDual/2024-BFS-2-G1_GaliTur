@@ -79,13 +79,13 @@ export class RoutesHomeComponent implements OnInit {
 getDifficultad(difficulty: number): string {
   switch(difficulty) {
     case 1:
-        return 'Dificultad: Fácil';
+        return ' Dificultad: Fácil ';
     case 2:
-        return 'Dificultad: Intermedio';
+        return ' Dificultad: Intermedio ';
     case 3:
-        return 'Dificultad: Difícil';
+        return ' Dificultad: Difícil ';
     case 4:
-        return 'Dificultad: Extremo';
+        return ' Dificultad: Extremo ';
 }
 }
 }
