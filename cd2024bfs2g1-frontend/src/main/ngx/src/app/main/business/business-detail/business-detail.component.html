@@ -146,9 +146,9 @@
                     <o-row class="o-rows" class="right" title="{{'GUIDEINFO' | oTranslate }}" icon="map" layout-align="start stretch"
                         elevation="1" appearance="outline" opacity="0">
                         <ul class="list-with-spaces">
-                            <li *ngFor="let agencyGuide of agencyGuideForm.dataArray"><strong><i>{{'LANGUAGE' | oTranslate }}: </i></strong>{{agencyGuide.gui_language}}</li>
-                            <li *ngFor="let agencyGuide of agencyGuideForm.dataArray"><strong><i>{{'ZONE' | oTranslate }}: </i></strong>{{agencyGuide.gui_zone}}</li>
-                            <li *ngFor="let agencyGuide of agencyGuideForm.dataArray"><strong><i>{{'CITY' | oTranslate }}: </i></strong>{{agencyGuide.gui_city}}</li>
+                            <li *ngFor="let agencyGuide of agencyGuideForm.dataArray"><strong><i>{{'LANGUAGE' | oTranslate }}: </i></strong>{{agencyGuide.gui_language | oTranslate }}</li>
+                            <li *ngFor="let agencyGuide of agencyGuideForm.dataArray"><strong><i>{{'ZONE' | oTranslate }}: </i></strong>{{agencyGuide.gui_zone | oTranslate }}</li>
+                            <li *ngFor="let agencyGuide of agencyGuideForm.dataArray"><strong><i>{{'CITY' | oTranslate }}: </i></strong>{{agencyGuide.gui_city | oTranslate }}</li>
                         </ul>
                     </o-row>
                 </div>
