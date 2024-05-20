@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { AbstractControl, FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import { OTranslateService } from 'ontimize-web-ngx';
 
@@ -10,21 +10,32 @@ import { OTranslateService } from 'ontimize-web-ngx';
 })
 export class RoutesNewComponent {
 isChecked = true
+blankValidator: ValidatorFn[] = [];
+
 getValue(): any {
  return true
 }
 
   constructor(private router:Router, private translate: OTranslateService){
     this.blankValidator.push(this.blanksValidator)
-
+    this.blankValidator.push(this.lengthInvalid)
   }
 
   onClickOk($event:Event){
-    this.router.navigate(['main/routes'])
-   
+    console.log('El id de la ruta es: '+$event['route_id']);
+    this.router.navigate(['main','routes', 'new', $event['route_id']])
   }
 
-  blankValidator: ValidatorFn[] = [];
+  onClickCancel(){
+    this.router.navigate(['main','routes'])
+  }
+  
+  lengthInvalid = (control: FormControl) => {
+    const isTooLong = (control.value || '').length > 500;
+    const isValid = !isTooLong;
+    return isValid ? null : {'lengthInvalid': true};
+  };
+
   blanksValidator(control: AbstractControl): ValidationErrors | null{
     try{
       const blank = /^[a-zA-Z].*/;
@@ -51,4 +62,5 @@ getValue(): any {
     difficultyCode: 4,
     difficultyText:  this.translate.get("EXTREME")
   }]
+
 }

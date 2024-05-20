@@ -1,16 +1,21 @@
 <div fxFill fxLayout="column" fxLayoutAlign="space-evenly center" class="mainPanel">
-    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px" class="namePanel">
-        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="4px" class="routesFirst">
-            <span><strong>{{ data.name }}</strong></span>
-            <mat-divider></mat-divider>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px" class="namePanel">
+        <button class="backButton" (click)="backToHome(data)" style="margin-right: 16px;">
+            <mat-icon class="arrow_back"><strong>arrow_back</strong></mat-icon>
+        </button>
+        <div>
+            <p class="titulo"><strong>{{ data.name }}</strong> </p>
         </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px" class="routesSecond">
-        <div fxLayout="column">
-            <o-gallery [gallery-images]="data.galleryImages" class="o-gallery"></o-gallery>
+        <div fxLayout="column" fxFlex="30">
+            <o-gallery *ngIf="data.galleryImages; else no_photo" [gallery-images]="data.galleryImages"  [gallery-options]="galleryOptions" class="o-gallery"></o-gallery>
+            <ng-template #no_photo>
+                <img src="./assets/images/no-image.png" class="noImageRoute">
+            </ng-template>
         </div>
-        <div fxLayout="column">
-            <div fxLayout="column" class="descriptionPanel">
+        <div fxLayout="column" fxFlex="70">
+            <div fxLayout="column" class="descriptionPanel" style="max-height: 200px; overflow-y: auto;">
                 <span *ngIf="data.description; else no_description">
                     <mat-icon></mat-icon><span>{{ data.description }}</span>
                 </span>
@@ -19,26 +24,29 @@
                 </ng-template>
             </div>
             <br>
-            <div fxLayout="row" fxLayoutGap="8px">
+            <div fxLayout="row" fxLayoutGap="8px" class="divDeBotones">
                 <div fxLayout="column" class="estimatedDuration">
                     <span *ngIf="data.estimated_duration; else no_estimated_duration">
-                        <mat-icon>schedule</mat-icon><span>{{ data.estimated_duration }} min</span>
+                        <mat-icon>schedule</mat-icon><span>  {{ convertTime(data.estimated_duration) }}</span>
                     </span>
                     <ng-template #no_estimated_duration>
                         <span><mat-icon>clock</mat-icon><span></span></span>
                     </ng-template>
                 </div>
-                <div fxLayout="column" class="difficulty">
-                    <span>
-                        <mat-icon>local_fire_department</mat-icon><span>{{ data.difficulty }}</span>
+                <div class="difficulty" [ngClass]="'di-' + data.difficulty">
+                    <span *ngIf="data.difficulty; else no_difficulty">
+                        <mat-icon  [ngClass]="getIconColorClass(data.difficulty)" *ngFor="let _ of [].constructor(data.difficulty)">eco</mat-icon>
+                        <mat-icon  *ngFor="let _ of [].constructor(4 - data.difficulty)">eco</mat-icon>
                     </span>
-                    <ng-template>
-                        <span><mat-icon>home</mat-icon><span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span></span>
+                    <ng-template #no_difficulty>
+                        <span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span>
                     </ng-template>
                 </div>
-            </div>
-            <div *ngFor="let landmark of data.landmarks" class="landmarkInfo">
-                <span>{{ landmark.name }}</span>
+                <div fxLayout="column" class="landmarkInfo">
+                    <button (click)="openDetailLandmark(data)" class="custom-button">
+                        <mat-icon> location_on </mat-icon><strong>{{ "landmark" | oTranslate}}</strong>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

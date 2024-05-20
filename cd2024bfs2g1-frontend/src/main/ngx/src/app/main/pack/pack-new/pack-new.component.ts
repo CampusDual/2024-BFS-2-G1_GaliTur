@@ -10,17 +10,12 @@ import { ODateInputComponent, OTranslateService } from 'ontimize-web-ngx';
   styleUrls: ['./pack-new.component.css']
 })
 export class PackNewComponent {
-  numero: number = 0;
-  @ViewChild("dateBegin", { static: false })
-  dateBegin: ODateInputComponent;
-  @ViewChild("dateEnd", { static: false })
-  dateEnd: ODateInputComponent;
-  blankValidator: ValidatorFn[] = [];
+  nameValidators: ValidatorFn[] = [];
+  descValidators: ValidatorFn[] = [];
   constructor(public injector: Injector, private translate: OTranslateService, private router:Router) {
-    this.blankValidator.push(this.blanksValidator)
-    this.dateBegin = null;
-    this.dateEnd = null;
-
+    this.nameValidators.push(this.blanksValidator)
+    this.descValidators.push(this.blanksValidator)
+    this.descValidators.push(this.descLengthValidator)
   }
   insertPacks($event:Event){
     this.router.navigate(['main/packs/'])
@@ -29,13 +24,28 @@ export class PackNewComponent {
 
   blanksValidator(control: AbstractControl): ValidationErrors | null{
     try{
-      const blank = /^[a-zA-Z\d][a-zA-Z\s\d]*[a-zA-Z\d]$/;
+      const blank = /^\S+.+\S+$|^\S+$/;
       const inputValue = control.value;
+
 
       if(blank.test(inputValue)){
         return null;
       } else {
         return { blankInvalid: true };
+      }
+    } catch (e){}
+  }
+
+  descLengthValidator(control: AbstractControl): ValidationErrors | null{
+    try{
+      const regex = /^.{1,250}$/;
+      const inputValue = control.value;
+
+
+      if(regex.test(inputValue)){
+        return null;
+      } else {
+        return { descLengthInvalid: true };
       }
     } catch (e){}
   }

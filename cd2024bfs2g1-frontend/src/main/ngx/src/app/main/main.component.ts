@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {AuthService} from "ontimize-web-ngx";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-main',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(AuthService) private authService: AuthService, private router: Router) {
+  }
 
   ngOnInit() {
   }
+  checkAuthStatus(){
+    return !this.authService.isLoggedIn()
+  }
 
+  navigateLogin() {
+    this.router.navigate(['../../login'])
+  }
+
+  navigateRegister() {
+    this.router.navigate(['../../register'])
+  }
 }

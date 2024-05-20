@@ -1,7 +1,7 @@
 
-<o-form attr="routesNew" label-header="{{'info_route' | oTranslate }}" label-header-align="start" service="routes" entity="route" keys="route_id" title="" (onInsert)="onClickOk($event)" confirm-exit="false" message-service-type="customMessageServiceTypeRoutes">
+<o-form attr="routesNew" label-header="{{'info_route' | oTranslate }}" label-header-align="start" service="routes" entity="route" keys="route_id" title="" (onInsert)="onClickOk($event)" (onCancel)="onClickCancel()" confirm-exit="false" message-service-type="customMessageServiceTypeRoutes" ignore-default-navigation="yes">
     <o-column>
-       
+
         <div class="divPrincipal" fxLayout="row">
                 <div fxLayout="column" class="routeInfo">
                     <div fxLayout="column">
@@ -15,7 +15,8 @@
                         <o-textarea-input attr="description" sql-type="STRING" width="100%"
                         class="description-textarea" required="yes" max-length="500" [validators]="blankValidator" rows="9">
                         <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
-                    </o-textarea-input>
+                        <o-validator error-name="lengthInvalid" error-text="{{ 'LENGTH_ERROR' | oTranslate }}"></o-validator>
+                        </o-textarea-input>
                     </div>
                     <br>
                     <div fxLayout="column">
@@ -26,13 +27,13 @@
                     <div fxLayout="column">
                         <o-combo attr="difficulty" label="{{ 'COMBO_DIFFICULTY' | oTranslate }}" enabled="yes" [static-data]="difficultyArray"
                          value-column="difficultyCode" columns="difficultyCode;difficultyText" null-selection="no"
-                        visible-columns="difficultyText"></o-combo>
+                        visible-columns="difficultyText" required="yes"></o-combo>
                     </div>
                     <br>
                     <div fxLayout="column">
                         <o-slide-toggle attr="is_draft" class="txt" label="{{ 'is_draft' | oTranslate }}" read-only="no"></o-slide-toggle>
                     </div>
-                    
+
                 </div>
                 <div fxLayout="column" class="imageInput">
                     <div fxLayout="column">

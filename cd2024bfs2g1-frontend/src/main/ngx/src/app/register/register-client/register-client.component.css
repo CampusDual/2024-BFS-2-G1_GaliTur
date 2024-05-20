@@ -1,32 +1,164 @@
-.o-form{
-  background-image: url('^assets/images/login_bg.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 90vh;
-  margin: 0;
+.header {
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  justify-content: left;
+  display: flex;
+
+
+  .logo-text-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: left;
+
+    img {
+      max-height: 40px;
+    }
+
+    .app-name {
+      font-size: 32px;
+      font-weight: 700;
+      color: #FFFFFF;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+.register-form {
+  justify-content: center;
+  display: flex;
+  max-width: 525px;
+  min-width: 525px;
+}
+
+.full-page {
   display: flex;
   align-items: center;
-  padding-top: 5%;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #909f43, #495635);
+  font-family: 'Roboto', sans-serif;
+}
+
+.contenedor {
+  background-color: white;
+  border-radius: 15px;
+  width: auto;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  opacity: 0.8;
+  
+}
+
+
+.register-container,
+.carrusel-container {
+  overflow: hidden;
+}
+
+.register-container *{
+  margin: 1%;
+}
+
+o-column{
+  margin-top: 5%;
+  margin-left: 7.5%;
+  margin-right: 7.5%;
+  background-color: transparent;
+}
+.contenedor-boton-registro{
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+}
+.boton-registro{
+  width: 40%;
+  padding-top: 2%;
+  width: 100%;
+  margin-top: 16px;
+  height: 48px;
+  font-size: 16px;
+  background-color: #715e4e;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  &:hover {
+    background-color: #5c4c3f;
+    transform: translateY(-3px);
+  }
+}
+
+
+.contenedor-boton-navegacion{
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .titulo {
-  align-self: center;
+  justify-content: center;
   font-weight: bold;
   font-size: 30px;
+  display:flex;
+  color:#715e4e;
 }
 
-.o-form .o-column{
-  align-items: center;
-  padding: 4%;
-}
-.o-form .o-column {
-  padding-top: 4%;
-  padding-left: 4%;
-  padding-right: 4%;
+.footer-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 2;
+
+  div {
+    height: 40px;
+    margin-right: 138px;
+
+    span {
+      font-size: 11px;
+      padding-right: 4px;
+    }
+  }
+
 }
 
-.o-form .o-column:last-child{
-  padding-bottom: 4%;
-  padding-left: 4%;
-  padding-right: 4%;
+.option-button {
+  background-color: transparent;
+  color: #715e4e;
+  font-size: 13px;
+  padding: 10px 20px;
+  border: 1px solid #715e4e;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 50%;
+
+  &:hover {
+    background-color: #5c4c3f;
+    color: #fff;
+  }
+}
+
+.footer-text {
+  margin-top: 12px;
+  font-size: 11px;
+  color: #715e4e;
+  margin-bottom: 20px;
+  justify-content: center;
+  display: flex;
+
+  span {
+    display: block;
+    margin: 2px 0;
+  }
 }

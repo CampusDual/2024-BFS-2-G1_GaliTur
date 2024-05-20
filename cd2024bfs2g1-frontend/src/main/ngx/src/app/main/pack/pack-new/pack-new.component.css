@@ -22,6 +22,7 @@ span {
 }
 #pack{
     width: 50%;
+    margin-left: 2%;
 }
 
 #description{
@@ -29,7 +30,9 @@ span {
         resize: none;
     }
 }
-
+#text{
+  margin-top: 2%;
+}
 div *{
     width: 58.5%;
 }
