@@ -246,5 +246,6 @@
   "BOOKING.CONFIRMED": "Reserva confirmada",
   "BOOKED": "Reservado",
   "BOOKING-DIALOG": "Confirme Reserva",
-  "BOOKING-DIALOG-B": "¿Quiere confirmar la reserva?"
+  "BOOKING-DIALOG-B": "¿Quiere confirmar la reserva?",
+  "LENGTH_ERROR": "No puede superar 500 caracteres"
 }
