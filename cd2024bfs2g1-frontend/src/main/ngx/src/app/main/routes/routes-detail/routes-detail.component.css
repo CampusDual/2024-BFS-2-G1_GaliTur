@@ -6,6 +6,14 @@
   border-radius: 150px;
 }
 
+.mainPanel {
+  position: relative;
+}
+.backButton {
+  position: absolute;
+  left: 20px;
+}
+
 .routesSecond span {
   display: flex;
   align-items: center;

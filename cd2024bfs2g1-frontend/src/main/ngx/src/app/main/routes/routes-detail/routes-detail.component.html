@@ -1,5 +1,8 @@
 <div fxFill fxLayout="column" fxLayoutAlign="space-evenly center" class="mainPanel">
-    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px" class="namePanel">
+        <button class="backButton" (click)="backToDetail(data)" style="margin-right: 16px;">
+            <mat-icon class="arrow_back"><strong>arrow_back</strong></mat-icon>
+        </button>
         <div>
             <p class="titulo"><strong>{{ data.name }}</strong> </p>
         </div>
