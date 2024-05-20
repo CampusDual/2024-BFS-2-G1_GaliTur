@@ -8,6 +8,10 @@
     padding: 16px;
     display: flex;
     flex-direction: row;
+    :hover{
+        cursor: pointer;
+
+    }
 }
 .businessCard img {
     justify-content: center;
@@ -87,9 +91,9 @@
 }
 
 :host ::ng-deep .o-grid-sort {
-    min-width: 300px;
+    min-width: 325px;
     mat-form-field {
-        min-width: 300px;
+        min-width: 325px;
     }
 }
 

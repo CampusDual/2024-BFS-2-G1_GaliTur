@@ -35,8 +35,8 @@ export class PackClientComponent {
   }
 
   truncateName(name: string): string {
-    if (name.length > 19) {
-        return name.substr(0, 19) + '...';
+    if (name.length > 13) {
+        return name.substr(0, 13) + '...';
     } else {
         return name;
     }
