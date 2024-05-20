@@ -1,165 +1,193 @@
-.m-top-24 {
-  margin-top: 24px;
+@mixin center-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.full-page {
+//Paleta de colores a utilizar
+$primary-color: #909f43; // Color verde neutro 
+$secondary-color: #495635; // Color verde oscuro 
+$background-color: #F0F4C3; // Color de fondo claro 
+$text-color: #715e4e; // Color marron oscuro 
+$input-bg-color: #dbded0;
+$input-border-color: #AED581;
+$button-color: #715e4e;
+$card-bg-color: rgba(255, 255, 255, 0.8);
+$card-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+
+//Estilos al div principal
+.full-page-login {
   width: 100%;
   height: 100%;
-  margin: 0 auto;
   position: relative;
   overflow: hidden;
+  @include center-flex;
+  background: linear-gradient(135deg, #909f43, #495635); //Degradado
 
-  .login-outer-container {
+  //Estilos al logo con el nombre 
+  .header-login {
+    position: fixed;
+    top: 70px;
     width: 100%;
-    height: 100%;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    overflow: auto;
+    @include center-flex;
+    justify-content: center;
 
-    .login-bg-container {
-      background-image: url('^assets/images/login_bg.png');
-      width: calc(100% - 640px);
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      z-index: 1;
+    .logo-text-container {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      img {
+        max-height: 40px;
+      }
+
+      .app-name {
+        font-size: 32px;
+        font-weight: 700;
+        color: #FFFFFF;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+
+  //Estilos de la carta flotante
+  .login-card {
+    width: 360px;
+    padding: 40px 30px;
+    background-color: $card-bg-color;
+    box-shadow: $card-shadow;
+    border-radius: 12px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    margin-top: 70px;
+
+    .login-title-container {
+      margin-bottom: 24px;
+
+      .title_text {
+        font-size: 24px;
+        font-weight: 700;
+        color: $text-color;
+      }
     }
 
-    .login-bg-container::before {
-      content: "";
-      display: block;
-      position: absolute;
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background: rgba(0, 0, 0, .1);
-      opacity: .8;
-    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
-    .wrapp-login {
-      width: 640px;
-      min-height: 100%;
-
-      .login-inner-container {
+      mat-form-field {
         width: 100%;
-
-        form {
-          padding: 16px;
-          min-height: 600px;
-          min-width: 368px;
+        margin-bottom: 16px;
+        .mat-input {
+          background-color: $input-bg-color;
+          border: 1px solid $input-border-color;
+          padding: 10px;
+          border-radius: 4px;
         }
 
-        .logo-container {
-          width: 368px;
-          height: 110px;
+        mat-error {
+          color: $secondary-color;
+        }
+      }
+      .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+        background-color: $input-bg-color;
+      }
 
-          img {
-            max-height: 110px;
-            max-width: 368px;
+      //Estilos del checkbox
+      .remember-me-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+
+        input[type="checkbox"] {
+          appearance: none;
+          background-color: $input-bg-color;
+          border: 1px solid $button-color;
+          padding: 10px;
+          border-radius: 4px;
+          margin-right: 10px;
+          width: 20px;
+          height: 20px;
+          cursor: pointer;
+          position: relative;
+
+          &:checked::before {
+            content: '\2713';
+            font-size: 14px;
+            color: $secondary-color;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
           }
         }
 
-        .session-expired {
-          text-align: center;
-        }
-
-        .login-title-container {
-          margin-top: 64px;
-        }
-
-        button {
-          width: 100%;
-          margin: 8px 0 0;
-          height: 42px;
-          font-size: 16px;
-        }
-        #professional{
-          background-color: white;
-          color: blue;
-          font-size: 16px;
-          padding: 10px 20px;
-          border: none; 
-          border-radius: 5px;
-          cursor: pointer; 
-          box-shadow: none; 
-          transition: background-color 0.3s ease;
-        }
-        .dark_text {
-          color: #c5c5c5;
-          font-size: 9pt;
-        }
-
-        .login_info,
-        .title_text {
+        label {
           font-size: 14px;
+          color: $text-color;
+          cursor: pointer;
         }
+      }
 
-        .title_text {
-          font-weight: 600;
+      //Estilos de los botones login y register
+
+      button {
+        width: 100%;
+        margin-top: 16px;
+        height: 48px;
+        font-size: 16px;
+        background-color: $button-color;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+
+        &:hover {
+          background-color: #5c4c3f;
+          transform: translateY(-3px);
         }
+      }
 
-        .text {
-          font-size: 12px;
-          font-weight: normal;
+      //Estilos del boton resgister como profesional
+      #professional {
+        background-color: transparent;
+        color: $button-color;
+        font-size: 16px;
+        padding: 10px 20px;
+        border: 1px solid $button-color; 
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: none;
+        transition: background-color 0.3s ease, color 0.3s ease;
+
+        &:hover {
+          background-color: #5c4c3f;
+          color: #fff;
         }
       }
     }
 
-  }
-
-  .footer-container {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 40px;
-    z-index: 2;
-
-    div {
-      height: 40px;
-      margin-right: 138px;
+    //Estilos del texto inferior (By GaliTur)
+    .footer-text {
+      margin-top: 24px;
+      font-size: 10px;
+      color: $text-color;
 
       span {
-        font-size: 11px;
-        padding-right: 4px;
+        display: block;
+        margin: 2px 0;
       }
     }
-
   }
 
-}
-@media(max-width:576px) {
-  .full-page {
-    .login-outer-container {
-      .wrapp-login {
-        width: 100%;
-        min-height: 100%;
-
-        .login-inner-container {
-          width: 100%;
-
-          form {
-            min-width: auto;
-            min-height: auto;
-          }
-        }
-      }
-    }
-
-    .footer-container {
-      div {
-        margin: 0 auto;
-        place-content: center !important;
-      }
+  @media (max-width: 576px) {
+    .login-card {
+      width: 90%;
+      border-radius: 12px;
+      padding: 20px;
     }
   }
 }
