@@ -74,7 +74,7 @@
   "usr_phone": "Teléfono",
   "birth_date": "Fecha de nacimiento",
   "usr_surname": "Apellidos",
-  "USERNAME.CHARS.INVALID": "The special symbols allowed are: _-.",
+  "USERNAME.CHARS.INVALID": "Solo se permiten letras numeros y _-.",
   "NO.BLANKS": "No se permiten espacios en blanco",
   "NAME.BLANK.BETWEEN.INVALID": "No puede empezar ni terminar por un espacio en blanco",
   "USERNAME.LENGTH.INVALID": "El nombre de usuario debe estar entre los 6 y 20 caracteres",
