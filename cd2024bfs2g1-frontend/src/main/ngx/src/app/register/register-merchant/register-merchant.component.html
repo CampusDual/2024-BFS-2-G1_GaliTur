@@ -1,29 +1,29 @@
 <div class="full-page">
 
-  <o-form class="register-form" #form show-header="no" service="merchants" entity="merchant" matchPassword keys="usr_id">
+  <o-form class="register-form" #form show-header="no" (submit)="register()" (onInsert)="navigate()" service="merchants" entity="merchant" matchPassword keys="usr_id">
     <div class="contenedor">
       <o-column>
         <div class="register-container">
           <div class="titulo">{{ 'Register_Professional' | oTranslate }}</div>
           <div>
-            <o-text-input #login attr="usr_login" label="Username" required="yes" [validators]="validatorsUsernameArray">
+            <o-text-input #login attr="usr_login" label="usr_login" required="yes" [validators]="validatorsUsernameArray">
               <o-validator error-name="usernameLength"
                           error-text="{{ 'USERNAME.LENGTH.INVALID' | oTranslate }}"></o-validator>
               <o-validator error-name="blanks" error-text="{{ 'NO.BLANKS' | oTranslate }}"></o-validator>
               <o-validator error-name="usernameChars"
                           error-text="{{ 'USERNAME.CHARS.INVALID' | oTranslate }}"></o-validator>
             </o-text-input>
-            <o-text-input #name attr="usr_name" label="Name" required="yes" [validators]="validatorsNameArray">
+            <o-text-input #name attr="usr_name" label="usr_name" required="yes" [validators]="validatorsNameArray">
               <o-validator error-name="nameBlanksBetween"
                           error-text="{{ 'NAME.BLANK.BETWEEN.INVALID' | oTranslate }}"></o-validator>
 
             </o-text-input>
-            <o-text-input #surname attr="usr_surname" label="Surname" required="yes" [validators]="validatorsNameArray">
+            <o-text-input #surname attr="usr_surname" label="usr_surname" required="yes" [validators]="validatorsNameArray">
               <o-validator error-name="nameBlanksBetween"
                           error-text="{{ 'NAME.BLANK.BETWEEN.INVALID' | oTranslate }}"></o-validator>
 
             </o-text-input>
-            <o-phone-input attr="usr_phone" label="Phone" read-only="no"></o-phone-input>
+            <o-phone-input attr="usr_phone" label="usr_phone" read-only="no"></o-phone-input>
             <o-email-input #email attr="usr_email" label="Email" read-only="no" required="yes"></o-email-input>
             <o-password-input #password attr="usr_password" label="usr_password" required="yes" min-length="8"
                               [validators]="validatorsNewPasswordArray">
@@ -59,7 +59,7 @@
     </div>
   </o-form>
 
-  
+
 </div>
 
 

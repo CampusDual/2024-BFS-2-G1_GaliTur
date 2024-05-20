@@ -51,9 +51,8 @@ export class RegisterMerchantComponent {
   public register(){
     this.mainService.getUserInfoByLoginAndId(this.login.getValue(), this.email.getValue()).subscribe(
       (result) => {
+        this.form.insert()
         if (result.data[0] === undefined){
-          this.form.insert()
-          this.router.navigate(['/login'])
         } else if (result.data[0].usr_login === this.login.getValue()){
           this.dialogService.error('Login error', 'Username already exists');
         } else if (result.data[0].usr_email === this.email.getValue()){
@@ -126,5 +125,9 @@ export class RegisterMerchantComponent {
         return { nameBlanksBetween: true };
       }
     } catch (e){}
+  }
+
+  navigate() {
+    this.router.navigate(['/main'])
   }
 }
