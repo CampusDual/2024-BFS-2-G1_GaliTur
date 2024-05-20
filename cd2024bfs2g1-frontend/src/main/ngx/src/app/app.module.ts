@@ -14,6 +14,8 @@ import { OGalleryModule } from 'ontimize-web-ngx-gallery';
 import { CustomMessageServiceRoutes } from './shared/services/customMessageRoutes.service';
 import { CustomMessageBusinessService } from './shared/services/customMessageBusiness.service';
 import { CustomMessageServiceLandmarks } from './shared/services/customMessageLandmarks.service';
+import { CustomMessageServicePacks } from './shared/services/customMessagePacks.service';
+import { CustomMessageServiceRegister } from './shared/services/customMessageRegisters.service';
 
 
 // Standard providers...
@@ -47,7 +49,9 @@ export const customProviders: any = [
     ...customProviders,
     { provide: 'customMessageServiceTypeRoutes', useValue: CustomMessageServiceRoutes },
     { provide: 'customMessageServiceTypeLandmarks', useValue: CustomMessageServiceLandmarks },
-    { provide: 'customMessageServiceTypeBusiness', useValue: CustomMessageBusinessService }
+    { provide: 'customMessageServiceTypeBusiness', useValue: CustomMessageBusinessService },
+    { provide: 'customMessageServiceTypePacks', useValue: CustomMessageServicePacks },
+    { provide: 'customMessageServiceTypeRegister', useValue: CustomMessageServiceRegister }
   ],
 })
 export class AppModule { }

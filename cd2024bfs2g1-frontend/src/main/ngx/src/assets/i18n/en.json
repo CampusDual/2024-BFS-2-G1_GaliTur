@@ -237,5 +237,7 @@
   "BOOKING.CONFIRMED": "Booking confirmed",
   "BOOKED": "Reserved",
   "BOOKING-DIALOG": "Confirm Booking",
-  "BOOKING-DIALOG-B": "Do you wish to book this pack?"
+  "BOOKING-DIALOG-B": "Do you wish to book this pack?",
+  "MESSAGES_INSERTED_PACK": "Pack inserted successfully",
+  "MESSAGES_INSERTED_REGISTER": "Registration completed successfully"
 }
