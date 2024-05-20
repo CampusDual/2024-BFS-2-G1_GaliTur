@@ -8,10 +8,7 @@
     padding: 16px;
     display: flex;
     flex-direction: row;
-    :hover{
-        cursor: pointer;
-
-    }
+    transform: scale(0.925); 
 }
 .businessCard img {
     justify-content: center;
@@ -102,4 +99,13 @@
         color: whitesmoke;
     }
 }
+
+.packCard:hover {
+    box-shadow: 0 0 15px rgba(40, 63, 28, 0.55); 
+    transform: scale(0.9325); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    cursor: pointer;
+}
+
+
 
