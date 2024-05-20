@@ -1,4 +1,8 @@
-<o-app-layout show-language-selector="yes">
+<o-app-layout show-language-selector="yes" [sidenav-opened]="!checkAuthStatus()">
+  <o-app-layout-header *ngIf="checkAuthStatus()" class="header">
+    <o-button attr="btnLogin" type="BASIC" label="LOGIN" (onClick)="navigateLogin()" layout-padding color="primary"></o-button>
+    <o-button attr="btnRegister" type="RAISED" label="REGISTER" (onClick)="navigateRegister()" layout-padding color="primary"></o-button>
+  </o-app-layout-header>
   <o-user-info-configuration show-profile="yes"> </o-user-info-configuration>
   <router-outlet></router-outlet>
 </o-app-layout>
