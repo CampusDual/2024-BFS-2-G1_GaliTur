@@ -202,8 +202,8 @@
   "pck_date_end": "End Date",
   "pck_price": "Price",
   "pck_participants": "Participants",
-  "gui_c_name": "Guide Name",
-  "pcs_id": "Participant ID",
+  "gui_c_name": "city",
+  "pcs_id": "reserved",
   "img_code": "Image Code",
   "PACKS": "Packs",
   "DAYS": "Days",
@@ -228,6 +228,7 @@
   "MESSAGES_FORM_CHANGES_WILL_BE_LOST_LANDMARK": "Are you really sure you want to do this? All changes will be lost",
   "landmark_id": "Id",
   "button_table_finish": "Finish",
+  "NOT_SPECIFIED":"Not specified",
   "REGISTER_BUTTON": "Register",
   "Dificultad: Intermedio": "Difficulty: Intermediate",
   "Dificultad: Fácil": "Difficulty: Easy",
@@ -238,5 +239,6 @@
   "BOOKED": "Reserved",
   "BOOKING-DIALOG": "Confirm Booking",
   "BOOKING-DIALOG-B": "Do you wish to book this pack?",
-  "LENGTH_ERROR": "Text can't exceeds 500 characters"
+  "LENGTH_ERROR": "Text can't exceeds 500 characters",
+  "pck_reserved":"Reserved Pack"
 }
