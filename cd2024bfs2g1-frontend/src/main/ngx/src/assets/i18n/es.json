@@ -249,5 +249,7 @@
   "MESSAGES_INSERTED_PACK": "Pack insertado correctamente",
   "MESSAGES_INSERTED_REGISTER": "Registro terminado con exito",
   "LENGTH_ERROR": "No puede superar 500 caracteres",
-  "pck_reserved":"Pack Reservado"
+  "pck_reserved":"Pack Reservado",
+  "IM_PROFESSIONAL": "Soy un profesional",
+  "IM_NOT_PROFESSIONAL": "No soy un profesional"
 }
