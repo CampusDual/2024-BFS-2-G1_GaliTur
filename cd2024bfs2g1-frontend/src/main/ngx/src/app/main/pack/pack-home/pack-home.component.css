@@ -61,7 +61,7 @@
 /* image styles */
 .cardImg {
     width: 50%;
-    height: 250px;
+    height: 200px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -102,6 +102,7 @@
 
 /* pack not available message styles */
 .unavailable-message {
+    z-index: 2;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -128,7 +129,7 @@
 
 /* hover effect for pack card */
 .packCard:hover {
-    box-shadow: 0 0 15px rgba(40, 63, 28, 0.55); 
+    box-shadow: 0 0 15px rgba(113, 94, 78, 1); 
     transform: scale(0.9325); 
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
     cursor: pointer;
