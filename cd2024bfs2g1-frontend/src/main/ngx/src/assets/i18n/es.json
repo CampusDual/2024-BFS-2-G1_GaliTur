@@ -153,7 +153,7 @@
   "available_landmark": "Puntos de interés disponibles",
   "is_draft": "¿Es un borrador?",
   "NO_GESTOR": "Lo siento, no eres un gestor",
-  "BUSINESS_DATA": "Nuevo negocio: información básica",
+  "BUSINESS_DATA": "Nuevo negocio",
   "BUSINESS_NAME": "Nombre del negocio",
   "INVALID_FORMAT": "Formato CIF o DNI incorrecto",
   "INVALID_LETTER": "Letra del DNI incorrecta",
