@@ -149,7 +149,7 @@
   "opening_time": "Opening time",
   "closing_time": "Closing time",
   "info_route": "New route: basic information",
-  "info_landmark": "New route: landmarks",
+  "info_landmark": ": landmarks",
   "info_new_landmark": "New landmark",
   "available_landmark": "Available landmarks",
   "is_draft": "Is draft?",

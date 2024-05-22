@@ -148,7 +148,7 @@
   "opening_time": "Horario de apertura",
   "closing_time": "Horario de cierre",
   "info_route": "Nueva ruta: información básica",
-  "info_landmark": "Nueva ruta: puntos de interés",
+  "info_landmark": ": puntos de interés",
   "info_new_landmark": "Nuevo punto de interés",
   "available_landmark": "Puntos de interés disponibles",
   "is_draft": "¿Es un borrador?",
