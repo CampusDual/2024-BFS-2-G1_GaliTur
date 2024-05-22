@@ -31,7 +31,7 @@
                     keys="gui_z_id" multiple="no" null-selection="no" required="yes">
                 </o-combo>
                 <o-combo id="comboCity" #comboCity attr="gui_c_id" label="{{ 'SELECT_CITY' | oTranslate }}"  translate="yes"
-                    query-method="query" value-column="gui_c_id" required="yes" service="guideCities" multiple="no" null-selection="no" entity="guideCities"
+                    query-method="query" sort="ASC" value-column="gui_c_id" required="yes" service="guideCities" multiple="no" null-selection="no" entity="guideCities"
                     columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id"
                     [query-on-event]="comboZone.onValueChange" parent-keys="gui_z_id:comboZone[gui_z_id]">
                 </o-combo>
