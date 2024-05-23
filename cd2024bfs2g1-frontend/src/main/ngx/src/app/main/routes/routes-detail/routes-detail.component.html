@@ -26,12 +26,11 @@
             <br>
             <div fxLayout="row" fxLayoutGap="8px" class="divDeBotones">
                 <div fxLayout="column" class="estimatedDuration">
-                    <span *ngIf="data.estimated_duration; else no_estimated_duration">
-                        <mat-icon>schedule</mat-icon><span>  {{ convertTime(data.estimated_duration) }}</span>
-                    </span>
-                    <ng-template #no_estimated_duration>
-                        <span><mat-icon>clock</mat-icon><span></span></span>
-                    </ng-template>
+                    <span class="duration" *ngIf="data.estimated_duration; else no_estimated_duration" >
+                        <p><mat-icon>clock</mat-icon>{{ convertTime(data.estimated_duration) }} </p></span>
+                        <ng-template #no_estimated_duration>
+                            <span><p>{{ "N0_ESTIMATED_DURATIOn" | oTranslate}}</p></span>
+                        </ng-template>
                 </div>
                 <div class="difficulty" [ngClass]="'di-' + data.difficulty">
                     <span *ngIf="data.difficulty; else no_difficulty">
