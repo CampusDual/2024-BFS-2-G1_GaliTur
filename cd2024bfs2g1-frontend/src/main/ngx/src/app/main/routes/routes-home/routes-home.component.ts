@@ -38,7 +38,7 @@ export class RoutesHomeComponent implements OnInit {
 
 
       this.dialog.open(RoutesDetailComponent, {
-        height: '600px',
+        height: '700px',
         width: '1200px',
         data: data
       });

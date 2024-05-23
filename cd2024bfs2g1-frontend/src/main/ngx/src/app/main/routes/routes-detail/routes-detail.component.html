@@ -1,8 +1,9 @@
 <div fxFill fxLayout="column" fxLayoutAlign="space-evenly center" class="mainPanel">
-    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px" class="namePanel">
-        <button class="backButton" (click)="backToHome(data)" style="margin-right: 16px;">
-            <mat-icon class="arrow_back"><strong>arrow_back</strong></mat-icon>
-        </button>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
+        <div>
+            <o-button class="backButton" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary"
+            (click)="backToHome(data)"></o-button>
+        </div>
         <div>
             <p class="titulo"><strong>{{ data.name }}</strong> </p>
         </div>
@@ -15,25 +16,41 @@
             </ng-template>
         </div>
         <div fxLayout="column" fxFlex="70">
-            <div fxLayout="column" class="descriptionPanel" style="max-height: 200px; overflow-y: auto;">
+            <o-row class="o-rows" class="description" attr="container" icon="description" mat
+                        title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" elevation="1"
+                        aria-orientation="vertical" appearance="outline">
                 <span *ngIf="data.description; else no_description">
                     <mat-icon></mat-icon><span>{{ data.description }}</span>
                 </span>
                 <ng-template #no_description>
                     <span><mat-icon></mat-icon><span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span></span>
                 </ng-template>
-            </div>
+            </o-row>
             <br>
             <div fxLayout="row" fxLayoutGap="8px" class="divDeBotones">
-                <div fxLayout="column" class="estimatedDuration">
-                    <span *ngIf="data.estimated_duration; else no_estimated_duration">
-                        <mat-icon>schedule</mat-icon><span>  {{ convertTime(data.estimated_duration) }}</span>
-                    </span>
-                    <ng-template #no_estimated_duration>
-                        <span><mat-icon>clock</mat-icon><span></span></span>
-                    </ng-template>
-                </div>
+                <o-row class="o-rows" class="information" attr="container" icon="info" mat
+                        title="{{'INFO' | oTranslate }}" layout-align="start stretch" elevation="1"
+                        aria-orientation="vertical" appearance="outline">
+                        <div fxLayout="row" class="estimatedDuration">
+                            <div class="tooltipDuration" *ngIf="data.estimated_duration; else no_estimated_duration">
+                                <mat-icon class="clockTooltip">schedule</mat-icon>
+                                <span class="tooltiptextDuration">{{ "estimated_duration" | oTranslate }}</span>
+                            </div>
+                            <span *ngIf="data.estimated_duration">
+                                {{ convertTime(data.estimated_duration) }}
+                            </span>
+                            <ng-template #no_estimated_duration>
+                                <div class="tooltipNoDuration">
+                                    <mat-icon class="clockTooltip">schedule</mat-icon>
+                                    <span class="tooltiptextNoDuration">{{ "no_estimated_duration" | oTranslate }}</span>
+                                </div>
+                            </ng-template>
+                        </div>
                 <div class="difficulty" [ngClass]="'di-' + data.difficulty">
+                    <div class="tooltipDifficulty">
+                        <mat-icon class="helpTooltip">help</mat-icon>
+                        <span class="tooltiptextDifficulty">{{getDifficultad(data.difficulty)  | oTranslate }}</span>
+                    </div>
                     <span *ngIf="data.difficulty; else no_difficulty">
                         <mat-icon  [ngClass]="getIconColorClass(data.difficulty)" *ngFor="let _ of [].constructor(data.difficulty)">eco</mat-icon>
                         <mat-icon  *ngFor="let _ of [].constructor(4 - data.difficulty)">eco</mat-icon>
@@ -47,6 +64,7 @@
                         <mat-icon> location_on </mat-icon><strong>{{ "landmark" | oTranslate}}</strong>
                     </button>
                 </div>
+                </o-row>
             </div>
         </div>
     </div>
