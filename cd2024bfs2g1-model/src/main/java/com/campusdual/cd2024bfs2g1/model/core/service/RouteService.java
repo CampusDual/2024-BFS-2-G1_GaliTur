@@ -39,10 +39,7 @@ public class RouteService  implements IRouteService {
     @Override
     public EntityResult routeQuery(Map<String, Object> keyMap, List<String> attrList) {
         return this.daoHelper.query(routeDao, keyMap, attrList);
-
     }
-
-
 
     @Override
     public EntityResult routeInsert(Map<String, Object> attrMap) {
