@@ -10,6 +10,7 @@ import { ODateInputComponent, OTranslateService } from 'ontimize-web-ngx';
   styleUrls: ['./pack-new.component.css']
 })
 export class PackNewComponent {
+
   nameValidators: ValidatorFn[] = [];
   descValidators: ValidatorFn[] = [];
   constructor(public injector: Injector, private translate: OTranslateService, private router:Router) {
@@ -52,5 +53,9 @@ export class PackNewComponent {
   getDate(): moment.Moment {
     return moment()
   }
+
+  addActivity() {
+    throw new Error('Method not implemented.');
+    }
 
 }
