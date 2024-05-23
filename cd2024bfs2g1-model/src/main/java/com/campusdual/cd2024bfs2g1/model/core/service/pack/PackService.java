@@ -57,6 +57,10 @@ public class PackService implements IPackService {
 
     @Override
     public EntityResult packDetailQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        Object key = keyMap.remove("pck_id");
+        keyMap.put("p.pck_id", key);
+        attrList.remove("pck_id");
+        attrList.add("p.pck_id");
         return this.daoHelper.query(this.packDao, keyMap, attrList, "packsDetails");
     }
 

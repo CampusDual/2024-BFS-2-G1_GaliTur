@@ -30,11 +30,11 @@
                     SELECT
                         #COLUMNS#
                     FROM
-                        ${mainschema}.pack P
-                        INNER JOIN ${mainschema}.image_pack IP
-                        ON P.pck_id=IP.pck_id
-                        INNER JOIN ${mainschema}.image I
-                        ON IP.img_id=I.image_id
+                        ${mainschema}.pack p
+                        INNER JOIN ${mainschema}.image_pack ip
+                        ON p.pck_id=ip.pck_id
+                        INNER JOIN ${mainschema}.image i
+                        ON ip.img_id=i.image_id
                     #WHERE#
                     #ORDER#
                 ]]>
