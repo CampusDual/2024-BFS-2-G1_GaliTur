@@ -13,8 +13,7 @@ import { PackEditComponent } from 'src/app/main/manage-packages/pack-edit/pack-e
   declarations: [
     PackHomeComponent,
     PackDetailComponent,
-    PackNewComponent,
-    PackEditComponent
+    PackNewComponent
     
   ],
   imports: [

@@ -10,9 +10,7 @@ const routes: Routes = [
     path: '', component: PackHomeComponent
   },
   {path: 'new', component: PackNewComponent},
-  {path: ':pck_id', component: PackDetailComponent},
-  {path: 'edit', component:PackEditComponent}
-
+  {path: ':pck_id', component: PackDetailComponent}
 ];
 
 
