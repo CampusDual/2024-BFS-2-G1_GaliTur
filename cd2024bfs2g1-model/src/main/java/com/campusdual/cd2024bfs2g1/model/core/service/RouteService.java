@@ -39,15 +39,11 @@ public class RouteService  implements IRouteService {
     @Override
     public EntityResult routeQuery(Map<String, Object> keyMap, List<String> attrList) {
         return this.daoHelper.query(routeDao, keyMap, attrList);
-
     }
-
-
 
     @Override
     public EntityResult routeInsert(Map<String, Object> attrMap) {
         UserInformation userInformation =(UserInformation) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         if(userInformation.getAuthorities().stream().anyMatch(c->c.toString().equals("manager"))){
             Map<String,Object> imageMapAttr=new HashMap();
             EntityResult route_id_entity = this.daoHelper.insert(routeDao, attrMap);

@@ -7,6 +7,9 @@
 
 .back-button {
     margin-top: 60px;
+    margin-right: -75px;
+    padding-left: 25px;
+    z-index: 2;
 }
 
 .mainCard {
@@ -118,6 +121,10 @@
 .details {
     margin-left: 30px;
     padding-right: 30px;
+    summary:hover {
+        width: max-content;
+        cursor: pointer;
+    }
 }
 
 
