@@ -1,9 +1,9 @@
 <o-grid #routesGrid attr="routesHome" title="ROUTES" service="routes" entity="route" keys="route_id"
     columns="route_id;name;description;estimated_duration;difficulty"
     query-rows="8" page-size-options="8;10;12" orderable="true"
-    sortable-columns="name;description;estimated_duration;difficulty" insert-button="true"
+    sortable-columns="creation_date;name;estimated_duration;difficulty;creation_date:desc;name:desc;estimated_duration:desc;difficulty:desc" insert-button="true"
     pagination-controls="true" gutter-size="8px" fixed-header="yes" grid-item-height="300px" detail-mode="none"
-    insert-button-floatable="no">
+    insert-button-floatable="no" >
     <o-grid-item *ngFor="let data of routesGrid.dataArray">
         <div *ngIf="!data.isdraft" (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-evenly center" [ngClass]="'card-'"
             class="routeCard">
