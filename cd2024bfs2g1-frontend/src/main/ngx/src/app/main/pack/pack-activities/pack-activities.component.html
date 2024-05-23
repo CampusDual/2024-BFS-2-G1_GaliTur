@@ -32,13 +32,15 @@
 </div>
 -->
 
+<!--
+
 <o-form #form attr="profiles_form_edit" service="users" entity="role" keys="rol_id" keys-sql-types="integer" header-position="bottom"
-  detect-changes-on-blur="no" fxFill undo-button="no" stay-in-record-after-insert="true" >
+  detect-changes-on-blur="no" fxFill undo-button="no" stay-in-record-after-insert="true"   >
 
-  <div fxLayout="row" fxLayoutGap="30px" class="pd-permissions-container" fxFlex="1 1 auto" >
-    <div fxLayout="column" fxFlex="50" fxFlex.md="100" fxLayoutGap="30px"  >
-    <o-column title="server_permission" appearance="no" fxFlex fxFlex="50" fxFlex.md="100">
-        <o-list #business class="listAct" style="max-height: 100%;" attr="business" title="business" service="businesses" entity="business" columns="bsn_id;bsn_name;bsn_description;bsn_phone;bsn_type;bsn_address;bsn_photos" keys="bsn_id"
+  <div fxLayout="row" style="overflow: hidden;">
+    <div fxLayout="column" fxFlex="50" fxFlex.md="100" fxLayoutGap="30px" style="max-width: 45%; max-height: 100%;" >
+    
+        <o-list #business class="listAct" attr="business" title="business" service="businesses" entity="business" columns="bsn_id;bsn_name;bsn_description;bsn_phone;bsn_type;bsn_address;bsn_photos" keys="bsn_id"
         refresh-button="true" quick-filter="true" insert-button="false"
         row-height="medium" detail-mode="none">
         <o-list-item *ngFor="let row of business.dataArray">
@@ -48,12 +50,12 @@
             </o-list-item-card>
         </o-list-item>
     </o-list>
-      </o-column>
+     
     </div>
-    <div fxLayout="column" fxFlex="50" fxFlex.md="100" fxLayoutGap="30px">
+    <div fxLayout="column" fxFlex="50" fxFlex.md="100" fxLayoutGap="30px" style="max-width: 45%; max-height: 100%;">
 
-    <o-column title="server_permission" appearance="no" fxFlex fxFlex="50" fxFlex.md="100" style="max-height: 100%;" >
-        <o-list #routes attr="routes"  style="max-height: 100%;" title="business" service="businesses" entity="business" columns="bsn_id;bsn_name;bsn_description;bsn_phone;bsn_type;bsn_address;bsn_photos" keys="bsn_id"
+    
+        <o-list #routes attr="routes" title="business" service="businesses" entity="business" columns="bsn_id;bsn_name;bsn_description;bsn_phone;bsn_type;bsn_address;bsn_photos" keys="bsn_id"
         refresh-button="true" quick-filter="true" insert-button="false"
         row-height="medium" detail-mode="none">
         <o-list-item *ngFor="let row of business.dataArray">
@@ -63,8 +65,49 @@
             </o-list-item-card>
         </o-list-item>
     </o-list>
-    </o-column>
 </div>
 
   </div>
 </o-form>
+
+-->
+<o-table fxFill #table service="businesses" entity="business" keys="bsn_id" columns="bsn_id;bsn_name;bsn_type;bsn_address;bsn_phone;bsn_photos;bsn_website;bsn_schedule"
+title="BUSINESSES" insert-button="no" delete-button="no" refresh-button="yes" pagination-controls="yes" detail-mode="none" export-button="no"
+query-rows="10" fixed-header="yes" show-charts-on-demand-option="no" select-all-checkbox-visible="yes" select-all-checkbox="yes">
+<o-table-row-expandable icon-collapse="keyboard_arrow_down" icon-expand="chevron_right">
+  <ng-template let-row>
+    <span *ngIf="row.bsn_type === 'Restaurant'"><mat-icon class="type-icon">restaurant</mat-icon><strong style="font-size: 20px;">{{row.bsn_type | oTranslate }}</strong></span>
+    <span *ngIf="row.bsn_type === 'Lodging'"><mat-icon class="type-icon">house</mat-icon> <strong style="font-size: 20px;">{{row.bsn_type | oTranslate }}</strong></span>
+    <span *ngIf="row.bsn_type === 'AgencyGuide'"><mat-icon class="type-icon">flight</mat-icon><strong style="font-size: 20px;">{{row.bsn_type | oTranslate }}</strong></span>
+    <o-column  class="vertical-margin-10" layout-gap="12px">
+        <div  fxLayout="row wrap" fxLayoutGap="14px"> 
+
+        <div  fxLayout="column wrap" fxLayoutGap="14px" > 
+            <img class="preview-image" [src]="getImageSrc(row.bsn_photos)">
+
+        </div>
+      <!-- Direccion y descripcion -->
+      <o-row  class="o-rows" class="left" attr="container" icon="business" title="{{'BUSINESS' | oTranslate }}"
+      layout-align="start stretch" elevation="1" aria-orientation="vertical" appearance="outline" >
+      <ul class="list-with-spaces">
+         <li ><strong ><i >{{'pck_name' | oTranslate }}: </i></strong> {{row.bsn_name}}</li>
+        <li><strong><i>{{'ADDRESS' | oTranslate }}: </i></strong> {{row.bsn_address}}</li>
+      </ul>
+  </o-row>
+
+  <!-- Horario, telefono, website y el cif -->
+
+  <o-row class="o-rows" class="right" attr="container" title="{{'INFO_EXTRA' | oTranslate }}" icon="info"
+      layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+      <ul class="list-with-spaces">
+          <li><strong><i>{{'SCHEDULE' | oTranslate }}: </i></strong>{{row.bsn_schedule}}</li>
+          <li><strong><i>{{'PHONE' | oTranslate }}: </i></strong> {{row.bsn_phone}}</li>
+          <li><strong><i>{{'WEBSITE' | oTranslate }}: </i></strong> {{row.bsn_website}}</li>
+      </ul>
+  </o-row>
+        </div>
+    </o-column>
+  </ng-template>
+</o-table-row-expandable>
+
+</o-table>
