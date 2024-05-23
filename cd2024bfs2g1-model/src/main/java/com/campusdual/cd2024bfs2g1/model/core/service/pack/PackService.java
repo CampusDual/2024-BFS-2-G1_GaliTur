@@ -10,6 +10,7 @@ import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDao;
 import com.campusdual.cd2024bfs2g1.model.core.service.ClientService;
 import com.campusdual.cd2024bfs2g1.model.core.service.ImageService;
 import com.campusdual.cd2024bfs2g1.model.core.service.business.GuideCitiesService;
+import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.common.security.PermissionsProviderSecured;
@@ -72,6 +73,12 @@ public class PackService implements IPackService {
     public EntityResult allPacksQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.packDao, keysValues, attributes, this.packDao.PCK_ALL_QUERY);
     }
+    @Override
+    public AdvancedEntityResult allPacksPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.paginationQuery(this.packDao, keysValues, attributes, recordNumber, startIndex, orderBy, this.packDao.PCK_ALL_QUERY);
+    }
+
 
     @Override
     @Secured(PermissionsProviderSecured.SECURED)

@@ -1,10 +1,9 @@
 
-import { Component, ViewChild } from "@angular/core";
+import { Component, Injector, ViewChild } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { DomSanitizer } from "@angular/platform-browser";
-import { OGridComponent, OntimizeService } from "ontimize-web-ngx";
+import { Expression, FilterExpressionUtils, OGridComponent, OntimizeService } from "ontimize-web-ngx";
 import { Router } from "@angular/router";
-import moment from "moment";
 
 
 @Component({
@@ -14,10 +13,11 @@ import moment from "moment";
 })
 export class PackHomeComponent {
   public showWaitForLongTask = false;
-
+  service: OntimizeService;
   public static page = 0;
 
     constructor(
+    protected injector: Injector,
     private ontimizeService: OntimizeService,
     protected dialog: MatDialog,
     protected sanitizer: DomSanitizer,
@@ -26,6 +26,7 @@ export class PackHomeComponent {
     this.ontimizeService.configureService(
       this.ontimizeService.getDefaultServiceConfiguration("packs")
     );
+    this.service = this.injector.get(OntimizeService)
   }
   ngOnInit() {}
 
@@ -71,4 +72,54 @@ export class PackHomeComponent {
     const tempFecha = new Date(fechaNumber);
     return tempFecha.toLocaleDateString();
   }
+  
+  filter(values: Array<{ attr: string, value: any }>): Expression {
+    let filters: Array<Expression> = [];
+    values.forEach(fil => {
+        if (fil.value) {
+            if (fil.attr === 'pck_name') {
+                let keyword = fil.value;
+                filters.push(FilterExpressionUtils.buildExpressionLike("pck_name", `%${keyword}%`));
+            }
+            if (fil.attr === 'pck_date_begin') {
+                filters.push(FilterExpressionUtils.buildExpressionMoreEqual("pck_date_begin", fil.value));
+            }
+            if (fil.attr === 'pck_date_end') {
+                filters.push(FilterExpressionUtils.buildExpressionLessEqual("pck_date_end", fil.value));
+            }
+            if (fil.attr === 'pck_days') {
+                let days = Number(fil.value);
+                filters.push(FilterExpressionUtils.buildExpressionEquals(
+                    `DATE_PART('day', pck_date_end::timestamp - pck_date_begin::timestamp)`,
+                    days
+                ));
+            }
+            if (fil.attr === 'pck_price_min') {
+                let value: number = Number(fil.value);
+                filters.push(FilterExpressionUtils.buildExpressionMoreEqual("pck_price", value));
+            }
+            if (fil.attr === 'pck_price_max') {
+                let value: number = Number(fil.value);
+                filters.push(FilterExpressionUtils.buildExpressionLessEqual("pck_price", value));
+            }
+            if (fil.attr === 'pck_participants') {
+                filters.push(FilterExpressionUtils.buildExpressionEquals("pck_participants", fil.value));
+            }
+            if (fil.attr === 'gui_c_name') {
+                filters.push(FilterExpressionUtils.buildExpressionEquals("gui_c_name", fil.value));
+            }
+        }
+    });
+
+    if (filters.length > 0) {
+        return filters.reduce((exp1, exp2) => 
+            FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_AND)
+        );
+    } else {
+        return null;
+    }
+}
+
+
+
 }
