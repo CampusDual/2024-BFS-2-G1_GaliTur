@@ -55,6 +55,11 @@ public class PackService implements IPackService {
         return this.daoHelper.query(this.packDao, keyMap, attrList);
     }
 
+    @Override
+    public EntityResult packDetailQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.packDao, keyMap, attrList, "packsDetails");
+    }
+
     /**
      * Lists set of packs purchased by a client (logged user)
      * @param keysValues filter (client id)

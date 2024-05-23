@@ -1,1 +1,25 @@
-<p>pack-edit works!</p>
+<o-form attr="packsTable" service="packs" entity="packDetail" keys="p.pck_id" header-actions="R;I;U;D" show-header-navigation="no">
+    <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no"></o-text-input>
+    
+    <div fxLayout="row" fxLayoutGap="8px">
+        <div fxlayout="column" fxLayoutGap="8px">
+            <o-image id="pck_photo" attr="i.img_code" empty-image="assets/images/no-image.png" sql-type="OTHER"></o-image>
+        </div>
+        <!-- <o-column fxFlex title="PACK_INFORMATION">
+            <div fxLayout="column" fxLayoutGap="8px">
+                <div fxLayout="row" fxLayoutGap="8px">
+                    <o-text-input fxFlex="20" attr="p.pck_name" required="yes"></o-text-input>
+                    <o-text-input fxFlex="100" attr="DESCRIPCTION" required="yes"></o-text-input>
+                </div>
+                <div fxLayout="row" fxLayoutGap="8px">
+                    <o-date-input fxFlex="100" attr="DATE_BEGING"></o-date-input>
+                    <o-date-input fxFlex="100" attr="DATE_END"></o-date-input>
+                </div>
+                <div fxLayout="row" fxLayoutGap="8px">
+                    <o-text-input fxFlex="100" attr="PRICE" required="yes"></o-text-input>
+                    <o-text-input fxFlex="100" attr="PARTICIPANTS" required="yes"></o-text-input>
+                </div>
+            </div>
+        </o-column> -->
+    </div>
+</o-form>
