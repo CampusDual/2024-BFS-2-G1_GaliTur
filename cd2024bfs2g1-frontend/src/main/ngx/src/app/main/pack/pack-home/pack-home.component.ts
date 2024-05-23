@@ -82,18 +82,20 @@ export class PackHomeComponent {
                 filters.push(FilterExpressionUtils.buildExpressionLike("pck_name", `%${keyword}%`));
             }
             if (fil.attr === 'pck_date_begin') {
-                filters.push(FilterExpressionUtils.buildExpressionMoreEqual("pck_date_begin", fil.value));
+              let dateBegin = fil.value;
+              filters.push(FilterExpressionUtils.buildExpressionMoreEqual("pck_date_begin", new Date(dateBegin).toISOString().slice(0, 10)));
             }
             if (fil.attr === 'pck_date_end') {
-                filters.push(FilterExpressionUtils.buildExpressionLessEqual("pck_date_end", fil.value));
+                let dateEnd = fil.value;
+                filters.push(FilterExpressionUtils.buildExpressionLessEqual("pck_date_end", new Date(dateEnd).toISOString().slice(0, 10)));
             }
             if (fil.attr === 'pck_days') {
-                let days = Number(fil.value);
-                filters.push(FilterExpressionUtils.buildExpressionEquals(
-                    `DATE_PART('day', pck_date_end::timestamp - pck_date_begin::timestamp)`,
-                    days
-                ));
-            }
+              let days = Number(fil.value);
+              filters.push(FilterExpressionUtils.buildExpressionEquals(
+                  `DATE_PART('day', DATE_TRUNC('day', pck_date_end) - DATE_TRUNC('day', pck_date_begin))`,
+                  days
+              ));
+          }
             if (fil.attr === 'pck_price_min') {
                 let value: number = Number(fil.value);
                 filters.push(FilterExpressionUtils.buildExpressionMoreEqual("pck_price", value));
