@@ -16,6 +16,8 @@ import { CustomMessageBusinessService } from './shared/services/customMessageBus
 import { CustomMessageServiceLandmarks } from './shared/services/customMessageLandmarks.service';
 
 
+
+
 // Standard providers...
 // Defining custom providers (if needed)...
 export const customProviders: any = [
@@ -36,7 +38,7 @@ export const customProviders: any = [
 
   ],
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   bootstrap: [
     AppComponent

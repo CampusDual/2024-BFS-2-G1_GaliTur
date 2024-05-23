@@ -73,7 +73,7 @@
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
-  transform: scale(0.9);
+  transform: scale(0.75);
   opacity: 1;
 }
 
