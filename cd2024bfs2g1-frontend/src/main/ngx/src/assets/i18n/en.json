@@ -244,5 +244,6 @@
   "MESSAGES_INSERTED_PACK": "Pack inserted successfully",
   "MESSAGES_INSERTED_REGISTER": "Registration completed successfully",
   "LENGTH_ERROR": "Text can't exceeds 500 characters",
-  "pck_reserved":"Reserved Pack"
+  "pck_reserved":"Reserved Pack",
+  "N0_ESTIMATED_DURATIOn": "No Estimated Duration"
 }
