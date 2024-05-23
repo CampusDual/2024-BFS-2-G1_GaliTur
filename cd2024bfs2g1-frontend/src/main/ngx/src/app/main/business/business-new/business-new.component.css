@@ -108,9 +108,9 @@ span {
     }
 }
 
-
-
-
+::ng-deep .mat-primary .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-full{
+    background-color: #52733B !important;
+}
 
 
 
