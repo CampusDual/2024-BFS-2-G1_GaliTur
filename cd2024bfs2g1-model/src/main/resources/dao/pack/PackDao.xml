@@ -62,7 +62,17 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="newest">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.pack P
+                    ORDER BY P.pck_id DESC
+                    LIMIT 1
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>
-
-        <!---->

@@ -108,4 +108,9 @@ public class PackService implements IPackService {
     public EntityResult packDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.delete(this.packDao, keyMap);
     }
+
+    @Override
+    public EntityResult newestQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.packDao, keyMap, attrList, PackDao.PCK_NEWEST_QUERY);
+    }
 }
