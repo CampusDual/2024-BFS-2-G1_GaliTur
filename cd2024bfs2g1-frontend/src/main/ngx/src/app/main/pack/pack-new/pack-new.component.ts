@@ -1,8 +1,10 @@
 import { Component, Injector, ViewChild } from '@angular/core';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import moment from 'moment';
 import { ODateInputComponent, OTranslateService } from 'ontimize-web-ngx';
+import { PackActivitiesComponent } from '../pack-activities/pack-activities.component';
 
 @Component({
   selector: 'app-pack-new',
@@ -13,7 +15,7 @@ export class PackNewComponent {
 
   nameValidators: ValidatorFn[] = [];
   descValidators: ValidatorFn[] = [];
-  constructor(public injector: Injector, private translate: OTranslateService, private router:Router) {
+  constructor(public injector: Injector, private translate: OTranslateService, private router:Router, protected dialog: MatDialog) {
     this.nameValidators.push(this.blanksValidator)
     this.descValidators.push(this.blanksValidator)
     this.descValidators.push(this.descLengthValidator)
@@ -55,7 +57,14 @@ export class PackNewComponent {
   }
 
   addActivity() {
-    throw new Error('Method not implemented.');
+    
+     
+        this.dialog.open(PackActivitiesComponent, {
+          height: '600px',
+          width: '1200px',
+        });
+  
+    
     }
 
 }

@@ -6,6 +6,7 @@ import { OFormModule, OGridComponent, OTranslateModule, OntimizeWebModule } from
 import { OGalleryModule } from 'ontimize-web-ngx-gallery';
 import { PackDetailComponent } from './pack-detail/pack-detail.component';
 import { PackNewComponent } from './pack-new/pack-new.component';
+import { PackActivitiesComponent } from './pack-activities/pack-activities.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { PackNewComponent } from './pack-new/pack-new.component';
     PackHomeComponent,
     PackDetailComponent,
     PackNewComponent,
+    PackActivitiesComponent,
   ],
   imports: [
     CommonModule,
