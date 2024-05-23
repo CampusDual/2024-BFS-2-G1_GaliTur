@@ -4,3 +4,36 @@
   align-items: center;
   width: 100%;
 }
+
+/*
+:host ::ng-deep .o-app-header {
+  nav {
+    div {
+      background-color: #909f43 !important;
+
+    }
+  }
+}
+
+:host ::ng-deep .o-app-sidenav .navMenu {
+  background-color: #c9d8a8 !important;
+  
+  &:hover {
+    .mat-mdc-button .mat-mdc-button-touch-target, .mat-mdc-unelevated-button .mat-mdc-button-touch-target, .mat-mdc-raised-button .mat-mdc-button-touch-target, .mat-mdc-outlined-button .mat-mdc-button-touch-target {
+      
+
+    } 
+
+  }
+  
+}
+
+:host ::ng-deep .o-app-sidenav .o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav .mat-drawer-inner-container .sidenav-toggle-container {
+  background-color: #c9d8a8 !important;
+
+}
+
+:host ::ng-deep .application-layout-content-wrapper {
+  background-color: #dee2d5 !important;
+}
+*/
