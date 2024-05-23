@@ -21,4 +21,14 @@ export class PackActivitiesComponent {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image-transparent.png';
   }
 
+  truncateName(name: string): string {
+    if (name.length > 40) {
+      return name.substr(0, 40) + "...";
+    } else {
+      return name;
+    }
+  }
+
+
+
 }

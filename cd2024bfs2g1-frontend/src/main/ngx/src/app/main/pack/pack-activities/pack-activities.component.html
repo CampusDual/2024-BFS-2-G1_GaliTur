@@ -1,79 +1,11 @@
-<!--
-<div>
-    <div fxLayout="row">
-    <div fxLayout="column" style="max-width: 50%;">
-        <o-list #business class="listAct" attr="business" title="business" service="businesses" entity="business" columns="bsn_id;bsn_name;bsn_description;bsn_phone;bsn_type;bsn_address;bsn_photos" keys="bsn_id"
-        refresh-button="true" quick-filter="true" insert-button="false"
-        row-height="medium" detail-mode="none">
-        <o-list-item *ngFor="let row of business.dataArray">
-            <o-list-item-card #item title="{{ row.bsn_name }}" subtitle="{{ row.bsn_type }}\n{{ row.bsn_description }}{{ row.bsn_phone }}{{ row.bsn_address }}" show-image="true" image="{{ row.bsn_photos }}"
-                action-1-text="ACTION 1" action-2-text="ACTION 2"
-                >
-            </o-list-item-card>
-        </o-list-item>
-    </o-list>
-    </div>
-
-    <div fx fxLayout="column" style="max-width: 50%;">
-        <o-list #routes attr="routes" title="business" service="businesses" entity="business" columns="bsn_id;bsn_name;bsn_description;bsn_phone;bsn_type;bsn_address;bsn_photos" keys="bsn_id"
-        refresh-button="true" quick-filter="true" insert-button="false"
-        row-height="medium" detail-mode="none">
-        <o-list-item *ngFor="let row of business.dataArray">
-            <o-list-item-card #item title="{{ row.bsn_name }}" subtitle="{{ row.bsn_type }}\n{{ row.bsn_description }}{{ row.bsn_phone }}{{ row.bsn_address }}" show-image="true" image="{{ row.bsn_photos }}"
-                action-1-text="ACTION 1" action-2-text="ACTION 2"
-                >
-            </o-list-item-card>
-        </o-list-item>
-    </o-list>
-    </div>
-</div>
-
-
-</div>
--->
-
-<!--
-
-<o-form #form attr="profiles_form_edit" service="users" entity="role" keys="rol_id" keys-sql-types="integer" header-position="bottom"
-  detect-changes-on-blur="no" fxFill undo-button="no" stay-in-record-after-insert="true"   >
-
-  <div fxLayout="row" style="overflow: hidden;">
-    <div fxLayout="column" fxFlex="50" fxFlex.md="100" fxLayoutGap="30px" style="max-width: 45%; max-height: 100%;" >
+<div style="padding: 20px;" >
+    <div class="header" id="myHeader">
+        <h2 >My Header</h2>
+      </div>
     
-        <o-list #business class="listAct" attr="business" title="business" service="businesses" entity="business" columns="bsn_id;bsn_name;bsn_description;bsn_phone;bsn_type;bsn_address;bsn_photos" keys="bsn_id"
-        refresh-button="true" quick-filter="true" insert-button="false"
-        row-height="medium" detail-mode="none">
-        <o-list-item *ngFor="let row of business.dataArray">
-            <o-list-item-card #item title="{{ row.bsn_name }}" subtitle="{{ row.bsn_type }}\n{{ row.bsn_description }}{{ row.bsn_phone }}{{ row.bsn_address }}" show-image="true" image="{{ row.bsn_photos }}"
-                action-1-text="ACTION 1" action-2-text="ACTION 2"
-                >
-            </o-list-item-card>
-        </o-list-item>
-    </o-list>
-     
-    </div>
-    <div fxLayout="column" fxFlex="50" fxFlex.md="100" fxLayoutGap="30px" style="max-width: 45%; max-height: 100%;">
-
-    
-        <o-list #routes attr="routes" title="business" service="businesses" entity="business" columns="bsn_id;bsn_name;bsn_description;bsn_phone;bsn_type;bsn_address;bsn_photos" keys="bsn_id"
-        refresh-button="true" quick-filter="true" insert-button="false"
-        row-height="medium" detail-mode="none">
-        <o-list-item *ngFor="let row of business.dataArray">
-            <o-list-item-card #item title="{{ row.bsn_name }}" subtitle="{{ row.bsn_type }}\n{{ row.bsn_description }}{{ row.bsn_phone }}{{ row.bsn_address }}" show-image="true" image="{{ row.bsn_photos }}"
-                action-1-text="ACTION 1" action-2-text="ACTION 2"
-                >
-            </o-list-item-card>
-        </o-list-item>
-    </o-list>
-</div>
-
-  </div>
-</o-form>
-
--->
 <o-table fxFill #table service="businesses" entity="business" keys="bsn_id" columns="bsn_id;bsn_name;bsn_type;bsn_address;bsn_phone;bsn_photos;bsn_website;bsn_schedule"
-title="BUSINESSES" insert-button="no" delete-button="no" refresh-button="yes" pagination-controls="yes" detail-mode="none" export-button="no"
-query-rows="10" fixed-header="yes" show-charts-on-demand-option="no" select-all-checkbox-visible="yes" select-all-checkbox="yes">
+title="BUSINESSES" visible-columns="bsn_name;bsn_address;bsn_type" insert-button="no" delete-button="no" refresh-button="yes" pagination-controls="yes" detail-mode="none" export-button="no"
+query-rows="10" fixed-header="yes" show-charts-on-demand-option="no" select-all-checkbox-visible="yes" select-all-checkbox="yes" auto-adjust="no" fixed-header="yes">
 <o-table-row-expandable icon-collapse="keyboard_arrow_down" icon-expand="chevron_right">
   <ng-template let-row>
     <span *ngIf="row.bsn_type === 'Restaurant'"><mat-icon class="type-icon">restaurant</mat-icon><strong style="font-size: 20px;">{{row.bsn_type | oTranslate }}</strong></span>
@@ -111,3 +43,4 @@ query-rows="10" fixed-header="yes" show-charts-on-demand-option="no" select-all-
 </o-table-row-expandable>
 
 </o-table>
+</div>
