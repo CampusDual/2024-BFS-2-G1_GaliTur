@@ -251,5 +251,6 @@
   "LENGTH_ERROR": "No puede superar 500 caracteres",
   "pck_reserved":"Pack Reservado",
   "IM_PROFESSIONAL": "Soy un profesional",
-  "IM_NOT_PROFESSIONAL": "No soy un profesional"
+  "IM_NOT_PROFESSIONAL": "No soy un profesional",
+  "N0_ESTIMATED_DURATIOn": "Sin Duracion Estimada"
 }
