@@ -242,5 +242,8 @@
   "BOOKING-DIALOG": "Confirm Booking",
   "BOOKING-DIALOG-B": "Do you wish to book this pack?",
   "LENGTH_ERROR": "Text can't exceeds 500 characters",
-  "pck_reserved":"Reserved Pack"
+  "pck_reserved":"Reserved Pack",
+  "MANAGEPACKS": "Manage Packs",
+  "MANAGETITLE": "List of packs to edit"
+
 }

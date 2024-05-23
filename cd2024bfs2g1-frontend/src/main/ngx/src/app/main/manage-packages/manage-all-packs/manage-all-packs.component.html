@@ -1,1 +1,9 @@
-<p>manage-all-packs works!</p>
+
+<div class="contenedor">
+    <h2>**Al cargar la pagina se salta el query rows</h2>
+    <h2>{{'MANAGETITLE' | oTranslate }}</h2>
+    <o-table attr="packsTable" service="packs" entity="pack" keys="pck_id" fixed-header="yes" detail-mode="yes"
+        columns="pck_id;pck_name;pck_description"
+        visible-columns="pck_id;pck_name;pck_description" query-rows="10">
+    </o-table>
+</div>

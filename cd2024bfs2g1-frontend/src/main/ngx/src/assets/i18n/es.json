@@ -247,5 +247,7 @@
   "BOOKING-DIALOG": "Confirme Reserva",
   "BOOKING-DIALOG-B": "¿Quiere confirmar la reserva?",
   "LENGTH_ERROR": "No puede superar 500 caracteres",
-  "pck_reserved":"Pack Reservado"
+  "pck_reserved":"Pack Reservado",
+  "MANAGEPACKS": "Gestionar Packs",
+  "MANAGETITLE": "Listado de packs para editar"
 }
