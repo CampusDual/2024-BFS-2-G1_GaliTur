@@ -1,0 +1,50 @@
+#summary{
+    margin-left: 2.2%;
+}
+ 
+details {
+    width: 100%;
+    overflow: hidden; /* Prevent overflow */
+    padding: 10px 0; /* Add padding if necessary */
+}
+ 
+ 
+details summary {
+    cursor: pointer;
+}
+/*
+details[open] summary ~ * {
+    animation: slideDown 0.5s ease-in-out;
+}
+ 
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+*/
+ 
+o-row {
+    overflow: hidden; /* Prevent overflow */
+    width: 100%; /* Ensure it takes full width */
+}
+ 
+o-column {
+    overflow: hidden; /* Prevent overflow */
+}
+ 
+o-table{
+    margin-left: 3%;
+    margin-top: 1%;
+}
+ 
+#addBusiness{
+    margin-left: 3%;
+    margin-top: 1%;
+    width: 20%;
+}

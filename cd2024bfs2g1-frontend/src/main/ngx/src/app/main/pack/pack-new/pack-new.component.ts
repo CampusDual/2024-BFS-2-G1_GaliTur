@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import moment from 'moment';
 import { ODateInputComponent, OTranslateService } from 'ontimize-web-ngx';
-import { PackActivitiesComponent } from '../pack-activities/pack-activities.component';
+import { PackActivitiesComponent } from './add-activities/pack-activities/pack-activities.component';
 
 @Component({
   selector: 'app-pack-new',
@@ -21,8 +21,7 @@ export class PackNewComponent {
     this.descValidators.push(this.descLengthValidator)
   }
   insertPacks($event:Event){
-    this.router.navigate(['main/packs/'])
-
+    this.router.navigate(['main','packs', 'new', $event['pck_id']])
   }
 
   blanksValidator(control: AbstractControl): ValidationErrors | null{
@@ -56,16 +55,7 @@ export class PackNewComponent {
     return moment()
   }
 
-  addActivity() {
-    
-     
-        this.dialog.open(PackActivitiesComponent, {
-          height: '600px',
-          width: '1200px',
-        });
-  
-    
-    }
+
 
     
 

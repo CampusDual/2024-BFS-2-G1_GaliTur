@@ -26,7 +26,9 @@ public class BusinessPackService implements IBusinessPackService {
     }
     @Override
     public EntityResult businessPackQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
-        return this.daoHelper.query(this.BusinessPackDao, keyMap, attrList);
+
+
+        return this.daoHelper.query(this.BusinessPackDao, keyMap, attrList,"multi");
     }
 
     @Override

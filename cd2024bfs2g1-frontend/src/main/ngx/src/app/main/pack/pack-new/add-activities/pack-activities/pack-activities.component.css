@@ -151,9 +151,8 @@ o-row{
 /* Style the header */
 .header {
     padding: 10px 16px;
-    background: #555;
+    background: linear-gradient(90deg, #495635, #909f43) !important;
     color: #f1f1f1;
-    overflow: scroll;
   }
   
   /* Page content */

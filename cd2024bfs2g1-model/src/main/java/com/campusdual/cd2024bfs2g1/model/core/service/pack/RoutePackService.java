@@ -26,7 +26,7 @@ public class RoutePackService implements IRoutePackService {
     }
     @Override
     public EntityResult routePackQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
-        return this.daoHelper.query(this.RoutePackDao, keyMap, attrList);
+        return this.daoHelper.query(this.RoutePackDao, keyMap, attrList,"multi");
     }
 
     @Override
