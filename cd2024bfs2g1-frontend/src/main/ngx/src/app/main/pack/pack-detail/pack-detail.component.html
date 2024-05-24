@@ -8,7 +8,6 @@
               show-header-actions-text="false"
               columns="pck_id;pck_name;pck_description;pd_date_begin;pd_date_end;pck_price;pck_participants;gui_c_id;pcs_id"
               show-header-navigation="no" class="fill-form" show-header="no">
-          <h1>ES INSTANCIA</h1>
         <!-- Almaceno el pack que he clicado -->
         <o-grid #packForm attr="packDetail" service="packDates" entity="packDateComplete" keys="pck_id"
                 columns="pck_id;pck_name;pck_description;pd_date_begin;pd_date_end;pck_price;pck_participants;gui_c_id;pcs_id"
@@ -113,7 +112,6 @@
               show-header-actions-text="false"
               columns="pck_id;pck_name;pck_description;pck_price;pck_participants;gui_c_id"
               show-header-navigation="no" class="fill-form" show-header="no">
-        <h1>NO ES INSTANCIA</h1>
         <!-- Almaceno el pack que he clicado -->
         <o-grid #packForm attr="packDetail" service="packs" entity="pack" keys="pck_id"
                 columns="pck_id;pck_name;pck_description;pck_price;pck_participants;gui_c_id"

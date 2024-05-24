@@ -19,7 +19,6 @@ import { PackHomeComponent } from "../pack-home/pack-home.component";
   styleUrls: ["./pack-detail.component.css"],
 })
 export class PackDetailComponent {
-  @ViewChild("accountCustomerTable") accountTable: OTableComponent;
   @ViewChild("form") formPack: OFormComponent;
   @ViewChild("form") formPackAndDetails: OFormComponent;
 
@@ -130,7 +129,9 @@ export class PackDetailComponent {
   private isInstanceOfPack(): void {
     this.packDateService.query({pck_id: +this.route.snapshot.params['pck_id']}, ['pck_id'], 'packDate')
       .subscribe((result) => {
-        this.isPackInstance = true
+        if (result.data[0] !== undefined){
+          this.isPackInstance = true
+        }
       });
   }
 }
