@@ -1,76 +1,75 @@
-
-
-
-/* Carta de cada ruta */
+/* Estilos principales */
 .routeCard {
-  width: 400px;
-  min-width: 300px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  transform: scale(0.925); 
+  border: 2px solid #000000d0;
+  border-radius: 20px;
+  padding: 0px;
+  margin: 10px;
+  cursor: pointer;
+  width: 500px;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  background-color: #E4EBF2;
 }
 
-.routeCard strong {
+.routeName strong {
   color: white;
 }
 
-.routeCard:hover {
-  box-shadow: 0 0 15px rgba(40, 63, 28, 0.55); 
-  transform: scale(1.04); 
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
 
-/*Contenedor del nombre de la ruta*/
 .routeName {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 4px;
+  margin-top: 8px;
   border-radius: 10px;
   background-color: #52733B;
   height: 45px;
   color: #ffffff;
+  
 }
 
-/*Nombre de la ruta*/
-.name {
-  width: 270px;
-  text-align: left;
-  font-size: 22px;
-  border-radius: 20px;
-  font-family: Arial;
+
+
+.containerDatos {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-right: 20px;
+  padding: 4px;
+  border-radius: 15px;
+  padding: 2px;
+  width: 100%;
 }
 
-
-/*Contenedor datos*/
-.containerDatos{
-  background-color: #E4EBF2;
-  border-radius: 20px;
-  align-items: center;
-  align-content: center;
-  width: 300px;
+.list{
+  width: 100%;
+  padding: 0;
+  margin: 5px, 0;
+  
+  
 }
 
-/*Imagen ruta*/
-.preview-image{
-  align-items: center;
+.preview-image {
+ 
+  object-fit: cover;
   border-radius: 10px;
 }
 
-/*Tiempo estimado*/
-.duration{
-  align-items: center;
+.mat-icon-color {
+  color: #70b317;
 }
 
-/*tooltip de dificultad*/
+
+.container .img {
+  height: 50px;
+  max-width: 100%;
+  display: block;
+
+
+}
 .tooltip {
   position: relative;
   display: inline-block;
@@ -83,10 +82,11 @@
   background-color: #edf5c0;
   border: 2px solid;
   border-color: #030000;
+  font-size: 12px;
   color: #030000;
   text-align: center;
-  font-size: 15px;
   border-radius: 6px;
+  padding: 5px;
   position: absolute;
   z-index: 1;
   bottom: 125%;
@@ -94,9 +94,6 @@
   margin-left: -60px;
   opacity: 0;
   transition: opacity 0.3s;
-  white-space: nowrap;
-  padding: 5px;
-
 }
 
 .tooltip:hover{
@@ -111,10 +108,92 @@
 }
 
 
-
-/*Hojas de difficultad*/
-.difficulty {
+.name {
+  width: 270px;
+  text-align: left;
+  font-size: 22px;
+  border-radius: 20px;
+  font-family: Arial;
   align-items: center;
+  text-align: center;
+  margin-right: 20px;
+  
+}
+
+
+
+.duration, .difficulty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+
+
+.card {
+  border-radius: 20px;
+  padding: 8px;
+  margin: 0px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+  width: 500px;
+  height: 200px;
+}
+
+
+.d-1 {
+  background-color: #E4EBF2;
+  border-radius: 20px;
+  padding: 10px 10px;
+  height: 70px;
+  width: 300px;
+  align-items: center;
+
+}
+
+.d-2 {
+  background-color: #E4EBF2;
+  border-radius: 20px;
+  height: 70px;
+  padding: 10px 10px;
+  align-items: center;
+  width: 300px;
+
+}
+
+.d-3 {
+  background-color: #E4EBF2;
+  border-radius: 20px;
+  height: 70px;
+  padding: 10px 10px;
+  align-items: center;
+  width: 300px;
+
+}
+
+.d-4 {
+  background-color: #E4EBF2;
+  border-radius: 20px;
+  height: 70px;
+  padding: 10px 10px;
+  align-items: center;
+  width: 300px;
+
+
+}
+
+.difficulty {
+  text-align: left;
+  margin-top: 12px;
+  
+
+}
+
+.duration {
+  text-align: left;
+  
 }
 
 .icon-difficulty-1 {
@@ -135,8 +214,17 @@
 
 
 
+mat-icon {
+  margin-right: 6px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
 
 
 
 
+.routeCard strong {
+  font-weight: bold;
 
+  color: hsla(0, 0%, 3%, 0.725);
+}

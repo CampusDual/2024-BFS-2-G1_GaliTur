@@ -29,5 +29,26 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="multi">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        R.route_id,
+                        R.name,
+                        R.description,
+                        R.estimated_duration,
+                        R.difficulty,
+                        I.img_code
+                    FROM
+                        ${mainschema}.route R
+                        INNER JOIN ${mainschema}. image_route IR
+                        ON R.route_id=IR.route_id
+                        INNER JOIN ${mainschema}. image I
+                        ON IR.image_id=I.image_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>
