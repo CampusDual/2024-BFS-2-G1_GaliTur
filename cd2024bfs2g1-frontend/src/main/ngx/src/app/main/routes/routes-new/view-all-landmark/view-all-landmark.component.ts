@@ -17,9 +17,11 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class ViewAllLandmarkComponent implements AfterViewInit {
   datosTabla: Landmark[] = [];
   idRutaActual: number;
+  nameActualRoute: String;
 
   constructor(
     private ontimizelandmarkService: OntimizeService,
+    private ontimizerouteService: OntimizeService,
     private activeRoute: ActivatedRoute,
     private router: Router
   ) {
@@ -29,13 +31,17 @@ export class ViewAllLandmarkComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.idRutaActual = +this.getRouteId();
     this.consultarDatosPorId(this.idRutaActual);
+    this.getRouteName();
     console.log("El id de mi ruta es :", +this.idRutaActual);
   }
 
   protected configureService() {
-    const conf =
+    const confLandmark =
       this.ontimizelandmarkService.getDefaultServiceConfiguration("landmarks");
-    this.ontimizelandmarkService.configureService(conf);
+      const confRoute =
+      this.ontimizerouteService.getDefaultServiceConfiguration("routes");
+    this.ontimizelandmarkService.configureService(confLandmark);
+    this.ontimizerouteService.configureService(confRoute);
   }
 
   onClickBackToRoutes() {
@@ -56,6 +62,16 @@ export class ViewAllLandmarkComponent implements AfterViewInit {
       .subscribe((response) => {
         this.datosTabla.push(...response.data);
         console.log(this.datosTabla);
+      });
+  }
+
+  getRouteName(): void{
+    this.ontimizerouteService
+      .query(
+        { route_id: this.idRutaActual },["name"],"route")
+      .subscribe((response) => {
+        console.log(response.data[0].name);
+        this.nameActualRoute=response.data[0].name;
       });
   }
 
