@@ -1,10 +1,7 @@
-<o-form attr="packsTable" service="packs" entity="packDetail" keys="pck_id" header-actions="R;I;U;D" show-header-navigation="no">
+<o-form attr="packsTable" service="packs" entity="pack" keys="pck_id" header-actions="R;I;U;D" show-header-navigation="no">
     <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no"></o-text-input>
     
     <div fxLayout="row">
-        <div fxlayout="column" fxLayoutGap="8px">
-            <o-image id="img_code" attr="img_code" empty-image="assets/images/no-image.png" sql-type="OTHER"></o-image>
-        </div>
         <o-column fxFlex title="PACK_INFORMATION">
             <div fxLayout="column" fxLayoutGap="8px">
                 <div fxLayout="row" fxLayoutGap="8px">
@@ -17,5 +14,15 @@
                 </div>
             </div>
         </o-column> 
+    </div>
+</o-form>
+
+<o-form attr="packsImageTable" service="packs" entity="packDetail" keys="pck_id" header-actions="R;I;U;D" show-header-navigation="no">
+    <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no"></o-text-input>
+    
+    <div fxLayout="row">
+        <div fxlayout="column" fxLayoutGap="8px">
+            <o-image *ngIf="imgId!=null || imgId!='' " id="img_code" attr="img_code" empty-image="assets/images/no-image.png" sql-type="OTHER"></o-image>
+        </div>
     </div>
 </o-form>

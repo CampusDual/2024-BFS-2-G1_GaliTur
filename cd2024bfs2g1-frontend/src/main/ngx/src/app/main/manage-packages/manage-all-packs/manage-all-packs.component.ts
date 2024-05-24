@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { OntimizeService } from 'ontimize-web-ngx';
 
@@ -10,3 +10,4 @@ import { OntimizeService } from 'ontimize-web-ngx';
 export class ManageAllPacksComponent {
 
 }
+
