@@ -1,5 +1,5 @@
 <o-grid #routesGrid attr="routesHome" title="ROUTES" service="routes" entity="route" keys="route_id"
-    columns="route_id;name;description;estimated_duration;difficulty"
+    columns="route_id;name;description;estimated_duration;difficulty;img_code"
     query-rows="16" page-size-options="8;16;32" orderable="true"
     sortable-columns="estimated_duration;difficulty" insert-button="true"
     pagination-controls="true" gutter-size="8px" fixed-header="yes" grid-item-height="300px" detail-mode="none"
@@ -19,11 +19,11 @@
                 <div Class="containerDatos">
 
                     <!--Contenedor Imagen Ruta-->
-                    <div>   
-                        <img class="preview-image" [src]="getImageSrc(data.img_code)">
-                    </div>
-                    <ul style="list-style-type: none;" class="list">
-                        <li>
+                    <!-- <div>    -->
+                        <img class="preview-image" [src]="getImageSrc(data.img_code)" width="350px" height="125px">
+                    <!-- </div> -->
+                    <!-- <ul style="list-style-type: none;" class="list">
+                        <li> -->
                             <!--Duracion estimada-->
                             <span class="duration" *ngIf="data.estimated_duration; else no_estimated_duration" >
                             <p><mat-icon>clock</mat-icon>{{ convertTime(data.estimated_duration) }} </p></span>
@@ -31,24 +31,25 @@
                                 <span><p>{{ "N0_ESTIMATED_DURATION" | oTranslate}}</p></span>
                             </ng-template>
 
-                        </li>
-                        <li>
+                        <!-- </li>
+                        <li> -->
                             <!--Dificultad-->
-                            <div class="difficulty">
-                                <div class="tooltip">
-                                    <mat-icon>help</mat-icon>
-                                    <span class="tooltiptext">{{getDifficultad(data.difficulty)  | oTranslate }}</span>
-                                </div>
+                            <!-- <div class="difficulty">-->
+                                
                                 <span *ngIf="data.difficulty; else no_difficulty">
+                                    <div class="tooltip"> 
+                                        <mat-icon>help</mat-icon>
+                                        <span class="tooltiptext">{{getDifficultad(data.difficulty)  | oTranslate }}</span>
+                                     </div> 
                                     <mat-icon  [ngClass]="getIconColorClass(data.difficulty)" *ngFor="let _ of [].constructor(data.difficulty)">eco</mat-icon>
                                     <mat-icon  *ngFor="let _ of [].constructor(4 - data.difficulty)">eco</mat-icon>
                                 </span>
                                 <ng-template #no_difficulty>
                                     <span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span>
                                 </ng-template>
-                            </div>
-                        </li>
-                    </ul>
+                            <!-- </div> -->
+                        <!-- </li>
+                    </ul> -->
                 </div>
             </div>
     </o-grid-item>

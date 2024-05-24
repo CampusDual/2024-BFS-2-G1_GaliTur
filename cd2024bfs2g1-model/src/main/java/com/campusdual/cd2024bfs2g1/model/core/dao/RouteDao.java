@@ -18,5 +18,5 @@ public class RouteDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_DESCRIPTION = "description";
     public static final String ATTR_ESTIMATED_DURATION = "estimated_duration";
     public static final String ATTR_DIFFICULTY = "difficulty";
-
+    public static final String QUERY_ROUTE_IMAGE = "multi";
 }
