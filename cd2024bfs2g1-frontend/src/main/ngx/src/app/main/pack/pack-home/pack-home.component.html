@@ -1,7 +1,7 @@
 <o-grid #packGrid attr="packGrid" title="PACKS" service="packs" entity="allPacks" keys="P.pck_id"
-    columns="P.pck_id;pck_name;pck_description;pck_date_begin;pck_date_end;pck_price;pck_participants;gui_c_name;pcs_id;img_code"
+    columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;gui_c_name;img_code"
     query-rows="8" page-size-options="8;16;24" orderable="true"
-    sortable-columns="pck_name;pck_date_begin;pck_date_end;pcs_id:asc;pcs_id:desc;gui_c_name;gui_c_name:desc" insert-button="true" refresh-button="true"
+    sortable-columns="pck_name;pcs_id:desc;gui_c_name;gui_c_name:desc" insert-button="true" refresh-button="true"
     pagination-controls="true" gutter-size="4px" fixed-header="yes" grid-item-height="320px" detail-mode="none"
     insert-button-floatable="no">
     <o-grid-item *ngFor="let data of packGrid.dataArray">
@@ -17,12 +17,8 @@
                 </div>
                 <div class="cardInfo">
                     <ul style="list-style-type: none;" class="list">
-                        <li><mat-icon class="icon">event</mat-icon>{{truncateInfo(getDate(data.pck_date_begin))}}</li>
-                        <li><mat-icon class="icon">event_busy</mat-icon>{{truncateInfo(getDate(data.pck_date_end))}}</li>
-                        <li *ngIf="diferenciaDias(data.pck_date_begin,data.pck_date_end) <= 1"><mat-icon class="icon">timer</mat-icon>{{diferenciaDias(data.pck_date_begin,data.pck_date_end)}} {{'DAY' | oTranslate}}</li>
-                        <li *ngIf="diferenciaDias(data.pck_date_begin,data.pck_date_end) > 1"><mat-icon class="icon">timer</mat-icon>{{diferenciaDias(data.pck_date_begin,data.pck_date_end)}} {{'DAYS' | oTranslate}}</li>
                         <li *ngIf="!data.pck_participants"><mat-icon class="icon">groups</mat-icon>{{'-'}}</li>
-                        <li *ngIf="data.pck_participants"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}}</li>
+                        <li *ngIf="data.pck_participants"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}} personas</li>
                         <li><mat-icon class="icon">pin_drop</mat-icon>{{truncateInfo(data.gui_c_name)}}</li>
                         <li><mat-icon class="icon">payments</mat-icon>{{data.pck_price}} €</li>
                     </ul>
