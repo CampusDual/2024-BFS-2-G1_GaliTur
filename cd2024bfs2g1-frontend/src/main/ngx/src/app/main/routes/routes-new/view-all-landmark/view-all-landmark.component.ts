@@ -39,7 +39,7 @@ export class ViewAllLandmarkComponent implements AfterViewInit {
   }
 
   onClickBackToRoutes() {
-    this.router.navigate(["main", "routes"]);
+    this.router.navigate(["main", "routes", ":route_id"]);
   }
 
   getRouteId(): number {

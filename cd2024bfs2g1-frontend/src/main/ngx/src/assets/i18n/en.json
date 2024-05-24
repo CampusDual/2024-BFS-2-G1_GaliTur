@@ -244,5 +244,7 @@
   "MESSAGES_INSERTED_PACK": "Pack inserted successfully",
   "MESSAGES_INSERTED_REGISTER": "Registration completed successfully",
   "LENGTH_ERROR": "Text can't exceeds 500 characters",
-  "pck_reserved":"Reserved Pack"
+  "pck_reserved":"Reserved Pack",
+  "GRAPHICS": "Graphics",
+  "Contracted_packs_according_to_the_province": "Contracted packs according to the province"
 }
