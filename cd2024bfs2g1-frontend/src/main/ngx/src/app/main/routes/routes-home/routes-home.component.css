@@ -1,10 +1,10 @@
 /* Estilos principales */
 .routeCard {
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 0px;
   cursor: pointer;
-  width: 400px;
-  height: 300px;
+  width: 370px;
+  height: 310px;
   background-size: cover;
   background-position: center;
   background-color: #ffffff;
