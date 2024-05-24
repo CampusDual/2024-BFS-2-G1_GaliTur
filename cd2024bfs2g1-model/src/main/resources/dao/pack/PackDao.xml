@@ -62,6 +62,22 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="businessPacks">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.pack P
+                        INNER JOIN ${mainschema}.bsn_pack BP
+                        ON P.pck_id=BP.pck_id
+                        INNER JOIN ${mainschema}.bsn_business B
+                        ON B.bsn_id=BP.bsn_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>
 

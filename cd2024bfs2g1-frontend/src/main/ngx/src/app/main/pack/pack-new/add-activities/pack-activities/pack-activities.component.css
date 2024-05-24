@@ -124,6 +124,11 @@
     padding-right: 30px;
 }
 
+#tabla{
+    flex-direction: column;
+    height: 80vw;
+}
+
 .type-icon {
     margin-bottom:5px;
     margin-top:5px;

@@ -15,8 +15,9 @@
           <o-table-context-menu insert="no" edit="no" view-detail="no" refresh="no" delete="no"></o-table-context-menu>
         </o-table>
         -->
-        <o-table fxFill #table service="businessPacks" entity="businessPack" keys="P.pck_id" columns="P.pck_id;B.bsn_pack_id;BS.bsn_name;bsn_type;bsn_address;pck_name;pck_participants;pck_price"
-        title="BUSINESSES" visible-columns="P.pck_id;B.bsn_pack_id;BS.bsn_name;bsn_type;bsn_address;pck_name;pck_participants;pck_price" insert-button="no" delete-button="no" refresh-button="yes" pagination-controls="yes"  export-button="no"
+        <o-table  #table service="packs" entity="packBusiness" keys="bsn_pack_id" columns="bsn_name;bsn_type;bsn_address"
+        title="BUSINESSES" visible-columns="bsn_name;bsn_type;bsn_address" insert-button="no" delete-button="no" refresh-button="yes" pagination-controls="yes" detail-mode="none" export-button="no"
+        query-rows="10" show-charts-on-demand-option="no" auto-adjust="no" fixed-header="yes"
         >
         
         </o-table>

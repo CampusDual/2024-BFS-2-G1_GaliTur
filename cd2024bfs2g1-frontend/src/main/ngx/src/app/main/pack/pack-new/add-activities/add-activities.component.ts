@@ -19,6 +19,9 @@ export class AddActivitiesComponent {
     this.dialog.open(PackActivitiesComponent, {
       height: '600px',
       width: '1200px',
+      maxHeight: '600px',
+      minHeight: '600px',
+
     });
 
 
