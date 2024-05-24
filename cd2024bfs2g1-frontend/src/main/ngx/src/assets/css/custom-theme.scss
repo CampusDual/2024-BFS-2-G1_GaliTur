@@ -11,7 +11,7 @@ $mat-custom-primary: (
     200 : #715e4e, //Barra Scroll
     300 : #88b072,
     400 : #6d9457,
-    500 : #52733B, //Color Base
+    500 : #715e4e, //Color Base
     600 : #486733,
     700 : #3d5a2b,
     800 : #3a3027, //Simbolo añadir & Texto "OK" en formulario
@@ -50,7 +50,7 @@ $mat-custom-primary-dark: (
     700 : #3d5a2b,
     800 : #3a3027, //Simbolo añadir & Texto "OK" en formulario
     900 : #283f1c,
-    A100 : red,
+    A100 : #ffffff,
     A200 : #b8a897,
     A400 : #8c7b6a,
     A700 : #6e5c4d,
@@ -85,105 +85,8 @@ $theme: ontimize-style.o-mat-light-theme($primary, $accent);
 $dark-theme: ontimize-style.o-mat-dark-theme($primary-dark, $accent-dark);
 
 
-/* Barra arriba */
-.o-app-header {
-    color: #d4cdc7;
-    nav {
-        background: linear-gradient(95deg, #909f43, #495635) !important;
-        button {
-            color: white !important;
-        }
-    }
-}
-  
-/* Barra lateral */
-.o-app-sidenav .o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav .mat-drawer-inner-container {
-    background: linear-gradient(90deg, #495635, #909f43) !important;
+/* Fuente en toda la web */
+* {
+    font-family: Poppins, "Helvetica Neue", sans-serif;
 }
 
-/* Letras Barra lateral */
-.o-app-sidenav .o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav .mat-drawer-inner-container nav a {
-    color: #d4cdc7;
-}
-
-/* Hamburguesa Barra lateral */
-.o-app-sidenav .o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav .mat-drawer-inner-container .sidenav-toggle {
-    color: #d4cdc7;
-}
-  
-/* Fondo de la pagina */
-.application-layout-content-wrapper {
-    background-color: #e2dbd5 !important; 
-}
-  
-
-
-/* Hover Barra lateral */
-li >a:hover, .o-app-sidenav-menu-group >a:hover{
-    background-color: rgba(55, 55, 55, 0.2) !important;
-}
-
-.o-app-sidenav-viewer-sidenav-item-selected {
-
-    background-color: #3a3027 !important;
-}
-
-.o-app-sidenav .o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav .mat-drawer-inner-container .o-app-sidenav-menu-group-level-1 a+.o-app-sidenav-menugroup-items-container .o-app-sidenav-menu-group a, .o-app-sidenav .o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav .mat-drawer-inner-container .o-app-sidenav-menu-group-level-1 a+.o-app-sidenav-menugroup-items-container .o-app-sidenav-menu-item {
-    .o-app-sidenav-viewer-sidenav-item-selected {
-
-        background-color: #3a3027 !important;
-    }
-
-    a:not(.o-app-sidenav-viewer-sidenav-item-selected, .mat-mdc-tooltip-trigger) {
-        background: linear-gradient(90deg, #495635, #909f43) !important;
-        border-left: none;
-    }
-
-    .mat-mdc-tooltip-trigger {
-        background-color: #909f43;
-    }
-    
-}    
-
-
-.o-grid .o-grid-toolbar button.o-grid-button:not([disabled]).mat-mdc-button-base{
-    background: #ccc6c0 !important;
-    margin-right: 1%;
-}
-
-/* para lo de dentro del desplegable de las paginas*/
-.mat-mdc-select-panel-above .mdc-menu-surface.mat-mdc-select-panel{
-    background-color: #ccc6c0  !important;
-}
-
-/* para todo el componente del paginator*/
-.mat-mdc-paginator{
-    background-color: #ccc6c0 !important;
-}
-
-/* ordenacion */
-.mdc-text-field--filled:not(.mdc-text-field--disabled) {
-    background-color: transparent !important;
-    margin-left: 0.5%;
-}
-
-.cdk-overlay-pane:not(.mat-mdc-select-panel-above) .mdc-menu-surface.mat-mdc-select-panel {
-    background-color: #ccc6c0 !important;
-}
-
-.mat-mdc-menu-content {
-    background-color: #ccc6c0 !important;
-
-}
-
-o-app-sidenav.o-app-sidenav .o-app-header .o-user-info .o-user-info-wrapper, o-app-sidenav.o-app-sidenav.header-layout .o-app-header .o-user-info .o-user-info-wrapper {
-    color: white !important
-}
-
-
-
-/* para todos los botones de la pagina (menos los del login)*/
-/*
-.mat-mdc-dialog-actions button:not([disabled]).mat-mdc-button-base, .mat-mdc-dialog-actions button:not([disabled]).mat-mdc-button-base.mat-accent, .o-form .o-form-toolbar button:not([disabled]).o-form-toolbar-button.mat-mdc-button-base, .o-form .o-form-toolbar button:not([disabled]).o-form-toolbar-button.mat-mdc-button-base.mat-accent, .o-grid .o-grid-toolbar button.o-grid-button:not([disabled]).mat-mdc-button-base, .o-grid .o-grid-toolbar button.o-grid-button:not([disabled]).mat-mdc-button-base.mat-accent, .o-list .o-list-toolbar button.o-list-button:not([disabled]).mat-mdc-button-base, .o-list .o-list-toolbar button.o-list-button:not([disabled]).mat-mdc-button-base.mat-accent, .ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base, .ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base.mat-accent {
-    background: gold !important;
-}*/

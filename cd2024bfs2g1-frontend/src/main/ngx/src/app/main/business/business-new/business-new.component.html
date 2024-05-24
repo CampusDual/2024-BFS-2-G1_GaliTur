@@ -1,5 +1,5 @@
-<o-form attr="businessNew" label-header="{{ 'BUSINESS_DATA' | oTranslate }}" label-header-align="start" service="businesses" entity="business" keys="bsn_id" fxLayout="column" #oFormBusinessNew
-    class="standalone-form-container" keys-sql-types="integer" (onInsert)="insertBusiness($event)" confirm-exit="false" message-service-type="customMessageServiceTypeBusiness">
+<o-form attr="businessNew" class="custom-form" label-header="{{ 'BUSINESS_DATA' | oTranslate }}" label-header-align="start" service="businesses" entity="business" keys="bsn_id" fxLayout="column" #oFormBusinessNew
+     keys-sql-types="integer" (onInsert)="insertBusiness($event)" confirm-exit="false" message-service-type="customMessageServiceTypeBusiness">
 
     <o-row id="principalRow" layout-align="start stretch">
         <!-- Titulo del formulario -->
@@ -95,20 +95,15 @@
             </o-column>
         </o-row>
     </div>
+
     <!-- LODGING -->
-
     <div class="lodging" *ngIf="selectedOption === 2">
-
         <o-column>
             <o-row layout-align="start stretch">
                 <o-column>
-
                     <o-row class="lodging-column" title="LODGING" layout-align="start stretch" layout-padding>
-
-
                         <o-column>
                             <o-row>
-
                                 <o-checkbox #switchDestination type="checkbox" (onValueChange)="getSwitchValue()"
                                     attr="roomTypeSingle" label="{{ 'Single' | oTranslate }}" data="Individual" read-only="no"></o-checkbox>
 
@@ -116,11 +111,8 @@
                                     [enabled]="switchDestinationState? true : false" class="price"
                                     attr="priceSingleRoom" label="{{ 'Price' | oTranslate }}" read-only="no" required="no"
                                     min-decimal-digits="2" max-decimal-digits="2" min="0" max="1000"></o-currency-input>
-
-
                             </o-row>
                             <br>
-
                             <o-row>
                                 <o-checkbox #switchDestination2 type="checkbox" (onValueChange)="getSwitchValue2()"
                                     attr="roomTypeDouble" label="{{ 'Double' | oTranslate }}" data="Doble" read-only="no"></o-checkbox>
@@ -129,10 +121,8 @@
                                     [enabled]="switchDestinationState2? true : false" class="price"
                                     attr="priceDoubleRoom" label="{{ 'Price' | oTranslate }}" read-only="no" required="no"
                                     min-decimal-digits="2" max-decimal-digits="2" min="0" max="1000"></o-currency-input>
-
                             </o-row>
                             <br>
-
                             <o-row>
                                 <o-checkbox #switchDestination3 type="checkbox" (onValueChange)="getSwitchValue3()"
                                     attr="roomTypeTriple" label="{{ 'Triple' | oTranslate }}" data="Triple" read-only="no"></o-checkbox>
