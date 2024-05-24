@@ -199,7 +199,7 @@
   "pck_description": "Description",
   "pck_date_begin": "Start Date",
   "pck_date_end": "End Date",
-  "pck_price": "Price",
+  "pck_price": "Total price",
   "pck_participants": "Participants",
   "gui_c_name": "municipality",
   "pcs_id": "reserved",
