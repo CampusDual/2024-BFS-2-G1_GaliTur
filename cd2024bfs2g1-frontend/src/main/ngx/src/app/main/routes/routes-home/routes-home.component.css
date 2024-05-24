@@ -1,9 +1,9 @@
 /* Estilos principales */
 .routeCard {
+  border-radius: 10px;
   padding: 0px;
-  margin: 10px;
   cursor: pointer;
-  width: 500px;
+  width: 400px;
   height: 300px;
   background-size: cover;
   background-position: center;
