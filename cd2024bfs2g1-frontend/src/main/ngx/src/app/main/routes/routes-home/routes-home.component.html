@@ -28,7 +28,7 @@
                             <span class="duration" *ngIf="data.estimated_duration; else no_estimated_duration" >
                             <p><mat-icon>clock</mat-icon>{{ convertTime(data.estimated_duration) }} </p></span>
                             <ng-template #no_estimated_duration>
-                                <span><p>{{ "N0_ESTIMATED_DURATIOn" | oTranslate}}</p></span>
+                                <span><p>{{ "N0_ESTIMATED_DURATION" | oTranslate}}</p></span>
                             </ng-template>
 
                         <!-- </li>

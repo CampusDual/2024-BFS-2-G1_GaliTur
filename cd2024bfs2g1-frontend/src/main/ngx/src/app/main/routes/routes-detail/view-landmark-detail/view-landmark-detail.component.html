@@ -21,8 +21,10 @@
                 </div>
             </div>
             <div fxFlex="5%"></div>
-            <div fxFlex="20%" class="landmark-list">
-                <p><button *ngFor="let landmark of data.landmark" (click)="zoomPointlandmark(landmark)" class="landmarkName">{{ landmark.name }}</button><p>
+            <div fxFlex="20%">
+                <o-row class="o-rows" attr="container" icon="location_on" mat title="{{'landmark'| oTranslate }}" layout-align="start stretch" elevation="1" aria-orientation="vertical" appearance="outline">
+                    <p><button *ngFor="let landmark of data.landmark" (click)="zoomPointlandmark(landmark)" class="landmarkName">{{ landmark.name }}</button><p>
+                </o-row>
             </div>
         </div>
     </div>
