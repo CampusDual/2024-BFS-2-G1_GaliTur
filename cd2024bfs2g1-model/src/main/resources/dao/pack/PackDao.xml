@@ -24,6 +24,22 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="packsDetails">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.pack p
+                        INNER JOIN ${mainschema}.image_pack ip
+                        ON p.pck_id=ip.pck_id
+                        INNER JOIN ${mainschema}.image i
+                        ON ip.img_id=i.image_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
         <Query id="allPacks">
             <Sentence>
                 <![CDATA[
