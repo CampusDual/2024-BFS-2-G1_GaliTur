@@ -16,15 +16,14 @@ export class PackEditComponent {
     this.idPack = this.getPackId()
     this.configurePackImageService()
      this. consultarDatosPackImage(this.idPack)
-     console.log("El id de la ruta es:" + this.idPack)
+     console.log("El id de la ruta es ACTUALIZADO:" + this.idPack)
     
   }
 
   dataPack:any= []
   idPack:number=0
   imgId=""
-  // packImageObject{
-  // } ={}
+
 
   consultarDatosPackImage(id:number){
     this.ontimizeManagePackImageService
