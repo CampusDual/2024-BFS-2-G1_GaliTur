@@ -111,6 +111,7 @@
   cursor: pointer;
   border-radius: 10px;
   transition: background-color 0.3s;
+  
 }
 
 .custom-button:hover {
@@ -238,19 +239,18 @@
   transition: opacity 0.3s;
   white-space: nowrap;
   padding: 5px;
-
 }
 
-.tooltipDuration, .tooltipNoDuration {
+.tooltipDuration {
   margin-top: 20px;
 }
 
-.tooltipDuration:hover, .tooltipNoDuration:hover {
+.tooltipDuration:hover {
   transform: scale(1.2);
   padding: 0px 0px 0px 0px;
 }
 
-.tooltipDuration:hover .tooltiptextDuration, .tooltipNoDuration:hover, .tooltiptextNoDuration {
+.tooltipDuration:hover .tooltiptextDuration {
   visibility: visible;
   transform: scale(0.9);
   opacity: 1;
@@ -259,4 +259,3 @@
 .clockTooltip {
   color: #84A45A;
 }
-
