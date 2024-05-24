@@ -12,45 +12,47 @@
                 <!--Contenedor Nombre Ruta-->
                 <div class="routeName">
                     <mat-icon>location_on</mat-icon>
-                    <span class="name"><strong>{{ data.name }} </strong></span>
+                    <span class="name"><strong class="nameStrong">{{ data.name }} </strong></span>
                 </div>
 
                 <!--Contenedor Dificultad, Duracion y Imagen-->
                 <div Class="containerDatos">
 
                     <!--Contenedor Imagen Ruta-->
-                    <!-- <div>    -->
                         <img class="preview-image" [src]="getImageSrc(data.img_code)" width="350px" height="125px">
-                    <!-- </div> -->
-                    <!-- <ul style="list-style-type: none;" class="list">
-                        <li> -->
-                            <!--Duracion estimada-->
-                            <span class="duration" *ngIf="data.estimated_duration; else no_estimated_duration" >
-                            <p><mat-icon>clock</mat-icon>{{ convertTime(data.estimated_duration) }} </p></span>
-                            <ng-template #no_estimated_duration>
-                                <span><p>{{ "N0_ESTIMATED_DURATION" | oTranslate}}</p></span>
-                            </ng-template>
 
-                        <!-- </li>
-                        <li> -->
-                            <!--Dificultad-->
-                            <!-- <div class="difficulty">-->
-                                
+                             <!--Dificultad-->
+                            <div class="leafsDifficulty">
                                 <span *ngIf="data.difficulty; else no_difficulty">
-                                    <div class="tooltip"> 
-                                        <mat-icon>help</mat-icon>
-                                        <span class="tooltiptext">{{getDifficultad(data.difficulty)  | oTranslate }}</span>
+                                    <div class="tooltipHomeDifficulty"> 
+                                        <mat-icon class="helpTooltipHome">help</mat-icon>
+                                        <span class="tooltiptextHomeDifficulty">{{getDifficultad(data.difficulty)  | oTranslate }}</span>
                                      </div> 
                                     <mat-icon  [ngClass]="getIconColorClass(data.difficulty)" *ngFor="let _ of [].constructor(data.difficulty)">eco</mat-icon>
                                     <mat-icon  *ngFor="let _ of [].constructor(4 - data.difficulty)">eco</mat-icon>
                                 </span>
-                                <ng-template #no_difficulty>
-                                    <span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span>
+                            <ng-template #no_difficulty>
+                                <span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span>
+                            </ng-template>
+                            </div>
+
+                            <!--Duracion estimada-->
+                            <div fxLayout="row" class="duration">
+                                <div class="tooltipHomeDuration" *ngIf="data.estimated_duration; else no_estimated_duration">
+                                    <mat-icon class="clockTooltipHome">schedule</mat-icon>
+                                    <span class="tooltiptextHomeDuration">{{ "estimated_duration" | oTranslate }}</span>
+                                </div>
+                                <span *ngIf="data.estimated_duration">
+                                    {{ convertTime(data.estimated_duration) }}
+                                </span>
+                                <ng-template #no_estimated_duration>
+                                    <div class="tooltipHomeDuration">
+                                        <mat-icon class="clockTooltipHome">schedule</mat-icon>
+                                        <span class="tooltiptextHomeDuration">{{ "N0_ESTIMATED_DURATION" | oTranslate }}</span>
+                                    </div>
                                 </ng-template>
-                            <!-- </div> -->
-                        <!-- </li>
-                    </ul> -->
-                </div>
-            </div>
-    </o-grid-item>
+                            </div>
+                        </div>
+                     </div>
+        </o-grid-item>
 </o-grid>
