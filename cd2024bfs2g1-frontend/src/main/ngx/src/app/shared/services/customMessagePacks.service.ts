@@ -6,4 +6,5 @@ export class CustomMessageServicePacks extends OFormMessageService {
   getInsertSuccessMessage(): any {
       return 'MESSAGES_INSERTED_PACK';
   }
+
 }

@@ -1,6 +1,6 @@
 <o-form attr="packNew" label-header-align="start" message-service-type="customMessageServiceTypePacks"
         label-header="{{ 'PACKS_NEW' | oTranslate }}" keys="pck_id" fxLayout="column" #oFormPackNew service="packs" entity="pack"
-     keys-sql-types="integer" (onInsert)="insertPacks($event)" confirm-exit="false" >
+     keys-sql-types="integer" (onInsert)="insertPacks()" confirm-exit="false" >
      <o-row layout-align="start stretch">
         <o-column id="pack" layout-align="start stretch" fxFlex="50" layout-padding>
 
@@ -19,7 +19,7 @@
                                  show-week-numbers="true" mode="mobile">
               </o-daterange-input>
             <div id="Precio_participants" fxLayout="row">
-            <o-currency-input [step]="1" attr="pck_price" min="1" max="5000" label="{{ 'PRICE' | oTranslate }}" read-only="no"
+            <o-currency-input [step]="1" attr="pck_price" min="1" max="5000" label="{{ 'pck_price' | oTranslate }}" read-only="no"
                     required="no">
                 </o-currency-input>
             <o-integer-input attr="pck_participants" label="{{ 'PARTICIPANTS' | oTranslate }}"
