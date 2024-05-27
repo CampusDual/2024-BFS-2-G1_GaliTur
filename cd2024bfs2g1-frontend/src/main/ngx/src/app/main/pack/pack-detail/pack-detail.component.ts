@@ -48,7 +48,7 @@ export class PackDetailComponent {
   }
 
   public openPacks(): void {
-    if (PackHomeComponent.page == 1) {
+    if (PackHomeComponent.page == 1 || !PackHomeComponent.page) {
       this.router.navigate(["main/packs"]);
     } else {
       this.router.navigate(["main/pack-client"]);

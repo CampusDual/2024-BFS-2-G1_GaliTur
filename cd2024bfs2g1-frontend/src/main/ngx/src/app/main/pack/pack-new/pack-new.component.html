@@ -4,7 +4,7 @@
      <o-row layout-align="start stretch">
         <o-column id="pack" layout-align="start stretch" fxFlex="50" layout-padding>
 
-                <o-text-input id="text" attr="pck_name" max-length="50" label="{{ 'PACK_NAME' | oTranslate }}"
+                <o-text-input id="text" attr="pck_name" max-length="40" label="{{ 'PACK_NAME' | oTranslate }}"
                     required="yes" [validators]="nameValidators">
                     <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
                 </o-text-input>

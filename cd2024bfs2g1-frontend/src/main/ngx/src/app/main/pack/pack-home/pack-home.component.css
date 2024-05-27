@@ -40,7 +40,7 @@
     background-color: #52733B;
     color: white;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
     box-sizing: border-box;
     border-radius: 10px 10px 10px 10px;
 }
@@ -71,15 +71,12 @@
 /* info styles */
 .cardInfo {
     width: 50%;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-right: -40px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-left: 40px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    li {
-        padding: 5px;
-    }
 }
 
 /* icon styles */
@@ -94,26 +91,10 @@
     padding: 0;
     margin: 0;
     list-style: none;
-}
-
-/* pack not available card styles */
-.not-available {
-    opacity: 0.5;
-    filter: grayscale(100%);
-    position: relative;
-}
-
-/* pack not available message styles */
-.unavailable-message {
-    z-index: 2;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-size: 20px;
+    row-gap: 5px;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
 }
 
 /* deep styling for grid sort and search input */
