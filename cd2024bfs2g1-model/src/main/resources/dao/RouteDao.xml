@@ -51,6 +51,7 @@
                     ) SC ON SC.image_id = I.image_id AND SC.route_id = R.route_id;
 
                     #ORDER#
+
                 ]]>
             </Sentence>
         </Query>
