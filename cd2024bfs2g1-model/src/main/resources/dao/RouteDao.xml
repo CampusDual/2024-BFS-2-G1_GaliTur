@@ -38,17 +38,20 @@
                         R.description,
                         R.estimated_duration,
                         R.difficulty,
-                        I.img_code
+                        SC.img_code
                     FROM
                         route R
-                    LEFT JOIN image_route IR ON R.route_id = IR.route_id
-                    LEFT JOIN image I ON IR.image_id = I.image_id
-                    LEFT JOIN (
+                    left JOIN (
+                        select ssc.route_id as route_id, img_code
+                        from image i
+                        inner join
+                        (
                         SELECT image_route.route_id, MIN(image.image_id) as image_id
                         FROM image
                         INNER JOIN image_route ON image.image_id = image_route.image_id
                         GROUP BY image_route.route_id
-                    ) SC ON SC.image_id = I.image_id AND SC.route_id = R.route_id;
+                        ) SSC on SSC.image_id = i.image_id
+                    ) SC ON SC.route_id = R.route_id;
 
                     #ORDER#
                 ]]>
