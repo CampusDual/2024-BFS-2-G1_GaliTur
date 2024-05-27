@@ -10,6 +10,7 @@ import { OntimizeService } from 'ontimize-web-ngx';
 export class PackEditComponent implements AfterViewInit{
 imgId: any;
 
+
   constructor(private router: Router,private activeRoute: ActivatedRoute){
   }
   ngAfterViewInit(): void {
@@ -24,6 +25,9 @@ imgId: any;
 
   getPackId():number{
     return +this.activeRoute.snapshot.params["pck_id"];
+  }
+  onClicEdit(pck_id: any) {
+    this.router.navigate(['main','packs','new',pck_id])
   }
 }
 

@@ -6,7 +6,7 @@
     background-size:cover;
     height: 90%;
   }
-  
+
   .principal-centro {
     display: flex;
     justify-content: center;
@@ -14,7 +14,7 @@
     flex-direction: column;
     margin-bottom: 20px;
   }
-  
+
   .secundaria-centro {
     display: flex;
     padding: 10px 10px 10px 10px;
@@ -28,10 +28,12 @@
     display: flex;
     justify-content: center;
     background-color: rgb(231, 231, 231);
-    align-items: center;
     padding: 10px;
   }
   .datos{
-    height: auto;
     width: 1000px;
+  }
+  .card{
+    height: 190px;
+    display: flex;
   }

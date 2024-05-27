@@ -2,8 +2,8 @@
 
 <div class="div-fullpage">
     <o-list class="contenedor" #list attr="packsTable" title="packsTable" columns="p.pck_id;p.pck_name;p.pck_description;i.img_code"
-    service="packs" entity="packDetail" keys="pck_id" refresh-button="true" insert-button="false" quick-filter="true"
-    quick-filter="no" delete-button="false" row-height="medium" detail-mode="none" quick-filter-columns="pck_name;pck_description" pagination-controls="yes"
+    service="packs" entity="pack" keys="p.pck_id" refresh-button="true" insert-button="false" quick-filter="true"
+    quick-filter="no" pageable="yes" delete-button="false" row-height="medium" detail-mode="none" quick-filter-columns="pck_name;pck_description" pagination-controls="yes"
     query-rows="10">
 
     <div *ngFor="let row of list.dataArray" class="principal-centro">
@@ -11,8 +11,8 @@
             <o-row class="contenedor-centro">
                 <o-column class="contenedor-centro">
                     <div class="datos">
-                        <o-list-item>
-                            <o-list-item-card #item title="{{ row.pck_name }}" subtitle="Edit me" show-image="true"
+                        <o-list-item class="prueba">
+                            <o-list-item-card class="card" #item title="{{ row.pck_name }}" subtitle="{{row.pck_description}}" 
                             action-1-text="Edit" action-2-text="Delete"
                             (action-1)="onClicEdit(row.pck_id)" (action-2)="onClicDelete(row.pck_id)">
                             </o-list-item-card>

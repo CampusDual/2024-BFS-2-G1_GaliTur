@@ -1,7 +1,8 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { OntimizeService } from 'ontimize-web-ngx';
+import { Observable, OntimizeService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-manage-all-packs',
@@ -12,6 +13,7 @@ export class ManageAllPacksComponent implements AfterViewInit{
   constructor(private router:Router,
     protected sanitizer: DomSanitizer,
     private ontimizePackService: OntimizeService,
+    private http: HttpClient,
     // private ontimizeImageService: OntimizeService
   ){
     this.configurePackImgService()
@@ -20,7 +22,7 @@ export class ManageAllPacksComponent implements AfterViewInit{
   ngAfterViewInit(): void {
      this.getImageIdAux(104)
   }
-  
+  private baseUrl = 'http://localhost:8080/packs';
   getImageIdAux(pck_id:any):any{
     // this.ontimizePackService
     //   .query(
@@ -51,7 +53,7 @@ export class ManageAllPacksComponent implements AfterViewInit{
       this.ontimizePackService.getDefaultServiceConfiguration("packs");
     this.ontimizePackService.configureService(confPack);
   }
-  
+
   // protected configureImageService() {
   //   const confImg =
   //     this.ontimizeImageService.getDefaultServiceConfiguration("images");
@@ -62,6 +64,11 @@ onClicDelete(pck_id: any) {
 }
 onClicEdit(pck_id: any) {
   this.router.navigate(['main','pack-manage',pck_id])
+}
+
+getPacks(page: number, limit: number): Observable<any> {
+  let params = new HttpParams().set('page', page.toString()).set('limit', limit.toString());
+  return this.http.get<any>(`${this.baseUrl}/advancedsearch`, { params });
 }
 
 }

@@ -7,18 +7,23 @@
                     <div class="fondo_titulo">
                         <p class="letrasTitulo">Packs Info</p>
                     </div>
-                <div fxLayout="row" fxLayoutGap="8px">
-                    <o-text-input fxFlex="100" attr="pck_name" required="yes"></o-text-input>
-                </div>
-                <div fxLayout="row" fxLayoutGap="8px">
-                    <o-currency-input [step]="1" attr="pck_price" min="1" max="5000" label="{{ 'pck_price' | oTranslate }}" read-only="no"
-                    required="no">
-                </o-currency-input>
-                 <o-integer-input attr="pck_participants" label="{{ 'PARTICIPANTS' | oTranslate }}"
-                read-only="no" required="no" max="100" min="1"></o-integer-input>
-                </div>
-                <o-textarea-input class="description-textarea" fxFlex="100" attr="pck_description" required="yes" width="100%"></o-textarea-input>
+            <div fxLayout="row" fxLayoutGap="16px">
+                <o-text-input fxFlex="100" attr="pck_name" required="yes"></o-text-input>
             </div>
+            <div fxLayout="row" fxLayoutGap="16px">
+                <o-currency-input [step]="1" attr="pck_price" min="1" max="5000" label="{{ 'pck_price' | oTranslate }}" read-only="no"
+                required="no">
+                </o-currency-input>
+                <o-integer-input attr="pck_participants" label="{{ 'PARTICIPANTS' | oTranslate }}"
+                read-only="no" required="no" max="100" min="1"></o-integer-input>
+                <o-date-input label="{{'pck_date_begin' | oTranslate}}"></o-date-input>
+                <o-date-input label="{{'pck_date_end' | oTranslate}}"></o-date-input>
+            </div>
+            <o-textarea-input class="description-textarea" fxFlex="100" attr="pck_description" required="yes" width="100%"></o-textarea-input>
+        </div>
+        <div class="div_boton" fxLayout="row" fxLayoutGap="8px">
+            <button class="boton" (click)="onClicEdit(pck_id)">Añadir Rutas y Negocios</button>
+        </div>
     </div>
     <o-form attr="packsImageTable" service="packs" entity="packDetail" keys="pck_id;imp_id"
      parent-keys="pck_id" show-header="yes" show-header-navigation="no">
