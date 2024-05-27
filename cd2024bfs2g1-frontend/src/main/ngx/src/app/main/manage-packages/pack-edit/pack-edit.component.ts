@@ -16,8 +16,8 @@ export class PackEditComponent {
     this.idPack = this.getPackId()
     this.configurePackImageService()
      this. consultarDatosPackImage(this.idPack)
-     console.log("El id de la ruta es ACTUALIZADO:" + this.idPack)
-    
+     console.log("El id de la ruta es:" + this.idPack)
+
   }
 
   dataPack:any= []
@@ -48,5 +48,5 @@ export class PackEditComponent {
     return +this.activeRoute.snapshot.params["pck_id"];
   }
   }
-  
+
 

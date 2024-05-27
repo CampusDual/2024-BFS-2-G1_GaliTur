@@ -1,29 +1,32 @@
-<o-form attr="packsTable" service="packs" entity="pack" keys="pck_id" header-actions="R;I;U;D" show-header-navigation="no">
-    <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no"></o-text-input>
-    
-    <div fxLayout="row">
-        <o-column fxFlex title="PACK_INFORMATION">
-            <div fxLayout="column" fxLayoutGap="8px">
+<div class="fondo">
+<o-form attr="packsTable" service="packs" entity="pack" keys="pck_id" show-header="no" show-header-navigation="no">
+    <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no"  show-header-navigation="no" oHidden></o-text-input>
+    <div fxLayout="row" class="principal" fxLayoutAlign="center" fxLayoutGap="16px">
+        <div class="datos">
+            <div fxLayout="column" fxLayoutGap="8px" class="contenido_datos">
+                    <div class="fondo_titulo">
+                        <p class="letrasTitulo">Packs Info</p>
+                    </div>
                 <div fxLayout="row" fxLayoutGap="8px">
-                    <o-text-input fxFlex="20" attr="pck_name" required="yes"></o-text-input>
-                    <o-text-input fxFlex="100" attr="pck_description" required="yes"></o-text-input>
+                    <o-text-input fxFlex="100" attr="pck_name" required="yes"></o-text-input>
                 </div>
                 <div fxLayout="row" fxLayoutGap="8px">
                     <o-text-input fxFlex="100" attr="pck_price" required="yes"></o-text-input>
                     <o-text-input fxFlex="100" attr="pck_participants" required="yes"></o-text-input>
                 </div>
+                <o-textarea-input class="description-textarea" fxFlex="100" attr="pck_description" required="yes" width="100%"></o-textarea-input>
             </div>
-        </o-column> 
     </div>
     <o-form attr="packsImageTable" service="packs" entity="packDetail" keys="pck_id"
-     parent-keys="pck_id"  header-actions="" show-header-navigation="no">
-        <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no"></o-text-input>
-        <div fxLayout="row">
+     parent-keys="pck_id" show-header="no" show-header-navigation="no">
+        <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no" oHidden></o-text-input>
+        <div fxLayout="row" class="image">
             <div fxlayout="column" fxLayoutGap="8px">
                 <o-image *ngIf="imgId!=null || imgId!='' " id="img_code" attr="img_code" empty-image="assets/images/no-image.png" sql-type="OTHER"></o-image>
             </div>
         </div>
     </o-form>
-    
-</o-form>
+
+</div>
+
 
