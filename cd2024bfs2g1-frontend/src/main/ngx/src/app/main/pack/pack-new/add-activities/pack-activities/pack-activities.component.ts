@@ -1,9 +1,9 @@
-import { Component, Injector } from '@angular/core';
+import { Component, Injector, ViewChild } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { AddActivitiesComponent } from '../add-activities.component';
-import { OntimizeService } from 'ontimize-web-ngx';
+import { OTableComponent, OntimizeService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-pack-activities',
@@ -13,8 +13,12 @@ import { OntimizeService } from 'ontimize-web-ngx';
 export class PackActivitiesComponent {
 
 
+
   protected service: OntimizeService;
+  protected bsn_service: OntimizeService;
+
   public arrayDias = []
+  public selectedDay;
   
 
   constructor(
@@ -24,6 +28,8 @@ export class PackActivitiesComponent {
     protected injector: Injector
   ){
     this.service = this.injector.get(OntimizeService);
+    this.bsn_service = this.injector.get(OntimizeService);
+
   }
 
 
@@ -40,9 +46,25 @@ export class PackActivitiesComponent {
     }
   }
 
-  addRow(): any {
-    console.log("ey")
-    }
+  @ViewChild('table', { static: false }) table: OTableComponent;
+  selectedBusinessIds: any[] = [];
+
+  ngAfterViewInit() {
+    // Suscribirse a los eventos de selección y deselección de filas
+    this.table.onRowSelected.subscribe(() => {
+      this.updateSelectedBusinessIds();
+    });
+
+    this.table.onRowDeselected.subscribe(() => {
+      this.updateSelectedBusinessIds();
+    });
+  }
+
+  updateSelectedBusinessIds() {
+    const selectedRows = this.table.getSelectedItems();
+    this.selectedBusinessIds = selectedRows.map(row => row.bsn_id);
+    console.log(this.selectedBusinessIds); // Para verificar los IDs seleccionados en la consola
+  }
 
   public goBack(): void {
     this.dialogRef.close()
@@ -54,8 +76,15 @@ export class PackActivitiesComponent {
     this.service.configureService(conf);
   }
 
+  protected configureBsnService() {
+    // Configure the service using the configuration defined in the `app.services.config.ts` file
+    const conf = this.bsn_service.getDefaultServiceConfiguration('businessPacks');
+    this.bsn_service.configureService(conf);
+  }
+
   ngOnInit(): void {
-    
+   // this.table.clearSelection();
+ 
     console.log('Al emergente le llego el id: ' + AddActivitiesComponent.packId);
     this.configureService();
     this.getDays();
@@ -87,7 +116,28 @@ export class PackActivitiesComponent {
     }
 
   
+    insertBsnPack() {
+
+      this.configureBsnService();
 
 
+      for(let bp of this.selectedBusinessIds){
+
+        this.bsn_service
+        .insert({ pck_id: AddActivitiesComponent.packId, assigned_date: this.selectedDay, bsn_id: bp  }, "businessPack")
+        .subscribe((resp) => {
+          //this.form.reload(true)
+        });
+
+      }
+    }
+  
+
+       
+
+   
+
+    
+ 
 
 }
