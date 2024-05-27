@@ -1,6 +1,9 @@
 @use '@angular/material' as mat;
 @use 'node_modules/ontimize-web-ngx/theming/ontimize-style.scss' as ontimize-style;
 
+
+
+
 /* Color definitions */
 $mat-custom-primary: (
     50 : #fcf2e7,
@@ -8,7 +11,7 @@ $mat-custom-primary: (
     200 : #715e4e, //Barra Scroll
     300 : #88b072,
     400 : #6d9457,
-    500 : #52733B, //Color Base
+    500 : #715e4e, //Color Base
     600 : #486733,
     700 : #3d5a2b,
     800 : #3a3027, //Simbolo añadir & Texto "OK" en formulario
@@ -23,7 +26,7 @@ $mat-custom-primary: (
         200 : #8c7b6a,
         300 : #776856,
         400 : #6c5f4f,
-        500 : #715e4e,
+        500 : white,
         600 : #5c4d3d,
         700 : #4b3e32,
         800 : #3a3027,
@@ -80,3 +83,10 @@ $theme: ontimize-style.o-mat-light-theme($primary, $accent);
 
 /* Dark theme */
 $dark-theme: ontimize-style.o-mat-dark-theme($primary-dark, $accent-dark);
+
+
+/* Fuente en toda la web */
+* {
+    font-family: Poppins, "Helvetica Neue", sans-serif;
+}
+
