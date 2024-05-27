@@ -16,19 +16,17 @@
                 </div>
                 <o-textarea-input class="description-textarea" fxFlex="100" attr="pck_description" required="yes" width="100%"></o-textarea-input>
             </div>
-        </o-column>
     </div>
     <o-form attr="packsImageTable" service="packs" entity="packDetail" keys="pck_id"
-     parent-keys="pck_id"  header-actions="" show-header-navigation="no">
-        <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no"></o-text-input>
-        <div fxLayout="row">
+     parent-keys="pck_id" show-header="no" show-header-navigation="no">
+        <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no" oHidden></o-text-input>
+        <div fxLayout="row" class="image">
             <div fxlayout="column" fxLayoutGap="8px">
                 <o-image *ngIf="imgId!=null || imgId!='' " id="img_code" attr="img_code" empty-image="assets/images/no-image.png" sql-type="OTHER"></o-image>
             </div>
         </div>
     </o-form>
 
-</o-form>
 </div>
 
 
