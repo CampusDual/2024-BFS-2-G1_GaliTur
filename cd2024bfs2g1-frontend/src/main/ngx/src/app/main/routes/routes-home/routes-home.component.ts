@@ -28,7 +28,6 @@ galleryOptions: any;
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/logo-walking.png";
   }
 
-
   /*Abrir detalle de la ruta*/
   public openDetail(data: any): void {
     this.imageService.getImage(data.route_id).subscribe((imageData)=> {
