@@ -175,7 +175,7 @@
                 <h3 id="languageH">{{ 'BSN_LANGUAGE' | oTranslate }}</h3>
                 <o-combo attr="comboLanguages" oLocker
                 oLockerMode="disable" label="{{ 'SELECT_LANGUAGE' | oTranslate }}" multiple="yes" service="guideLanguages" translate="yes"
-                    entity="guideLanguage" value-column="gui_l_id" columns="gui_l_id;gui_l_name"
+                    entity="guideLanguage" sort="ASC" value-column="gui_l_id" columns="gui_l_id;gui_l_name"
                     visible-columns="gui_l_name" separator=", " fxFlex required="yes">
                 </o-combo>
             </o-column>
@@ -189,7 +189,7 @@
             <o-column id="formZones">
                 <h3>{{ 'BSN_CITY' | oTranslate }}</h3>
                 <o-combo id="comboCity" #comboCity attr="comboCity" label="{{ 'SELECT_CITY' | oTranslate }}" multiple="yes" translate="yes"
-                    query-method="query" service="guideCities" entity="guideCities" value-column="gui_c_id"
+                    query-method="query" sort="ASC" service="guideCities" entity="guideCities" value-column="gui_c_id"
                     columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id"
                     [query-on-event]="comboZone.onValueChange" parent-keys="gui_z_id:comboZone[gui_z_id]">
                 </o-combo>

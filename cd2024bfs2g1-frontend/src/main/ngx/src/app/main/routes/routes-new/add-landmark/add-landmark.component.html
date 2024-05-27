@@ -2,12 +2,12 @@
     <o-column class="container">
         <div fxLayout="row" class="landmarkInfo">
             <div fxLayout="column" fxLayoutGap="10px" class="noHidden">
-                <o-text-input class="txt"  attr="name" sql-type="STRING"
+                <o-text-input class="txt"  attr="name" sql-type="STRING" max-length="70"
                     enabled="yes" required="yes"></o-text-input>
             </div>
             <div fxLayout="column" fxLayoutGap="10px" class="noHidden">
                 <o-text-input class="txt" attr="coordinates"
-                sql-type="STRING" enabled="yes" read-only="yes"></o-text-input>
+                sql-type="STRING" enabled="yes" required="yes" read-only="yes"></o-text-input>
             </div>
             <div>
                 <o-text-input class="hidden" #routeIdInput attr="inputIdRoute" label="Text" (onChange)="onChangeValue()" oHidden></o-text-input>
