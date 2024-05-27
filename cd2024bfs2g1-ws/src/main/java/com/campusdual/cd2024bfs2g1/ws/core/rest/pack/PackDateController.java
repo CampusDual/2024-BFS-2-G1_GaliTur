@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/packDates")
-public class PackServiceController extends ORestController<IPackDateService> {
+public class PackDateController extends ORestController<IPackDateService> {
     @Autowired
     private IPackDateService packDateService;
 

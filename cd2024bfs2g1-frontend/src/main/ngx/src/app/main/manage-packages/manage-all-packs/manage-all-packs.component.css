@@ -1,3 +1,19 @@
-.contenedor{
-    height: 70%;
+*{
+    margin: 0%;
+    padding: 0%;
 }
+
+.contenedor,.title{
+    margin: auto;
+}
+.title{
+    padding: 10px;
+}
+.div-fullpage {
+    position: relative;
+    margin: auto;
+    top: 1%;
+    left: 0;
+    height: 80%;
+
+  }

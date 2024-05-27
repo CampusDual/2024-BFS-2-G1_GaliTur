@@ -1,9 +1,44 @@
 
-<div class="contenedor">
-    <h2>**Al cargar la pagina se salta el query rows</h2>
-    <h2>{{'MANAGETITLE' | oTranslate }}</h2>
-    <o-table attr="packsTable" service="packs" entity="pack" keys="pck_id"
-        columns="pck_id;pck_name;pck_description"
-        visible-columns="pck_id;pck_name;pck_description" query-rows="10">
-    </o-table>
+      
+
+<div class="div-fullpage">
+    <o-list class="contenedor" #list attr="packsTable" title="packsTable" columns="p.pck_id;p.pck_name;p.pck_description;i.img_code" 
+    service="packs" entity="packDetail" keys="pck_id" refresh-button="true" insert-button="false" quick-filter="true"
+    quick-filter="no" row-height="medium" detail-mode="none" quick-filter-columns="pck_name;pck_description" pagination-controls="yes"
+    query-rows="10">
+    
+    <div *ngFor="let row of list.dataArray">
+                <o-row>
+                  <o-column>
+                    <o-list-item>
+                      <o-list-item-card #item title="{{ row.pck_name }}" subtitle="Edit me" show-image="true"
+                        action-1-text="Edit" action-2-text="Delete"
+                        (action-1)="onClicEdit(row.pck_id)" (action-2)="onClicDelete(row.pck_id)">
+                      </o-list-item-card>
+                    </o-list-item>
+                  </o-column>
+                  <o-column>
+                    <img [src]="getImageSrc(row.img_code)"/>
+                  </o-column>
+                </o-row>
+    </div>
+      
+    </o-list>
+    
 </div>
+
+ <!-- <div class="div-fullpage">
+    <h2>**Al cargar la pagina se salta el query rows</h2>
+    <h2 class="title">{{'MANAGETITLE' | oTranslate }}</h2>
+    <o-table class="contenedor" attr="packsTable" service="packs" entity="pack" keys="pck_id"
+        columns="pck_id;pck_name;pck_description" row-height="large" pagination-controls= "no" detail-mode='none' delete-button='no' insert-button='no' refresh-button='yes'
+        visible-columns="goToDetails;pck_name;pck_description">
+        <o-table-column attr="goToDetails" fxFlex>
+            <o-table-cell-renderer-action action="detail" icon="edit" label="Ir al detalle"></o-table-cell-renderer-action>
+          </o-table-column>
+        <o-table-column attr="pck_name" title="pck_name" multiline="yes" width="100px" tooltip="yes"></o-table-column>
+        <o-table-column attr="pck_description" fxFlex title="pck_description" multiline="yes" width="100px" tooltip="yes"></o-table-column>
+        <o-table-context-menu  insert="no" edit="no" view-details="yes"></o-table-context-menu>
+    </o-table>
+</div>  -->
+

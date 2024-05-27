@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { AfterViewInit, Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OntimizeService } from 'ontimize-web-ngx';
 
 @Component({
@@ -7,46 +7,25 @@ import { OntimizeService } from 'ontimize-web-ngx';
   templateUrl: './pack-edit.component.html',
   styleUrls: ['./pack-edit.component.css']
 })
-export class PackEditComponent {
+export class PackEditComponent implements AfterViewInit{
 
-  constructor(private ontimizeManagePackService: OntimizeService,
-    private ontimizeManagePackImageService: OntimizeService,
-    private activeRoute: ActivatedRoute
-  ){
-    this.idPack = this.getPackId()
-    this.configurePackImageService()
-     this. consultarDatosPackImage(this.idPack)
-     console.log("El id de la ruta es:" + this.idPack)
-
+  constructor(private router: Router,private activeRoute: ActivatedRoute){
+  }
+  ngAfterViewInit(): void {
+    this.pck_id = this.getPackId()
   }
 
-  dataPack:any= []
-  idPack:number=0
-  imgId=""
-
-
-  consultarDatosPackImage(id:number){
-    this.ontimizeManagePackImageService
-      .query(
-        {pck_id:id},
-        ["img_id"],
-        "imagePack"
-      )
-      .subscribe((response) => {
-        this.dataPack.push(...response.data);
-        console.log(this.dataPack[0].img_id);
-        this.imgId=this.dataPack[0].img_id
-      });
+   onAddRtsOrBss(){
+      this.router.navigate(["main", "packs","new",this.pck_id]);
+      /*otra forma para probar this.router.navigate(['main','routes', 'new', $event['route_id']])*/
   }
-  protected configurePackImageService() {
-    const conf =
-      this.ontimizeManagePackImageService.getDefaultServiceConfiguration("imagePacks");
-    this.ontimizeManagePackImageService.configureService(conf);
-  }
+  pck_id: any =""
 
   getPackId():number{
     return +this.activeRoute.snapshot.params["pck_id"];
   }
-  }
+}
+
+
 
 
