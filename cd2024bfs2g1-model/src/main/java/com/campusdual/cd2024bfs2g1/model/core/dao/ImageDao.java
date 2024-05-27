@@ -16,5 +16,5 @@ public class ImageDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_IMAGE_CODE = "img_code";
     public static final String QUERY_IMAGE_CODE = "joinIdImage";
 
-    public static final Integer DEFAULT_IMG_ID = 67; // TODO:
+    public static final Integer DEFAULT_IMG_ID = 1;
 }
