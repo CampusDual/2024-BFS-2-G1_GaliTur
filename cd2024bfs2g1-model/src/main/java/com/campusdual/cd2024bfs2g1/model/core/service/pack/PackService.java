@@ -19,8 +19,10 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -60,16 +62,33 @@ public class PackService implements IPackService {
             throws OntimizeJEERuntimeException {
 
 
+        int n = Integer.parseInt((String) keyMap.get("pck_id"));
+
+        keyMap.put("pck_id",n);
+
+
+
+
+
+
+
         EntityResult er =  this.daoHelper.query(this.packDao, keyMap, attrList);
 
-        //int days = (int) er.get("pck_days");
-        int days = 5;
-        List <Integer> dias = new ArrayList<Integer>();
+        List<Integer> lista = (List<Integer>) er.get("pck_days");
+        int days = lista.get(0);
+
+        List <Map<String,Object>> dias = new ArrayList<>();
 
         for(int i = 1; i<=days; i++){
-            dias.add(i);
+            Map <String,Object> mapaDias = new HashMap<>();
+            mapaDias.put("day",i);
+            mapaDias.put("day_string",Integer.toString(i));
+
+
+
+            dias.add(mapaDias);
         }
-        List <List<Integer>> lista_de_listas = new ArrayList<>();
+        List <List<Map<String,Object>>> lista_de_listas = new ArrayList<>();
         lista_de_listas.add(dias);
 
         er.put("pck_days",lista_de_listas);

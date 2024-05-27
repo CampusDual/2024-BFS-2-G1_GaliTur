@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PackActivitiesComponent } from './pack-activities/pack-activities.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-activities',
@@ -9,7 +10,9 @@ import { PackActivitiesComponent } from './pack-activities/pack-activities.compo
 })
 export class AddActivitiesComponent {
 
-  constructor(protected dialog: MatDialog){
+  static packId: any;
+
+  constructor(protected dialog: MatDialog, private activeRoute: ActivatedRoute){
 
   }
 
@@ -23,8 +26,11 @@ export class AddActivitiesComponent {
       maxWidth: '80vw'
 
     });
+}
 
-
+ngOnInit(): void {
+  AddActivitiesComponent.packId=this.activeRoute.snapshot.params['pck_id']
+  console.log('Al pack le llego el id: ' + AddActivitiesComponent.packId)
 }
 
 }

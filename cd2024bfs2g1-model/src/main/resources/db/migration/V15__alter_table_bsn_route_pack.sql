@@ -9,3 +9,6 @@ add column assigned_date int4;
 
 ALTER TABLE PUBLIC.route_pack
 add column assigned_date int4;
+
+ALTER TABLE PUBLIC.pack
+add column pck_days int4;

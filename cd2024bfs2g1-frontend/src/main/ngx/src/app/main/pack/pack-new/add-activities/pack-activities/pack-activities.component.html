@@ -1,24 +1,35 @@
 
 
-<h2 style="text-align: center">Añadir Negocios</h2>
+<o-row >
+  <o-column style="padding-top: 1%;padding-left: 1%;">
+    <o-button attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary"
+    (click)="goBack()"></o-button>
+  </o-column>
+  <o-column style="padding-left: 38%;">
+    <h2 style="text-align: center">Añadir Negocios</h2>
+
+  </o-column>
+  
+
+</o-row>
 <o-row style="align-content: space-between; padding-left: 1.5%">
+ 
   <o-column id="addBusiness">
     <o-button  label="Añadir negocio"> </o-button>
 
   </o-column>
   <o-column id="selectDay">
-    <o-combo attr="comboDays" oLocker
-    oLockerMode="disable" label="{{ 'SELECT_DAY' | oTranslate }}" service="packs" translate="yes"
-        entity="packDays" value-column="pck_id" columns="pck_id;pck_days"
-        visible-columns="pck_days" separator=", " fxFlex required="yes" >
+    <o-combo attr="combo" label="{{'SELECT_DAY' | oTranslate }}"  null-selection="no" [static-data]="arrayDias"
+       value-column="day_string" columns="day_string"
+      visible-columns="day_string">
     </o-combo>
   </o-column>
  
               </o-row>
     <o-row style="height: 52vh;">
 <o-table style="height: 50vh;" fxFill #table service="businesses" entity="business" keys="bsn_id" columns="bsn_id;bsn_name;bsn_type;bsn_address;bsn_phone;bsn_photos;bsn_website;bsn_schedule"
-title="BUSINESSES" visible-columns="bsn_name;bsn_address;bsn_type" insert-button="no" delete-button="no" refresh-button="yes" pagination-controls="yes" detail-mode="none" export-button="no"
-query-rows="10" show-charts-on-demand-option="no" select-all-checkbox-visible="yes" select-all-checkbox="yes" auto-adjust="no" fixed-header="yes" id="tabla">
+title="BUSINESSES" visible-columns="bsn_name;bsn_address;bsn_type" insert-button="yes" delete-button="no" refresh-button="yes" pagination-controls="yes" detail-mode="none" export-button="no"
+query-rows="10" show-charts-on-demand-option="no" select-all-checkbox-visible="yes" select-all-checkbox="yes" auto-adjust="no" fixed-header="yes" id="tabla"  onRowSelected="addRow()">
 <o-table-row-expandable icon-collapse="keyboard_arrow_down" icon-expand="chevron_right">
   <ng-template let-row>
     <span *ngIf="row.bsn_type === 'Restaurant'"><mat-icon class="type-icon">restaurant</mat-icon><strong style="font-size: 20px;">{{row.bsn_type | oTranslate }}</strong></span>
