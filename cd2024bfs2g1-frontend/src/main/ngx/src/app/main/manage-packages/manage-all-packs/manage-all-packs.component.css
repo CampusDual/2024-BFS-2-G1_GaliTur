@@ -33,7 +33,26 @@
   .datos{
     width: 1000px;
   }
-  .card{
-    height: 190px;
-    display: flex;
+  .card_datos{
+    width: 700px;
+    height: 100%;
+    padding: 0px 0px 0px 90px;
   }
+
+.button{
+ background-color: white;
+ font-size: 16px;
+ border-radius: 10px;
+ border: none;
+}
+
+.button:hover{
+    background-color: rgb(220, 220, 223);
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    transition: font-size 0.3s ease;
+}
+
+.titulo{
+    font-size: 25px;
+}

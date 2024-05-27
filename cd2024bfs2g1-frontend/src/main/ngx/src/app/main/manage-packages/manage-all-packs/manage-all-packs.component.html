@@ -11,17 +11,25 @@
             <o-row class="contenedor-centro">
                 <o-column class="contenedor-centro">
                     <div class="datos">
-                        <o-list-item class="prueba">
-                            <o-list-item-card class="card" #item title="{{ row.pck_name }}" subtitle="{{row.pck_description}}" 
-                            action-1-text="Edit" action-2-text="Delete"
-                            (action-1)="onClicEdit(row.pck_id)" (action-2)="onClicDelete(row.pck_id)">
-                            </o-list-item-card>
-                        </o-list-item>
-                    </div>
-                </o-column>
-                <o-column class="contenedor-centro">
-                    <div>
-                        <img [src]="getImageSrc(row.img_code)" height="200px" width="200px"/>
+                        <mat-card class="prueba">
+                            <mat-card-header>
+                                <div fxLayout="column" fxLayoutGap="8px" class="card">
+                                    <div fxLayout="row" fxLayoutGap="8px">
+                                        <div fxLayout="column" fxLayoutGap="55px" class="card_datos">
+                                            <mat-card-title class="titulo">{{ row.pck_name }}</mat-card-title>
+                                            <mat-card-subtitle>{{row.pck_description}}</mat-card-subtitle>
+                                            <div fxlayout="row" fxLayoutGap="16px" class="card_image">
+                                                <button (click)="onClicEdit(row.pck_id)" class="button">edit</button>
+                                                <button class="button">delete</button>
+                                            </div>
+                                        </div>                                     
+                                        <div class="imagen">
+                                            <img [src]="getImageSrc(row.img_code)" height="200px" width="200px"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-card-header>
+                        </mat-card>
                     </div>
                 </o-column>
             </o-row>
