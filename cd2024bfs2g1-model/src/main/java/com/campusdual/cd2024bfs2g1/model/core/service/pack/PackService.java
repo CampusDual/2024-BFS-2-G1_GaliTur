@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +30,7 @@ public class PackService implements IPackService {
     private final DefaultOntimizeDaoHelper daoHelper;
     private final PackDao packDao;
     private final ImageDao imageDao;
+    private final ImagePackDao imagePackDao;
     private final GuideCitiesDao cityDao;
     private final ImageService imageService;
     private final GuideCitiesService cityService;
@@ -37,7 +39,8 @@ public class PackService implements IPackService {
 
     @Autowired
     public PackService(DefaultOntimizeDaoHelper daoHelper, PackDao packDao, ImageDao imageDao, GuideCitiesDao cityDao,
-                       ImageService imageService, GuideCitiesService cityService, ImagePackService imagePackService, ClientService clientService) {
+                       ImageService imageService, GuideCitiesService cityService, ImagePackService imagePackService, ClientService clientService,
+                       ImagePackDao imagePackDao) {
         this.daoHelper = daoHelper;
         this.packDao = packDao;
         this.imageDao = imageDao;
@@ -46,6 +49,7 @@ public class PackService implements IPackService {
         this.cityService = cityService;
         this.imagePackService = imagePackService;
         this.clientService = clientService;
+        this.imagePackDao = imagePackDao;
     }
 
     @Override
@@ -71,6 +75,23 @@ public class PackService implements IPackService {
     public EntityResult packProvinceQuery(Map<String, Object> keyMap, List<String> attrList)
             throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.packDao, keyMap, attrList, PackDao.PCK_ACOORDING_PROVINCE_QUERY);
+    }
+
+    @Override
+    public EntityResult packDetailUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
+            throws OntimizeJEERuntimeException {
+        Map<String, Object> attrMapUpdate = new HashMap<>();
+        //Meter la imagen
+        EntityResult imagePackUpdate  = null;
+        EntityResult imageInsert = this.daoHelper.insert(imageDao, attrMap);
+
+//        if(imageInsert.getCode()==EntityResult.OPERATION_SUCCESSFUL){
+            attrMapUpdate.put(imagePackDao.IMG_ID,imageInsert.get("image_id"));
+            keyMap.remove("pck_id");
+            return imagePackUpdate = this.daoHelper.update(imagePackDao,attrMapUpdate,keyMap);
+//        }
+        //Meter la relacion
+
     }
 
     /**
