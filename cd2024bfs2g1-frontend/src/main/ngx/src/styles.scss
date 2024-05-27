@@ -249,20 +249,3 @@ o-app-sidenav.o-app-sidenav .o-app-header .o-user-info .o-user-info-wrapper, o-a
 .md-drppicker td.disabled {
   background-color:  rgb(221, 218, 212) !important;
 }
-/*
-.cdk-overlay-connected-position-bounding-box {
-  .mat-mdc-select-panel-above .mdc-menu-surface.mat-mdc-select-panel{
-      background: gold !important;
-  }
-  .cdk-overlay-pane:not(.mat-mdc-select-panel-above) .mdc-menu-surface.mat-mdc-select-panel {
-      background: gold !important;
-  }
-  
-}
-*/
-
-/* para todos los botones de la pagina (menos los del login)*/
-/*
-.mat-mdc-dialog-actions button:not([disabled]).mat-mdc-button-base, .mat-mdc-dialog-actions button:not([disabled]).mat-mdc-button-base.mat-accent, .o-form .o-form-toolbar button:not([disabled]).o-form-toolbar-button.mat-mdc-button-base, .o-form .o-form-toolbar button:not([disabled]).o-form-toolbar-button.mat-mdc-button-base.mat-accent, .o-grid .o-grid-toolbar button.o-grid-button:not([disabled]).mat-mdc-button-base, .o-grid .o-grid-toolbar button.o-grid-button:not([disabled]).mat-mdc-button-base.mat-accent, .o-list .o-list-toolbar button.o-list-button:not([disabled]).mat-mdc-button-base, .o-list .o-list-toolbar button.o-list-button:not([disabled]).mat-mdc-button-base.mat-accent, .ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base, .ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base.mat-accent {
-  background: gold !important;
-}*/
