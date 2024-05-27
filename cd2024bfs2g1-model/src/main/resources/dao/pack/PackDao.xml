@@ -62,7 +62,28 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="packsAccordingProvince">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        Z.gui_z_name,
+                        COUNT(P.pck_id) AS province_count
+                    FROM
+                        ${mainschema}.pack P
+                        INNER JOIN ${mainschema}.gui_cities C ON P.gui_c_id = C.gui_c_id
+                        INNER JOIN ${mainschema}.gui_zone Z ON C.gui_z_id = Z.gui_z_id
+                        INNER JOIN ${mainschema}.pack_date PD ON P.pck_id = PD.pck_id
+                        INNER JOIN ${mainschema}.pack_state PS ON PD.pcs_id = PS.pcs_id
+                    WHERE
+                        PS.pcs_state IN ('reserved')
+                    GROUP BY
+                        Z.gui_z_name;
+                   #ORDER#
+
+
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>
 
-        <!---->

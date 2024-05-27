@@ -3,7 +3,6 @@ import { BusinessHomeComponent } from '../main/business/business-home/business-h
 
 export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'home', name: 'HOME', icon: 'home', route: '/main/home' },
-  { id: 'businesses', name: 'BUSINESSES', tooltip: 'BUSINESSES', route: '/main/businesses', icon: 'business'},
   { id: 'packmd', name: 'PACKS', tooltip: 'PACKS', icon: 'hiking',
     items: [
       { id: 'packs', name: 'PACKS', tooltip: 'PACKS', route: '/main/packs', icon: 'inventory_2'},
@@ -11,6 +10,8 @@ export const MENU_CONFIG: MenuRootItem[] = [
     ]
     },
   { id: 'routes', name: 'ROUTES', icon: 'route', route: '/main/routes' },
+  { id: 'businesses', name: 'BUSINESSES', tooltip: 'BUSINESSES', route: '/main/businesses', icon: 'business'},
+  { id: 'graphics', name: 'GRAPHICS', tooltip: 'GRAPHICS', route: '/main/graphics', icon: 'bar_chart'},
   {
     id: 'admin', name: 'ADMIN', tooltip: 'ADMIN', icon: 'admin_panel_settings',
     items: [
