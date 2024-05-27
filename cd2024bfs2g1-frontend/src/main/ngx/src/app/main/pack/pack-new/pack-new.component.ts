@@ -2,7 +2,7 @@ import {Component, Inject, Injector, ViewChild} from '@angular/core';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import moment from 'moment';
-import {ODateInputComponent, OntimizeService, OTranslateService} from 'ontimize-web-ngx';
+import {ODateInputComponent, OIntegerInputComponent, OntimizeService, OTranslateService} from 'ontimize-web-ngx';
 import {MainService} from "../../../shared/services/main.service";
 
 @Component({
@@ -13,6 +13,9 @@ import {MainService} from "../../../shared/services/main.service";
 export class PackNewComponent {
   nameValidators: ValidatorFn[] = [];
   descValidators: ValidatorFn[] = [];
+  @ViewChild("days") days: OIntegerInputComponent
+  @ViewChild("beginDate") beginDate: ODateInputComponent
+  @ViewChild("endDate") endDate: ODateInputComponent
   constructor(public injector: Injector, private translate: OTranslateService, private router:Router,
               @Inject(MainService) private mainService: MainService,
               private ontimizeService: OntimizeService) {
@@ -63,8 +66,32 @@ export class PackNewComponent {
       }
     } catch (e){}
   }
-  getDate(): moment.Moment {
-    return moment()
+  getMinDate(){
+    const currentDate = new Date()
+    return new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+  }
+
+  checkDays() {
+    console.log("onchange")
+    if (this.days.getValue() <= 0 || this.days.getValue() === undefined){
+      this.beginDate.setEnabled(false)
+      this.endDate.setValue(null)
+    } else {
+      this.beginDate.setEnabled(true)
+      if (this.beginDate.getValueAsDate()){
+        this.onBeginDateChanged()
+      }
+    }
+  }
+
+  onBeginDateChanged(){
+    if (this.beginDate.getValue()){
+      const date = new Date(this.beginDate.getValueAsDate())
+      console.log(date.getDate())
+      this.endDate.setValue(new Date(date.getFullYear(), date.getMonth(), date.getDate() + Number.parseInt(this.days.getValue())));
+    } else {
+      this.endDate.setValue(null)
+    }
   }
 
 }
