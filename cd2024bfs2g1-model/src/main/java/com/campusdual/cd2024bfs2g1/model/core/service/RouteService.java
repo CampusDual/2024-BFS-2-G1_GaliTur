@@ -102,3 +102,4 @@ public class RouteService  implements IRouteService {
         return this.daoHelper.insert(imageDao, attrMap);
     }
 }
+
