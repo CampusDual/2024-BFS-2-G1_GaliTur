@@ -201,7 +201,7 @@
   "pck_name": "Nombre",
   "pck_description": "Descripción",
   "pck_date_end": "Fecha de Fin",
-  "pck_price": "Precio",
+  "pck_price": "Precio total",
   "pck_participants": "Participantes",
   "pcs_id": "reserva",
   "img_code": "Código de Imagen",

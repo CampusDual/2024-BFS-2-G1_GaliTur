@@ -1,7 +1,6 @@
 package com.campusdual.cd2024bfs2g1.model.core.service.pack;
 
 import com.campusdual.cd2024bfs2g1.api.core.service.pack.IPackService;
-import com.campusdual.cd2024bfs2g1.api.core.util.Utils;
 import com.campusdual.cd2024bfs2g1.model.core.dao.ClientDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.ImageDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.business.GuideCitiesDao;
@@ -56,6 +55,15 @@ public class PackService implements IPackService {
     }
 
     @Override
+    public EntityResult packDetailQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        Object key = keyMap.remove("pck_id");
+        keyMap.put("p.pck_id", key);
+        attrList.remove("pck_id");
+        attrList.add("p.pck_id");
+        return this.daoHelper.query(this.packDao, keyMap, attrList, "packsDetails");
+    }
+  
+    @Override
     public EntityResult packProvinceQuery(Map<String, Object> keyMap, List<String> attrList)
             throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.packDao, keyMap, attrList, PackDao.PCK_ACOORDING_PROVINCE_QUERY);
@@ -85,17 +93,11 @@ public class PackService implements IPackService {
     public EntityResult packInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException, ParseException {
         Object imgCode = attrMap.get(ImageDao.ATTR_IMAGE_CODE);
         attrMap.remove(ImageDao.ATTR_IMAGE_CODE);
-
-        Map<String, Object> dates = (Map<String, Object>) attrMap.get("dates");
-        attrMap.remove("dates");
-        attrMap.put(PackDao.PCK_DATE_BEGIN, Utils.iso8601Format.parse((String) dates.get("startDate")));
-        attrMap.put(PackDao.PCK_DATE_END, Utils.iso8601Format.parse((String) dates.get("endDate")));
-
         EntityResult erInsertPack = this.daoHelper.insert(this.packDao, attrMap);
         if (erInsertPack.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertPack;
 
         EntityResult erInsertImage = null;
-        if (imgCode != null) { // TODO: No deberia ser necesario comprobarlo, el valor por defecto es 1.
+        if (imgCode != null) {
             erInsertImage = imageService.imageInsert(Map.of(ImageDao.ATTR_IMAGE_CODE, imgCode));
             if (erInsertImage.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertImage;
         }
@@ -113,5 +115,10 @@ public class PackService implements IPackService {
     @Override
     public EntityResult packDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.delete(this.packDao, keyMap);
+    }
+
+    @Override
+    public EntityResult newestQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.packDao, keyMap, attrList, PackDao.PCK_NEWEST_QUERY);
     }
 }
