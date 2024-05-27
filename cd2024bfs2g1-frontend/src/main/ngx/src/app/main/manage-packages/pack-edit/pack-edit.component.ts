@@ -1,6 +1,6 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, Injector } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OntimizeService } from 'ontimize-web-ngx';
+import { NavigationService, OntimizeService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-pack-edit',
@@ -11,7 +11,8 @@ export class PackEditComponent implements AfterViewInit{
 imgId: any;
 
 
-  constructor(private router: Router,private activeRoute: ActivatedRoute){
+  constructor(private router: Router,private activeRoute: ActivatedRoute,protected injector: Injector){
+    this.injector.get(NavigationService).initialize();
   }
   ngAfterViewInit(): void {
     this.pck_id = this.getPackId()

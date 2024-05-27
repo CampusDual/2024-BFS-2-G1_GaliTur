@@ -6,6 +6,7 @@ import com.campusdual.cd2024bfs2g1.model.core.dao.ImageDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.business.GuideCitiesDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.pack.ImagePackDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDao;
+import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDateDao;
 import com.campusdual.cd2024bfs2g1.model.core.service.ClientService;
 import com.campusdual.cd2024bfs2g1.model.core.service.ImageService;
 import com.campusdual.cd2024bfs2g1.model.core.service.business.GuideCitiesService;
@@ -30,6 +31,7 @@ import java.util.Map;
 public class PackService implements IPackService {
     private final DefaultOntimizeDaoHelper daoHelper;
     private final PackDao packDao;
+    private final PackDateDao packDateDao;
     private final ImageDao imageDao;
     private final ImagePackDao imagePackDao;
     private final GuideCitiesDao cityDao;
@@ -41,7 +43,7 @@ public class PackService implements IPackService {
     @Autowired
     public PackService(DefaultOntimizeDaoHelper daoHelper, PackDao packDao, ImageDao imageDao, GuideCitiesDao cityDao,
                        ImageService imageService, GuideCitiesService cityService, ImagePackService imagePackService, ClientService clientService,
-                       ImagePackDao imagePackDao) {
+                       ImagePackDao imagePackDao,PackDateDao packDateDao) {
         this.daoHelper = daoHelper;
         this.packDao = packDao;
         this.imageDao = imageDao;
@@ -51,6 +53,7 @@ public class PackService implements IPackService {
         this.imagePackService = imagePackService;
         this.clientService = clientService;
         this.imagePackDao = imagePackDao;
+        this.packDateDao = packDateDao;
     }
 
     @Override
@@ -64,7 +67,7 @@ public class PackService implements IPackService {
         return this.daoHelper.paginationQuery(this.packDao, keysValues, attributes, recordNumber, startIndex, orderBy, this.packDao.PCK_IMG_PACK_DETAIL);
     }
     @Override
-    public EntityResult packDetailQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+    public EntityResult packImageQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
         if(keyMap.size()>0){
             Object key = keyMap.remove("pck_id");
             keyMap.put("p.pck_id", key);
@@ -72,8 +75,8 @@ public class PackService implements IPackService {
         attrList.remove("pck_id");
         attrList.add("p.pck_id");
 
-        EntityResult ENTITYaUX = this.daoHelper.query(this.packDao, keyMap, attrList, "packsDetails");
-        return ENTITYaUX;
+        EntityResult EntityAux = this.daoHelper.query(this.packDao, keyMap, attrList, "packsDetails");
+        return EntityAux;
     }
   
     @Override
@@ -83,7 +86,7 @@ public class PackService implements IPackService {
     }
 
     @Override
-    public EntityResult packDetailUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
+    public EntityResult packImageUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
             throws OntimizeJEERuntimeException {
         Map<String, Object> attrMapUpdate = new HashMap<>();
         //Meter la imagen
@@ -134,12 +137,22 @@ public class PackService implements IPackService {
 
         Object packId = erInsertPack.get(PackDao.PCK_ID);
         Object imgId = erInsertImage == null ? ImageDao.DEFAULT_IMG_ID : erInsertImage.get(ImageDao.ATTR_IMAGE_ID);
-        return this.imagePackService.imagePackInsert(Map.of(ImagePackDao.PCK_ID, packId, ImagePackDao.IMG_ID, imgId));}
+        return this.imagePackService.imagePackInsert(Map.of(ImagePackDao.PCK_ID, packId, ImagePackDao.IMG_ID, imgId));
+    }
 
     @Override
     public EntityResult packUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
             throws OntimizeJEERuntimeException {
+        //Guardamos la base siempre
+        if(attrMap.containsKey("pck_date_begin") && attrMap.containsKey("pck_date_end")) {
+            //Creamos el pack completo porque ya tiene fechas
+            this.daoHelper.insert(packDateDao, attrMap);
+            //Le quitamos las fechas porque no nos hacen falta
+            attrMap.remove("pck_date_begin");
+            attrMap.remove("pck_date_end");
+        }
         return this.daoHelper.update(this.packDao, attrMap, keyMap);
+
     }
 
     @Override
