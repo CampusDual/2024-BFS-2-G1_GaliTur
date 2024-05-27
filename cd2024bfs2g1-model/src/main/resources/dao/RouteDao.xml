@@ -33,12 +33,7 @@
             <Sentence>
                 <![CDATA[
                   SELECT
-                        R.route_id,
-                        R.name,
-                        R.description,
-                        R.estimated_duration,
-                        R.difficulty,
-                        SC.img_code
+                        #COLUMNS#
                     FROM
                         route R
                     left JOIN (
