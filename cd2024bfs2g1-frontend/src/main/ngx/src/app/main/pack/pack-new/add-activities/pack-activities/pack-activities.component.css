@@ -124,10 +124,6 @@
     padding-right: 30px;
 }
 
-#tabla{
-    flex-direction: column;
-    height: 80vw;
-}
 
 .type-icon {
     margin-bottom:5px;
@@ -153,6 +149,7 @@ o-row{
     }
 }
 
+
 /* Style the header */
 .header {
     padding: 10px 16px;
@@ -176,6 +173,25 @@ o-row{
   .sticky + .content {
     padding-top: 102px;
   }
+
+#addBusiness{
+    width: 20%;
+    padding-left: 25%;
+}
+
+
+#selectDay{
+    width: 20%;
+    padding-left: 10%;
+}
+
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+    display: block;
+    width: 100%;
+    height: 50vh !important;
+}
+
+  
 
 
 

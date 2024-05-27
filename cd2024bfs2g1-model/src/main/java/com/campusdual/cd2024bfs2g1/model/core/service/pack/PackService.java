@@ -19,7 +19,6 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +53,31 @@ public class PackService implements IPackService {
     public EntityResult packQuery(Map<String, Object> keyMap, List<String> attrList)
             throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.packDao, keyMap, attrList);
+    }
+
+    @Override
+    public EntityResult packDaysQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException {
+
+
+        EntityResult er =  this.daoHelper.query(this.packDao, keyMap, attrList);
+
+        //int days = (int) er.get("pck_days");
+        int days = 5;
+        List <Integer> dias = new ArrayList<Integer>();
+
+        for(int i = 1; i<=days; i++){
+            dias.add(i);
+        }
+        List <List<Integer>> lista_de_listas = new ArrayList<>();
+        lista_de_listas.add(dias);
+
+        er.put("pck_days",lista_de_listas);
+
+        return er;
+
+
+
     }
 
     @Override
