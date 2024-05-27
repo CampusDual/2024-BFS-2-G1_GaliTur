@@ -1,8 +1,8 @@
 <o-grid #packGrid attr="packGrid" title="PACKS" service="packs" entity="allPacks" keys="P.pck_id"
     columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;gui_c_name;img_code"
-    query-rows="8" page-size-options="8;16;24" orderable="true"
+    page-size-options="12;16;28" orderable="true"
     sortable-columns="pck_name;pcs_id:desc;gui_c_name;gui_c_name:desc" insert-button="true" refresh-button="false"
-    pagination-controls="true" gutter-size="4px" fixed-header="yes" grid-item-height="320px" detail-mode="none"
+    pagination-controls="true" gutter-size="4px" fixed-header="yes" grid-item-height="255px" detail-mode="none"
     insert-button-floatable="no">
     <o-grid-item *ngFor="let data of packGrid.dataArray">
         <div (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-between stretch" [ngClass]="{ 'not-available': data.pcs_id == 2 }"
@@ -18,7 +18,8 @@
                 <div class="cardInfo">
                     <ul style="list-style-type: none;" class="list">
                         <li *ngIf="!data.pck_participants"><mat-icon class="icon">groups</mat-icon>{{'-'}}</li>
-                        <li *ngIf="data.pck_participants"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}} personas</li>
+                        <li *ngIf="data.pck_participants && data.pck_participants == 1"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}} persona</li>
+                        <li *ngIf="data.pck_participants && data.pck_participants > 1"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}} personas</li>
                         <li><mat-icon class="icon">pin_drop</mat-icon>{{truncateInfo(data.gui_c_name)}}</li>
                         <li><mat-icon class="icon">payments</mat-icon>{{data.pck_price}} €</li>
                     </ul>

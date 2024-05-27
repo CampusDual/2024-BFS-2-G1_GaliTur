@@ -7,6 +7,7 @@ import com.campusdual.cd2024bfs2g1.model.core.dao.ImageDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.business.GuideCitiesDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.pack.ImagePackDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDao;
+import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDateDao;
 import com.campusdual.cd2024bfs2g1.model.core.service.ClientService;
 import com.campusdual.cd2024bfs2g1.model.core.service.ImageService;
 import com.campusdual.cd2024bfs2g1.model.core.service.business.GuideCitiesService;
@@ -73,6 +74,10 @@ public class PackService implements IPackService {
     public EntityResult allPacksQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.packDao, keysValues, attributes, this.packDao.PCK_ALL_QUERY);
     }
+    @Override
+    public EntityResult packDetailQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.packDao, keysValues, attributes, this.packDao.PCK_DETAIL);
+    }
 
     @Override
     public AdvancedEntityResult allPacksPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
@@ -89,8 +94,8 @@ public class PackService implements IPackService {
 
         Map<String, Object> dates = (Map<String, Object>) attrMap.get("dates");
         attrMap.remove("dates");
-        attrMap.put(PackDao.PCK_DATE_BEGIN, Utils.iso8601Format.parse((String) dates.get("startDate")));
-        attrMap.put(PackDao.PCK_DATE_END, Utils.iso8601Format.parse((String) dates.get("endDate")));
+        attrMap.put(PackDateDao.PD_DATE_BEGIN, Utils.iso8601Format.parse((String) dates.get("startDate")));
+        attrMap.put(PackDateDao.PD_DATE_END, Utils.iso8601Format.parse((String) dates.get("endDate")));
 
         EntityResult erInsertPack = this.daoHelper.insert(this.packDao, attrMap);
         if (erInsertPack.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertPack;

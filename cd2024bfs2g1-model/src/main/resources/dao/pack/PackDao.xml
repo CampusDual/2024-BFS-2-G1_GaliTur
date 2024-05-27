@@ -55,8 +55,29 @@
                         ON IP.img_id=I.image_id
                         INNER JOIN ${mainschema}.gui_cities GC
                         ON P.gui_c_id=GC.gui_c_id
-                        INNER JOIN ${mainschema}.pack_booking PB
-                        ON P.pck_id=PB.pck_id
+                        INNER JOIN ${mainschema}.pack_date PD
+                        ON P.pck_id=PD.pck_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+
+        <Query id="packDetail">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.pack P
+                        INNER JOIN ${mainschema}.image_pack IP
+                        ON P.pck_id=IP.pck_id
+                        INNER JOIN ${mainschema}.image I
+                        ON IP.img_id=I.image_id
+                        INNER JOIN ${mainschema}.gui_cities GC
+                        ON P.gui_c_id=GC.gui_c_id
+                        INNER JOIN ${mainschema}.pack_date PD
+                        ON P.pck_id=PD.pck_id
                     #WHERE#
                     #ORDER#
                 ]]>
