@@ -71,8 +71,10 @@
                         ON IP.img_id=I.image_id
                         INNER JOIN ${mainschema}.gui_cities GC
                         ON P.gui_c_id=GC.gui_c_id
+                        INNER JOIN ${mainschema}.pack_date PD
+                        ON P.pck_id=PD.pck_id
                         INNER JOIN ${mainschema}.pack_booking PB
-                        ON P.pck_id=PB.pck_id
+                        ON PD.pd_id=PB.pd_id
                     #WHERE#
                     #ORDER#
                 ]]>
@@ -88,6 +90,7 @@
                     ORDER BY P.pck_id DESC
                     LIMIT 1
                 ]]>
+            </Sentence>
         </Query>
         <Query id="packsAccordingProvince">
             <Sentence>
@@ -107,7 +110,7 @@
                         Z.gui_z_name;
                    #ORDER#
                 ]]>
-              </Query>
+
             </Sentence>
         </Query>
     </Queries>
