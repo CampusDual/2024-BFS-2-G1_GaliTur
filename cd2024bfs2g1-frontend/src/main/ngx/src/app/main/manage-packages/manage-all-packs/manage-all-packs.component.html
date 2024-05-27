@@ -1,12 +1,12 @@
 
-      
+
 
 <div class="div-fullpage">
-    <o-list class="contenedor" #list attr="packsTable" title="packsTable" columns="p.pck_id;p.pck_name;p.pck_description;i.img_code" 
+    <o-list class="contenedor" #list attr="packsTable" title="packsTable" columns="p.pck_id;p.pck_name;p.pck_description;i.img_code"
     service="packs" entity="packDetail" keys="pck_id" refresh-button="true" insert-button="false" quick-filter="true"
     quick-filter="no" row-height="medium" detail-mode="none" quick-filter-columns="pck_name;pck_description" pagination-controls="yes"
     query-rows="10">
-    
+
     <div *ngFor="let row of list.dataArray">
                 <o-row>
                   <o-column>
@@ -22,9 +22,9 @@
                   </o-column>
                 </o-row>
     </div>
-      
+
     </o-list>
-    
+
 </div>
 
  <!-- <div class="div-fullpage">
