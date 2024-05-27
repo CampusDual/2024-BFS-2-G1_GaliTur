@@ -20,5 +20,5 @@ public class PackDao extends OntimizeJdbcDaoSupport {
     public static String PCK_MULTI_QUERY = "multi";
     public static String PCK_ALL_QUERY = "allPacks";
     public static String PCK_NEWEST_QUERY = "newest";
-
+    public static String PCK_ACOORDING_PROVINCE_QUERY = "packsAccordingProvince";
 }

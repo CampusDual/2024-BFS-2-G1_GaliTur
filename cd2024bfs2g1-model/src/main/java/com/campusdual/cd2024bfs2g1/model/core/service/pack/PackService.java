@@ -62,6 +62,12 @@ public class PackService implements IPackService {
         attrList.add("p.pck_id");
         return this.daoHelper.query(this.packDao, keyMap, attrList, "packsDetails");
     }
+  
+    @Override
+    public EntityResult packProvinceQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.packDao, keyMap, attrList, PackDao.PCK_ACOORDING_PROVINCE_QUERY);
+    }
 
     /**
      * Lists set of packs purchased by a client (logged user)
