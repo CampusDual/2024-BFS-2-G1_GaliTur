@@ -48,12 +48,18 @@
                 "input": "node_modules/leaflet/dist/images",
                 "output": "/assets"
               },
+              {
+                "glob": "**/*",
+                "input": "node_modules/ontimize-web-ngx-charts/assets",
+                "output": "/assets"
+              },
               "src/manifest.webmanifest"
             ],
             "styles": [
               "node_modules/ontimize-web-ngx/ontimize.scss",
               "node_modules/ontimize-web-ngx-map/styles.scss",
               "src/assets/css/app.scss",
+              "node_modules/ontimize-web-ngx-charts/styles.scss",
               "src/styles.scss"
             ],
             "scripts": [],

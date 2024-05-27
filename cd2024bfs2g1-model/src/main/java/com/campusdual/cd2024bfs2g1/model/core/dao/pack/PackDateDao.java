@@ -14,4 +14,6 @@ public class PackDateDao extends OntimizeJdbcDaoSupport {
     public static String PD_DATE_END = "pd_date_end";
     public static String PCS_ID = "pcs_id";
     public static String PCK_ID = "pck_id";
+
+    public static String PD_COMPLETE_PACK_QUERY = "packDateComplete";
 }

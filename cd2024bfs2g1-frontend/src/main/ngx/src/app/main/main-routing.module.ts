@@ -18,7 +18,7 @@ export const routes: Routes = [
       { path: 'routes', canActivate: [AuthGuardService], loadChildren: () => import('./routes/routes.module').then(m => m.RoutesModule) },
       { path: 'packs', loadChildren: () => import('./pack/pack.module').then(m => m.PackModule) },
       { path: 'pack-client', canActivate: [AuthGuardService], loadChildren: () => import('./my-packs/my-packs.module').then(m => m.MyPacksModule) },
-      { path: 'pack-manage', canActivate: [AuthGuardService], loadChildren: () => import('./manage-packages/manage-packages.module').then(m => m.ManagePackagesModule) },
+      { path: 'graphics', canActivate: [AuthGuardService], loadChildren: () => import('./graphics/graphics.module').then(m => m.GraphicsModule) },
     ]
   }
 ];
