@@ -57,6 +57,21 @@ public class PackService implements IPackService {
         return this.daoHelper.query(this.packDao, keyMap, attrList);
     }
 
+    @Override
+    public EntityResult packImageQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        Object key = keyMap.remove("pck_id");
+        keyMap.put("p.pck_id", key);
+        attrList.remove("pck_id");
+        attrList.add("p.pck_id");
+        return this.daoHelper.query(this.packDao, keyMap, attrList, "packsDetails");
+    }
+
+    @Override
+    public EntityResult packProvinceQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.packDao, keyMap, attrList, PackDao.PCK_ACOORDING_PROVINCE_QUERY);
+    }
+
     /**
      * Lists set of packs purchased by a client (logged user)
      * @param keysValues filter (client id)
@@ -123,5 +138,10 @@ public class PackService implements IPackService {
     @Override
     public EntityResult packDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.delete(this.packDao, keyMap);
+    }
+
+    @Override
+    public EntityResult newestQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.packDao, keyMap, attrList, PackDao.PCK_NEWEST_QUERY);
     }
 }

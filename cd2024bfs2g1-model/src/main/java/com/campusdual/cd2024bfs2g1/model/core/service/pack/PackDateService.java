@@ -52,4 +52,14 @@ public class PackDateService implements IPackDateService {
     public EntityResult packDateDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.delete(this.packDateDao, keyMap);
     }
+
+    @Override
+    public EntityResult packDateCompleteQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        Object pckId = keyMap.remove(PackDao.PCK_ID);
+        keyMap.put("P." + PackDateDao.PCK_ID, pckId);
+        attrList.remove(PackDao.PCK_ID);
+        attrList.add("P." + PackDateDao.PCK_ID);
+        return this.daoHelper.query(this.packDateDao, keyMap, attrList, PackDateDao.PD_COMPLETE_PACK_QUERY);
+    }
 }
+

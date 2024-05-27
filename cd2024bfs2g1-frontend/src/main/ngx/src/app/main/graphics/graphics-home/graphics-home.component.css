@@ -1,0 +1,46 @@
+
+/*Estilo de la carta*/
+.card {
+    margin: 20px 40px 0px 40px;
+    height: 700px;
+}
+
+/*Define el estilo del titulo*/
+.title {
+    margin: 40px 40px 0px 40px;
+    font-style: oblique;
+    font-size: 2em;
+    color: #52733B;
+    text-align: center;
+    position: relative;
+    animation: colorChange 4s infinite;
+    transition: text-shadow 0.5s ease-in-out;
+}
+
+.title:hover {
+    text-shadow: 0 0 10px #c6ffc1, 0 0 20px #c6ffc1, 0 0 30px #c6ffc1, 0 0 40px #c6ffc1, 0 0 50px #c6ffc1, 0 0 60px #c6ffc1, 0 0 70px #ffffff;
+}
+
+/*Fila donde está la gráfica*/
+.chart-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+}
+
+/*Div donde está la gráfica*/
+.chart-div{
+    color: #445e32;
+    align-items: center;
+}
+
+
+.custom-chart  {
+  color: #3CB371;
+}
+
+
+
+
