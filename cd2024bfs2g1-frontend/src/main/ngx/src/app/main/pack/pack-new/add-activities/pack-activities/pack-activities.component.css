@@ -12,7 +12,6 @@
 .mainCard {
     display: flex;
     justify-content: center;
-    height: auto;
     width: 1100px;
 }
 
@@ -76,7 +75,6 @@
     width: 100%;
     height: auto;
     max-width: 100%; 
-    max-height: 100%;
     border-radius: 10px;
 }
 
@@ -102,7 +100,6 @@
     justify-content: space-around;
     width: 90%;
     row-gap: 10px;
-    max-height: 135px;
     overflow-y: auto;
     overflow-x: hidden;
 }
