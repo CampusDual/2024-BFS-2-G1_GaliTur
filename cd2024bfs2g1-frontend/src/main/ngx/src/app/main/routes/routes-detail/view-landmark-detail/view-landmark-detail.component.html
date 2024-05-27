@@ -1,6 +1,6 @@
 <div class="dialog-content-margin">
     <div>
-        <button class="backButton" (click)="backToDetail(data)"><mat-icon class="arrow_back"><strong>arrow_back</strong></mat-icon></button>
+        <o-button class="backButton" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary" (click)="backToDetail(data)"></o-button>
         <p class="titulo"><strong>{{ "landmark" | oTranslate}}</strong> </p>
     </div>
     <br>
@@ -21,8 +21,10 @@
                 </div>
             </div>
             <div fxFlex="5%"></div>
-            <div fxFlex="20%" class="landmark-list">
-                <p><button *ngFor="let landmark of data.landmark" (click)="zoomPointlandmark(landmark)" class="landmarkName">{{ landmark.name }}</button><p>
+            <div fxFlex="20%">
+                <o-row class="container" attr="container" aria-orientation="vertical">
+                    <p><button *ngFor="let landmark of data.landmark" (click)="zoomPointlandmark(landmark)" class="landmarkName">{{ landmark.name }}</button><p>
+                </o-row>
             </div>
         </div>
     </div>
