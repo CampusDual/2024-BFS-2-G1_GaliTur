@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/imagePacks")
-public class ImagePackController extends ORestController<IImagePackService> {
+public class ImagePackController extends ORestController<IImagePackService>  {
 
     @Autowired
     private IImagePackService imagePackService;
