@@ -8,6 +8,7 @@ import { OntimizeService } from 'ontimize-web-ngx';
   styleUrls: ['./pack-edit.component.css']
 })
 export class PackEditComponent implements AfterViewInit{
+imgId: any;
 
   constructor(private router: Router,private activeRoute: ActivatedRoute){
   }

@@ -1,12 +1,11 @@
 .image{
-    border: 3px solid;
     width: 100%;
     height: 100%;
     background-color:rgb(226, 225, 223) ;
     border-radius: 10px;
 }
 .principal{
-    padding: 11% 12% 0px 12%;
+    padding: 5% 12% 0px 12%;
     width: 100%;
     height: 100%;
 }
@@ -16,7 +15,6 @@
     }
 }
 .datos{
-    border: 3px solid;
     width: 100%;
     padding: 20px 10px 0px 10px;
     background-color: rgb(226, 225, 223);
@@ -24,15 +22,17 @@
 }
 
 .fondo_titulo{
-    border: 3px solid;
     background-color: rgb(255, 255, 254);
     text-align: center;
     border-radius: 10px;
 }
 
 .fondo{
-    border: 3px solid;
     background-image: url('../../../../assets/images/fondoPackEditar.jpg');
     background-size: cover;
     height: 100%;
+}
+.imgHeightWidth{
+    height: 350px;
+    width: 300px;
 }

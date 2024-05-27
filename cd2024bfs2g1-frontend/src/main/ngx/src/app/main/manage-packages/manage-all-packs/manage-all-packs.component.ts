@@ -65,4 +65,3 @@ onClicEdit(pck_id: any) {
 }
 
 }
-

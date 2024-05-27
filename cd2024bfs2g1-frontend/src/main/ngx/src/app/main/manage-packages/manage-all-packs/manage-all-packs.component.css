@@ -1,19 +1,37 @@
-*{
-    margin: 0%;
-    padding: 0%;
-}
-
-.contenedor,.title{
-    margin: auto;
-}
 .title{
     padding: 10px;
 }
 .div-fullpage {
-    position: relative;
-    margin: auto;
-    top: 1%;
-    left: 0;
-    height: 80%;
-
+    background-image: url('../../../../assets/images/fondoPackEditar.jpg');
+    background-size:cover;
+    height: 90%;
+  }
+  
+  .principal-centro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .secundaria-centro {
+    display: flex;
+    padding: 10px 10px 10px 10px;
+    background-color: rgb(231, 231, 231);
+    border-radius: 10px 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .contenedor-centro {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(231, 231, 231);
+    align-items: center;
+    padding: 10px;
+  }
+  .datos{
+    height: auto;
+    width: 1000px;
   }
