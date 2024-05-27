@@ -143,14 +143,27 @@
                         refresh-button="false" quick-filter="false" oHidden />
 
                     <!-- Muestro los idiomas, las zonas y las ciudades disponibles en la agencia -->
-                    <o-row class="o-rows" class="right" title="{{'GUIDEINFO' | oTranslate }}" icon="map" layout-align="start stretch"
-                        elevation="1" appearance="outline" opacity="0">
+                    <o-row class="o-rows" class="right" title="{{'GUIDEINFO' | oTranslate }}" icon="map" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
                         <ul class="list-with-spaces">
-                            <li *ngFor="let agencyGuide of agencyGuideForm.dataArray"><strong><i>{{'LANGUAGE' | oTranslate }}: </i></strong>{{agencyGuide.gui_language | oTranslate }}</li>
-                            <li *ngFor="let agencyGuide of agencyGuideForm.dataArray"><strong><i>{{'ZONE' | oTranslate }}: </i></strong>{{agencyGuide.gui_zone | oTranslate }}</li>
-                            <li *ngFor="let agencyGuide of agencyGuideForm.dataArray"><strong><i>{{'CITY' | oTranslate }}: </i></strong>{{agencyGuide.gui_city | oTranslate }}</li>
+                            <li *ngFor="let agencyGuide of agencyGuideForm.dataArray">
+                                <strong><i>{{'LANGUAGE' | oTranslate }}: </i></strong>
+                                <ng-container *ngFor="let languageKey of agencyGuide.gui_language.split(',')">
+                                    {{ languageKey.trim() | oTranslate }}<span *ngIf="!isLastLanguage(languageKey, agencyGuide.gui_language)">, </span>
+                                </ng-container>
+                            </li>
+                            
+                            <li *ngFor="let agencyGuide of agencyGuideForm.dataArray">
+                                <strong><i>{{'ZONE' | oTranslate }}: </i></strong>{{agencyGuide.gui_zone | oTranslate }}
+                            </li>
+                            <li *ngFor="let agencyGuide of agencyGuideForm.dataArray">
+                                <strong><i>{{'CITY' | oTranslate }}: </i></strong>
+                                <ng-container *ngFor="let cityKey of agencyGuide.gui_city.split(',')">
+                                    {{ cityKey.trim() | oTranslate }}<span *ngIf="!isLastCity(cityKey, agencyGuide.gui_city)">, </span>
+                                </ng-container>
+                            </li>
                         </ul>
                     </o-row>
+                    
                 </div>
             </div>
         </o-form>
