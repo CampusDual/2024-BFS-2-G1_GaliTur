@@ -14,17 +14,17 @@
                         <mat-card class="prueba">
                             <mat-card-header>
                                 <div fxLayout="column" fxLayoutGap="8px" class="card">
-                                    <div fxLayout="row" fxLayoutGap="8px">
-                                        <div fxLayout="column" fxLayoutGap="15px" class="card_datos">
+                                    <div fxLayout="row" fxLayoutGap="60px">
+                                        <div fxLayout="column" fxLayoutGap="6px" class="card_datos">
                                             <o-row class="o-rows" class="nombre_pack" attr="container" icon="hiking" mat
-                                            title="{{'PACK_NAME' | oTranslate }}" layout-align="start stretch" elevation="1"
-                                            aria-orientation="vertical" appearance="outline">
+                                            title="{{'PACK_NAME' | oTranslate }}" layout-align="start stretch"
+                                            aria-orientation="vertical" appearance="outline" style="border-radius: 10px; padding: 3px;">
                                             <mat-card-title class="titulo">{{ row.pck_name }}</mat-card-title>
                                             </o-row>
                                             <o-row class="o-rows" class="description" attr="container" icon="description" mat
-                                            title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" elevation="1"
-                                            aria-orientation="vertical" appearance="outline">
-                                            <mat-card-subtitle>{{row.pck_description}}</mat-card-subtitle>
+                                            title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" 
+                                            aria-orientation="vertical" appearance="outline" style="border-radius: 10px; padding: 3px;">
+                                            <mat-card-subtitle class="titulo">{{row.pck_description}}</mat-card-subtitle>
                                             </o-row>
                                             <div fxlayout="row" fxLayoutGap="16px" class="card_image">
                                                 <button (click)="onClicEdit(row.pck_id)" class="button">{{'EDIT' | oTranslate}}</button>

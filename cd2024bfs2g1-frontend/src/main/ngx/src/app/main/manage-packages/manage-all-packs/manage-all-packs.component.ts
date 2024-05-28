@@ -14,8 +14,7 @@ export class ManageAllPacksComponent{
     protected sanitizer: DomSanitizer,
     private ontimizePackService: OntimizeService,
     private http: HttpClient,
-    protected injector: Injector
-    
+    protected injector: Injector,
   ){
     this.configurePackImgService()
     this.injector.get(NavigationService).initialize();
