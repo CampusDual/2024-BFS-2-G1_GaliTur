@@ -4,10 +4,10 @@
   </div>
   <div class="div-table">
 
-    <o-table #table service="packs" entity="packBusiness" keys="bsn_pack_id"
+    <o-table #table  keys="bsn_pack_id"
       columns="bsn_name;bsn_type;bsn_address;assigned_date" title="BUSINESSES"
       visible-columns="bsn_name;bsn_type;bsn_address" insert-button="no" delete-button="no" refresh-button="yes"
-      pagination-controls="yes" detail-mode="none" export-button="no" query-rows="20" show-charts-on-demand-option="no"
+      pagination-controls="yes" detail-mode="none" export-button="no" query-rows="50" show-charts-on-demand-option="no"
       auto-adjust="no" fixed-header="yes" sort-columns="assigned_date" quick-filter-function="basicExpr">
       <o-table-columns-grouping columns="assigned_date" />
     </o-table>

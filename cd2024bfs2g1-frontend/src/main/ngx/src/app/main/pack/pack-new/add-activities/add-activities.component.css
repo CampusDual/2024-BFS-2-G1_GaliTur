@@ -9,9 +9,13 @@
     margin-top: 1%;
     margin-bottom: 1.5%; /* Espacio opcional entre el botón y la tabla */
 }
-o-button{
+
+:host ::ng-deep o-button{
     width: 15%;
-    height: 20%;
+    height: 2%;
+     button.mat-mdc-button-base.mat-mdc-outlined-button{
+        height: 50px;
+    }
 }
 
 .div-table {
@@ -20,7 +24,11 @@ o-button{
     height: 90%;
     
 }
-#addBusiness {
-    position: flex;
-    width: 100px;
+
+
+::ng-deep .o-table .o-table-container .mat-mdc-table .mat-mdc-row .mat-mdc-cell.grouping-row .grouping-title-wrapper{
+
+    color: black;
+    font-size: 15px;
+    padding-top: 0.5%;
 }
