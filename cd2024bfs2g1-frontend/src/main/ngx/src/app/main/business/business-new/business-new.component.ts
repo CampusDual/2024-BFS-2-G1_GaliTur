@@ -7,7 +7,7 @@ import {
   Validators
 } from "@angular/forms";
 import { Router } from "@angular/router";
-import { OCheckboxComponent, OCurrencyInputComponent, OTranslateService } from "ontimize-web-ngx";
+import { OCheckboxComponent, OCurrencyInputComponent, OPermissions, OTranslateService, Util } from "ontimize-web-ngx";
 
 @Component({
   selector: "app-business-new",
@@ -27,6 +27,7 @@ export class BusinessNewComponent {
       value: "Agency guide"
     }
   ]
+  form: any;
 
   insertBusiness($event:Event){
     this.router.navigate(['main/businesses/'])

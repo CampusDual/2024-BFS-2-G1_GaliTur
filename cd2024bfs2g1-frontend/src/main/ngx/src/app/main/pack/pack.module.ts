@@ -12,7 +12,7 @@ import { PackNewComponent } from './pack-new/pack-new.component';
   declarations: [
     PackHomeComponent,
     PackDetailComponent,
-    PackNewComponent,
+    PackNewComponent
   ],
   imports: [
     CommonModule,

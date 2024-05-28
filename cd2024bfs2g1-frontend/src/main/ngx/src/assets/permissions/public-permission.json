@@ -16,6 +16,31 @@
         "attr": "packs",
         "visible": false,
         "enabled": false
+      },
+      {
+        "attr": "businesses",
+        "visible": false,
+        "enabled": false
+      },
+      {
+        "attr": "routes",
+        "visible": false,
+        "enabled": false
+      },
+      {
+        "attr": "routesnew",
+        "visible": false,
+        "enabled": false
+      },
+      {
+        "attr": "packsnew",
+        "visible": false,
+        "enabled": false
+      },
+      {
+        "attr": "businessesnew",
+        "visible": false,
+        "enabled": false
       }
       ]
     }
