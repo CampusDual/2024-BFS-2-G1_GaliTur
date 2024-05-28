@@ -122,15 +122,14 @@ public class PackService implements IPackService {
 
         EntityResult erInsertPack = this.daoHelper.insert(this.packDao, attrMap);
         if (erInsertPack.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertPack;
-      
+
         EntityResult erInsertImage = null;
         if (imgCode != null) { // TODO: No deberia ser necesario comprobarlo, el valor por defecto es 1.
             erInsertImage = imageService.imageInsert(Map.of(ImageDao.ATTR_IMAGE_CODE, imgCode));
             if (erInsertImage.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertImage;
         }
 
-        EntityResult erInsertPack = this.daoHelper.insert(this.packDao, attrMap);
-        if (erInsertPack.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertPack;
+
 
         Date beginDate = (Date) attrMap.remove(PackDateDao.PD_DATE_BEGIN);
         Date endDate = (Date) attrMap.remove(PackDateDao.PD_DATE_END);
