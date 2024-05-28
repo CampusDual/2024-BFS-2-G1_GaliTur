@@ -1,4 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Inject, ViewChild } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ODateInputComponent, OIntegerInputComponent } from 'ontimize-web-ngx';
 
 @Component({
@@ -10,7 +11,9 @@ export class PackScheduleComponent {
   @ViewChild("days") days: OIntegerInputComponent
   @ViewChild("beginDate") beginDate: ODateInputComponent
   @ViewChild("endDate") endDate: ODateInputComponent
-  constructor(){}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any){
+    console.log('Datos recibidos:', data);
+  }
   getMinDate(){
     const currentDate = new Date()
     return new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());

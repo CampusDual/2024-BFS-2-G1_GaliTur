@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, Injector } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injector, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NavigationService, OntimizeService } from 'ontimize-web-ngx';
+import { NavigationService, OTextInputComponent, OValueChangeEvent, OntimizeService } from 'ontimize-web-ngx';
 import { PackScheduleComponent } from './pack-schedule/pack-schedule.component';
 
 @Component({
@@ -10,9 +10,7 @@ import { PackScheduleComponent } from './pack-schedule/pack-schedule.component';
   styleUrls: ['./pack-edit.component.css']
 })
 export class PackEditComponent implements AfterViewInit{
-imgId: any;
-
-
+  @ViewChild('packNameInput') packNameInput : ElementRef
   constructor(private router: Router,
     private activeRoute: ActivatedRoute,
     protected injector: Injector,
@@ -29,7 +27,8 @@ imgId: any;
       /*otra forma para probar this.router.navigate(['main','routes', 'new', $event['route_id']])*/
   }
   pck_id: any =""
-
+  imgId: any;
+  dataInputName: any
   getPackId():number{
     return +this.activeRoute.snapshot.params["pck_id"];
   }
@@ -37,13 +36,23 @@ imgId: any;
     this.router.navigate(['main','packs','new',pck_id])
   }
 
-  onClicSchedule(event:Event){
+  onClicSchedule(){
+    const dataToSend = {
+      pck_name:this.dataInputName,
+      pck_id:this.pck_id
+    }
     this.dialog.open(PackScheduleComponent,{
       width: '800',
       maxHeight: '1000',
       minHeight: '1000',
-      maxWidth: '80vw'
+      maxWidth: '80vw',
+      data: {
+        dataToSend
+      }
     })
+  }
+  onNameChange(data: OValueChangeEvent) {
+    this.dataInputName= data.newValue.value
   }
 }
 

@@ -45,7 +45,8 @@ public class PackDateService implements IPackDateService {
 
     @Override
     public EntityResult packDateUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-        return this.daoHelper.update(this.packDateDao, attrMap, keyMap);
+        if(keyMap.size()>0)return this.daoHelper.update(this.packDateDao, attrMap, keyMap);
+        else return this.daoHelper.insert(packDateDao, attrMap);
     }
 
     @Override
