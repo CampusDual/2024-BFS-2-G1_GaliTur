@@ -1,6 +1,5 @@
-<o-breadcrumb [form]="myList" label-columns="pck_name" separator=" "></o-breadcrumb>
 <div class="fondo">
-<o-form #myList attr="packsTable" service="packs" entity="pack" keys="pck_id" show-header="yes" show-header-navigation="no">
+<o-form attr="packsTable" service="packs" entity="pack" keys="pck_id" show-header="yes" show-header-navigation="no">
     <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no"  show-header-navigation="no" oHidden></o-text-input>
     <div fxLayout="row" class="principal" fxLayoutAlign="center" fxLayoutGap="16px">
         <div class="datos">
@@ -18,8 +17,7 @@
                 </o-currency-input>
                 <o-integer-input attr="pck_participants" label="{{ 'PARTICIPANTS' | oTranslate }}"
                 read-only="no" required="no" max="100" min="1"></o-integer-input>
-                <o-date-input label="{{'pck_date_begin' | oTranslate}}"></o-date-input>
-                <o-date-input label="{{'pck_date_end' | oTranslate}}"></o-date-input>
+                <button class="button" (click)="onClicEdit(pck_id)">Añadir fechas</button>
             </div>
             <o-textarea-input class="description-textarea" fxFlex="100" attr="pck_description" required="yes" width="100%"></o-textarea-input>
         </div>
