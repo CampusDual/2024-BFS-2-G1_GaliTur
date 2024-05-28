@@ -1,82 +1,148 @@
 /* Estilos principales */
 .routeCard {
-  border: 4px solid #000000d0;
-  border-radius: 20px;
+  border-radius: 15px;
   padding: 0px;
-  margin: 10px;
   cursor: pointer;
-  width: 500px;
-  height: 200px;
-  background-image: url('../../../../assets/images/photoRouteDetails.jpg');
+  width: 370px;
+  height: 310px;
   background-size: cover;
   background-position: center;
+  background-color: #ffffff;
 }
 
-.container {
+.routeCard:hover {
+  box-shadow: 0 0 15px rgba(40, 63, 28, 0.55); 
+  transform: scale(1.04); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.routeName {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 4px;
-  border-radius: 15px;
-  background-color: #E4EBF2;
+  margin-top: 8px;
+  border-radius: 10px;
+  background-color: #52733B;
   height: 45px;
+  color: #ffffff; 
+}
 
+.containerDatos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4px;
+  border-radius: 15px;
+  padding: 2px;
+  width: 100%;
+}
+
+.list{
+  width: 100%;
+  padding: 0;
+  margin: 5px, 0;
+}
+
+.preview-image {
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .mat-icon-color {
   color: #70b317;
 }
 
-
-
-
 .container .img {
   height: 50px;
   max-width: 100%;
   display: block;
-
-
 }
-.tooltip {
+
+.tooltipHomeDifficulty {
   position: relative;
   display: inline-block;
   cursor: pointer;
 }
 
-.tooltip .tooltiptext {
+.tooltipHomeDifficulty .tooltiptextHomeDifficulty {
   visibility: hidden;
   width: auto;
-  background-color: #edf5c0;
+  background-color: white;
   border: 2px solid;
-  border-color: #030000;
-  color: #030000;
+  border-color: #84A45A;
+  color: #000000;
   text-align: center;
   font-size: 15px;
   border-radius: 6px;
   position: absolute;
   z-index: 1;
-  bottom: 125%;
-  left: 50%;
+  left: 80%;
+  bottom: 105%;
   margin-left: -60px;
   opacity: 0;
   transition: opacity 0.3s;
   white-space: nowrap;
   padding: 5px;
-
 }
 
-.tooltip:hover{
+.tooltipHomeDifficulty:hover{
   transform: scale(1.2);
   padding: 0px 0px 0px 0px;
 }
 
-.tooltip:hover .tooltiptext {
+.tooltipHomeDifficulty:hover .tooltiptextHomeDifficulty {
   visibility: visible;
   transform: scale(0.75);
   opacity: 1;
 }
 
+.tooltiptextHomeDuration {
+  visibility: hidden;
+  width: auto;
+  background-color: white;
+  border: 2px solid;
+  border-color: #84A45A;
+  color: #000000;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  left: 80%;
+  bottom: 90%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+  padding: 5px;
+}
+
+.tooltipHomeDuration {
+  margin-bottom: 5px;
+}
+
+.tooltipHomeDuration:hover {
+  transform: scale(1.2);
+  padding: 0px 0px 0px 0px;
+}
+
+.tooltipHomeDuration:hover .tooltiptextHomeDuration {
+  visibility: visible;
+  transform: scale(0.9);
+  opacity: 1;
+}
+
+.helpTooltipHome{
+  color: #84A45A;
+}
+
+.clockTooltipHome {
+  color: #84A45A;
+}
 
 .name {
   width: 270px;
@@ -89,14 +155,16 @@
   margin-right: 20px;
 }
 
-
-
-.duration {
-  text-align: center;
-
+.leafsDifficulty {
+  margin-top: 15px;
 }
 
-
+.duration, .difficulty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
 
 .card {
   border-radius: 20px;
@@ -109,9 +177,16 @@
   height: 200px;
 }
 
+.d-1 {
+  background-color: #E4EBF2;
+  border-radius: 20px;
+  padding: 10px 10px;
+  height: 70px;
+  width: 300px;
+  align-items: center;
+}
 
-
-.d{
+.d-2 {
   background-color: #E4EBF2;
   border-radius: 20px;
   height: 70px;
@@ -120,16 +195,31 @@
   width: 300px;
 }
 
+.d-3 {
+  background-color: #E4EBF2;
+  border-radius: 20px;
+  height: 70px;
+  padding: 10px 10px;
+  align-items: center;
+  width: 300px;
+}
 
+.d-4 {
+  background-color: #E4EBF2;
+  border-radius: 20px;
+  height: 70px;
+  padding: 10px 10px;
+  align-items: center;
+  width: 300px;
+}
 
 .difficulty {
-  text-align: center;
+  text-align: left;
   margin-top: 12px;
-
 }
 
 .duration {
-  margin-left: 15px;
+  text-align: left;
 }
 
 .icon-difficulty-1 {
@@ -148,19 +238,8 @@
   color: #dc1d0f;
 }
 
-
-
 mat-icon {
   margin-right: 6px;
   margin-left: 6px;
   vertical-align: middle;
-}
-
-
-
-
-.routeCard strong {
-  font-weight: bold;
-
-  color: hsla(0, 0%, 3%, 0.725);
 }

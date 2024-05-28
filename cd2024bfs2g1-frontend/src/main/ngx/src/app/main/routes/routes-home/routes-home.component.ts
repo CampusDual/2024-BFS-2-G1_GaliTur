@@ -11,6 +11,7 @@ import { ImageService } from 'src/app/shared/services/image.service';
   styleUrls: ['./routes-home.component.css']
 })
 export class RoutesHomeComponent implements OnInit {
+galleryOptions: any;
 
   constructor(
     protected dialog: MatDialog,
@@ -21,10 +22,13 @@ export class RoutesHomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  /*Recoger img de BD*/
   public getImageSrc(base64: any): any {
-    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:images/*;base64,' + base64.bytes) : './assets/images/no-image.png';
+
+    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/logo-walking.png";
   }
 
+  /*Abrir detalle de la ruta*/
   public openDetail(data: any): void {
     this.imageService.getImage(data.route_id).subscribe((imageData)=> {
       const images = []
@@ -35,16 +39,15 @@ export class RoutesHomeComponent implements OnInit {
         });
         data['galleryImages'] = images
       }
-
-
       this.dialog.open(RoutesDetailComponent, {
-        height: '600px',
+        height: '700px',
         width: '1200px',
         data: data
       });
     })
   }
 
+  /*Pasar minutos introducidos a h y min*/
   public convertTime(minutos: number):  string {
 
     const horas = Math.floor(minutos / 60);
@@ -59,32 +62,33 @@ export class RoutesHomeComponent implements OnInit {
     }else{
        return horas + "h " + minutosRestantes + "min";
     }
-
-
   }
 
+  /*Modificar color de  hojas según su dificultad*/
   getIconColorClass(difficulty: number): string {
     switch(difficulty) {
-      case 1:
-          return 'icon-difficulty-1';
-      case 2:
-          return 'icon-difficulty-2';
-      case 3:
-          return 'icon-difficulty-3';
-      case 4:
-          return 'icon-difficulty-4';
+        case 1:
+            return 'icon-difficulty-1';
+        case 2:
+            return 'icon-difficulty-2';
+        case 3:
+            return 'icon-difficulty-3';
+        case 4:
+            return 'icon-difficulty-4';
+    }
   }
-}
-getDifficultad(difficulty: number): string {
-  switch(difficulty) {
-    case 1:
-        return 'Dificultad: Fácil';
-    case 2:
-        return 'Dificultad: Intermedio';
-    case 3:
-        return 'Dificultad: Difícil';
-    case 4:
-        return 'Dificultad: Extremo';
-}
-}
+
+  /*Mostrar la dificultan en el tooltip*/
+  getDifficultad(difficulty: number): string {
+    switch(difficulty) {
+      case 1:
+          return 'Dificultad: Fácil';
+      case 2:
+          return 'Dificultad: Intermedio';
+      case 3:
+          return 'Dificultad: Difícil';
+      case 4:
+          return 'Dificultad: Extremo';
+    }
+  }
 }
