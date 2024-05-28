@@ -122,7 +122,7 @@
     margin-bottom:5px;
     margin-top:5px;
     margin-right: 5px;
-    color: #84A45A;
+    color: #715e4e;
     font-size: 22px;
     margin-left: 15px;
 }
@@ -132,14 +132,14 @@ o-column{
         font-size: 18px;
         font-weight: bold;
         color: #00000099;
+      
 } 
-
+background-color: #e2dbd5 !important;
 }
 
 o-row{
-    .mat-icon{
-        color:#84A45A;
-    }
+ 
+    background-color: #e2dbd5 !important;
 }
 
 
@@ -155,11 +155,21 @@ o-row{
     padding-left: 10%;
 }
 
-  
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+    background-color: #e2dbd5 !important;
+}
 
+:host ::ng-deep button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base {
+    background-color: #4e4c4a !important;
+    color: #e2dbd5 !important;
+}
 
+:host ::ng-deep.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: #4e4c4a !important;
+}
 
-
-
+:host ::ng-deep .mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label{
+    color: #e2dbd5 !important;
+}
 
 
