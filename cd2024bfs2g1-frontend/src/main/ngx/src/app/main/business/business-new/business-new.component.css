@@ -9,7 +9,8 @@ o-checkbox {
 
 .lodging {
     display: flex;
-    margin-left: 3%;
+    padding-left: 3%;
+    background-color: #ccc6c0;
 }
 
 .toggleFirst {
@@ -108,9 +109,15 @@ span {
     }
 }
 
+::ng-deep .mat-form-field-disabled{
+    div {
+        background-color: rgb(221, 218, 212) !important;
+    }
+}
 
-
-
+::ng-deep .mat-primary .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-full{
+    background-color: #52733B !important;
+}
 
 
 

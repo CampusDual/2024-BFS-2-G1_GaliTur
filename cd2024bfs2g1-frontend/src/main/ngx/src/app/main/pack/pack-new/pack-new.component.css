@@ -30,12 +30,15 @@ span {
         resize: none;
     }
 }
+
 #text{
   margin-top: 2%;
 }
+
 div *{
     width: 58.5%;
 }
+
 div *:first-child{
     margin-right: 3%;
 }
@@ -44,7 +47,5 @@ div *:first-child{
     padding-right: 30px;
     margin-left: 2.1%;
 }
-
-
 
 

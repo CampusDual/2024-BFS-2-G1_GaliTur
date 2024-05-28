@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+import static com.campusdual.cd2024bfs2g1.model.core.dao.RouteDao.QUERY_ROUTE_IMAGE;
+
 @Lazy
 @Service("RouteService")
 public class RouteService  implements IRouteService {
@@ -38,16 +40,12 @@ public class RouteService  implements IRouteService {
 
     @Override
     public EntityResult routeQuery(Map<String, Object> keyMap, List<String> attrList) {
-        return this.daoHelper.query(routeDao, keyMap, attrList);
-
+        return this.daoHelper.query(routeDao, keyMap, attrList, routeDao.QUERY_ROUTE_IMAGE);
     }
-
-
 
     @Override
     public EntityResult routeInsert(Map<String, Object> attrMap) {
         UserInformation userInformation =(UserInformation) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         if(userInformation.getAuthorities().stream().anyMatch(c->c.toString().equals("manager"))){
             Map<String,Object> imageMapAttr=new HashMap();
             EntityResult route_id_entity = this.daoHelper.insert(routeDao, attrMap);

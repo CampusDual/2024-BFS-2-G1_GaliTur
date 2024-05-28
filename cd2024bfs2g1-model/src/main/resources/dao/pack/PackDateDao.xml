@@ -4,17 +4,17 @@
                  xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
                  catalog="" schema="${mainschema}" table="pack_date" datasource="mainDataSource"
                  sqlhandler="dbSQLStatementHandler">
-    <DeleteKeys>
-        <Column>pd_id</Column>
-    </DeleteKeys>
-    <UpdateKeys>
-        <Column>pd_id</Column>
-    </UpdateKeys>
-    <GeneratedKey>pd_id</GeneratedKey>
-    <Queries>
-        <Query id="default">
-            <Sentence>
-                <![CDATA[
+<DeleteKeys>
+    <Column>pd_id</Column>
+</DeleteKeys>
+<UpdateKeys>
+    <Column>pd_id</Column>
+</UpdateKeys>
+<GeneratedKey>pd_id</GeneratedKey>
+<Queries>
+    <Query id="default">
+        <Sentence>
+            <![CDATA[
                     SELECT
                         #COLUMNS#
                     FROM
@@ -22,7 +22,21 @@
                     #WHERE#
                     #ORDER#
                 ]]>
-            </Sentence>
-        </Query>
-    </Queries>
+        </Sentence>
+    </Query>
+    <Query id="packDateComplete">
+        <Sentence>
+            <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.pack_date PD
+                        INNER JOIN ${mainschema}.pack P
+                        ON PD.pck_id = P.pck_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+        </Sentence>
+    </Query>
+</Queries>
 </JdbcEntitySetup>
