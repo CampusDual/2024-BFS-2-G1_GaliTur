@@ -1,44 +1,52 @@
 <o-form attr="packNew" label-header-align="start" message-service-type="customMessageServiceTypePacks"
         label-header="{{ 'PACKS_NEW' | oTranslate }}" keys="pck_id" fxLayout="column" #oFormPackNew service="packs" entity="pack"
-     keys-sql-types="integer" (onInsert)="insertPacks()" confirm-exit="false" >
+     keys-sql-types="integer" (onInsert)="insertPacks()" confirm-exit="false" class="custom-form">
      <o-row layout-align="start stretch">
         <o-column id="pack" layout-align="start stretch" fxFlex="50" layout-padding>
-
-                <o-text-input id="text" attr="pck_name" max-length="50" label="{{ 'PACK_NAME' | oTranslate }}"
+          <o-text-input id="text" attr="pck_name" max-length="40" label="{{ 'PACK_NAME' | oTranslate }}"
                     required="yes" [validators]="nameValidators">
-                    <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
-                </o-text-input>
-                <o-textarea-input id="description" attr="pck_description" label="{{ 'DESCRIPTION' | oTranslate }}" width="100%" rows="6"
-                    class="form-field" required="yes" max-length="250" [validators]="descValidators">
-                    <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}" ></o-validator>
-                  <o-validator error-name="descLengthInvalid" error-text="{{ 'VALIDATOR.PACK_DESC_MAX_LENGTH' | oTranslate }}" ></o-validator>
+        <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
+      </o-text-input>
+      <o-textarea-input id="description" attr="pck_description" label="{{ 'DESCRIPTION' | oTranslate }}" width="100%" rows="6"
+                        class="form-field" required="yes" max-length="250" [validators]="descValidators">
+        <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}" ></o-validator>
+        <o-validator error-name="descLengthInvalid" error-text="{{ 'VALIDATOR.PACK_DESC_MAX_LENGTH' | oTranslate }}" ></o-validator>
+      </o-textarea-input>
+      <div fxLayout="row">
+        <o-integer-input
+          #days
+          attr="days" required="true" min="1" label="{{ 'DAYS' | oTranslate }}" (onChange)="checkDays()"
+        ></o-integer-input>
+        <o-date-input #beginDate attr="pd_date_begin" value-type="date" [min]="getMinDate()"
+                      label="{{ 'DATE_RANGE' | oTranslate }}" read-only="no" format="DD/MM/YYYY"
+                      (onValueChange)=" onBeginDateChanged()"
+        ></o-date-input>
+        <o-date-input #endDate attr="pd_date_end" value-type="date" label="{{ 'DATE_RANGE' |
+                  oTranslate }}" read-only="yes" format="DD/MM/YYYY"
+        ></o-date-input>
+      </div>
 
-                </o-textarea-input>
-                <o-daterange-input attr="dates" [min]="getDate()" label="{{ 'DATE_RANGE' | oTranslate }}" read-only="no"
-                                 required="yes"  format="DD/MM/YYYY" format="LL" separator="{{ 'SEPARATOR' | oTranslate }}"
-                                 show-week-numbers="true" mode="mobile">
-              </o-daterange-input>
-            <div id="Precio_participants" fxLayout="row">
-            <o-currency-input [step]="1" attr="pck_price" min="1" max="5000" label="{{ 'pck_price' | oTranslate }}" read-only="no"
-                    required="no">
-                </o-currency-input>
-            <o-integer-input attr="pck_participants" label="{{ 'PARTICIPANTS' | oTranslate }}"
-                read-only="no" required="no" max="100" min="1"></o-integer-input>
-            </div>
-        <div fxLayout="row">
-                <o-combo #comboZone attr="comboZone" label="{{ 'SELECT_PROVINCE' | oTranslate }}" query-method="query"  translate="yes" service="guideZones"
-                entity="guideZone" value-column="gui_z_id"  columns="gui_z_name" visible-columns="gui_z_name"
-                    keys="gui_z_id" multiple="no" null-selection="no" required="yes">
-                </o-combo>
-                <o-combo id="comboCity" #comboCity attr="gui_c_id" label="{{ 'SELECT_CITY' | oTranslate }}"  translate="yes"
-                    query-method="query" sort="ASC" value-column="gui_c_id" required="yes" service="guideCities" multiple="no" null-selection="no" entity="guideCities"
-                    columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id"
-                    [query-on-event]="comboZone.onValueChange" parent-keys="gui_z_id:comboZone[gui_z_id]">
-                </o-combo>
-        </div>
-        </o-column>
-    <o-column fxFlex="50" layout-align="center center">
-        <o-image attr="img_code" sql-type="OTHER" label="{{ 'IMAGE' | oTranslate }}" max-file-size="2650000" required="no"></o-image>
+      <div id="Precio_participants" fxLayout="row">
+        <o-currency-input [step]="1" attr="pck_price" min="1" max="5000" label="{{ 'PRICE' | oTranslate }}" read-only="no"
+                          required="no">
+        </o-currency-input>
+        <o-integer-input attr="pck_participants" label="{{ 'PARTICIPANTS' | oTranslate }}"
+                         read-only="no" required="no" max="100" min="1"></o-integer-input>
+      </div>
+      <div fxLayout="row">
+        <o-combo #comboZone attr="comboZone" label="{{ 'SELECT_PROVINCE' | oTranslate }}" query-method="query"  translate="yes" service="guideZones"
+                 entity="guideZone" value-column="gui_z_id"  columns="gui_z_name" visible-columns="gui_z_name"
+                 keys="gui_z_id" multiple="no" null-selection="no" required="yes">
+        </o-combo>
+        <o-combo id="comboCity" #comboCity attr="gui_c_id" label="{{ 'SELECT_CITY' | oTranslate }}"  translate="yes"
+                 query-method="query" sort="ASC" value-column="gui_c_id" required="yes" service="guideCities" multiple="no" null-selection="no" entity="guideCities"
+                 columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id"
+                 [query-on-event]="comboZone.onValueChange" parent-keys="gui_z_id:comboZone[gui_z_id]">
+        </o-combo>
+      </div>
     </o-column>
-</o-row>
+    <o-column fxFlex="50" layout-align="center center">
+      <o-image attr="img_code" sql-type="OTHER" label="{{ 'IMAGE' | oTranslate }}" max-file-size="2650000" required="no"></o-image>
+    </o-column>
+  </o-row>
 </o-form>

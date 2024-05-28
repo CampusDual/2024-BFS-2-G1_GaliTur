@@ -122,7 +122,7 @@
   "INFO": "Información",
   "START_DATE":"Fecha de Inicio",
   "END_DATE":"Fecha de Fin",
-  "TRAVELLERS":"Número de Viajeros",
+  "TRAVELLERS":"Viajeros",
   "SCHEDULE": "Horario",
   "PHONE": "Teléfono",
   "WEBSITE": "Página Web",
@@ -170,7 +170,7 @@
   "Single": "Individual",
   "Double": "Doble",
   "Triple": "Triple",
-  "Price": "Precio",
+  "Price": "Precio total",
   "Dinner": "Cena",
   "Breakfast": "Desayuno",
   "Lunch": "Comida",
@@ -249,6 +249,7 @@
   "pck_reserved":"Pack Reservado",
   "IM_PROFESSIONAL": "Soy un profesional",
   "IM_NOT_PROFESSIONAL": "No soy un profesional",
+  "N0_ESTIMATED_DURATION": "Sin Duración Estimada",
   "GRAPHICS": "Análisis de datos",
   "Contracted_packs_according_to_the_province": "Packs contratados según la provincia",
   "ABADIN": "ABADÍN",
@@ -337,5 +338,7 @@
   "UKRAINIAN": "UCRANIANO",
   "CHINESE": "CHINO",
   "DUTCH": "HOLANDÉS",
-  "ARABIC": "ÁRABE"
+  "ARABIC": "ÁRABE",
+  "PEOPLE": "Personas",
+  "PERSON": "Persona"
 }

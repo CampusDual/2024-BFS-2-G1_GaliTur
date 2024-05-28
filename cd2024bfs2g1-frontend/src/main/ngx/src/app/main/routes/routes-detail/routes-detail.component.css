@@ -1,17 +1,24 @@
 .routesSecond {
-  height: 350px;
+  height: 450px;
   width: 1100px;
   display: flex;
   align-items: center;
   border-radius: 150px;
+  background-color: #eff1f3;
+}
+
+.backButton {
+  margin-left: -30px;
+}
+
+.arrow_back {
+  margin: auto;
+  color: #0c0c0c;
 }
 
 .mainPanel {
   position: relative;
-}
-.backButton {
-  position: absolute;
-  left: 20px;
+  background-color: #eff1f3;
 }
 
 .routesSecond span {
@@ -21,7 +28,7 @@
 }
 
 .routesSecond mat-icon {
-  margin-right: 6px;
+  margin-right: 4px;
   margin-left: 6px;
   vertical-align: middle;
 }
@@ -32,7 +39,6 @@
   padding: 0px 0px 0px 30px;
   vertical-align: middle;
 }
-
 
 .routesFirst, .routesSecond {
   background-color: #ffffff;
@@ -58,35 +64,30 @@
   height: 300px;
 }
 
-
-.descriptionPanel {
-  flex: 2;
-  padding-left: 16px;
-  margin-top: 30px;
-  max-height: 500px;
-  width: 700px;
-  overflow-y: auto;
+.description, .information {
+  flex: 1;
+  background-color: transparent;     
 }
+
 .titulo {
   font-size: 24px;
   font-weight: bold;
   text-align: center;
-  background-color: #8d7561;
-  margin: 0px 200px 0px 200px;
+  background-color: #52733B;
   color: #ffffff;
-  border: 5px solid;
-  border-color: #000000;
-  border-radius: 6px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  padding: 10px;
+  border-radius: 10px;
+  width: 1100px; 
+  max-width: 1100px;
 }
+
 
 
 .estimatedDuration {
   display: flex;
   justify-content: space-between;
   padding-top: 20px;
-  padding-left: 45px;
+  padding-left: 30px;
 }
 
 .difficulty {
@@ -103,24 +104,14 @@
   padding-left: 14px;
 }
 
-.mainPanel {
-  background-image: url("../../../../assets/images/photoRouteDetails.jpg");
-  background-size: cover;
-  background-position: center;
-
-}
-
 .routesFirst {
   background-color: #EFEFEF;
 }
 
-.routesSecond{
-  background-color: #EFEFEF;
-}
-
 .custom-button {
-  margin-left: 140px;
-  background-color: #78af7bfd;
+  margin-left: 155px;
+  margin-bottom: 20px;
+  background-color: #52733B;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -129,8 +120,9 @@
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 10px;
   transition: background-color 0.3s;
+  
 }
 
 .custom-button:hover {
@@ -144,13 +136,9 @@
   height: 70px;
   width: 300px;
   align-items: center;
-  /*
-  .mat-icon {
-    color: #69b704e7;
-  }
-  */
 
 }
+
 .d-2{
   background-color: #E4EBF2;
   border-radius: 20px;
@@ -159,6 +147,7 @@
   align-items: center;
   width: 300px;
 }
+
 .d-3{
   background-color: #E4EBF2;
   border-radius: 20px;
@@ -189,7 +178,6 @@
   color: #d1cb1fde;
 }
 
-
 .icon-difficulty-3 {
   color: #f69c15;
 }
@@ -198,3 +186,87 @@
   color: #dc1d0f;
 }
 
+.o-rows {
+  background-color: transparent;
+}
+
+.tooltiptextDifficulty {
+  visibility: hidden;
+  width: auto;
+  background-color: white;
+  border: 2px solid;
+  border-color: #84A45A;
+  color: #000000;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  left: 70%;
+  bottom: 90%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+  padding: 5px;
+
+}
+
+.tooltipDifficulty{
+  margin-top: 20px;
+}
+
+.tooltipDifficulty:hover{
+  transform: scale(1.2);
+  padding: 0px 0px 0px 0px;
+}
+
+.tooltipDifficulty:hover .tooltiptextDifficulty {
+  visibility: visible;
+  transform: scale(0.9);
+  opacity: 1;
+}
+
+.helpTooltip{
+  color: #84A45A;
+}
+
+.tooltiptextDuration {
+  visibility: hidden;
+  width: auto;
+  background-color: white;
+  border: 2px solid;
+  border-color: #84A45A;
+  color: #000000;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  left: 80%;
+  bottom: 90%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+  padding: 5px;
+}
+
+.tooltipDuration {
+  margin-top: 20px;
+}
+
+.tooltipDuration:hover {
+  transform: scale(1.2);
+  padding: 0px 0px 0px 0px;
+}
+
+.tooltipDuration:hover .tooltiptextDuration {
+  visibility: visible;
+  transform: scale(0.9);
+  opacity: 1;
+}
+
+.clockTooltip {
+  color: #84A45A;
+}

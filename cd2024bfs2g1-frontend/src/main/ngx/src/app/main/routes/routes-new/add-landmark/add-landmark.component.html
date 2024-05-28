@@ -1,4 +1,4 @@
-<o-form #landmarksNew attr="landmarksNew" label-header="{{'info_new_landmark' | oTranslate }}" label-header-align="start" service="landmarks" entity="landmark" keys="landmark_id" title="" (onInsert)="onClickOk();$event.stopPropagation()" confirm-exit="false" message-service-type="customMessageServiceTypeLandmarks">
+<o-form #landmarksNew attr="landmarksNew" label-header="{{'info_new_landmark' | oTranslate }}" class="custom-form" label-header-align="start" service="landmarks" entity="landmark" keys="landmark_id" title="" (onInsert)="onClickOk();$event.stopPropagation()" confirm-exit="false" message-service-type="customMessageServiceTypeLandmarks">
     <o-column class="container">
         <div fxLayout="row" class="landmarkInfo">
             <div fxLayout="column" fxLayoutGap="10px" class="noHidden">
