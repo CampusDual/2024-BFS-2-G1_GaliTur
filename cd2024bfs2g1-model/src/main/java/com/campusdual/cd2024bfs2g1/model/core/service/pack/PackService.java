@@ -57,6 +57,7 @@ public class PackService implements IPackService {
         this.clientService = clientService;
         this.imagePackDao = imagePackDao;
         this.packDateDao = packDateDao;
+        this.imageDao = imageDao;
     }
 
     @Override
