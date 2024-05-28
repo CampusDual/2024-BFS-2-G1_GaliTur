@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import moment from 'moment';
 import {ODateInputComponent, OIntegerInputComponent, OntimizeService, OTranslateService} from 'ontimize-web-ngx';
 import {MainService} from "../../../shared/services/main.service";
-import { ODateInputComponent, OTranslateService } from 'ontimize-web-ngx';
 import { PackActivitiesComponent } from './add-activities/pack-activities/pack-activities.component';
 
 @Component({
@@ -29,18 +28,17 @@ export class PackNewComponent {
 
     this.configureService()
   }
-  insertPacks($event:Event){
-    this.router.navigate(['main','packs', 'new', $event['pck_id']])
+
   private configureService() {
     const conf = this.ontimizeService.getDefaultServiceConfiguration('packs');
     this.ontimizeService.configureService(conf);
   }
 
-  protected async insertPacks() {
+  protected async insertPacks($event:Event) {
     this.ontimizeService.query({}, ['pck_id'], 'newest')
       .subscribe(
         (response) => {
-          this.router.navigate(['main/packs/', response.data[0].pck_id]);
+          this.router.navigate(['main','packs', 'new', $event['pck_id']])
         }
       );
   }
