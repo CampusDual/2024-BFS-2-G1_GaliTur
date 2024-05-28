@@ -8,7 +8,14 @@ const routes: Routes = [
   {
     path: '', component: PackHomeComponent
   },
-  {path: 'new', component: PackNewComponent},
+  {path: 'new', component: PackNewComponent,
+  data: {
+    oPermission: {
+      permissionId: "PacksNew",
+      restrictedPermissionsRedirect: 403
+    }
+  }
+  },
   {path: ':pck_id', component: PackDetailComponent}
 
 ];

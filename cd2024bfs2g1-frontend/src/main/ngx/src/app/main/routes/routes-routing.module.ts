@@ -10,7 +10,14 @@ import { ViewLandmarkDetailComponent } from './routes-detail/view-landmark-detai
 const routes: Routes = [
   { path: '', component: RoutesHomeComponent },
   { path: 'landmark', component: ViewLandmarkDetailComponent},
-  { path: 'new', component: RoutesNewComponent },
+  { path: 'new', component: RoutesNewComponent,
+    data: {
+      oPermission: {
+        permissionId: "RoutesNew",
+        restrictedPermissionsRedirect: 403
+      }
+    }
+  },
   { path: 'new/:route_id', component: ViewAllLandmarkComponent},
   { path: 'new/:route_id/:landmark_id', component: AddLandmarkComponent},
   { path: ':route_id', component: RoutesDetailComponent},

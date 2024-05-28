@@ -1,0 +1,22 @@
+{
+  "code": 0,
+  "data": {
+    "menu": [
+      {
+        "attr": "admin",
+        "visible": false,
+        "enabled": false
+      },
+      {
+        "attr": "mypacks",
+        "visible": false,
+        "enabled": false
+      },
+      {
+        "attr": "packs",
+        "visible": false,
+        "enabled": false
+      }
+      ]
+    }
+  }

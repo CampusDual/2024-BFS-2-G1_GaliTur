@@ -10,7 +10,13 @@ const routes: Routes = [
     path: '', component: BusinessHomeComponent
   },
   {
-    path: 'new', component: BusinessNewComponent
+    path: 'new', component: BusinessNewComponent,
+    data: {
+      oPermission: {
+        permissionId: "BusinessNew",
+        restrictedPermissionsRedirect: 403
+      }
+    }
   },
   {
     path: ':bsn_id',
@@ -18,6 +24,7 @@ const routes: Routes = [
   },
  
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
