@@ -1,5 +1,6 @@
+<o-breadcrumb [form]="myList" label-columns="pck_name" separator=" "></o-breadcrumb>
 <div class="fondo">
-<o-form attr="packsTable" service="packs" entity="pack" keys="pck_id" show-header="yes" show-header-navigation="no">
+<o-form attr="packsTable" #myList service="packs" entity="pack" keys="pck_id" show-header="yes" show-header-navigation="no">
     <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no"  show-header-navigation="no" oHidden></o-text-input>
     <div fxLayout="row" class="principal" fxLayoutAlign="center" fxLayoutGap="16px">
         <div class="datos">
@@ -17,12 +18,12 @@
                 </o-currency-input>
                 <o-integer-input attr="pck_participants" label="{{ 'PARTICIPANTS' | oTranslate }}"
                 read-only="no" required="no" max="100" min="1"></o-integer-input>
-                <button class="button" (click)="onClicSchedule(pck_id)">Añadir fechas</button>
+                <button class="button" (click)="onClicEdit(pck_id)">{{'ADD_DATES' | oTranslate}}</button>
             </div>
-            <o-textarea-input class="description-textarea" fxFlex="100" attr="pck_description" required="yes" width="100%"></o-textarea-input>
+            <o-textarea-input class="description-textarea" attr="pck_description" required="yes" width="100%"></o-textarea-input>
         </div>
         <div class="div_boton" fxLayout="row" fxLayoutGap="8px">
-            <button class="button" (click)="onClicEdit(pck_id)">Añadir Rutas y Negocios</button>
+            <button class="button" (click)="onClicEdit(pck_id)">{{'ADD_ROUTES_AND_BUSINESSES' | oTranslate}}</button>
         </div>
     </div>
     </div>
@@ -30,9 +31,7 @@
      parent-keys="pck_id" show-header="yes" show-header-navigation="no">
         <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no" oHidden></o-text-input>
         <div fxLayout="row" class="image">
-            <div fxlayout="column" fxLayoutGap="8px" class="imgHeightWidth">
-                <o-image *ngIf="imgId!=null || imgId!='' " id="img_code" attr="img_code" empty-image="assets/images/no-image.png" sql-type="OTHER" width="300px" height="300px"></o-image>
-            </div>
+            <o-image *ngIf="imgId!=null || imgId!='' " id="img_code" attr="img_code" empty-image="assets/images/no-image.png" sql-type="OTHER" width="300px" height="300px"></o-image>
         </div>
     </o-form>
 </div>

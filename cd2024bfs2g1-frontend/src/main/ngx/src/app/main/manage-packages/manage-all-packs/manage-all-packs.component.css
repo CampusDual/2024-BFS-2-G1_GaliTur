@@ -40,10 +40,8 @@
   }
 
 .button{
- background-color: white;
  font-size: 16px;
  border-radius: 10px;
- border: none;
 }
 
 .button:hover{

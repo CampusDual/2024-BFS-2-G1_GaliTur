@@ -338,5 +338,9 @@
   "UKRAINIAN": "UCRANIANO",
   "CHINESE": "CHINO",
   "DUTCH": "HOLANDÉS",
-  "ARABIC": "ÁRABE"
+  "ARABIC": "ÁRABE",
+  "PACK_TABLE": "Tabla de Packs",
+  "EDIT": "Editar",
+  "ADD_DATES": "Añadir Fechas",
+  "ADD_ROUTES_AND_BUSINESSES":"Añadir Rutas y Negocios"
 }

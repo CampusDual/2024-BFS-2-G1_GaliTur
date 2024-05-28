@@ -1,7 +1,7 @@
 
-<o-breadcrumb [form]="myList" label-columns="p.pck_name;p.pck_description" separator=" "></o-breadcrumb>
+<o-breadcrumb [form]="myList"  separator=" "></o-breadcrumb>
 <div class="div-fullpage">
-    <o-list #myList class="contenedor" #list attr="packsTable" title="packsTable" columns="p.pck_id;p.pck_name;p.pck_description;i.img_code"
+    <o-list #myList class="contenedor" #list attr="packsTable" title="{{'PACK_TABLE' |  oTranslate}}" columns="p.pck_id;p.pck_name;p.pck_description;i.img_code"
     service="packs" entity="pack" keys="p.pck_id" refresh-button="true" insert-button="false" quick-filter="true" refresh-button="false"
     quick-filter="no" pageable="yes" delete-button="false" row-height="medium" detail-mode="none" quick-filter-columns="pck_name;pck_description" pagination-controls="yes"
     query-rows="10">
@@ -15,12 +15,20 @@
                             <mat-card-header>
                                 <div fxLayout="column" fxLayoutGap="8px" class="card">
                                     <div fxLayout="row" fxLayoutGap="8px">
-                                        <div fxLayout="column" fxLayoutGap="55px" class="card_datos">
+                                        <div fxLayout="column" fxLayoutGap="15px" class="card_datos">
+                                            <o-row class="o-rows" class="nombre_pack" attr="container" icon="hiking" mat
+                                            title="{{'PACK_NAME' | oTranslate }}" layout-align="start stretch" elevation="1"
+                                            aria-orientation="vertical" appearance="outline">
                                             <mat-card-title class="titulo">{{ row.pck_name }}</mat-card-title>
+                                            </o-row>
+                                            <o-row class="o-rows" class="description" attr="container" icon="description" mat
+                                            title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" elevation="1"
+                                            aria-orientation="vertical" appearance="outline">
                                             <mat-card-subtitle>{{row.pck_description}}</mat-card-subtitle>
+                                            </o-row>
                                             <div fxlayout="row" fxLayoutGap="16px" class="card_image">
-                                                <button (click)="onClicEdit(row.pck_id)" class="button">edit</button>
-                                                <button class="button">delete</button>
+                                                <button (click)="onClicEdit(row.pck_id)" class="button">{{'EDIT' | oTranslate}}</button>
+                                                <button class="button">{{'delete' | oTranslate}}</button>
                                             </div>
                                         </div>
                                         <div class="imagen">
