@@ -29,8 +29,4 @@ public class BusinessDao extends OntimizeJdbcDaoSupport {
     public static final String WEBSITE  = "bsn_website";
     public static final String SCHEDULE  = "bsn_schedule";
     public static final String QUERY_ALL_BUSINESSES  = "allBusinesses";
-
-
-
-
 }
