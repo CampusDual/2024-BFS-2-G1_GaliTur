@@ -250,5 +250,6 @@
   "ADD_BSNP": "Add Business",
   "ADD_BSNPs": "Add Businesses",
   "assigned_date": "Day",
-  "BSNPACK.ERROR": "Can't assign business, please verify fields"
+  "BSNPACK.ERROR": "Can't assign business, please verify fields",
+  "VIEW_BSN": "Show selected Businesses"
 }

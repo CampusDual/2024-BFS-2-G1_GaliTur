@@ -257,5 +257,7 @@
   "ADD_BSNP": "Añadir Negocio",
   "ADD_BSNPs": "Añadir Negocios",
   "assigned_date": "Día",
-  "BSNPACK.ERROR": "No se ha podido asignar el negocio, revise los campos"
+  "BSNPACK.ERROR": "No se ha podido asignar el negocio, revise los campos",
+  "VIEW_BSN": "Mostar Negocios agregados"
+
 }

@@ -38,8 +38,8 @@ export class AddActivitiesComponent {
   addActivity() {
     this.dialog.open(PackActivitiesComponent, {
       width: "1200px",
-      maxHeight: "600px",
-      minHeight: "600px",
+      maxHeight: "800px",
+      minHeight: "800px",
       maxWidth: "80vw",
     });
   }
