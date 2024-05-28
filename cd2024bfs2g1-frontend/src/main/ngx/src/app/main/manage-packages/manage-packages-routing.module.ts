@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PackEditComponent } from './pack-edit/pack-edit.component';
 import { ManageAllPacksComponent } from './manage-all-packs/manage-all-packs.component';
+import { PackScheduleComponent } from './pack-edit/pack-schedule/pack-schedule.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,9 @@ const routes: Routes = [
   },
   {
     path: ':pck_id', component: PackEditComponent
+  },
+  {
+    path: ':pck_id/schedule', component: PackScheduleComponent
   }
 ];
 

@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, Injector } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavigationService, OntimizeService } from 'ontimize-web-ngx';
+import { PackScheduleComponent } from './pack-schedule/pack-schedule.component';
 
 @Component({
   selector: 'app-pack-edit',
@@ -11,7 +13,11 @@ export class PackEditComponent implements AfterViewInit{
 imgId: any;
 
 
-  constructor(private router: Router,private activeRoute: ActivatedRoute,protected injector: Injector){
+  constructor(private router: Router,
+    private activeRoute: ActivatedRoute,
+    protected injector: Injector,
+    private dialog: MatDialog
+  ){
     this.injector.get(NavigationService).initialize();
   }
   ngAfterViewInit(): void {
@@ -29,6 +35,15 @@ imgId: any;
   }
   onClicEdit(pck_id: any) {
     this.router.navigate(['main','packs','new',pck_id])
+  }
+
+  onClicSchedule(event:Event){
+    this.dialog.open(PackScheduleComponent,{
+      width: '800',
+      maxHeight: '1000',
+      minHeight: '1000',
+      maxWidth: '80vw'
+    })
   }
 }
 
