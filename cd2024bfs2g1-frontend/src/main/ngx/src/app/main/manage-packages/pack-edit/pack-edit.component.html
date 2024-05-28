@@ -1,5 +1,6 @@
+<o-breadcrumb [form]="myList" label-columns="pck_name" separator=" "></o-breadcrumb>
 <div class="fondo">
-<o-form attr="packsTable" service="packs" entity="pack" keys="pck_id" show-header="yes" show-header-navigation="no">
+<o-form #myList attr="packsTable" service="packs" entity="pack" keys="pck_id" show-header="yes" show-header-navigation="no">
     <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no"  show-header-navigation="no" oHidden></o-text-input>
     <div fxLayout="row" class="principal" fxLayoutAlign="center" fxLayoutGap="16px">
         <div class="datos">
@@ -27,7 +28,7 @@
         </div>
     </div>
     </div>
-    <o-form attr="packsImageTable" service="packs" entity="packDetail" keys="pck_id;imp_id"
+    <o-form attr="packsImageTable" service="packs" entity="packImage" keys="pck_id;imp_id"
      parent-keys="pck_id" show-header="yes" show-header-navigation="no">
         <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no" oHidden></o-text-input>
         <div fxLayout="row" class="image">
