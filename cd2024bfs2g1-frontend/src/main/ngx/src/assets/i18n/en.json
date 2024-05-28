@@ -248,5 +248,7 @@
   "SELECT_DAY": "Select Day",
   "BSNPACK.CONFIRMED" : "Business assigned successfully",
   "ADD_BSNP": "Add Business",
-  "ADD_BSNPs": "Add Businesses"
+  "ADD_BSNPs": "Add Businesses",
+  "assigned_date": "Day",
+  "BSNPACK.ERROR": "Can't assign business, please verify fields"
 }

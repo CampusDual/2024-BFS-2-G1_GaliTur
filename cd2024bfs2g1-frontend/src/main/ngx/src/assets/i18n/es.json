@@ -255,5 +255,7 @@
   "SELECT_DAY": "Seleccione Día",
   "BSNPACK.CONFIRMED" : "Negocio asignado con éxito",
   "ADD_BSNP": "Añadir Negocio",
-  "ADD_BSNPs": "Añadir Negocios"
+  "ADD_BSNPs": "Añadir Negocios",
+  "assigned_date": "Día",
+  "BSNPACK.ERROR": "No se ha podido asignar el negocio, revise los campos"
 }

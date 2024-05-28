@@ -20,3 +20,7 @@ o-button{
     height: 90%;
     
 }
+#addBusiness {
+    position: flex;
+    width: 100px;
+}
