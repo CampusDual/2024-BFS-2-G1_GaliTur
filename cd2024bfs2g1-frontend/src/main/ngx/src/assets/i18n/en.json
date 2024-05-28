@@ -166,8 +166,8 @@
   "Single": "Single",
   "Double": "Double",
   "Triple": "Triple",
-  "Price": "Price",
-  "TRAVELLERS":"Number of Travellers",
+  "Price": "Total price",
+  "TRAVELLERS":"Travellers",
   "PCK_CITY": "Municipality",
   "PCK_PROVINCE": "Province",
   "Dinner": "Dinner",
@@ -322,5 +322,16 @@
   "A POBRA DO CARAMINAL": "A POBRA DO CARAMIÑAL",
   "AS PONTES DE GARCIA RODRIGUEZ": "AS PONTES DE GARCÍA RODRÍGUEZ",
   "SAN SADURNINO": "SAN SADURNIÑO",
-  "VALDOVINO": "VALVODIÑO"
+  "VALDOVINO": "VALVODIÑO",
+  "RUSSIAN": "RUSSIAN",
+  "ITALIAN": "ITALIAN",
+  "BASQUE": "BASQUE",
+  "CATALAN": "CATALAN",
+  "POLISH": "POLISH",
+  "UKRAINIAN": "UKRAINIAN",
+  "CHINESE": "CHINESE",
+  "DUTCH": "DUTCH",
+  "ARABIC": "ARABIC",
+  "PEOPLE": "People",
+  "PERSON": "Person"
 }
