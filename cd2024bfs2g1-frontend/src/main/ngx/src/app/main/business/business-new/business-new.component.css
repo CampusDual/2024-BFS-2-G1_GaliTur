@@ -9,7 +9,8 @@ o-checkbox {
 
 .lodging {
     display: flex;
-    margin-left: 3%;
+    padding-left: 3%;
+    background-color: #ccc6c0;
 }
 
 .toggleFirst {
@@ -105,6 +106,12 @@ span {
 .description-textarea {
     .mat-textarea {
         resize: none;
+    }
+}
+
+::ng-deep .mat-form-field-disabled{
+    div {
+        background-color: rgb(221, 218, 212) !important;
     }
 }
 

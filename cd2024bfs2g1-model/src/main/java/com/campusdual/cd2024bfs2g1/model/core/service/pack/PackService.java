@@ -10,7 +10,6 @@ import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDateDao;
 import com.campusdual.cd2024bfs2g1.model.core.service.ClientService;
 import com.campusdual.cd2024bfs2g1.model.core.service.ImageService;
 import com.campusdual.cd2024bfs2g1.model.core.service.business.GuideCitiesService;
-import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.common.security.PermissionsProviderSecured;
@@ -22,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +34,7 @@ public class PackService implements IPackService {
     private final PackDateDao packDateDao;
     private final ImageDao imageDao;
     private final ImagePackDao imagePackDao;
+    private final PackDateService packDateService;
     private final GuideCitiesDao cityDao;
     private final ImageService imageService;
     private final GuideCitiesService cityService;
@@ -43,9 +44,11 @@ public class PackService implements IPackService {
     @Autowired
     public PackService(DefaultOntimizeDaoHelper daoHelper, PackDao packDao, ImageDao imageDao, GuideCitiesDao cityDao,
                        ImageService imageService, GuideCitiesService cityService, ImagePackService imagePackService, ClientService clientService,
-                       ImagePackDao imagePackDao,PackDateDao packDateDao) {
+                       ImagePackDao imagePackDao,PackDateDao packDateDao,PackDateService packDateService) {
+
         this.daoHelper = daoHelper;
         this.packDao = packDao;
+        this.packDateService = packDateService;
         this.imageDao = imageDao;
         this.cityDao = cityDao;
         this.imageService = imageService;
@@ -124,16 +127,26 @@ public class PackService implements IPackService {
     @Secured(PermissionsProviderSecured.SECURED)
     @Transactional(rollbackFor = Throwable.class)
     public EntityResult packInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException, ParseException {
+
         Object imgCode = attrMap.get(ImageDao.ATTR_IMAGE_CODE);
         attrMap.remove(ImageDao.ATTR_IMAGE_CODE);
-        EntityResult erInsertPack = this.daoHelper.insert(this.packDao, attrMap);
-        if (erInsertPack.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertPack;
-
         EntityResult erInsertImage = null;
         if (imgCode != null) {
             erInsertImage = imageService.imageInsert(Map.of(ImageDao.ATTR_IMAGE_CODE, imgCode));
             if (erInsertImage.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertImage;
         }
+
+        EntityResult erInsertPack = this.daoHelper.insert(this.packDao, attrMap);
+        if (erInsertPack.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertPack;
+
+        Date beginDate = (Date) attrMap.remove(PackDateDao.PD_DATE_BEGIN);
+        Date endDate = (Date) attrMap.remove(PackDateDao.PD_DATE_END);
+        Map<String, Object> packDate = new HashMap<>();
+        packDate.put(PackDateDao.PD_DATE_BEGIN, beginDate);
+        packDate.put(PackDateDao.PD_DATE_END, endDate);
+        packDate.put(PackDateDao.PCK_ID, erInsertPack.get(PackDao.PCK_ID));
+        EntityResult erInsertPackDate = packDateService.packDateInsert(packDate);
+        if (erInsertPackDate.getCode() != EntityResult.OPERATION_SUCCESSFUL) return  erInsertPackDate;
 
         Object packId = erInsertPack.get(PackDao.PCK_ID);
         Object imgId = erInsertImage == null ? ImageDao.DEFAULT_IMG_ID : erInsertImage.get(ImageDao.ATTR_IMAGE_ID);
