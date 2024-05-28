@@ -342,5 +342,6 @@
   "PACK_TABLE": "Tabla de Packs",
   "EDIT": "Editar",
   "ADD_DATES": "Añadir Fechas",
-  "ADD_ROUTES_AND_BUSINESSES":"Añadir Rutas y Negocios"
+  "ADD_ROUTES_AND_BUSINESSES":"Añadir Rutas y Negocios",
+  "SCHEDULE_PACKAGE": "Agendar paqueta"
 }

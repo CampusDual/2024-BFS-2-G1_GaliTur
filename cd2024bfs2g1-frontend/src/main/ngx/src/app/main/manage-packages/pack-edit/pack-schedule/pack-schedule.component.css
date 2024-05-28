@@ -1,0 +1,16 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.form_principal{
+    height: auto;
+}
+
+.div_principal{
+    padding: 30px 60px 60px 60px;
+}
+
+.nombre{
+    width: 100%;
+}

@@ -326,5 +326,6 @@
   "PACK_TABLE": "Pack table",
   "EDIT": "Edit",
   "ADD_DATES": "ADD DATES",
-  "ADD_ROUTES_AND_BUSINESSES": "Add Routes and Businesses"
+  "ADD_ROUTES_AND_BUSINESSES": "Add Routes and Businesses",
+  "SCHEDULE_PACKAGE": "Schedule package"
 }
