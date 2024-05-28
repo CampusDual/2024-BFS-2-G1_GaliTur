@@ -18,7 +18,7 @@
   .secundaria-centro {
     display: flex;
     padding: 10px 10px 10px 10px;
-    background-color: #978475;
+    background-color: #948578;
     border-radius: 10px 10px;
     justify-content: center;
     align-items: center;
@@ -27,7 +27,7 @@
   .contenedor-centro {
     display: flex;
     justify-content: center;
-    background-color: #978475;
+    background-color: #ad9d8f;
     padding: 10px;
   }
   .datos{
@@ -42,13 +42,11 @@
 .button{
  font-size: 16px;
  border-radius: 5px;
- background-color: #978475;
- border-width: 3px;
- border-color: black;
+ background-color: #ad9d8f;
 }
 
 .button:hover{
-    background-color: rgb(220, 220, 223);
+    background-color: white;
     font-size: 18px;
     transition: font-size 0.3s ease;
 }
@@ -58,7 +56,7 @@
 }
 
 .prueba{
-  background-color: #b39e8e;
+  background-color: #c4b3a4;
 }
 .o-rows{
   padding: 5px;
