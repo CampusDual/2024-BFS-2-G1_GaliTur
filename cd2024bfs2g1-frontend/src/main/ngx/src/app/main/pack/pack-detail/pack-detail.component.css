@@ -198,7 +198,7 @@
     margin-top: auto;
     margin-bottom: auto;
     .mdc-text-field--filled:not(.mdc-text-field--disabled) {
-        background-color: rgba(132, 164, 90, 0.2) !important;
+        background-color: rgba(132, 164, 90, 0.35) !important;
         border-top-left-radius: 8px !important;
         border-top-right-radius: 8px !important;
     } 
@@ -223,7 +223,7 @@
     border-bottom-left-radius: 0px;
     border-bottom-color: rgba(100, 104, 98, 0.75);
     border-bottom-width: 1px;
-    background-color:rgba(132, 164, 90, 0.6);
+    background-color:rgba(132, 164, 90, 0.85);
     border-bottom-style: solid;
     color:white;
     height: 35px;
@@ -233,7 +233,7 @@
     font-size: 17px;
     transition: background-color 0.3s ease, transform 0.3s ease;
     &:hover {
-        background-color:rgba(132, 164, 90, 0.8);
+        background-color:rgba(132, 164, 90, 1);
         border-bottom-color: rgba(107,89,74,255);
         border-bottom-width: 2px;
         transform: scale(1.03);
