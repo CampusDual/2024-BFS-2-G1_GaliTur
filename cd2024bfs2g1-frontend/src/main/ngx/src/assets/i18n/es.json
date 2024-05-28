@@ -340,5 +340,11 @@
   "DUTCH": "HOLANDÉS",
   "ARABIC": "ÁRABE",
   "PEOPLE": "Personas",
-  "PERSON": "Persona"
+  "PERSON": "Persona",
+  "CANCEL": "NO",
+  "CANCEL-PACK": "Cancelar Pack",
+  "CANCEL-BOOKING-DIALOG": "Confirme cancelar",
+  "CANCEL-BOOKING-DIALOG-B": "¿Quiere cancelar la reserva?",
+  "CANCEL-BOOKING.CONFIRMED": "Cancelación de Reserva Confirmada"
+
 }

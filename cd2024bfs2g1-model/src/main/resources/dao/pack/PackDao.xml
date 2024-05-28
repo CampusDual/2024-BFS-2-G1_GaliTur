@@ -77,6 +77,8 @@
                         ON P.gui_c_id=GC.gui_c_id
                         INNER JOIN ${mainschema}.pack_date PD
                         ON P.pck_id=PD.pck_id
+                        INNER JOIN ${mainschema}.pack_booking PB
+                        ON PD.pd_id=PB.pd_id
                     #WHERE#
                     #ORDER#
                 ]]>
