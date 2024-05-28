@@ -45,7 +45,7 @@ export class ViewAllLandmarkComponent implements AfterViewInit {
   }
 
   onClickBackToRoutes() {
-    this.router.navigate(["main", "routes", ":route_id"]);
+    this.router.navigate(["main", "routes"]);
   }
 
   getRouteId(): number {
@@ -70,7 +70,7 @@ export class ViewAllLandmarkComponent implements AfterViewInit {
       .query(
         { route_id: this.idRutaActual },["name"],"route")
       .subscribe((response) => {
-        console.log(response.data[0].name);
+        console.log("Prueba"+response.data[0].name);
         this.nameActualRoute=response.data[0].name;
       });
   }

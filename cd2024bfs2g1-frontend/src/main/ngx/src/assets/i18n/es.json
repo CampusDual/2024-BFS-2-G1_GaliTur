@@ -203,7 +203,7 @@
   "pck_date_end": "Fecha de Fin",
   "pck_price": "Precio total",
   "pck_participants": "Participantes",
-  "pcs_id": "reserva",
+  "pcs_id": "Reservado",
   "img_code": "Código de Imagen",
   "PACKS": "Packs",
   "DAY": "Día",
@@ -339,6 +339,7 @@
   "CHINESE": "CHINO",
   "DUTCH": "HOLANDÉS",
   "ARABIC": "ÁRABE",
+  "creation_date": "Fecha de creación",
   "PEOPLE": "Personas",
   "PERSON": "Persona"
 }

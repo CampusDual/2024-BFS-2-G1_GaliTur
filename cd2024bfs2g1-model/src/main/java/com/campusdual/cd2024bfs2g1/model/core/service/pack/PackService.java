@@ -108,6 +108,12 @@ public class PackService implements IPackService {
     }
 
     @Override
+    public AdvancedEntityResult packClientPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.paginationQuery(this.packDao, keysValues, attributes, recordNumber, startIndex, orderBy, this.packDao.PCK_ALL_QUERY);
+    }
+
+    @Override
     @Secured(PermissionsProviderSecured.SECURED)
     @Transactional(rollbackFor = Throwable.class)
     public EntityResult packInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException, ParseException {

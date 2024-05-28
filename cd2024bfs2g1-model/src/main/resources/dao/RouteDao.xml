@@ -33,12 +33,7 @@
             <Sentence>
                 <![CDATA[
                   SELECT
-                        R.route_id,
-                        R.name,
-                        R.description,
-                        R.estimated_duration,
-                        R.difficulty,
-                        SC.img_code
+                        #COLUMNS#
                     FROM
                         route R
                     left JOIN (
@@ -51,8 +46,23 @@
                         INNER JOIN image_route ON image.image_id = image_route.image_id
                         GROUP BY image_route.route_id
                         ) SSC on SSC.image_id = i.image_id
-                    ) SC ON SC.route_id = R.route_id;
-
+                    ) SC ON SC.route_id = R.route_id
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="allRoutes">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.route r
+                        INNER JOIN ${mainschema}.image_route ir
+                        ON r.route_id=ir.route_id
+                        INNER JOIN ${mainschema}.image i
+                        ON i.image_id=ir.image_id
+                    #WHERE#
                     #ORDER#
                 ]]>
             </Sentence>
