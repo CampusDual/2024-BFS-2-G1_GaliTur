@@ -157,6 +157,27 @@
         background-color: #52733B !important;
 }
 
+.div-cancel-pack-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cancel-pack{
+    height: 70px;
+    width: 200px;
+    background-color: rgba(235, 13, 13, 0.778);
+    border-radius: 20px; 
+    font-size: 20px; 
+    color: white;
+    font-style: bold;
+    border: none; 
+    cursor: pointer; 
+}
+
+
+
+
 
 
 

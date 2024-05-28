@@ -23,6 +23,7 @@ export class PackClientDetailComponent {
     protected injector: Injector,
     protected bookingService: OntimizeService,
     protected snackBarService: SnackBarService,
+    private ontimizeService: OntimizeService,
     @Inject(AuthService) private authService: AuthService
   ) {
     this.bookingService = this.injector.get(OntimizeService);
@@ -30,7 +31,6 @@ export class PackClientDetailComponent {
 
   ngOnInit(): void {
     this.isPackInstance = false
-    this.configureServices()
     this.isInstanceOfPack()
   }
 
@@ -77,7 +77,7 @@ export class PackClientDetailComponent {
       );
       this.dialogService.dialogRef.afterClosed().subscribe((result) => {
         if (result) {
-          this.insertBooking(data);
+          this.deleteBooking(data);
           // Actions on confirmation
         } else {
           // Actions on cancellation
@@ -86,18 +86,10 @@ export class PackClientDetailComponent {
     }
   }
 
-  protected configureServices() {
-    // Configure the service using the configuration defined in the `app.services.config.ts` file
-    const confBooking = this.bookingService.getDefaultServiceConfiguration("packBookings");
+  deleteBooking(data) {
+    const confBooking = this.ontimizeService.getDefaultServiceConfiguration("packBookings");
     this.bookingService.configureService(confBooking);
-    const confPack = this.packDateService.getDefaultServiceConfiguration('packDates');
-    this.packDateService.configureService(confPack);
-  }
-
-  insertBooking(data) {
-    this.bookingService.insert({ pck_id: data.pck_id }, "packBooking").subscribe((resp) => {
-        //TODO: this.form.reload(true);
-
+    this.bookingService.delete({pbk_booking_id: data.pbk_booking_id},"packBooking").subscribe((resp) => {
         const config: OSnackBarConfig = {
           action: "",
           milliseconds: 2000,
@@ -106,7 +98,9 @@ export class PackClientDetailComponent {
           cssClass: "snackbar",
         };
         this.snackBarService.open("CANCEL-BOOKING.CONFIRMED", config);
-      });
+        this.router.navigate(["main/pack-client"]);
+    });
+   
   }
 
   isLogged() {
@@ -114,7 +108,9 @@ export class PackClientDetailComponent {
   }
 
   private isInstanceOfPack(): void {
-    this.packDateService.query({pck_id: +this.route.snapshot.params['pck_id']}, ['pck_id'], 'packDate')
+    const confPack = this.ontimizeService.getDefaultServiceConfiguration('packDates');
+    this.packDateService.configureService(confPack);
+    this.packDateService.query({pck_id: + this.route.snapshot.params['pck_id']}, ['pck_id'], 'packDate')
       .subscribe((result) => {
         if (result.data[0] !== undefined){
           this.isPackInstance = true

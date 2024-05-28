@@ -100,6 +100,14 @@ public class PackService implements IPackService {
         }
         return this.daoHelper.query(this.packDao, keysValues, attributes, this.packDao.PCK_DETAIL);
     }
+    @Override
+    public EntityResult packCancelDetailQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        if(keysValues.containsKey(PackDao.PCK_ID)){
+            Object key = keysValues.remove("pck_id");
+            keysValues.put("p.pck_id", key);
+        }
+        return this.daoHelper.query(this.packDao, keysValues, attributes, this.packDao.PCK_CANCEL_DETAIL);
+    }
 
     @Override
     public AdvancedEntityResult allPacksPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
