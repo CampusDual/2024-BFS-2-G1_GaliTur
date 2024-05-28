@@ -3,7 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { AddActivitiesComponent } from '../add-activities.component';
-import { OTableComponent, OntimizeService } from 'ontimize-web-ngx';
+import { OComboComponent, OSnackBarConfig, OTableComponent, OntimizeService, SnackBarService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-pack-activities',
@@ -18,14 +18,17 @@ export class PackActivitiesComponent {
   protected bsn_service: OntimizeService;
 
   public arrayDias = []
-  public selectedDay;
+  public selectedDay ;
+  public selectedComboDay
+
   
 
   constructor(
     protected sanitizer: DomSanitizer,
     private dialogRef: MatDialogRef<PackActivitiesComponent>,
     private activeRoute: ActivatedRoute,
-    protected injector: Injector
+    protected injector: Injector,
+    protected snackBarService: SnackBarService,
   ){
     this.service = this.injector.get(OntimizeService);
     this.bsn_service = this.injector.get(OntimizeService);
@@ -47,6 +50,7 @@ export class PackActivitiesComponent {
   }
 
   @ViewChild('table', { static: false }) table: OTableComponent;
+  @ViewChild("comboBoxDay") comboBoxDay: OComboComponent;
   selectedBusinessIds: any[] = [];
 
   ngAfterViewInit() {
@@ -84,10 +88,12 @@ export class PackActivitiesComponent {
 
   ngOnInit(): void {
    // this.table.clearSelection();
- 
+
     console.log('Al emergente le llego el id: ' + AddActivitiesComponent.packId);
     this.configureService();
     this.getDays();
+    this.table.clearSelection()
+
   }
 
 
@@ -107,13 +113,21 @@ export class PackActivitiesComponent {
 
           for(let d of days){
             this.arrayDias.push({"day":d['day'],"day_string":d['day_string']})
-          }     
+          } 
+          
+          this.selectedComboDay = "2"
+
+
+
 
         } else {
           alert('Impossible to query data!');
         }
       });
+
+
     }
+
 
   
     insertBsnPack() {
@@ -124,11 +138,19 @@ export class PackActivitiesComponent {
       for(let bp of this.selectedBusinessIds){
 
         this.bsn_service
-        .insert({ pck_id: AddActivitiesComponent.packId, assigned_date: this.selectedDay, bsn_id: bp  }, "businessPack")
+        .insert({ pck_id: AddActivitiesComponent.packId, assigned_date: this.comboBoxDay.getValue(), bsn_id: bp  }, "businessPack")
         .subscribe((resp) => {
-          //this.form.reload(true)
+          this.table.clearSelection()
+          const config: OSnackBarConfig = {
+            action: "",
+            milliseconds: 2000,
+            icon: "business",
+            iconPosition: "left",
+            cssClass: "snackbar",
+          };
+          this.snackBarService.open("BSNPACK.CONFIRMED", config);
         });
-
+        
       }
     }
   

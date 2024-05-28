@@ -251,5 +251,9 @@
   "LENGTH_ERROR": "No puede superar 500 caracteres",
   "pck_reserved":"Pack Reservado",
   "IM_PROFESSIONAL": "Soy un profesional",
-  "IM_NOT_PROFESSIONAL": "No soy un profesional"
+  "IM_NOT_PROFESSIONAL": "No soy un profesional",
+  "SELECT_DAY": "Seleccione Día",
+  "BSNPACK.CONFIRMED" : "Negocio asignado con éxito",
+  "ADD_BSNP": "Añadir Negocio",
+  "ADD_BSNPs": "Añadir Negocios"
 }
