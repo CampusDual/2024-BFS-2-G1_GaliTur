@@ -122,7 +122,7 @@
   "INFO": "Información",
   "START_DATE":"Fecha de Inicio",
   "END_DATE":"Fecha de Fin",
-  "TRAVELLERS":"Número de Viajeros",
+  "TRAVELLERS":"Viajeros",
   "SCHEDULE": "Horario",
   "PHONE": "Teléfono",
   "WEBSITE": "Página Web",
@@ -170,7 +170,7 @@
   "Single": "Individual",
   "Double": "Doble",
   "Triple": "Triple",
-  "Price": "Precio",
+  "Price": "Precio total",
   "Dinner": "Cena",
   "Breakfast": "Desayuno",
   "Lunch": "Comida",
@@ -339,5 +339,7 @@
   "CHINESE": "CHINO",
   "DUTCH": "HOLANDÉS",
   "ARABIC": "ÁRABE",
-  "creation_date": "Fecha de creación"
+  "creation_date": "Fecha de creación",
+  "PEOPLE": "Personas",
+  "PERSON": "Persona"
 }

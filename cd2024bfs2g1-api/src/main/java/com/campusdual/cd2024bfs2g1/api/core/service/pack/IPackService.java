@@ -1,5 +1,6 @@
 package com.campusdual.cd2024bfs2g1.api.core.service.pack;
 
+import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 
@@ -25,4 +26,7 @@ public interface IPackService {
     EntityResult packDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
     EntityResult newestQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
+
+    AdvancedEntityResult allPacksPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy);
+
 }
