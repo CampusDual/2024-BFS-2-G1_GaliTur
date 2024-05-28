@@ -46,8 +46,7 @@
                         INNER JOIN image_route ON image.image_id = image_route.image_id
                         GROUP BY image_route.route_id
                         ) SSC on SSC.image_id = i.image_id
-                    ) SC ON SC.route_id = R.route_id;
-
+                    ) SC ON SC.route_id = R.route_id
                     #ORDER#
                 ]]>
             </Sentence>

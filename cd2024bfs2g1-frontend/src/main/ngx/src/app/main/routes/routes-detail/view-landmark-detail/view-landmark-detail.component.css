@@ -3,7 +3,7 @@
   height: 800px;
   background-size: cover;
   background-position: center;
-  background-color: #eff1f3;
+  background-color: #e2dbd5;
 
 }
 
@@ -62,22 +62,22 @@
   overflow-y: auto;
   overflow-x: hidden;
   text-align: center;
-  background-color: #eff1f3;
+  background-color: #e2dbd5;
 }
 
 
 .landmarkName {
   width: 160px;
-  height: 40px;
+  height: 50px;
   font-family: "Arial", sans-serif;
   font-size: 17px;
   border: solid 2px;
-  border-color: black;
+  border-color: #3a3027;
   font-weight: bold;
   margin-top: 15px;
   margin-right: 10px;
   margin-left: 10px;
-  background-color: #eff1f3;
+  background-color: #d3c3b6;
   border-radius: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;

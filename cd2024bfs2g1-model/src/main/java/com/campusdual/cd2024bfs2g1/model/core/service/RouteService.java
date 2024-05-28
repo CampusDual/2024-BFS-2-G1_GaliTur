@@ -42,7 +42,7 @@ public class RouteService  implements IRouteService {
 
     @Override
     public EntityResult routeQuery(Map<String, Object> keyMap, List<String> attrList) {
-        return this.daoHelper.query(routeDao, keyMap, attrList, RouteDao.QUERY_ROUTE_IMAGE);
+        return this.daoHelper.query(routeDao, keyMap, attrList);
     }
 
     @Override
@@ -108,6 +108,6 @@ public class RouteService  implements IRouteService {
 
     @Override
     public AdvancedEntityResult routePaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy) throws OntimizeJEERuntimeException {
-        return this.daoHelper.paginationQuery(this.routeDao, keysValues, attributes, recordNumber, startIndex, orderBy, RouteDao.QUERY_ALL_ROUTES);
+        return this.daoHelper.paginationQuery(this.routeDao, keysValues, attributes, recordNumber, startIndex, orderBy, RouteDao.QUERY_ROUTE_IMAGE);
     }
 }
