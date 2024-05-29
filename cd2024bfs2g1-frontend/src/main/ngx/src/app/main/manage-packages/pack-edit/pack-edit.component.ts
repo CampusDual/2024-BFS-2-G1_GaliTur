@@ -51,6 +51,7 @@ export class PackEditComponent implements AfterViewInit{
   onClicEdit(pck_id: any) {
     this.router.navigate(['main','packs','new',pck_id])
   }
+  
 
   onClicSchedule(){
     const dataToSend = {
@@ -115,7 +116,12 @@ export class PackEditComponent implements AfterViewInit{
     this.firstDayData = true
     this.firstDayData = true
   }
+  ConvertTime(pd_id: any){
+    console.log(12)
+  }
 }
+
+
 
 
 
