@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, ElementRef, Injector, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NavigationService, OButtonComponent, OTextInputComponent, OValueChangeEvent, OntimizeService } from 'ontimize-web-ngx';
+import { NavigationService, OButtonComponent, OTableColumn, OTableColumnComponent, OTextInputComponent, OValueChangeEvent, OntimizeService } from 'ontimize-web-ngx';
 import { PackScheduleComponent } from './pack-schedule/pack-schedule.component';
 import { AbstractControl, FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
@@ -17,6 +17,7 @@ export class PackEditComponent implements AfterViewInit{
   @ViewChild('packNameInput') packNameInput : ElementRef
   @ViewChild('addPDbtn') packDateButton : ElementRef
   @ViewChild('addRaBbtn') rtandbssButton : ElementRef
+  @ViewChild('dateBeginColumnRenderer',{ static: true }) dateBeginColumnRenderer : OTableColumnComponent
   constructor(private router: Router,
     private activeRoute: ActivatedRoute,
     protected injector: Injector,
@@ -24,8 +25,12 @@ export class PackEditComponent implements AfterViewInit{
   ){
     this.injector.get(NavigationService).initialize();
   }
+
   ngAfterViewInit(): void {
     this.pck_id = this.getPackId()
+    console.log(this.dateBeginColumnRenderer)
+    console.log(this.dateBeginColumnRenderer.table)
+
   }
   private actionButtons(disable:boolean){
     this.packDateButton.nativeElement.disabled = disable;
@@ -41,6 +46,7 @@ export class PackEditComponent implements AfterViewInit{
   dataInputDays: any
   firstNameData:boolean = true
   firstDayData:boolean = true
+  dateBeginWithFormat: any
   packDate:any = {
     name:'',
     days:0,
