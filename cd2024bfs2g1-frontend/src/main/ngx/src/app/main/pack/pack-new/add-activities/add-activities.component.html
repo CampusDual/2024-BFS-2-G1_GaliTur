@@ -1,4 +1,5 @@
  <o-row class="principal">
+  <o-column class="principal" style="padding-right: 1%;">
   <details class="details">
     <summary>{{'VIEW_BSN' | oTranslate }}</summary>
     <div class="div-table">
@@ -13,4 +14,22 @@
       </o-table>
     </div>
   </details>
+</o-column>
+<o-column class="principal">
+  <details class="details">
+    <summary>{{'VIEW_BSN' | oTranslate }}</summary>
+    <div class="div-table">
+
+      <o-table #table  keys="bsn_pack_id" 
+      columns="bsn_name;bsn_type;bsn_address;assigned_date" title="BUSINESSES"
+      visible-columns="bsn_name;bsn_type;bsn_address" insert-button="no" delete-button="no" refresh-button="no"
+      pagination-controls="yes" detail-mode="none" export-button="no" query-rows="50" show-charts-on-demand-option="no"
+      auto-adjust="no" fixed-header="yes" sort-columns="assigned_date">
+        <o-table-button label="{{'ADD_BSNP' | oTranslate }}" icon="business" (onClick)="addRoute()"></o-table-button>
+        <o-table-columns-grouping columns="assigned_date" />
+      </o-table>
+    </div>
+  </details>
+</o-column>
 </o-row>
+

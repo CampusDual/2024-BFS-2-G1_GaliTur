@@ -3,6 +3,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { PackActivitiesComponent } from "./pack-activities/pack-activities.component";
 import { ActivatedRoute } from "@angular/router";
 import { FilterExpressionUtils, OTableComponent, OntimizeService } from "ontimize-web-ngx";
+import { PackRoutesComponent } from "./pack-routes/pack-routes.component";
 
 @Component({
   selector: "app-add-activities",
@@ -44,7 +45,41 @@ export class AddActivitiesComponent {
     });
   }
 
+  addRoute() {
+    
+    const diaglogRef = this.dialog.open(PackRoutesComponent, {
+       width: "1200px",
+       maxHeight: "800px",
+       minHeight: "800px",
+       maxWidth: "80vw",
+     });
+     diaglogRef.afterClosed().subscribe(() => {
+       this.getRoute()
+     });
+   }
+
   getBsn() {
+    const conf = this.service.getDefaultServiceConfiguration("businessPacks");
+    this.service.configureService(conf);
+    const filter = {
+      "BP.pck_id": parseInt(AddActivitiesComponent.packId) ,
+    };
+    const columns = ["bsn_name", "bsn_type","bsn_address","assigned_date","bsn_pack_id"];
+    this.service.query(filter, columns, "packBusiness").subscribe((resp) => {
+      if (resp.code === 0) {
+        // resp.data contains the data retrieved from the server
+
+        this.table.setDataArray(resp.data);
+        this.table.reloadData()
+
+
+      } else {
+        alert("Impossible to query data!");
+      }
+    });
+  }
+
+  getRoute() {
     const conf = this.service.getDefaultServiceConfiguration("businessPacks");
     this.service.configureService(conf);
     const filter = {
