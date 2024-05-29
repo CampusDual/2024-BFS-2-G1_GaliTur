@@ -61,7 +61,7 @@ export class AddActivitiesComponent {
 
         this.table.setDataArray(resp.data);
 
-       
+
       } else {
         alert("Impossible to query data!");
       }

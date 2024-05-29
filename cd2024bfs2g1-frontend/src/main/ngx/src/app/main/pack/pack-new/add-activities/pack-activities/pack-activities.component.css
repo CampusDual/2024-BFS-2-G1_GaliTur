@@ -172,4 +172,6 @@ o-row{
     color: #e2dbd5 !important;
 }
 
-
+:host ::ng-deep .mat-mdc-icon-button.mat-primary {
+    color: #4e4c4a !important;
+}
