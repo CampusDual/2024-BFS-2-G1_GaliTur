@@ -1,3 +1,43 @@
+<!-- Boton para abrir dialogo -->
+<o-button attr="packFilter" type="FAB" icon="tune" layout-padding (click)="showFilter($event)"></o-button>
+
+<!-- Plantilla para el dialogo -->
+<ng-template #filterDialogTemplate>
+  <o-form editable-detail="no" show-header="no">
+    <div class="filter">
+      <!-- Filtro de palabras clave -->
+      <o-text-input attr="pck_name" read-only="no" placeholder="Nombre"></o-text-input>
+      
+      <!-- Filtro de rango de fechas -->
+      <o-date-input attr="pck_date_begin" read-only="no" label="Fecha inicio" format="DD/MM/YYYY HH:MM:SS"></o-date-input>
+      <o-date-input attr="pck_date_end" read-only="no" label="Fecha fin"></o-date-input>
+      
+      <!-- Filtro de número de días -->
+      <o-integer-input attr="pck_days" read-only="no" label="Número de días"></o-integer-input>
+      
+      <!-- Filtro de rango de precio -->
+      <o-real-input attr="pck_price_min" read-only="false" placeholder="Precio mínimo"></o-real-input>
+      <o-real-input attr="pck_price_max" read-only="false" placeholder="Precio máximo"></o-real-input>
+      
+      <!-- Filtro de número de viajeros -->
+      <o-integer-input attr="pck_participants" read-only="no" label="Número de viajeros"></o-integer-input>
+      
+      <!-- Filtro de lugar -->
+      <o-combo attr="gui_c_name" searchable="yes" read-only="no" service="places" entity="place" keys="PLACE_ID"
+        columns="PLACE_ID;PLACE_NAME" visible-columns="PLACE_NAME" value-column="PLACE_ID"></o-combo>
+    </div>
+
+    <o-filter-builder #filterBuilder attr="packFilter"
+      filters="pck_name:pck_name;pck_date_begin:pck_date_begin;pck_date_end:pck_date_end;pck_days:pck_days;pck_price_min:pck_price_min;pck_price_max:pck_price_max;pck_participants:pck_participants;gui_c_name:gui_c_name"
+      [target]="packGrid" query-on-change="yes" query-on-change-delay="500" [expression-builder]="filter">
+    </o-filter-builder>
+
+    <div class="dialog-buttons" fxLayout="row" fxLayoutAlign="end center">
+      <button mat-button (click)="applyFilter()">Filter</button>
+      <button mat-button (click)="closeDialog()">Close</button>
+    </div>
+  </o-form>
+</ng-template>
 <o-grid #packGrid attr="packGrid" title="PACKS" service="packs" entity="allPacks" keys="P.pck_id"
     columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;gui_c_name;pcs_id;img_code;pck_days;creation_date"
     query-rows="8" page-size-options="8;16;24" orderable="true" sort-column="creation_date:desc"
