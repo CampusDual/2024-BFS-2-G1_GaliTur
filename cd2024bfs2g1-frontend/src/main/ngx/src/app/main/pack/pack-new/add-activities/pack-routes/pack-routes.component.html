@@ -32,7 +32,7 @@
       onRowSelected="addRow()">
 
 
-      <o-table-row-expandable icon-collapse="keyboard_arrow_down" icon-expand="chevron_right">
+      <o-table-row-expandable icon-collapse="keyboard_arrow_down" icon-expand="chevron_right" >
         <ng-template let-row>
             <!--
           <span ><mat-icon  [ngClass]="getIconColorClass(data.difficulty)" *ngFor="let _ of [].constructor(data.difficulty)">eco</mat-icon>
@@ -63,22 +63,23 @@
   
               </div>
               <!-- Nombre y descripcion -->
-              <o-row class="o-rows" class="left" attr="container" icon="hiking" mat
-                        title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" elevation="1"
-                        aria-orientation="vertical" appearance="outline">
-                        <ul class="list-to-desc">
-                          <li class="list-item" ><strong><i>{{'DESCRIPTION' | oTranslate }}: </i></strong> {{row.description}}</li>
+              <o-row   class="o-rows" class="left" attr="container" icon="hiking" mat
+                        title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" elevation="3"
+                        aria-orientation="horizontal" >
+                        <ul class="list-to-desc" appearance="outline" style="max-height: 100px;">
+                          <li class="list-item">{{row.description}}</li>
                         </ul>
                     </o-row>
-            
   
               <!-- Horario, telefono, website y el cif -->
   
-              <o-row class="o-rows" class="right" attr="container" title="{{'INFO_EXTRA' | oTranslate }}" icon="info"
-                layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
-                <ul class="list-with-spaces">
-                  <li><strong><i>{{'DURATION' | oTranslate }}: </i></strong>{{ convertTime(row.estimated_duration) }}</li>
-                  <li><strong><i>{{'DIFFICULTY' | oTranslate }}: </i></strong> {{getDifficultad(row.difficulty)}}</li>
+              <o-row   class="o-rows" class="left" attr="container" icon="hiking" mat
+              title="{{'INFO_EXTRA' | oTranslate }}" layout-align="start stretch" elevation="3"
+              aria-orientation="horizontal" >
+              <ul class="list-to-desc-2" appearance="outline" style="max-height: 100px;">
+                  <li class="list-item"><strong><i>{{'NAME' | oTranslate }}: </i></strong>{{ convertTime(row.name) }}</li>
+                  <li class="list-item"><strong><i>{{'DURATION' | oTranslate }}: </i></strong>{{ convertTime(row.estimated_duration) }}</li>
+                  <li class="list-item"><strong><i>{{'DIFFICULTY' | oTranslate }}: </i></strong> {{getDifficultad(row.difficulty)}}</li>
                 </ul>
               </o-row>
               <!-- landmarks 

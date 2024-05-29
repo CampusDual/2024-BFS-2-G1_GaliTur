@@ -82,7 +82,7 @@
 
 .left, .right {
     flex: 1;
-    padding: 25px;
+    padding: 0px 5px 10px 5px;
     background-color: transparent;
     overflow:hidden; 
 }
@@ -100,8 +100,14 @@
     width: 90%; /* Ajusta el ancho según sea necesario */
     padding: 0;
     margin: 0;
-    max-height: 100%;
+    list-style-type: none;
+}
 
+.list-to-desc-2 {
+    width: 90%; /* Ajusta el ancho según sea necesario */
+    padding: 0;
+    margin: 0;
+    list-style-type: disc;
 }
 
 .list-item {
@@ -109,8 +115,9 @@
     word-break: break-word; /* Fuerza un corte en las palabras largas */
     overflow-wrap: break-word; /* Asegura que las palabras largas se dividan en la siguiente línea */
     white-space: normal; /* Permite que el texto haga un salto de línea */
-    padding: 10px; /* Espaciado interno */
+    
     box-sizing: border-box; /* Incluye el padding y el borde en el ancho y alto total del elemento */
+
 }
 .o-text-input {
     outline: transparent;
