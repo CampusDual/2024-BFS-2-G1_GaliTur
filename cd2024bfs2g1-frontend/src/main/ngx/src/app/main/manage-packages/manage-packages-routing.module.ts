@@ -15,11 +15,16 @@ const routes: Routes = [
   
   },
   {
-    path: ':pck_id', component: PackEditComponent
+    path: ':pck_id', component: PackEditComponent, 
+    children:[
+      {
+        path: 'schedule', component: PackScheduleComponent
+      }
+    ]
   },
-  {
-    path: ':pck_id/schedule', component: PackScheduleComponent
-  }
+  // {
+  //   path: ':pck_id/schedule', component: PackScheduleComponent
+  // }
 ];
 
 

@@ -1,11 +1,11 @@
-<o-form attr="packNew" label-header-align="start"
-  label-header="{{ 'SCHEDULE_PACKAGE' | oTranslate }}" keys="pck_id" fxLayout="column" #oFormPackNew service="packDates" entity="packDate" query-on-init="false"
-  keys-sql-types="integer" confirm-exit="false" class="form_principal">
+<o-form attr="packDateNew" label-header-align="start" mode="insert" 
+  label-header="{{ 'SCHEDULE_PACKAGE' | oTranslate }}" keys="pd_id" fxLayout="column" service="packDates" entity="packDate" query-on-init="false" 
+  keys-sql-types="integer" ignore-default-navigation="yes" (insert-method)="onInsertPackDate()">
   <div class="div_principal" fxLayout="column" fxLayoutGap="16px">
     <o-row class="o-rows" class="nombre_pack" attr="container" icon="hiking" mat
     title="{{'PACK_NAME' | oTranslate }}" layout-align="start stretch" elevation="1"
     aria-orientation="vertical" appearance="outline">
-    <o-text-input class="nombre">Aqui ponemos la nombre deshabilitado</o-text-input>
+    <o-text-input class="nombre" enabled="false" [innerText]="packName">Aqui ponemos la nombre deshabilitado</o-text-input>
     </o-row>
     <div fxLayout="row" fxLayoutGap="32px">
       <o-integer-input #days
@@ -17,6 +17,9 @@
         (onValueChange)=" onBeginDateChanged()"></o-date-input>
       <o-date-input #endDate attr="pd_date_end" value-type="date" label="{{ 'DATE_RANGE' | oTranslate }}"
       read-only="yes" format="DD/MM/YYYY"></o-date-input>
+      <o-button #InsertPackDateButton (onClick)="OnInsertPackDate()">On insert data</o-button>
     </div>
   </div>
+  <o-text-input attr="pck_id" #pckIdInput enabled="false" (onchange)="onChangeValue()" read-only="yes" [innerText]="pck_id"></o-text-input>
 </o-form>
+
