@@ -37,4 +37,7 @@ public interface IPackService {
     EntityResult packDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
     EntityResult newestQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
+
+    AdvancedEntityResult allPacksPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy);
+
 }
