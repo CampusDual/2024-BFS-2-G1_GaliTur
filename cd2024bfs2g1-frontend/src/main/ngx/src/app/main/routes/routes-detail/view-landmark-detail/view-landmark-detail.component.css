@@ -1,19 +1,18 @@
-
-/* Contenedor principal */
 .dialog-content-margin {
-    background-color: #cbd3c5 ;
-    align-items: center;
-    height: 800px;
-    background-image: url("../../../../../assets/images/photoRouteDetails.jpg");
-    background-size: cover;
-    background-position: center;
-  }
+  align-items: center;
+  height: 800px;
+  background-size: cover;
+  background-position: center;
+  background-color: #e2dbd5;
 
-.backButton{
-  height: 30px;
-  margin: 15px 15px 15px 15px;
 }
-.arrow_back{
+
+.backButton {
+  height: 30px;
+  margin: 15px;
+}
+
+.arrow_back {
   margin: auto;
   color: #0c0c0c;
 }
@@ -22,74 +21,78 @@
   font-size: 24px;
   font-weight: bold;
   text-align: center;
-  background-color: #8d7561;
-  margin: 0px 200px 0px 200px;
+  background-color: #52733B;
+  margin: 0 auto;
+  max-width: 90%;
   color: #ffffff;
-  border: 5px solid;
-  border-color: #000000;
-  border-radius: 6px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
 }
 
-.landmark-map  {
-  height: 118%;
+.landmark-map {
+  height: 100%;
   width: 100%;
-  border: 5px solid;
-  border-radius: 5px;
-  border-color: #000000;
+  margin-top: 70px;
   overflow: hidden;
+  border-radius: 10px;
 }
 
-.map{
+.map {
   height: 100%;
 }
 
 .landmark-map {
-  cursor: pointer; 
+  cursor: pointer;
 }
 
-#landmark-map:hover {
-  transform: scale(1.2); 
-  transition: transform 0.3s ease; 
-}
 
-.landmark-list {
-
-  width: 300px;
-  height: 425px;
+.container {
+  width: 220px;
+  height: 400px;
   margin-top: 120px;
-  padding: 10px;
-  background-color: #9d8b7d;
-  border: 5px solid;
-  border-color: #000000;
-  border-radius: 18px;
-  box-shadow: 0 50px 50px rgba(2, 2, 2, 0.2);
-  overflow-y: auto;
-  opacity: 80%;
+  margin-right: 20px;
+  margin-left: 20px;
+  padding: 15px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  
-
-
+  overflow: visible;
+  overflow-y: auto;
+  overflow-x: hidden;
+  text-align: center;
+  background-color: #e2dbd5;
 }
+
 
 .landmarkName {
-
+  width: 160px;
+  height: 50px;
   font-family: "Arial", sans-serif;
   font-size: 17px;
-  border: solid 3px;
-  border-color: black;
+  border: solid 2px;
+  border-color: #3a3027;
   font-weight: bold;
-  text-align: center;
-  padding: 15px;
   margin-top: 15px;
-  margin-right:10px;
+  margin-right: 10px;
   margin-left: 10px;
-  background-color: #fcfbfb;
+  background-color: #d3c3b6;
   border-radius: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  flex-direction: column;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  white-space: normal;
+  text-align: center;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  
+
 }
 
+.landmarkName:hover {
+  transform: scale(1.1);
+  transition: transform 0.4s ease;
+}

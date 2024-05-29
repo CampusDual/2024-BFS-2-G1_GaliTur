@@ -1,3 +1,4 @@
+/* Div que contiene toda la pagina */
 .page {
     display: flex;
     flex-direction: row;
@@ -5,6 +6,7 @@
     width: 100%;
 }
 
+/* Carta que contiene toda la informacion */
 .mainCard {
     display: flex;
     justify-content: center;
@@ -12,6 +14,7 @@
     width: 1100px;
 }
 
+/* Boton para volver a los packs */
 .back-button {
     margin-top: 60px;
     margin-right: -75px;
@@ -19,6 +22,7 @@
     z-index: 2;
 }
 
+/* Div que contiene todos los divs para mostrar la informacion */
 .main-container {
     min-width: 700px;
     align-content: center;
@@ -29,45 +33,24 @@
     margin-top: 10px;
 }
 
+
+/* Div para el nombre y la imagen */
 .name-container {
     margin-top: 20px;
-    margin-bottom:20px;
 }
 
-.data-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-}
-
+/* Div de la imagen */
 .div-image-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     width: 100%;
     height: 400px;
-    margin-bottom: 30px;
     align-items: center;
+    margin-bottom: 30px;
 }
 
-.div-active-pack-container{
-    width: 80%;
-    text-align: center;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-
-}
-
-.row-image-container {
-    display: block;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    padding: 20px;
-}
-
+/* Imagen del nombre */
 .image {
     width: 100%;
     height: auto;
@@ -77,6 +60,7 @@
     object-fit: cover;
 }
 
+/* Imagen del nombre en caso de que sea el logo de la pagina (Imagen por defecto) */
 .image-logo {
     width: 100%;
     height: auto;
@@ -86,6 +70,7 @@
     object-fit:scale-down;
 }
 
+/* Estilos del titulo (Nombre del pack) */
 .image-title{
     position: absolute;
     justify-content: center;
@@ -96,90 +81,63 @@
     padding-right: 10px;
 }
 
-.reserve-pack{
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-top-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    border-style: groove;
-    border-color: rgb(187, 9, 9);
-    background-color: rgb(187, 9, 9);
-    color:white;
-    height: 35px;
+/* Div para la descripción y la informacion extra */
+.data-container {
     display: flex;
-    align-items: center;
+    flex-direction: row;
     justify-content: center;
-    font-size: 20px;
+    width: 100%;
 }
 
-.active-pack{
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-top-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    border-style: groove;
-    border-color: #84A45A;
-    background-color:#84A45A;
-    color:white;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    &:hover {
-        background-color: #769251;
-        transform: scale(1.02);
-        cursor: pointer;
-    }
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.active-pack:hover{
-    cursor: pointer;
-}
-
+/* Divs de la descripción y la informacion extra, necesarios para dividir de forma correcta a la mitad cada uno */
 .left, .right {
     flex: 1;
     padding: 25px;
     background-color: transparent;
     max-width: 50%;
     min-width: 30%;
-        mat-icon{
-            color:#84A45A;
-        }
+    mat-icon{
+        color:#84A45A;
+    }
 }
 
+/* Descripción */
 .desc {
     margin-left: 20px;
 }
 
+/* Estilo global de los o-rows */
 .o-rows {
     background-color: transparent;
+    mat-icon{
+        color:#84A45A;
+    }
 }
 
+/* Espaciar las listas <ul> de forma correcta independientemente del numero de items que tenga */
 .list-with-spaces {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     width: 90%;
     row-gap: 10px;
-    max-height: 218px;
+    max-height: 130px;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-
+/* Estilos de la lista de la descripcion*/
 .list-to-desc {
     display: flex;
     flex-direction: column;
     width: 90%;
     row-gap: 10px;
-    max-height: 218px;
+    max-height: 130px;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-
+/* Estilos de los text-inputs */
 .o-text-input {
     outline: transparent;
     width: 100%;
@@ -187,15 +145,18 @@
     margin-top: 15px;
 }
 
+/* Estilo de los o-grid-items */
 .o-grid-items {
     width: 100%;
     height: 100%
 }
 
+/* Estilo de los <li> de las listas para espaciarlos verticalmente o separarlos de los bordes superiores */
 .li-with-margin {
     margin-top: 10px;
 }
 
+/* Estilos del botón de booking */
 #booking-button{
     background-color:  #52733B;
     .mat-mdc-raised-button:not(:disabled) {
@@ -203,13 +164,97 @@
     }
 }
 
-
+/* Estilos del snackbar */
 ::ng-deep .mdc-snackbar__surface{
-        background-color: #52733B !important;
+    background-color: #52733B !important;
+}
+
+/* Estilos del DIV que contiene el botón y el combo-box de la reserva */
+.reserve-container {
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    justify-content: space-between;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Estilos del contenedor del botón de reservar */
+.div-active-pack-container{
+    width: 20%;
+    text-align: center;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+/* Estilos del contenedor del combo-box de las fechas disponibles */
+.div-combo-container{
+    width: 75%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+        background-color: rgba(132, 164, 90, 0.35) !important;
+        border-top-left-radius: 8px !important;
+        border-top-right-radius: 8px !important;
+    } 
+    .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+        margin-top: -5px !important;
+    }
+    .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label  {
+        margin-top: 0px !important;
+    }
+    
+}
+
+.combo-box-dates {
+    background-color: #84A45A !important;
+}
+
+/* Estilos del botón de reservar*/
+.active-pack{
+    border-top-left-radius: 8px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 0px;
+    border-bottom-color: rgba(100, 104, 98, 0.75);
+    border-bottom-width: 1px;
+    background-color:rgba(132, 164, 90, 0.85);
+    border-bottom-style: solid;
+    color:white;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    &:hover {
+        background-color:rgba(132, 164, 90, 1);
+        border-bottom-color: rgba(107,89,74,255);
+        border-bottom-width: 2px;
+        transform: scale(1.03);
+        cursor: pointer;
+    }
+    
 }
 
 
 
+
+/* Estilos del contenedor del o-row de las RUTAS pertenecientes al pack */
+.routes-container {
+    padding: 25px;
+}
+
+
+/* Estilos del contenedor del o-row de los NEGOCIOS pertenecientes al pack */
+.business-container {
+    padding: 25px;
+}
 
 
 

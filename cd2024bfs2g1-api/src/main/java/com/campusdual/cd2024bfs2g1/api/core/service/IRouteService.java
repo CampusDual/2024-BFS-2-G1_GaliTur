@@ -1,5 +1,6 @@
 package com.campusdual.cd2024bfs2g1.api.core.service;
 
+import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 
 import java.util.List;
@@ -19,5 +20,7 @@ public interface IRouteService {
 
     public EntityResult imageQuery(Map<String, Object> keyMap, List<String> attrList);
     public EntityResult imageInsert(Map<String, Object> attrMap);
+
+    AdvancedEntityResult routePaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy);
 
 }

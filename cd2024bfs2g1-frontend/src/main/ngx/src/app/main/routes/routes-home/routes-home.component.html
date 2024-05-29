@@ -1,36 +1,102 @@
-<o-grid #routesGrid attr="routesHome" title="ROUTES" service="routes" entity="route" keys="route_id"
-    columns="route_id;name;description;estimated_duration;difficulty"
-    query-rows="8" page-size-options="8;10;12" orderable="true"
-    sortable-columns="name;description;estimated_duration;difficulty" insert-button="true"
-    pagination-controls="true" gutter-size="8px" fixed-header="yes" grid-item-height="300px" detail-mode="none"
-    insert-button-floatable="no">
-    <o-grid-item *ngFor="let data of routesGrid.dataArray">
-        <div *ngIf="!data.isdraft" (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-evenly center" [ngClass]="'card-'"
-            class="routeCard">
-                <div [ngClass]="'container-' + data.difficulty" class="container">
-                    <mat-icon>location_on</mat-icon>
-                    <span [ngClass]="'difficulty-' + data.difficulty" class="name"><strong>{{ data.name }} </strong></span>
-                </div>
-                <div [ngClass]="'d'">
-                <span *ngIf="data.estimated_duration; else no_estimated_duration" class="duration">
-                <mat-icon>schedule</mat-icon> {{"estimated_duration" | oTranslate}}:  {{ convertTime(data.estimated_duration) }} </span>
-                <ng-template #no_estimated_duration>
-                    <span><span><p></p></span></span>
-                </ng-template>
-                <div class="difficulty" [ngClass]="'di-' + data.difficulty">
-                    <div class="tooltip">
-                        <mat-icon>help</mat-icon>
-                        <span class="tooltiptext">{{getDifficultad(data.difficulty)  | oTranslate }}</span>
-                    </div>
-                    <span *ngIf="data.difficulty; else no_difficulty">
-                        <mat-icon  [ngClass]="getIconColorClass(data.difficulty)" *ngFor="let _ of [].constructor(data.difficulty)">eco</mat-icon>
-                        <mat-icon  *ngFor="let _ of [].constructor(4 - data.difficulty)">eco</mat-icon>
-                    </span>
-                    <ng-template #no_difficulty>
-                        <span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span>
-                    </ng-template>
-                </div>
+<o-grid
+  #routesGrid
+  attr="routesHome"
+  title="ROUTES"
+  service="routes"
+  entity="route"
+  keys="r.route_id"
+  columns="r.route_id;name;description;estimated_duration;difficulty;creation_date;img_code"
+  query-rows="8"
+  page-size-options="8;16;24"
+  orderable="true"
+  sort-column="creation_date:desc"
+  sortable-columns="creation_date;name;estimated_duration;difficulty;creation_date:desc;name:desc;estimated_duration:desc;difficulty:desc"
+  quick-filter-columns="name;difficulty"
+  filter-case-sensitive="yes"
+  pageable="yes"
+  insert-button="true"
+  quick-filter="yes"
+  pagination-controls="true"
+  gutter-size="8px"
+  fixed-header="yes"
+  grid-item-height="350px"
+  detail-mode="none"
+  insert-button-floatable="no"
+>
+  <o-grid-item *ngFor="let data of routesGrid.dataArray" class="gridItem">
+    <!--Contenedor principal-->
+    <div
+      *ngIf="!data.isdraft"
+      (click)="openDetail(data)"
+      fxLayout="column"
+      fxLayoutAlign="space-evenly center"
+      [ngClass]="'card-'"
+      class="routeCard"
+    >
+      <!--Contenedor Nombre Ruta-->
+      <div class="routeName">
+        <mat-icon>location_on</mat-icon>
+        <span class="name"
+          ><strong class="nameStrong">{{ data.name }} </strong></span
+        >
+      </div>
+      <!--Contenedor Dificultad, Duracion y Imagen-->
+      <div Class="containerDatos">
+        <!--Contenedor Imagen Ruta-->
+        <img
+          class="preview-image"
+          [src]="getImageSrc(data.img_code)"
+          width="350px"
+          height="125px"
+        />
+
+        <!--Dificultad-->
+        <div class="leafsDifficulty">
+          <span *ngIf="data.difficulty; else no_difficulty">
+            <div class="tooltipHomeDifficulty">
+              <mat-icon class="helpTooltipHome">help</mat-icon>
+              <span class="tooltiptextHomeDifficulty">{{
+                getDifficultad(data.difficulty) | oTranslate
+              }}</span>
             </div>
+            <mat-icon
+              [ngClass]="getIconColorClass(data.difficulty)"
+              *ngFor="let _ of [].constructor(data.difficulty)"
+              >eco</mat-icon
+            >
+            <mat-icon *ngFor="let _ of [].constructor(4 - data.difficulty)"
+              >eco</mat-icon
+            >
+          </span>
+          <ng-template #no_difficulty>
+            <span>{{ "NO_DATA_AVAILABLE" | oTranslate }}</span>
+          </ng-template>
+        </div>
+
+        <!--Duracion estimada-->
+        <div fxLayout="row" class="duration">
+          <div
+            class="tooltipHomeDuration"
+            *ngIf="data.estimated_duration; else no_estimated_duration"
+          >
+            <mat-icon class="clockTooltipHome">schedule</mat-icon>
+            <span class="tooltiptextHomeDuration">{{
+              "estimated_duration" | oTranslate
+            }}</span>
+          </div>
+          <span *ngIf="data.estimated_duration">
+            {{ convertTime(data.estimated_duration) }}
+          </span>
+          <ng-template #no_estimated_duration>
+            <div class="tooltipHomeDuration">
+              <mat-icon class="clockTooltipHome">schedule</mat-icon>
+              <span class="tooltiptextHomeDuration">{{
+                "N0_ESTIMATED_DURATION" | oTranslate
+              }}</span>
             </div>
-    </o-grid-item>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </o-grid-item>
 </o-grid>
