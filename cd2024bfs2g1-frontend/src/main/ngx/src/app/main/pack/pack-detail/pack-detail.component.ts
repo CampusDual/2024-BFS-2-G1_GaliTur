@@ -1,6 +1,6 @@
 import {Component, Inject, Injector, ViewChild} from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
-import { Router } from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {
   DialogService,
   ODialogConfig,
@@ -19,24 +19,30 @@ import { PackHomeComponent } from "../pack-home/pack-home.component";
   styleUrls: ["./pack-detail.component.css"],
 })
 export class PackDetailComponent {
-  @ViewChild("accountCustomerTable") accountTable: OTableComponent;
-  @ViewChild("form") form: OFormComponent;
+  @ViewChild("form") formPack: OFormComponent;
+  @ViewChild("form") formPackAndDetails: OFormComponent;
+
+  protected isPackInstance: boolean
 
   constructor(
     protected sanitizer: DomSanitizer,
     private router: Router,
+    private route: ActivatedRoute,
     private oTranslate: OTranslateService,
+    private packDateService: OntimizeService,
     protected dialogService: DialogService,
     protected injector: Injector,
-    protected service: OntimizeService,
+    protected bookingService: OntimizeService,
     protected snackBarService: SnackBarService,
     @Inject(AuthService) private authService: AuthService
   ) {
-    this.service = this.injector.get(OntimizeService);
+    this.bookingService = this.injector.get(OntimizeService);
   }
 
   ngOnInit(): void {
-    this.configureService();
+    this.isPackInstance = false
+    this.configureServices()
+    this.isInstanceOfPack()
   }
 
   public getImageSrc(base64: any): any {
@@ -91,17 +97,19 @@ export class PackDetailComponent {
     }
   }
 
-  protected configureService() {
+  protected configureServices() {
     // Configure the service using the configuration defined in the `app.services.config.ts` file
-    const conf = this.service.getDefaultServiceConfiguration("packBookings");
-    this.service.configureService(conf);
+    const confBooking = this.bookingService.getDefaultServiceConfiguration("packBookings");
+    this.bookingService.configureService(confBooking);
+    const confPack = this.packDateService.getDefaultServiceConfiguration('packDates');
+    this.packDateService.configureService(confPack);
   }
 
   insertBooking(data) {
-    this.service
+    this.bookingService
       .insert({ pck_id: data.pck_id }, "packBooking")
       .subscribe((resp) => {
-        this.form.reload(true);
+        //TODO: this.form.reload(true);
 
         const config: OSnackBarConfig = {
           action: "",
@@ -116,5 +124,14 @@ export class PackDetailComponent {
 
   isLogged() {
     return this.authService.isLoggedIn()
+  }
+
+  private isInstanceOfPack(): void {
+    this.packDateService.query({pck_id: +this.route.snapshot.params['pck_id']}, ['pck_id'], 'packDate')
+      .subscribe((result) => {
+        if (result.data[0] !== undefined){
+          this.isPackInstance = true
+        }
+      });
   }
 }

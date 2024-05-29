@@ -1,8 +1,9 @@
-import { Component, Injector, ViewChild } from '@angular/core';
+import {Component, Inject, Injector, ViewChild} from '@angular/core';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import moment from 'moment';
-import { ODateInputComponent, OTranslateService } from 'ontimize-web-ngx';
+import {ODateInputComponent, OntimizeService, OTranslateService} from 'ontimize-web-ngx';
+import {MainService} from "../../../shared/services/main.service";
 
 @Component({
   selector: 'app-pack-new',
@@ -12,14 +13,27 @@ import { ODateInputComponent, OTranslateService } from 'ontimize-web-ngx';
 export class PackNewComponent {
   nameValidators: ValidatorFn[] = [];
   descValidators: ValidatorFn[] = [];
-  constructor(public injector: Injector, private translate: OTranslateService, private router:Router) {
+  constructor(public injector: Injector, private translate: OTranslateService, private router:Router,
+              @Inject(MainService) private mainService: MainService,
+              private ontimizeService: OntimizeService) {
     this.nameValidators.push(this.blanksValidator)
     this.descValidators.push(this.blanksValidator)
     this.descValidators.push(this.descLengthValidator)
-  }
-  insertPacks($event:Event){
-    this.router.navigate(['main/packs/'])
 
+    this.configureService()
+  }
+  private configureService() {
+    const conf = this.ontimizeService.getDefaultServiceConfiguration('packs');
+    this.ontimizeService.configureService(conf);
+  }
+
+  protected async insertPacks() {
+    this.ontimizeService.query({}, ['pck_id'], 'newest')
+      .subscribe(
+        (response) => {
+          this.router.navigate(['main/packs/', response.data[0].pck_id]);
+        }
+      );
   }
 
   blanksValidator(control: AbstractControl): ValidationErrors | null{

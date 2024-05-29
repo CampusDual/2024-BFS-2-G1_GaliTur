@@ -8,6 +8,7 @@ import com.campusdual.cd2024bfs2g1.model.core.dao.PackBookingDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.UserDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.business.GuideZoneDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDao;
+import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDateDao;
 import com.campusdual.cd2024bfs2g1.model.core.service.pack.PackService;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
@@ -61,7 +62,7 @@ public class PackBookingService implements IPackBookingService {
 
             //Create Set Values
             Map <String, Object> values = new HashMap<>();
-            values.put(PackDao.PCS_ID,2);
+            values.put(PackDateDao.PCS_ID,2);
 
             //Update
             packService.packUpdate(values, filtro);

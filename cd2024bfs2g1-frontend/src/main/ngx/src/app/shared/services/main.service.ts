@@ -57,18 +57,4 @@ export class MainService extends OntimizeEEService {
       options
     )
   }
-
-   getUserInfoByLogin(login: string): Observable<any>  {
-    const options = {headers: this.buildHeaders()};
-    const requestBody = {
-      filter: {
-        usr_login: login
-      },
-      columns: ["usr_id"]
-    }
-    return this.httpClient.post(
-      this._appConfig.apiEndpoint + '/users/user/search',
-      requestBody,
-      options)
-  }
 }
