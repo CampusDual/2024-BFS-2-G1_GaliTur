@@ -91,12 +91,32 @@
 .titulo{
     font-size: 15px;
     background-color: rgb(255, 254, 253);
+    padding: 5px;
     color: black;
+}
+.descripction{
+  font-size: 15px;
+  background-color: rgb(255, 254, 253);
+  padding: 5px;
+  color: black;
 }
 
 
 .prueba{
   background-color: #eee4db;
+}
+
+.imagen{
+  display: flex;
+  align-items: center;
+  padding: 0px 0px 15px 0px;
+}
+
+.titulo_pack{
+ font-size: 30px;
+ display: flex;
+ text-align: center;
+ height: 60px;
 }
 
 

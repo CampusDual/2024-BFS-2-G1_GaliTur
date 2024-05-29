@@ -343,5 +343,7 @@
   "EDIT": "Editar",
   "ADD_DATES": "Añadir Fechas",
   "ADD_ROUTES_AND_BUSINESSES":"Añadir Rutas y Negocios",
-  "SCHEDULE_PACKAGE": "Agendar paqueta"
+  "SCHEDULE_PACKAGE": "Agendar paqueta",
+  "PACK-MANAGE": "Editor de Paquetes",
+  "MAIN": "Paquetes"
 }
