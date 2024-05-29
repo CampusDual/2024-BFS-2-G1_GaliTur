@@ -14,6 +14,8 @@ onInsertPackDate() {
   console.log("Soy el imatiaInsert master")
 }
 
+vacio: boolean = false
+
 onChangeValue() {
   this.pckIdInput.setData(this.pck_id)
 }
@@ -90,10 +92,20 @@ onChangeValue() {
       const date = new Date(this.beginDate.getValueAsDate())
       this.endDate.setValue(new Date(date.getFullYear(), date.getMonth(), date.getDate() + Number.parseInt(this.days.getValue())));
       this.InsertPackDateButton.enabled = true
+      this.vacio = true
     } else {
       this.endDate.setValue(null)
       this.InsertPackDateButton.enabled = false
+      this.vacio = false
     }
+  }
+  a():string{
+    if(this.vacio == true){
+      return "button-true"
+    }else{
+      return "button-false"
+    }
+   
   }
   checkDays() {
     if (this.days.getValue() <= 0 || this.days.getValue() === undefined){

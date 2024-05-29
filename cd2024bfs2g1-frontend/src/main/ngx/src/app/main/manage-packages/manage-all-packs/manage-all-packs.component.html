@@ -30,7 +30,7 @@
                                             </o-row>
                                             <div fxlayout="row" fxLayoutGap="16px" class="card_image">
                                                 <button (click)="onClicEdit(row.pck_id)" class="button">{{'EDIT' | oTranslate}}</button>
-                                                <button class="button">{{'delete' | oTranslate}}</button>
+                                                <button (click)="onClicDelete(row.pck_id)" class="button">{{'delete' | oTranslate}}</button>
                                             </div>
                                         </div>
                                         <div class="imagen">

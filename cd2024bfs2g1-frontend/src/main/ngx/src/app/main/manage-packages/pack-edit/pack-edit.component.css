@@ -51,6 +51,7 @@
 }
 .bordeTabla{
     border: 10px solid #c2b5aa;
+    width: 900px;
     background-color: #eee4db;
     border-radius: 10px;
     padding: 10px 20px 10px 20px;

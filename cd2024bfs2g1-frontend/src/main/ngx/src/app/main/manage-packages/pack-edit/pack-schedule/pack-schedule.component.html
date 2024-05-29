@@ -4,22 +4,22 @@
   <div class="div_principal" fxLayout="column" fxLayoutGap="16px">
     <o-row class="o-rows" class="nombre_pack" attr="container" icon="hiking" mat
     title="{{'PACK_NAME' | oTranslate }}" layout-align="start stretch" elevation="1"
-    aria-orientation="vertical" appearance="outline">
-    <o-text-input class="nombre" enabled="false" [innerText]="packName">Aqui ponemos la nombre deshabilitado</o-text-input>
+    aria-orientation="vertical" appearance="outline" class="campos">
+    {{packName}}
     </o-row>
     <div fxLayout="row" fxLayoutGap="32px">
       <o-integer-input #days
         attr="days" required="true" min="1"
         label="{{ 'DAYS' | oTranslate }}" (onChange)="checkDays()"
+        class="campos"
       ></o-integer-input>
       <o-date-input #beginDate attr="pd_date_begin" value-type="date" [min]="getMinDate()"
         label="{{ 'DATE_RANGE' | oTranslate }}" read-only="no" format="DD/MM/YYYY"
-        (onValueChange)=" onBeginDateChanged()"></o-date-input>
+        (onValueChange)=" onBeginDateChanged()" class="campos"></o-date-input>
       <o-date-input #endDate attr="pd_date_end" value-type="date" label="{{ 'DATE_RANGE' | oTranslate }}"
-      read-only="yes" format="DD/MM/YYYY"></o-date-input>
-      <o-button #InsertPackDateButton (onClick)="OnInsertPackDate()">On insert data</o-button>
+      read-only="yes" format="DD/MM/YYYY" class="campos"></o-date-input>
+      <button class="button" #InsertPackDateButton (onClick)="OnInsertPackDate()" [ngClass]="a()">On insert data</button>
     </div>
   </div>
-  <o-text-input attr="pck_id" #pckIdInput enabled="false" (onchange)="onChangeValue()" read-only="yes" [innerText]="pck_id"></o-text-input>
 </o-form>
 
