@@ -166,6 +166,7 @@ export class PackActivitiesComponent {
   }
 
   public goBack(): void {
+    this.table.clearSelection();
     this.dialogRef.close();
   }
 

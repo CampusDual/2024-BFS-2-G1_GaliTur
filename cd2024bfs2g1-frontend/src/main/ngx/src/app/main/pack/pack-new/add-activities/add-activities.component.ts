@@ -16,10 +16,6 @@ export class AddActivitiesComponent {
   public bsnArray = []
 
 
-
-
-
-
   constructor(
     protected dialog: MatDialog,
     private activeRoute: ActivatedRoute,
@@ -29,28 +25,28 @@ export class AddActivitiesComponent {
   }
   ngOnInit(): void {
     AddActivitiesComponent.packId = this.activeRoute.snapshot.params["pck_id"];
-    this.configureService();
 
     console.log("Al pack le llego el id: " + AddActivitiesComponent.packId);
     this.getBsn();
   }
 
+
   addActivity() {
-    this.dialog.open(PackActivitiesComponent, {
+    
+   const diaglogRef = this.dialog.open(PackActivitiesComponent, {
       width: "1200px",
       maxHeight: "800px",
       minHeight: "800px",
       maxWidth: "80vw",
     });
-  }
-
-  protected configureService() {
-    // Configure the service using the configuration defined in the `app.services.config.ts` file
-    const conf = this.service.getDefaultServiceConfiguration("packs");
-    this.service.configureService(conf);
+    diaglogRef.afterClosed().subscribe(() => {
+      this.getBsn()
+    });
   }
 
   getBsn() {
+    const conf = this.service.getDefaultServiceConfiguration("packs");
+    this.service.configureService(conf);
     const filter = {
       "BP.pck_id": parseInt(AddActivitiesComponent.packId) ,
     };
@@ -60,6 +56,7 @@ export class AddActivitiesComponent {
         // resp.data contains the data retrieved from the server
 
         this.table.setDataArray(resp.data);
+        this.table.reloadData()
 
 
       } else {

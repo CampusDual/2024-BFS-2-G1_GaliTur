@@ -17,7 +17,7 @@
   </o-column>
 
   <o-column id="selectDay">
-    <o-combo #comboBoxDay attr="comboDay" label="{{'SELECT_DAY' | oTranslate }}" null-selection="no"
+    <o-combo #comboBoxDay class="comboBoxDay" attr="comboDay" label="{{'SELECT_DAY' | oTranslate }}" null-selection="no"
       [static-data]="arrayDias" [data]="selectedComboDay" value-column="day" columns="day" required="yes"
       visible-columns="day">
     </o-combo>
