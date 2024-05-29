@@ -341,7 +341,6 @@
   "ARABIC": "ÁRABE",
   "PEOPLE": "Personas",
   "PERSON": "Persona",
-  "ARABIC": "ÁRABE",
   "PACK_TABLE": "Tabla de Packs",
   "EDIT": "Editar",
   "ADD_DATES": "Añadir Fechas",
@@ -349,5 +348,11 @@
   "SCHEDULE_PACKAGE": "Agendar paqueta",
   "PACK-MANAGE": "Editor de Paquetes",
   "MAIN": "Paquetes",
-  "SHEDULED_PACKS":"Packs Agendados"
+  "SHEDULED_PACKS":"Paquetes Agendados",
+  "ADD_SHEDULED_PACKS":"Añadir Paquetes Agendados",
+  "PACKS_INFO": "Informacion de Paquetes",
+  "STATE": "Estado",
+  "DATE_BEGING": "Fecha Inicio",
+  "DATE_END": "Fecha Fin",
+  "Save":"Guardar"
 }

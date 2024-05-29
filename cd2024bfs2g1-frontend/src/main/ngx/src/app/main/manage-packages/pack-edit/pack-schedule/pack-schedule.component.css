@@ -76,8 +76,16 @@
 .button-false {
    background-color: #d8d5d2;
    color: #bdbbba;
+   width: 150px;
    border: none;
    cursor:default;
    padding: 5px;
    border-radius: 10px;
+}
+.tituloTabla{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-size: 25px;
+    padding: 15px;
 }

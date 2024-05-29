@@ -333,8 +333,7 @@
   "DUTCH": "DUTCH",
   "ARABIC": "ARABIC",
   "PEOPLE": "People",
-  "PERSON": "Person"
-  "VALDOVINO": "VALVODIÑO",
+  "PERSON": "Person",
   "PACK_TABLE": "Pack table",
   "EDIT": "Edit",
   "ADD_DATES": "ADD DATES",
@@ -342,5 +341,12 @@
   "SCHEDULE_PACKAGE": "Schedule package",
   "PACK-MANAGE": "Packs editor",
   "MAIN": "Packs",
-  "SHEDULED_PACKS":"Scheduled Packs"
+  "SHEDULED_PACKS":"Scheduled Packs",
+  "ADD_SHEDULED_PACKS":"Add Scheduled Packs",
+  "PACKS_INFO": "Packs Info",
+  "STATE": "State",
+  "DATE_BEGING": "Date Beging",
+  "DATE_END": "Date End",
+  "Save":"Save"
+
 }

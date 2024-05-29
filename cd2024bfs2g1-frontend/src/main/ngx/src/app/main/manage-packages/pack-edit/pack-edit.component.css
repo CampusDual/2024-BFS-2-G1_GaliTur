@@ -107,7 +107,7 @@
 
    .description-textarea{
     .mat-textarea {
-        height: 170px;
+        height: 130px;
         resize: none;
     }
 }
@@ -118,5 +118,6 @@
     font-size: 25px;
     padding: 15px;
 }
+
 
 

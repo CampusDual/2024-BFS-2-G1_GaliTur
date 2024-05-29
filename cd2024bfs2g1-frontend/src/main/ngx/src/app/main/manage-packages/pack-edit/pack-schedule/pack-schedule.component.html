@@ -1,7 +1,10 @@
 <o-form attr="packDateNew" label-header-align="start" mode="insert" 
-  label-header="{{ 'SCHEDULE_PACKAGE' | oTranslate }}" keys="pd_id" fxLayout="column" service="packDates" entity="packDate" query-on-init="false" 
-  keys-sql-types="integer" ignore-default-navigation="yes" (insert-method)="onInsertPackDate()">
+  label-header="{{ 'SCHEDULE_PACKAGE' | oTranslate }}" keys="pd_id" fxLayout="column"  service="packDates" entity="packDate" query-on-init="false" 
+  keys-sql-types="integer" ignore-default-navigation="yes" (insert-method)="onInsertPackDate()" show-header="no">
   <div class="div_principal" fxLayout="column" fxLayoutGap="16px">
+    <div class="tituloTabla">
+      <p>{{'SHEDULED_PACKS' | oTranslate}}</p>
+    </div>
     <o-row class="o-rows" class="nombre_pack" attr="container" icon="hiking" mat
     title="{{'PACK_NAME' | oTranslate }}" layout-align="start stretch" elevation="1"
     aria-orientation="vertical" appearance="outline" class="campos">
@@ -18,7 +21,7 @@
         (onValueChange)=" onBeginDateChanged()" class="campos"></o-date-input>
       <o-date-input #endDate attr="pd_date_end" value-type="date" label="{{ 'DATE_RANGE' | oTranslate }}"
       read-only="yes" format="DD/MM/YYYY" class="campos"></o-date-input>
-      <button class="button" #InsertPackDateButton (onClick)="OnInsertPackDate()" [ngClass]="a()">On insert data</button>
+      <button class="button" #InsertPackDateButton (click)="OnInsertPackDate()" [ngClass]="a()">{{'SAVE' | oTranslate}}</button>
     </div>
   </div>
 </o-form>

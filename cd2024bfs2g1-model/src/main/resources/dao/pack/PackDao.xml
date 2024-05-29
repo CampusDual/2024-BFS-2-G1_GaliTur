@@ -57,7 +57,7 @@
                         ON P.pck_id=PD.pck_id
                     WHERE
                         PD.pcs_id = 1
-                    #WHERE#
+                    #WHERE_CONCAT#
                     #ORDER#
                 ]]>
             </Sentence>

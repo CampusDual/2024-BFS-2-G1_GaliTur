@@ -107,7 +107,6 @@ onChangeValue() {
     }else{
       return "button-false"
     }
-
   }
   checkDays() {
     if (this.days.getValue() <= 0 || this.days.getValue() === undefined){

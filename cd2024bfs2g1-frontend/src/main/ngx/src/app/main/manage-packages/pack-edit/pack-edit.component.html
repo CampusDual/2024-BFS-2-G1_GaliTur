@@ -8,8 +8,8 @@
             <div fxLayout="column" fxLayoutGap="16px">
                 <div class="datosContainer">
                     <div fxLayout="column" fxLayoutGap="16px" class="contenido_datos">
-                            <div class="fondo_titulo">
-                                <p class="letrasTitulo">Packs Info</p>
+                            <div class="tituloTabla">
+                                <p class="letrasTitulo">{{'PACKS_INFO' | oTranslate}}</p>
                             </div>
                     <div fxLayout="row" fxLayoutGap="16px">
                         <o-text-input #packNameInput fxFlex="100" (onValueChange)="onNameChange($event)" attr="pck_name" required="yes"></o-text-input>
@@ -26,7 +26,7 @@
                         <o-textarea-input class="description-textarea" attr="pck_description" required="yes" width="100%"></o-textarea-input>
                         <div class="div_boton" fxLayout="column" fxLayoutGap="8px">
                             <button #addRaBbtn class="button" (click)="onClicEdit(pck_id)">{{'ADD_ROUTES_AND_BUSINESSES' | oTranslate}}</button>
-                            <button #addPDbtn class="button" (click)="onClicSchedule()">{{'ADD_DATES' | oTranslate}}</button>
+                            <button #addPDbtn class="button" (click)="onClicSchedule()">{{'ADD_SHEDULED_PACKS' | oTranslate}}</button>
                         </div>
                     </div>
                 </div>
@@ -48,6 +48,9 @@
                        columns="pd_id;pd_date_begin;pd_date_end;pcs_state" row-height="large" pagination-controls= "yes"
                        detail-mode='none' delete-button='yes' insert-button='yes' refresh-button='yes' keys-sql-types="integer"
                        visible-columns="pd_date_begin;pd_date_end;pcs_state" query-rows="5">
+                       <o-table-column attr="pcs_state" title="pcs_state" title="{{ 'STATE' | oTranslate }}"></o-table-column>
+                       <o-table-column attr="pd_date_begin" title="pd_date_begin" type="date" format="LL" title="{{ 'DATE_BEGING' | oTranslate }}"></o-table-column>
+                       <o-table-column attr="pd_date_end" title="pd_date_end" type="date" format="LL" title="{{ 'DATE_END' | oTranslate }}"></o-table-column>
               </o-table>
             </div>
         </div>
