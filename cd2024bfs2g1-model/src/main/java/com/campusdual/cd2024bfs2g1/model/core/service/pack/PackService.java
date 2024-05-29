@@ -93,7 +93,7 @@ public class PackService implements IPackService {
     public EntityResult packInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException, ParseException {
 
         EntityResult erInsertImage = insertImage(attrMap);
-        if (erInsertImage.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertImage;
+        if (erInsertImage != null && erInsertImage.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertImage;
 
         EntityResult erInsertPack = this.daoHelper.insert(this.packDao, attrMap);
         if (erInsertPack.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertPack;
