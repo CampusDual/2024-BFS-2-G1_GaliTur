@@ -1,53 +1,56 @@
 <o-breadcrumb [form]="myList" label-columns="pck_name" separator=" "></o-breadcrumb>
 <div class="fondo">
-<o-form #form attr="packsTable" #myList service="packs" entity="pack" keys="pck_id" show-header="yes" show-header-navigation="no">
+    <div>
+    <o-form attr="packsTable" #myList service="packs" entity="pack" keys="pck_id" show-header="yes" show-header-navigation="no">
     <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no"  show-header-navigation="no" oHidden></o-text-input>
-    <div fxLayout="row" class="principal" fxLayoutAlign="center" fxLayoutGap="16px">
-        <div class="datos">
-            <div class="datos_container">
-            <div fxLayout="column" fxLayoutGap="16px" class="contenido_datos">
-                    <div class="fondo_titulo">
-                        <p class="letrasTitulo">Packs Info</p>
+    <div fxloyout="column" class="contenedorTodo">
+        <div fxLayout="row" class="principal" fxLayoutAlign="center" fxLayoutGap="32px">
+            <div fxLayout="column" fxLayoutGap="16px">
+                <div class="datosContainer">
+                    <div fxLayout="column" fxLayoutGap="16px" class="contenido_datos">
+                            <div class="fondo_titulo">
+                                <p class="letrasTitulo">Packs Info</p>
+                            </div>
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <o-text-input #packNameInput fxFlex="100" (onValueChange)="onNameChange($event)" attr="pck_name" required="yes"></o-text-input>
                     </div>
-            <div fxLayout="row" fxLayoutGap="16px">
-                <o-text-input #packNameInput fxFlex="100" (onValueChange)="onNameChange($event)" attr="pck_name" required="yes" sql-type="STRING" max-length="70" [validators]="blankValidator">
-                    <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
-                </o-text-input>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <o-currency-input [step]="1" attr="pck_price" width="100%" min="1" max="5000" label="{{ 'pck_price' | oTranslate }}" read-only="no"
+                            required="no">
+                            </o-currency-input>
+                            <o-integer-input attr="pck_participants" label="{{ 'PARTICIPANTS' | oTranslate }}"
+                            read-only="no" required="no" max="100" min="1" width="100%" ></o-integer-input>
+                            <o-integer-input attr="pck_days" label="{{ 'DAYS' | oTranslate }}"
+                            read-only="no" required="no" max="100" min="1" width="100%"></o-integer-input>
+                        </div>
+                        <o-textarea-input class="description-textarea" attr="pck_description" required="yes" width="100%"></o-textarea-input>
+                        <div class="div_boton" fxLayout="column" fxLayoutGap="8px">
+                            <button class="button" (click)="onClicEdit(pck_id)">{{'ADD_ROUTES_AND_BUSINESSES' | oTranslate}}</button>
+                            <button class="button" (click)="onClicSchedule()">{{'ADD_DATES' | oTranslate}}</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div fxLayout="row" fxLayoutGap="16px">
-                <o-currency-input [step]="1" attr="pck_price" width="100%" min="1" max="5000" label="{{ 'pck_price' | oTranslate }}" read-only="no"
-                required="no">
-                </o-currency-input>
-                <o-integer-input attr="pck_participants" label="{{ 'PARTICIPANTS' | oTranslate }}"
-                read-only="no" required="no" max="100" min="1" width="100%" ></o-integer-input>
-                <o-integer-input attr="pck_days" label="{{ 'DAYS' | oTranslate }}" (onValueChange)="onDaysChange($event)"
-                read-only="no" required="no" max="100" min="1" width="100%"></o-integer-input>
+            <div fxLayout="column">
+                <o-form attr="packsImageTable" service="packs" entity="packImage" keys="pck_id;imp_id"
+                parent-keys="pck_id" show-header="yes" show-header-navigation="no" class="contenedor_imagen">
+                <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no" oHidden></o-text-input>
+                    <o-image *ngIf="imgId!=null || imgId!='' " id="img_code" attr="img_code" empty-image="assets/images/no-image.png" sql-type="OTHER" class="imagen"></o-image>
+                </o-form>
             </div>
-            <o-textarea-input class="description-textarea" attr="pck_description" required="yes" width="100%" sql-type="STRING" max-length="500" [validators]="blankValidator">
-                <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
-                <o-validator error-name="lengthInvalid" error-text="{{ 'LENGTH_ERROR' | oTranslate }}"></o-validator>
-            </o-textarea-input>
         </div>
-        <div class="div_boton" fxLayout="column" fxLayoutGap="8px">
-            <button class="button" (click)="onClicEdit(pck_id)">{{'ADD_ROUTES_AND_BUSINESSES' | oTranslate}}</button>
-            <button class="button" (click)="onClicSchedule()">{{'ADD_DATES' | oTranslate}}</button>
+        <div class="contenedorTabla">
+            <div class="bordeTabla">
+              <o-table attr="packsDateTable" service="packDates" entity="packDateWithState" keys="pd_id" parent-keys="pck_id"
+                       columns="pd_id;pd_date_begin;pd_date_end;pcs_state" row-height="large" pagination-controls= "yes"
+                       detail-mode='none' delete-button='yes' insert-button='yes' refresh-button='yes' keys-sql-types="integer"
+                       visible-columns="pd_id;pd_date_begin;pd_date_end;pcs_state">
+              </o-table>
+            </div>
         </div>
+        </div>
+        </o-form>
     </div>
-    </div>
-    <o-form attr="packsImageTable" service="packs" entity="packImage" keys="pck_id;imp_id"
-     parent-keys="pck_id" show-header="yes" show-header-navigation="no">
-        <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no" oHidden></o-text-input>
-        <div fxLayout="row" class="image">
-            <o-image *ngIf="imgId!=null || imgId!='' " id="img_code" attr="img_code" empty-image="assets/images/no-image.png" sql-type="OTHER" width="300px" height="300px"></o-image>
-        </div>
-    </o-form>
-</div>
-</o-form>
-        <o-table attr="packsDateTable" service="packDates" entity="packDateWithState" keys="pd_id" parent-keys="pck_id"
-        columns="pd_id;pd_date_begin;pd_date_end;pcs_state" row-height="large" pagination-controls= "yes" 
-        detail-mode='none' delete-button='yes' insert-button='yes' refresh-button='yes' keys-sql-types="integer"
-        visible-columns="pd_id;pd_date_begin;pd_date_end;pcs_state">
-    </o-table>
 </div>
 
 
