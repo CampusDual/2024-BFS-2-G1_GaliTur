@@ -63,13 +63,14 @@
   
               </div>
               <!-- Nombre y descripcion -->
-              <o-row class="o-rows" class="left" attr="container" icon="hiking" title="{{'ROUTES' | oTranslate }}"
-                layout-align="start stretch" elevation="1" aria-orientation="vertical" appearance="outline">
-                <ul class="list-with-spaces">
-                  <li><strong><i>{{'pck_name' | oTranslate }}: </i></strong> {{row.name}}</li>
-                  <li><strong><i>{{'DESCRIPTION' | oTranslate }}: </i></strong> {{row.description}}</li>
-                </ul>
-              </o-row>
+              <o-row class="o-rows" class="left" attr="container" icon="hiking" mat
+                        title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" elevation="1"
+                        aria-orientation="vertical" appearance="outline">
+                        <ul class="list-to-desc">
+                          <li class="list-item" ><strong><i>{{'DESCRIPTION' | oTranslate }}: </i></strong> {{row.description}}</li>
+                        </ul>
+                    </o-row>
+            
   
               <!-- Horario, telefono, website y el cif -->
   

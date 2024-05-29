@@ -16,6 +16,8 @@
 }
 
 
+
+
 .main-container {
 
     min-width: 700px;
@@ -94,18 +96,22 @@
     
 }
 
-.list-with-spaces {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 90%;
-    max-height: 135px;
-    row-gap: 10px;
-    overflow-y: auto;
-    overflow-x: hidden;
+.list-to-desc {
+    width: 90%; /* Ajusta el ancho según sea necesario */
+    padding: 0;
+    margin: 0;
+    max-height: 100%;
+
 }
 
-
+.list-item {
+    word-wrap: break-word; /* Permite que las palabras largas se dividan y pasen a la siguiente línea */
+    word-break: break-word; /* Fuerza un corte en las palabras largas */
+    overflow-wrap: break-word; /* Asegura que las palabras largas se dividan en la siguiente línea */
+    white-space: normal; /* Permite que el texto haga un salto de línea */
+    padding: 10px; /* Espaciado interno */
+    box-sizing: border-box; /* Incluye el padding y el borde en el ancho y alto total del elemento */
+}
 .o-text-input {
     outline: transparent;
     width: 100%;
