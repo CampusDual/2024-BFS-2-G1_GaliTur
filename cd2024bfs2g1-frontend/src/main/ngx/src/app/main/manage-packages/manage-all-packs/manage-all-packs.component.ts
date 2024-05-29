@@ -3,6 +3,7 @@ import { AfterViewInit, Component, Injector, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NavigationService, Observable, OntimizeService } from 'ontimize-web-ngx';
+import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-manage-all-packs',
@@ -46,11 +47,22 @@ export class ManageAllPacksComponent{
   //   this.ontimizeImageService.configureService(confImg);
   // }
 
+
+  
 onClicDelete(pck_id: any) {
-//Borrar base y paquetes???
-//Formulario a parte??
-//Envio de datos
-this.ontimizePackService.delete()
+  // if (confirm('¿Estás seguro de que deseas eliminar este paquete?')) {
+  //   this.ontimizePackService.delete({pck_id:pck_id},"pack").pipe(
+  //     catchError(error => {
+  //       console.error('Error al eliminar el paquete:', error);
+  //       alert('Hubo un error al eliminar el paquete. Por favor, intenta nuevamente.');
+  //       return of(null); // Devuelve un Observable vacío para manejar el error
+  //     })
+  //   ).subscribe(response => {
+  //     if (response) {
+  //       alert('Paquete eliminado exitosamente.');
+  //     }
+  //   });
+  // }
 }
 
 // getImageIdAux(pck_id:any):any{

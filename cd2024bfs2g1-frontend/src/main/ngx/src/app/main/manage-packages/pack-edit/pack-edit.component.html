@@ -40,13 +40,14 @@
             </div>
         </div>
         <div class="contenedorTabla">
-            <div class="bordeTabla">
+            <div class="bordeTabla" fxlayout="column">
+                <div class="tituloTabla">
+                    <p>{{'SHEDULED_PACKS' | oTranslate}}<p>
+                </div>
               <o-table attr="packsDateTable" service="packDates" entity="packDateWithState" keys="pd_id" parent-keys="pck_id"
                        columns="pd_id;pd_date_begin;pd_date_end;pcs_state" row-height="large" pagination-controls= "yes"
                        detail-mode='none' delete-button='yes' insert-button='yes' refresh-button='yes' keys-sql-types="integer"
                        visible-columns="pd_date_begin;pd_date_end;pcs_state" query-rows="5">
-                       <o-table-column attr="pd_date_begin" title="pd_date_begin" type="date" format="LL"></o-table-column>
-                       <o-table-column attr="pd_date_end" title="pd_date_end" type="date" format="LL"></o-table-column>
               </o-table>
             </div>
         </div>

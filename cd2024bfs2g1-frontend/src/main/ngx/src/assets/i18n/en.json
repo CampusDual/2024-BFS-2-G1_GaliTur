@@ -329,5 +329,6 @@
   "ADD_ROUTES_AND_BUSINESSES": "Add Routes and Businesses",
   "SCHEDULE_PACKAGE": "Schedule package",
   "PACK-MANAGE": "Packs editor",
-  "MAIN": "Packs"
+  "MAIN": "Packs",
+  "SHEDULED_PACKS":"Scheduled Packs"
 }

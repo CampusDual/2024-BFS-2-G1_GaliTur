@@ -345,5 +345,6 @@
   "ADD_ROUTES_AND_BUSINESSES":"Añadir Rutas y Negocios",
   "SCHEDULE_PACKAGE": "Agendar paqueta",
   "PACK-MANAGE": "Editor de Paquetes",
-  "MAIN": "Paquetes"
+  "MAIN": "Paquetes",
+  "SHEDULED_PACKS":"Packs Agendados"
 }
