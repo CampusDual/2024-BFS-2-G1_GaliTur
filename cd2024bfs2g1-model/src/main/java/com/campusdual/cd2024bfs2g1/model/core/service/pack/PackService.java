@@ -23,10 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Lazy
 @Service("PackService")
@@ -41,9 +38,7 @@ public class PackService implements IPackService {
     private final ClientService clientService;
 
     @Autowired
-    public PackService(DefaultOntimizeDaoHelper daoHelper, PackDao packDao, PackDateService packDateService,
-                       GuideCitiesDao cityDao, ImageService imageService, GuideCitiesService cityService,
-                       ImagePackService imagePackService, ClientService clientService) {
+    public PackService(DefaultOntimizeDaoHelper daoHelper, PackDao packDao, PackDateService packDateService, GuideCitiesDao cityDao, ImageService imageService, GuideCitiesService cityService, ImagePackService imagePackService, ClientService clientService) {
         this.daoHelper = daoHelper;
         this.packDao = packDao;
         this.packDateService = packDateService;
@@ -77,6 +72,7 @@ public class PackService implements IPackService {
 
     /**
      * Lists set of packs purchased by a client (logged user)
+     *
      * @param keysValues filter (client id)
      * @param attributes query columns
      * @return query data
@@ -118,37 +114,40 @@ public class PackService implements IPackService {
     @Transactional(rollbackFor = Throwable.class)
     public EntityResult packInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException, ParseException {
 
-        Object imgCode = attrMap.get(ImageDao.ATTR_IMAGE_CODE);
-        attrMap.remove(ImageDao.ATTR_IMAGE_CODE);
-
-        Map<String, Object> dates = (Map<String, Object>) attrMap.get("dates");
-        attrMap.remove("dates");
-        attrMap.put(PackDateDao.PD_DATE_BEGIN, Utils.iso8601Format.parse((String) dates.get("startDate")));
-        attrMap.put(PackDateDao.PD_DATE_END, Utils.iso8601Format.parse((String) dates.get("endDate")));
+        EntityResult erInsertImage = insertImage(attrMap);
+        if (erInsertImage != null && erInsertImage.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertImage;
 
         EntityResult erInsertPack = this.daoHelper.insert(this.packDao, attrMap);
         if (erInsertPack.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertPack;
+        Integer packId = (Integer) erInsertPack.get(PackDao.PCK_ID);
 
-        EntityResult erInsertImage = null;
-        if (imgCode != null) { // TODO: No deberia ser necesario comprobarlo, el valor por defecto es 1.
-            erInsertImage = imageService.imageInsert(Map.of(ImageDao.ATTR_IMAGE_CODE, imgCode));
-            if (erInsertImage.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertImage;
-        }
+        EntityResult erInsertPackDate = insertPackDate(attrMap, packId);
+        if ((erInsertPackDate != null && erInsertPackDate.getCode() != EntityResult.OPERATION_SUCCESSFUL) || erInsertImage == null) return erInsertPackDate;
 
+        Object imgId = erInsertImage.get(ImageDao.ATTR_IMAGE_ID);
+        return this.imagePackService.imagePackInsert(Map.of(
+                ImagePackDao.PCK_ID, packId,
+                ImagePackDao.IMG_ID, imgId
+        ));
+    }
 
-
+    private EntityResult insertPackDate(Map<String, Object> attrMap, Integer packId) throws ParseException {
         Date beginDate = (Date) attrMap.remove(PackDateDao.PD_DATE_BEGIN);
         Date endDate = (Date) attrMap.remove(PackDateDao.PD_DATE_END);
-        Map<String, Object> packDate = new HashMap<>();
-        packDate.put(PackDateDao.PD_DATE_BEGIN, beginDate);
-        packDate.put(PackDateDao.PD_DATE_END, endDate);
-        packDate.put(PackDateDao.PCK_ID, erInsertPack.get(PackDao.PCK_ID));
-        EntityResult erInsertPackDate = packDateService.packDateInsert(packDate);
-        if (erInsertPackDate.getCode() != EntityResult.OPERATION_SUCCESSFUL) return  erInsertPackDate;
+        if (beginDate == null) return null;
 
-        Object packId = erInsertPack.get(PackDao.PCK_ID);
-        Object imgId = erInsertImage == null ? ImageDao.DEFAULT_IMG_ID : erInsertImage.get(ImageDao.ATTR_IMAGE_ID);
-        return this.imagePackService.imagePackInsert(Map.of(ImagePackDao.PCK_ID, packId, ImagePackDao.IMG_ID, imgId));}
+        Map<String, Object> packDate = Map.of(
+                PackDateDao.PD_DATE_BEGIN, beginDate,
+                PackDateDao.PD_DATE_END, endDate,
+                PackDateDao.PCK_ID, packId
+        );
+        return packDateService.packDateInsert(packDate);
+    }
+
+    private EntityResult insertImage(Map<String, Object> attrMap) {
+        Object imgCode = attrMap.remove(ImageDao.ATTR_IMAGE_CODE);
+        return imgCode == null ? null : imageService.imageInsert(Map.of(ImageDao.ATTR_IMAGE_CODE, imgCode));
+    }
 
     @Override
     public EntityResult packUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
