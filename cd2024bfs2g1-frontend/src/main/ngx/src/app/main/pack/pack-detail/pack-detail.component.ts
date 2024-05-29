@@ -1,4 +1,4 @@
-import {Component, Inject, Injector, ViewChild} from "@angular/core";
+import {Component, Inject, Injector, OnInit, ViewChild} from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
 import {
@@ -9,7 +9,7 @@ import {
   OTableComponent,
   OTranslateService,
   OntimizeService,
-  SnackBarService, AuthService,
+  SnackBarService, AuthService, OComboComponent,
 } from "ontimize-web-ngx";
 import { PackHomeComponent } from "../pack-home/pack-home.component";
 
@@ -18,12 +18,11 @@ import { PackHomeComponent } from "../pack-home/pack-home.component";
   templateUrl: "./pack-detail.component.html",
   styleUrls: ["./pack-detail.component.css"],
 })
-export class PackDetailComponent {
-  @ViewChild("form") formPack: OFormComponent;
-  @ViewChild("form") formPackAndDetails: OFormComponent;
-
+export class PackDetailComponent  implements OnInit{
+  @ViewChild("form") formPack: OFormComponent
+  @ViewChild("comboPackDate") comboPackDate: OComboComponent
   protected isPackInstance: boolean
-
+  protected availableDates: Set<any> = new Set
   constructor(
     protected sanitizer: DomSanitizer,
     private router: Router,
@@ -40,9 +39,11 @@ export class PackDetailComponent {
   }
 
   ngOnInit(): void {
-    this.isPackInstance = false
-    this.configureServices()
-    this.isInstanceOfPack()
+    // this.isPackInstance = false
+    // this.isInstanceOfPack()
+  }
+  ngAfterViewInit(){
+    // this.populateDates()
   }
 
   public getImageSrc(base64: any): any {
@@ -61,12 +62,12 @@ export class PackDetailComponent {
     }
   }
 
+
   diferenciaDias(fechaInicio: number, fechaFin: number): number {
     const unDia = 24 * 60 * 60 * 1000; // Número de milisegundos en un día
     const diferencia = Math.abs(fechaFin - fechaInicio);
     return Math.round(diferencia / unDia);
   }
-
 
   getDate(fechaNumber: number): string {
     const tempFecha = new Date(fechaNumber);
@@ -97,15 +98,9 @@ export class PackDetailComponent {
     }
   }
 
-  protected configureServices() {
-    // Configure the service using the configuration defined in the `app.services.config.ts` file
+  insertBooking(data) {
     const confBooking = this.bookingService.getDefaultServiceConfiguration("packBookings");
     this.bookingService.configureService(confBooking);
-    const confPack = this.packDateService.getDefaultServiceConfiguration('packDates');
-    this.packDateService.configureService(confPack);
-  }
-
-  insertBooking(data) {
     this.bookingService
       .insert({ pck_id: data.pck_id }, "packBooking")
       .subscribe((resp) => {
@@ -126,11 +121,25 @@ export class PackDetailComponent {
     return this.authService.isLoggedIn()
   }
 
-  private isInstanceOfPack(): void {
-    this.packDateService.query({pck_id: +this.route.snapshot.params['pck_id']}, ['pck_id'], 'packDate')
+  private populateDates() {
+    const confPack = this.packDateService.getDefaultServiceConfiguration('packDates');
+    this.packDateService.configureService(confPack);
+
+    const id= +this.route.snapshot.params["pck_id"]
+
+    this.packDateService.query(
+      {pck_id: id},
+      ["pd_id", "pd_date_begin", "pd_date_end"],
+      "packDate",
+      {
+        pd_id:4,
+        pd_date_begin:93,
+        pd_date_end:93
+      })
       .subscribe((result) => {
         if (result.data[0] !== undefined){
-          this.isPackInstance = true
+          this.comboPackDate.setDataArray(result.data)
+          console.log(this.availableDates)
         }
       });
   }
