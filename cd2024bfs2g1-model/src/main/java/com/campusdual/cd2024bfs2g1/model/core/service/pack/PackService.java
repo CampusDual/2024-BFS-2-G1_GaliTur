@@ -95,7 +95,6 @@ public class PackService implements IPackService {
     @Secured(PermissionsProviderSecured.SECURED)
     @Transactional(rollbackFor = Throwable.class)
     public EntityResult packInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException, ParseException {
-
         Object imgCode = attrMap.get(ImageDao.ATTR_IMAGE_CODE);
         attrMap.remove(ImageDao.ATTR_IMAGE_CODE);
         EntityResult erInsertImage = null;
