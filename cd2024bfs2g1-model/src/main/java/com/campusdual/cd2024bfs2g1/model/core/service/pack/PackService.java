@@ -97,12 +97,6 @@ public class PackService implements IPackService {
         return er;
     }
 
-    @Override
-    public EntityResult packBusinessQuery(Map<String, Object> keyMap, List<String> attrList)
-            throws OntimizeJEERuntimeException {
-        return this.daoHelper.query(this.packDao, keyMap, attrList,"businessPacks");
-    }
-
 
 
 

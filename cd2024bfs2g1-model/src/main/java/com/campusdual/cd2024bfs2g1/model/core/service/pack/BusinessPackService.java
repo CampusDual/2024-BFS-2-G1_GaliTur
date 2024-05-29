@@ -19,6 +19,7 @@ public class BusinessPackService implements IBusinessPackService {
     private final DefaultOntimizeDaoHelper daoHelper;
     private final BusinessPackDao BusinessPackDao;
 
+
     @Autowired
     public BusinessPackService(DefaultOntimizeDaoHelper daoHelper, BusinessPackDao BusinessPackDao) {
         this.daoHelper = daoHelper;
@@ -30,6 +31,12 @@ public class BusinessPackService implements IBusinessPackService {
 
         return this.daoHelper.query(this.BusinessPackDao, keyMap, attrList,"multi");
     }
+    @Override
+    public EntityResult packBusinessQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.BusinessPackDao, keyMap, attrList,"businessPacks");
+    }
+
 
     @Override
     public EntityResult businessPackInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {

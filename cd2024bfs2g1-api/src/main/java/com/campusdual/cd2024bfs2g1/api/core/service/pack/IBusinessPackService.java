@@ -10,6 +10,9 @@ public interface IBusinessPackService {
 
     EntityResult businessPackQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 
+    EntityResult packBusinessQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException;
+
     EntityResult businessPackInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException;
 
     EntityResult businessPackUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;

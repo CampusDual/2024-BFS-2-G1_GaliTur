@@ -45,7 +45,7 @@ export class AddActivitiesComponent {
   }
 
   getBsn() {
-    const conf = this.service.getDefaultServiceConfiguration("packs");
+    const conf = this.service.getDefaultServiceConfiguration("businessPacks");
     this.service.configureService(conf);
     const filter = {
       "BP.pck_id": parseInt(AddActivitiesComponent.packId) ,
