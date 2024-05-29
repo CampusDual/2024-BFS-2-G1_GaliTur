@@ -99,8 +99,8 @@ public class PackService implements IPackService {
         if (erInsertPack.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertPack;
         Integer packId = (Integer) erInsertPack.get(PackDao.PCK_ID);
 
-        EntityResult erInsertPackDate = insertPackDate(attrMap, (Integer) packId);
-        if (erInsertPackDate.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertPackDate;
+        EntityResult erInsertPackDate = insertPackDate(attrMap, packId);
+        if ((erInsertPackDate != null && erInsertPackDate.getCode() != EntityResult.OPERATION_SUCCESSFUL) || erInsertImage == null) return erInsertPackDate;
 
         Object imgId = erInsertImage.get(ImageDao.ATTR_IMAGE_ID);
         return this.imagePackService.imagePackInsert(Map.of(
@@ -112,6 +112,8 @@ public class PackService implements IPackService {
     private EntityResult insertPackDate(Map<String, Object> attrMap, Integer packId) throws ParseException {
         Date beginDate = (Date) attrMap.remove(PackDateDao.PD_DATE_BEGIN);
         Date endDate = (Date) attrMap.remove(PackDateDao.PD_DATE_END);
+        if (beginDate == null) return null;
+
         Map<String, Object> packDate = Map.of(
                 PackDateDao.PD_DATE_BEGIN, beginDate,
                 PackDateDao.PD_DATE_END, endDate,
