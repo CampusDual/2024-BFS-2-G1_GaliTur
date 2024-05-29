@@ -1,9 +1,11 @@
 import {Component, Inject, Injector, ViewChild} from '@angular/core';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import moment from 'moment';
 import {ODateInputComponent, OIntegerInputComponent, OntimizeService, OTranslateService} from 'ontimize-web-ngx';
 import {MainService} from "../../../shared/services/main.service";
+import { PackActivitiesComponent } from './add-activities/pack-activities/pack-activities.component';
 
 @Component({
   selector: 'app-pack-new',
@@ -11,6 +13,7 @@ import {MainService} from "../../../shared/services/main.service";
   styleUrls: ['./pack-new.component.css']
 })
 export class PackNewComponent {
+
   nameValidators: ValidatorFn[] = [];
   descValidators: ValidatorFn[] = [];
   @ViewChild("days") days: OIntegerInputComponent
@@ -25,16 +28,17 @@ export class PackNewComponent {
 
     this.configureService()
   }
+
   private configureService() {
     const conf = this.ontimizeService.getDefaultServiceConfiguration('packs');
     this.ontimizeService.configureService(conf);
   }
 
-  protected async insertPacks() {
+  protected async insertPacks($event:Event) {
     this.ontimizeService.query({}, ['pck_id'], 'newest')
       .subscribe(
         (response) => {
-          this.router.navigate(['main/packs/', response.data[0].pck_id]);
+          this.router.navigate(['main','packs', 'new', $event['pck_id']])
         }
       );
   }

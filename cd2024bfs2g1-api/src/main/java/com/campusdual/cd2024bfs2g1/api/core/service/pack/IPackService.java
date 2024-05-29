@@ -20,6 +20,11 @@ public interface IPackService {
 
     EntityResult packInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException, ParseException;
 
+    EntityResult packDaysQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException;
+
+
+
     EntityResult packClientQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 
     EntityResult allPacksQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
