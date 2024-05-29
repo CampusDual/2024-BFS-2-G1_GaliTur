@@ -120,7 +120,43 @@
 }
 
 .filter {
+    justify-content: space-around;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    background-color: #ccc6c0;
+    margin-bottom: 16px;
+}
+.filter-column {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 5px;
+    justify-content: space-around;
+    
+    o-button {
+        color: #4e4c4a;
+    }
 }
+
+.filter-element {
+    margin-bottom: 10px;
+}
+
+.details {
+    summary:hover {
+        width: max-content;
+        cursor: pointer;
+    }
+}
+
+.filter-button {
+    margin-top: 10px;
+}
+
+.full-page {
+    height: 77vh;
+}
+

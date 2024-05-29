@@ -2,7 +2,7 @@
 import { Component, Injector, ViewChild, TemplateRef } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { DomSanitizer } from "@angular/platform-browser";
-import { Expression, FilterExpressionUtils, OGridComponent, OntimizeService } from "ontimize-web-ngx";
+import { Expression, FilterExpressionUtils, OFormComponent, OFormValue, OGridComponent, OntimizeService } from "ontimize-web-ngx";
 import { Router } from "@angular/router";
 
 @Component({
@@ -68,6 +68,7 @@ export class PackHomeComponent {
   }
 
   //FILTROS
+  @ViewChild("filterForm") protected filterForm: OFormComponent;
   createFilter(values: Array<{ attr: string, value: any }>): Expression {
     let filters: Array<Expression> = [];
 
@@ -78,7 +79,7 @@ export class PackHomeComponent {
           filters.push(FilterExpressionUtils.buildExpressionLike("pck_name", `%${keyword}%`));
         }
         if (fil.attr === 'pck_days') {
-          filters.push(FilterExpressionUtils.buildExpressionMoreEqual("pck_days", fil.value));
+          filters.push(FilterExpressionUtils.buildExpressionEquals("pck_days", fil.value));
         }
         if (fil.attr === 'pck_price_min') {
           let value: number = Number(fil.value);
@@ -105,4 +106,10 @@ export class PackHomeComponent {
       return null;
     }
   }
+
+  clearFilter () {
+    const fieldsToClear = ['pck_name', 'pck_days', 'pck_price_min', 'pck_price_max', 'pck_participants', 'gui_c_name'];
+    this.filterForm.clearFieldValues(fieldsToClear);  
+  }
+
 }
