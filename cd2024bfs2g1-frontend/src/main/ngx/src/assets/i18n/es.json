@@ -122,7 +122,7 @@
   "INFO": "Información",
   "START_DATE":"Fecha de Inicio",
   "END_DATE":"Fecha de Fin",
-  "TRAVELLERS":"Número de Viajeros",
+  "TRAVELLERS":"Viajeros",
   "SCHEDULE": "Horario",
   "PHONE": "Teléfono",
   "WEBSITE": "Página Web",
@@ -170,7 +170,7 @@
   "Single": "Individual",
   "Double": "Doble",
   "Triple": "Triple",
-  "Price": "Precio",
+  "Price": "Precio total",
   "Dinner": "Cena",
   "Breakfast": "Desayuno",
   "Lunch": "Comida",
@@ -203,7 +203,7 @@
   "pck_date_end": "Fecha de Fin",
   "pck_price": "Precio total",
   "pck_participants": "Participantes",
-  "pcs_id": "reserva",
+  "pcs_id": "Reservado",
   "img_code": "Código de Imagen",
   "PACKS": "Packs",
   "DAY": "Día",
@@ -338,5 +338,8 @@
   "UKRAINIAN": "UCRANIANO",
   "CHINESE": "CHINO",
   "DUTCH": "HOLANDÉS",
-  "ARABIC": "ÁRABE"
+  "ARABIC": "ÁRABE",
+  "creation_date": "Fecha de creación",
+  "PEOPLE": "Personas",
+  "PERSON": "Persona"
 }

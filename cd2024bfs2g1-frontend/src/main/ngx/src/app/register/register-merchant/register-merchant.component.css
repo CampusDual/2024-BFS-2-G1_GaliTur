@@ -45,13 +45,13 @@
 }
 
 .contenedor {
-  background-color: white;
+  background-color: #e3e6d8;
   border-radius: 15px;
   width: auto;
   justify-content: center;
   display: flex;
   flex-direction: column;
-  opacity: 0.8;
+  opacity: 1;
   
 }
 
@@ -81,9 +81,9 @@ o-column{
   width: 40%;
   padding-top: 2%;
   width: 100%;
-  margin-top: 16px;
+  margin-top: 15px;
   height: 48px;
-  font-size: 16px;
+  font-size: 17px;
   background-color: #715e4e;
   color: #fff;
   border: none;

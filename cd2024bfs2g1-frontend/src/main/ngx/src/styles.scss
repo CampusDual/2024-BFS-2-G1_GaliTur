@@ -38,3 +38,219 @@
     }
   }
 }
+
+
+/* Estilos globales */
+
+/* Barra arriba */
+.o-app-header {
+  color: #d4cdc7;
+  nav {
+      background: linear-gradient(95deg, #909f43, #495635) !important;
+      button {
+          color: white !important;
+      }
+  }
+}
+
+/* Barra lateral */
+.o-app-sidenav .o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav .mat-drawer-inner-container {
+  background: linear-gradient(90deg, #495635, #909f43) !important;
+}
+
+/* Letras Barra lateral */
+.o-app-sidenav .o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav .mat-drawer-inner-container nav a {
+  color: #d4cdc7;
+}
+
+/* Hamburguesa Barra lateral */
+.o-app-sidenav .o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav .mat-drawer-inner-container .sidenav-toggle {
+  color: #d4cdc7;
+}
+
+/* Fondo de la pagina */
+.application-layout-content-wrapper {
+  background-color: #e2dbd5 !important;
+}
+
+
+
+/* Hover Barra lateral */
+li >a:hover, .o-app-sidenav-menu-group >a:hover{
+  background-color: rgba(55, 55, 55, 0.2) !important;
+}
+
+/* Item seleccionado con la barra desplegada*/
+.o-app-sidenav-viewer-sidenav-item-selected {
+  background-color: #3a3027 !important;
+  &:hover {
+    background-color: #3a3027 !important;
+}
+}
+
+
+/* Items de la barra lateral*/
+.o-app-sidenav .o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav .mat-drawer-inner-container .o-app-sidenav-menu-group-level-1 a+.o-app-sidenav-menugroup-items-container .o-app-sidenav-menu-group a, .o-app-sidenav .o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav .mat-drawer-inner-container .o-app-sidenav-menu-group-level-1 a+.o-app-sidenav-menugroup-items-container .o-app-sidenav-menu-item {
+  /* Items seleccionado con la barra contraida */
+  .o-app-sidenav-viewer-sidenav-item-selected {
+      background-color: #3a3027 !important;
+  }
+
+  /* Items desplegado sin seleccionar*/
+  a:not(.o-app-sidenav-viewer-sidenav-item-selected, .mat-mdc-tooltip-trigger) {
+      background: linear-gradient(90deg, #3f4b2e, #7b8839) !important;
+      border-left-color:#3f4b2e !important;
+      &:hover {
+          border-left-color:#715e4e !important;
+      }
+
+  }
+
+  /* Items contraido sin seleccionar*/
+  .mat-mdc-tooltip-trigger {
+      background-color: #7b8839;
+      &:hover {
+          background-color: #6a7532 !important;
+      }
+  }
+
+
+}
+
+/* Botones de añadir y refrescar dentro de la pagina*/
+.o-grid .o-grid-toolbar button.o-grid-button:not([disabled]).mat-mdc-button-base{
+  background: #ccc6c0 !important;
+  margin-right: 1%;
+}
+
+/* para lo de dentro del desplegable de las paginas*/
+.mat-mdc-select-panel-above .mdc-menu-surface.mat-mdc-select-panel{
+  background-color: rgb(221, 218, 212) !important;
+}
+
+/* para todo el componente del paginator*/
+.mat-mdc-paginator{
+  background-color: #ccc6c0 !important;
+}
+
+/* ordenacion */
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: transparent !important;
+}
+
+/* menu desplegable de la ordenacion */
+.cdk-overlay-pane:not(.mat-mdc-select-panel-above) .mdc-menu-surface.mat-mdc-select-panel {
+  background-color: rgb(221, 218, 212) !important;
+}
+
+
+/* menu desplegable del buscador */
+.mat-mdc-menu-content {
+  background-color: rgb(221, 218, 212) !important;
+
+}
+
+/* Letras de la barra superior */
+o-app-sidenav.o-app-sidenav .o-app-header .o-user-info .o-user-info-wrapper, o-app-sidenav.o-app-sidenav.header-layout .o-app-header .o-user-info .o-user-info-wrapper {
+  color: white !important;
+}
+
+/* Formulario normal */
+.custom-form {
+  .o-form-toolbar {
+      background: #ccc6c0 !important;
+  }
+  .o-form-toolbar button:not([disabled]).o-form-toolbar-button.mat-mdc-button-base {
+      background-color: #4e4c4a !important;
+      color: #e2dbd5 !important;
+      .mat-icon {
+          color: #e2dbd5 !important;
+      }
+
+  }
+  .o-form form .o-form-content-wrapper {
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.24);
+  }
+
+  o-column.o-column, o-row.o-row {
+      background: #ccc6c0 !important;
+      border-radius: 2px !important;
+  }
+}
+
+/* Formulario de tipo tabla */
+.custom-table {
+  background: #ccc6c0 !important;
+  .o-table-container .mat-mdc-table.autoadjusted {
+      table-layout: auto;
+      background: #ccc6c0 !important;
+  }
+
+  .o-table-container .mat-mdc-table.medium tr.mat-mdc-row .mat-mdc-cell {
+      color: black !important;
+  }
+
+  .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base {
+      background-color: #4e4c4a !important;
+      color: #e2dbd5 !important;
+      .mat-icon {
+          color: #e2dbd5 !important;
+      }
+
+  }
+
+}
+
+/* dialogos / popups */
+.o-dialog-class .mat-mdc-dialog-container .mat-mdc-dialog-surface {
+  background: #e2dbd5 !important;
+
+  button.mat-mdc-button-base.mat-mdc-outlined-button .mat-mdc-button-touch-target {
+      background-color: #4e4c4a !important;
+  }
+
+  button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.o-button-primary {
+      color: #e2dbd5 !important;
+  }
+
+  button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.o-button-default {
+      background-color: #4e4c4a !important;
+      color: #e2dbd5 !important;
+  }
+}
+
+/* desplegable del calendario de formularios*/
+.md-drppicker.shown.drops-down-right {
+  background-color:  rgb(221, 218, 212) !important;
+  .mat-stroked-button {
+      margin-top: 10px;
+      background-color: #4e4c4a !important;
+      color: #e2dbd5 !important;
+      border: none;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+  }
+}
+
+.md-drppicker td.week, .md-drppicker th.week {
+  color: black !important;
+  opacity: 0.6;
+
+}
+
+/* desplegable del calendario del login*/
+.mat-datepicker-content .mat-calendar {
+  background-color:  rgb(221, 218, 212) !important;
+}
+
+
+.md-drppicker td.disabled {
+  background-color:  rgb(221, 218, 212) !important;
+}
+
+/* Tamaño barras de ordenación */
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  min-width: 360px;
+}
