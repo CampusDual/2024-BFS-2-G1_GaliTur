@@ -40,6 +40,10 @@ public class PackDateService implements IPackDateService {
         }
         return this.daoHelper.query(this.packDateDao, keyMap, attrList, packDateDao.PD_W_STATE_QUERY);
     }
+    @Override
+    public EntityResult packDateWithStateDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.delete(this.packDateDao, keyMap);
+    }
 
     @Override
     public EntityResult packDateInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException, ParseException {

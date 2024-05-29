@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { OButtonComponent, ODateInputComponent, OFormComponent, OIntegerInputComponent, OSnackBarConfig, OTextInputComponent, OntimizeService } from 'ontimize-web-ngx';
+import { OButtonComponent, ODateInputComponent, OFormComponent, OIntegerInputComponent, OSnackBarConfig, OTextInputComponent, OntimizeService, SnackBarService } from 'ontimize-web-ngx';
 import { OFormBase } from 'ontimize-web-ngx/lib/components/form/o-form-base.class';
 
 @Component({
@@ -9,7 +9,6 @@ import { OFormBase } from 'ontimize-web-ngx/lib/components/form/o-form-base.clas
   styleUrls: ['./pack-schedule.component.css']
 })
 export class PackScheduleComponent implements AfterViewInit{
-  snackBarService: any;
 onInsertPackDate() {
   console.log("Soy el imatiaInsert master")
 }
@@ -27,7 +26,8 @@ onChangeValue() {
   @ViewChild("formData") formData: OFormComponent
   @ViewChild("InsertPackDateButton") InsertPackDateButton: OButtonComponent
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-  private ontimizePackDateService: OntimizeService
+  private ontimizePackDateService: OntimizeService,
+  private snackBarService: SnackBarService
 ){
   this.configurePackDateService()
 }
@@ -39,10 +39,12 @@ onChangeValue() {
     this.ontimizePackDateService.configureService(confPackDate);
   }
   ngAfterViewInit(): void {
+    console.log("Datos que me dan: ", this.data.dataToSend)
       this.days.setData(this.data.dataToSend.days)
       this.packName= this.data.dataToSend.pck_name
       this.pck_id = this.data.dataToSend.pck_id
       this.InsertPackDateButton.enabled = false
+      this.days.setEnabled(false)
   }
   OnInsertPackDate():any{
     const inicialDate= this.formatDateToSend(this.beginDate.getValueAsDate())
@@ -70,17 +72,17 @@ onChangeValue() {
         };
         this.snackBarService.open("PACKDATECONFIRMED", config);
       });
-      
+      this.beginDate.setValue(null)
   }
   formatDateToSend(date:any){
     const yyyy = date.getFullYear();
-    const MM = String(date.getMonth() + 1).padStart(2, '0'); 
+    const MM = String(date.getMonth() + 1).padStart(2, '0');
     const dd = String(date.getDate()).padStart(2, '0');
     const HH = String(date.getHours()).padStart(2, '0');
     const mm = String(date.getMinutes()).padStart(2, '0');
     const ss = String(date.getSeconds()).padStart(2, '0');
     const SSS = String(date.getMilliseconds()).padStart(3, '0');
-    
+
     return `${yyyy}-${MM}-${dd} ${HH}:${mm}:${ss}.${SSS}`;
   }
   getMinDate(){
@@ -105,7 +107,7 @@ onChangeValue() {
     }else{
       return "button-false"
     }
-   
+
   }
   checkDays() {
     if (this.days.getValue() <= 0 || this.days.getValue() === undefined){
@@ -118,6 +120,6 @@ onChangeValue() {
       }
     }
   }
-  
+
 
 }

@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, ElementRef, Injector, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NavigationService, OTextInputComponent, OValueChangeEvent, OntimizeService } from 'ontimize-web-ngx';
+import { NavigationService, OButtonComponent, OTextInputComponent, OValueChangeEvent, OntimizeService } from 'ontimize-web-ngx';
 import { PackScheduleComponent } from './pack-schedule/pack-schedule.component';
 import { AbstractControl, FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-pack-edit',
@@ -14,6 +15,8 @@ export class PackEditComponent implements AfterViewInit{
   blankValidator: ValidatorFn[] = [];
 
   @ViewChild('packNameInput') packNameInput : ElementRef
+  @ViewChild('addPDbtn') packDateButton : ElementRef
+  @ViewChild('addRaBbtn') rtandbssButton : ElementRef
   constructor(private router: Router,
     private activeRoute: ActivatedRoute,
     protected injector: Injector,
@@ -24,7 +27,10 @@ export class PackEditComponent implements AfterViewInit{
   ngAfterViewInit(): void {
     this.pck_id = this.getPackId()
   }
-
+  private actionButtons(disable:boolean){
+    this.packDateButton.nativeElement.disabled = disable;
+    this.rtandbssButton.nativeElement.disabled = disable;
+  }
    onAddRtsOrBss(){
       this.router.navigate(["main", "packs","new",this.pck_id]);
       /*otra forma para probar this.router.navigate(['main','routes', 'new', $event['route_id']])*/
@@ -33,7 +39,12 @@ export class PackEditComponent implements AfterViewInit{
   imgId: any;
   dataInputName: any
   dataInputDays: any
-
+  firstNameData:boolean = true
+  firstDayData:boolean = true
+  packDate:any = {
+    name:'',
+    days:0,
+  }
   getPackId():number{
     return +this.activeRoute.snapshot.params["pck_id"];
   }
@@ -58,10 +69,27 @@ export class PackEditComponent implements AfterViewInit{
     })
   }
   onNameChange(data: OValueChangeEvent) {
-    this.dataInputName= data.newValue.value
+    if(this.firstNameData === true){
+      this.packDate.name= data.target.value.value
+      this.dataInputName= data.target.value.value
+      this.firstNameData= false
+    }else {
+      this.dataInputName= data.target.value.value
+      if(data.target.value.value===this.packDate.name) this.actionButtons(false)
+        else this.actionButtons(true)
+    }
+
   }
   onDaysChange(data:OValueChangeEvent) {
-    this.dataInputDays= data.newValue.value
+    if(this.firstDayData === true){
+      this.packDate.days= data.target.value.value
+      this.dataInputDays= data.target.value.value
+      this.firstDayData= false
+    }else {
+      this.dataInputDays= data.target.value.value
+      if(data.target.value.value===this.packDate.days) this.actionButtons(false)
+        else this.actionButtons(true)
+    }
   }
 
   lengthInvalid = (control: FormControl) => {
@@ -82,7 +110,11 @@ export class PackEditComponent implements AfterViewInit{
       }
     } catch (e){}
   }
-
+  onSaveChanges(){
+    this.actionButtons(false)
+    this.firstDayData = true
+    this.firstDayData = true
+  }
 }
 
 
