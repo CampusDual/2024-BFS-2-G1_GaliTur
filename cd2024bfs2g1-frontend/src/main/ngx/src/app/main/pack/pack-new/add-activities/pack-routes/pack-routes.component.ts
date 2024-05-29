@@ -151,11 +151,8 @@ export class PackRoutesComponent {
   }
 
   public getImageSrc(base64: any): any {
-    return base64
-      ? this.sanitizer.bypassSecurityTrustResourceUrl(
-          "data:image/*;base64," + base64
-        )
-      : "./assets/images/no-image-transparent.png";
+ 
+    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/logo-walking.png";
   }
 
   truncateName(name: string): string {
