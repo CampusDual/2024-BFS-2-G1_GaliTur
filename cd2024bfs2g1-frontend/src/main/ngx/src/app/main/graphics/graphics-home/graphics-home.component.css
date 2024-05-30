@@ -2,44 +2,62 @@
 /*Estilo de la carta*/
 .card {
     margin: 20px 40px 0px 40px;
-    height: 700px;
+    height: 800px;
+    background-color: #ccc6c0;
 }
 
 /*Define el estilo del titulo*/
 .title {
-    margin: 40px 40px 0px 40px;
-    font-style: oblique;
-    font-size: 2em;
-    color: #52733B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    position: relative;
-    animation: colorChange 4s infinite;
-    transition: text-shadow 0.5s ease-in-out;
-}
-
-.title:hover {
-    text-shadow: 0 0 10px #c6ffc1, 0 0 20px #c6ffc1, 0 0 30px #c6ffc1, 0 0 40px #c6ffc1, 0 0 50px #c6ffc1, 0 0 60px #c6ffc1, 0 0 70px #ffffff;
+    padding: 4px;
+    margin: 50px 200px 0px 200px;
+    border-radius: 10px;
+    background: linear-gradient(90deg,#52733B, #7b8839,#52733B);
+    height: 45px;
+    font-size: 30px;
+    color: #ffffff; 
 }
 
 /*Fila donde está la gráfica*/
 .chart-row {
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
-    align-items: center;
-    margin-top: 50px;
+    margin: 100px 390px 0px 390px;
+    background-color: #ffffffe7;
 }
 
-/*Div donde está la gráfica*/
-.chart-div{
-    color: #445e32;
-    align-items: center;
+.chart-row:hover {
+    box-shadow: 0px 10px 20px rgba(113, 94, 78, 1); 
+    color: #7b8839;
+    transform: scale(0.99); 
+    transition: transform 0.5s ease, box-shadow 2s ease; 
+}
+
+.name-graphics{
+    margin-left: 30px;
+    margin-top: 10px;
+    color: #52733B;
+    font-size: 18px;
+}
+
+.view-chart  {
+ align-items: center;
+}
+
+::ng-deep.chart-legend{
+    visibility: hidden;
+}
+
+::ng-deep.pie-label{
+    font-size: 15px !important; 
 }
 
 
-.custom-chart  {
-  color: #3CB371;
-}
+
+
 
 
 
