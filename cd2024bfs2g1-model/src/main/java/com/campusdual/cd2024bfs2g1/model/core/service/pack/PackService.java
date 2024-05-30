@@ -23,10 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Lazy
 @Service("PackService")
@@ -49,16 +46,15 @@ public class PackService implements IPackService {
                        ImagePackService imagePackService, ClientService clientService, ImagePackDao imagePackDao, PackDateDao packDateDao) {
         this.daoHelper = daoHelper;
         this.packDao = packDao;
-        this.packDateService = packDateService;
+        this.packDateDao = packDateDao;
         this.imageDao = imageDao;
+        this.imagePackDao = imagePackDao;
+        this.packDateService = packDateService;
         this.cityDao = cityDao;
         this.imageService = imageService;
         this.cityService = cityService;
         this.imagePackService = imagePackService;
         this.clientService = clientService;
-        this.imagePackDao = imagePackDao;
-        this.packDateDao = packDateDao;
-
     }
 
     @Override
@@ -79,6 +75,7 @@ public class PackService implements IPackService {
         EntityResult EntityAux = this.daoHelper.query(this.packDao, keyMap, attrList, "packsDetails");
         return EntityAux;
     }
+
     @Override
     public AdvancedEntityResult packMultiPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
             throws OntimizeJEERuntimeException {
@@ -144,40 +141,54 @@ public class PackService implements IPackService {
         return this.daoHelper.paginationQuery(this.packDao, keysValues, attributes, recordNumber, startIndex, orderBy, this.packDao.PCK_ALL_QUERY);
     }
 
+
+    @Override
+    public AdvancedEntityResult packClientPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.paginationQuery(this.packDao, keysValues, attributes, recordNumber, startIndex, orderBy, this.packDao.PCK_ALL_QUERY);
+    }
+
     @Override
     @Secured(PermissionsProviderSecured.SECURED)
     @Transactional(rollbackFor = Throwable.class)
     public EntityResult packInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException, ParseException {
 
-        Object imgCode = attrMap.get(ImageDao.ATTR_IMAGE_CODE);
-        attrMap.remove(ImageDao.ATTR_IMAGE_CODE);
-
-        Map<String, Object> dates = (Map<String, Object>) attrMap.get("dates");
-        attrMap.remove("dates");
-        attrMap.put(PackDateDao.PD_DATE_BEGIN, Utils.iso8601Format.parse((String) dates.get("startDate")));
-        attrMap.put(PackDateDao.PD_DATE_END, Utils.iso8601Format.parse((String) dates.get("endDate")));
-
-        EntityResult erInsertPack = this.daoHelper.insert(this.packDao, attrMap);
-        if (erInsertPack.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertPack;
-
-        EntityResult erInsertImage = null;
-        if (imgCode != null) {
-            erInsertImage = imageService.imageInsert(Map.of(ImageDao.ATTR_IMAGE_CODE, imgCode));
-            if (erInsertImage.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertImage;
-        }
-
+        // For later use
+        Object imgCode = attrMap.remove(ImageDao.ATTR_IMAGE_CODE);
         Date beginDate = (Date) attrMap.remove(PackDateDao.PD_DATE_BEGIN);
         Date endDate = (Date) attrMap.remove(PackDateDao.PD_DATE_END);
-        Map<String, Object> packDate = new HashMap<>();
-        packDate.put(PackDateDao.PD_DATE_BEGIN, beginDate);
-        packDate.put(PackDateDao.PD_DATE_END, endDate);
-        packDate.put(PackDateDao.PCK_ID, erInsertPack.get(PackDao.PCK_ID));
-        EntityResult erInsertPackDate = packDateService.packDateInsert(packDate);
-        if (erInsertPackDate.getCode() != EntityResult.OPERATION_SUCCESSFUL) return  erInsertPackDate;
 
-        Object packId = erInsertPack.get(PackDao.PCK_ID);
-        Object imgId = erInsertImage == null ? ImageDao.DEFAULT_IMG_ID : erInsertImage.get(ImageDao.ATTR_IMAGE_ID);
-        return this.imagePackService.imagePackInsert(Map.of(ImagePackDao.PCK_ID, packId, ImagePackDao.IMG_ID, imgId));}
+        // Insert into pack
+        EntityResult erInsertPack = this.daoHelper.insert(this.packDao, attrMap);
+        if (erInsertPack.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertPack;
+        Integer packId = (Integer) erInsertPack.get(PackDao.PCK_ID);
+
+        if (beginDate != null){
+            // Insert into pack_date
+            EntityResult erInsertPackDate = packDateService.packDateInsert(Map.of(
+                    PackDateDao.PD_DATE_BEGIN, beginDate,
+                    PackDateDao.PD_DATE_END, endDate,
+                    PackDateDao.PCK_ID, packId
+            ));
+            if ((erInsertPackDate.getCode() != EntityResult.OPERATION_SUCCESSFUL)) return erInsertPackDate;
+        }
+
+        if (imgCode != null){
+            // Insert into image
+            EntityResult erInsertImage = imageService.imageInsert(Map.of(ImageDao.ATTR_IMAGE_CODE, imgCode));
+            if (erInsertImage.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertImage;
+            Object imgId = erInsertImage.get(ImageDao.ATTR_IMAGE_ID);
+
+            // Insert into image_pack
+            EntityResult erInsertImagePack = this.imagePackService.imagePackInsert(Map.of(
+                    ImagePackDao.PCK_ID, packId,
+                    ImagePackDao.IMG_ID, imgId
+            ));
+            if (erInsertImagePack.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erInsertImagePack;
+        }
+
+        return erInsertPack;
+    }
 
     @Override
     public EntityResult packUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
