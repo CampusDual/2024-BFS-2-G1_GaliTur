@@ -62,7 +62,6 @@ onChangeValue() {
         "packDate"
       )
       .subscribe((response) => {
-        console.log("QUE PASO CON EL INSERT MAN???: ",response.data)
         const config: OSnackBarConfig = {
           action: "",
           milliseconds: 2000,
@@ -70,7 +69,7 @@ onChangeValue() {
           iconPosition: "left",
           cssClass: "snackbar",
         };
-        this.snackBarService.open("PACKDATECONFIRMED", config);
+        this.snackBarService.open("{{'PACKDATECONFIRMED' | oTranslate}}", config);
       });
       this.beginDate.setValue(null)
   }

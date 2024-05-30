@@ -9,6 +9,26 @@ export class customMessageManagePack extends OFormMessageService {
   }
 
   getInsertSuccessMessage(): any {
-      return 'MESSAGES_INSERTED_MANAGEPACK';
+    return 'MESSAGES_INSERTED_MANAGEPACK';
   }
+  getInsertErrorMessage(): any{
+    return 'MESSAGES_INSERTED_ERROR_MANAGEPACK';
+  }
+  getUpdateErrorMessage(): any{
+    return 'MESSAGES_UPDATE_ERROR_MANAGEPACK';
+  }
+  getDeleteSuccessMessage(): any{
+    return 'MESSAGES_DELETE_MANAGEPACK';
+  }
+  getUpdateSuccessMessage(): any{
+    return 'MESSAGES_UPDATE_SUCCESS_MANAGEPACK';
+  }
+  getDeleteErrorMessage(): any {
+    return 'MESSAGES_DELETE_ERROR_MANAGEPACK';
+  }
+  getDeleteConfirmationMessage(): any {
+    return 'MESSAGES_DELETE_CONFIRMATION_MANAGEPACK';
+  }
+ 
+
 }
