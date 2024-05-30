@@ -134,4 +134,34 @@ export class PackDetailComponent {
         }
       });
   }
+
+  //Metodos para los negocios del pack
+  public openDetail(data: any): void {
+    this.router.navigate(['main/businesses/' + data.bsn_id]);
+  }
+
+  truncateName(name: string): string {
+    if (name.length > 30) {
+        return name.substr(0, 30) + '...';
+    } else {
+        return name;
+    }
+  }
+
+  public getRouteImageSrc(base64: any): any {
+    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/logo-walking.png";
+  }
+
+  getDifficultad(difficulty: number): string {
+    switch(difficulty) {
+      case 1:
+        return 'Fácil';
+      case 2:
+        return 'Intermedio';
+      case 3:
+        return 'Difícil';
+      case 4:
+        return 'Extremo';
+    }
+  }
 }

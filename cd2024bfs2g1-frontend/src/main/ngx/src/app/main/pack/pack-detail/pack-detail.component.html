@@ -116,24 +116,78 @@
                     </div>
                 </div>
 
+
+                <o-grid #routesGrid attr="routesHome" title="ROUTES" service="routes" entity="route" keys="route_id"
+                    columns="name;description;estimated_duration;difficulty;img_code"
+                    query-rows="8" orderable="true" oHidden/>
+
+                <!-- Muestro todos las rutas en un grid-->
                 <div class="routes-container">
-                    <o-row class="o-rows" title="Routes" icon="map" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
-                        <o-grid opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false" 
-                        show-page-size="false" oHiden>
-                        </o-grid>
+                    <o-row class="o-row-o-grid-container" title="Routes" icon="map" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+                        <div class="o-grid-container">
+                            <o-grid opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false" 
+                            show-page-size="false" disable-page-size-calculation="true" cols="2" gutter-size="1px" grid-item-height="215px">
+                                <o-grid-item *ngFor="let data of routesGrid.dataArray">
+                                    <div (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="center" class="mat-elevation-z1 routeCard">
+                                        <div class="card-header">
+                                            <div class="route-name">
+                                                <span class="pack-name">{{ truncateName(data.name)}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="content-image-item">
+                                                <img class="preview-image" [src]="getRouteImageSrc(data.img_code)" height="80px">
+                                            </div>
+                                            <div class="content-list-item">
+                                                <ul class="list-with-spaces" style="list-style-type: none;">
+                                                    <li><mat-icon class="icon">timer</mat-icon>{{data.estimated_duration}} Mins</li>
+                                                    <li><mat-icon class="icon">eco</mat-icon>{{getDifficultad(data.difficulty) | oTranslate }}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </o-grid-item>
+                            </o-grid>
+                        </div>
                     </o-row>
                 </div>
+                
 
+                <!-- ALmaceno todos los negocios en un grid-->
+                <o-grid #businessGrid attr="businessGrid" service="businesses" entity="business" keys="bsn_id"
+                    columns="bsn_id;merchant_id;bsn_name;bsn_type;bsn_description;bsn_cif;bsn_address;bsn_phone;bsn_email;bsn_creation_date;bsn_down_date;bsn_photos;bsn_website;bsn_schedule"
+                    query-rows="16" orderable="true" opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false"
+                    page-size-options="false" show-page-size="false" sort-column="bsn_type:desc" oHidden/>
+                    
+                <!-- Muestro todos los negocios en un grid -->
                 <div class="business-container">
-                    <o-row class="o-rows" title="Businesses" icon="business" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
-                        <o-grid opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false" 
-                        show-page-size="false" oHiden>
-                        </o-grid>
+                    <o-row class="o-row-o-grid-container" title="Businesses" icon="business" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+                        <div class="o-grid-container">
+                            <o-grid opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false" 
+                            show-page-size="false" disable-page-size-calculation="true" cols="2" gutter-size="1px" grid-item-height="245px">
+                                <o-grid-item *ngFor="let data of businessGrid.dataArray" >
+                                    <div (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-evenly center" class="mat-elevation-z1 businessCard">
+                                        <div class="card-header">
+                                            <div class="business-title">
+                                                <div class="business-icon">
+                                                    <span *ngIf="data.bsn_type === 'Restaurant'" matTooltip="Restaurant"><mat-icon class="type-icon" >restaurant</mat-icon></span>
+                                                    <span *ngIf="data.bsn_type === 'Lodging'"><mat-icon class="type-icon" matTooltip="Lodging">house</mat-icon></span>
+                                                    <span *ngIf="data.bsn_type === 'AgencyGuide'"><mat-icon class="type-icon" matTooltip="Agency Guide">flight</mat-icon></span>
+                                                </div>
+                                                <div class="business-name">
+                                                    <span class="pack-name">{{ truncateName(data.bsn_name)}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img class="preview-image" [src]="getImageSrc(data.bsn_photos)" height="120px">
+                                    </div>
+                                </o-grid-item>
+                            </o-grid>
+                        </div>
                     </o-row>
                 </div>
+                
 
-                
-                
             </div>
         </o-form>
     </mat-card>
