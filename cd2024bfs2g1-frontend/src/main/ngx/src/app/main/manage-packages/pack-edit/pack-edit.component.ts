@@ -117,11 +117,8 @@ export class PackEditComponent implements AfterViewInit{
   }
   onSaveChanges(){
     this.actionButtons(false)
+    this.firstNameData = true
     this.firstDayData = true
-    this.firstDayData = true
-  }
-  ConvertTime(pd_id: any){
-    console.log(12)
   }
 }
 
