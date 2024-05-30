@@ -69,7 +69,7 @@ onChangeValue() {
           iconPosition: "left",
           cssClass: "snackbar",
         };
-        this.snackBarService.open("{{'PACKDATECONFIRMED' | oTranslate}}", config);
+        this.snackBarService.open("PACKDATECONFIRMED", config);
       });
       this.beginDate.setValue(null)
   }
