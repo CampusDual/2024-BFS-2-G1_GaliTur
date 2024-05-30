@@ -1,6 +1,6 @@
 import {Component, Inject, Injector, ViewChild} from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, NavigationExtras, Router} from "@angular/router";
 import {
   DialogService,
   ODialogConfig,
@@ -144,9 +144,15 @@ export class PackDetailComponent {
   }
 
   //Metodos para los negocios del pack
-  public openDetail(data: any): void {
+  openDetail(data: any): void {
     this.router.navigate(['main/businesses/' + data.bsn_id]);
+    const currentUrl = this.router.url; // Capturar la URL actual
+    const navigationExtras: NavigationExtras = {
+      state: { previousUrl: currentUrl } // Enviar la URL actual como navigation state 
+    };
+    this.router.navigate(['main/businesses/' + data.bsn_id], navigationExtras);
   }
+  
 
   truncateName(name: string): string {
     if (name.length > 30) {
