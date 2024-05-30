@@ -341,7 +341,17 @@
   "VIEW_BSN": "Show assigned Businesses",
   "ADD_ROUTEP": "Add Route",
   "ADD_ROUTES": "Add Routes",
-  "ROUTEPACK.ERROR": "Can't assign route, please verify fields",
+  "ROUTEPACK.ERROR": "Can't unassign route, please verify fields",
   "ROUTEPACK.CONFIRMED": "Route assigned successfully",
-  "VIEW_ROUTES": "Show assigned Routes"
+  "VIEW_ROUTES": "Show assigned Routes",
+  "BSNPACK.ERROR.DELETE": "Can't unassign business, please verify fields",
+  "BSNPACK.DELETE": "Business unassigned successfully",
+  "DELETE_ROUTEP": "Unassign Route",
+  "DELETE_BSNP": "Unassign Business",
+  "ROUTEPACK.ERROR.DELETE": "Can't unassign route, please verify fields",
+  "ROUTEPACK.DELETE": "Route unassigned successfully",
+  "BSN-DELETE-DIALOG": "Unassign Business",
+  "BSN-DELETE-DIALOG-B": "Are you sure you want to unassign this business?",
+  "ROUTE-DELETE-DIALOG": "Unassign Route",
+  "ROUTE-DELETE-DIALOG-B": "Are you sure you want to unassign this route?"
 }
