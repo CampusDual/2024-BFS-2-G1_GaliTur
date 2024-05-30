@@ -5,8 +5,10 @@ import com.campusdual.cd2024bfs2g1.model.core.dao.ClientDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.PackBookingDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDateDao;
+import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackStateDao;
 import com.campusdual.cd2024bfs2g1.model.core.service.pack.PackDateService;
 import com.campusdual.cd2024bfs2g1.model.core.service.pack.PackService;
+import com.campusdual.cd2024bfs2g1.model.core.service.pack.PackStateService;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
@@ -82,7 +84,7 @@ public class PackBookingService implements IPackBookingService {
         this.daoHelper.delete(this.packBookingDao, keysValues);
 
         Map<String, Object> mapaPackDelete = new HashMap<>();
-        mapaPackDelete.put("pcs_id", 1);
+        mapaPackDelete.put(PackStateDao.PCS_ID, 1);
 
         return this.packDateService.packDateUpdate( mapaPackDelete, packDate.getRecordValues(0));
 
