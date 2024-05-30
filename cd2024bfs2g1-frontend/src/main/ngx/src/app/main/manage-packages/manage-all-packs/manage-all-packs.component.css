@@ -45,8 +45,8 @@
  border-style: solid;
  border-color: #c2b5aa;
  background-color: #c2b5aa;
- cursor: pointer; 
- outline: none; 
+ cursor: pointer;
+ outline: none;
 }
 
   @keyframes pulse {
@@ -118,5 +118,6 @@
  text-align: center;
  height: 60px;
 }
+
 
 

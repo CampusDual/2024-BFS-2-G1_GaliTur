@@ -3,7 +3,7 @@
 <div class="div-fullpage">
     <o-list #myList class="contenedor" #list attr="packsTable"  columns="p.pck_id;p.pck_name;p.pck_description;i.img_code;i.image_id;ip.imp_id;p.creation_date"
     service="packs" entity="packMulti" keys="p.pck_id" refresh-button="true" insert-button="false" quick-filter="true" refresh-button="false"
-    quick-filter="no" pageable="yes" delete-button="false" row-height="medium" detail-mode="none" quick-filter-columns="pck_name;pck_description" pagination-controls="yes"
+    quick-filter="yes" pageable="yes" delete-button="false" row-height="medium" detail-mode="none" quick-filter-columns="pck_name;pck_description" pagination-controls="yes"
     query-rows="10" sortColumns="creation_date">
     <div class="titulo_pack" fxLayout="column">
         {{'PACK_TABLE' |  oTranslate}}
@@ -24,7 +24,7 @@
                                             <mat-card-title class="titulo">{{ row.pck_name }}</mat-card-title>
                                             </o-row>
                                             <o-row class="o-rows" class="description" attr="container" icon="description" mat
-                                            title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" 
+                                            title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch"
                                             aria-orientation="vertical" appearance="outline" style="border-radius: 10px; padding: 3px;">
                                             <mat-card-subtitle class="descripction">{{row.pck_description}}</mat-card-subtitle>
                                             </o-row>

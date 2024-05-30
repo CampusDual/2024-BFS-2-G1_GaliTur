@@ -3,8 +3,9 @@
     padding: 0%;
 }
 .imagen{
-    height: 300px;
-    width: 300px;
+    height: 300px !important;
+    width: 400px !important;
+    padding: 25px 0px 0px 0px !important;
 }
 .principal{
     align-items: center;
@@ -16,10 +17,10 @@
     margin: 20px;
 }
 .contenedor_imagen{
-    align-items: center;
-    height: 450px;
-    width: 300px;
-    padding: 0px 0px 0px 30px;
+    align-items: center !important;
+    height: 500px !important;
+    width: 300px !important;
+    padding: 0px 0px 0px 30px !important;
 }
 .fondo{
     background-image: url('../../../../assets/images/fondoPackEditar.png');
@@ -31,6 +32,17 @@
 .tabla{
     border-radius: 10px;
 }
+.modal * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    display: revert;
+  }
 
 .contenedorTabla{
     display: flex;
@@ -44,7 +56,7 @@
     width: 1000px;
 }
 .datosContainer{
-    width: 500px;
+    padding: 0px 0px 20px 0px;
 }
 .bordeTabla{
     border: 10px solid #c2b5aa;
@@ -62,6 +74,7 @@
     border-color: #c2b5aa;
     background-color: #c2b5aa;
     cursor: pointer;
+    width: 100%;
     outline: none;
    }
 
@@ -117,6 +130,15 @@
     font-size: 25px;
     padding: 15px;
 }
+.camposTexto{
+    max-width: 30px !important;
+    min-width: 10px !important;
+}
+.o-integer-input{
+    min-width: 10px;
+    max-width: 10px;
+  }
+
 
 
 

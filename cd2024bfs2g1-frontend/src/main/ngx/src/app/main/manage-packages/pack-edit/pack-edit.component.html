@@ -4,7 +4,7 @@
     <o-form attr="packsTable" #myList include-breadcrumb="true" service="packs" entity="pack" (onUpdate)="onSaveChanges()" keys="pck_id" show-header="yes" show-header-navigation="no">
     <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no"  show-header-navigation="no" oHidden></o-text-input>
     <div fxloyout="column" class="contenedorTodo">
-        <div fxLayout="row" class="principal" fxLayoutAlign="center" fxLayoutGap="32px">
+        <div fxLayout="row" class="principal" fxLayoutAlign="center" fxLayoutGap="100px">
             <div fxLayout="column" fxLayoutGap="16px">
                 <div class="datosContainer">
                     <div fxLayout="column" fxLayoutGap="16px" class="contenido_datos">
@@ -14,14 +14,14 @@
                     <div fxLayout="row" fxLayoutGap="16px">
                         <o-text-input #packNameInput fxFlex="100" (onValueChange)="onNameChange($event)" attr="pck_name" required="yes"></o-text-input>
                     </div>
-                        <div fxLayout="row" fxLayoutGap="16px">
-                            <o-currency-input [step]="1" attr="pck_price" width="100%" min="1" max="5000" label="{{ 'pck_price' | oTranslate }}" read-only="no"
-                            required="no">
+                        <div fxLayout="column" fxLayoutGap="10px">
+                            <o-currency-input [step]="1" attr="pck_price" min="1" max="5000"  label="{{ 'pck_price' | oTranslate }}" read-only="no"
+                            required="no" class="camposTexto">
                             </o-currency-input>
                             <o-integer-input attr="pck_participants" label="{{ 'PARTICIPANTS' | oTranslate }}"
-                            read-only="no" required="no" max="100" min="1" width="100%" ></o-integer-input>
+                            read-only="no" required="no" max="100" min="1" class="camposTexto"></o-integer-input>
                             <o-integer-input (onValueChange)="onDaysChange($event)" attr="pck_days" label="{{ 'DAYS' | oTranslate }}"
-                            read-only="no" required="no" max="100" min="1" width="100%"></o-integer-input>
+                            read-only="no" required="no" max="100" min="1" class="camposTexto"></o-integer-input>
                         </div>
                         <o-textarea-input class="description-textarea" attr="pck_description" required="yes" width="100%"></o-textarea-input>
                         <div class="div_boton" fxLayout="column" fxLayoutGap="8px">

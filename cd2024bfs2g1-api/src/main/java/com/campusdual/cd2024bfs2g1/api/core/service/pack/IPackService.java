@@ -27,6 +27,8 @@ public interface IPackService {
     EntityResult packInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException, ParseException;
 
 
+    AdvancedEntityResult packPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy) throws OntimizeJEERuntimeException;
+
     EntityResult packImageUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
             throws OntimizeJEERuntimeException;
 
