@@ -79,9 +79,11 @@ export class PackNewComponent {
     console.log("onchange")
     if (this.days.getValue() <= 0 || this.days.getValue() === undefined){
       this.beginDate.setEnabled(false)
+      this.endDate.setEnabled(false)
       this.endDate.setValue(null)
     } else {
       this.beginDate.setEnabled(true)
+      this.endDate.setEnabled(true)
       if (this.beginDate.getValueAsDate()){
         this.onBeginDateChanged()
       }
