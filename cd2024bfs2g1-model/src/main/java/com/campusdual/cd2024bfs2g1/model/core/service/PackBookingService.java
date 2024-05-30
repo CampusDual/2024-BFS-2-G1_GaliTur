@@ -9,7 +9,7 @@ import com.campusdual.cd2024bfs2g1.model.core.dao.UserDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.business.GuideZoneDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDateDao;
-import com.campusdual.cd2024bfs2g1.model.core.service.pack.PackService;
+import com.campusdual.cd2024bfs2g1.model.core.service.pack.PackDateService;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
@@ -19,8 +19,10 @@ import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Transient;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,15 +39,15 @@ public class PackBookingService implements IPackBookingService {
 
     private ClientService clientService;
 
-    private PackService packService;
+    private PackDateService packDateService;
 
 
     @Autowired
-    public PackBookingService(DefaultOntimizeDaoHelper daoHelper, PackBookingDao packBookingDao, ClientService clientService, PackService packService) {
+    public PackBookingService(DefaultOntimizeDaoHelper daoHelper, PackBookingDao packBookingDao, ClientService clientService, PackDateService packDateService) {
         this.daoHelper = daoHelper;
         this.packBookingDao = packBookingDao;
         this.clientService = clientService;
-        this.packService = packService;
+        this.packDateService = packDateService;
     }
 
     @Override
@@ -54,27 +56,15 @@ public class PackBookingService implements IPackBookingService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public EntityResult  packBookingInsert(Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
+        EntityResult erUpdatePackDate = this.packDateService.packDateUpdate(
+                Map.of(PackDateDao.PCS_ID, 2),
+                Map.of(PackDateDao.PD_ID, keysValues.get(PackDateDao.PD_ID))
+        );
+        if (erUpdatePackDate.getCode() != EntityResult.OPERATION_SUCCESSFUL) return erUpdatePackDate;
 
-            //Create filter
-            Map <String, Object> filtro = new HashMap<>();
-            filtro.put(PackDao.PCK_ID,keysValues.get(PackDao.PCK_ID));
-
-            //Create Set Values
-            Map <String, Object> values = new HashMap<>();
-            values.put(PackDateDao.PCS_ID,2);
-
-            //Update
-            packService.packUpdate(values, filtro);
-
-
-            //Get Logged Client Id
-            keysValues.put(ClientDao.CLIENT_ID, clientService.getClientId());
-
-
-            return this.daoHelper.insert(this.packBookingDao, keysValues);
-
-
+        return this.daoHelper.insert(this.packBookingDao, keysValues);
     }
 
     @Override
@@ -86,6 +76,4 @@ public class PackBookingService implements IPackBookingService {
     public EntityResult  packBookingDelete(Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
         return this.daoHelper.delete(this.packBookingDao, keysValues);
     }
-
-
 }

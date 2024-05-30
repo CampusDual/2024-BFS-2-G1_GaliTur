@@ -1,4 +1,4 @@
-import {Component, Inject, Injector, OnInit, ViewChild} from "@angular/core";
+import {AfterViewInit, Component, Inject, Injector, OnInit, ViewChild} from "@angular/core";
 import {DomSanitizer} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
 import {
@@ -19,13 +19,15 @@ import {UserInfoService} from "../../../shared/services/user-info.service";
   templateUrl: "./pack-detail.component.html",
   styleUrls: ["./pack-detail.component.css"],
 })
-export class PackDetailComponent implements OnInit {
+export class PackDetailComponent implements OnInit, AfterViewInit {
   @ViewChild("form") formPack: OFormComponent
   @ViewChild("packDatesForm") packDatesForm: OGridComponent
   @ViewChild("packDateCombo") packDateCombo: OComboComponent
+  @ViewChild("packDaysCombo") packDaysCombo: OComboComponent
   protected isPackInstance: boolean
   protected availableDates: Set<any> = new Set
-
+  protected bussineses: Array<any>
+  protected routes: Array<any>
   constructor(
     protected sanitizer: DomSanitizer,
     private router: Router,
@@ -49,6 +51,7 @@ export class PackDetailComponent implements OnInit {
 
   ngAfterViewInit() {
     this.populateDates()
+    this.populateDays()
   }
 
   public getImageSrc(base64: any): any {
@@ -80,7 +83,9 @@ export class PackDetailComponent implements OnInit {
 
   }
 
-  bookPack(event: any, data) {
+  bookPack(data: any) {
+    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAaa")
+    console.log(data)
     const config: ODialogConfig = {
       icon: "warning",
       alertType: "warn",
@@ -107,7 +112,7 @@ export class PackDetailComponent implements OnInit {
     const confBooking = this.bookingService.getDefaultServiceConfiguration("packBookings");
     this.bookingService.configureService(confBooking);
     this.bookingService
-      .insert({pd_id: data.pd_id, client_id: this.userInfoService.getUserInfo().usr_id}, "packBooking")
+      .insert({pd_id: data[0].pd_id, client_id: this.userInfoService.getUserInfo().usr_id}, "packBooking")
       .subscribe((resp) => {
         //TODO: this.form.reload(true);
 
@@ -133,7 +138,7 @@ export class PackDetailComponent implements OnInit {
     const id = +this.route.snapshot.params["pck_id"]
 
     this.packDateService.query(
-      {pck_id: id},
+      {pck_id: id, pcs_id: 1},
       ["pd_id", "pd_date_begin", "pd_date_end"],
       "packDate",
       {
@@ -151,5 +156,10 @@ export class PackDetailComponent implements OnInit {
           // console.log(this.availableDates)
         }
       });
+  }
+
+  private populateDays() {
+    const confPack = this.packDateService.getDefaultServiceConfiguration('packDates');
+    this.packDateService.configureService(confPack);
   }
 }
