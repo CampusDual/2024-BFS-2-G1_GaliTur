@@ -18,7 +18,7 @@
                     SELECT
                         #COLUMNS#
                     FROM
-                        ${mainschema}.pack_date
+                        ${mainschema}.pack_date PD
                     #WHERE#
                     #ORDER#
                 ]]>

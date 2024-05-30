@@ -1,147 +1,168 @@
 <div class="page">
 
 
-    <o-button class="back-button" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary"
-        (click)="openPacks()"></o-button>
+  <o-button class="back-button" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary"
+            (click)="openPacks()"></o-button>
 
 
-    <mat-card class="mainCard"
-        style="background-color: #eff1f3; border-radius: 10px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); padding: 40px; margin: 10px;">
+  <mat-card class="mainCard"
+            style="background-color: #eff1f3; border-radius: 10px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); padding: 40px; margin: 10px;">
 
 
-
-        <o-form #pform class="mainForm" #form attr="packDetail" service="packs" entity="pack"
-            keys="pck_id;gui_c_id" header-actions="false" undo-button="false"
+    <o-form #pform class="mainForm" #form attr="packDetail" service="packs" entity="pack"
+            keys="pck_id" header-actions="false" undo-button="false"
             show-header-actions-text="false"
             columns="pck_id;pck_name;pck_description;pck_price;pck_participants;gui_c_id"
             show-header-navigation="no" class="fill-form" show-header="no">
 
-            <!-- Almaceno el pack que he clicado -->
-            <o-grid #packForm attr="packDetail" service="packs" entity="packDetail" keys="P.pck_id;P.gui_c_id;pcs_id"
-                columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;pck_days;pd_date_begin;pd_date_end;pcs_id;P.gui_c_id"
-                parent-keys="pck_id" refresh-button="false" quick-filter="false" oHidden />
+      <!-- Almaceno el pack que he clicado -->
+      <o-grid #packForm attr="packDetail" service="packs" entity="packDetail" keys="P.pck_id;P.gui_c_id;pcs_id"
+              columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;pck_days;pd_date_begin;pd_date_end;pcs_id;P.gui_c_id"
+              parent-keys="pck_id" refresh-button="false" quick-filter="false" oHidden/>
 
-            <!-- Almaceno la ciudad del pack -->
-            <o-grid #gui_cities attr="guiCities" service="guideCities" entity="guideCities" keys="gui_c_id"
-                columns="gui_z_id;gui_c_id;gui_c_name" visible-columns="gui_z_id;gui_c_id;gui_c_name"
-                parent-keys="gui_c_id" refresh-button="false" quick-filter="false" oHidden />
+      <!-- Almaceno la ciudad del pack -->
+      <o-grid #gui_cities attr="guiCities" service="guideCities" entity="guideCities" keys="gui_c_id"
+              columns="gui_z_id;gui_c_id;gui_c_name" visible-columns="gui_z_id;gui_c_id;gui_c_name"
+              parent-keys="gui_c_id" refresh-button="false" quick-filter="false" oHidden/>
 
-            <!-- Div que contendrá toda la informacion del pack -->
-            <div class="main-container">
+      <!-- Div que contendrá toda la informacion del pack -->
+      <div class="main-container">
 
-                <!--Recupero el ID del pack en el que estoy-->
-                <o-text-input #pck_id read-only="yes" class="o-text-input" appearance="outline" attr="pck_id"
-                    sql-type="INTEGER" label="Nombre" enabled="no" oHidden></o-text-input>
+        <!--Recupero el ID del pack en el que estoy-->
+        <o-text-input #pck_id read-only="yes" class="o-text-input" appearance="outline" attr="pck_id"
+                      sql-type="INTEGER" label="Nombre" enabled="no" oHidden></o-text-input>
 
 
-                <!--Grids que almacenan la informacion de las imagenes-->
-                <o-grid #imagesPackForm attr="imagePacks" service="imagePacks" entity="imagePack" parent-keys="pck_id"
-                    keys="IP.imp_id;IP.pck_id;IP.img_id" columns="IP.imp_id;IP.pck_id;IP.img_id;I.img_code"
-                    visible-columns="imp_id;pck_id;img_id" refresh-button="false" quick-filter="false" oHidden />
+        <!--Grids que almacenan la informacion de las imagenes-->
+        <o-grid #imagesPackForm attr="imagePacks" service="imagePacks" entity="imagePack" parent-keys="pck_id"
+                keys="IP.imp_id;IP.pck_id;IP.img_id" columns="IP.imp_id;IP.pck_id;IP.img_id;I.img_code"
+                visible-columns="imp_id;pck_id;img_id" refresh-button="false" quick-filter="false" oHidden/>
 
-                <!--Recorrido entre tablas para sacar la imagen correspondiente al pack-->
-                <span *ngFor="let pack of packForm.dataArray">
+        <!--Recorrido entre tablas para sacar la imagen correspondiente al pack-->
+        <span *ngFor="let pack of packForm.dataArray">
                     <span *ngFor="let imagePack of imagesPackForm.dataArray">
                         <span *ngIf="imagePack.img_id == 1">
                             <div class="div-image-container">
-                                <h1 class="image-title"> {{pack.pck_name}} </h1>
+                                <h1 class="image-title"> {{ pack.pck_name }} </h1>
                                 <img class="image-logo" [src]="getImageSrc(imagePack.img_code)">
                             </div>
                         </span>
                         <span *ngIf="imagePack.img_id != 1">
                             <div class="div-image-container">
-                                <h1 class="image-title"> {{pack.pck_name}} </h1>
+                                <h1 class="image-title"> {{ pack.pck_name }} </h1>
                                 <img class="image" [src]="getImageSrc(imagePack.img_code)">
                             </div>
                         </span>
                     </span>
                 </span>
 
-                <!-- Combo box que muestra los intervalos de fechas disponibles para la reserva con su botón correspondiente -->
-                <div class="reserve-container">
-                    <div class="div-combo-container">
-                        <o-combo query-method="query" service="packDates"
-                                 parent-keys="P.pck_id"
-                                 entity="packDate" value-column="pd_date_begin"
-                                 columns="pd_id;pd_date_begin;pd_date_end"
-                                 visible-columns="pd_date_begin;pd_date_end"
-                                 multiple="no" null-selection="no" required="yes"
-                                 label="Seleccione la fecha a reservar"></o-combo>
-                    </div>
-                    <div class="div-active-pack-container" *ngFor="let packs of packForm.dataArray">
-                        <p class="active-pack" *ngIf="packs.pcs_id == 1" (click)="bookPack($event, packs)">{{'BOOK'| oTranslate }}</p>
-                    </div>
-                </div>
+        <!-- Combo box que muestra los intervalos de fechas disponibles para la reserva con su botón correspondiente -->
+        <div class="reserve-container">
+          <div class="div-combo-container">
+            <o-grid #packDatesForm attr="comboDates"
+                    service="packDates" entity="packDate"
+                    parent-keys="pck_id"
+                    keys="pd_id" columns="pck_id;pd_id;pd_date_begin;pd_date_end"
+                    refresh-button="false" quick-filter="false" oHidden/>
+            <o-combo
+              #packDateCombo
+              value-column="pd_id"
+              keys="pd_id"
+              columns="pck_id;pd_id;pd_date_begin;pd_date_end"
+              visible-columns="pd_date_begin;-;pd_date_end"
+              multiple="no" null-selection="no" required="yes"
+              label="{{ 'DATE_RANGE' | oTranslate}}"
+            ></o-combo>
+          </div>
+          <div class="div-active-pack-container">
+            <p class="active-pack"
+               (click)="bookPack($event, packDateCombo.getValue())">{{ 'BOOK'| oTranslate }}</p>
+          </div>
+        </div>
 
 
-                <!-- Informacion adicional del business divididos en dos columnas (o-rows) -->
-                <div class="data-container" *ngFor="let packs of packForm.dataArray" line-height="2">
+        <!-- Informacion adicional del business divididos en dos columnas (o-rows) -->
+        <div class="data-container" *ngFor="let packs of packForm.dataArray" line-height="2">
 
-                    <!-- Direccion y descripcion -->
-                    <o-row class="o-rows" class="left" attr="container" icon="description" mat
-                        title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" elevation="1"
-                        aria-orientation="vertical" appearance="outline">
-                        <ul class="list-to-desc">
-                            <li *ngFor="let packs of packForm.dataArray">{{packs.pck_description}}</li>
-                        </ul>
-                    </o-row>
+          <!-- Direccion y descripcion -->
+          <o-row class="o-rows" class="left" attr="container" icon="description" mat
+                 title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" elevation="1"
+                 aria-orientation="vertical" appearance="outline">
+            <ul class="list-to-desc">
+              <li *ngFor="let packs of packForm.dataArray">{{ packs.pck_description }}</li>
+            </ul>
+          </o-row>
 
 
-                    <!-- Recupero las ciudades y las provincias -->
-                    <o-grid #gui_zones attr="guideZones" service="guideZones" entity="guideZone" keys="gui_z_id"
-                        columns="gui_z_id;gui_z_name" visible-columns="gui_z_id;gui_z_name" refresh-button="false"
-                        quick-filter="false" oHidden />
+          <!-- Recupero las ciudades y las provincias -->
+          <o-grid #gui_zones attr="guideZones" service="guideZones" entity="guideZone" keys="gui_z_id"
+                  columns="gui_z_id;gui_z_name" visible-columns="gui_z_id;gui_z_name" refresh-button="false"
+                  quick-filter="false" oHidden/>
 
-                    <!-- Horario, telefono, website y el cif -->
-                    <o-row class="o-rows" class="right" attr="container" title="{{'INFO' | oTranslate }}" icon="info"
-                        layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
-                        <ul class="list-with-spaces">
-                            <li *ngIf="!packs.pck_days"><strong><i>{{'DAYS' | oTranslate }}: </i></strong>{{'NOT_SPECIFIED' | oTranslate}}</li>
-                            <li *ngIf="packs.pck_days && packs.pck_days > 0"><strong><i>{{'DAYS' | oTranslate }}: </i></strong>{{packs.pck_days}}</li>
-                            <li *ngIf="packs.pck_participants "><strong><i>{{'TRAVELLERS' | oTranslate }}: </i></strong>{{packs.pck_participants}}</li>
-                            <li *ngIf="!packs.pck_participants"><strong><i>{{'TRAVELLERS' | oTranslate }}: </i></strong>{{'NOT_SPECIFIED' | oTranslate}}</li>
-                            <span *ngFor="let city of gui_cities.dataArray">
+          <!-- Horario, telefono, website y el cif -->
+          <o-row class="o-rows" class="right" attr="container" title="{{'INFO' | oTranslate }}" icon="info"
+                 layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+            <ul class="list-with-spaces">
+              <li *ngIf="!packs.pck_days"><strong><i>{{ 'DAYS' | oTranslate }}
+                : </i></strong>{{ 'NOT_SPECIFIED' | oTranslate }}
+              </li>
+              <li *ngIf="packs.pck_days && packs.pck_days > 0"><strong><i>{{ 'DAYS' | oTranslate }}
+                : </i></strong>{{ packs.pck_days }}
+              </li>
+              <li *ngIf="packs.pck_participants "><strong><i>{{ 'TRAVELLERS' | oTranslate }}
+                : </i></strong>{{ packs.pck_participants }}
+              </li>
+              <li *ngIf="!packs.pck_participants"><strong><i>{{ 'TRAVELLERS' | oTranslate }}
+                : </i></strong>{{ 'NOT_SPECIFIED' | oTranslate }}
+              </li>
+              <span *ngFor="let city of gui_cities.dataArray">
                                 <span *ngIf="packs.gui_c_id == city.gui_c_id">
                                     <span *ngFor="let zone of gui_zones.dataArray">
-                                        <li *ngIf="city.gui_z_id == zone.gui_z_id"><strong><i>{{'PLACE' | oTranslate }}: </i></strong> {{city.gui_c_name | oTranslate}}, {{zone.gui_z_name | oTranslate}}</li>
+                                        <li *ngIf="city.gui_z_id == zone.gui_z_id"><strong><i>{{ 'PLACE' | oTranslate }}
+                                          : </i></strong> {{ city.gui_c_name | oTranslate }}
+                                          , {{ zone.gui_z_name | oTranslate }}</li>
                                     </span>
                                 </span>
                             </span>
-                            <li><strong><i>{{'Price' | oTranslate }}: </i></strong>{{packs.pck_price}} €</li>
-                        </ul>
-                    </o-row>
-                </div>
+              <li><strong><i>{{ 'Price' | oTranslate }}: </i></strong>{{ packs.pck_price }} €</li>
+            </ul>
+          </o-row>
+        </div>
 
-                <!-- Combo box que muestra los dias de la ruta para poder filtrar por el mismo con su botón correspondiente -->
-                <div class="reserve-container">
-                    <div class="div-combo-container">
-                        <o-combo class="combo-box-dates"
-                                 label="Seleccione el dia del pack"></o-combo>
-                    </div>
-                    <div class="div-active-pack-container" *ngFor="let packs of packForm.dataArray">
-                        <p class="active-pack" *ngIf="packs.pcs_id == 1" (click)="bookPack($event, packs)">{{'BUTTON.FILTER'| oTranslate }}</p>
-                    </div>
-                </div>
+        <!-- Combo box que muestra los dias de la ruta para poder filtrar por el mismo con su botón correspondiente -->
+        <div class="reserve-container">
+          <div class="div-combo-container">
+            <o-combo class="combo-box-dates"
+                     label="Seleccione el dia del pack"></o-combo>
+          </div>
+          <div class="div-active-pack-container" *ngFor="let packs of packForm.dataArray">
+            <p class="active-pack" *ngIf="packs.pcs_id == 1"
+               (click)="bookPack($event, packs)">{{ 'BUTTON.FILTER'| oTranslate }}</p>
+          </div>
+        </div>
 
-                <div class="routes-container">
-                    <o-row class="o-rows" title="Routes" icon="map" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
-                        <o-grid opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false"
-                        show-page-size="false" oHiden>
-                        </o-grid>
-                    </o-row>
-                </div>
+        <div class="routes-container">
+          <o-row class="o-rows" title="Routes" icon="map" layout-align="start stretch" elevation="1"
+                 appearance="outline" opacity="0">
+            <o-grid opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false"
+                    detail-mode="false" page-size-options="false"
+                    show-page-size="false" oHiden>
+            </o-grid>
+          </o-row>
+        </div>
 
-                <div class="business-container">
-                    <o-row class="o-rows" title="Businesses" icon="business" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
-                        <o-grid opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false"
-                        show-page-size="false" oHiden>
-                        </o-grid>
-                    </o-row>
-                </div>
+        <div class="business-container">
+          <o-row class="o-rows" title="Businesses" icon="business" layout-align="start stretch" elevation="1"
+                 appearance="outline" opacity="0">
+            <o-grid opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false"
+                    detail-mode="false" page-size-options="false"
+                    show-page-size="false" oHiden>
+            </o-grid>
+          </o-row>
+        </div>
 
 
-
-            </div>
-        </o-form>
-    </mat-card>
+      </div>
+    </o-form>
+  </mat-card>
 </div>
