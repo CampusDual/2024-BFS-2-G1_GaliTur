@@ -14,4 +14,5 @@ public class RoutePackDao extends OntimizeJdbcDaoSupport {
     public static final String ROUTE_ID = "ROUTE_ID";
     public static final String PCK_ID = "pck_id";
     public static final String ASSIGNED_DATE = "ASSIGNED_DATE";
+    public static final String PCK_ROUTE_MULTI_QUERY = "multi";
 }

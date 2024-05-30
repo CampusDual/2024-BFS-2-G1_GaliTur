@@ -48,3 +48,7 @@ ALTER TABLE pack_booking
 ADD CONSTRAINT fk_pack_date
 FOREIGN KEY (pd_id)
 REFERENCES pack_date(pd_id);
+
+ALTER TABLE
+pack_date ADD COLUMN creation_date
+TIMESTAMP DEFAULT CURRENT_TIMESTAMP;

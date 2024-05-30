@@ -1,7 +1,7 @@
 <o-breadcrumb [form]="myList" label-columns="pck_name" separator=" "></o-breadcrumb>
 <div class="fondo">
     <div>
-    <o-form attr="packsTable" #myList service="packs" entity="pack" (onUpdate)="onSaveChanges()" keys="pck_id" show-header="yes" show-header-navigation="no">
+    <o-form attr="packsTable" #myList include-breadcrumb="true" service="packs" entity="pack" (onUpdate)="onSaveChanges()" keys="pck_id" show-header="yes" show-header-navigation="no">
     <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no"  show-header-navigation="no" oHidden></o-text-input>
     <div fxloyout="column" class="contenedorTodo">
         <div fxLayout="row" class="principal" fxLayoutAlign="center" fxLayoutGap="32px">

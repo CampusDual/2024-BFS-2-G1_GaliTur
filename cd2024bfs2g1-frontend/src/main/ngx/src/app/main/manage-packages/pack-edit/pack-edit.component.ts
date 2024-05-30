@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NavigationService, OButtonComponent, OTableColumn, OTableColumnComponent, OTextInputComponent, OValueChangeEvent, OntimizeService } from 'ontimize-web-ngx';
+import { NavigationService, OBreadcrumbComponent, OButtonComponent, OTableColumn, OTableColumnComponent, OTextInputComponent, OValueChangeEvent, OntimizeService } from 'ontimize-web-ngx';
 import { PackScheduleComponent } from './pack-schedule/pack-schedule.component';
 import { AbstractControl, FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
@@ -28,8 +28,6 @@ export class PackEditComponent implements AfterViewInit{
 
   ngAfterViewInit(): void {
     this.pck_id = this.getPackId()
-    console.log(this.dateBeginColumnRenderer)
-    console.log(this.dateBeginColumnRenderer.table)
 
   }
   private actionButtons(disable:boolean){

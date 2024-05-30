@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class BusinessPackController extends ORestController<IBusinessPackService> {
 
     @Autowired
-    private IBusinessPackService iBusinessPackService;
+    private IBusinessPackService businessPackService;
     @Override
     public IBusinessPackService getService() {
-        return iBusinessPackService;
+        return businessPackService;
     }
 }
