@@ -19,3 +19,18 @@ CREATE TABLE public.route_pack (
 
 ALTER TABLE public.route_pack ADD CONSTRAINT route_pack_rou_fk FOREIGN KEY (route_id) REFERENCES public.route(route_id);
 ALTER TABLE public.route_pack ADD CONSTRAINT route_pack_pc_fk FOREIGN KEY (pck_id) REFERENCES public.pack(pck_id);
+
+ALTER TABLE PUBLIC.bsn_pack
+drop column assigned_date;
+
+ALTER TABLE PUBLIC.route_pack
+drop column assigned_date;
+
+ALTER TABLE PUBLIC.bsn_pack
+add column assigned_date int4;
+
+ALTER TABLE PUBLIC.route_pack
+add column assigned_date int4;
+
+ALTER TABLE PUBLIC.pack
+add column pck_days int4;

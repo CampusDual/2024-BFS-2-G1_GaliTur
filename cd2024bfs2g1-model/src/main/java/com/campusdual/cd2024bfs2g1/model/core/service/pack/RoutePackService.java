@@ -17,30 +17,30 @@ import java.util.Map;
 public class RoutePackService implements IRoutePackService {
 
     private final DefaultOntimizeDaoHelper daoHelper;
-    private final RoutePackDao RoutePackDao;
+    private final RoutePackDao routePackDao;
 
     @Autowired
-    public RoutePackService(DefaultOntimizeDaoHelper daoHelper, RoutePackDao RoutePackDao) {
+    public RoutePackService(DefaultOntimizeDaoHelper daoHelper, RoutePackDao routePackDao) {
         this.daoHelper = daoHelper;
-        this.RoutePackDao = RoutePackDao;
+        this.routePackDao = routePackDao;
     }
     @Override
     public EntityResult routePackQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
-        return this.daoHelper.query(this.RoutePackDao, keyMap, attrList,"multi");
+        return this.daoHelper.query(this.routePackDao, keyMap, attrList,RoutePackDao.PCK_ROUTE_MULTI_QUERY);
     }
 
     @Override
     public EntityResult routePackInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
-        return this.daoHelper.insert(this.RoutePackDao, attrMap);
+        return this.daoHelper.insert(this.routePackDao, attrMap);
     }
 
     @Override
     public EntityResult routePackUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-        return this.daoHelper.update(this.RoutePackDao, attrMap, keyMap);
+        return this.daoHelper.update(this.routePackDao, attrMap, keyMap);
     }
 
     @Override
     public EntityResult routePackDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-        return this.daoHelper.delete(this.RoutePackDao, keyMap);
+        return this.daoHelper.delete(this.routePackDao, keyMap);
     }
 }
