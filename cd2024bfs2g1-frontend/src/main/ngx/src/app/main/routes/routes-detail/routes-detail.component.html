@@ -1,11 +1,8 @@
 <div fxFill fxLayout="column" fxLayoutAlign="space-evenly center" class="mainPanel">
     <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
-        <div>
-            <o-button class="backButton" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary" (click)="backToHome(data)"></o-button>
-            <p class="titulo"><strong>{{ data.name }}</strong> </p>
-        </div>
-        <br>
-        </div>
+        <o-button class="backButton" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary" (click)="backToHome(data)"></o-button>
+        <p class="titulo"><strong>{{ data.name }}</strong></p>
+    </div>
     <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px" class="routesSecond">
         <div fxLayout="column" fxFlex="30">
             <o-gallery *ngIf="data.galleryImages; else no_photo" [gallery-images]="data.galleryImages"  [gallery-options]="galleryOptions" class="o-gallery"></o-gallery>
@@ -40,7 +37,7 @@
                             </span>
                             <ng-template #no_estimated_duration>
                                 <div class="tooltipDuration">
-                                    <mat-icon class="clockTooltip">schedule</mat-icon>
+                                    <a><mat-icon class="clockTooltipHome">schedule</mat-icon>-</a>
                                     <span class="tooltiptextDuration">{{ "N0_ESTIMATED_DURATION" | oTranslate }}</span>
                                 </div>
                             </ng-template>

@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { OGridComponent, OntimizeService } from 'ontimize-web-ngx';
 import { Router } from '@angular/router';
-import moment from 'moment';
 import { PackHomeComponent } from '../../pack/pack-home/pack-home.component';
 
 @Component({
@@ -31,7 +30,7 @@ export class PackClientComponent {
 
   public openDetail(data: any): void {
     PackHomeComponent.page = 2;
-    this.router.navigate(['main/packs/' + data.pck_id]);
+    this.router.navigate(['main/pack-client/' + data.pck_id]);
   }
 
   truncateName(name: string): string {

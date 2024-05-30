@@ -18,7 +18,8 @@
         </o-currency-input>
         <o-integer-input class="participants" attr="pck_participants" label="{{ 'PARTICIPANTS' | oTranslate }}"
                          read-only="no" required="no" max="100" min="1"></o-integer-input>
-         <o-integer-input #days attr="days" required="true" min="1" label="{{ 'DAYS' | oTranslate }}" (onChange)="checkDays()"></o-integer-input>
+         <o-integer-input #days attr="pck_days" required="true" min="1" label="{{ 'DAYS' | oTranslate }}"
+                          (onChange)="checkDays()"></o-integer-input>
       </div>
       <div fxLayout="row" class="responsive">
         <o-date-input #beginDate attr="pd_date_begin" value-type="date" [min]="getMinDate()"
