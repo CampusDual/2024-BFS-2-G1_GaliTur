@@ -158,5 +158,12 @@
 
 .full-page {
     height: 77vh;
+    .o-data-toolbar {
+        align-items: start;
+        .title {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+    }
 }
 
