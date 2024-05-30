@@ -1,7 +1,7 @@
 import { Component, Injector, ViewChild } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { PackActivitiesComponent } from "./pack-activities/pack-activities.component";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { FilterExpressionUtils, OTableComponent, OntimizeService } from "ontimize-web-ngx";
 import { PackRoutesComponent } from "./pack-routes/pack-routes.component";
 
@@ -21,7 +21,8 @@ export class AddActivitiesComponent {
   constructor(
     protected dialog: MatDialog,
     private activeRoute: ActivatedRoute,
-    protected injector: Injector
+    protected injector: Injector,
+    private router: Router
   ) {
     this.service = this.injector.get(OntimizeService);
   }
@@ -100,5 +101,9 @@ export class AddActivitiesComponent {
         alert("Impossible to query data!");
       }
     });
+  }
+
+  public goBack(): void {
+    this.router.navigate(["main/packs"]);
   }
 }
