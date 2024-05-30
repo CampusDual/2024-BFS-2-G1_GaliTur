@@ -17,7 +17,7 @@
         <o-integer-input class="filter-element" attr="pck_participants" min="0" label="Number of Travelers" ></o-integer-input>
         <o-combo  #comboCity attr="gui_c_name" label="Ciudad"  translate="yes"
           query-method="query" sort="ASC" value-column="gui_c_name" required="no" service="guideCities" multiple="no" null-selection="yes" entity="guideCities"
-          columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id"></o-combo>
+          columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id" searchable="yes"> </o-combo>
       </div>
       <!-- Filter buttons -->
       <div class="filter-column">
