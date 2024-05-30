@@ -1,10 +1,14 @@
+
 <mat-card class="card">
-    <mat-card-title class="title"> {{"Contracted_packs_according_to_the_province" | oTranslate}}</mat-card-title>
+    <mat-card-title class="title"> {{"GRAPHICS" | oTranslate}}</mat-card-title>
     <mat-card-content>
-        <div class="chart-row">
-            <div fxFlex fxLayout="row" class="chart-div" fxLayoutAlign="center center">
-                    <o-chart class="custom-chart" type="pie" service="packs" entity="packProvince" y-axis="province_count"
-                        query-on-init="yes" x-axis="gui_z_name"></o-chart>
+        <div class="chart-row" fxLayout="column">
+            <div fxLayout="column" class="name-graphics" >
+                <p ><strong class="name">{{"Contracted_packs_according_to_the_province" | oTranslate}}</strong></p>
+            </div>
+            <div fxLayout="column" class="view-chart">
+                <o-chart  type="pie" service="packs" entity="packProvince" y-axis="province_count" query-on-init="yes" x-axis="gui_z_name" [color]="colors">
+                </o-chart>
             </div>
         </div>
     </mat-card-content>
