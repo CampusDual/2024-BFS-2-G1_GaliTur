@@ -54,10 +54,19 @@
                                 <img class="image" [src]="getImageSrc(imagePack.img_code)">
                             </div>
                         </span>
-
                     </span>
                 </span>
 
+                <!-- Combo box que muestra los intervalos de fechas disponibles para la reserva con su botón correspondiente -->
+                <div class="reserve-container"> 
+                    <div class="div-combo-container">
+                        <o-combo class="combo-box-dates" label="Seleccione la fecha a reservar"></o-combo>
+                    </div>
+                    <div class="div-active-pack-container" *ngFor="let packs of packForm.dataArray">
+                        <p class="active-pack" *ngIf="packs.pcs_id == 1" (click)="bookPack($event, packs)">{{'BOOK'| oTranslate }}</p>
+                    </div>
+                </div>
+                
 
                 <!-- Informacion adicional del business divididos en dos columnas (o-rows) -->
                 <div class="data-container" *ngFor="let packs of packForm.dataArray" line-height="2">
@@ -93,10 +102,38 @@
                                 </span>
                             </span>
                             <li><strong><i>{{'Price' | oTranslate }}: </i></strong>{{packs.pck_price}} €</li>
-
                         </ul>
                     </o-row>
                 </div>
+
+                <!-- Combo box que muestra los dias de la ruta para poder filtrar por el mismo con su botón correspondiente -->
+                <div class="reserve-container"> 
+                    <div class="div-combo-container">
+                        <o-combo class="combo-box-dates" label="Seleccione el dia del pack"></o-combo>
+                    </div>
+                    <div class="div-active-pack-container" *ngFor="let packs of packForm.dataArray">
+                        <p class="active-pack" *ngIf="packs.pcs_id == 1" (click)="bookPack($event, packs)">{{'BUTTON.FILTER'| oTranslate }}</p>
+                    </div>
+                </div>
+
+                <div class="routes-container">
+                    <o-row class="o-rows" title="Routes" icon="map" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+                        <o-grid opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false" 
+                        show-page-size="false" oHiden>
+                        </o-grid>
+                    </o-row>
+                </div>
+
+                <div class="business-container">
+                    <o-row class="o-rows" title="Businesses" icon="business" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+                        <o-grid opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false" 
+                        show-page-size="false" oHiden>
+                        </o-grid>
+                    </o-row>
+                </div>
+
+                
+                
             </div>
         </o-form>
     </mat-card>

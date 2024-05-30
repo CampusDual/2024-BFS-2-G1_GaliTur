@@ -43,7 +43,7 @@
         <Query id="allPacks">
             <Sentence>
                 <![CDATA[
-                    SELECT
+                    SELECT DISTINCT
                         #COLUMNS#
                     FROM
                         ${mainschema}.pack P
