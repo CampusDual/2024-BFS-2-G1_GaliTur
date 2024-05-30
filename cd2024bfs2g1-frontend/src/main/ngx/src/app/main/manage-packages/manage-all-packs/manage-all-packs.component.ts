@@ -14,10 +14,14 @@ export class ManageAllPacksComponent{
   constructor(private router:Router,
     protected sanitizer: DomSanitizer,
     private ontimizePackService: OntimizeService,
+    private ontimizeImageService: OntimizeService,
+    private ontimizeImagePackService: OntimizeService,
     private http: HttpClient,
     protected injector: Injector,
   ){
-    this.configurePackImgService()
+    this.configurePackService()
+    this.configureImageService() 
+    this.configurePackImageService() 
     this.injector.get(NavigationService).initialize();
   }
 
@@ -29,54 +33,61 @@ export class ManageAllPacksComponent{
     return image_code
   }
 
-  getImage(img_id:any){
-    console.log("Data: " + this.aux.img_id)
-  }
   aux:any = {}
   idImagen:any = []
   idImagen2:any = []
-  protected configurePackImgService() {
+
+  protected configurePackService() {
     const confPack =
       this.ontimizePackService.getDefaultServiceConfiguration("packs");
     this.ontimizePackService.configureService(confPack);
   }
+  protected configureImageService() {
+    const confPack =
+      this.ontimizeImageService.getDefaultServiceConfiguration("images");
+    this.ontimizeImageService.configureService(confPack);
+  }
+  protected configurePackImageService() {
+    const confPack =
+      this.ontimizeImagePackService.getDefaultServiceConfiguration("imagePacks");
+    this.ontimizeImagePackService.configureService(confPack);
+  }
+//Boton de borrar, no se puede usar por restricciones, base de datos no en CASCADA <------------------------
 
-  // protected configureImageService() {
-  //   const confImg =
-  //     this.ontimizeImageService.getDefaultServiceConfiguration("images");
-  //   this.ontimizeImageService.configureService(confImg);
-  // }
-
-
-  
-onClicDelete(pck_id: any) {
-  // if (confirm('¿Estás seguro de que deseas eliminar este paquete?')) {
-  //   this.ontimizePackService.delete({pck_id:pck_id},"pack").pipe(
-  //     catchError(error => {
-  //       console.error('Error al eliminar el paquete:', error);
-  //       alert('Hubo un error al eliminar el paquete. Por favor, intenta nuevamente.');
-  //       return of(null); // Devuelve un Observable vacío para manejar el error
-  //     })
-  //   ).subscribe(response => {
-  //     if (response) {
-  //       alert('Paquete eliminado exitosamente.');
-  //     }
-  //   });
-  // }
-}
-
-// getImageIdAux(pck_id:any):any{
-//   this.ontimizePackService
-//     .query(
-//       {pck_id:pck_id},
-//       ["ip.img_id","p.pck_id","i.img_code"],
-//       "packDetail"
-//     )
-//     .subscribe((response) => {
-//       this.idImagen.push(...response.data)
-//       this.aux = this.idImagen[0]
-//       console.log("Id de la imagen y pck" + this.aux.img_id,"   ",this.aux.img_code)
+// onClicDelete(pck_id: any,image_id:any,imp_ip:any) {
+//   console.log("Pack id ",pck_id," image id ",image_id," imagepack id ",imp_ip)
+//   this.onPackImageDelete(imp_ip)
+//   this.onImgDelete(image_id)
+//   this.onPackDelete(pck_id)
+// }
+// private onPackImageDelete(imp_ip:any){
+//   this.ontimizeImagePackService.delete({imp_ip:imp_ip},"imagePack").subscribe(response => {
+//     if (response) {
+//       console.log(response.data)
+//     }
+//   });
+// }
+// private onImgDelete(image_id:any){
+//   this.ontimizeImageService.delete({image_id:image_id},"image").subscribe(response => {
+//     if (response) {
+//       console.log(response.data)
+//     }
+//   });
+// }
+// private onPackDelete(pck_id:any){
+//   if (confirm('¿Estás seguro de que deseas eliminar este paquete?')) {
+//     this.ontimizePackService.delete({pck_id:pck_id},"pack").pipe(
+//       catchError(error => {
+//         console.error('Error al eliminar el paquete:', error);
+//         alert('Hubo un error al eliminar el paquete. Por favor, intenta nuevamente.');
+//         return of(null); // Devuelve un Observable vacío para manejar el error
+//       })
+//     ).subscribe(response => {
+//       if (response) {
+//         alert('Paquete eliminado exitosamente.');
+//       }
 //     });
+//   }
 // }
 
 onClicEdit(pck_id: any) {
