@@ -130,7 +130,7 @@ export class PackRoutesComponent {
             const config: OSnackBarConfig = {
               action: "",
               milliseconds: 2000,
-              icon: "business",
+              icon: "hiking",
               iconPosition: "left",
               cssClass: "snackbar",
             };

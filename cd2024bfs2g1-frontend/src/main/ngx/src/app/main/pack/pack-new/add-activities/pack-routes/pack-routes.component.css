@@ -66,10 +66,10 @@
     max-height: 200px;
     min-width: 200px; 
     min-height: 200px; 
-    border-radius: 10px;
-    object-fit: cover;
+    object-fit: contain;
     margin-bottom: 15px;
     margin-left: 15px;
+    padding-top: 10px;
 
 }
 
@@ -77,7 +77,6 @@
     width: 100%;
     height: auto;
     max-width: 100%; 
-    border-radius: 10px;
 }
 
 .left, .right {
@@ -108,6 +107,7 @@
     padding: 0;
     margin: 0;
     list-style-type: disc;
+    padding-left: 10px;
 }
 
 .list-item {
@@ -117,7 +117,7 @@
     white-space: normal; /* Permite que el texto haga un salto de línea */
     
     box-sizing: border-box; /* Incluye el padding y el borde en el ancho y alto total del elemento */
-
+    
 }
 .o-text-input {
     outline: transparent;

@@ -64,10 +64,10 @@
     max-height: 200px;
     min-width: 200px; 
     min-height: 200px; 
-    border-radius: 10px;
     object-fit: cover;
     margin-bottom: 15px;
     margin-left: 15px;
+    padding-top: 10px;
 
 }
 
@@ -75,12 +75,12 @@
     width: 100%;
     height: auto;
     max-width: 100%; 
-    border-radius: 10px;
+    
 }
 
 .left, .right {
     flex: 1;
-    padding: 25px;
+    padding: 0px 5px 10px 5px;
     background-color: transparent;
     overflow:hidden; 
 }
@@ -94,14 +94,24 @@
     
 }
 
-.list-with-spaces {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 90%;
-    row-gap: 10px;
-    overflow-y: auto;
-    overflow-x: hidden;
+
+
+.list-to-desc {
+    width: 90%; /* Ajusta el ancho según sea necesario */
+    padding: 0;
+    margin: 0;
+    list-style-type: disc;
+    padding-left: 10px;
+}
+
+.list-item {
+    word-wrap: break-word; /* Permite que las palabras largas se dividan y pasen a la siguiente línea */
+    word-break: break-word; /* Fuerza un corte en las palabras largas */
+    overflow-wrap: break-word; /* Asegura que las palabras largas se dividan en la siguiente línea */
+    white-space: normal; /* Permite que el texto haga un salto de línea */
+    
+    box-sizing: border-box; /* Incluye el padding y el borde en el ancho y alto total del elemento */
+
 }
 
 

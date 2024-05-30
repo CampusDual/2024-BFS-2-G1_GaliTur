@@ -348,6 +348,11 @@
   "ADD_BSNPs": "Añadir Negocios",
   "assigned_date": "Día",
   "BSNPACK.ERROR": "No se ha podido asignar el negocio, revise los campos",
-  "VIEW_BSN": "Mostar Negocios agregados"
+  "VIEW_BSN": "Mostar Negocios agregados",
+  "ADD_ROUTEP": "Añadir Ruta",
+  "ADD_ROUTES": "Añadir Rutas",
+  "ROUTEPACK.ERROR": "No se ha podido asignar la ruta, revise los campos",
+  "ROUTEPACK.CONFIRMED": "Ruta asignada con éxito",
+  "VIEW_ROUTES": "Mostar Rutas agregadas"
 
 }

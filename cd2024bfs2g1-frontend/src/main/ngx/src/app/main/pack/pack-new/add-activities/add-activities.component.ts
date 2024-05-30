@@ -11,7 +11,8 @@ import { PackRoutesComponent } from "./pack-routes/pack-routes.component";
   styleUrls: ["./add-activities.component.css"],
 })
 export class AddActivitiesComponent {
-  @ViewChild("table", { static: false }) table: OTableComponent;
+  @ViewChild("tableBsn", { static: false }) tableBsn: OTableComponent;
+  @ViewChild("tableRoutes", { static: false }) tableRoutes: OTableComponent;
   static packId: any;
   protected service: OntimizeService;
   public bsnArray = []
@@ -29,6 +30,7 @@ export class AddActivitiesComponent {
 
     console.log("Al pack le llego el id: " + AddActivitiesComponent.packId);
     this.getBsn();
+    this.getRoute();
   }
 
 
@@ -69,8 +71,8 @@ export class AddActivitiesComponent {
       if (resp.code === 0) {
         // resp.data contains the data retrieved from the server
 
-        this.table.setDataArray(resp.data);
-        this.table.reloadData()
+        this.tableBsn.setDataArray(resp.data);
+        this.tableBsn.reloadData()
 
 
       } else {
@@ -80,18 +82,18 @@ export class AddActivitiesComponent {
   }
 
   getRoute() {
-    const conf = this.service.getDefaultServiceConfiguration("businessPacks");
+    const conf = this.service.getDefaultServiceConfiguration("routePacks");
     this.service.configureService(conf);
     const filter = {
-      "BP.pck_id": parseInt(AddActivitiesComponent.packId) ,
+      "R.pck_id": parseInt(AddActivitiesComponent.packId) ,
     };
-    const columns = ["bsn_name", "bsn_type","bsn_address","assigned_date","bsn_pack_id"];
-    this.service.query(filter, columns, "packBusiness").subscribe((resp) => {
+    const columns = ["name", "estimated_duration","difficulty","assigned_date","route_pack_id"];
+    this.service.query(filter, columns, "routePack").subscribe((resp) => {
       if (resp.code === 0) {
         // resp.data contains the data retrieved from the server
-
-        this.table.setDataArray(resp.data);
-        this.table.reloadData()
+        
+        this.tableRoutes.setDataArray(resp.data);
+        this.tableRoutes.reloadData()
 
 
       } else {
