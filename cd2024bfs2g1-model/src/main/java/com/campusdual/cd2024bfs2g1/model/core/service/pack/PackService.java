@@ -82,7 +82,7 @@ public class PackService implements IPackService {
     @Override
     public AdvancedEntityResult packMultiPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
             throws OntimizeJEERuntimeException {
-        return this.daoHelper.paginationQuery(this.packDao, keysValues, attributes, recordNumber, startIndex, orderBy, this.packDao.PCK_MULTI_QUERY);
+        return this.daoHelper.paginationQuery(this.packDao, keysValues, attributes, recordNumber, startIndex, orderBy, this.packDao.PCK_IMG_PACK_DETAIL);
     }
     @Override
     public EntityResult packProvinceQuery(Map<String, Object> keyMap, List<String> attrList)
