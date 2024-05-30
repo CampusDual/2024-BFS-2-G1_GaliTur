@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RoutesDetailComponent } from '../routes-detail/routes-detail.component';
 import { ImageService } from 'src/app/shared/services/image.service';
+import { OntimizeService } from 'ontimize-web-ngx';
+import { ActivatedRoute} from '@angular/router';
 
 
 @Component({
@@ -10,16 +12,44 @@ import { ImageService } from 'src/app/shared/services/image.service';
   templateUrl: './routes-home.component.html',
   styleUrls: ['./routes-home.component.css']
 })
-export class RoutesHomeComponent implements OnInit {
+export class RoutesHomeComponent  implements AfterViewInit{
 galleryOptions: any;
 
   constructor(
     protected dialog: MatDialog,
     protected sanitizer: DomSanitizer,
     private imageService: ImageService,
-  ) { }
+    private ontimizerouteService: OntimizeService,
+    private activeRoute: ActivatedRoute
+  ) { 
+    this.configureService();
+  }
 
-  ngOnInit() {
+  protected configureService() {
+    const confRoute =
+      this.ontimizerouteService.getDefaultServiceConfiguration("routes");
+    this.ontimizerouteService.configureService(confRoute);
+  }
+
+  ngAfterViewInit(): void {
+    const idRutaActual = +this.getRouteId();
+    console.log(idRutaActual)
+    if(!isNaN(idRutaActual)){
+      console.log("se ejecuta")
+      this.ontimizerouteService
+      .query(
+        { route_id: idRutaActual },
+        ["route_id","name", "description", "estimated_duration", "difficulty"],
+        "route"
+      )
+      .subscribe((response) => {
+        this.openDetail(response.data[0]);
+      });
+    }
+  }
+
+  getRouteId(): number {
+    return +this.activeRoute.snapshot.params["route_id"];
   }
 
   /*Recoger img de BD*/
@@ -30,6 +60,7 @@ galleryOptions: any;
 
   /*Abrir detalle de la ruta*/
   public openDetail(data: any): void {
+    console.log("se ejecuta")
     this.imageService.getImage(data.route_id).subscribe((imageData)=> {
       const images = []
 
@@ -46,6 +77,8 @@ galleryOptions: any;
       });
     })
   }
+
+  
 
   /*Pasar minutos introducidos a h y min*/
   public convertTime(minutos: number):  string {

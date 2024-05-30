@@ -7,7 +7,9 @@ import {
 } from "ontimize-web-ngx";
 import { Landmark } from "./landmark-model";
 import { RouteService } from "src/app/shared/services/route.service";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Route, Router } from "@angular/router";
+import { RoutesDetailComponent } from "../../routes-detail/routes-detail.component";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "app-view-all-landmark",
@@ -20,6 +22,7 @@ export class ViewAllLandmarkComponent implements AfterViewInit {
   nameActualRoute: String;
 
   constructor(
+    protected dialog: MatDialog,
     private ontimizelandmarkService: OntimizeService,
     private ontimizerouteService: OntimizeService,
     private activeRoute: ActivatedRoute,
@@ -45,12 +48,13 @@ export class ViewAllLandmarkComponent implements AfterViewInit {
   }
 
   onClickBackToRoutes() {
-    this.router.navigate(["main", "routes"]);
+    this.router.navigate(["main", "routes", this.getRouteId()]);
   }
 
   getRouteId(): number {
     return +this.activeRoute.snapshot.params["route_id"];
   }
+
 
   consultarDatosPorId(id: any): void {
     this.ontimizelandmarkService
