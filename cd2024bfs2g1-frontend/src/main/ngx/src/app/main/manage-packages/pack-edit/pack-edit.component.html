@@ -25,8 +25,13 @@
                         </div>
                         <o-textarea-input class="description-textarea" attr="pck_description" required="yes" width="100%"></o-textarea-input>
                         <div class="div_boton" fxLayout="column" fxLayoutGap="8px">
-                            <button #addRaBbtn class="button" (click)="onClicEdit(pck_id)">{{'ADD_ROUTES_AND_BUSINESSES' | oTranslate}}</button>
-                            <button #addPDbtn class="button" (click)="onClicSchedule()">{{'ADD_SHEDULED_PACKS' | oTranslate}}</button>
+                                <button #addRaBbtn class="button" (click)="onClicEdit(pck_id)">
+                                <mat-icon>add</mat-icon>
+                            {{'ADD_ROUTES_AND_BUSINESSES' | oTranslate}}
+                            </button>
+                            <button #addPDbtn class="button" (click)="onClicSchedule()">
+                                <mat-icon>add</mat-icon>
+                                {{'ADD_SHEDULED_PACKS' | oTranslate}}</button>
                         </div>
                     </div>
                 </div>
@@ -46,7 +51,7 @@
                 </div>
               <o-table attr="packsDateTable" service="packDates" entity="packDateWithState" keys="pd_id" parent-keys="pck_id"
                        columns="pd_id;pd_date_begin;pd_date_end;pcs_state" row-height="large" pagination-controls= "yes"
-                       detail-mode='none' delete-button='yes' insert-button='yes' refresh-button='yes' keys-sql-types="integer"
+                       detail-mode='none' delete-button='yes' insert-button='no' refresh-button='yes' keys-sql-types="integer"
                        visible-columns="pd_date_begin;pd_date_end;pcs_state" query-rows="5">
                        <o-table-column attr="pcs_state" title="pcs_state" title="{{ 'STATE' | oTranslate }}"></o-table-column>
                        <o-table-column attr="pd_date_begin" title="pd_date_begin" type="date" format="LL" title="{{ 'DATE_BEGING' | oTranslate }}"></o-table-column>

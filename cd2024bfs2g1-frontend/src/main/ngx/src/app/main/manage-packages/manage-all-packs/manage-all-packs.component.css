@@ -39,6 +39,7 @@
 
 .button{
  font-size: 16px;
+ font-size: 20px;
  width: 150px;
  border-radius: 5px;
  border-width: 3px;
@@ -85,6 +86,7 @@
     background-color: white;
     border-color: white;
     font-size: 18px;
+    width: 150px;
     animation: pulse 3s infinite ease-in-out;
 }
 
@@ -117,6 +119,11 @@
  display: flex;
  text-align: center;
  height: 60px;
+}
+
+.mat-icon{
+  vertical-align: middle;
+  margin: 0px 5px 5px 0px;
 }
 
 

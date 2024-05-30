@@ -207,7 +207,7 @@
   "PACKS": "Packs",
   "DAYS": "Days",
   "DAY": "Day",
-  "PACK_NAME": "Name pack",
+  "PACK_NAME": "Pack Name",
   "PACKS_NEW": "New pack",
   "PRICE": "Price",
   "PARTICIPANTS": "Participants",
@@ -342,7 +342,7 @@
   "assigned_date": "Day",
   "BSNPACK.ERROR": "Can't assign business, please verify fields",
   "VIEW_BSN": "Show selected Businesses",
-  "PACK_TABLE": "Pack table",
+  "PACK_TABLE": "Pack templates",
   "EDIT": "Edit",
   "ADD_DATES": "ADD DATES",
   "ADD_ROUTES_AND_BUSINESSES": "Add Routes and Businesses",
@@ -355,6 +355,7 @@
   "STATE": "State",
   "DATE_BEGING": "Date Beging",
   "DATE_END": "Date End",
-  "Save":"Save"
+  "Save":"Save",
+  "SCHEDULE_PACKS":"Schedule Pack"
 
 }
