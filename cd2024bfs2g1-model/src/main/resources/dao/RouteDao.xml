@@ -67,5 +67,28 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="routesOfPack">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        r.route_id,
+                        r.name,
+                        r.description,
+                        r.estimated_duration,
+                        r.difficulty,
+                        i.image_id,
+                        i.img_code,
+                        rp.pck_id,
+                        rp.assigned_date
+                    FROM
+                        route r
+                        LEFT JOIN image_route ir ON r.route_id = ir.route_id
+                        LEFT JOIN image i ON ir.image_id = i.image_id
+                        LEFT JOIN route_pack rp ON r.route_id = rp.route_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

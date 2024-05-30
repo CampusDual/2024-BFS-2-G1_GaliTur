@@ -246,4 +246,14 @@ export class PackDetailComponent {
     returnArray(): any[] {
       return this.array;
     }
+
+    @ViewChild('gridBusinessesOfPack', { static: true }) gridBusinessesOfPack: any;
+    @ViewChild('gridRoutesOfPack', { static: true }) gridRoutesOfPack: any;
+
+    applyFilter(value: any): void {
+      const filter = { assigned_date: value };
+  
+      this.gridBusinessesOfPack.queryData(filter);
+      this.gridRoutesOfPack.queryData(filter);
+    }
 }

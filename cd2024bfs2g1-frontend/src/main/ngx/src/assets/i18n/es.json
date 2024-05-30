@@ -354,6 +354,9 @@
   "ADD_ROUTES": "Añadir Rutas",
   "ROUTEPACK.ERROR": "No se ha podido asignar la ruta, revise los campos",
   "ROUTEPACK.CONFIRMED": "Ruta asignada con éxito",
-  "VIEW_ROUTES": "Mostar Rutas agregadas"
-
+  "VIEW_ROUTES": "Mostar Rutas agregadas",
+  "COMBO-BOX-DAYS-DESC": "El dia que selecciones mostrará las rutas y negocios disponibles el día seleccionado.",
+  "COMBO-BOX-DAYS-TITLE": "Seleccione el dia del pack",
+  "COMBO-BOX-RESERVE-TITLE": "Seleccione la fecha a reservar",
+  "ALL-DAYS": "Todos los días"
 }

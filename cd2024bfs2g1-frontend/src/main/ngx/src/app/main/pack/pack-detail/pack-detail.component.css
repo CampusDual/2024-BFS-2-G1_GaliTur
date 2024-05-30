@@ -208,7 +208,26 @@
     .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label  {
         margin-top: 0px !important;
     }
-    
+}
+
+.div-combo-days-container{
+    width: 50%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+        background-color: #ccc6c0 !important;
+        border-top-left-radius: 8px !important;
+        border-top-right-radius: 8px !important;
+    } 
+    .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+        margin-top: -5px !important;
+    }
+    .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label  {
+        margin-top: 0px !important;
+    }
 }
 
 .combo-box-dates {
