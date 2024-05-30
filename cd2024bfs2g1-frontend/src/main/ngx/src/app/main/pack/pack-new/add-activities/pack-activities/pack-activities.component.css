@@ -12,7 +12,6 @@
 .mainCard {
     display: flex;
     justify-content: center;
-    height: auto;
     width: 1100px;
 }
 
@@ -76,7 +75,6 @@
     width: 100%;
     height: auto;
     max-width: 100%; 
-    max-height: 100%;
     border-radius: 10px;
 }
 
@@ -102,7 +100,6 @@
     justify-content: space-around;
     width: 90%;
     row-gap: 10px;
-    max-height: 135px;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -114,21 +111,18 @@
     height: 100%;
 }
 
-.o-grid-items {
-    width: 100%;
-    height: 100%;
-}
 
 .details {
     margin-left: 30px;
     padding-right: 30px;
 }
 
+
 .type-icon {
     margin-bottom:5px;
     margin-top:5px;
     margin-right: 5px;
-    color: #84A45A;
+    color: #715e4e;
     font-size: 22px;
     margin-left: 15px;
 }
@@ -138,43 +132,58 @@ o-column{
         font-size: 18px;
         font-weight: bold;
         color: #00000099;
+      
 } 
-
+background-color: #e2dbd5 !important;
 }
 
 o-row{
-    .mat-icon{
-        color:#84A45A;
-    }
+ 
+    background-color: #e2dbd5 !important;
 }
 
-/* Style the header */
-.header {
-    padding: 10px 16px;
-    background: linear-gradient(90deg, #495635, #909f43) !important;
-    color: #f1f1f1;
-  }
-  
-  /* Page content */
-  .content {
-    padding: 16px;
-  }
-  
-  /* The sticky class is added to the header with JS when it reaches its scroll position */
-  .sticky {
-    position: sticky;
-    top: 0;
-    width: 100%
-  }
-  
-  /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
-  .sticky + .content {
-    padding-top: 102px;
-  }
 
 
+#addBusiness{
+    width: 20%;
+    padding-left: 25%;
+}
 
 
+#selectDay{
+    width: 20%;
+    padding-left: 10%;
+}
 
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+    background-color: #e2dbd5 !important;
+}
+
+:host ::ng-deep button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base {
+    background-color: #4e4c4a !important;
+    color: #e2dbd5 !important;
+}
+
+/* cambiar estilo de un componente en concreto */
+:host ::ng-deep .comboBoxDay{
+    
+ .mat-mdc-select-value {
+    color: #e2dbd5 !important;
+}
+}
+
+:host ::ng-deep.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: #4e4c4a !important;
+    color: #e2dbd5;
+}
+
+
+:host ::ng-deep .mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label{
+    color: #e2dbd5 !important;
+}
+
+:host ::ng-deep .mat-mdc-icon-button.mat-primary {
+    color: #4e4c4a !important;
+}
 
 

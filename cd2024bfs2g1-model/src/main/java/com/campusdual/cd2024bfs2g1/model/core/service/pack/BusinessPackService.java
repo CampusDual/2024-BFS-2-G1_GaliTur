@@ -17,32 +17,39 @@ import java.util.Map;
 public class BusinessPackService implements IBusinessPackService {
 
     private final DefaultOntimizeDaoHelper daoHelper;
-    private final BusinessPackDao BusinessPackDao;
+    private final BusinessPackDao businessPackDao;
+
 
     @Autowired
-    public BusinessPackService(DefaultOntimizeDaoHelper daoHelper, BusinessPackDao BusinessPackDao) {
+    public BusinessPackService(DefaultOntimizeDaoHelper daoHelper, BusinessPackDao businessPackDao) {
         this.daoHelper = daoHelper;
-        this.BusinessPackDao = BusinessPackDao;
+        this.businessPackDao = businessPackDao;
     }
     @Override
     public EntityResult businessPackQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
 
 
-        return this.daoHelper.query(this.BusinessPackDao, keyMap, attrList,"multi");
+        return this.daoHelper.query(this.businessPackDao, keyMap, attrList,BusinessPackDao.PCK_BSN_MULTI_QUERY);
     }
+    @Override
+    public EntityResult packBusinessQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.businessPackDao, keyMap, attrList,BusinessPackDao.PCK_BSN_QUERY);
+    }
+
 
     @Override
     public EntityResult businessPackInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
-        return this.daoHelper.insert(this.BusinessPackDao, attrMap);
+        return this.daoHelper.insert(this.businessPackDao, attrMap);
     }
 
     @Override
     public EntityResult businessPackUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-        return this.daoHelper.update(this.BusinessPackDao, attrMap, keyMap);
+        return this.daoHelper.update(this.businessPackDao, attrMap, keyMap);
     }
 
     @Override
     public EntityResult businessPackDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-        return this.daoHelper.delete(this.BusinessPackDao, keyMap);
+        return this.daoHelper.delete(this.businessPackDao, keyMap);
     }
 }

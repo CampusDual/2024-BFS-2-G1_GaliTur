@@ -1,24 +1,16 @@
-<o-row>
- 
-        <o-button id="addBusiness" (click)="addActivity()" label="Añadir negocio"> </o-button>
-    </o-row>
-    <o-row>
-        <!--
-        <o-table fxFill #table service="businessPacks" entity="businessPack" groupable="yes" keys="B.bsn_id"
-        columns="B.bsn_id;bsn_name;bsn_type;bsn_address;pck_name;pck_participants;pck_price" grouped-columns="bsn_type" layout-padding title="ACCOUNTS"
-        quick-filter="yes" insert-button="no" delete-button="no" refresh-button="no" pagination-controls="no" export-button="no"
-        detail-mode="none" [ngStyle]="{'height':'600px'}" show-charts-on-demand-option="no">
-          <o-table-columns-grouping columns="bsn_type">
-            <o-table-columns-grouping-column attr="age" title="edad" aggregate="max"> </o-table-columns-grouping-column>
-            <o-table-columns-grouping-column attr="gold" aggregate="max"> </o-table-columns-grouping-column>
-          </o-table-columns-grouping>
-          <o-table-context-menu insert="no" edit="no" view-detail="no" refresh="no" delete="no"></o-table-context-menu>
-        </o-table>
-        -->
-        <o-table fxFill #table service="businessPacks" entity="businessPack" keys="P.pck_id" columns="P.pck_id;B.bsn_pack_id;BS.bsn_name;bsn_type;bsn_address;pck_name;pck_participants;pck_price"
-        title="BUSINESSES" visible-columns="P.pck_id;B.bsn_pack_id;BS.bsn_name;bsn_type;bsn_address;pck_name;pck_participants;pck_price" insert-button="no" delete-button="no" refresh-button="yes" pagination-controls="yes"  export-button="no"
-        >
-        
-        </o-table>
+ <o-row class="principal">
+  <details class="details">
+    <summary>{{'VIEW_BSN' | oTranslate }}</summary>
+    <div class="div-table">
 
+      <o-table #table  keys="bsn_pack_id" 
+      columns="bsn_name;bsn_type;bsn_address;assigned_date" title="BUSINESSES"
+      visible-columns="bsn_name;bsn_type;bsn_address" insert-button="no" delete-button="no" refresh-button="no"
+      pagination-controls="yes" detail-mode="none" export-button="no" query-rows="50" show-charts-on-demand-option="no"
+      auto-adjust="no" fixed-header="yes" sort-columns="assigned_date">
+        <o-table-button label="{{'ADD_BSNP' | oTranslate }}" icon="business" (onClick)="addActivity()"></o-table-button>
+        <o-table-columns-grouping columns="assigned_date" />
+      </o-table>
+    </div>
+  </details>
 </o-row>

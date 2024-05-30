@@ -14,4 +14,6 @@ public class BusinessPackDao extends OntimizeJdbcDaoSupport {
     public static final String BSN_ID = "BSN_ID";
     public static final String PCK_ID = "pck_id";
     public static final String ASSIGNED_DATE = "ASSIGNED_DATE";
+    public static String PCK_BSN_MULTI_QUERY = "multi";
+    public static String PCK_BSN_QUERY = "businessPacks";
 }
