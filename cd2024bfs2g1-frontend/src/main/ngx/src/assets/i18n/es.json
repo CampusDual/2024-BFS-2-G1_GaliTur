@@ -358,5 +358,13 @@
   "COMBO-BOX-DAYS-DESC": "El dia que selecciones mostrará las rutas y negocios disponibles el día seleccionado.",
   "COMBO-BOX-DAYS-TITLE": "Seleccione el dia del pack",
   "COMBO-BOX-RESERVE-TITLE": "Seleccione la fecha a reservar",
-  "ALL-DAYS": "Todos los días"
+  "ALL-DAYS": "Todos los días",
+  "NUMBER-DAYS": "Numero de días",
+  "MIN-PRICE": "Precio mínimo",
+  "MAX-PRICE": "Precio máximo",
+  "NUMBER-TRAVELLERS": "Numero de viajeros",
+  "FILTER-CITY": "Ciudad",
+  "FILTER-NAME": "Nombre"
+  
+
 }

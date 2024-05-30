@@ -4,18 +4,18 @@
     <div class="filter">
       <!-- Name and number of days filters -->
       <div class="filter-column">
-        <o-text-input class="filter-element" attr="pck_name" read-only="no" fxFlex="100" label="Nombre" ></o-text-input>
-        <o-integer-input  attr="pck_days" label="Number of Days" min="0"></o-integer-input>
+        <o-text-input class="filter-element" attr="pck_name" read-only="no" fxFlex="100" label="{{ 'FILTER-NAME' | oTranslate }}" ></o-text-input>
+        <o-integer-input  attr="pck_days" label="{{ 'NUMBER-DAYS' | oTranslate }}" min="0"></o-integer-input>
       </div>
       <!-- Price filter -->
       <div class="filter-column">
-        <o-integer-input class="filter-element" attr="pck_price_min" label="Min Price" min="0"></o-integer-input>
-        <o-integer-input  attr="pck_price_max" label="Max Price" min="0"></o-integer-input>
+        <o-integer-input class="filter-element" attr="pck_price_min" label="{{ 'MIN-PRICE' | oTranslate }}" min="0"></o-integer-input>
+        <o-integer-input  attr="pck_price_max" label="{{ 'MAX-PRICE' | oTranslate }}" min="0"></o-integer-input>
       </div>
       <!-- Travellers and city filter -->
       <div class="filter-column">
-        <o-integer-input class="filter-element" attr="pck_participants" min="0" label="Number of Travelers" ></o-integer-input>
-        <o-combo  #comboCity attr="gui_c_name" label="Ciudad"  translate="yes"
+        <o-integer-input class="filter-element" attr="pck_participants" min="0" label="{{ 'NUMBER-TRAVELLERS' | oTranslate }}" ></o-integer-input>
+        <o-combo  #comboCity attr="gui_c_name" label="{{ 'FILTER-CITY' | oTranslate }}"  translate="yes"
           query-method="query" sort="ASC" value-column="gui_c_name" required="no" service="guideCities" multiple="no" null-selection="yes" entity="guideCities"
           columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id" searchable="yes"> </o-combo>
       </div>

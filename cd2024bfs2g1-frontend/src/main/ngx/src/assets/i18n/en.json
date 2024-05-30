@@ -348,5 +348,11 @@
   "COMBO-BOX-DAYS-DESC": "The day you select will show the routes and businesses available on the selected day.",
   "COMBO-BOX-DAYS-TITLE": "Select the day of the pack",
   "COMBO-BOX-RESERVE-TITLE": "Select the date to reserve",
-  "ALL-DAYS": "All days"
+  "ALL-DAYS": "All days",
+  "NUMBER-DAYS": "Number of days",
+  "MIN-PRICE": "Min price",
+  "MAX-PRICE": "Max price",
+  "NUMBER-TRAVELLERS": "Number of travellers",
+  "FILTER-CITY": "City",
+  "FILTER-NAME": "Name"
 }
