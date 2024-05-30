@@ -1,5 +1,5 @@
-<o-form attr="businessNew" label-header="{{ 'BUSINESS_DATA' | oTranslate }}" label-header-align="start" service="businesses" entity="business" keys="bsn_id" fxLayout="column" #oFormBusinessNew
-    class="standalone-form-container" keys-sql-types="integer" (onInsert)="insertBusiness($event)" confirm-exit="false" message-service-type="customMessageServiceTypeBusiness">
+<o-form attr="businessNew" class="custom-form" label-header="{{ 'BUSINESS_DATA' | oTranslate }}" label-header-align="start" service="businesses" entity="business" keys="bsn_id" fxLayout="column" #oFormBusinessNew
+     keys-sql-types="integer" (onInsert)="insertBusiness($event)" confirm-exit="false" message-service-type="customMessageServiceTypeBusiness">
 
     <o-row id="principalRow" layout-align="start stretch">
         <!-- Titulo del formulario -->
@@ -95,20 +95,15 @@
             </o-column>
         </o-row>
     </div>
+
     <!-- LODGING -->
-
     <div class="lodging" *ngIf="selectedOption === 2">
-
         <o-column>
             <o-row layout-align="start stretch">
                 <o-column>
-
                     <o-row class="lodging-column" title="LODGING" layout-align="start stretch" layout-padding>
-
-
                         <o-column>
                             <o-row>
-
                                 <o-checkbox #switchDestination type="checkbox" (onValueChange)="getSwitchValue()"
                                     attr="roomTypeSingle" label="{{ 'Single' | oTranslate }}" data="Individual" read-only="no"></o-checkbox>
 
@@ -116,11 +111,8 @@
                                     [enabled]="switchDestinationState? true : false" class="price"
                                     attr="priceSingleRoom" label="{{ 'Price' | oTranslate }}" read-only="no" required="no"
                                     min-decimal-digits="2" max-decimal-digits="2" min="0" max="1000"></o-currency-input>
-
-
                             </o-row>
                             <br>
-
                             <o-row>
                                 <o-checkbox #switchDestination2 type="checkbox" (onValueChange)="getSwitchValue2()"
                                     attr="roomTypeDouble" label="{{ 'Double' | oTranslate }}" data="Doble" read-only="no"></o-checkbox>
@@ -129,10 +121,8 @@
                                     [enabled]="switchDestinationState2? true : false" class="price"
                                     attr="priceDoubleRoom" label="{{ 'Price' | oTranslate }}" read-only="no" required="no"
                                     min-decimal-digits="2" max-decimal-digits="2" min="0" max="1000"></o-currency-input>
-
                             </o-row>
                             <br>
-
                             <o-row>
                                 <o-checkbox #switchDestination3 type="checkbox" (onValueChange)="getSwitchValue3()"
                                     attr="roomTypeTriple" label="{{ 'Triple' | oTranslate }}" data="Triple" read-only="no"></o-checkbox>
@@ -175,7 +165,7 @@
                 <h3 id="languageH">{{ 'BSN_LANGUAGE' | oTranslate }}</h3>
                 <o-combo attr="comboLanguages" oLocker
                 oLockerMode="disable" label="{{ 'SELECT_LANGUAGE' | oTranslate }}" multiple="yes" service="guideLanguages" translate="yes"
-                    entity="guideLanguage" value-column="gui_l_id" columns="gui_l_id;gui_l_name"
+                    entity="guideLanguage" sort="ASC" value-column="gui_l_id" columns="gui_l_id;gui_l_name"
                     visible-columns="gui_l_name" separator=", " fxFlex required="yes">
                 </o-combo>
             </o-column>
@@ -189,7 +179,7 @@
             <o-column id="formZones">
                 <h3>{{ 'BSN_CITY' | oTranslate }}</h3>
                 <o-combo id="comboCity" #comboCity attr="comboCity" label="{{ 'SELECT_CITY' | oTranslate }}" multiple="yes" translate="yes"
-                    query-method="query" service="guideCities" entity="guideCities" value-column="gui_c_id"
+                    query-method="query" sort="ASC" service="guideCities" entity="guideCities" value-column="gui_c_id"
                     columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id"
                     [query-on-event]="comboZone.onValueChange" parent-keys="gui_z_id:comboZone[gui_z_id]">
                 </o-combo>

@@ -24,10 +24,26 @@
                 ]]>
             </Sentence>
         </Query>
-        <Query id="allPacks">
+        <Query id="packsDetails">
             <Sentence>
                 <![CDATA[
                     SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.pack p
+                        INNER JOIN ${mainschema}.image_pack ip
+                        ON p.pck_id=ip.pck_id
+                        INNER JOIN ${mainschema}.image i
+                        ON ip.img_id=i.image_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="allPacks">
+            <Sentence>
+                <![CDATA[
+                    SELECT DISTINCT
                         #COLUMNS#
                     FROM
                         ${mainschema}.pack P
@@ -37,6 +53,10 @@
                         ON IP.img_id=I.image_id
                         INNER JOIN ${mainschema}.gui_cities GC
                         ON P.gui_c_id=GC.gui_c_id
+                        INNER JOIN ${mainschema}.pack_date PD
+                        ON P.pck_id=PD.pck_id
+                    WHERE
+                        PD.pcs_id = 1
                     #WHERE#
                     #ORDER#
                 ]]>
@@ -55,14 +75,68 @@
                         ON IP.img_id=I.image_id
                         INNER JOIN ${mainschema}.gui_cities GC
                         ON P.gui_c_id=GC.gui_c_id
+                        INNER JOIN ${mainschema}.pack_date PD
+                        ON P.pck_id=PD.pck_id
                         INNER JOIN ${mainschema}.pack_booking PB
-                        ON P.pck_id=PB.pck_id
+                        ON PD.pd_id=PB.pd_id
                     #WHERE#
                     #ORDER#
                 ]]>
             </Sentence>
         </Query>
+        <Query id="packDetail">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.pack P
+                        INNER JOIN ${mainschema}.image_pack IP
+                        ON P.pck_id=IP.pck_id
+                        INNER JOIN ${mainschema}.image I
+                        ON IP.img_id=I.image_id
+                        INNER JOIN ${mainschema}.gui_cities GC
+                        ON P.gui_c_id=GC.gui_c_id
+                        INNER JOIN ${mainschema}.pack_date PD
+                        ON P.pck_id=PD.pck_id
+                    #WHERE#
+                    #ORDER#
+                    LIMIT 1;
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="newest">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.pack P
+                    ORDER BY P.pck_id DESC
+                    LIMIT 1
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="packsAccordingProvince">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        Z.gui_z_name,
+                        COUNT(P.pck_id) AS province_count
+                    FROM
+                        ${mainschema}.pack P
+                        INNER JOIN ${mainschema}.gui_cities C ON P.gui_c_id = C.gui_c_id
+                        INNER JOIN ${mainschema}.gui_zone Z ON C.gui_z_id = Z.gui_z_id
+                        INNER JOIN ${mainschema}.pack_date PD ON P.pck_id = PD.pck_id
+                        INNER JOIN ${mainschema}.pack_state PS ON PD.pcs_id = PS.pcs_id
+                    WHERE
+                        PS.pcs_state IN ('reserved')
+                    GROUP BY
+                        Z.gui_z_name;
+                   #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+
     </Queries>
 </JdbcEntitySetup>
-
-        <!---->

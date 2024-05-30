@@ -30,4 +30,15 @@ export class BusinessDetailComponent {
   public openBusinesses(): void {
     this.router.navigate(['main/businesses']);
   }
+
+
+  isLastCity(cityKey: string, cities: string): boolean {
+    const cityArray = cities.split(',');
+    return cityArray[cityArray.length - 1].trim() === cityKey.trim();
+  }
+
+  isLastLanguage(languageKey: string, languages: string): boolean {
+    const languageArray = languages.split(',');
+    return languageArray[languageArray.length - 1].trim() === languageKey.trim();
+  }
 }

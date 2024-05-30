@@ -1,8 +1,8 @@
-<h2>{{'info_landmark' | oTranslate }}</h2>
+<h2>{{nameActualRoute}}{{'info_landmark' | oTranslate }}</h2>
 <o-table #landmarkTable attr="landmarkTable" [static-data]="datosTabla"
-    keys="landmark_id"
+    keys="landmark_id" class="custom-table"
     columns="landmark_id;name;coordinates"
-    visible-columns="name;coordinates" query-rows="10" select-all-checkbox="yes"
+    visible-columns="name;coordinates" query-rows="10" select-all-checkbox="yes" filter-case-sensitive="yes"
     export-button="no" insert-button="yes" delete-button="no" refresh-button="no" fixed-header="yes"
     detail-mode="none" edition-mode="click" export-mode="local">
     <o-table-button label="{{'button_table_finish' | oTranslate }}" icon="route" (onClick)="onClickBackToRoutes()"></o-table-button>

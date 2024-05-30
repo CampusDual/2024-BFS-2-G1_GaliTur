@@ -21,13 +21,14 @@ export const MENU_CONFIG: MenuRootItem[] = [
     ]
     },
     {id: 'routessolo', name: 'ROUTES', icon: 'route', route: '/main/routes'},
-  { id: 'routesmd', name: 'ROUTES', icon: 'route', 
+  { id: 'routesmd', name: 'ROUTES', icon: 'route',
     items: [
       {id: 'routes', name: 'ROUTES', icon: 'route', route: '/main/routes'},
       {id: 'routesnew', name: 'ROUTESNEW', icon: 'add', route: '/main/routes/new'},
       {id: 'routes-public', name: 'ROUTES', icon: 'route', route: '/main/routes'}
     ]
   },
+{ id: 'graphics', name: 'GRAPHICS', tooltip: 'GRAPHICS', route: '/main/graphics', icon: 'bar_chart'},
   {
     id: 'admin', name: 'ADMIN', tooltip: 'ADMIN', icon: 'admin_panel_settings',
     items: [

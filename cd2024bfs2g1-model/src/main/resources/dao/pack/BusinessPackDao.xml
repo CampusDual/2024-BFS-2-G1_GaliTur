@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup xmlns="http://www.ontimize.com/schema/jdbc"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+                 catalog="" schema="${mainschema}" table="bsn_pack" datasource="mainDataSource"
+                 sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>bsn_pack_id</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>bsn_pack_id</Column>
+    </UpdateKeys>
+    <GeneratedKey>bsn_pack_id</GeneratedKey>
+    <Queries>
+        <Query id="default">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.bsn_pack
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="multi">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.bsn_pack B
+                        INNER JOIN ${mainschema}.bsn_business BS
+                        ON B.bsn_id=BS.bsn_id
+                        INNER JOIN ${mainschema}.pack P
+                        ON B.pck_id=P.pck_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="businessPacks">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.bsn_pack BP
+                        INNER JOIN ${mainschema}.pack P
+                        ON BP.pck_id=P.pck_id
+                        INNER JOIN ${mainschema}.bsn_business B
+                        ON B.bsn_id=BP.bsn_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>

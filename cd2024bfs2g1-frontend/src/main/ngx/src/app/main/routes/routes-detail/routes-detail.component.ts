@@ -22,13 +22,14 @@ export class RoutesDetailComponent implements OnInit{
     protected sanitizer: DomSanitizer,
     protected dialog: MatDialog,
     protected landmarkService: LandmarksService,
-    private dialogRef: MatDialogRef<RoutesDetailComponent>
+    private dialogRef: MatDialogRef<RoutesDetailComponent>,
+    private router: Router
     ) {
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration("landmarks"));
     this.galleryOptions = [
       {
         image: true,
-        height: "200px",
+        height: "250px",
         width: "300px",
         thumbnails: data.galleryImages && data.galleryImages.length > 1 ? true : false,
         imageArrows: data.galleryImages && data.galleryImages.length > 1 ? true : false,
@@ -86,5 +87,18 @@ export class RoutesDetailComponent implements OnInit{
 
 public backToHome(data: any): void {
   this.dialogRef.close()
+}
+
+getDifficultad(difficulty: number): string {
+  switch(difficulty) {
+    case 1:
+        return 'Dificultad: Fácil';
+    case 2:
+        return 'Dificultad: Intermedio';
+    case 3:
+        return 'Dificultad: Difícil';
+    case 4:
+        return 'Dificultad: Extremo';
+}
 }
 }

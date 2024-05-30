@@ -1,7 +1,3 @@
-.price {
-    margin-inline-start: 35px;
-    width: 30%;
-}
 
 .o-image{
     width: 90%;
@@ -30,16 +26,28 @@ span {
         resize: none;
     }
 }
+
 #text{
   margin-top: 2%;
 }
+
 div *{
     width: 58.5%;
 }
-div *:first-child{
-    margin-right: 3%;
+
+.date-picker{
+    .mat-mdc-tooltip-trigger{
+        .mat-mdc-form-field{
+            .mat-mdc-text-field-wrapper {
+                background-color:#ccc6c0;
+                
+            }
+        }
+    }
 }
 
-
-
-
+.responsive{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
