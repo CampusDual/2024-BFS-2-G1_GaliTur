@@ -103,16 +103,23 @@
                     </o-row>
                 </div>
                 <ng-container *ngIf="isLogged()">
-                    <o-grid #isCliente attr="isclient" service="clients" entity="isClient" columns="client_id"
-                                    visible-columns="client_id" refresh-button="false" quick-filter="false" oHidden />
-                
-                    <span *ngFor="let clients of isCliente.dataArray">
-                            <div class="div-cancel-pack-container" *ngFor="let packs of cancelPackForm.dataArray">
-                                <span *ngIf="clients.data != -1">
-                                    <button class="cancel-pack"(click)="cancelBookPack($event, packs)">{{'CANCEL-PACK'| oTranslate }}</button>    
-                                </span>
+                    <o-grid #isCliente attr="isclient" service="clients" entity="isClient" columns="client_id" visible-columns="client_id" 
+                    refresh-button="false" quick-filter="false" oHidden />
+                    <span *ngFor="let client of isCliente.dataArray">
+                        <div class="div-cancel-pack-container" *ngFor="let pack of cancelPackForm.dataArray">
+                          <ng-container *ngIf="client.data !== -1">
+                            <button *ngIf="diffDays(packForm.dataArray[0].pd_date_begin, getCurrentDate()) >= 2" class="cancel-pack" (click)="cancelBookPack($event, pack)">
+                              {{ 'CANCEL-PACK' | oTranslate }}
+                            </button>
+                            <div class="tooltipCancelButton">
+                                <button *ngIf="diffDays(packForm.dataArray[0].pd_date_begin, getCurrentDate()) < 2" class="cancel-pack-disabled" disabled>
+                                    {{ 'CANCEL-PACK' | oTranslate }}
+                                </button>
+                                <span class="tooltipTextCancelButton">{{'TOOLTIP-CANCEL-BUTTON' | oTranslate }}</span>
                             </div>
-                    </span>
+                           </ng-container>
+                        </div>
+                      </span>
                 </ng-container>
             </div>
         </o-form>

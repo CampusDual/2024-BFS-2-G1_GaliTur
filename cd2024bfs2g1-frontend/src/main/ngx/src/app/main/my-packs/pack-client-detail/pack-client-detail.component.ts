@@ -3,6 +3,8 @@ import { AuthService, DialogService, ODialogConfig, OSnackBarConfig, OTranslateS
 import { PackHomeComponent } from '../../pack/pack-home/pack-home.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-pack-client-detail',
@@ -117,5 +119,18 @@ export class PackClientDetailComponent {
         }
       });
   }
+
+  getCurrentDate(): string {
+    return formatDate(new Date(), 'yyyy-MM-dd', 'en');
+  }
+
+  diffDays(date1: string, date2: string): number {
+    const dt1 = new Date(date1);
+    const dt2 = new Date(date2);
+    const diffTime = (dt1.getTime() - dt2.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays;
+  }
+  
 }
 

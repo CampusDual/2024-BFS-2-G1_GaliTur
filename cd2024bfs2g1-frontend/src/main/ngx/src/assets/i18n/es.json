@@ -345,6 +345,7 @@
   "CANCEL-PACK": "Cancelar Pack",
   "CANCEL-BOOKING-DIALOG": "Confirme cancelar",
   "CANCEL-BOOKING-DIALOG-B": "¿Quiere cancelar la reserva?",
-  "CANCEL-BOOKING.CONFIRMED": "Cancelación de Reserva Confirmada"
+  "CANCEL-BOOKING.CONFIRMED": "Cancelación de Reserva Confirmada",
+  "TOOLTIP-CANCEL-BUTTON": "No se puede cancelar packs con menos de 48h de antelación."
 
 }

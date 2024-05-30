@@ -338,6 +338,7 @@
   "CANCEL-PACK": "Cancel Pack",
   "CANCEL-BOOKING-DIALOG": "Confirm Cancellation",
   "CANCEL-BOOKING-DIALOG-B": "Do you want to cancel this pack?",
-  "CANCEL-BOOKING.CONFIRMED": "Cancel Booking confirmed"
+  "CANCEL-BOOKING.CONFIRMED": "Cancel Booking confirmed",
+  "TOOLTIP-CANCEL-BUTTON": "You cannot cancel packs with less than 48 hours notice."
 
 }
