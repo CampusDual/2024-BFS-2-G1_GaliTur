@@ -23,7 +23,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
+
 import java.util.*;
+
 
 @Lazy
 @Service("PackService")
@@ -61,7 +63,7 @@ public class PackService implements IPackService {
         keyMap.put("p.pck_id", key);
         attrList.remove("pck_id");
         attrList.add("p.pck_id");
-        return this.daoHelper.query(this.packDao, keyMap, attrList, "packsDetails");
+        return this.daoHelper.query(this.packDao, keyMap, attrList, PackDao.PCK_DETAILS_QUERY);
     }
 
     @Override
@@ -69,6 +71,30 @@ public class PackService implements IPackService {
             throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.packDao, keyMap, attrList, PackDao.PCK_ACOORDING_PROVINCE_QUERY);
     }
+
+    @Override
+    public EntityResult packDaysQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException {
+        int n = Integer.parseInt((String) keyMap.get(PackDao.PCK_ID));
+        keyMap.put(PackDao.PCK_ID, n);
+        EntityResult er = this.daoHelper.query(this.packDao, keyMap, attrList);
+        List<Integer> lista = (List<Integer>) er.get(PackDao.PCK_DAYS);
+        int days = lista.get(0);
+        List<Map<String, Object>> dias = new ArrayList<>();
+        for (int i = 1; i <= days; i++) {
+            Map<String, Object> mapaDias = new HashMap<>();
+            mapaDias.put("day", i);
+            mapaDias.put("day_string", Integer.toString(i));
+            dias.add(mapaDias);
+        }
+        List<List<Map<String, Object>>> lista_de_listas = new ArrayList<>();
+        lista_de_listas.add(dias);
+        er.put(PackDao.PCK_ID, lista_de_listas);
+        return er;
+    }
+
+
+
 
     /**
      * Lists set of packs purchased by a client (logged user)

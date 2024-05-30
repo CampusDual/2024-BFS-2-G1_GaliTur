@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'new', component: RoutesNewComponent },
   { path: 'new/:route_id', component: ViewAllLandmarkComponent},
   { path: 'new/:route_id/:landmark_id', component: AddLandmarkComponent},
-  { path: ':route_id', component: RoutesDetailComponent},
+  { path: ':route_id', component: RoutesHomeComponent},
  
   
 ];

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup xmlns="http://www.ontimize.com/schema/jdbc"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+                 catalog="" schema="${mainschema}" table="route_pack" datasource="mainDataSource"
+                 sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>route_pack_id</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>route_pack_id</Column>
+    </UpdateKeys>
+    <GeneratedKey>route_pack_id</GeneratedKey>
+    <Queries>
+        <Query id="default">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.route_pack
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="multi">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.route_pack R
+                        INNER JOIN ${mainschema}.pack P
+                        ON R.pck_id=P.pck_id
+                        INNER JOIN ${mainschema}.route RO
+                        ON R.route_id=RO.route_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>
