@@ -1,0 +1,210 @@
+.page {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.back-button {
+    margin-top: 60px;
+}
+
+.mainCard {
+    display: flex;
+    justify-content: center;
+    width: 1100px;
+}
+
+
+
+
+.main-container {
+
+    min-width: 700px;
+    align-content: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: -15px;
+    overflow-x: hidden;
+
+}
+
+.name-container {
+    margin-top: 20px;
+    margin-bottom:20px;
+}
+
+.data-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.div-image-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.row-image-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.preview-image {
+    width: 100%;
+    height: auto;
+    max-width: 200px; 
+    max-height: 200px;
+    min-width: 200px; 
+    min-height: 200px; 
+    object-fit: contain;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    padding-top: 10px;
+
+}
+
+.menu {
+    width: 100%;
+    height: auto;
+    max-width: 100%; 
+}
+
+.left, .right {
+    flex: 1;
+    padding: 0px 5px 10px 5px;
+    background-color: transparent;
+    overflow:hidden; 
+}
+
+.desc {
+    margin-left: 20px;
+}
+
+.o-rows {
+    background-color: transparent;
+    
+}
+
+.list-to-desc {
+    width: 90%; /* Ajusta el ancho según sea necesario */
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.list-to-desc-2 {
+    width: 90%; /* Ajusta el ancho según sea necesario */
+    padding: 0;
+    margin: 0;
+    list-style-type: disc;
+    padding-left: 10px;
+}
+
+.list-item {
+    word-wrap: break-word; /* Permite que las palabras largas se dividan y pasen a la siguiente línea */
+    word-break: break-word; /* Fuerza un corte en las palabras largas */
+    overflow-wrap: break-word; /* Asegura que las palabras largas se dividan en la siguiente línea */
+    white-space: normal; /* Permite que el texto haga un salto de línea */
+    
+    box-sizing: border-box; /* Incluye el padding y el borde en el ancho y alto total del elemento */
+    
+}
+.o-text-input {
+    outline: transparent;
+    width: 100%;
+    height: 100%;
+}
+
+
+.details {
+    margin-left: 30px;
+    padding-right: 30px;
+}
+
+
+.type-icon {
+    margin-bottom:5px;
+    margin-top:5px;
+    margin-right: 5px;
+    color: #715e4e;
+    font-size: 22px;
+    margin-left: 15px;
+}
+
+o-column{
+    .o-container-title span {
+        font-size: 18px;
+        font-weight: bold;
+        color: #00000099;
+      
+} 
+background-color: #e2dbd5 !important;
+}
+
+o-row{
+ 
+    background-color: #e2dbd5 !important;
+}
+
+
+
+#addBusiness{
+    width: 20%;
+    padding-left: 25%;
+}
+
+
+#selectDay{
+    width: 20%;
+    padding-left: 10%;
+    padding-bottom: 1%;
+}
+
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+    background-color: #e2dbd5 !important;
+}
+
+:host ::ng-deep button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base {
+    background-color: #4e4c4a !important;
+    color: #e2dbd5 !important;
+    height: 36.3px;
+    padding-top: 5%;
+}
+
+/* cambiar estilo de un componente en concreto */
+:host ::ng-deep .comboBoxDay{
+    
+ .mat-mdc-select-value {
+    color: #e2dbd5 !important;
+}
+}
+
+:host ::ng-deep.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: #4e4c4a !important;
+    color: #e2dbd5;
+}
+
+:host ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    min-width: 0%;
+}
+    
+
+
+:host ::ng-deep .mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label{
+    color: #e2dbd5 !important;
+
+}
+
+:host ::ng-deep .mat-mdc-icon-button.mat-primary {
+    color: #4e4c4a !important;
+}

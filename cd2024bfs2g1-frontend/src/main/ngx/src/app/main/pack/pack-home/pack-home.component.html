@@ -1,33 +1,68 @@
-<o-grid #packGrid attr="packGrid" title="PACKS" service="packs" entity="allPacks" keys="P.pck_id"
-    columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;gui_c_name;pcs_id;img_code;pck_days;P.creation_date"
-    query-rows="8" page-size-options="8;16;24" orderable="true" sort-column="creation_date:desc"
-    sortable-columns="pck_name;pck_date_begin;pck_date_end;gui_c_name;pcs_id;creation_date;pck_name:desc;pck_date_begin:desc;pck_date_end:desc;gui_c_name:desc;pcs_id:desc;creation_date:desc" 
-    quick-filter-columns="pck_name;pck_price;pck_participants;gui_c_name" filter-case-sensitive="yes"
-    insert-button="true" refresh-button="true" pageable="yes"
-    pagination-controls="true" gutter-size="4px" fixed-header="yes" grid-item-height="320px" detail-mode="none"
-    insert-button-floatable="no">
-    <o-grid-item *ngFor="let data of packGrid.dataArray">
-        <div (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-between stretch" class="mat-elevation-z1 packCard">
-            <div class="cardHeader">
-                <span class="pack-name">{{truncateName(data.pck_name)}}</span>
-            </div>
-            <div class="cardContent">
-                <div class="cardImg">
-                    <img class="preview-image" [src]="getImageSrc(data.img_code)">
-                </div>
-                <div class="cardInfo">
-                    <ul style="list-style-type: none;" class="list">
-                        <li *ngIf="!data.pck_participants"><mat-icon class="icon">groups</mat-icon>{{'-'}}</li>
-                        <li *ngIf="data.pck_participants && data.pck_participants == 1"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}} {{'PERSON' | oTranslate}}</li>
-                        <li *ngIf="data.pck_participants && data.pck_participants > 1"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}} {{'PEOPLE' | oTranslate}}</li>
-                        <li *ngIf="!data.pck_days"><mat-icon class="icon">timer</mat-icon>-</li>
-                        <li *ngIf="data.pck_days && data.pck_days == 1"><mat-icon class="icon">timer</mat-icon>{{data.pck_days}} {{'DAY' | oTranslate}}</li>
-                        <li *ngIf="data.pck_days && data.pck_days > 1"><mat-icon class="icon">timer</mat-icon>{{data.pck_days}} {{'DAYS' | oTranslate}}</li>
-                        <li><mat-icon class="icon">pin_drop</mat-icon>{{truncateInfo(data.gui_c_name)}}</li>
-                        <li><mat-icon class="icon">payments</mat-icon>{{data.pck_price}} €</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </o-grid-item>
-</o-grid>
+<div class="full-page">
+  <o-form #filterForm class="form" editable-detail="yes" show-header="no">
+
+    <div class="filter">
+      <!-- Name and number of days filters -->
+      <div class="filter-column">
+        <o-text-input class="filter-element" attr="pck_name" read-only="no" fxFlex="100" label="{{'pck_name' | oTranslate}}" ></o-text-input>
+        <o-integer-input  attr="pck_days" label="{{'pck_days' | oTranslate}}" min="0"></o-integer-input>
+      </div>
+      <!-- Price filter -->
+      <div class="filter-column">
+        <o-integer-input class="filter-element" attr="pck_price_min" label="{{'pck_price_min' | oTranslate}}" min="0"></o-integer-input>
+        <o-integer-input  attr="pck_price_max" label="{{'pck_price_max' | oTranslate}}" min="0"></o-integer-input>
+      </div>
+      <!-- Travellers and city filter -->
+      <div class="filter-column">
+        <o-integer-input class="filter-element" attr="pck_participants" min="0" label="{{'pck_participants' | oTranslate}}" ></o-integer-input>
+        <o-combo  #comboCity attr="gui_c_name" label="{{'gui_c_name' | oTranslate}}"  translate="yes"
+          query-method="query" sort="ASC" value-column="gui_c_name" required="no" service="guideCities" multiple="no" null-selection="yes" entity="guideCities"
+          columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id"></o-combo>
+      </div>
+      <!-- Filter buttons -->
+      <div class="filter-column">
+        <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="ICON" icon="search" matTooltip="Search" class="filter-button"></o-button>
+        <o-button attr="clear" type="ICON" icon="delete" matTooltip="Clear filters" class="filter-button" [oFilterBuilderClear]="filterBuilder"  [oFilterBuilderQuery]="filterBuilder" ></o-button>
+      </div>
+    </div>
+
+    <!-- Filter builder -->
+    <o-filter-builder #filterBuilder attr="thefilter"
+      filters="pck_name:pck_name;pck_days:pck_days;pck_price_min:pck_price_min;pck_price_max:pck_price_max;pck_participants:pck_participants;gui_c_name:gui_c_name"
+      [target]="packGrid" query-on-change="no" query-on-change-delay="500" [expression-builder]="createFilter"></o-filter-builder>
+  </o-form>
+
+  <o-grid #packGrid attr="packGrid" title="PACKS" service="packs" entity="allPacks" keys="P.pck_id"
+      columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;gui_c_name;img_code;pck_days;P.creation_date"
+      query-rows="8" page-size-options="8;16;24" orderable="true"
+      sort-column="creation_date:desc"
+      sortable-columns="pck_name;gui_c_name;creation_date;pck_name:desc;gui_c_name:desc;creation_date:desc" quick-filter="false"  filter-case-sensitive="yes"
+      insert-button="true" refresh-button="false" pageable="yes" filter
+      pagination-controls="true" gutter-size="4px" fixed-header="yes" grid-item-height="280px" detail-mode="none"
+      insert-button-floatable="no">
+      <o-grid-item *ngFor="let data of packGrid.dataArray">
+          <div (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-between stretch" class="mat-elevation-z1 packCard">
+              <div class="cardHeader">
+                  <span class="pack-name">{{truncateName(data.pck_name)}}</span>
+              </div>
+              <div class="cardContent">
+                  <div class="cardImg">
+                      <img class="preview-image" [src]="getImageSrc(data.img_code)">
+                  </div>
+                  <div class="cardInfo">
+                      <ul style="list-style-type: none;" class="list">
+                          <li *ngIf="!data.pck_participants"><mat-icon class="icon">groups</mat-icon>{{'-'}}</li>
+                          <li *ngIf="data.pck_participants && data.pck_participants == 1"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}} {{'PERSON' | oTranslate}}</li>
+                          <li *ngIf="data.pck_participants && data.pck_participants > 1"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}} {{'PEOPLE' | oTranslate}}</li>
+                          <li *ngIf="!data.pck_days"><mat-icon class="icon">timer</mat-icon>-</li>
+                          <li *ngIf="data.pck_days && data.pck_days == 1"><mat-icon class="icon">timer</mat-icon>{{data.pck_days}} {{'DAY' | oTranslate}}</li>
+                          <li *ngIf="data.pck_days && data.pck_days > 1"><mat-icon class="icon">timer</mat-icon>{{data.pck_days}} {{'DAYS' | oTranslate}}</li>
+                          <li><mat-icon class="icon">pin_drop</mat-icon>{{truncateInfo(data.gui_c_name)}}</li>
+                          <li><mat-icon class="icon">payments</mat-icon>{{data.pck_price}} €</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </o-grid-item>
+  </o-grid>
+</div>

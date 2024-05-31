@@ -126,9 +126,10 @@ public class PackService implements IPackService {
             mapaDias.put("day_string", Integer.toString(i));
             dias.add(mapaDias);
         }
+
         List<List<Map<String, Object>>> lista_de_listas = new ArrayList<>();
         lista_de_listas.add(dias);
-        er.put(PackDao.PCK_ID, lista_de_listas);
+        er.put(PackDao.PCK_DAYS, lista_de_listas);
         return er;
     }
 
@@ -162,6 +163,25 @@ public class PackService implements IPackService {
     }
 
     @Override
+    public EntityResult packAndBookingDetailQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        if(keysValues.containsKey(PackDao.PCK_ID)){
+            Object key = keysValues.remove("pck_id");
+            keysValues.put("p.pck_id", key);
+        }
+        attributes.remove(PackDao.PCK_ID);
+        return this.daoHelper.query(this.packDao, keysValues, attributes, this.packDao.PCK_MULTI_QUERY);
+    }
+    @Override
+    public EntityResult packCancelDetailQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        if(keysValues.containsKey(PackDao.PCK_ID)){
+            Object key = keysValues.remove("pck_id");
+            keysValues.put("p.pck_id", key);
+        }
+        EntityResult result = this.daoHelper.query(this.packDao, keysValues, attributes, this.packDao.PCK_CANCEL_DETAIL);
+        return result;
+    }
+
+    @Override
     public AdvancedEntityResult allPacksPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
             throws OntimizeJEERuntimeException {
         return this.daoHelper.paginationQuery(this.packDao, keysValues, attributes, recordNumber, startIndex, orderBy, this.packDao.PCK_ALL_QUERY);
@@ -169,9 +189,10 @@ public class PackService implements IPackService {
 
 
     @Override
-    public AdvancedEntityResult packClientPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
+    public AdvancedEntityResult packClientPaginationQuery(Map<String, Object> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
             throws OntimizeJEERuntimeException {
-        return this.daoHelper.paginationQuery(this.packDao, keysValues, attributes, recordNumber, startIndex, orderBy, this.packDao.PCK_ALL_QUERY);
+        keysValues.put(ClientDao.CLIENT_ID, clientService.getClientId());
+        return this.daoHelper.paginationQuery(this.packDao, keysValues, attributes, recordNumber, startIndex, orderBy, this.packDao.PCK_MULTI_QUERY);
     }
 
     @Override
