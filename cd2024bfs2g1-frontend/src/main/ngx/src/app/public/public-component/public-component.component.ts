@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { PermissionsService } from 'ontimize-web-ngx';
+import { AuthService, PermissionsService } from 'ontimize-web-ngx';
 
 
 @Component({
@@ -12,7 +12,8 @@ export class PublicComponentComponent {
   hasPermission = false;
   constructor(
     private permissionService: PermissionsService,
-    private router: Router
+    private router: Router,
+    @Inject(AuthService) private authService: AuthService
   ) {
     this.permissionService.getUserPermissionsAsPromise().then(x => this.hasPermission = true);
   }
@@ -22,5 +23,8 @@ export class PublicComponentComponent {
 
   navigateRegister() {
     this.router.navigate(['../../register'])
+  }
+  checkAuthStatus(){
+    return !this.authService.isLoggedIn()
   }
 }

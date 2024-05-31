@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OFormComponent, OTableComponent, OntimizeService } from 'ontimize-web-ngx';
 
 @Component({
@@ -17,6 +17,7 @@ export class BusinessDetailComponent {
   constructor(
     protected sanitizer: DomSanitizer,
     private router: Router,
+    private actRoute: ActivatedRoute
   ) {
   }
 
@@ -28,7 +29,7 @@ export class BusinessDetailComponent {
   }
 
   public openBusinesses(): void {
-    this.router.navigate(['main/businesses']);
+    this.router.navigate(['../'],{ relativeTo: this.actRoute });
   }
 
 

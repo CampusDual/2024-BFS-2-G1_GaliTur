@@ -13,17 +13,27 @@
         "enabled": false
       },
       {
-        "attr": "packs",
+        "attr": "packmd",
         "visible": false,
         "enabled": false
       },
       {
-        "attr": "businesses",
+        "attr": "businessesmd",
         "visible": false,
         "enabled": false
       },
       {
-        "attr": "routes",
+        "attr": "businessessolo",
+        "visible": false,
+        "enabled": false
+      },
+      {
+        "attr": "routesmd",
+        "visible": false,
+        "enabled": false
+      },
+      {
+        "attr": "routessolo",
         "visible": false,
         "enabled": false
       },
@@ -38,10 +48,55 @@
         "enabled": false
       },
       {
+        "attr": "packssolo",
+        "visible": false,
+        "enabled": false
+      },
+      {
+        "attr": "packsmd",
+        "visible": false,
+        "enabled": false
+      },
+      {
         "attr": "businessesnew",
         "visible": false,
         "enabled": false
+      },
+      {
+        "attr": "graphics",
+        "visible": false,
+        "enabled": false
       }
+      ],
+      "routes": [
+        {
+          "permissionId": "BusinessNew",
+          "enabled": false
+        },
+        {
+          "permissionId": "RoutesNew",
+          "enabled": false
+        },
+        {
+          "permissionId": "PacksNew",
+          "enabled": false
+        },
+        {
+          "permissionId": "graphics",
+          "enabled": false
+        },
+        {
+          "permissionId": "mypacks",
+          "enabled": false
+        },
+        {
+          "permissionId": "my-clients-permissions",
+          "enabled": false
+        },
+        {
+          "permissionId": "admin",
+          "enabled": false
+        }
       ]
     }
   }

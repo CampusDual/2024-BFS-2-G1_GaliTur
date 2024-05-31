@@ -31,7 +31,7 @@ export class BusinessHomeComponent {
   }
 
   public openDetail(data: any): void {
-    this.router.navigate(['main/businesses/' + data.bsn_id]);
+    this.router.navigate(['businesses/' + data.bsn_id]);
   }
 
   truncateName(name: string): string {

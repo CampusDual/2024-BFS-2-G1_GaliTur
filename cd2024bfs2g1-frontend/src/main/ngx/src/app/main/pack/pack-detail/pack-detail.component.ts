@@ -134,4 +134,8 @@ export class PackDetailComponent {
         }
       });
   }
+
+  checkAuthStatus(){
+    return !this.authService.isLoggedIn()
+  }
 }
