@@ -190,6 +190,17 @@
 .icon-difficulty-4 {
   color: #dc1d0f;
 }
+.div_principal .backButton{
+  align-items: left;
+}
+.mainPanel {
+  position: relative;
+}
+
+.backButton {
+  position: absolute;
+  left: 20px;
+}
 
 .o-rows {
   background-color: transparent;

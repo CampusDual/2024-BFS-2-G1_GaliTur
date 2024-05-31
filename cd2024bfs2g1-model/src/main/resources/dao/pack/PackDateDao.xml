@@ -38,5 +38,19 @@
                 ]]>
         </Sentence>
     </Query>
+    <Query id="packDateWithStateQuery">
+        <Sentence>
+            <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.pack_date PD
+                        INNER JOIN ${mainschema}.pack_state PS
+                        ON PD.pcs_id = PS.pcs_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+        </Sentence>
+    </Query>
 </Queries>
 </JdbcEntitySetup>

@@ -24,19 +24,19 @@
         <o-button attr="clear" type="ICON" icon="delete" matTooltip="Clear filters" class="filter-button" [oFilterBuilderClear]="filterBuilder"  [oFilterBuilderQuery]="filterBuilder" ></o-button>
       </div>
     </div>
-    
+
     <!-- Filter builder -->
     <o-filter-builder #filterBuilder attr="thefilter"
       filters="pck_name:pck_name;pck_days:pck_days;pck_price_min:pck_price_min;pck_price_max:pck_price_max;pck_participants:pck_participants;gui_c_name:gui_c_name"
       [target]="packGrid" query-on-change="no" query-on-change-delay="500" [expression-builder]="createFilter"></o-filter-builder>
   </o-form>
-  
+
   <o-grid #packGrid attr="packGrid" title="PACKS" service="packs" entity="allPacks" keys="P.pck_id"
       columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;gui_c_name;img_code;pck_days;P.creation_date"
       query-rows="8" page-size-options="8;16;24" orderable="true"
       sort-column="creation_date:desc"
       sortable-columns="pck_name;gui_c_name;creation_date;pck_name:desc;gui_c_name:desc;creation_date:desc" quick-filter="false"  filter-case-sensitive="yes"
-      insert-button="true" refresh-button="false" pageable="yes" filter 
+      insert-button="true" refresh-button="false" pageable="yes" filter
       pagination-controls="true" gutter-size="4px" fixed-header="yes" grid-item-height="280px" detail-mode="none"
       insert-button-floatable="no">
       <o-grid-item *ngFor="let data of packGrid.dataArray">
