@@ -20,5 +20,4 @@ public interface IBusinessPackService {
 
     EntityResult businessPackDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
-   // AdvancedEntityResult businessPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy);
 }

@@ -57,8 +57,4 @@ public class BusinessPackService implements IBusinessPackService {
         return this.daoHelper.delete(this.businessPackDao, keyMap);
     }
 
-//    @Override
-//    public AdvancedEntityResult businessPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy) {
-//        return this.daoHelper.paginationQuery(this.businessDao, keysValues, attributes, recordNumber, startIndex, orderBy, BusinessDao.QUERY_ALL_BUSINESSES);
-//    }
 }

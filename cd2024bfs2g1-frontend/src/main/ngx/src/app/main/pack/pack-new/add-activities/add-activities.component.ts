@@ -14,9 +14,11 @@ export class AddActivitiesComponent {
 
   @ViewChild("tableBsn", { static: false }) tableBsn: OTableComponent;
   @ViewChild("tableRoutes", { static: false }) tableRoutes: OTableComponent;
-  static packId: any;
+  packId: any;
   protected service: OntimizeService;
-  public bsnArray = []
+  public bsnArray = [];
+  
+ 
 
 
   constructor(
@@ -31,9 +33,9 @@ export class AddActivitiesComponent {
     this.service = this.injector.get(OntimizeService);
   }
   ngOnInit(): void {
-    AddActivitiesComponent.packId = this.activeRoute.snapshot.params["pck_id"];
+    this.packId = this.activeRoute.snapshot.params["pck_id"];
 
-    console.log("Al pack le llego el id: " + AddActivitiesComponent.packId);
+    console.log("Al pack le llego el id: " + this.packId);
     this.getBsn();
     this.getRoute();
   }
@@ -161,25 +163,39 @@ export class AddActivitiesComponent {
 
 
   addActivity() {
+
+    const dataToPass = {
+      // Define los datos que quieres pasar al componente emergente
+      packId: this.packId,
+    };
     
    const diaglogRef = this.dialog.open(PackActivitiesComponent, {
       width: "1200px",
       maxHeight: "800px",
       minHeight: "800px",
       maxWidth: "80vw",
+      data: dataToPass
     });
     diaglogRef.afterClosed().subscribe(() => {
       this.getBsn()
     });
   }
 
+  
+
   addRoute() {
+
+    const dataToPass = {
+      // Define los datos que quieres pasar al componente emergente
+      packId: this.packId,
+    };
     
     const diaglogRef = this.dialog.open(PackRoutesComponent, {
        width: "1200px",
        maxHeight: "800px",
        minHeight: "800px",
        maxWidth: "80vw",
+       data: dataToPass
      });
      diaglogRef.afterClosed().subscribe(() => {
        this.getRoute()
@@ -190,7 +206,7 @@ export class AddActivitiesComponent {
     const conf = this.service.getDefaultServiceConfiguration("businessPacks");
     this.service.configureService(conf);
     const filter = {
-      "BP.pck_id": parseInt(AddActivitiesComponent.packId) ,
+      "BP.pck_id": parseInt(this.packId) ,
     };
     const columns = ["bsn_name", "bsn_type","bsn_address","assigned_date","bsn_pack_id"];
     this.service.query(filter, columns, "packBusiness").subscribe((resp) => {
@@ -211,7 +227,7 @@ export class AddActivitiesComponent {
     const conf = this.service.getDefaultServiceConfiguration("routePacks");
     this.service.configureService(conf);
     const filter = {
-      "R.pck_id": parseInt(AddActivitiesComponent.packId) ,
+      "R.pck_id": parseInt(this.packId) ,
     };
     const columns = ["name", "estimated_duration","difficulty","assigned_date","route_pack_id"];
     this.service.query(filter, columns, "routePack").subscribe((resp) => {
@@ -229,5 +245,5 @@ export class AddActivitiesComponent {
   }
 
   public goBack(): void {
-    this.router.navigate(['main/packs/' + AddActivitiesComponent.packId]);  }
+    this.router.navigate(['main/packs/' + this.packId]);  }
 }

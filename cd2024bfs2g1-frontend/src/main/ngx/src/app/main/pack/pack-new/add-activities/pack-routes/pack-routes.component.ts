@@ -1,5 +1,5 @@
-import { Component, Injector, ViewChild } from "@angular/core";
-import { MatDialogRef } from "@angular/material/dialog";
+import { Component, Inject, Injector, ViewChild } from "@angular/core";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { DomSanitizer } from "@angular/platform-browser";
 import { ActivatedRoute } from "@angular/router";
 import { AddActivitiesComponent } from "../add-activities.component";
@@ -34,7 +34,7 @@ export class PackRoutesComponent {
   public NotAsgRoutes: any[]
 
 
-  constructor(
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
     protected sanitizer: DomSanitizer,
     private dialogRef: MatDialogRef<PackRoutesComponent>,
     private activeRoute: ActivatedRoute,
@@ -49,7 +49,7 @@ export class PackRoutesComponent {
 
   ngOnInit(): void {
     console.log(
-      "Al emergente le llego el id: " + AddActivitiesComponent.packId
+      "Al emergente le llego el id: " + this.data.packId
     );
     this.configureService();
     this.getDays();
@@ -90,7 +90,7 @@ export class PackRoutesComponent {
 
   getDays() {
     const filter = {
-      pck_id: AddActivitiesComponent.packId,
+      pck_id: this.data.packId,
     };
     const columns = ["pck_name", "pck_days"];
     this.service.query(filter, columns, "packDays").subscribe((resp) => {
@@ -117,7 +117,7 @@ export class PackRoutesComponent {
     this.configureRouteService();
 
     const filter = {
-      "R.pck_id": parseInt(AddActivitiesComponent.packId),
+      "R.pck_id": parseInt(this.data.packId),
       assigned_date: this.comboBoxDay.getValue()
     };
     const columns = ["R.route_id","name","estimated_duration","difficulty","description"];
@@ -168,6 +168,7 @@ export class PackRoutesComponent {
 setRoutesData() {
   this.getAssignedRoutes();
   this.getRoutes();
+  this.table.clearSelection();
 }
 
   insertRoutePack() {
@@ -189,7 +190,7 @@ setRoutesData() {
       this.route_service
         .insert(
           {
-            pck_id: AddActivitiesComponent.packId,
+            pck_id: this.data.packId,
             assigned_date: this.comboBoxDay.getValue(),
             route_id: rt
           },

@@ -1,5 +1,5 @@
-import { Component, Injector, ViewChild } from "@angular/core";
-import { MatDialogRef } from "@angular/material/dialog";
+import { Component, Inject, Injector, ViewChild } from "@angular/core";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { DomSanitizer } from "@angular/platform-browser";
 import { ActivatedRoute } from "@angular/router";
 import { AddActivitiesComponent } from "../add-activities.component";
@@ -32,7 +32,7 @@ export class PackActivitiesComponent {
   public NotAsgBsn: any[]
 
 
-  constructor(
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
     protected sanitizer: DomSanitizer,
     private dialogRef: MatDialogRef<PackActivitiesComponent>,
     private activeRoute: ActivatedRoute,
@@ -42,6 +42,7 @@ export class PackActivitiesComponent {
     this.service = this.injector.get(OntimizeService);
     this.bsn_service = this.injector.get(OntimizeService);
     this.businessService = this.injector.get(OntimizeService);
+    console.log(data);
 
   }
 
@@ -49,7 +50,7 @@ export class PackActivitiesComponent {
     // this.table.clearSelection();
 
     console.log(
-      "Al emergente le llego el id: " + AddActivitiesComponent.packId
+      "Al emergente le llego el id: " + this.data.packId
     );
     this.configureService();
     this.getDays();
@@ -94,7 +95,7 @@ export class PackActivitiesComponent {
 
   getDays() {
     const filter = {
-      pck_id: AddActivitiesComponent.packId,
+      pck_id: this.data.packId,
     };
     const columns = ["pck_name", "pck_days"];
     this.service.query(filter, columns, "packDays").subscribe((resp) => {
@@ -120,7 +121,7 @@ export class PackActivitiesComponent {
 
     this.configureBsnService();
     const filter = {
-      "BP.pck_id": parseInt(AddActivitiesComponent.packId),
+      "BP.pck_id": parseInt(this.data.packId),
       assigned_date: this.comboBoxDay.getValue()
     };
     const columns = ["BP.bsn_id","bsn_name","bsn_type","bsn_address","bsn_phone","bsn_photos","bsn_website","bsn_schedule"];
@@ -171,6 +172,7 @@ export class PackActivitiesComponent {
 setBsnData() {
   this.getAssignedBusiness();
   this.getBusiness();
+  this.table.clearSelection();
 }
 
   insertBsnPack() {
@@ -191,7 +193,7 @@ setBsnData() {
       this.bsn_service
         .insert(
           {
-            pck_id: AddActivitiesComponent.packId,
+            pck_id: this.data.packId,
             assigned_date: this.comboBoxDay.getValue(),
             bsn_id: bp
           },
