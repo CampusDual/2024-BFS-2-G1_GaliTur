@@ -17,6 +17,9 @@ import { CustomMessageServiceLandmarks } from './shared/services/customMessageLa
 import { CustomMessageServicePacks } from './shared/services/customMessagePacks.service';
 import { CustomMessageServiceRegister } from './shared/services/customMessageRegisters.service';
 import { CustomPermissionsService } from './shared/services/custom-permissions.service';
+import { customMessageManagePack } from './shared/services/customMessageManagePack.service';
+
+
 
 
 // Standard providers...
@@ -39,7 +42,7 @@ export const customProviders: any = [
 
   ],
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   bootstrap: [
     AppComponent
@@ -49,6 +52,7 @@ export const customProviders: any = [
     ONTIMIZE_PROVIDERS,
     { provide: O_PERMISSION_SERVICE, useValue: CustomPermissionsService },
     ...customProviders,
+    { provide: 'customMessageManagePack', useValue: customMessageManagePack },
     { provide: 'customMessageServiceTypeRoutes', useValue: CustomMessageServiceRoutes },
     { provide: 'customMessageServiceTypeLandmarks', useValue: CustomMessageServiceLandmarks },
     { provide: 'customMessageServiceTypeBusiness', useValue: CustomMessageBusinessService },

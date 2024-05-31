@@ -32,6 +32,9 @@ import java.util.*;
 public class PackService implements IPackService {
     private final DefaultOntimizeDaoHelper daoHelper;
     private final PackDao packDao;
+    private final PackDateDao packDateDao;
+    private final ImageDao imageDao;
+    private final ImagePackDao imagePackDao;
     private final PackDateService packDateService;
     private final GuideCitiesDao cityDao;
     private final ImageService imageService;
@@ -40,9 +43,14 @@ public class PackService implements IPackService {
     private final ClientService clientService;
 
     @Autowired
-    public PackService(DefaultOntimizeDaoHelper daoHelper, PackDao packDao, PackDateService packDateService, GuideCitiesDao cityDao, ImageService imageService, GuideCitiesService cityService, ImagePackService imagePackService, ClientService clientService) {
+    public PackService(DefaultOntimizeDaoHelper daoHelper, PackDao packDao,ImageDao imageDao, PackDateService packDateService,
+                       GuideCitiesDao cityDao, ImageService imageService, GuideCitiesService cityService,
+                       ImagePackService imagePackService, ClientService clientService, ImagePackDao imagePackDao, PackDateDao packDateDao) {
         this.daoHelper = daoHelper;
         this.packDao = packDao;
+        this.packDateDao = packDateDao;
+        this.imageDao = imageDao;
+        this.imagePackDao = imagePackDao;
         this.packDateService = packDateService;
         this.cityDao = cityDao;
         this.imageService = imageService;
@@ -59,17 +67,48 @@ public class PackService implements IPackService {
 
     @Override
     public EntityResult packImageQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
-        Object key = keyMap.remove("pck_id");
-        keyMap.put("p.pck_id", key);
-        attrList.remove("pck_id");
-        attrList.add("p.pck_id");
-        return this.daoHelper.query(this.packDao, keyMap, attrList, PackDao.PCK_DETAILS_QUERY);
+        if(keyMap.size()>0){
+            Object key = keyMap.remove(PackDao.PCK_ID);
+            keyMap.put("p."+PackDao.PCK_ID, key);
+        }
+        attrList.remove(PackDao.PCK_ID);
+        attrList.add("p."+PackDao.PCK_ID);
+
+        EntityResult EntityAux = this.daoHelper.query(this.packDao, keyMap, attrList, PackDao.PCK_DETAILS_QUERY);
+        return EntityAux;
     }
 
+    @Override
+    public AdvancedEntityResult packMultiPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.paginationQuery(this.packDao, keysValues, attributes, recordNumber, startIndex, orderBy, PackDao.PCK_IMG_PACK_DETAIL);
+    }
     @Override
     public EntityResult packProvinceQuery(Map<String, Object> keyMap, List<String> attrList)
             throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.packDao, keyMap, attrList, PackDao.PCK_ACOORDING_PROVINCE_QUERY);
+    }
+
+    @Override
+    public AdvancedEntityResult packPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy) throws OntimizeJEERuntimeException {
+        return null;
+    }
+
+    @Override
+    public EntityResult packImageUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
+            throws OntimizeJEERuntimeException {
+        Map<String, Object> attrMapUpdate = new HashMap<>();
+        //Meter la imagen
+        EntityResult imagePackUpdate  = null;
+        EntityResult imageInsert = this.daoHelper.insert(imageDao, attrMap);
+
+        if(imageInsert.getCode()==EntityResult.OPERATION_SUCCESSFUL){
+            attrMapUpdate.put(imagePackDao.IMG_ID,imageInsert.get("image_id"));
+            keyMap.remove("pck_id");
+            return imagePackUpdate = this.daoHelper.update(imagePackDao,attrMapUpdate,keyMap);
+        }
+        //Meter la relacion
+        return imagePackUpdate;
     }
 
     @Override
@@ -99,7 +138,6 @@ public class PackService implements IPackService {
 
     /**
      * Lists set of packs purchased by a client (logged user)
-     *
      * @param keysValues filter (client id)
      * @param attributes query columns
      * @return query data
@@ -148,6 +186,7 @@ public class PackService implements IPackService {
             throws OntimizeJEERuntimeException {
         return this.daoHelper.paginationQuery(this.packDao, keysValues, attributes, recordNumber, startIndex, orderBy, this.packDao.PCK_ALL_QUERY);
     }
+
 
     @Override
     public AdvancedEntityResult packClientPaginationQuery(Map<String, Object> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
@@ -201,6 +240,14 @@ public class PackService implements IPackService {
     @Override
     public EntityResult packUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
             throws OntimizeJEERuntimeException {
+        //Guardamos la base siempre
+        if(attrMap.containsKey(PackDao.PCK_DATE_BEGIN) && attrMap.containsKey(PackDao.PCK_DATE_END)) {
+            //Creamos el pack completo porque ya tiene fechas
+            this.daoHelper.insert(packDateDao, attrMap);
+            //Le quitamos las fechas porque no nos hacen falta
+            attrMap.remove(PackDao.PCK_DATE_BEGIN);
+            attrMap.remove(PackDao.PCK_DATE_END);
+        }
         return this.daoHelper.update(this.packDao, attrMap, keyMap);
     }
 

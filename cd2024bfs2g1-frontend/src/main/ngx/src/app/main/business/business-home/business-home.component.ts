@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { BusinessDetailComponent } from '../business-detail/business-detail.component';
 import { AuthService, OGridComponent, OPermissions, OntimizeService, Util } from 'ontimize-web-ngx';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-business-home',
@@ -31,8 +31,12 @@ export class BusinessHomeComponent {
   }
 
   public openDetail(data: any): void {
-    this.router.navigate(['businesses/' + data.bsn_id]);
-  }
+    const currentUrl = this.router.url; // Capturar la URL actual
+    const navigationExtras: NavigationExtras = {
+      state: { previousUrl: currentUrl } // Enviar la URL actual como navigation state
+    };
+    this.router.navigate(['businesses/' + data.bsn_id], navigationExtras);
+}
 
   truncateName(name: string): string {
     if (name.length > 30) {
@@ -42,13 +46,13 @@ export class BusinessHomeComponent {
     }
   }
   parsePermissions(attr: string): boolean {
-    
+
     // if oattr in form, it can have permissions
     if (!this.form || !Util.isDefined(this.form.oattr)) {
       return;
     }
       const permissions: OPermissions = this.form.getFormActionsPermissions(attr)
-      
+
       if (!Util.isDefined(permissions)) {
         return true
       }

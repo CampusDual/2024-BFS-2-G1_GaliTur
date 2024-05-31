@@ -1,7 +1,7 @@
 ::ng-deep .principal {
     display: flex;
     flex-direction: column;
-    height: 100%; 
+    height: 90%; 
     width: 100%;
     background-color: #e2dbd5 !important;
 }
@@ -26,6 +26,7 @@
     background-color: #e2dbd5;
     
 }
+
 
 
 

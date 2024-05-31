@@ -1,6 +1,6 @@
 <div class="dialog-content-margin">
-    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
-        <o-button class="backButton" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary" (click)="backToDetail(data)"></o-button>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px" >
+        <o-button class="backButton" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary" (click)="backToDetail(data) "></o-button>
         <p class="titulo"><strong>{{ "landmark" | oTranslate}}</strong> </p>
     </div>
     <br>
@@ -10,7 +10,7 @@
             <div fxFlex="5%"></div>
             <div fxFlex="65%">
                 <div class="landmark-map">
-                    <o-map #oMapMarker center="42.940599, -7.120727" zoom="8" min-zoom="3" max-zoom="20" zoom-control="yes"search-control="no" layer-panel-visible="no" fxFlex>
+                    <o-map #oMapMarker center="42.886958, -8.389286" zoom="8" min-zoom="3" max-zoom="20" zoom-control="yes"search-control="no" layer-panel-visible="no" fxFlex>
                         <ng-container *ngIf="data.landmark.length">
                         <o-map-layer   *ngFor="let landmark of data.landmark" layer-type="marker" layer-id="{{landmark.landmark_id}}"
                             [layer-center]="landmark.coordinates"
