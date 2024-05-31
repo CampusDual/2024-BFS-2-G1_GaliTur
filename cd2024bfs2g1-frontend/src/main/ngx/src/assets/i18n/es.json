@@ -397,5 +397,12 @@
   "MESSAGES_DELETE_ERROR_MANAGEPACK": "Hubo un error al eliminar el pack.",
   "MESSAGES_DELETE_CONFIRMATION_MANAGEPACK" : "¿Está seguro de que desea eliminar este pack?",
   "PACKDATECONFIRMED":"Pack agendado correctamente",
-  "MANAGEPACKS": "Gestión de packs"
+  "MANAGEPACKS": "Gestión de packs",
+  "ALL-DAYS": "Todos los días",
+  "NUMBER-DAYS": "Numero de días",
+  "MIN-PRICE": "Precio mínimo",
+  "MAX-PRICE": "Precio máximo",
+  "NUMBER-TRAVELLERS": "Numero de viajeros",
+  "FILTER-CITY": "Ciudad",
+  "FILTER-NAME": "Nombre"
 }

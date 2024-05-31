@@ -66,7 +66,7 @@
 
 .description, .information {
   flex: 1;
-  background-color: transparent;     
+  background-color: transparent;
 }
 
 .titulo {
@@ -77,9 +77,13 @@
   color: #ffffff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  width: 900px; 
+  width: 900px;
   max-width: 1100px;
   margin-right: 105px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
 }
 
 
@@ -123,7 +127,7 @@
   cursor: pointer;
   border-radius: 10px;
   transition: background-color 0.3s;
-  
+
 }
 
 .custom-button:hover {

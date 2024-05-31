@@ -1,35 +1,41 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { OFormComponent, OTableComponent, OntimizeService } from 'ontimize-web-ngx';
+import { OFormComponent, OTableComponent } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-business-detail',
   templateUrl: './business-detail.component.html',
   styleUrls: ['./business-detail.component.css']
 })
-export class BusinessDetailComponent {
-
+export class BusinessDetailComponent implements OnInit {
   @ViewChild('accountCustomerTable') accountTable: OTableComponent;
   @ViewChild('form') form: OFormComponent;
 
   constructor(
     protected sanitizer: DomSanitizer,
-    private router: Router,
-  ) {
-  }
+    private router: Router
+  ) { }
 
-	ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   public getImageSrc(base64: any): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image-transparent.png';
   }
 
   public openBusinesses(): void {
-    this.router.navigate(['main/businesses']);
-  }
+    const previousUrl = history.state && history.state.previousUrl ? history.state.previousUrl : '';
+    //Si el usuario viene de packs-detail redigir a la url anterior para que vea el pack en el que estaba
+    if (previousUrl.includes('packs')) {
+      this.router.navigateByUrl(previousUrl);
+     //Si el usuario viene de business home redigir de vuelta business home
+    } else if (previousUrl.includes('/main/businesses')) {
+      this.router.navigate(['/main/businesses']);
+      //En caso de que entre introduciendo una URL no se contemplada en los casos anteriores redirigir a landing page
+    } else {
+      this.router.navigate(['/main']);
+    }
+}
 
 
   isLastCity(cityKey: string, cities: string): boolean {

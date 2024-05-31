@@ -387,5 +387,13 @@
   "pck_price_min": "Min price",
   "pck_price_max": "Max price",
   "pck_days": "Days",
+    "ALL-DAYS": "All days",
+  "NUMBER-DAYS": "Number of days",
+  "MIN-PRICE": "Min price",
+  "MAX-PRICE": "Max price",
+  "NUMBER-TRAVELLERS": "Number of travellers",
+  "FILTER-CITY": "City",
+  "FILTER-NAME": "Name",
+  "pck_days": "Days",
   "MANAGEPACKS": "Manage packs"
 }

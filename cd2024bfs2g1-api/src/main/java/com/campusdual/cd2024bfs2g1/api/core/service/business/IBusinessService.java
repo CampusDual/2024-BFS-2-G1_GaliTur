@@ -23,5 +23,6 @@ public interface IBusinessService {
 
     AdvancedEntityResult businessPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy);
 
+    EntityResult businessOfPackQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 }
 
