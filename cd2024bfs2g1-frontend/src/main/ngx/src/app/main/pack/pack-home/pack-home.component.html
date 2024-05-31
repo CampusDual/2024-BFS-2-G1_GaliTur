@@ -5,12 +5,12 @@
       <!-- Name and number of days filters -->
       <div class="filter-column">
         <o-text-input class="filter-element" attr="pck_name" read-only="no" fxFlex="100" label="{{ 'FILTER-NAME' | oTranslate }}" ></o-text-input>
-        <o-integer-input  attr="pck_days" label="{{ 'NUMBER-DAYS' | oTranslate }}" min="0"></o-integer-input>
+        <o-integer-input  attr="pck_days" label="{{ 'NUMBER-DAYS' | oTranslate }}" min="1"></o-integer-input>
       </div>
       <!-- Price filter -->
       <div class="filter-column">
-        <o-integer-input class="filter-element" attr="pck_price_min" label="{{ 'MIN-PRICE' | oTranslate }}" min="0"></o-integer-input>
-        <o-integer-input  attr="pck_price_max" label="{{ 'MAX-PRICE' | oTranslate }}" min="0"></o-integer-input>
+        <o-currency-input class="filter-element" attr="pck_price_min" label="{{ 'MIN-PRICE' | oTranslate }}" min="1"  min-decimal-digits="0" max-decimal-digits="2"></o-currency-input>
+        <o-currency-input  attr="pck_price_max" label="{{ 'MAX-PRICE' | oTranslate }}" min="1"  min-decimal-digits="0" max-decimal-digits="2"></o-currency-input>
       </div>
       <!-- Travellers and city filter -->
       <div class="filter-column">
