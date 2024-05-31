@@ -33,8 +33,9 @@
   
   <o-grid #packGrid attr="packGrid" title="PACKS" service="packs" entity="allPacks" keys="P.pck_id"
       columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;gui_c_name;img_code;pck_days;P.creation_date"
-      query-rows="8" page-size-options="8;16;24" orderable="true" sort-column="P.creation_date:desc"
-      sortable-columns="" quick-filter="false"  filter-case-sensitive="yes"
+      query-rows="8" page-size-options="8;16;24" orderable="true"
+      sort-column="creation_date:desc"
+      sortable-columns="pck_name;gui_c_name;creation_date;pck_name:desc;gui_c_name:desc;creation_date:desc" quick-filter="false"  filter-case-sensitive="yes"
       insert-button="true" refresh-button="false" pageable="yes" filter 
       pagination-controls="true" gutter-size="4px" fixed-header="yes" grid-item-height="280px" detail-mode="none"
       insert-button-floatable="no">

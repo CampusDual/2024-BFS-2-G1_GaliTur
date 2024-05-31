@@ -249,3 +249,8 @@ o-app-sidenav.o-app-sidenav .o-app-header .o-user-info .o-user-info-wrapper, o-a
 .md-drppicker td.disabled {
   background-color:  rgb(221, 218, 212) !important;
 }
+
+/* Tamaño de la casilla de ordenación*/
+.mat-mdc-form-field-has-icon-prefix .mat-mdc-text-field-wrapper  {
+  min-width: 360px;
+}

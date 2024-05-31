@@ -10,21 +10,24 @@
 
 
 
-        <o-form #pform class="mainForm" #form attr="packDetail" service="packs" entity="pack"
-            keys="pck_id;gui_c_id" header-actions="false" undo-button="false"
+        <o-form #form class="mainForm" attr="packDetail"  service="packs" entity="packAndBookingDetail"
+            keys="pbk_booking_id" header-actions="false" undo-button="false" keys-sql-types="INTEGER"
             show-header-actions-text="false"
-            columns="pck_id;pck_name;pck_description;pck_price;pck_participants;gui_c_id"
+            columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;pck_days;pd_date_begin;pd_date_end;pcs_id;P.gui_c_id;pbk_booking_id"
             show-header-navigation="no" class="fill-form" show-header="no">
 
+         
+
             <!-- Almaceno el pack que he clicado -->
-            <o-grid #packForm attr="packDetail" service="packs" entity="packDetail" keys="P.pck_id;P.gui_c_id;pcs_id"
+            <o-grid #packForm attr="packDetail" service="packs" entity="packAndBookingDetail" keys="P.pck_id;P.gui_c_id;pcs_id"
                 columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;pck_days;pd_date_begin;pd_date_end;pcs_id;P.gui_c_id"
-                parent-keys="pck_id" refresh-button="false" quick-filter="false" oHidden />
-            
+                parent-keys="pbk_booking_id" refresh-button="false" quick-filter="false" oHidden />
+             
             <!-- Almaceno el pack que he clicado -->
             <o-grid #cancelPackForm attr="packCancelDetail" service="packs" entity="packCancelDetail" keys="PB.pbk_booking_id"
             columns="PB.pbk_booking_id"
-            parent-keys="pck_id" refresh-button="false" quick-filter="false" oHidden />
+            parent-keys="pbk_booking_id" refresh-button="false" quick-filter="false" oHidden />
+           
 
             <!-- Almaceno la ciudad del pack -->
             <o-grid #gui_cities attr="guiCities" service="guideCities" entity="guideCities" keys="gui_c_id"
