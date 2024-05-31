@@ -114,4 +114,9 @@ public class RouteService  implements IRouteService {
     public AdvancedEntityResult routePaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy) throws OntimizeJEERuntimeException {
         return this.daoHelper.paginationQuery(this.routeDao, keysValues, attributes, recordNumber, startIndex, orderBy, RouteDao.QUERY_ROUTE_IMAGE);
     }
+
+    @Override
+    public EntityResult routesOfPackQuery(Map<String, Object> keyMap, List<String> attrList) {
+        return this.daoHelper.query(routeDao, keyMap, attrList, routeDao.QUERY_ROUTES_OF_PACK);
+    }
 }

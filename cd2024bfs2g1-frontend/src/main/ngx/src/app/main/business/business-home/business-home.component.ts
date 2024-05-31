@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { BusinessDetailComponent } from '../business-detail/business-detail.component';
 import { OGridComponent, OntimizeService } from 'ontimize-web-ngx';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-business-home',
@@ -29,8 +29,12 @@ export class BusinessHomeComponent {
   }
 
   public openDetail(data: any): void {
-    this.router.navigate(['main/businesses/' + data.bsn_id]);
-  }
+    const currentUrl = this.router.url; // Capturar la URL actual
+    const navigationExtras: NavigationExtras = {
+      state: { previousUrl: currentUrl } // Enviar la URL actual como navigation state 
+    };
+    this.router.navigate(['main/businesses/' + data.bsn_id], navigationExtras);
+}
 
   truncateName(name: string): string {
     if (name.length > 30) {

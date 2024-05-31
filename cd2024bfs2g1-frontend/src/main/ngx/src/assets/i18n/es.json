@@ -373,5 +373,13 @@
   "ROUTE-DELETE-DIALOG-B": "¿Está seguro/a de que desea desasignar esta ruta?",
   "pck_price_min": "Precio mínimo",
   "pck_price_max": "Precio máximo",
-  "pck_days": "Días"
+  "pck_days": "Días",
+  "ALL-DAYS": "Todos los días",
+  "NUMBER-DAYS": "Numero de días",
+  "MIN-PRICE": "Precio mínimo",
+  "MAX-PRICE": "Precio máximo",
+  "NUMBER-TRAVELLERS": "Numero de viajeros",
+  "FILTER-CITY": "Ciudad",
+  "FILTER-NAME": "Nombre"
 }
+
