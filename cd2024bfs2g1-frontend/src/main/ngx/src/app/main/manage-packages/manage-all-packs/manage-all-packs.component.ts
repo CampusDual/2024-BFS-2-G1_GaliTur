@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NavigationService, Observable, OntimizeService } from 'ontimize-web-ngx';
 import { catchError, of } from 'rxjs';
+import { CONFIG } from 'src/app/app.config';
 
 @Component({
   selector: 'app-manage-all-packs',
@@ -11,6 +12,13 @@ import { catchError, of } from 'rxjs';
   styleUrls: ['./manage-all-packs.component.css']
 })
 export class ManageAllPacksComponent{
+
+  private baseUrl = CONFIG.apiEndpoint;
+  aux:any = {}
+  idImagen:any = []
+  idImagen2:any = []
+
+
   constructor(private router:Router,
     protected sanitizer: DomSanitizer,
     private ontimizePackService: OntimizeService,
@@ -25,17 +33,10 @@ export class ManageAllPacksComponent{
     this.injector.get(NavigationService).initialize();
   }
 
-  private baseUrl = 'http://localhost:8080/packs';
-
-
   public getImageSrc(base64: any): any {
     const image_code = base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image-transparent.png';
     return image_code
   }
-
-  aux:any = {}
-  idImagen:any = []
-  idImagen2:any = []
 
   protected configurePackService() {
     const confPack =
@@ -52,7 +53,8 @@ export class ManageAllPacksComponent{
       this.ontimizeImagePackService.getDefaultServiceConfiguration("imagePacks");
     this.ontimizeImagePackService.configureService(confPack);
   }
-//Boton de borrar, no se puede usar por restricciones, base de datos no en CASCADA <------------------------
+
+//TODO Boton de borrar, no se puede usar por restricciones, base de datos no en CASCADA <------------------------
 
 // onClicDelete(pck_id: any,image_id:any,imp_ip:any) {
 //   console.log("Pack id ",pck_id," image id ",image_id," imagepack id ",imp_ip)

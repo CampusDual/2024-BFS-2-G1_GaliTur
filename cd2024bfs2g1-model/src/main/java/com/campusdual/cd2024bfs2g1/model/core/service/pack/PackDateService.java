@@ -35,7 +35,7 @@ public class PackDateService implements IPackDateService {
     @Override
     public EntityResult packDateWithStateQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
         if(keyMap.size()>0){
-            Object key = keyMap.remove("pck_id");
+            Object key = keyMap.remove(PackDateDao.PCK_ID);
             keyMap.put("pd.pck_id", Integer.parseInt(key+""));
         }
         return this.daoHelper.query(this.packDateDao, keyMap, attrList, packDateDao.PD_W_STATE_QUERY);

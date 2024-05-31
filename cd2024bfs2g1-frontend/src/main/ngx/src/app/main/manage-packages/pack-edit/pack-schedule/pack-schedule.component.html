@@ -17,9 +17,9 @@
         class="campos"
       ></o-integer-input>
       <o-date-input #beginDate attr="pd_date_begin" value-type="date" [min]="getMinDate()"
-        label="{{ 'DATE_RANGE' | oTranslate }}" read-only="no" format="DD/MM/YYYY"
+        label="{{ 'DATE_START' | oTranslate }}" read-only="no" format="DD/MM/YYYY"
         (onValueChange)=" onBeginDateChanged()" class="campos"></o-date-input>
-      <o-date-input #endDate attr="pd_date_end" value-type="date" label="{{ 'DATE_RANGE' | oTranslate }}"
+      <o-date-input #endDate attr="pd_date_end" value-type="date" label="{{ 'DATE_END' | oTranslate }}"
       read-only="yes" format="DD/MM/YYYY" class="campos"></o-date-input>
       <button class="button" #InsertPackDateButton (click)="OnInsertPackDate()" [ngClass]="a()">
         <mat-icon>save</mat-icon>

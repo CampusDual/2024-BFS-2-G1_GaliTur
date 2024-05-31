@@ -13,6 +13,17 @@ import { MatButton } from '@angular/material/button';
 })
 export class PackEditComponent implements AfterViewInit{
   blankValidator: ValidatorFn[] = [];
+  pck_id: any =""
+  imgId: any;
+  dataInputName: any
+  dataInputDays: any
+  firstNameData:boolean = true
+  firstDayData:boolean = true
+  dateBeginWithFormat: any
+  packDate:any = {
+    name:'',
+    days:0,
+  }
 
   @ViewChild('packNameInput') packNameInput : ElementRef
   @ViewChild('addPDbtn') packDateButton : ElementRef
@@ -30,25 +41,16 @@ export class PackEditComponent implements AfterViewInit{
     this.pck_id = this.getPackId()
 
   }
+
   private actionButtons(disable:boolean){
     this.packDateButton.nativeElement.disabled = disable;
     this.rtandbssButton.nativeElement.disabled = disable;
   }
+
    onAddRtsOrBss(){
       this.router.navigate(["main", "packs","new",this.pck_id]);
-      /*otra forma para probar this.router.navigate(['main','routes', 'new', $event['route_id']])*/
   }
-  pck_id: any =""
-  imgId: any;
-  dataInputName: any
-  dataInputDays: any
-  firstNameData:boolean = true
-  firstDayData:boolean = true
-  dateBeginWithFormat: any
-  packDate:any = {
-    name:'',
-    days:0,
-  }
+  
   getPackId():number{
     return +this.activeRoute.snapshot.params["pck_id"];
   }
@@ -73,6 +75,7 @@ export class PackEditComponent implements AfterViewInit{
       }
     })
   }
+
   onNameChange(data: OValueChangeEvent) {
     if(this.firstNameData === true){
       this.packDate.name= data.target.value.value
@@ -83,8 +86,8 @@ export class PackEditComponent implements AfterViewInit{
       if(data.target.value.value===this.packDate.name) this.actionButtons(false)
         else this.actionButtons(true)
     }
-
   }
+
   onDaysChange(data:OValueChangeEvent) {
     if(this.firstDayData === true){
       this.packDate.days= data.target.value.value
@@ -115,6 +118,7 @@ export class PackEditComponent implements AfterViewInit{
       }
     } catch (e){}
   }
+  
   onSaveChanges(){
     this.actionButtons(false)
     this.firstNameData = true

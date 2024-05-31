@@ -204,7 +204,7 @@
   "pck_price": "Precio total",
   "pck_participants": "Participantes",
   "pcs_id": "Reservado",
-  "img_code": "Código de Imagen",
+  "img_code": "Imagen",
   "PACKS": "Packs",
   "DAY": "Día",
   "DAYS": "Días",
@@ -216,7 +216,6 @@
   "RESERVED": "Reservado",
   "PLACE": "Lugar",
   "DATE_START": "Fecha inicial",
-  "DATE_END":"Fecha final",
   "SEPARATOR": " a ",
   "DATERANGE.APPLYLABEL": "Selecionar fecha",
   "DATERANGE.W": "S",
@@ -374,7 +373,6 @@
   "pck_price_min": "Precio mínimo",
   "pck_price_max": "Precio máximo",
   "pck_days": "Días",
-  "VIEW_BSN": "Mostar Negocios agregados",
   "PACK_TABLE": "Plantilla de Packs",
   "EDIT": "Editar",
   "ADD_DATES": "Añadir Fechas",
@@ -384,7 +382,7 @@
   "MAIN": "Packs",
   "SHEDULED_PACKS":"Packs Agendados",
   "ADD_SHEDULED_PACKS":"Añadir Packs Agendados",
-  "PACKS_INFO": "Informacion de Packs",
+  "PACKS_INFO": "Información de packs",
   "STATE": "Estado",
   "DATE_BEGING": "Fecha Inicio",
   "DATE_END": "Fecha Fin",
@@ -398,5 +396,6 @@
   "MESSAGES_UPDATE_SUCCESS_MANAGEPACK": "El pack ha sido actualizado con éxito.",
   "MESSAGES_DELETE_ERROR_MANAGEPACK": "Hubo un error al eliminar el pack.",
   "MESSAGES_DELETE_CONFIRMATION_MANAGEPACK" : "¿Está seguro de que desea eliminar este pack?",
-  "PACKDATECONFIRMED":"Pack agendado correctamente"
+  "PACKDATECONFIRMED":"Pack agendado correctamente",
+  "MANAGEPACKS": "Gestión de packs"
 }

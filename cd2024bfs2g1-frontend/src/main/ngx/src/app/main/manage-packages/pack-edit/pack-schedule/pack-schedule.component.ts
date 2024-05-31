@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { OButtonComponent, ODateInputComponent, OFormComponent, OIntegerInputComponent, OSnackBarConfig, OTextInputComponent, OntimizeService, SnackBarService } from 'ontimize-web-ngx';
@@ -73,21 +74,15 @@ onChangeValue() {
       });
       this.beginDate.setValue(null)
   }
-  formatDateToSend(date:any){
-    const yyyy = date.getFullYear();
-    const MM = String(date.getMonth() + 1).padStart(2, '0');
-    const dd = String(date.getDate()).padStart(2, '0');
-    const HH = String(date.getHours()).padStart(2, '0');
-    const mm = String(date.getMinutes()).padStart(2, '0');
-    const ss = String(date.getSeconds()).padStart(2, '0');
-    const SSS = String(date.getMilliseconds()).padStart(3, '0');
-
-    return `${yyyy}-${MM}-${dd} ${HH}:${mm}:${ss}.${SSS}`;
+  formatDateToSend(dateObj:any){
+    return formatDate( dateObj, "yyyy-MM-dd HH:mm:ss.SSS", 'en-US');
   }
+
   getMinDate(){
     const currentDate = new Date()
     return new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
   }
+  
   onBeginDateChanged(){
     if (this.beginDate.getValue()){
       const date = new Date(this.beginDate.getValueAsDate())

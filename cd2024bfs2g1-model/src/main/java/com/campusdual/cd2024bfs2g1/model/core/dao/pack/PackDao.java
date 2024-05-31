@@ -20,6 +20,8 @@ public class PackDao extends OntimizeJdbcDaoSupport {
     public static String PCK_PARTICIPANTS = "pck_participants";
     public static String PCK_GUI_C_ID = "gui_c_id";
     public static String PCK_DAYS = "pck_days";
+    public static String PCK_DATE_BEGIN = "pck_date_begin";
+    public static String PCK_DATE_END = "pck_date_end";
 
     public static String PCK_MULTI_QUERY = "multi";
     public static String PCK_ALL_QUERY = "allPacks";

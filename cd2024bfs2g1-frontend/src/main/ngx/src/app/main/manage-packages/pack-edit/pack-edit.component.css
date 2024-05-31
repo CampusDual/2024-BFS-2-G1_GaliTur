@@ -130,14 +130,6 @@
     font-size: 25px;
     padding: 15px;
 }
-.camposTexto{
-    max-width: 30px !important;
-    min-width: 10px !important;
-}
-.o-integer-input{
-    min-width: 10px;
-    max-width: 10px;
-}
 
 .mat-icon{
     vertical-align: middle;
