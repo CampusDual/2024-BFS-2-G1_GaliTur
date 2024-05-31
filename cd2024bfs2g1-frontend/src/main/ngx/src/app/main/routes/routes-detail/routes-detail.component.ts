@@ -22,7 +22,8 @@ export class RoutesDetailComponent implements OnInit{
     protected sanitizer: DomSanitizer,
     protected dialog: MatDialog,
     protected landmarkService: LandmarksService,
-    private dialogRef: MatDialogRef<RoutesDetailComponent>
+    private dialogRef: MatDialogRef<RoutesDetailComponent>,
+    private router: Router
     ) {
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration("landmarks"));
     this.galleryOptions = [
