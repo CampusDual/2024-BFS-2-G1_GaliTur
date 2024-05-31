@@ -127,7 +127,7 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
     const confBooking = this.bookingService.getDefaultServiceConfiguration("packBookings");
     this.bookingService.configureService(confBooking);
     this.bookingService
-      .insert({pd_id: data[0].pd_id, client_id: this.userInfoService.getUserInfo().usr_id}, "packBooking")
+      .insert({pd_id: data[0].pd_id, usr_id: this.userInfoService.getUserInfo().usr_id}, "packBooking")
       .subscribe((resp) => {
         //TODO: this.form.reload(true);
 

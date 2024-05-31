@@ -382,5 +382,6 @@
   "MAX-PRICE": "Precio máximo",
   "NUMBER-TRAVELLERS": "Numero de viajeros",
   "FILTER-CITY": "Ciudad",
-  "FILTER-NAME": "Nombre"
+  "FILTER-NAME": "Nombre",
+  "COMBO-BOX-DAYS-TITLE": "Seleccione dia"
 }
