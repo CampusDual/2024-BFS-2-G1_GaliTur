@@ -7,9 +7,10 @@ import { OntimizeWebModule } from 'ontimize-web-ngx';
 import { OChartModule } from 'ontimize-web-ngx-charts';
 
 
+
 @NgModule({
   declarations: [
-    GraphicsHomeComponent
+    GraphicsHomeComponent,
   ],
   imports: [
     CommonModule,
