@@ -30,7 +30,7 @@ export class PackClientComponent {
 
   public openDetail(data: any): void {
     PackHomeComponent.page = 2;
-    this.router.navigate(['main/pack-client/' + data.pck_id]);
+    this.router.navigate(['main/pack-client', +data.pbk_booking_id]);
   }
 
   truncateName(name: string): string {

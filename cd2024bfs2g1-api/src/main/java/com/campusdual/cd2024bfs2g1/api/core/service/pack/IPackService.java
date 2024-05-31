@@ -27,6 +27,7 @@ public interface IPackService {
 
 
     EntityResult packClientQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
+    EntityResult packAndBookingDetailQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 
     EntityResult allPacksQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 
@@ -38,6 +39,6 @@ public interface IPackService {
 
     AdvancedEntityResult allPacksPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy);
 
-    AdvancedEntityResult packClientPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy);
+    AdvancedEntityResult packClientPaginationQuery(Map<String, Object> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy);
 
 }
