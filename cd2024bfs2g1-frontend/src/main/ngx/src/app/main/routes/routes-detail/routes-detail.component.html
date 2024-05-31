@@ -1,6 +1,6 @@
 <div fxFill fxLayout="column" fxLayoutAlign="space-evenly center" class="mainPanel">
     <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
-        <o-button class="backButton" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary" (click)="backToHome(data)"></o-button>
+        <o-button class="backButton" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary" (click)="backToHome(data)" (blur)="backToHome(data)"></o-button>
         <p class="titulo"><strong>{{ data.name }}</strong></p>
     </div>
     <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px" class="routesSecond">

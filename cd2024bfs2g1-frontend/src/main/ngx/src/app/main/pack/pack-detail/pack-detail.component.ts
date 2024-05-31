@@ -143,8 +143,8 @@ export class PackDetailComponent {
       });
   }
 
-  //Metodos para los negocios del pack
-  openDetail(data: any): void {
+  //Metodos para redirect dinamico de business 
+  openDetailBusiness(data: any): void {
     this.router.navigate(['main/businesses/' + data.bsn_id]);
     const currentUrl = this.router.url; // Capturar la URL actual
     const navigationExtras: NavigationExtras = {
@@ -153,6 +153,16 @@ export class PackDetailComponent {
     this.router.navigate(['main/businesses/' + data.bsn_id], navigationExtras);
   }
   
+
+  //Metodo para redirect dinamico de rutas
+  openDetailRoutes(data: any): void {
+    this.router.navigate(['main/routes/' + data.route_id]);
+    const currentUrl = this.router.url; // Capturar la URL actual
+    const navigationExtras: NavigationExtras = {
+      state: { previousUrl: currentUrl } // Enviar la URL actual como navigation state 
+    };
+    this.router.navigate(['main/routes/' + data.route_id], navigationExtras);
+  }  
 
   truncateName(name: string): string {
     if (name.length > 30) {

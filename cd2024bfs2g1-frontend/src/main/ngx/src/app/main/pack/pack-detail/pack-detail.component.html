@@ -139,7 +139,7 @@
                             <o-grid opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false" 
                             show-page-size="false" disable-page-size-calculation="true" cols="2" gutter-size="1px" grid-item-height="215px">
                                 <o-grid-item *ngFor="let data of gridRoutesOfPack.dataArray">
-                                    <div (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="center" class="mat-elevation-z1 routeCard">
+                                    <div (click)="openDetailRoutes(data)" fxLayout="column" fxLayoutAlign="center" class="mat-elevation-z1 routeCard">
                                         <div class="card-header">
                                             <div class="route-name">
                                                 <span class="pack-name">{{ truncateName(data.name)}}</span>
@@ -170,7 +170,7 @@
                             <o-grid  opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false" 
                             show-page-size="false" disable-page-size-calculation="true" cols="2" gutter-size="1px" grid-item-height="245px">
                                 <o-grid-item *ngFor="let data of gridBusinessesOfPack.dataArray" >
-                                    <div (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-evenly center" class="mat-elevation-z1 businessCard">
+                                    <div (click)="openDetailBusiness(data)" fxLayout="column" fxLayoutAlign="space-evenly center" class="mat-elevation-z1 businessCard">
                                         <div class="card-header">
                                             <div class="business-title">
                                                 <div class="business-icon">
