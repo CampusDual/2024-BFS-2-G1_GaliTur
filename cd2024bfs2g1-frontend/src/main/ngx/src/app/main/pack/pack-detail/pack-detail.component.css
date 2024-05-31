@@ -319,6 +319,7 @@
     font-size: 0.8em;
 }
 
+
 .preview-image {
     border-radius: 10px;
     object-fit: cover;
@@ -387,6 +388,14 @@
     display: flex;
     align-items: center; 
     justify-content: center; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.business-name:hover{
+    overflow: auto;
+    overflow-y: hidden;
 }
 
 
@@ -455,7 +464,15 @@
     height: 40px;
     display: flex;
     align-items: center; 
-    justify-content: center; 
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.route-name:hover{
+    overflow: auto;
+    overflow-y: hidden;
 }
 
 

@@ -164,13 +164,7 @@ export class PackDetailComponent {
     this.router.navigate(['main/routes/' + data.route_id], navigationExtras);
   }  
 
-  truncateName(name: string): string {
-    if (name.length > 30) {
-        return name.substr(0, 30) + '...';
-    } else {
-        return name;
-    }
-  }
+
 
   public getRouteImageSrc(base64: any): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/logo-walking.png";

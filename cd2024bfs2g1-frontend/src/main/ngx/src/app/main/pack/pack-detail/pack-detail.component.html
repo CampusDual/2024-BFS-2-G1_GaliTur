@@ -142,7 +142,7 @@
                                     <div (click)="openDetailRoutes(data)" fxLayout="column" fxLayoutAlign="center" class="mat-elevation-z1 routeCard">
                                         <div class="card-header">
                                             <div class="route-name">
-                                                <span class="pack-name">{{ truncateName(data.name)}}</span>
+                                                <span class="pack-name">{{ data.name}}</span>
                                             </div>
                                         </div>
                                         <div class="card-content">
@@ -179,7 +179,7 @@
                                                     <span *ngIf="data.bsn_type === 'AgencyGuide'"><mat-icon class="type-icon" matTooltip="Agency Guide">flight</mat-icon></span>
                                                 </div>
                                                 <div class="business-name">
-                                                    <span class="pack-name">{{ truncateName(data.bsn_name)}}</span>
+                                                    <span class="pack-name">{{ data.bsn_name}}</span>
                                                 </div>
                                             </div>
                                         </div>
