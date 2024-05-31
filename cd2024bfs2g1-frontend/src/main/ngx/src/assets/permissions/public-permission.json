@@ -66,6 +66,11 @@
         "attr": "graphics",
         "visible": false,
         "enabled": false
+      },
+      {
+        "attr": "home",
+        "visible": false,
+        "enabled": false
       }
       ],
       "routes": [
@@ -86,17 +91,18 @@
           "enabled": false
         },
         {
-          "permissionId": "mypacks",
-          "enabled": false
-        },
-        {
           "permissionId": "my-clients-permissions",
           "enabled": false
         },
         {
           "permissionId": "admin",
           "enabled": false
+        },
+        {
+          "permissionId": "home",
+          "enabled": false
         }
+
       ]
     }
   }
