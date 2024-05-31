@@ -22,10 +22,11 @@
 .div-table {
     display: flex;
     flex-direction: column;
-    height: 90%;
+    height: 100%;
     background-color: #e2dbd5;
     
 }
+
 
 
 ::ng-deep .o-table .o-table-container .mat-mdc-table .mat-mdc-row .mat-mdc-cell.grouping-row .grouping-title-wrapper{
@@ -57,4 +58,19 @@
 ::ng-deep .ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base{
     background-color: #4e4c4a !important;
     color: #e2dbd5 !important;
+    margin-bottom: 5px;
 }
+
+:host ::ng-deep .end_btn {
+    button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base {
+        background-color: #4e4c4a !important;
+        color: #e2dbd5 !important;
+        height: 36.3px;
+        width: 200px;
+    }
+    padding-left: 87.7%;
+    padding-bottom: 1.5%;
+    
+}
+
+

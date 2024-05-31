@@ -87,9 +87,10 @@ public class PackService implements IPackService {
             mapaDias.put("day_string", Integer.toString(i));
             dias.add(mapaDias);
         }
+
         List<List<Map<String, Object>>> lista_de_listas = new ArrayList<>();
         lista_de_listas.add(dias);
-        er.put(PackDao.PCK_ID, lista_de_listas);
+        er.put(PackDao.PCK_DAYS, lista_de_listas);
         return er;
     }
 

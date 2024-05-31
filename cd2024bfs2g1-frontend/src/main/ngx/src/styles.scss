@@ -249,8 +249,3 @@ o-app-sidenav.o-app-sidenav .o-app-header .o-user-info .o-user-info-wrapper, o-a
 .md-drppicker td.disabled {
   background-color:  rgb(221, 218, 212) !important;
 }
-
-/* Tamaño barras de ordenación */
-.mdc-text-field--filled:not(.mdc-text-field--disabled) {
-  min-width: 360px;
-}

@@ -8,8 +8,9 @@
 }
  
 .backButton {
-  height: 30px;
-  margin: 15px;
+  padding-right: 70px;
+  margin-top: 55px;
+  margin-left: 50px;
 }
  
 .arrow_back {
@@ -22,17 +23,19 @@
   font-weight: bold;
   text-align: center;
   background-color: #52733B;
-  margin: 0 auto;
-  max-width: 90%;
   color: #ffffff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+  width: 900px; 
+  max-width: 1100px;
+  margin-right: 200px;
+  margin-top: 75px;
 }
  
 .landmark-map {
-  height: 100%;
+  height: 117%;
   width: 100%;
-  margin-top: 70px;
+  margin-top: 20px;
   overflow: hidden;
   border-radius: 10px;
 }
@@ -45,11 +48,10 @@
   cursor: pointer;
 }
  
- 
 .container {
-  width: 220px;
+  width: 240px;
   height: 400px;
-  margin-top: 120px;
+  margin-top: 40px;
   margin-right: 20px;
   margin-left: 20px;
   padding: 15px;
@@ -65,10 +67,9 @@
   background-color: #e2dbd5;
 }
  
- 
 .landmarkName {
-  width: 160px;
-  height: 50px;
+  width: 180px;
+  height: 65px;
   font-family: "Arial", sans-serif;
   font-size: 17px;
   border: solid 2px;
@@ -88,8 +89,6 @@
   text-align: center;
   overflow-y: hidden;
   overflow-x: hidden;
- 
- 
 }
  
 .landmarkName:hover {

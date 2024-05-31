@@ -29,6 +29,7 @@ public class RoutePackService implements IRoutePackService {
         return this.daoHelper.query(this.routePackDao, keyMap, attrList,RoutePackDao.PCK_ROUTE_MULTI_QUERY);
     }
 
+
     @Override
     public EntityResult routePackInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.insert(this.routePackDao, attrMap);
