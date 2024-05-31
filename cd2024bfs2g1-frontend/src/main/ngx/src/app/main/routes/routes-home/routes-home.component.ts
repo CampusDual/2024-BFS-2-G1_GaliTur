@@ -16,7 +16,7 @@ galleryOptions: any;
   constructor(
     protected dialog: MatDialog,
     protected sanitizer: DomSanitizer,
-    private imageService: ImageService,
+    private imageService: ImageService
   ) { }
 
   ngOnInit() {
@@ -39,6 +39,7 @@ galleryOptions: any;
         });
         data['galleryImages'] = images
       }
+      
       this.dialog.open(RoutesDetailComponent, {
         height: '700px',
         width: '1200px',

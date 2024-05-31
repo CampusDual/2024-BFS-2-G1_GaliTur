@@ -34,7 +34,9 @@ export class RoutesDetailComponent implements OnInit{
         imageArrows: data.galleryImages && data.galleryImages.length > 1 ? true : false,
         preview: false
       }
-    ];
+    ]
+    this,dialogRef.disableClose = true;
+    
    }
 
   ngOnInit(){
@@ -87,6 +89,8 @@ export class RoutesDetailComponent implements OnInit{
 public backToHome(data: any): void {
   this.dialogRef.close()
 }
+
+
 
 getDifficultad(difficulty: number): string {
   switch(difficulty) {
