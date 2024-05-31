@@ -187,6 +187,9 @@ o-row{
  .mat-mdc-select-value {
     color: #e2dbd5 !important;
 }
+.mat-mdc-select-arrow {
+    color: #e2dbd5 !important;
+}
 }
 
 :host ::ng-deep.mdc-text-field--filled:not(.mdc-text-field--disabled) {
