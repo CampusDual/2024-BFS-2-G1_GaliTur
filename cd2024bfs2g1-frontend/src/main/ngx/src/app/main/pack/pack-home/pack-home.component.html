@@ -4,18 +4,18 @@
     <div class="filter">
       <!-- Name and number of days filters -->
       <div class="filter-column">
-        <o-text-input class="filter-element" attr="pck_name" read-only="no" fxFlex="100" label="Nombre" ></o-text-input>
-        <o-integer-input  attr="pck_days" label="Number of Days" min="0"></o-integer-input>
+        <o-text-input class="filter-element" attr="pck_name" read-only="no" fxFlex="100" label="{{'pck_name' | oTranslate}}" ></o-text-input>
+        <o-integer-input  attr="pck_days" label="{{'pck_days' | oTranslate}}" min="0"></o-integer-input>
       </div>
       <!-- Price filter -->
       <div class="filter-column">
-        <o-integer-input class="filter-element" attr="pck_price_min" label="Min Price" min="0"></o-integer-input>
-        <o-integer-input  attr="pck_price_max" label="Max Price" min="0"></o-integer-input>
+        <o-integer-input class="filter-element" attr="pck_price_min" label="{{'pck_price_min' | oTranslate}}" min="0"></o-integer-input>
+        <o-integer-input  attr="pck_price_max" label="{{'pck_price_max' | oTranslate}}" min="0"></o-integer-input>
       </div>
       <!-- Travellers and city filter -->
       <div class="filter-column">
-        <o-integer-input class="filter-element" attr="pck_participants" min="0" label="Number of Travelers" ></o-integer-input>
-        <o-combo  #comboCity attr="gui_c_name" label="Ciudad"  translate="yes"
+        <o-integer-input class="filter-element" attr="pck_participants" min="0" label="{{'pck_participants' | oTranslate}}" ></o-integer-input>
+        <o-combo  #comboCity attr="gui_c_name" label="{{'gui_c_name' | oTranslate}}"  translate="yes"
           query-method="query" sort="ASC" value-column="gui_c_name" required="no" service="guideCities" multiple="no" null-selection="yes" entity="guideCities"
           columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id"></o-combo>
       </div>
@@ -34,8 +34,9 @@
   
   <o-grid #packGrid attr="packGrid" title="PACKS" service="packs" entity="allPacks" keys="P.pck_id"
       columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;gui_c_name;img_code;pck_days;P.creation_date"
-      query-rows="8" page-size-options="8;16;24" orderable="true" sort-column="P.creation_date:desc"
-      sortable-columns="" quick-filter="false"  filter-case-sensitive="yes"
+      query-rows="8" page-size-options="8;16;24" orderable="true"
+      sort-column="creation_date:desc"
+      sortable-columns="pck_name;gui_c_name;creation_date;pck_name:desc;gui_c_name:desc;creation_date:desc" quick-filter="false"  filter-case-sensitive="yes"
       insert-button="true" refresh-button="false" pageable="yes" filter 
       pagination-controls="true" gutter-size="4px" fixed-header="yes" grid-item-height="280px" detail-mode="none"
       insert-button-floatable="no">
