@@ -229,6 +229,5 @@ export class AddActivitiesComponent {
   }
 
   public goBack(): void {
-    this.router.navigate(["main/packs"]);
-  }
+    this.router.navigate(['main/packs/' + AddActivitiesComponent.packId]);  }
 }
