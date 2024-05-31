@@ -44,7 +44,8 @@ public class RouteService  implements IRouteService {
     }
 
     @Override
-    public EntityResult routeLandmarkQuery(Map<String, Object> keyMap, List<String> attrList) {
+    public EntityResult routeImageQuery(Map<String, Object> keyMap, List<String> attrList) {
+       attrList.remove("route_id");
         return this.daoHelper.query(routeDao, keyMap, attrList, "multi");
     }
 
