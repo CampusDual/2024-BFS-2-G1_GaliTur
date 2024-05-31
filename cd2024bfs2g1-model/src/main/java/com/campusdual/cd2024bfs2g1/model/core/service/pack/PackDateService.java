@@ -1,14 +1,8 @@
 package com.campusdual.cd2024bfs2g1.model.core.service.pack;
 
 import com.campusdual.cd2024bfs2g1.api.core.service.pack.IPackDateService;
-import com.campusdual.cd2024bfs2g1.api.core.service.pack.IPackService;
-import com.campusdual.cd2024bfs2g1.model.core.dao.ImageDao;
-import com.campusdual.cd2024bfs2g1.model.core.dao.business.GuideCitiesDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDateDao;
-import com.campusdual.cd2024bfs2g1.model.core.service.ClientService;
-import com.campusdual.cd2024bfs2g1.model.core.service.ImageService;
-import com.campusdual.cd2024bfs2g1.model.core.service.business.GuideCitiesService;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
@@ -39,8 +33,22 @@ public class PackDateService implements IPackDateService {
     }
 
     @Override
+    public EntityResult packDateWithStateQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        if(keyMap.size()>0){
+            Object key = keyMap.remove(PackDateDao.PCK_ID);
+            keyMap.put("pd.pck_id", Integer.parseInt(key+""));
+        }
+        return this.daoHelper.query(this.packDateDao, keyMap, attrList, packDateDao.PD_W_STATE_QUERY);
+    }
+    @Override
+    public EntityResult packDateWithStateDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.delete(this.packDateDao, keyMap);
+    }
+
+    @Override
     public EntityResult packDateInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException, ParseException {
         return this.daoHelper.insert(this.packDateDao, attrMap);
+
     }
 
     @Override

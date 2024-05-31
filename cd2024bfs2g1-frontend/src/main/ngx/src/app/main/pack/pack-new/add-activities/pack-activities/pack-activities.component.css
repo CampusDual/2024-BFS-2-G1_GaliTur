@@ -64,7 +64,7 @@
     max-height: 200px;
     min-width: 200px; 
     min-height: 200px; 
-    object-fit: cover;
+    object-fit:contain;
     margin-bottom: 15px;
     margin-left: 15px;
     padding-top: 10px;
@@ -181,6 +181,9 @@ o-row{
 :host ::ng-deep .comboBoxDay{
     
  .mat-mdc-select-value {
+    color: #e2dbd5 !important;
+}
+.mat-mdc-select-arrow {
     color: #e2dbd5 !important;
 }
 }

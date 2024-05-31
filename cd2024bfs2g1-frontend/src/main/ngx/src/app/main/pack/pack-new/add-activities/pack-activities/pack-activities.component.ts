@@ -1,5 +1,5 @@
-import { Component, Injector, ViewChild } from "@angular/core";
-import { MatDialogRef } from "@angular/material/dialog";
+import { Component, Inject, Injector, ViewChild } from "@angular/core";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { DomSanitizer } from "@angular/platform-browser";
 import { ActivatedRoute } from "@angular/router";
 import { AddActivitiesComponent } from "../add-activities.component";
@@ -17,17 +17,22 @@ import {
   styleUrls: ["./pack-activities.component.css"],
 })
 export class PackActivitiesComponent {
+
   @ViewChild("table", { static: false }) table: OTableComponent;
   @ViewChild("comboBoxDay") comboBoxDay: OComboComponent;
 
   protected service: OntimizeService;
   protected bsn_service: OntimizeService;
+  protected businessService: OntimizeService;
   public arrayDias = [];
   public selectedDay;
   public selectedComboDay;
   selectedBusinessIds: any[] = [];
+  public AssignedBsn: any[];
+  public NotAsgBsn: any[]
 
-  constructor(
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
     protected sanitizer: DomSanitizer,
     private dialogRef: MatDialogRef<PackActivitiesComponent>,
     private activeRoute: ActivatedRoute,
@@ -36,17 +41,24 @@ export class PackActivitiesComponent {
   ) {
     this.service = this.injector.get(OntimizeService);
     this.bsn_service = this.injector.get(OntimizeService);
+    this.businessService = this.injector.get(OntimizeService);
+    console.log(data);
+
   }
 
   ngOnInit(): void {
     // this.table.clearSelection();
 
     console.log(
-      "Al emergente le llego el id: " + AddActivitiesComponent.packId
+      "Al emergente le llego el id: " + this.data.packId
     );
     this.configureService();
     this.getDays();
     this.table.clearSelection();
+
+    this.getBusiness();
+
+   
   }
 
   ngAfterViewInit() {
@@ -74,9 +86,16 @@ export class PackActivitiesComponent {
     this.bsn_service.configureService(conf);
   }
 
+  protected configureBusinessService() {
+    // Configure the service using the configuration defined in the `app.services.config.ts` file
+    const conf =
+      this.businessService.getDefaultServiceConfiguration("businesses");
+    this.businessService.configureService(conf);
+  }
+
   getDays() {
     const filter = {
-      pck_id: AddActivitiesComponent.packId,
+      pck_id: this.data.packId,
     };
     const columns = ["pck_name", "pck_days"];
     this.service.query(filter, columns, "packDays").subscribe((resp) => {
@@ -98,9 +117,66 @@ export class PackActivitiesComponent {
     });
   }
 
+  getAssignedBusiness() {
+
+    this.configureBsnService();
+    const filter = {
+      "BP.pck_id": parseInt(this.data.packId),
+      assigned_date: this.comboBoxDay.getValue()
+    };
+    const columns = ["BP.bsn_id","bsn_name","bsn_type","bsn_address","bsn_phone","bsn_photos","bsn_website","bsn_schedule"];
+    this.service.query(filter, columns, "packBusiness").subscribe((resp) => {
+      if (resp.code === 0) {
+        // resp.data contains the data retrieved from the server
+        this.AssignedBsn = resp.data;
+       
+      } else {
+        alert("Impossible to query data!");
+      }
+    });
+  }
+
+  getBusiness() {
+
+    this.configureBusinessService();
+
+    const filter = {
+      
+    };
+    const columns = ["bsn_id","bsn_name","bsn_type","bsn_address","bsn_phone","bsn_photos","bsn_website","bsn_schedule"];
+    this.service.query(filter, columns, "business").subscribe((resp) => {
+      if (resp.code === 0) {
+        // resp.data contains the data retrieved from the server
+        this.NotAsgBsn = resp.data;
+        this.NotAsgBsn = this.compareBusinessLists();
+        this.table.setDataArray(this.NotAsgBsn);
+       
+      } else {
+        alert("Impossible to query data!");
+      }
+    });
+  }
+
+  compareBusinessLists() {
+    if (this.AssignedBsn && this.NotAsgBsn) {
+        const assignedIds = new Set(this.AssignedBsn.map(bsn => bsn.bsn_id));
+        const notAssignedBsn = this.NotAsgBsn.filter(bsn => !assignedIds.has(bsn.bsn_id));
+        console.log('Businesses not assigned:', notAssignedBsn);
+        return notAssignedBsn;
+    } else {
+        console.warn('One or both lists are not defined yet.');
+        return [];
+    }
+}
+
+setBsnData() {
+  this.getAssignedBusiness();
+  this.getBusiness();
+  this.table.clearSelection();
+}
+
   insertBsnPack() {
     this.configureBsnService();
-  
     if (this.selectedBusinessIds.length === 0) {
       const config: OSnackBarConfig = {
         action: "",
@@ -117,7 +193,7 @@ export class PackActivitiesComponent {
       this.bsn_service
         .insert(
           {
-            pck_id: AddActivitiesComponent.packId,
+            pck_id: this.data.packId,
             assigned_date: this.comboBoxDay.getValue(),
             bsn_id: bp
           },
@@ -125,6 +201,7 @@ export class PackActivitiesComponent {
         )
         .subscribe(
           (resp) => {
+            this.setBsnData();
             this.table.clearSelection();
             const config: OSnackBarConfig = {
               action: "",
