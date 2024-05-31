@@ -33,7 +33,7 @@ export class PackClientDetailComponent {
 
   ngOnInit(): void {
     this.isPackInstance = false
-    this.isInstanceOfPack()
+    //this.isInstanceOfPack()
   }
 
   public getImageSrc(base64: any): any {
@@ -109,16 +109,16 @@ export class PackClientDetailComponent {
     return this.authService.isLoggedIn()
   }
 
-  private isInstanceOfPack(): void {
-    const confPack = this.ontimizeService.getDefaultServiceConfiguration('packDates');
-    this.packDateService.configureService(confPack);
-    this.packDateService.query({pck_id: + this.route.snapshot.params['pck_id']}, ['pck_id'], 'packDate')
-      .subscribe((result) => {
-        if (result.data[0] !== undefined){
-          this.isPackInstance = true
-        }
-      });
-  }
+  // private isInstanceOfPack(): void {
+  //   const confPack = this.ontimizeService.getDefaultServiceConfiguration('packDates');
+  //   this.packDateService.configureService(confPack);
+  //   this.packDateService.query({pck_id: + this.route.snapshot.params['pck_id']}, ['pck_id'], 'packDate')
+  //     .subscribe((result) => {
+  //       if (result.data[0] !== undefined){
+  //         this.isPackInstance = true
+  //       }
+  //     });
+  // }
 
   getCurrentDate(): string {
     return formatDate(new Date(), 'yyyy-MM-dd', 'en');

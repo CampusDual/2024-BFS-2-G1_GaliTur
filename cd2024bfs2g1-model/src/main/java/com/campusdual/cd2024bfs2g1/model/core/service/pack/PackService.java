@@ -122,13 +122,24 @@ public class PackService implements IPackService {
         }
         return this.daoHelper.query(this.packDao, keysValues, attributes, this.packDao.PCK_DETAIL);
     }
+
+    @Override
+    public EntityResult packAndBookingDetailQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        if(keysValues.containsKey(PackDao.PCK_ID)){
+            Object key = keysValues.remove("pck_id");
+            keysValues.put("p.pck_id", key);
+        }
+        attributes.remove(PackDao.PCK_ID);
+        return this.daoHelper.query(this.packDao, keysValues, attributes, this.packDao.PCK_MULTI_QUERY);
+    }
     @Override
     public EntityResult packCancelDetailQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
         if(keysValues.containsKey(PackDao.PCK_ID)){
             Object key = keysValues.remove("pck_id");
             keysValues.put("p.pck_id", key);
         }
-        return this.daoHelper.query(this.packDao, keysValues, attributes, this.packDao.PCK_CANCEL_DETAIL);
+        EntityResult result = this.daoHelper.query(this.packDao, keysValues, attributes, this.packDao.PCK_CANCEL_DETAIL);
+        return result;
     }
 
     @Override
@@ -138,9 +149,10 @@ public class PackService implements IPackService {
     }
 
     @Override
-    public AdvancedEntityResult packClientPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
+    public AdvancedEntityResult packClientPaginationQuery(Map<String, Object> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
             throws OntimizeJEERuntimeException {
-        return this.daoHelper.paginationQuery(this.packDao, keysValues, attributes, recordNumber, startIndex, orderBy, this.packDao.PCK_ALL_QUERY);
+        keysValues.put(ClientDao.CLIENT_ID, clientService.getClientId());
+        return this.daoHelper.paginationQuery(this.packDao, keysValues, attributes, recordNumber, startIndex, orderBy, this.packDao.PCK_MULTI_QUERY);
     }
 
     @Override
