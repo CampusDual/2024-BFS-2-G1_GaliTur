@@ -2,7 +2,7 @@ import { Component, Injector, ViewChild } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { PackActivitiesComponent } from "./pack-activities/pack-activities.component";
 import { ActivatedRoute, Router } from "@angular/router";
-import { FilterExpressionUtils, OTableComponent, OntimizeService } from "ontimize-web-ngx";
+import { DialogService, FilterExpressionUtils, ODialogConfig, OSnackBarConfig, OTableComponent, OTranslateService, OntimizeService, SnackBarService } from "ontimize-web-ngx";
 import { PackRoutesComponent } from "./pack-routes/pack-routes.component";
 
 @Component({
@@ -11,6 +11,7 @@ import { PackRoutesComponent } from "./pack-routes/pack-routes.component";
   styleUrls: ["./add-activities.component.css"],
 })
 export class AddActivitiesComponent {
+
   @ViewChild("tableBsn", { static: false }) tableBsn: OTableComponent;
   @ViewChild("tableRoutes", { static: false }) tableRoutes: OTableComponent;
   static packId: any;
@@ -22,7 +23,10 @@ export class AddActivitiesComponent {
     protected dialog: MatDialog,
     private activeRoute: ActivatedRoute,
     protected injector: Injector,
-    private router: Router
+    private router: Router,
+    protected snackBarService: SnackBarService,
+    protected dialogService: DialogService,
+    private oTranslate: OTranslateService
   ) {
     this.service = this.injector.get(OntimizeService);
   }
@@ -33,6 +37,127 @@ export class AddActivitiesComponent {
     this.getBsn();
     this.getRoute();
   }
+  
+
+  deleteBsn() {
+    const config: ODialogConfig = {
+      icon: "warning",
+      alertType: "warn",
+    };
+    // Obtener las filas seleccionadas
+    const selectedItems = this.tableBsn.getSelectedItems();
+
+    if (selectedItems.length === 0) {
+      const config: OSnackBarConfig = {
+        action: "",
+        milliseconds: 2000,
+        icon: "error",
+        iconPosition: "left",
+        cssClass: "snackbar",
+      };
+      this.snackBarService.open("BSNPACK.ERROR.DELETE", config);
+      return;
+    }
+
+    // Obtener los IDs de los registros seleccionados
+    const idsToDelete = selectedItems.map(item => item.bsn_pack_id);
+    if (this.dialogService) {
+      this.dialogService.confirm(
+        this.oTranslate.get("BSN-DELETE-DIALOG"),
+        this.oTranslate.get("BSN-DELETE-DIALOG-B"),
+        config
+      );
+      this.dialogService.dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+           // Confirmación de eliminación
+   
+      const conf = this.service.getDefaultServiceConfiguration("businessPacks");
+      this.service.configureService(conf);
+
+      // Eliminar cada registro
+      idsToDelete.forEach(id => {
+        const filter = { "bsn_pack_id": id };
+        this.service.delete(filter, "businessPack").subscribe((resp) => {
+          if (resp.code === 0) {
+            console.log(`Deleted bsn_pack_id: ${id}`);
+            // Actualizar la tabla después de la eliminación
+            this.getBsn();
+            const config: OSnackBarConfig = {
+              action: "",
+              milliseconds: 2000,
+              icon: "check",
+              iconPosition: "left",
+              cssClass: "snackbar",
+            };
+            this.snackBarService.open("BSNPACK.DELETE", config);
+          } else {
+            alert(`Failed to delete bsn_pack_id: ${id}`);
+          }
+        });
+      });
+      };
+    })
+  }}
+
+  deleteRoute() {
+    const config: ODialogConfig = {
+      icon: "warning",
+      alertType: "warn",
+    };
+    // Obtener las filas seleccionadas
+    const selectedItems = this.tableRoutes.getSelectedItems();
+
+    if (selectedItems.length === 0) {
+      const config: OSnackBarConfig = {
+        action: "",
+        milliseconds: 2000,
+        icon: "error",
+        iconPosition: "left",
+        cssClass: "snackbar",
+      };
+      this.snackBarService.open("ROUTEPACK.ERROR.DELETE", config);
+      return;
+    }
+
+    // Obtener los IDs de los registros seleccionados
+    const idsToDelete = selectedItems.map(item => item.route_pack_id);
+    if (this.dialogService) {
+      this.dialogService.confirm(
+        this.oTranslate.get("ROUTE-DELETE-DIALOG"),
+        this.oTranslate.get("ROUTE-DELETE-DIALOG-B"),
+        config
+      );
+      this.dialogService.dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+           // Confirmación de eliminación
+   
+      const conf = this.service.getDefaultServiceConfiguration("routePacks");
+      this.service.configureService(conf);
+
+      // Eliminar cada registro
+      idsToDelete.forEach(id => {
+        const filter = { "route_pack_id": id };
+        this.service.delete(filter, "routePack").subscribe((resp) => {
+          if (resp.code === 0) {
+            console.log(`Deleted route_pack_id: ${id}`);
+            // Actualizar la tabla después de la eliminación
+            this.getRoute();
+            const config: OSnackBarConfig = {
+              action: "",
+              milliseconds: 2000,
+              icon: "check",
+              iconPosition: "left",
+              cssClass: "snackbar",
+            };
+            this.snackBarService.open("ROUTEPACK.DELETE", config);
+          } else {
+            alert(`Failed to delete route_pack_id: ${id}`);
+          }
+        });
+      });
+      };
+    })
+  }}
 
 
   addActivity() {
