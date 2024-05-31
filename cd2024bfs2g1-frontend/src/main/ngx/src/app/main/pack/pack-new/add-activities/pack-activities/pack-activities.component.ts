@@ -119,7 +119,6 @@ export class PackActivitiesComponent {
   getAssignedBusiness() {
 
     this.configureBsnService();
-
     const filter = {
       "BP.pck_id": parseInt(AddActivitiesComponent.packId),
       assigned_date: this.comboBoxDay.getValue()
