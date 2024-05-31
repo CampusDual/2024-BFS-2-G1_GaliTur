@@ -154,14 +154,14 @@ export class PackRoutesComponent {
   }
 
   compareLists() {
-    if (this.AssignedRoutes && this.NotAsgRoutes) {
+    if (this.AssignedRoutes[0] && this.NotAsgRoutes) {
         const assignedIds = new Set(this.AssignedRoutes.map(rou => rou.route_id));
         const notAssignedRoutes = this.NotAsgRoutes.filter(rou => !assignedIds.has(rou.route_id));
         console.log('Routes not assigned:', notAssignedRoutes);
         return notAssignedRoutes;
     } else {
         console.warn('One or both lists are not defined yet.');
-        return [];
+        return this.NotAsgRoutes;
     }
 }
 

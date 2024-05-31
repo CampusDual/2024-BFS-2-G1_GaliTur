@@ -158,14 +158,14 @@ export class PackActivitiesComponent {
   }
 
   compareBusinessLists() {
-    if (this.AssignedBsn && this.NotAsgBsn) {
+    if (this.AssignedBsn[0] && this.NotAsgBsn) {
         const assignedIds = new Set(this.AssignedBsn.map(bsn => bsn.bsn_id));
         const notAssignedBsn = this.NotAsgBsn.filter(bsn => !assignedIds.has(bsn.bsn_id));
         console.log('Businesses not assigned:', notAssignedBsn);
         return notAssignedBsn;
     } else {
         console.warn('One or both lists are not defined yet.');
-        return [];
+        return this.NotAsgBsn;
     }
 }
 
