@@ -18,6 +18,8 @@ galleryOptions: any;
   constructor(
     protected dialog: MatDialog,
     protected sanitizer: DomSanitizer,
+    private imageService: ImageService
+  ) { }
     private imageService: ImageService,
     private ontimizerouteService: OntimizeService,
     private activeRoute: ActivatedRoute
@@ -70,6 +72,7 @@ galleryOptions: any;
         });
         data['galleryImages'] = images
       }
+      
       this.dialog.open(RoutesDetailComponent, {
         height: '700px',
         width: '1200px',

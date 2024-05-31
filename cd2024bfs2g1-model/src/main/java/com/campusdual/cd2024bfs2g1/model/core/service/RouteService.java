@@ -18,8 +18,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-import static com.campusdual.cd2024bfs2g1.model.core.dao.RouteDao.QUERY_ROUTE_IMAGE;
-
 @Lazy
 @Service("RouteService")
 public class RouteService  implements IRouteService {
@@ -43,6 +41,12 @@ public class RouteService  implements IRouteService {
     @Override
     public EntityResult routeQuery(Map<String, Object> keyMap, List<String> attrList) {
         return this.daoHelper.query(routeDao, keyMap, attrList);
+    }
+
+    @Override
+    public EntityResult routeImageQuery(Map<String, Object> keyMap, List<String> attrList) {
+       attrList.remove("route_id");
+        return this.daoHelper.query(routeDao, keyMap, attrList, "multi");
     }
 
     @Override
@@ -109,5 +113,10 @@ public class RouteService  implements IRouteService {
     @Override
     public AdvancedEntityResult routePaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy) throws OntimizeJEERuntimeException {
         return this.daoHelper.paginationQuery(this.routeDao, keysValues, attributes, recordNumber, startIndex, orderBy, RouteDao.QUERY_ROUTE_IMAGE);
+    }
+
+    @Override
+    public EntityResult routesOfPackQuery(Map<String, Object> keyMap, List<String> attrList) {
+        return this.daoHelper.query(routeDao, keyMap, attrList, routeDao.QUERY_ROUTES_OF_PACK);
     }
 }

@@ -35,7 +35,9 @@ export class RoutesDetailComponent implements OnInit{
         imageArrows: data.galleryImages && data.galleryImages.length > 1 ? true : false,
         preview: false
       }
-    ];
+    ]
+    this,dialogRef.disableClose = true;
+    
    }
 
   ngOnInit(){
@@ -54,6 +56,18 @@ export class RoutesDetailComponent implements OnInit{
         });
       })
   }
+
+  public backToHome(data:any): void {
+    const previousUrl = history.state && history.state.previousUrl ? history.state.previousUrl : '';
+    //Si el usuario viene de packs-detail redigir a la url anterior para que vea el pack en el que estaba
+    if (previousUrl.includes('packs')) {
+      this.router.navigateByUrl(previousUrl)
+      this.dialogRef.close();
+     //Si el usuario viene de routes home actuar como el metodo backToHome original
+    } else {
+      this.dialogRef.close();
+    }
+}
 
   public convertTime(minutos: number):  string {
 
@@ -85,9 +99,9 @@ export class RoutesDetailComponent implements OnInit{
 
   }
 
-public backToHome(data: any): void {
-  this.dialogRef.close()
-}
+
+
+
 
 getDifficultad(difficulty: number): string {
   switch(difficulty) {
