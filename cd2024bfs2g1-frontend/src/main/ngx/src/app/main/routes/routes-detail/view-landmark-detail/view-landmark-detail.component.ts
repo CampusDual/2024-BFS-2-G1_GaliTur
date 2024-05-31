@@ -14,7 +14,9 @@ export class ViewLandmarkDetailComponent {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
   private dialogRef: MatDialogRef<ViewLandmarkDetailComponent>
-) { }
+) { 
+  this,dialogRef.disableClose = true;
+}
 
 
   ngAfterViewInit() {

@@ -158,6 +158,9 @@
 
 .full-page {
     height: 77vh;
+    .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+        width: 32vh;
+    }
     .o-data-toolbar {
         align-items: start;
         .title {
