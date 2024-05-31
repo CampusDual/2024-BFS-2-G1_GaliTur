@@ -289,8 +289,8 @@
 /* Estilos del contenedor de los o-grid de laas rutas y los negocios */
 .o-grid-container {
     width: 100%;
-    max-height: 300px;
-    height: 300px;
+    max-height: 310px;
+    height: 310px;
     padding: 0px;
     margin:0px;
     display: flex;
