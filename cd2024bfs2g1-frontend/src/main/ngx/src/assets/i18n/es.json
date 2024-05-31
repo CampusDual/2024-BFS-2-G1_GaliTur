@@ -98,8 +98,8 @@
   "bsn_address": "Dirección",
   "bsn_phone": "Teléfono",
   "bsn_email": "Correo Electrónico",
-  "bsn_creation_date": "Fecha de Creación",
-  "bsn_down_date": "Fecha de Cierre",
+  "bsn_creation_date": "Fecha de creación",
+  "bsn_down_date": "Fecha de cierre",
   "bsn_photos": "Fotos",
   "bsn_website": "Sitio Web",
   "bsn_schedule": "Horario",
@@ -345,7 +345,7 @@
   "creation_date": "Fecha de creación",
   "PEOPLE": "Personas",
   "PERSON": "Persona",
-  "CANCEL": "NO",
+  "CANCEL": "Cancelar",
   "CANCEL-PACK": "Cancelar Pack",
   "CANCEL-BOOKING-DIALOG": "Confirme cancelar",
   "CANCEL-BOOKING-DIALOG-B": "¿Quiere cancelar la reserva?",
@@ -372,6 +372,8 @@
   "BSN-DELETE-DIALOG": "Desasignar Negocio",
   "BSN-DELETE-DIALOG-B": "¿Está seguro/a de que desea desasignar este negocio?",
   "ROUTE-DELETE-DIALOG": "Desasignar Ruta",
-  "ROUTE-DELETE-DIALOG-B": "¿Está seguro/a de que desea desasignar esta ruta?"
-
+  "ROUTE-DELETE-DIALOG-B": "¿Está seguro/a de que desea desasignar esta ruta?",
+  "pck_price_min": "Precio mínimo",
+  "pck_price_max": "Precio máximo",
+  "pck_days": "Días"
 }

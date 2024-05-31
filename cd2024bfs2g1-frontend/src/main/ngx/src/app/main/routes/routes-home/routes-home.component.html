@@ -14,7 +14,6 @@
   quick-filter-columns="name;difficulty"
   filter-case-sensitive="yes"
   pageable="yes"
-  quick-filter="yes"
   pagination-controls="true"
   gutter-size="8px"
   fixed-header="yes"
@@ -88,7 +87,8 @@
           </span>
           <ng-template #no_estimated_duration>
             <div class="tooltipHomeDuration">
-              <a><mat-icon class="clockTooltipHome">schedule</mat-icon>-</a>              <span class="tooltiptextHomeDuration">{{
+              <a><mat-icon class="clockTooltipHome">schedule</mat-icon>-</a>
+              <span class="tooltiptextHomeDuration">{{
                 "N0_ESTIMATED_DURATION" | oTranslate
               }}</span>
             </div>

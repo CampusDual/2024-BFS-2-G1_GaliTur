@@ -12,7 +12,7 @@ const routes: Routes = [
       }
     }
   },
-  {path: ':pck_id', component: PackClientDetailComponent}
+  {path: ':pbk_booking_id', component: PackClientDetailComponent}
 ];
 
 @NgModule({
