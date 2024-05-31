@@ -1,5 +1,6 @@
 package com.campusdual.cd2024bfs2g1.api.core.service.pack;
 
+import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 
@@ -18,4 +19,6 @@ public interface IBusinessPackService {
     EntityResult businessPackUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
     EntityResult businessPackDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
+
+   // AdvancedEntityResult businessPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy);
 }

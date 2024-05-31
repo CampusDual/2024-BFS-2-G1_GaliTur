@@ -24,10 +24,15 @@ export class PackRoutesComponent {
 
   protected service: OntimizeService;
   protected route_service: OntimizeService;
+  protected routesService: OntimizeService;
+
   public arrayDias = [];
   public selectedDay;
   public selectedComboDay;
   selectedRoutesIds: any[] = [];
+  public AssignedRoutes: any[];
+  public NotAsgRoutes: any[]
+
 
   constructor(
     protected sanitizer: DomSanitizer,
@@ -39,6 +44,7 @@ export class PackRoutesComponent {
   ) {
     this.service = this.injector.get(OntimizeService);
     this.route_service = this.injector.get(OntimizeService);
+    this.routesService = this.injector.get(OntimizeService);
   }
 
   ngOnInit(): void {
@@ -75,6 +81,13 @@ export class PackRoutesComponent {
     this.route_service.configureService(conf);
   }
 
+  protected configureRoutesService() {
+    // Configure the service using the configuration defined in the `app.services.config.ts` file
+    const conf =
+      this.routesService.getDefaultServiceConfiguration("routes");
+    this.routesService.configureService(conf);
+  }
+
   getDays() {
     const filter = {
       pck_id: AddActivitiesComponent.packId,
@@ -98,6 +111,64 @@ export class PackRoutesComponent {
       }
     });
   }
+
+  getAssignedRoutes() {
+
+    this.configureRouteService();
+
+    const filter = {
+      "R.pck_id": parseInt(AddActivitiesComponent.packId),
+      assigned_date: this.comboBoxDay.getValue()
+    };
+    const columns = ["R.route_id","name","estimated_duration","difficulty","description"];
+    this.service.query(filter, columns, "routePack").subscribe((resp) => {
+      if (resp.code === 0) {
+        // resp.data contains the data retrieved from the server
+        this.AssignedRoutes = resp.data;
+       
+      } else {
+        alert("Impossible to query data!");
+      }
+    });
+  }
+
+  getRoutes() {
+
+    this.configureRoutesService();
+
+    const filter = {
+      
+    };
+    const columns = ["R.route_id","name","estimated_duration","difficulty","description"];
+    this.service.query(filter, columns, "routeImage").subscribe((resp) => {
+      if (resp.code === 0) {
+        // resp.data contains the data retrieved from the server
+        this.NotAsgRoutes = resp.data;
+        this.NotAsgRoutes = this.compareLists();
+        this.table.setDataArray(this.NotAsgRoutes);
+       
+      } else {
+        alert("Impossible to query data!");
+      }
+    });
+  }
+
+  compareLists() {
+    if (this.AssignedRoutes && this.NotAsgRoutes) {
+        const assignedIds = new Set(this.AssignedRoutes.map(rou => rou.route_id));
+        const notAssignedRoutes = this.NotAsgRoutes.filter(rou => !assignedIds.has(rou.route_id));
+        console.log('Routes not assigned:', notAssignedRoutes);
+        return notAssignedRoutes;
+    } else {
+        console.warn('One or both lists are not defined yet.');
+        return [];
+    }
+}
+
+setRoutesData() {
+  this.getAssignedRoutes();
+  this.getRoutes();
+}
 
   insertRoutePack() {
     this.configureRouteService();
@@ -126,6 +197,7 @@ export class PackRoutesComponent {
         )
         .subscribe(
           (resp) => {
+            this.setRoutesData();
             this.table.clearSelection();
             const config: OSnackBarConfig = {
               action: "",

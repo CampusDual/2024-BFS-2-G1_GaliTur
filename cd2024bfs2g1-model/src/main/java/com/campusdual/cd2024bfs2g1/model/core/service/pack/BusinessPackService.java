@@ -1,7 +1,9 @@
 package com.campusdual.cd2024bfs2g1.model.core.service.pack;
 
 import com.campusdual.cd2024bfs2g1.api.core.service.pack.IBusinessPackService;
+import com.campusdual.cd2024bfs2g1.model.core.dao.business.BusinessDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.pack.BusinessPackDao;
+import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
@@ -18,6 +20,7 @@ public class BusinessPackService implements IBusinessPackService {
 
     private final DefaultOntimizeDaoHelper daoHelper;
     private final BusinessPackDao businessPackDao;
+    private BusinessDao businessDao;
 
 
     @Autowired
@@ -40,6 +43,7 @@ public class BusinessPackService implements IBusinessPackService {
 
     @Override
     public EntityResult businessPackInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
+
         return this.daoHelper.insert(this.businessPackDao, attrMap);
     }
 
@@ -52,4 +56,9 @@ public class BusinessPackService implements IBusinessPackService {
     public EntityResult businessPackDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.delete(this.businessPackDao, keyMap);
     }
+
+//    @Override
+//    public AdvancedEntityResult businessPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy) {
+//        return this.daoHelper.paginationQuery(this.businessDao, keysValues, attributes, recordNumber, startIndex, orderBy, BusinessDao.QUERY_ALL_BUSINESSES);
+//    }
 }
