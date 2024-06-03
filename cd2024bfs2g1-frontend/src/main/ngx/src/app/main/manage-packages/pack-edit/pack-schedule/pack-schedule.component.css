@@ -3,6 +3,10 @@
     padding: 0px;
 }
 
+.fondoTrajeta{
+    background-color: #eee4db;
+}
+
 .form_principal{
     height: auto;
     background-color: #eee4db;
