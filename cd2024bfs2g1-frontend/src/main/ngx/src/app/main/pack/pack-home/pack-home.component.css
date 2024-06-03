@@ -165,7 +165,6 @@
 }
 
 .filter-button {
-    flex-direction: row;
     align-items: start;
     margin-top: 10px;
 }
