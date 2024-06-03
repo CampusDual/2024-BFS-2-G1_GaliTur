@@ -1,6 +1,7 @@
+<div class="fondoTrajeta">
 <o-form attr="packDateNew" label-header-align="start" mode="insert" 
   label-header="{{ 'SCHEDULE_PACKS' | oTranslate }}" keys="pd_id" fxLayout="column"  service="packDates" entity="packDate" query-on-init="false" 
-  keys-sql-types="integer" ignore-default-navigation="yes" (insert-method)="onInsertPackDate()" show-header="no">
+  keys-sql-types="integer" ignore-default-navigation="yes" (insert-method)="onInsertPackDate()" show-header="no" >
   <div class="div_principal" fxLayout="column" fxLayoutGap="16px">
     <div class="tituloTabla">
       <p>{{'SCHEDULE_PACKS' | oTranslate}}</p>
@@ -28,4 +29,5 @@
     </div>
   </div>
 </o-form>
+</div>
 
