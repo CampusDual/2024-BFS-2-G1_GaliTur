@@ -5,13 +5,14 @@
     show-header="yes" message-service-type="customMessageManagePack" show-header-navigation="no" class="custom-form">
     <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no"  show-header-navigation="no" oHidden></o-text-input>
     <div fxloyout="column" class="contenedorTodo">
-        <div fxLayout="row" class="principal" fxLayoutAlign="center" fxLayoutGap="100px">
+            <div class="column"class="principal">
+                <div class="tituloTabla">
+                    <p class="letrasTitulo">{{'PACKS_INFO' | oTranslate}}</p>
+                </div>
+            <div fxLayout="row"  fxLayoutAlign="center" fxLayoutGap="100px">
             <div fxLayout="column" fxLayoutGap="16px" class="contenedor_arriba">
                 <div class="datosContainer">
                     <div fxLayout="column" fxLayoutGap="16px" class="contenido_datos">
-                            <div class="tituloTabla">
-                                <p class="letrasTitulo">{{'PACKS_INFO' | oTranslate}}</p>
-                            </div>
                     <div fxLayout="row" fxLayoutGap="16px">
                         <o-text-input #packNameInput fxFlex="100" (onValueChange)="onNameChange($event)" attr="pck_name" required="yes"></o-text-input>
                     </div>
@@ -36,7 +37,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+        </div>
             <div fxLayout="column">
                 <o-form attr="packsImageTable" service="packs" entity="packImage" keys="pck_id;imp_id"
                 parent-keys="pck_id" message-service-type="customMessageManagePack" show-header="yes" show-header-navigation="no" class="contenedor_imagen">
@@ -44,6 +45,7 @@
                     <o-image id="img_code" attr="img_code" empty-image="assets/images/no-image.png" sql-type="OTHER" class="imagen"></o-image>
                 </o-form>
             </div>
+        </div>
         </div>
         <div class="contenedorTabla">
             <div class="bordeTabla" fxlayout="column">
