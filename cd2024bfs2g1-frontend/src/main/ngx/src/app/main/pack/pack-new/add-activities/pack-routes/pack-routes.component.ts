@@ -137,7 +137,6 @@ export class PackRoutesComponent {
     this.configureRoutesService();
 
     const filter = {
-      
     };
     const columns = ["R.route_id","name","estimated_duration","difficulty","description"];
     this.service.query(filter, columns, "routeImage").subscribe((resp) => {
