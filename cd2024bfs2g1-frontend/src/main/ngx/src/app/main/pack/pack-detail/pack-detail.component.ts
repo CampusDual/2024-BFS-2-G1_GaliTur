@@ -54,7 +54,6 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.isPackInstance = false
-    this.configureServices()
     this.isInstanceOfPack()
     this.getDays()
   }
@@ -114,15 +113,6 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
       });
     }
   }
-
-  protected configureServices() {
-    // Configure the service using the configuration defined in the `app.services.config.ts` file
-    const confBooking = this.bookingService.getDefaultServiceConfiguration("packBookings");
-    this.bookingService.configureService(confBooking);
-    const confPack = this.packDateService.getDefaultServiceConfiguration('packDates');
-    this.packDateService.configureService(confPack);
-  }
-
   insertBooking(data) {
     const confBooking = this.bookingService.getDefaultServiceConfiguration("packBookings");
     this.bookingService.configureService(confBooking);
@@ -165,7 +155,6 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
             date.pd_date_end = new Date(date.pd_date_end).toLocaleDateString()
           })
           this.packDateCombo.setDataArray(result.data)
-          // console.log(this.availableDates)
         }
       });
   }
