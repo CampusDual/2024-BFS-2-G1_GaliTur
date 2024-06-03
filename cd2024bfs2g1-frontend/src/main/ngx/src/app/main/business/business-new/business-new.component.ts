@@ -27,7 +27,6 @@ export class BusinessNewComponent {
       value: "Agency guide"
     }
   ]
-  form: any;
 
   insertBusiness($event:Event){
     this.router.navigate(['main/businesses/'])
