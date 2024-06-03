@@ -30,7 +30,7 @@ ontimize:
       upper-like: true
   security:
     mode: default
-    ignore-paths: '/index.html,/app/**,/error,/test,/ontimize/health,/restapi/**,/swagger-ui/**,/clients/client,/merchants/merchant,/users/user,/users/user/search,/packs/allPacks/search,/packs/allPacks/advancedsearch,/guideCities/guideCities/search,/imagePacks/imagePack/search,/guideZones/guideZone/search,/businesses/business/advancedsearch,/routes/route/advancedsearch,/routes/image/search,/businesses/business/search,/restaurants/restaurant/search,/agencyGuides/agencyGuide/search,/hotels/hotel/search,/hotelServices/hotelServices/search,/hotelRooms/hotelRooms/search,/landmarks/landmark/search,/packDates/packDate/search,/packs/pack/search,/packs/packDetail/search'
+    ignore-paths: '/index.html,/app/**,/error,/test,/ontimize/health,/restapi/**,/swagger-ui/**,/clients/client,/merchants/merchant,/users/user,/users/user/search,/packs/allPacks/search,/packs/allPacks/advancedsearch,/guideCities/guideCities/search,/imagePacks/imagePack/search,/guideZones/guideZone/search,/businesses/business/advancedsearch,/routes/route/advancedsearch,/routes/image/search,/businesses/business/search,/restaurants/restaurant/search,/agencyGuides/agencyGuide/search,/hotels/hotel/search,/hotelServices/hotelServices/search,/hotelRooms/hotelRooms/search,/landmarks/landmark/search,/packDates/packDate/search,/packs/pack/search,/packs/packDetail/search,/businesses/businessOfPack/search,/routes/routesOfPack/search,/packs/packDays/search,/routes/route/search'
     role-information-service:
       role-repository: RoleDao
       role-name-column: rol_name

@@ -66,9 +66,9 @@
                         </span>
                     </span>
                 </span>
+                <div  class="reserve-container" *ngIf="checkAuthStatus() && parsePermissions('reserve-container')"> 
 
                 <!-- Combo box que muestra los intervalos de fechas disponibles para la reserva con su botón correspondiente -->
-                <div class="reserve-container" *ngIf="checkAuthStatus()"> 
                     <div class="div-combo-container">
                         <o-combo class="combo-box-dates" label="{{ 'COMBO-BOX-RESERVE-TITLE' | oTranslate }}" null-selection="false"></o-combo>
                     </div>

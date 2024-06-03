@@ -12,7 +12,6 @@ import { NavigationExtras, Router } from '@angular/router';
 })
 export class BusinessHomeComponent {
   public showWaitForLongTask = false;
-  form: any;
 
   constructor(
     private ontimizeService: OntimizeService,
@@ -44,18 +43,5 @@ export class BusinessHomeComponent {
     } else {
         return name;
     }
-  }
-  parsePermissions(attr: string): boolean {
-
-    // if oattr in form, it can have permissions
-    if (!this.form || !Util.isDefined(this.form.oattr)) {
-      return;
-    }
-      const permissions: OPermissions = this.form.getFormActionsPermissions(attr)
-
-      if (!Util.isDefined(permissions)) {
-        return true
-      }
-      return permissions.visible
   }
 }

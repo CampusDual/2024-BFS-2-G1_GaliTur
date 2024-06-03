@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '', component: ManageAllPacksComponent,  data: {
       oPermission: {
-        permissionId: 'my-clients-permissions',
+        permissionId: 'PackEdit',
         restrictedPermissionsRedirect: '403'
       }
     }

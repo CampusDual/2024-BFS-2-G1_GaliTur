@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OFormComponent, OTableComponent, OntimizeService } from 'ontimize-web-ngx';
 

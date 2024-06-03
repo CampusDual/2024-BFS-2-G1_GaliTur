@@ -12,6 +12,8 @@ import {
   SnackBarService, AuthService,
   Expression,
   FilterExpressionUtils,
+  OPermissions,
+  Util,
 } from "ontimize-web-ngx";
 import { PackHomeComponent } from "../pack-home/pack-home.component";
 
@@ -22,7 +24,6 @@ import { PackHomeComponent } from "../pack-home/pack-home.component";
 })
 export class PackDetailComponent {
   @ViewChild("form") formPack: OFormComponent;
-  @ViewChild("form") formPackAndDetails: OFormComponent;
 
   protected isPackInstance: boolean
 
@@ -62,11 +63,9 @@ export class PackDetailComponent {
   }
 
   public openPacks(): void {
-    if (PackHomeComponent.page == 1 || !PackHomeComponent.page) {
-      this.router.navigate(["main/packs"]);
-    } else {
-      this.router.navigate(["main/pack-client"]);
-    }
+  
+      this.router.navigate(["../"], {relativeTo: this.activeRoute});
+  
   }
 
   diferenciaDias(fechaInicio: number, fechaFin: number): number {
@@ -145,23 +144,23 @@ export class PackDetailComponent {
 
   //Metodos para redirect dinamico de business
   openDetailBusiness(data: any): void {
-    this.router.navigate(['main/businesses/' + data.bsn_id]);
     const currentUrl = this.router.url; // Capturar la URL actual
     const navigationExtras: NavigationExtras = {
-      state: { previousUrl: currentUrl } // Enviar la URL actual como navigation state
+      state: { previousUrl: currentUrl },
+      relativeTo: this.activeRoute // Enviar la URL actual como navigation state
     };
-    this.router.navigate(['main/businesses/' + data.bsn_id], navigationExtras);
+    this.router.navigate(['../../businesses/' + data.bsn_id], navigationExtras);
   }
 
 
   //Metodo para redirect dinamico de rutas
   openDetailRoutes(data: any): void {
-    this.router.navigate(['main/routes/' + data.route_id]);
     const currentUrl = this.router.url; // Capturar la URL actual
     const navigationExtras: NavigationExtras = {
-      state: { previousUrl: currentUrl } // Enviar la URL actual como navigation state
+      state: { previousUrl: currentUrl }, 
+      relativeTo: this.activeRoute  // Enviar la URL actual como navigation state
     };
-    this.router.navigate(['main/routes/' + data.route_id], navigationExtras);
+    this.router.navigate(['../../routes/' + data.route_id], navigationExtras);
   }
 
 
@@ -263,5 +262,18 @@ export class PackDetailComponent {
 
   checkAuthStatus(){
     return !this.authService.isLoggedIn()
+  }
+  parsePermissions(attr: string): boolean {
+
+    // if oattr in form, it can have permissions
+    if (!this.formPack || !Util.isDefined(this.formPack.oattr)) {
+      return;
+    }
+      const permissions: OPermissions = this.formPack.getFormComponentPermissions(attr)
+
+      if (!Util.isDefined(permissions)) {
+        return true
+      }
+      return permissions.visible
   }
 }
