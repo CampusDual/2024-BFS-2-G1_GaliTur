@@ -68,7 +68,7 @@ galleryOptions: any;
         });
         data['galleryImages'] = images
       }
-      
+
       this.dialog.open(RoutesDetailComponent, {
         height: '700px',
         width: '1200px',
@@ -77,7 +77,7 @@ galleryOptions: any;
     })
   }
 
-  
+
 
   /*Pasar minutos introducidos a h y min*/
   public convertTime(minutos: number):  string {
