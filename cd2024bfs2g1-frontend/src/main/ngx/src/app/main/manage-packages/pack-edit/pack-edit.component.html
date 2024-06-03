@@ -1,12 +1,12 @@
 <o-breadcrumb [form]="myList" label-columns="pck_name" separator=" "></o-breadcrumb>
 <div class="fondo">
     <div>
-    <o-form attr="packsTable" #myList include-breadcrumb="true" service="packs" entity="pack" (onUpdate)="onSaveChanges()" keys="pck_id" 
-    show-header="yes" message-service-type="customMessageManagePack" show-header-navigation="no">
+    <o-form attr="packsTable" #myList include-breadcrumb="true" service="packs" entity="pack"  keys="pck_id" 
+    show-header="yes" message-service-type="customMessageManagePack" show-header-navigation="no" class="custom-form">
     <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no"  show-header-navigation="no" oHidden></o-text-input>
     <div fxloyout="column" class="contenedorTodo">
         <div fxLayout="row" class="principal" fxLayoutAlign="center" fxLayoutGap="100px">
-            <div fxLayout="column" fxLayoutGap="16px">
+            <div fxLayout="column" fxLayoutGap="16px" class="contenedor_arriba">
                 <div class="datosContainer">
                     <div fxLayout="column" fxLayoutGap="16px" class="contenido_datos">
                             <div class="tituloTabla">
@@ -53,7 +53,7 @@
               <o-table attr="packsDateTable" service="packDates" entity="packDateWithState" keys="pd_id" parent-keys="pck_id"
                        columns="pd_id;pd_date_begin;pd_date_end;pcs_state" row-height="large" pagination-controls= "yes"
                        detail-mode='none' delete-button='yes' insert-button='no' refresh-button='yes' keys-sql-types="integer"
-                       visible-columns="pd_date_begin;pd_date_end;pcs_state" query-rows="5">
+                       visible-columns="pd_date_begin;pd_date_end;pcs_state" query-rows="5" class="custom-table">
                        <o-table-column attr="pcs_state" title="pcs_state" title="{{ 'STATE' | oTranslate }}"></o-table-column>
                        <o-table-column attr="pd_date_begin" title="pd_date_begin" type="date" format="LL" title="{{ 'DATE_BEGING' | oTranslate }}"></o-table-column>
                        <o-table-column attr="pd_date_end" title="pd_date_end" type="date" format="LL" title="{{ 'DATE_END' | oTranslate }}"></o-table-column>
