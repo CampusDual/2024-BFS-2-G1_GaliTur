@@ -31,8 +31,8 @@
                         #COLUMNS#
                     FROM
                         ${mainschema}.pack_booking PB
-                        INNER JOIN ${mainschema}.pack PK
-                        ON PB.pck_id=PK.pack_id
+                        INNER JOIN ${mainschema}.pack_date PD
+                        ON PB.pd_id=PD.pd_id
                         INNER JOIN ${mainschema}.client CL
                         ON PB.client_id=CL.client_id
                     #WHERE#

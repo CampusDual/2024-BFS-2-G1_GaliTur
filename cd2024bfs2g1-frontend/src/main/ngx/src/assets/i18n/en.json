@@ -182,6 +182,7 @@
   "SELECT_LANGUAGE": "Select Language",
   "SELECT_PROVINCE": "Select Province",
   "SELECT_CITY": "Select Municipality",
+  "SELECT_DATES": "Select dates",
   "SPANISH": "SPANISH",
   "GALICIAN": "GALICIAN",
   "ENGLISH": "ENGLISH",
@@ -215,6 +216,8 @@
   "RESERVED": "Reserved",
   "PLACE": "Place",
   "DATE_START": "Start date",
+  "DATE_END": "End date",
+  "DATE_RANGE": "Select date range",
   "SEPARATOR": " to ",
   "COMBO_DIFFICULTY": "Select difficulty",
   "EASY": "Easy",
@@ -393,7 +396,8 @@
   "MAX-PRICE": "Max price",
   "NUMBER-TRAVELLERS": "Number of travellers",
   "FILTER-CITY": "City",
+  "MANAGEPACKS": "Manage packs",
   "FILTER-NAME": "Name",
-  "pck_days": "Days",
-  "MANAGEPACKS": "Manage packs"
+  "COMBO-BOX-DAYS-TITLE": "Select day"
 }
+

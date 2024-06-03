@@ -62,6 +62,7 @@ public class PackService implements IPackService {
     @Override
     public EntityResult packQuery(Map<String, Object> keyMap, List<String> attrList)
             throws OntimizeJEERuntimeException {
+        attrList.remove("comboDates");
         return this.daoHelper.query(this.packDao, keyMap, attrList);
     }
 
