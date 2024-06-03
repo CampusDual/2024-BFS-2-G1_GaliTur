@@ -15,7 +15,7 @@
             <o-row class="o-rows" class="description" attr="container" icon="description" mat
                         title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" elevation="1"
                         aria-orientation="vertical" appearance="outline">
-                <span *ngIf="data.description; else no_description">
+                <span class="descriptionText" *ngIf="data.description; else no_description">
                     <mat-icon></mat-icon><span>{{ data.description }}</span>
                 </span>
                 <ng-template #no_description>
