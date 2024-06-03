@@ -407,5 +407,7 @@
   "NUMBER-TRAVELLERS": "Numero de viajeros",
   "FILTER-CITY": "Ciudad",
   "FILTER-NAME": "Nombre",
-  "COMBO-BOX-DAYS-TITLE": "Seleccione dia"
+  "COMBO-BOX-DAYS-TITLE": "Seleccione dia",
+  "DATE_RANGE_FIELD": "Campo de fechas",
+  "DATE_RANGE_MISSING_MESSAGE": "El campo de fechas está vacío"
 }

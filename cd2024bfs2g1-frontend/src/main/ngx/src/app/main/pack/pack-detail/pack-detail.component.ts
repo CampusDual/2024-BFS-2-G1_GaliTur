@@ -6,7 +6,6 @@ import {
   ODialogConfig,
   OFormComponent,
   OSnackBarConfig,
-  OTableComponent,
   OTranslateService,
   OntimizeService,
   SnackBarService, AuthService, OComboComponent, OGridComponent,
@@ -92,6 +91,10 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
   }
 
   bookPack(data: any) {
+    if(!this.packDateCombo.getValue()){
+      this.dialogService.warn(this.oTranslate.get("DATE_RANGE_FIELD"), this.oTranslate.get("DATE_RANGE_MISSING_MESSAGE"))
+      return
+    }
     const config: ODialogConfig = {
       icon: "warning",
       alertType: "warn",
