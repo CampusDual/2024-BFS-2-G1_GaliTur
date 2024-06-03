@@ -27,9 +27,7 @@ export class ViewAllLandmarkComponent implements AfterViewInit {
     private ontimizerouteService: OntimizeService,
     private activeRoute: ActivatedRoute,
     private router: Router
-  ) {
-    this.configureService();
-  }
+  ) {}
 
   ngAfterViewInit(): void {
     this.idRutaActual = +this.getRouteId();
@@ -38,14 +36,6 @@ export class ViewAllLandmarkComponent implements AfterViewInit {
     console.log("El id de mi ruta es :", +this.idRutaActual);
   }
 
-  protected configureService() {
-    const confLandmark =
-      this.ontimizelandmarkService.getDefaultServiceConfiguration("landmarks");
-      const confRoute =
-      this.ontimizerouteService.getDefaultServiceConfiguration("routes");
-    this.ontimizelandmarkService.configureService(confLandmark);
-    this.ontimizerouteService.configureService(confRoute);
-  }
 
   onClickBackToRoutes() {
     this.router.navigate(["main", "routes", this.getRouteId()]);
@@ -57,6 +47,9 @@ export class ViewAllLandmarkComponent implements AfterViewInit {
 
 
   consultarDatosPorId(id: any): void {
+    const confLandmark =
+    this.ontimizelandmarkService.getDefaultServiceConfiguration("landmarks");
+    this.ontimizelandmarkService.configureService(confLandmark);
     this.ontimizelandmarkService
       .query(
         { route_id: id },
@@ -69,13 +62,16 @@ export class ViewAllLandmarkComponent implements AfterViewInit {
       });
   }
 
-  getRouteName(): void{
+  getRouteName(): void {
+    const confRoute =
+    this.ontimizerouteService.getDefaultServiceConfiguration("routes");
+    this.ontimizerouteService.configureService(confRoute);
     this.ontimizerouteService
       .query(
-        { route_id: this.idRutaActual },["name"],"route")
+        { route_id: this.idRutaActual }, ["name"], "route")
       .subscribe((response) => {
-        console.log("Prueba"+response.data[0].name);
-        this.nameActualRoute=response.data[0].name;
+        console.log("Prueba" + response.data[0].name);
+        this.nameActualRoute = response.data[0].name;
       });
   }
 
@@ -113,5 +109,5 @@ export class ViewAllLandmarkComponent implements AfterViewInit {
     }
   }
 
-  
+
 }
