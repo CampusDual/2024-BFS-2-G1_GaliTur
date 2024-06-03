@@ -18,18 +18,15 @@ galleryOptions: any;
   constructor(
     protected dialog: MatDialog,
     protected sanitizer: DomSanitizer,
-    private imageService: ImageService
-  ) { }
+    private imageService: ImageService,
+    private activeRoute: ActivatedRoute,
     private ontimizerouteService: OntimizeService
-    private activeRoute: ActivatedRoute
-
-  protected configureService() {
-    const confRoute =
-      this.ontimizerouteService.getDefaultServiceConfiguration("routes");
-    this.ontimizerouteService.configureService(confRoute);
-  }
-
+  ) { }
+    
   ngAfterViewInit(): void {
+    const confRoute =
+    this.ontimizerouteService.getDefaultServiceConfiguration("routes");
+  this.ontimizerouteService.configureService(confRoute);
     const idRutaActual = +this.getRouteId();
     console.log(idRutaActual)
     if(!isNaN(idRutaActual)){

@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   }
   
   public openPacks(): void {
-    this.router.navigate(['main/packs']);
+    this.router.navigate(['../packs'], { relativeTo: this.actRoute });
   }
 
   public getLogoImageSrc(): any {

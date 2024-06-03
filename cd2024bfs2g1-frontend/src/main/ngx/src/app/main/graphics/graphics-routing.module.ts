@@ -3,7 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { GraphicsHomeComponent } from './graphics-home/graphics-home.component';
 
 const routes: Routes = [
-  { path: '', component: GraphicsHomeComponent },
+  { path: '', component: GraphicsHomeComponent, 
+  data: {
+    oPermission: {
+      permissionId: "graphics",
+      restrictedPermissionsRedirect: 403
+    }
+  }},
 ];
 
 @NgModule({
