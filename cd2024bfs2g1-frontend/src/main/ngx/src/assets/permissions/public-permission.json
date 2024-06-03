@@ -103,7 +103,7 @@
           "enabled": false
         },
         {
-          "permissionId": "PackEdit",
+          "permissionId": "managepacks",
           "enabled": false
         }
 

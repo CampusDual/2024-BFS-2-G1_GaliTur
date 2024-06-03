@@ -74,7 +74,7 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
 
   public openPacks(): void {
 
-      this.router.navigate(["../"], {relativeTo: this.activeRoute});
+      this.router.navigate(["../"], {relativeTo: this.route});
 
   }
 
@@ -164,6 +164,8 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
   }
 
   private isInstanceOfPack(): void {
+    const confPack = this.packDateService.getDefaultServiceConfiguration('packDates');
+    this.packDateService.configureService(confPack);
     this.packDateService.query({pck_id: +this.route.snapshot.params['pck_id']}, ['pck_id'], 'packDate')
       .subscribe((result) => {
         if (result.data[0] !== undefined){
@@ -177,7 +179,7 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
     const currentUrl = this.router.url; // Capturar la URL actual
     const navigationExtras: NavigationExtras = {
       state: { previousUrl: currentUrl },
-      relativeTo: this.activeRoute // Enviar la URL actual como navigation state
+      relativeTo: this.route // Enviar la URL actual como navigation state
     };
     this.router.navigate(['../../businesses/' + data.bsn_id], navigationExtras);
   }
@@ -188,7 +190,7 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
     const currentUrl = this.router.url; // Capturar la URL actual
     const navigationExtras: NavigationExtras = {
       state: { previousUrl: currentUrl },
-      relativeTo: this.activeRoute  // Enviar la URL actual como navigation state
+      relativeTo: this.route  // Enviar la URL actual como navigation state
     };
     this.router.navigate(['../../routes/' + data.route_id], navigationExtras);
   }
