@@ -12,16 +12,18 @@ import { ActivatedRoute} from '@angular/router';
   templateUrl: './routes-home.component.html',
   styleUrls: ['./routes-home.component.css']
 })
-export class RoutesHomeComponent {
-galleryOptions: any;
-
-  constructor(
-    protected dialog: MatDialog,
-    protected sanitizer: DomSanitizer,
-    private imageService: ImageService
-  ) { }
-    private ontimizerouteService: OntimizeService
-    private activeRoute: ActivatedRoute
+export class RoutesHomeComponent  implements AfterViewInit{
+  galleryOptions: any;
+  
+    constructor(
+      protected dialog: MatDialog,
+      protected sanitizer: DomSanitizer,
+      private imageService: ImageService,
+      private ontimizerouteService: OntimizeService,
+      private activeRoute: ActivatedRoute
+    ) { 
+      this.configureService();
+    }
 
   protected configureService() {
     const confRoute =
