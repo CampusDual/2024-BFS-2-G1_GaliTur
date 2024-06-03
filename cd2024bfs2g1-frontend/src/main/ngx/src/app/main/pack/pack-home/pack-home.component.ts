@@ -80,34 +80,18 @@ export class PackHomeComponent {
           filters.push(FilterExpressionUtils.buildExpressionLike("pck_name", `%${keyword}%`));
         }
         if (fil.attr === 'pck_days') {
-          if (fil.value > 0) {
-            filters.push(FilterExpressionUtils.buildExpressionEquals("pck_days", fil.value));
-          } else {
-            errors.push("Days");
-          }
+          filters.push(FilterExpressionUtils.buildExpressionEquals("pck_days", fil.value));
         }
         if (fil.attr === 'pck_price_min') {
           let value: number = Number(fil.value);
-          if (value >= 0) {
-            filters.push(FilterExpressionUtils.buildExpressionMoreEqual("pck_price", value));
-          } else {
-            errors.push("Min price");
-          }
+          filters.push(FilterExpressionUtils.buildExpressionMoreEqual("pck_price", value));
         }
         if (fil.attr === 'pck_price_max') {
           let value: number = Number(fil.value);
-          if (value >= 0){
-            filters.push(FilterExpressionUtils.buildExpressionMoreEqual("pck_price", value));
-          } else {
-            errors.push("Max price");
-          }
+          filters.push(FilterExpressionUtils.buildExpressionLessEqual("pck_price", value));
         }
         if (fil.attr === 'pck_participants') {
-          if (fil.value > 0) {
-            filters.push(FilterExpressionUtils.buildExpressionEquals("pck_participants", fil.value));
-          } else {
-            errors.push("Participants");
-          }
+          filters.push(FilterExpressionUtils.buildExpressionEquals("pck_participants", fil.value));
         }
         if (fil.attr === 'gui_c_name') {
           filters.push(FilterExpressionUtils.buildExpressionEquals("gui_c_name", fil.value));
@@ -116,14 +100,9 @@ export class PackHomeComponent {
     });
 
     if (filters.length > 0) {
-      if (errors.length > 0) {
-        MatDialog 
-      } else {
-        return filters.reduce((exp1, exp2) => 
-          FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_AND)
-        );
-      }
-      
+      return filters.reduce((exp1, exp2) => 
+        FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_AND)
+      );
     } else {
       return null;
     }

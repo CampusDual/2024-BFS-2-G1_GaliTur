@@ -407,5 +407,6 @@
   "NUMBER-TRAVELLERS": "Numero de viajeros",
   "FILTER-CITY": "Ciudad",
   "FILTER-NAME": "Nombre",
-  "COMBO-BOX-DAYS-TITLE": "Seleccione dia"
+  "COMBO-BOX-DAYS-TITLE": "Seleccione dia",
+  "COMBO-BOX-DAYS-DESC": "El dia que selecciones mostrará las rutas y negocios disponibles el día seleccionado."
 }

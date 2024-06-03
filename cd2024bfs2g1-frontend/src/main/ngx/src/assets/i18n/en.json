@@ -398,6 +398,7 @@
   "FILTER-CITY": "City",
   "MANAGEPACKS": "Manage packs",
   "FILTER-NAME": "Name",
-  "COMBO-BOX-DAYS-TITLE": "Select day"
+  "COMBO-BOX-DAYS-TITLE": "Select day",
+  "COMBO-BOX-DAYS-DESC": "The day you select will show the routes and businesses available on the selected day."
 }
 

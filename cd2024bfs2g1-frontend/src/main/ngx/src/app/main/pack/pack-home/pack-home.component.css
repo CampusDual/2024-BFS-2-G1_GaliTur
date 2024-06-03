@@ -3,12 +3,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0px 0;
   }
 
   .title{
     font-size: 25px;
     font-family: Poppins;
+    margin-top: 0px;
+    margin-bottom: 5px;
   }
 /* packCard structure */
 .packCard {
@@ -188,4 +189,9 @@
 
 .button.mat-mdc-button-base.mat-mdc-icon-button .mat-mdc-button-touch-target {
     align-self: start !important;
+}
+
+.grid-container {
+    width: 100%;
+    height: 93.5%;
 }
