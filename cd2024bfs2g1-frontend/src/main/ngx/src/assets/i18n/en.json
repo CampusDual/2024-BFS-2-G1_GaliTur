@@ -361,9 +361,9 @@
   "ADD_SHEDULED_PACKS": "Add Scheduled Packs",
   "PACKS_INFO": "Packs Info",
   "STATE": "State",
-  "DATE_BEGING": "Date Beging",
-  "Save": "Save",
-  "SCHEDULE_PACKS": "Schedule Pack",
+  "DATE_BEGING": "Date Begin",
+  "Save":"Save",
+  "SCHEDULE_PACKS":"Schedule Pack",
   "MESSAGES_FORM_CHANGES_WILL_BE_LOST_MANAGEPACK": "Are you sure you want to discard the changes? All unsaved changes will be lost.",
   "MESSAGES_INSERTED_MANAGEPACK": "The pack has been successfully inserted.",
   "MESSAGES_INSERTED_ERROR_MANAGEPACK": "There was an error inserting the pack.",
@@ -407,6 +407,7 @@
   "HOME-CONTENT-BUTTON": "Explore the Packs",
   "HOME-CONTENT-SECONDARY-BUTTON": "More info",
   "DATE_RANGE_FIELD": "Date range field",
-  "DATE_RANGE_MISSING_MESSAGE": "The date range field is empty"
+  "DATE_RANGE_MISSING_MESSAGE": "The date range field is empty",
+  "DATE_R": "Pack date"
 }
 
