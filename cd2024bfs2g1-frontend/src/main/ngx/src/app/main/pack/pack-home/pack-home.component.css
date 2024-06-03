@@ -1,3 +1,15 @@
+/*title styles*/
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 0;
+  }
+
+  .title{
+    font-size: 25px;
+    font-family: Poppins;
+  }
 /* packCard structure */
 .packCard {
     width: 400px;
@@ -153,6 +165,8 @@
 }
 
 .filter-button {
+    flex-direction: row;
+    align-items: start;
     margin-top: 10px;
 }
 
@@ -162,11 +176,25 @@
         width: 32vh;
     }
     .o-data-toolbar {
-        align-items: start;
+        align-items: end;
         .title {
-            font-size: 25px;
-            margin-bottom: 10px;
+            font-size: 20px;
+            margin-bottom: 8px;
         }
     }
 }
 
+
+:host::ng-deep .o-data-toolbar {
+    display: grid !important;
+    grid-template-columns: auto auto !important;
+    justify-content: space-between !important;
+}
+
+.o-grid-sort ng-star-inserted {
+    align-self: end !important;
+}
+
+.button.mat-mdc-button-base.mat-mdc-icon-button .mat-mdc-button-touch-target {
+    align-self: start !important;
+}
