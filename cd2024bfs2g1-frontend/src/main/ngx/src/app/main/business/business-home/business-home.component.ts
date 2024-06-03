@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { BusinessDetailComponent } from '../business-detail/business-detail.component';
-import { OGridComponent, OntimizeService } from 'ontimize-web-ngx';
+import { AuthService, OGridComponent, OPermissions, OntimizeService, Util } from 'ontimize-web-ngx';
 import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
@@ -18,6 +18,7 @@ export class BusinessHomeComponent {
     protected dialog: MatDialog,
     protected sanitizer: DomSanitizer,
     private router: Router,
+    private authService: AuthService
   ) {
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration("businesses"));
   }
@@ -31,9 +32,9 @@ export class BusinessHomeComponent {
   public openDetail(data: any): void {
     const currentUrl = this.router.url; // Capturar la URL actual
     const navigationExtras: NavigationExtras = {
-      state: { previousUrl: currentUrl } // Enviar la URL actual como navigation state 
+      state: { previousUrl: currentUrl } // Enviar la URL actual como navigation state
     };
-    this.router.navigate(['main/businesses/' + data.bsn_id], navigationExtras);
+    this.router.navigate(['businesses/' + data.bsn_id], navigationExtras);
 }
 
   truncateName(name: string): string {
@@ -43,5 +44,4 @@ export class BusinessHomeComponent {
         return name;
     }
   }
-
 }

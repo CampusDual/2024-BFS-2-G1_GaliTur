@@ -11,6 +11,8 @@ import {
   SnackBarService, AuthService, OComboComponent, OGridComponent,
   Expression,
   FilterExpressionUtils,
+  OPermissions,
+  Util,
 } from "ontimize-web-ngx";
 import {PackHomeComponent} from "../pack-home/pack-home.component";
 import {UserInfoService} from "../../../shared/services/user-info.service";
@@ -70,11 +72,9 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
   }
 
   public openPacks(): void {
-    if (PackHomeComponent.page == 1 || !PackHomeComponent.page) {
-      this.router.navigate(["main/packs"]);
-    } else {
-      this.router.navigate(["main/pack-client"]);
-    }
+
+      this.router.navigate(["../"], {relativeTo: this.route});
+
   }
 
   diferenciaDias(fechaInicio: number, fechaFin: number): number {
@@ -167,6 +167,8 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
   }
 
   private isInstanceOfPack(): void {
+    const confPack = this.packDateService.getDefaultServiceConfiguration('packDates');
+    this.packDateService.configureService(confPack);
     this.packDateService.query({pck_id: +this.route.snapshot.params['pck_id']}, ['pck_id'], 'packDate')
       .subscribe((result) => {
         if (result.data[0] !== undefined){
@@ -177,23 +179,23 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
 
   //Metodos para redirect dinamico de business
   openDetailBusiness(data: any): void {
-    this.router.navigate(['main/businesses/' + data.bsn_id]);
     const currentUrl = this.router.url; // Capturar la URL actual
     const navigationExtras: NavigationExtras = {
-      state: { previousUrl: currentUrl } // Enviar la URL actual como navigation state
+      state: { previousUrl: currentUrl },
+      relativeTo: this.route // Enviar la URL actual como navigation state
     };
-    this.router.navigate(['main/businesses/' + data.bsn_id], navigationExtras);
+    this.router.navigate(['../../businesses/' + data.bsn_id], navigationExtras);
   }
 
 
   //Metodo para redirect dinamico de rutas
   openDetailRoutes(data: any): void {
-    this.router.navigate(['main/routes/' + data.route_id]);
     const currentUrl = this.router.url; // Capturar la URL actual
     const navigationExtras: NavigationExtras = {
-      state: { previousUrl: currentUrl } // Enviar la URL actual como navigation state
+      state: { previousUrl: currentUrl },
+      relativeTo: this.route  // Enviar la URL actual como navigation state
     };
-    this.router.navigate(['main/routes/' + data.route_id], navigationExtras);
+    this.router.navigate(['../../routes/' + data.route_id], navigationExtras);
   }
 
 
@@ -292,4 +294,21 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
       this.gridBusinessesOfPack.queryData(filter);
       this.gridRoutesOfPack.queryData(filter);
     }
+
+  checkAuthStatus(){
+    return !this.authService.isLoggedIn()
+  }
+  parsePermissions(attr: string): boolean {
+
+    // if oattr in form, it can have permissions
+    if (!this.formPack || !Util.isDefined(this.formPack.oattr)) {
+      return;
+    }
+      const permissions: OPermissions = this.formPack.getFormComponentPermissions(attr)
+
+      if (!Util.isDefined(permissions)) {
+        return true
+      }
+      return permissions.visible
+  }
 }
