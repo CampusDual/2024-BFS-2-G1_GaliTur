@@ -418,7 +418,9 @@
   "HOME-CONTENT-SECONDARY-BUTTON": "Saber más",
   "DATE_RANGE_FIELD": "Campo de fechas",
   "DATE_RANGE_MISSING_MESSAGE": "El campo de fechas está vacío",
-  "DATE_R": "Fecha del pack"
+  "DATE_R": "Fecha del pack",
+  "COMBO-BOX-DAYS-DESC": "El dia que selecciones mostrará las rutas y negocios disponibles el día seleccionado."
+
 }
 
 
