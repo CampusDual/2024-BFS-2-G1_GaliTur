@@ -66,7 +66,6 @@ export class RoutesDetailComponent implements OnInit{
      //Si el usuario viene de routes home actuar como el metodo backToHome original
     } else {
       this.dialogRef.close();
-      this.router.navigate(['main','routes'])
     }
 }
 
