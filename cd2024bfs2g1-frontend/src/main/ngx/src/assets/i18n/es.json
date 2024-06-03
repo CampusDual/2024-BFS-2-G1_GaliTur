@@ -26,6 +26,7 @@
   "HOME": "Inicio",
   "LANG_en": "Inglés",
   "LANG_es": "Español",
+  "LANG_gl": "Gallego",
   "LANGUAGE_de": "Alemán",
   "LANGUAGE_en": "Inglés",
   "LANGUAGE_es": "Español",
@@ -417,7 +418,8 @@
   "HOME-CONTENT-BUTTON": "Explora los Packs",
   "HOME-CONTENT-SECONDARY-BUTTON": "Saber más",
   "DATE_RANGE_FIELD": "Campo de fechas",
-  "DATE_RANGE_MISSING_MESSAGE": "El campo de fechas está vacío"
+  "DATE_RANGE_MISSING_MESSAGE": "El campo de fechas está vacío",
+  "LOCALE_gl": "GL"
 }
 
 
