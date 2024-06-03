@@ -24,4 +24,12 @@ export class HomeComponent implements OnInit {
   public openPacks(): void {
     this.router.navigate(['main/packs']);
   }
+
+  public getLogoImageSrc(): any {
+    return "./assets/images/logo-sidebar.png";
+  }
+
+  public getContentImageSrc(): any {
+    return "./assets/images/home-image.jpeg";
+  }
 }
