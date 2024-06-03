@@ -131,6 +131,7 @@
     cursor: pointer;
 }
 
+/*filter styles*/
 .filter {
     justify-content: space-around;
     width: 100%;
@@ -157,13 +158,6 @@
     margin-bottom: 10px;
 }
 
-.details {
-    summary:hover {
-        width: max-content;
-        cursor: pointer;
-    }
-}
-
 .filter-button {
     align-items: start;
     margin-top: 10px;
@@ -176,18 +170,16 @@
     }
     .o-data-toolbar {
         align-items: end;
-        .title {
-            font-size: 20px;
-            margin-bottom: 8px;
-        }
     }
 }
 
-
+/*Insert button and sort combobox styles*/
 :host::ng-deep .o-data-toolbar {
     display: grid !important;
     grid-template-columns: auto auto !important;
     justify-content: space-between !important;
+    padding-left: 16px !important;
+    padding-right: 1px !important;
 }
 
 .o-grid-sort ng-star-inserted {
