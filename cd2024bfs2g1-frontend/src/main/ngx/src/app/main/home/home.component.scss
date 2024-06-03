@@ -117,10 +117,13 @@ button {
 .secondary-button {
   background-color: transparent;
   color: black;
+  &:hover {
+    cursor: default;
+  }
 }
 
 .icon {
   margin-bottom: -6px;
-  margin-right: 8px;
+  margin-right: 5px;
 }
 
