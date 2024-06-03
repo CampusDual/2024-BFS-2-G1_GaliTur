@@ -71,6 +71,7 @@ export class PackHomeComponent {
   @ViewChild("filterForm") protected filterForm: OFormComponent;
   createFilter(values: Array<{ attr: string, value: any }>): Expression {
     let filters: Array<Expression> = [];
+    let errors = [];
 
     values.forEach(fil => {
       if (fil.value) {
@@ -79,18 +80,34 @@ export class PackHomeComponent {
           filters.push(FilterExpressionUtils.buildExpressionLike("pck_name", `%${keyword}%`));
         }
         if (fil.attr === 'pck_days') {
-          filters.push(FilterExpressionUtils.buildExpressionEquals("pck_days", fil.value));
+          if (fil.value > 0) {
+            filters.push(FilterExpressionUtils.buildExpressionEquals("pck_days", fil.value));
+          } else {
+            errors.push("Days");
+          }
         }
         if (fil.attr === 'pck_price_min') {
           let value: number = Number(fil.value);
-          filters.push(FilterExpressionUtils.buildExpressionMoreEqual("pck_price", value));
+          if (value >= 0) {
+            filters.push(FilterExpressionUtils.buildExpressionMoreEqual("pck_price", value));
+          } else {
+            errors.push("Min price");
+          }
         }
         if (fil.attr === 'pck_price_max') {
           let value: number = Number(fil.value);
-          filters.push(FilterExpressionUtils.buildExpressionLessEqual("pck_price", value));
+          if (value >= 0){
+            filters.push(FilterExpressionUtils.buildExpressionMoreEqual("pck_price", value));
+          } else {
+            errors.push("Max price");
+          }
         }
         if (fil.attr === 'pck_participants') {
-          filters.push(FilterExpressionUtils.buildExpressionEquals("pck_participants", fil.value));
+          if (fil.value > 0) {
+            filters.push(FilterExpressionUtils.buildExpressionEquals("pck_participants", fil.value));
+          } else {
+            errors.push("Participants");
+          }
         }
         if (fil.attr === 'gui_c_name') {
           filters.push(FilterExpressionUtils.buildExpressionEquals("gui_c_name", fil.value));
@@ -99,9 +116,14 @@ export class PackHomeComponent {
     });
 
     if (filters.length > 0) {
-      return filters.reduce((exp1, exp2) => 
-        FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_AND)
-      );
+      if (errors.length > 0) {
+        MatDialog 
+      } else {
+        return filters.reduce((exp1, exp2) => 
+          FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_AND)
+        );
+      }
+      
     } else {
       return null;
     }
