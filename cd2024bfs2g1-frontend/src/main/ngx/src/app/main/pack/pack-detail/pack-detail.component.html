@@ -66,28 +66,29 @@
                         </span>
                     </span>
                 </span>
+                <div  class="reserve-container" *ngIf="!checkAuthStatus() && parsePermissions('reserve-container')">
 
-        <!-- Combo box que muestra los intervalos de fechas disponibles para la reserva con su botón correspondiente -->
-        <div class="reserve-container">
-          <div class="div-combo-container">
-            <o-combo
-              #packDateCombo
-              value-column="pd_id"
-              keys="pd_id"
-              columns="pck_id;pd_id;pd_date_begin;pd_date_end"
-              visible-columns="pd_date_begin;pd_date_end"
-              multiple="no" null-selection="no" required="yes"
-              label="{{ 'DATE_RANGE' | oTranslate}}"
-            ></o-combo>
-          </div>
-          <div class="div-active-pack-container">
-            <p class="active-pack"
-               (click)="bookPack(packDateCombo.getDataArray())">{{ 'BOOK'| oTranslate }}
-            </p>
-          </div>
-        </div>
+                    <!-- Combo box que muestra los intervalos de fechas disponibles para la reserva con su botón correspondiente -->
+                    <div class="reserve-container">
+                    <div class="div-combo-container">
+                        <o-combo
+                        #packDateCombo
+                        value-column="pd_id"
+                        keys="pd_id"
+                        columns="pck_id;pd_id;pd_date_begin;pd_date_end"
+                        visible-columns="pd_date_begin;pd_date_end"
+                        multiple="no" null-selection="no" required="yes"
+                        label="{{ 'DATE_RANGE' | oTranslate}}"
+                        ></o-combo>
+                    </div>
+                    <div class="div-active-pack-container">
+                        <p class="active-pack"
+                        (click)="bookPack(packDateCombo.getDataArray())">{{ 'BOOK'| oTranslate }}
+                        </p>
+                    </div>
+                    </div>
 
-
+                </div>
                 <!-- Informacion adicional del business divididos en dos columnas (o-rows) -->
                 <div class="data-container" *ngFor="let packs of packForm.dataArray" line-height="2">
 

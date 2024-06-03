@@ -17,13 +17,7 @@ export class PackEditComponent implements AfterViewInit{
   imgId: any;
   dataInputName: any
   dataInputDays: any
-  firstNameData:boolean = true
-  firstDayData:boolean = true
   dateBeginWithFormat: any
-  packDate:any = {
-    name:'',
-    days:0,
-  }
 
   @ViewChild('packNameInput') packNameInput : ElementRef
   @ViewChild('addPDbtn') packDateButton : ElementRef
@@ -42,22 +36,17 @@ export class PackEditComponent implements AfterViewInit{
 
   }
 
-  private actionButtons(disable:boolean){
-    this.packDateButton.nativeElement.disabled = disable;
-    this.rtandbssButton.nativeElement.disabled = disable;
-  }
-
    onAddRtsOrBss(){
       this.router.navigate(["main", "packs","new",this.pck_id]);
   }
-  
+
   getPackId():number{
     return +this.activeRoute.snapshot.params["pck_id"];
   }
   onClicEdit(pck_id: any) {
     this.router.navigate(['main','packs','new',pck_id])
   }
-  
+
 
   onClicSchedule(){
     const dataToSend = {
@@ -77,27 +66,11 @@ export class PackEditComponent implements AfterViewInit{
   }
 
   onNameChange(data: OValueChangeEvent) {
-    if(this.firstNameData === true){
-      this.packDate.name= data.target.value.value
       this.dataInputName= data.target.value.value
-      this.firstNameData= false
-    }else {
-      this.dataInputName= data.target.value.value
-      if(data.target.value.value===this.packDate.name) this.actionButtons(false)
-        else this.actionButtons(true)
-    }
   }
 
   onDaysChange(data:OValueChangeEvent) {
-    if(this.firstDayData === true){
-      this.packDate.days= data.target.value.value
       this.dataInputDays= data.target.value.value
-      this.firstDayData= false
-    }else {
-      this.dataInputDays= data.target.value.value
-      if(data.target.value.value===this.packDate.days) this.actionButtons(false)
-        else this.actionButtons(true)
-    }
   }
 
   lengthInvalid = (control: FormControl) => {
@@ -118,12 +91,7 @@ export class PackEditComponent implements AfterViewInit{
       }
     } catch (e){}
   }
-  
-  onSaveChanges(){
-    this.actionButtons(false)
-    this.firstNameData = true
-    this.firstDayData = true
-  }
+
 }
 
 

@@ -12,6 +12,7 @@ import { ActivatedRoute} from '@angular/router';
   templateUrl: './routes-home.component.html',
   styleUrls: ['./routes-home.component.css']
 })
+
 export class RoutesHomeComponent  implements AfterViewInit{
   galleryOptions: any;
   
@@ -29,13 +30,15 @@ export class RoutesHomeComponent  implements AfterViewInit{
     const confRoute =
       this.ontimizerouteService.getDefaultServiceConfiguration("routes");
     this.ontimizerouteService.configureService(confRoute);
+
   }
 
   ngAfterViewInit(): void {
     const idRutaActual = +this.getRouteId();
-    console.log(idRutaActual)
+    const confRoute =
+      this.ontimizerouteService.getDefaultServiceConfiguration("routes");
+    this.ontimizerouteService.configureService(confRoute);
     if(!isNaN(idRutaActual)){
-      console.log("se ejecuta")
       this.ontimizerouteService
       .query(
         { route_id: idRutaActual },
@@ -54,13 +57,11 @@ export class RoutesHomeComponent  implements AfterViewInit{
 
   /*Recoger img de BD*/
   public getImageSrc(base64: any): any {
-
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/logo-walking.png";
   }
 
   /*Abrir detalle de la ruta*/
   public openDetail(data: any): void {
-    console.log("se ejecuta")
     this.imageService.getImage(data.route_id).subscribe((imageData)=> {
       const images = []
 

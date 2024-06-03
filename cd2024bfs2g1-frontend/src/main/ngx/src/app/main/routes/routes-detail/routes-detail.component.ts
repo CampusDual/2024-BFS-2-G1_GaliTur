@@ -36,8 +36,8 @@ export class RoutesDetailComponent implements OnInit{
         preview: false
       }
     ]
-    this,dialogRef.disableClose = true;
-    
+    this.dialogRef.disableClose = true;
+
    }
 
   ngOnInit(){
@@ -66,6 +66,7 @@ export class RoutesDetailComponent implements OnInit{
      //Si el usuario viene de routes home actuar como el metodo backToHome original
     } else {
       this.dialogRef.close();
+      this.router.navigate(['main','routes'])
     }
 }
 
