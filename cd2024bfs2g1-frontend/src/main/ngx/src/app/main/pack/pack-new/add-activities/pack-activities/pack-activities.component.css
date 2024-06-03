@@ -174,7 +174,6 @@ o-row{
     background-color: #4e4c4a !important;
     color: #e2dbd5 !important;
     height: 36.3px;
-    padding-top: 5%;
 }
 
 /* cambiar estilo de un componente en concreto */
@@ -206,4 +205,13 @@ o-row{
 
 :host ::ng-deep .mat-mdc-icon-button.mat-primary {
     color: #4e4c4a !important;
+}
+
+:host ::ng-deep .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+    margin-top: -5px !important;
+}
+
+
+:host ::ng-deep .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label  {
+    margin-top: 0px !important;
 }
