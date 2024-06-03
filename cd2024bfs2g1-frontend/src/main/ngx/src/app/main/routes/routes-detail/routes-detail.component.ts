@@ -36,8 +36,8 @@ export class RoutesDetailComponent implements OnInit{
         preview: false
       }
     ]
-    this,dialogRef.disableClose = true;
-    
+    this.dialogRef.disableClose = true;
+
    }
 
   ngOnInit(){

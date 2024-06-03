@@ -20,5 +20,8 @@ export class HomeComponent implements OnInit {
   navigate() {
     this.router.navigate(['../', 'login'], { relativeTo: this.actRoute });
   }
-
+  
+  public openPacks(): void {
+    this.router.navigate(['main/packs']);
+  }
 }

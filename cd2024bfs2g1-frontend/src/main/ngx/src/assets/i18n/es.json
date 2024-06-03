@@ -409,5 +409,15 @@
   "NUMBER-TRAVELLERS": "Numero de viajeros",
   "FILTER-CITY": "Ciudad",
   "FILTER-NAME": "Nombre",
-  "COMBO-BOX-DAYS-TITLE": "Seleccione dia"
+  "COMBO-BOX-DAYS-TITLE": "Seleccione dia",
+  "HOME-TITLE": "Tu compañero de viaje definitivo",
+  "HOME-SUBTITLE": "Explora, conecta y vive experiencias únicas",
+  "HOME-CONTENT-TITLE": "Descubre Galicia como nunca antes",
+  "HOME-CONTENT-DESCRIPTION": "¡Adéntrate en lo más profundo de este precioso territorio! Nuestra aplicación te guiará a través de sus encantadoras rutas y te conectará con los mejores restaurantes, alojamientos y guías locales. Explora nuestros packs prediseñados para una experiencia inolvidable. ¡Empieza tu aventura hoy mismo!",
+  "HOME-CONTENT-BUTTON": "Explora los Packs",
+  "HOME-CONTENT-SECONDARY-BUTTON": "Saber más",
+  "DATE_RANGE_FIELD": "Campo de fechas",
+  "DATE_RANGE_MISSING_MESSAGE": "El campo de fechas está vacío"
 }
+
+
