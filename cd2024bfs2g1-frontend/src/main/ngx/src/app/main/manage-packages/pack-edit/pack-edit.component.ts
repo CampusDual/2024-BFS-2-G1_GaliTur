@@ -36,22 +36,17 @@ export class PackEditComponent implements AfterViewInit{
 
   }
 
-  private actionButtons(disable:boolean){
-    this.packDateButton.nativeElement.disabled = disable;
-    this.rtandbssButton.nativeElement.disabled = disable;
-  }
-
    onAddRtsOrBss(){
       this.router.navigate(["main", "packs","new",this.pck_id]);
   }
-  
+
   getPackId():number{
     return +this.activeRoute.snapshot.params["pck_id"];
   }
   onClicEdit(pck_id: any) {
     this.router.navigate(['main','packs','new',pck_id])
   }
-  
+
 
   onClicSchedule(){
     const dataToSend = {
@@ -71,18 +66,11 @@ export class PackEditComponent implements AfterViewInit{
   }
 
   onNameChange(data: OValueChangeEvent) {
-   
-
       this.dataInputName= data.target.value.value
-
-   
   }
 
   onDaysChange(data:OValueChangeEvent) {
-  
       this.dataInputDays= data.target.value.value
-   
-   
   }
 
   lengthInvalid = (control: FormControl) => {
@@ -103,7 +91,7 @@ export class PackEditComponent implements AfterViewInit{
       }
     } catch (e){}
   }
-  
+
 }
 
 
