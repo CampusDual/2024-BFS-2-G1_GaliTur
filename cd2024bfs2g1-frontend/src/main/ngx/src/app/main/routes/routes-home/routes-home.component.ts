@@ -18,10 +18,13 @@ galleryOptions: any;
   constructor(
     protected dialog: MatDialog,
     protected sanitizer: DomSanitizer,
-    private imageService: ImageService
-  ) { }
-    private ontimizerouteService: OntimizeService
+    private imageService: ImageService,
+    private ontimizerouteService: OntimizeService,
     private activeRoute: ActivatedRoute
+  ) { 
+    this.configureService();
+  }
+    
 
   protected configureService() {
     const confRoute =
