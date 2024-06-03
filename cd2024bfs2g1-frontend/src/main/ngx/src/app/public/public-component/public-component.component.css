@@ -1,6 +1,23 @@
 .header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+
+::ng-deep .register-button {
+  .mat-mdc-raised-button:not(:disabled) {
+    background: #3a3027 !important;
   }
+}
+
+::ng-deep .o-app-sidenav-image .o-app-sidenav-image-container .o-app-sidenav-image {
+  max-height: 80px !important;
+}
+
+
+::ng-deep .o-app-sidenav .o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav.mat-drawer-closed .o-app-sidenav-image .o-app-sidenav-image-container .o-app-sidenav-image {
+  max-height: 35px !important;
+  margin-top: 6px;
+
+}

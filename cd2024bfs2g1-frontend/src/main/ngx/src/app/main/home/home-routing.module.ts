@@ -6,13 +6,7 @@ import { HomeComponent } from './home.component';
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
-    data: {
-      oPermission: {
-        permissionId: "home",
-        restrictedPermissionsRedirect: 403
-      }
-    }
+    component: HomeComponent
   }
 ];
 

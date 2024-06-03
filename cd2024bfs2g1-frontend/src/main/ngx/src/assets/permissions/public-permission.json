@@ -99,11 +99,11 @@
           "enabled": false
         },
         {
-          "permissionId": "home",
+          "permissionId": "managepacks",
           "enabled": false
         },
         {
-          "permissionId": "managepacks",
+          "permissionId": "home",
           "enabled": false
         }
 
