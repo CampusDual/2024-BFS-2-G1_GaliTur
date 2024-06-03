@@ -70,7 +70,6 @@ export class ViewAllLandmarkComponent implements AfterViewInit {
       .query(
         { route_id: this.idRutaActual }, ["name"], "route")
       .subscribe((response) => {
-        console.log("Prueba" + response.data[0].name);
         this.nameActualRoute = response.data[0].name;
       });
   }
