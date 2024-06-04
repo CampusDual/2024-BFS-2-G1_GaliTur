@@ -186,9 +186,9 @@
                                         <div class="card-header">
                                             <div class="business-title">
                                                 <div class="business-icon">
-                                                    <span *ngIf="data.bsn_type === 'Restaurant'" matTooltip="Restaurant"><mat-icon class="type-icon" >restaurant</mat-icon></span>
-                                                    <span *ngIf="data.bsn_type === 'Lodging'"><mat-icon class="type-icon" matTooltip="Lodging">house</mat-icon></span>
-                                                    <span *ngIf="data.bsn_type === 'AgencyGuide'"><mat-icon class="type-icon" matTooltip="Agency Guide">flight</mat-icon></span>
+                                                    <span *ngIf="data.bsn_type === 'Restaurant'" matTooltip="{{'Restaurant'|oTranslate}}"><mat-icon class="type-icon" >restaurant</mat-icon></span>
+                                                    <span *ngIf="data.bsn_type === 'Lodging'"><mat-icon class="type-icon" matTooltip="{{ 'Lodging' | oTranslate }}">house</mat-icon></span>
+                                                    <span *ngIf="data.bsn_type === 'AgencyGuide'"><mat-icon class="type-icon" matTooltip="{{ 'AgencyGuide' | oTranslate }}">flight</mat-icon></span>
                                                 </div>
                                                 <div class="business-name">
                                                     <span class="pack-name">{{ data.bsn_name}}</span>
