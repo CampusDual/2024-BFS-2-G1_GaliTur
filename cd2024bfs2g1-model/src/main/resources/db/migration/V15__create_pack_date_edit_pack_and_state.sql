@@ -8,9 +8,6 @@ ALTER TABLE PACK
 DROP COLUMN pcs_id;
 
 
-ALTER TABLE PACK
-DROP CONSTRAINT pack_pcs_id_fkey;
-
 CREATE TABLE pack_date (
     pd_id SERIAL PRIMARY KEY NOT NULL,
     pd_date_begin TIMESTAMP NOT NULL,
