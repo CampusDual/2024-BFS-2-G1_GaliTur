@@ -1,7 +1,9 @@
-<o-grid #packGrid attr="packGrid" title="MYPACKS" service="packs" entity="packClient" keys="P.pck_id"
-    columns="P.pck_id;pck_name;pck_description;pck_date_begin;pck_date_end;pck_price;pck_participants;gui_c_name;pcs_id;img_code"
-    query-rows="16" page-size-options="8;16;24" orderable="true" 
-    sortable-columns="pck_name;pck_date_begin;gui_c_name" insert-button="false" refresh-button="true"
+<o-grid #packGrid attr="packGrid" title="MYPACKS" service="packs" entity="packClient" keys="pbk_booking_id"
+    columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;gui_c_name;pcs_id;img_code;pbk_booking_id"
+    query-rows="8" page-size-options="8;16;24" orderable="true" sort-column="pck_name"
+    sortable-columns="pck_name;pck_participants;gui_c_name;pck_name:desc:desc;pck_participants:desc;gui_c_name:desc" 
+    quick-filter-columns="pck_name;pck_price;pck_participants;gui_c_name" filter-case-sensitive="yes"
+    insert-button="false" refresh-button="true" pageable="yes"
     pagination-controls="true" gutter-size="4px" fixed-header="yes" grid-item-height="320px" detail-mode="none"
     insert-button-floatable="no">
     <o-grid-item *ngFor="let data of packGrid.dataArray">
@@ -16,12 +18,12 @@
                 </div>
                 <div class="cardInfo">
                     <ul style="list-style-type: none;" class="list">
-                        <li><mat-icon class="icon">event</mat-icon>{{truncateInfo(getDate(data.pck_date_begin))}}</li>
-                        <li><mat-icon class="icon">event_busy</mat-icon>{{truncateInfo(getDate(data.pck_date_end))}}</li>
-                        <li *ngIf="diferenciaDias(data.pck_date_begin,data.pck_date_end) <= 1"><mat-icon class="icon">timer</mat-icon>{{diferenciaDias(data.pck_date_begin,data.pck_date_end)}} {{'DAY' | oTranslate}}</li>
-                        <li *ngIf="diferenciaDias(data.pck_date_begin,data.pck_date_end) > 1"><mat-icon class="icon">timer</mat-icon>{{diferenciaDias(data.pck_date_begin,data.pck_date_end)}} {{'DAYS' | oTranslate}}</li>
                         <li *ngIf="!data.pck_participants"><mat-icon class="icon">groups</mat-icon>{{'-'}}</li>
-                        <li *ngIf="data.pck_participants"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}}</li>
+                        <li *ngIf="data.pck_participants && data.pck_participants == 1"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}} {{'PERSON' | oTranslate}}</li>
+                        <li *ngIf="data.pck_participants && data.pck_participants > 1"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}} {{'PEOPLE' | oTranslate}}</li>
+                        <li *ngIf="!data.pck_days"><mat-icon class="icon">timer</mat-icon>-</li>
+                        <li *ngIf="data.pck_days && data.pck_days == 1"><mat-icon class="icon">timer</mat-icon>{{data.pck_days}} {{'DAY' | oTranslate}}</li>
+                        <li *ngIf="data.pck_days && data.pck_days > 1"><mat-icon class="icon">timer</mat-icon>{{data.pck_days}} {{'DAYS' | oTranslate}}</li>
                         <li><mat-icon class="icon">pin_drop</mat-icon>{{truncateInfo(data.gui_c_name)}}</li>
                         <li><mat-icon class="icon">payments</mat-icon>{{data.pck_price}} €</li>
                     </ul>

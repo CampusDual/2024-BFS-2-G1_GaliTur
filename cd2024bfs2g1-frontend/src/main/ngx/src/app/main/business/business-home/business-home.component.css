@@ -43,8 +43,23 @@
 }
 
 .businessCard:hover {
-    box-shadow: 0 0 15px rgba(40, 63, 28, 0.55); 
+    box-shadow: 0 0 15px rgba(113, 94, 78, 1);  
     transform: scale(1.04); 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }
+
+.full-page {
+    height: 77vh;
+    .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+        width: 32vh;
+    }
+    .o-data-toolbar {
+        align-items: start;
+        .title {
+            font-size: 25px;
+            margin-right: 70px;
+            font-weight: bold;
+        }
+    }
+  }

@@ -190,4 +190,18 @@ $card-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       padding: 20px;
     }
   }
+
+  .lang{
+    position: absolute;
+    top: 40px;
+    width: 99%;
+    justify-content: right;
+    display: flex;
+    color: #e3e6d8;
+  }
+  
+   .mat-mdc-button.mat-unthemed {
+    --mdc-text-button-label-text-color: #e3e6d8 !important;
+  }
 }
+

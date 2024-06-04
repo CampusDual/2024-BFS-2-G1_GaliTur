@@ -24,5 +24,31 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="allBusinesses">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.bsn_business b
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="businessOfPack">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.bsn_business b
+                        INNER JOIN ${mainschema}.bsn_pack bsp
+                        ON B.bsn_id=BSP.bsn_id
+                    #WHERE_CONCAT#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

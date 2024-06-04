@@ -13,11 +13,10 @@ import org.springframework.stereotype.Repository;
         configurationFilePlaceholder = "dao/placeholders.properties")
 public class PackBookingDao extends OntimizeJdbcDaoSupport {
 
-    public static final String PBK_BOOKING_ID        = "pbk_booking_id";
-    public static final String PCK_ID         = "pck_id";
-    public static final String CLIENT_ID         = "client_id";
-    public static final String PBK_BOOKING_DATE      = "pbk_booking_date";
-    public static final String PBK_DOWN_DATE          = "pbk_down_date";
-
+    public static final String PBK_BOOKING_ID = "pbk_booking_id";
+    public static final String CLIENT_ID = "client_id";
+    public static final String PBK_BOOKING_DATE = "pbk_booking_date";
+    public static final String PBK_DOWN_DATE = "pbk_down_date";
+    public static final String PD_ID = "pd_id";
 
 }

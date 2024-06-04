@@ -1,0 +1,77 @@
+<o-row>
+  <o-column style="padding-top: 1%;padding-left: 1%;">
+    <o-button attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary" (click)="goBack()"></o-button>
+  </o-column>
+  <o-column style="padding-left: 38%;">
+    <h2 style="text-align: center">{{'ADD_ROUTES' | oTranslate }}</h2>
+
+  </o-column>
+
+
+</o-row>
+<o-row style="align-content: space-between; padding-left: 1.5%">
+
+  <o-column id="addBusiness">
+    <o-button label="{{'ADD_ROUTEP' | oTranslate }}" (click)="insertRoutePack()"> </o-button>
+  </o-column>
+
+  <o-column id="selectDay">
+    <o-combo #comboBoxDay class="comboBoxDay" attr="comboDay" label="{{'SELECT_DAY' | oTranslate }}" null-selection="no"
+      [static-data]="arrayDias" [data]="selectedComboDay" value-column="day" columns="day" required="yes"
+      visible-columns="day" (onValueChange)="setRoutesData()">
+    </o-combo>
+  </o-column>
+</o-row>
+
+<o-row style="height: 70vh;">
+  <o-table style="height: 50vh;" fxFill #table service="routes" entity="routeImage" keys="route_id"
+    columns="R.route_id;name;estimated_duration;difficulty;description;img_code" title="ROUTES"
+    visible-columns="name;estimated_duration;difficulty" insert-button="no" delete-button="no" refresh-button="yes"
+    pagination-controls="yes" detail-mode="none" export-button="no" query-rows="20" show-charts-on-demand-option="no"
+    select-all-checkbox-visible="yes" select-all-checkbox="yes" auto-adjust="no" fixed-header="yes" id="tabla"
+    onRowSelected="addRow()" class="custom-table">
+
+
+    <o-table-row-expandable icon-collapse="keyboard_arrow_down" icon-expand="chevron_right">
+      <ng-template let-row>
+
+        
+
+        <o-column class="vertical-margin-10" layout-gap="12px">
+          <div fxLayout="row wrap" fxLayoutGap="14px">
+
+            <div fxLayout="column wrap" fxLayoutGap="14px">
+              <img class="preview-image" [src]="getImageSrc(row.img_code)">
+
+            </div>
+            
+
+            <!-- Horario, telefono, website y el cif -->
+
+            <o-row class="o-rows" class="left" attr="container" icon="info" mat title="{{'INFO' | oTranslate }}"
+              layout-align="start stretch" elevation="3" aria-orientation="horizontal">
+              <ul class="list-to-desc-2" appearance="outline" style="max-height: 100px;">
+                <li class="list-item"><strong><i>{{'name' | oTranslate }}: </i></strong>{{ (row.name) }}</li>
+                <li class="list-item"><strong><i>{{'estimated_duration' | oTranslate }}: </i></strong>{{
+                  convertTime(row.estimated_duration) }}</li>
+                <li class="list-item"><strong><i>{{'difficulty' | oTranslate }}: </i></strong>
+                  {{getDifficultad(row.difficulty)}}</li>
+              </ul>
+            </o-row>
+
+            <!-- Nombre y descripcion -->
+            <o-row class="o-rows" class="left" attr="container" icon="hiking" mat
+              title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" elevation="3"
+              aria-orientation="horizontal">
+              <ul class="list-to-desc" appearance="outline" style="max-height: 100px;">
+                <li class="list-item">{{row.description}}</li>
+              </ul>
+            </o-row>
+
+          </div>
+        </o-column>
+      </ng-template>
+    </o-table-row-expandable>
+
+  </o-table>
+</o-row>

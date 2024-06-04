@@ -1,42 +1,66 @@
-import {Component, Inject, Injector, ViewChild} from "@angular/core";
-import { DomSanitizer } from "@angular/platform-browser";
-import { Router } from "@angular/router";
+import {AfterViewInit, Component, Inject, Injector, OnInit, ViewChild} from "@angular/core";
+import {DomSanitizer} from "@angular/platform-browser";
+import {ActivatedRoute, NavigationExtras, Router} from "@angular/router";
 import {
   DialogService,
   ODialogConfig,
   OFormComponent,
   OSnackBarConfig,
-  OTableComponent,
   OTranslateService,
   OntimizeService,
-  SnackBarService, AuthService,
+  SnackBarService, AuthService, OComboComponent, OGridComponent,
+  Expression,
+  FilterExpressionUtils,
+  OPermissions,
+  Util,
 } from "ontimize-web-ngx";
-import { PackHomeComponent } from "../pack-home/pack-home.component";
+import {PackHomeComponent} from "../pack-home/pack-home.component";
+import {UserInfoService} from "../../../shared/services/user-info.service";
 
 @Component({
   selector: "app-pack-detail",
   templateUrl: "./pack-detail.component.html",
   styleUrls: ["./pack-detail.component.css"],
 })
-export class PackDetailComponent {
-  @ViewChild("accountCustomerTable") accountTable: OTableComponent;
-  @ViewChild("form") form: OFormComponent;
+export class PackDetailComponent implements OnInit, AfterViewInit {
+  @ViewChild("form") formPack: OFormComponent
+  @ViewChild("packDatesForm") packDatesForm: OGridComponent
+  @ViewChild("packDateCombo") packDateCombo: OComboComponent
+  @ViewChild("packDaysCombo") packDaysCombo: OComboComponent
+  protected isPackInstance: boolean
 
+  public arrayDias = [];
+  public selectedDay;
+  public selectedComboDay;
+
+  protected availableDates: Set<any> = new Set // TODO: CHECK IF NEEDED
+  protected bussineses: Array<any> // TODO: CHECK IF NEEDED
+  protected routes: Array<any> // TODO: CHECK IF NEEDED
   constructor(
     protected sanitizer: DomSanitizer,
     private router: Router,
+    private route: ActivatedRoute,
     private oTranslate: OTranslateService,
+    private packDateService: OntimizeService,
     protected dialogService: DialogService,
     protected injector: Injector,
-    protected service: OntimizeService,
+    protected bookingService: OntimizeService,
     protected snackBarService: SnackBarService,
-    @Inject(AuthService) private authService: AuthService
+    @Inject(AuthService) private authService: AuthService,
+    @Inject(UserInfoService) private userInfoService: UserInfoService,
+    @Inject(OntimizeService) protected service: OntimizeService
   ) {
-    this.service = this.injector.get(OntimizeService);
+    this.bookingService = this.injector.get(OntimizeService);
   }
 
   ngOnInit(): void {
-    this.configureService();
+    this.isPackInstance = false
+    this.isInstanceOfPack()
+    this.getDays()
+  }
+
+  ngAfterViewInit() {
+    this.populateDates()
   }
 
   public getImageSrc(base64: any): any {
@@ -48,11 +72,9 @@ export class PackDetailComponent {
   }
 
   public openPacks(): void {
-    if (PackHomeComponent.page == 1) {
-      this.router.navigate(["main/packs"]);
-    } else {
-      this.router.navigate(["main/pack-client"]);
-    }
+
+      this.router.navigate(["../"], {relativeTo: this.route});
+
   }
 
   diferenciaDias(fechaInicio: number, fechaFin: number): number {
@@ -68,7 +90,11 @@ export class PackDetailComponent {
 
   }
 
-  bookPack(event: any, data) {
+  bookPack(data: any) {
+    if(!this.packDateCombo.getValue()){
+      this.dialogService.warn(this.oTranslate.get("DATE_RANGE_FIELD"), this.oTranslate.get("DATE_RANGE_MISSING_MESSAGE"))
+      return
+    }
     const config: ODialogConfig = {
       icon: "warning",
       alertType: "warn",
@@ -90,18 +116,13 @@ export class PackDetailComponent {
       });
     }
   }
-
-  protected configureService() {
-    // Configure the service using the configuration defined in the `app.services.config.ts` file
-    const conf = this.service.getDefaultServiceConfiguration("packBookings");
-    this.service.configureService(conf);
-  }
-
   insertBooking(data) {
-    this.service
-      .insert({ pck_id: data.pck_id }, "packBooking")
+    const confBooking = this.bookingService.getDefaultServiceConfiguration("packBookings");
+    this.bookingService.configureService(confBooking);
+    this.bookingService
+      .insert({pd_id: data[0].pd_id, usr_id: this.userInfoService.getUserInfo().usr_id}, "packBooking")
       .subscribe((resp) => {
-        this.form.reload(true);
+        //TODO: this.form.reload(true);
 
         const config: OSnackBarConfig = {
           action: "",
@@ -111,10 +132,183 @@ export class PackDetailComponent {
           cssClass: "snackbar",
         };
         this.snackBarService.open("BOOKING.CONFIRMED", config);
+        this.router.navigate(["..", "main", "pack-client"])
+      });
+  }
+
+  populateDates() {
+    const confPack = this.packDateService.getDefaultServiceConfiguration('packDates');
+    this.packDateService.configureService(confPack);
+
+    const id = +this.route.snapshot.params["pck_id"]
+
+    this.packDateService.query(
+      {pck_id: id, pcs_id: 1},
+      ["pd_id", "pd_date_begin", "pd_date_end"],
+      "packDate",
+      {
+        pd_id: 4,
+        pd_date_begin: 93,
+        pd_date_end: 93
+      })
+      .subscribe((result) => {
+        if (result.data.length) {
+          result.data.forEach((date) => {
+            date.pd_date_begin = new Date(date.pd_date_begin).toLocaleDateString()
+            date.pd_date_end = new Date(date.pd_date_end).toLocaleDateString()
+          })
+          this.packDateCombo.setDataArray(result.data)
+        }
       });
   }
 
   isLogged() {
     return this.authService.isLoggedIn()
+  }
+
+  private isInstanceOfPack(): void {
+    const confPack = this.packDateService.getDefaultServiceConfiguration('packDates');
+    this.packDateService.configureService(confPack);
+    this.packDateService.query({pck_id: +this.route.snapshot.params['pck_id']}, ['pck_id'], 'packDate')
+      .subscribe((result) => {
+        if (result.data[0] !== undefined){
+          this.isPackInstance = true
+        }
+      });
+  }
+
+  //Metodos para redirect dinamico de business
+  openDetailBusiness(data: any): void {
+    const currentUrl = this.router.url; // Capturar la URL actual
+    const navigationExtras: NavigationExtras = {
+      state: { previousUrl: currentUrl },
+      relativeTo: this.route // Enviar la URL actual como navigation state
+    };
+    this.router.navigate(['../../businesses/' + data.bsn_id], navigationExtras);
+  }
+
+
+  //Metodo para redirect dinamico de rutas
+  openDetailRoutes(data: any): void {
+    const currentUrl = this.router.url; // Capturar la URL actual
+    const navigationExtras: NavigationExtras = {
+      state: { previousUrl: currentUrl },
+      relativeTo: this.route  // Enviar la URL actual como navigation state
+    };
+    this.router.navigate(['../../routes/' + data.route_id], navigationExtras);
+  }
+
+
+
+  public getRouteImageSrc(base64: any): any {
+    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/logo-walking.png";
+  }
+
+  getDifficultad(difficulty: number): string {
+    switch(difficulty) {
+      case 1:
+        return 'Fácil';
+      case 2:
+        return 'Intermedio';
+      case 3:
+        return 'Difícil';
+      case 4:
+        return 'Extremo';
+    }
+  }
+
+    //FILTROS
+    @ViewChild("daySelectorForm") protected daySelectorForm: OFormComponent;
+    createFilter(values: Array<{ attr: string, value: any }>): Expression {
+      let filters: Array<Expression> = [];
+
+      values.forEach(fil => {
+        if (fil.value) {
+          if (fil.attr === 'assigned_date') {
+            let value: number = Number(fil.value);
+            filters.push(FilterExpressionUtils.buildExpressionEquals("assigned_date", value));
+          }
+        }
+      });
+
+      if (filters.length > 0) {
+        return filters.reduce((exp1, exp2) =>
+          FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_AND)
+        );
+      } else {
+        return null;
+      }
+    }
+
+    public array: Object[] = [{
+      key: 1,
+      value: '1'
+    }, {
+      key: 2,
+      value: '2'
+    }, {
+      key: 3,
+      value: '3'
+    }, {
+      key: 4,
+      value: '4'
+    }];
+
+    getDays() {
+      const filter = {
+        pck_id: this.route.snapshot.params["pck_id"],
+      };
+      const confPack = this.packDateService.getDefaultServiceConfiguration('packs');
+      this.packDateService.configureService(confPack);
+      const columns = ["pck_name", "pck_days"];
+      this.service.query(filter, columns, "packDays").subscribe((resp) => {
+        if (resp.code === 0) {
+          // resp.data contains the data retrieved from the server
+
+          const array = resp.data;
+          const data = array[0];
+          const days = data["pck_days"];
+
+          for (let d of days) {
+            this.arrayDias.push({ day: d["day"], day_string: d["day_string"] });
+          }
+
+          this.selectedComboDay;
+        } else {
+          alert("Impossible to query data!");
+        }
+      });
+    }
+
+
+    returnArray(): any[] {
+      return this.array;
+    }
+
+    @ViewChild('gridBusinessesOfPack', { static: true }) gridBusinessesOfPack: any;
+    @ViewChild('gridRoutesOfPack', { static: true }) gridRoutesOfPack: any;
+
+    applyFilter(value: any): void {
+      const filter = { assigned_date: value };
+
+      this.gridBusinessesOfPack.queryData(filter);
+      this.gridRoutesOfPack.queryData(filter);
+    }
+
+  checkAuthStatus(){
+    return !this.authService.isLoggedIn()
+  }
+  parsePermissions(attr: string): boolean {
+
+    // if oattr in form, it can have permissions
+    if (!this.formPack || !Util.isDefined(this.formPack.oattr)) {
+      return;
+    }
+      const permissions: OPermissions = this.formPack.getFormComponentPermissions(attr)
+
+      if (!Util.isDefined(permissions)) {
+        return true
+      }
+      return permissions.visible
   }
 }
