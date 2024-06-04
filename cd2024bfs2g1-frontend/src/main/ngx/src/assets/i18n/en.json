@@ -26,6 +26,7 @@
   "HOME": "Home",
   "LANG_en": "English",
   "LANG_es": "Spanish",
+  "LANG_gl": "Galician",
   "LANGUAGE_de": "German",
   "LANGUAGE_en": "English",
   "LANGUAGE_es": "Spanish",
@@ -408,8 +409,8 @@
   "HOME-CONTENT-SECONDARY-BUTTON": "More info",
   "DATE_RANGE_FIELD": "Date range field",
   "DATE_RANGE_MISSING_MESSAGE": "The date range field is empty",
-  "DATE_R": "Pack date",
+  "LOCALE_gl": "GL",
+  "DATE_R": "Pack date"
   "COMBO-BOX-DAYS-DESC": "The day you select will show the routes and businesses available on the selected day."
-
 }
 
