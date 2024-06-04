@@ -180,16 +180,10 @@
     display: grid !important;
     grid-template-columns: auto auto !important;
     justify-content: space-between !important;
-    padding-left: 16px !important;
-    padding-right: 1px !important;
-}
-
-.o-grid-sort ng-star-inserted {
-    align-self: end !important;
-}
-
-.button.mat-mdc-button-base.mat-mdc-icon-button .mat-mdc-button-touch-target {
-    align-self: start !important;
+    padding-left: 20px !important;
+    width: 400px;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 .grid-container {

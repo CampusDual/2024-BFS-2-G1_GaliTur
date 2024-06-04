@@ -393,13 +393,23 @@
     text-overflow: ellipsis;
 }
 
-.business-name:hover{
+.business-name:hover {
     overflow: auto;
     overflow-y: hidden;
 }
 
+/* Scrollbar styling */
+.business-name:hover::-webkit-scrollbar {
+    height: 8px;
+}
 
+.business-name:hover::-webkit-scrollbar-track {
+    background: #715e4e; 
+}
 
+.business-name:hover::-webkit-scrollbar-thumb {
+    background: #ccc6c0;
+}
 
 
 /* Estilos de las rutas del pack*/
