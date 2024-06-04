@@ -162,7 +162,8 @@
                                             </div>
                                             <div class="content-list-item">
                                                 <ul class="list-with-spaces" style="list-style-type: none;">
-                                                    <li><mat-icon class="icon">timer</mat-icon>{{data.estimated_duration}} Mins</li>
+                                                    <li *ngIf="!data.estimated_duration"><mat-icon class="icon">timer</mat-icon>- Min</li>
+                                                    <li *ngIf="data.estimated_duration"><mat-icon class="icon">timer</mat-icon>{{data.estimated_duration}} Min</li>
                                                     <li><mat-icon class="icon">eco</mat-icon>{{getDifficultad(data.difficulty) | oTranslate }}</li>
                                                 </ul>
                                             </div>
