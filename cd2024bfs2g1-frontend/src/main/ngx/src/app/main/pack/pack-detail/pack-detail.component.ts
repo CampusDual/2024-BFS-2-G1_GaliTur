@@ -132,7 +132,7 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
           cssClass: "snackbar",
         };
         this.snackBarService.open("BOOKING.CONFIRMED", config);
-        this.router.navigate(['../'])
+        this.router.navigate(["..", "main", "pack-client"])
       });
   }
 
