@@ -115,7 +115,8 @@
 }
 
 .titulo_pack{
- font-size: 30px;
+  font-size: 25px;
+  font-weight: bold;
  display: flex;
  text-align: center;
  height: 60px;
