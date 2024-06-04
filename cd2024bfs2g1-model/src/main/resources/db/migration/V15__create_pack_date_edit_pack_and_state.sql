@@ -7,6 +7,7 @@ DROP COLUMN pck_date_end;
 ALTER TABLE PACK
 DROP COLUMN pcs_id;
 
+
 ALTER TABLE PACK
 DROP CONSTRAINT pack_pcs_id_fkey;
 
