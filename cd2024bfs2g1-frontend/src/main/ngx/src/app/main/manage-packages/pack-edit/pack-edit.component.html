@@ -14,7 +14,7 @@
                 <div class="datosContainer">
                     <div fxLayout="column" fxLayoutGap="16px" class="contenido_datos">
                     <div fxLayout="row" fxLayoutGap="16px">
-                        <o-text-input #packNameInput fxFlex="100" (onValueChange)="onNameChange($event)" attr="pck_name" required="yes"></o-text-input>
+                        <o-text-input #packNameInput fxFlex="100" max-length="45" (onValueChange)="onNameChange($event)" attr="pck_name" required="yes"></o-text-input>
                     </div>
                         <div fxLayout="column" fxLayoutGap="10px">
                             <o-currency-input [step]="1" attr="pck_price" min="1" max="5000"  label="{{ 'pck_price' | oTranslate }}" read-only="no"
@@ -25,7 +25,7 @@
                             <o-integer-input (onValueChange)="onDaysChange($event)" attr="pck_days" label="{{ 'DAYS' | oTranslate }}"
                             read-only="no" required="no" max="100" min="1" class="camposTexto"></o-integer-input>
                         </div>
-                        <o-textarea-input class="description-textarea" attr="pck_description" required="yes" width="100%"></o-textarea-input>
+                        <o-textarea-input class="description-textarea" attr="pck_description" max-length="300" required="yes" width="100%"></o-textarea-input>
                         <div class="div_boton" fxLayout="column" fxLayoutGap="8px">
                                 <button #addRaBbtn class="button" (click)="onClicEdit(pck_id)">
                                 <mat-icon>add</mat-icon>
