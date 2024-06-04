@@ -652,7 +652,9 @@
     "SEARCH_PLACEHOLDER": "Introduce un lugar...",
     "CONTEXTMENU.CENTER_MAP": "Centrar mapa aquí",
     "CONTEXTMENU.ZOOM_IN": "Acercar",
-    "CONTEXTMENU.ZOOM_OUT": "Afastar"
+    "CONTEXTMENU.ZOOM_OUT": "Afastar",
+    "COMBO-BOX-DAYS-DESC": "O día que selecciones mostrarán as rutas e os negocios dispoñibles no día seleccionado."
+
   }
   
   
