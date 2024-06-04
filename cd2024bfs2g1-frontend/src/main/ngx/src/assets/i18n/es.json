@@ -221,7 +221,7 @@
   "PLACE": "Lugar",
   "DATE_START": "Fecha inicial",
   "DATE_END":"Fecha final",
-  "DATE_RANGE": "Seleccione intervalo de fechas",
+  "DATE_RANGE": "Seleccione fechas",
   "SEPARATOR": " a ",
   "DATERANGE.APPLYLABEL": "Seleccionar fecha",
   "DATERANGE.W": "S",
