@@ -26,6 +26,7 @@
   "HOME": "Home",
   "LANG_en": "English",
   "LANG_es": "Spanish",
+  "LANG_gl": "Galician",
   "LANGUAGE_de": "German",
   "LANGUAGE_en": "English",
   "LANGUAGE_es": "Spanish",
@@ -189,7 +190,7 @@
   "GALICIAN": "GALICIAN",
   "ENGLISH": "ENGLISH",
   "GERMAN": "GERMAN",
-  "PORTUGUESE": "PORTUGUESE",
+  "PORTUGUESE": "PORTUGUESE"
   "FRENCH": "FRENCH",
   "MENU": "Menu",
   "MESSAGES_INSERTED_ROUTE": "Route inserted succefully",
