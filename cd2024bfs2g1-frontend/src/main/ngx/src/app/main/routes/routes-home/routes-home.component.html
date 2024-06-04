@@ -11,7 +11,6 @@
   orderable="true"
   sort-column="creation_date:desc"
   sortable-columns="creation_date;name;estimated_duration;difficulty;creation_date:desc;name:desc;estimated_duration:desc;difficulty:desc"
-  insert-button="true"
   quick-filter-columns="name;difficulty"
   filter-case-sensitive="yes"
   pageable="yes"
@@ -21,6 +20,7 @@
   grid-item-height="350px"
   detail-mode="none"
   insert-button-floatable="no"
+  class="full-page"
 >
   <o-grid-item *ngFor="let data of routesGrid.dataArray" class="gridItem">
     <!--Contenedor principal-->

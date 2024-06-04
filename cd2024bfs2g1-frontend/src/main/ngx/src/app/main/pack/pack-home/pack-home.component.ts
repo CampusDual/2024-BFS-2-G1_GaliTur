@@ -37,7 +37,7 @@ export class PackHomeComponent {
 
   public openDetail(data: any): void {
     PackHomeComponent.page = 1;
-    this.router.navigate(['main/packs/' + data.pck_id]);
+    this.router.navigate(['packs/' + data.pck_id]);
   }
 
   public getImageSrc(base64: any): any {
