@@ -6,6 +6,7 @@
   }
 
   .title{
+    font-weight: bold;
     font-size: 25px;
     font-family: Poppins;
     margin-top: 0px;
@@ -20,7 +21,7 @@
     padding: 16px;
     display: flex;
     flex-direction: column;
-    transform: scale(0.925); 
+    transform: scale(0.925);
 }
 
 .businessCard img {
@@ -126,9 +127,9 @@
 
 /* hover effect for pack card */
 .packCard:hover {
-    box-shadow: 0 0 15px rgba(113, 94, 78, 1); 
-    transform: scale(0.9325); 
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    box-shadow: 0 0 15px rgba(113, 94, 78, 1);
+    transform: scale(0.9325);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }
 
@@ -149,7 +150,7 @@
     flex-direction: column;
     padding: 5px;
     justify-content: space-around;
-    
+
     o-button {
         color: #4e4c4a;
     }

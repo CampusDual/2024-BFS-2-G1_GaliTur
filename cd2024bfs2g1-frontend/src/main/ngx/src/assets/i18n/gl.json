@@ -223,7 +223,7 @@
     "PLACE": "Lugar",
     "DATE_START": "Data inicial",
     "DATE_END": "Data final",
-    "DATE_RANGE": "Seleccione intervalo de datas",
+    "DATE_RANGE": "Seleccione datas",
     "SEPARATOR": " a ",
     "DATERANGE.APPLYLABEL": "Seleccionar data",
     "DATERANGE.W": "S",
@@ -656,6 +656,5 @@
     "COMBO-BOX-DAYS-DESC": "O día que selecciones mostrarán as rutas e os negocios dispoñibles no día seleccionado."
 
   }
-  
-  
-  
+
+
