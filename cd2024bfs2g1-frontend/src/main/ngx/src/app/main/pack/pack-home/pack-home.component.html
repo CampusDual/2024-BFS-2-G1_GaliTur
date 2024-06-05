@@ -23,8 +23,8 @@
       </div>
       <!-- Filter buttons -->
       <div class="filter-column">
-        <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="ICON" icon="search" matTooltip="Search" class="filter-button"></o-button>
-        <o-button attr="clear" type="ICON" icon="delete" matTooltip="Clear filters" class="filter-button" [oFilterBuilderClear]="filterBuilder"  [oFilterBuilderQuery]="filterBuilder" ></o-button>
+        <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="ICON" icon="search" matTooltip="{{ 'SEARCH' | oTranslate }}" class="filter-button"></o-button>
+        <o-button attr="clear" type="ICON" icon="delete" matTooltip="{{ 'CLEAR_SEARCH' | oTranslate }}" class="filter-button" [oFilterBuilderClear]="filterBuilder"  [oFilterBuilderQuery]="filterBuilder" ></o-button>
       </div>
     </div>
 

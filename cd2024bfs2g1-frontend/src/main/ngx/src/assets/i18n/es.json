@@ -134,7 +134,7 @@
   "FREEROOMS": "Habitaciones Disponibles",
   "FREESERVICES": "Servicios Disponibles",
   "GUIDEINFO": "Información de la guia",
-  "AgencyGuide": "Guia de agencias",
+  "AgencyGuide": "Agencias de guías",
   "Lodging": "Alojamiento",
   "Restaurant": "Restaurante",
   "PASSWORD_TITLE":"Ingresa una contraseña segura (mínimo 8 caracteres, incluyendo una mayúscula, una minúscula, un numero y un caracter especíal mínimo)",
@@ -421,7 +421,9 @@
   "DATE_RANGE_MISSING_MESSAGE": "El campo de fechas está vacío",
   "LOCALE_gl": "GL",
   "DATE_R": "Fecha del pack",
-  "COMBO-BOX-DAYS-DESC": "El dia que selecciones mostrará las rutas y negocios disponibles el día seleccionado."
+  "COMBO-BOX-DAYS-DESC": "El dia que selecciones mostrará las rutas y negocios disponibles el día seleccionado.",
+  "SEARCH": "Buscar",
+  "CLEAR_SEARCH": "Eliminar búsqueda"
 }
 
 
