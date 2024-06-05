@@ -71,6 +71,11 @@
         "attr": "home",
         "visible": false,
         "enabled": false
+      },
+      {
+        "attr": "logout",
+        "visible": false,
+        "enabled": false
       }
       ],
       "routes": [

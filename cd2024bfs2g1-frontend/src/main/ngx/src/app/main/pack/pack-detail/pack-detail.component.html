@@ -145,7 +145,7 @@
 
                 <!-- Muestro todos las rutas en un grid -->
                 <div class="routes-container">
-                    <o-row class="o-row-o-grid-container" title="Routes" icon="map" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+                    <o-row class="o-row-o-grid-container" title="{{ 'ROUTES' | oTranslate }}" icon="map" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
                         <div class="o-grid-container">
                             <o-grid opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false"
                             show-page-size="false" disable-page-size-calculation="true" cols="2" gutter-size="1px" grid-item-height="215px">
@@ -162,8 +162,9 @@
                                             </div>
                                             <div class="content-list-item">
                                                 <ul class="list-with-spaces" style="list-style-type: none;">
-                                                    <li><mat-icon class="icon">timer</mat-icon>{{data.estimated_duration}} Mins</li>
-                                                    <li><mat-icon class="icon">eco</mat-icon>{{getDifficultad(data.difficulty) | oTranslate }}</li>
+                                                    <li *ngIf="!data.estimated_duration" matTooltip="{{'N0_ESTIMATED_DURATION'|oTranslate}}"><mat-icon class="icon">timer</mat-icon>- Min</li>
+                                                    <li *ngIf="data.estimated_duration" matTooltip="{{'estimated_duration'|oTranslate}}"><mat-icon class="icon">timer</mat-icon>{{data.estimated_duration}} Min</li>
+                                                    <li><mat-icon class="icon" matTooltip="{{'difficulty'|oTranslate}}">eco</mat-icon>{{getDifficultad(data.difficulty) | oTranslate }}</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -176,7 +177,7 @@
 
                 <!-- Muestro todos los negocios en un grid -->
                 <div class="business-container">
-                    <o-row class="o-row-o-grid-container" title="Businesses" icon="business" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+                    <o-row class="o-row-o-grid-container" title="{{ 'BUSINESSES' | oTranslate }}" icon="business" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
                         <div class="o-grid-container">
                             <o-grid  opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false"
                             show-page-size="false" disable-page-size-calculation="true" cols="2" gutter-size="1px" grid-item-height="245px">
@@ -185,9 +186,9 @@
                                         <div class="card-header">
                                             <div class="business-title">
                                                 <div class="business-icon">
-                                                    <span *ngIf="data.bsn_type === 'Restaurant'" matTooltip="Restaurant"><mat-icon class="type-icon" >restaurant</mat-icon></span>
-                                                    <span *ngIf="data.bsn_type === 'Lodging'"><mat-icon class="type-icon" matTooltip="Lodging">house</mat-icon></span>
-                                                    <span *ngIf="data.bsn_type === 'AgencyGuide'"><mat-icon class="type-icon" matTooltip="Agency Guide">flight</mat-icon></span>
+                                                    <span *ngIf="data.bsn_type === 'Restaurant'" matTooltip="{{'Restaurant'|oTranslate}}"><mat-icon class="type-icon" >restaurant</mat-icon></span>
+                                                    <span *ngIf="data.bsn_type === 'Lodging'"><mat-icon class="type-icon" matTooltip="{{ 'Lodging' | oTranslate }}">house</mat-icon></span>
+                                                    <span *ngIf="data.bsn_type === 'AgencyGuide'"><mat-icon class="type-icon" matTooltip="{{ 'AgencyGuide' | oTranslate }}">flight</mat-icon></span>
                                                 </div>
                                                 <div class="business-name">
                                                     <span class="pack-name">{{ data.bsn_name}}</span>
