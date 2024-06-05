@@ -2,14 +2,17 @@ package com.campusdual.cd2024bfs2g1.model.core.service.business;
 
 import com.campusdual.cd2024bfs2g1.api.core.service.business.IBusinessService;
 import com.campusdual.cd2024bfs2g1.model.core.dao.MerchantDao;
+import com.campusdual.cd2024bfs2g1.model.core.dao.UserDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.business.*;
 import com.campusdual.cd2024bfs2g1.model.core.service.MerchantService;
 import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
+import com.ontimize.jee.common.services.user.UserInformation;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -1238,8 +1241,6 @@ public class BusinessService implements IBusinessService {
     }
 
 
-
-
     @Override
     public EntityResult businessUpdate(Map<String, Object> attributesValues, Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
         return this.daoHelper.update(this.businessDao, attributesValues, keysValues);
@@ -1259,4 +1260,5 @@ public class BusinessService implements IBusinessService {
     public EntityResult businessOfPackQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.businessDao, keysValues, attributes, BusinessDao.QUERY_BUSINESS_OF_PACK);
     }
+
 }

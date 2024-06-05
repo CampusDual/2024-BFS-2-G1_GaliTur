@@ -28,6 +28,7 @@ export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'businessesmd', name: 'BUSINESSES', icon: 'business',
   items: [
     {id: 'businesses', name: 'BUSINESSES', route: '/main/businesses', icon: 'business'},
+    { id: 'mybusinesses', name: 'My Businesses', tooltip: 'My Businesses', route: '/main/business-merchant', icon: 'insert_chart' },
     {id: 'businessesnew', name: 'BUSINESSESNEW', route: '/main/businesses/new', icon: 'add'}
   ]
   },
