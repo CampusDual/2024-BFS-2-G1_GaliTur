@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-manage-all-routes',
@@ -6,9 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./manage-all-routes.component.css']
 })
 export class ManageAllRoutesComponent {
-getImageSrc(arg0: any): any {
-throw new Error('Method not implemented.');
-}
+
+  constructor(protected sanitizer: DomSanitizer
+  ){
+  }
+
+
+  public getImageSrc(base64: any): any {
+    const image_code = base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image-transparent.png';
+    return image_code
+  }
+
 onClicEdit(arg0: any) {
 throw new Error('Method not implemented.');
 }
