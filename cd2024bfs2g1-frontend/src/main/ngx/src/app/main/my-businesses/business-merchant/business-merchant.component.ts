@@ -23,13 +23,21 @@ export class BusinessMerchantComponent {
   }
   ngOnInit() {
   }
+
+  truncateName(name: string): string {
+    if (name.length > 30) {
+        return name.substr(0, 30) + '...';
+    } else {
+        return name;
+    }
+  }
  
   public getImageSrc(base64: any): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image-transparent.png';
   }
  
   public openDetail(data: any): void {
-    this.router.navigate(['main/business-merchant', +data.bsn_id]);
+    this.router.navigate(['main/business-merchant', data.bsn_id]);
   }
  
  
