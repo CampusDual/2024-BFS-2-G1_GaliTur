@@ -1,0 +1,60 @@
+<!-- 
+<o-breadcrumb [form]="myList"  separator=" "></o-breadcrumb>
+<div class="div-fullpage">
+    <o-list #myList class="contenedor" #list attr="route"  columns="r.name"
+    service="packs" entity="packMulti" keys="p.pck_id" refresh-button="true" insert-button="false" refresh-button="false"
+    quick-filter="yes" pageable="yes" delete-button="false" row-height="medium" detail-mode="none" quick-filter-columns="pck_name;pck_description" pagination-controls="yes"
+    query-rows="10" sortColumns="creation_date">
+    <div class="titulo_pack" fxLayout="column">
+        {{'PACK_TABLE' |  oTranslate}}
+    </div>
+    <div *ngFor="let row of list.dataArray" class="principal-centro">
+        <div class="secundaria-centro">
+            <o-row class="contenedor-centro">
+                <o-column class="contenedor-centro">
+                    <div class="datos">
+                        <mat-card class="prueba">
+                            <mat-card-header>
+                                <div fxLayout="column" fxLayoutGap="8px" class="card">
+                                    <div fxLayout="row" fxLayoutGap="60px">
+                                        <div fxLayout="column" fxLayoutGap="6px" class="card_datos">
+                                            <o-row class="o-rows" class="nombre_pack" attr="container" icon="hiking" mat
+                                            title="{{'PACK_NAME' | oTranslate }}" layout-align="start stretch"
+                                            aria-orientation="vertical" appearance="outline" style="border-radius: 10px; padding: 3px;">
+                                            <mat-card-title class="titulo">{{ row.pck_name }}</mat-card-title>
+                                            </o-row>
+                                            <o-row class="o-rows" class="description" attr="container" icon="description" mat
+                                            title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch"
+                                            aria-orientation="vertical" appearance="outline" style="border-radius: 10px; padding: 3px;">
+                                            <mat-card-subtitle class="descripction">{{row.pck_description}}</mat-card-subtitle>
+                                            </o-row>
+                                            <div fxlayout="row" fxLayoutGap="16px" class="card_image">
+                                                <button (click)="onClicEdit(row.pck_id)" class="button">
+                                                    <mat-icon>edit</mat-icon>
+                                                    {{'EDIT' | oTranslate}}</button>
+                                                <button (click)="onClicDelete(row.pck_id,row.image_id,row.imp_id)" class="button">{{'delete' | oTranslate}}</button>
+                                            </div>
+                                        </div>
+                                        <div class="imagen">
+                                            <img [src]="getImageSrc(row.img_code)" height="200px" width="200px"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-card-header>
+                        </mat-card>
+                    </div>
+                </o-column>
+            </o-row>
+        </div>
+    </div>
+    </o-list>
+</div>
+ -->
+
+ <div><h2>Prueba de datos</h2>
+    <o-table attr="routeTable" service="routes" entity="routeImage" keys="route_id"
+    columns="r.route_id" row-height="large" pagination-controls= "yes"
+    delete-button='yes' insert-button='no' refresh-button='yes' keys-sql-types="integer"
+    visible-columns="route_id" query-rows="10" class="custom-table">
+</o-table>
+</div>
