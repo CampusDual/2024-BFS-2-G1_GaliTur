@@ -185,7 +185,7 @@
                         <div class="o-grid-container">
                             <p *ngIf="gridBusinessesOfPack.dataArray.length == 0" class="no-business-card">
                                 <span *ngIf="comboDays.getValue() != 0 && comboDays.getValue() != null">No hay negocios el día {{comboDays.getValue()}} !</span>
-                                <span *ngIf="comboDays.getValue() == 0 || comboDays.getValue() == null">En este pack no hay negocios!</span>
+                                <span *ngIf="comboDays.getValue() == 0 || comboDays.getValue() == null">En este pack no hay negocios !</span>
                             </p>
                             <o-grid *ngIf="gridBusinessesOfPack.dataArray.length > 0" opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false"
                             show-page-size="false" disable-page-size-calculation="true" no cols="2" gutter-size="1px" grid-item-height="245px">
@@ -199,7 +199,7 @@
                                                     <span *ngIf="data.bsn_type === 'AgencyGuide'"><mat-icon class="type-icon" matTooltip="{{ 'AgencyGuide' | oTranslate }}">flight</mat-icon></span>
                                                 </div>
                                                 <div class="business-name">
-                                                    <span class="pack-name">{{ data.bsn_name}}</span>
+                                                    <span class="pack-name">{{ truncateName(data.bsn_name)}}</span>
                                                 </div>
                                             </div>
                                         </div>

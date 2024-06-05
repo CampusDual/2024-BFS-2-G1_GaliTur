@@ -386,30 +386,11 @@
     margin: auto;
     height: 40px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    align-items: center; 
+    justify-content: center; 
 }
 
-.business-name:hover {
-    overflow: auto;
-    overflow-y: hidden;
-}
 
-/* Scrollbar styling */
-.business-name:hover::-webkit-scrollbar {
-    height: 8px;
-}
-
-.business-name:hover::-webkit-scrollbar-track {
-    background: #715e4e;
-}
-
-.business-name:hover::-webkit-scrollbar-thumb {
-    background: #ccc6c0;
-}
 
 
 /* Estilos de las rutas del pack*/

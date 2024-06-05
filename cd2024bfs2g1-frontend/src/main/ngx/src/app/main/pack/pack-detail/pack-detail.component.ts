@@ -311,4 +311,14 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
       }
       return permissions.visible
   }
+
+  truncateName(name: string): string {
+    if (name.length > 30) {
+        return name.substr(0, 30) + '...';
+    } else {
+        return name;
+    }
+  }
+
+  
 }
