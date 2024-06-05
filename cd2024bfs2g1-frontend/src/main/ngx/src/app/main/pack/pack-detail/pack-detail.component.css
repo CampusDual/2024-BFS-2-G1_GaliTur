@@ -1,3 +1,4 @@
+/* Div que contiene toda la pagina */
 .page {
     display: flex;
     flex-direction: row;
@@ -5,6 +6,7 @@
     width: 100%;
 }
 
+/* Carta que contiene toda la informacion */
 .mainCard {
     display: flex;
     justify-content: center;
@@ -12,6 +14,7 @@
     width: 1100px;
 }
 
+/* Boton para volver a los packs */
 .back-button {
     margin-top: 60px;
     margin-right: -75px;
@@ -19,6 +22,7 @@
     z-index: 2;
 }
 
+/* Div que contiene todos los divs para mostrar la informacion */
 .main-container {
     min-width: 700px;
     align-content: center;
@@ -29,36 +33,24 @@
     margin-top: 10px;
 }
 
+
+/* Div para el nombre y la imagen */
 .name-container {
     margin-top: 20px;
-    margin-bottom:20px;
 }
 
-.data-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-}
-
+/* Div de la imagen */
 .div-image-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     width: 100%;
     height: 400px;
-    margin-bottom: 30px;
     align-items: center;
+    margin-bottom: 30px;
 }
 
-.row-image-container {
-    display: block;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    padding: 20px;
-}
-
+/* Imagen del nombre */
 .image {
     width: 100%;
     height: auto;
@@ -68,6 +60,7 @@
     object-fit: cover;
 }
 
+/* Imagen del nombre en caso de que sea el logo de la pagina (Imagen por defecto) */
 .image-logo {
     width: 100%;
     height: auto;
@@ -77,6 +70,7 @@
     object-fit:scale-down;
 }
 
+/* Estilos del titulo (Nombre del pack) */
 .image-title{
     position: absolute;
     justify-content: center;
@@ -87,25 +81,40 @@
     padding-right: 10px;
 }
 
+/* Div para la descripción y la informacion extra */
+.data-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Divs de la descripción y la informacion extra, necesarios para dividir de forma correcta a la mitad cada uno */
 .left, .right {
     flex: 1;
     padding: 25px;
     background-color: transparent;
     max-width: 50%;
     min-width: 30%;
-        mat-icon{
-            color:#84A45A;
-        }
+    mat-icon{
+        color:#84A45A;
+    }
 }
 
+/* Descripción */
 .desc {
     margin-left: 20px;
 }
 
+/* Estilo global de los o-rows */
 .o-rows {
     background-color: transparent;
+    mat-icon{
+        color:#84A45A;
+    }
 }
 
+/* Espaciar las listas <ul> de forma correcta independientemente del numero de items que tenga */
 .list-with-spaces {
     display: flex;
     flex-direction: column;
@@ -117,7 +126,7 @@
     overflow-x: hidden;
 }
 
-
+/* Estilos de la lista de la descripcion*/
 .list-to-desc {
     display: flex;
     flex-direction: column;
@@ -128,7 +137,7 @@
     overflow-x: hidden;
 }
 
-
+/* Estilos de los text-inputs */
 .o-text-input {
     outline: transparent;
     width: 100%;
@@ -136,15 +145,18 @@
     margin-top: 15px;
 }
 
+/* Estilo de los o-grid-items */
 .o-grid-items {
     width: 100%;
     height: 100%
 }
 
+/* Estilo de los <li> de las listas para espaciarlos verticalmente o separarlos de los bordes superiores */
 .li-with-margin {
     margin-top: 10px;
 }
 
+/* Estilos del botón de booking */
 #booking-button{
     background-color:  #52733B;
     .mat-mdc-raised-button:not(:disabled) {
@@ -152,11 +164,316 @@
     }
 }
 
-
+/* Estilos del snackbar */
 ::ng-deep .mdc-snackbar__surface{
-        background-color: #52733B !important;
+    background-color: #52733B !important;
 }
 
+/* Estilos del DIV que contiene el botón y el combo-box de la reserva */
+.reserve-container {
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    justify-content: space-between;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Estilos del contenedor del botón de reservar */
+.div-active-pack-container{
+    width: 20%;
+    text-align: center;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+/* Estilos del contenedor del combo-box de las fechas disponibles */
+.div-combo-container{
+    width: 75%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+        background-color: rgba(132, 164, 90, 0.35) !important;
+        border-top-left-radius: 8px !important;
+        border-top-right-radius: 8px !important;
+    } 
+    .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+        margin-top: -5px !important;
+    }
+    .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label  {
+        margin-top: 0px !important;
+    }
+}
+
+.div-combo-days-container{
+    width: 50%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+        background-color: #ccc6c0 !important;
+        border-top-left-radius: 8px !important;
+        border-top-right-radius: 8px !important;
+    } 
+    .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+        margin-top: -5px !important;
+    }
+    .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label  {
+        margin-top: 0px !important;
+    }
+}
+
+.combo-box-dates {
+    background-color: #84A45A !important;
+}
+
+/* Estilos del botón de reservar*/
+.active-pack{
+    border-top-left-radius: 8px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 0px;
+    border-bottom-color: rgba(100, 104, 98, 0.75);
+    border-bottom-width: 1.5px;
+    background-color:rgba(132, 164, 90, 0.85);
+    border-bottom-style: solid;
+    color:white;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    &:hover {
+        background-color:rgba(132, 164, 90, 1);
+        border-bottom-color: rgba(107,89,74,255);
+        border-bottom-width: 2px;
+        transform: scale(1.03);
+        cursor: pointer;
+    }
+    
+}
+
+
+
+
+/* Estilos del contenedor del o-row de las RUTAS pertenecientes al pack */
+.routes-container {
+    padding: 25px;
+}
+
+
+/* Estilos del contenedor del o-row de los NEGOCIOS pertenecientes al pack */
+.business-container {
+    padding: 25px;
+}
+
+/* Estilos de los o-rows que contienen los o-grid de laas rutas y los negocios */
+.o-row-o-grid-container {
+    background-color: transparent;
+    .o-grid .o-grid-container .o-grid-footer .o-grid-totals {
+        color: transparent !important;
+    }
+    mat-icon{
+        color:#84A45A;
+    }
+}
+
+/* Estilos del contenedor de los o-grid de laas rutas y los negocios */
+.o-grid-container {
+    width: 100%;
+    max-height: 310px;
+    height: 310px;
+    padding: 0px;
+    margin:0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+/* Estilos de las cartas de los business del pack*/
+.businessCard {
+    width: 365px;
+    background-color: #ccc6c0;
+    border-radius: 10px; 
+    padding: 16px;
+    overflow-x: hidden;
+
+}
+
+.businessCard img {
+    width: 100%;
+}
+
+.businessCard .office {
+    font-size: 0.8em;
+}
+
+
+.preview-image {
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.text-style {
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.type-icon {
+    margin-bottom: -6.5px;
+    margin-right: 5px;
+    color: white !important;
+    font-size: 22px;
+
+}
+
+:host ::ng-deep .o-grid-sort {
+    min-width: 300px;
+    mat-form-field {
+        min-width: 300px;
+    }
+}
+
+.businessCard:hover {
+    box-shadow: 0 0 15px rgba(113, 94, 78, 0.5);  
+    transform: scale(1.04); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.card-header {
+    width: 100%;
+    text-align: center;
+    background-color:rgba(113, 94, 78, 1); 
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.business-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 40px;
+}
+.business-icon {
+    width: 10%;
+    margin: auto;
+    height: 40px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding-top: 2px;
+}
+
+.business-name {
+    width: 90%;
+    margin: auto;
+    height: 40px;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.business-name:hover{
+    overflow: auto;
+    overflow-y: hidden;
+}
+
+
+
+
+
+/* Estilos de las rutas del pack*/
+.routeCard {
+    width: 365px;
+    background-color: #ccc6c0;
+    border-radius: 10px; 
+    padding: 16px;
+    overflow-x: hidden;  
+}
+
+.routeCard img {
+    width: 100%;
+}
+
+.routeCard .office {
+    font-size: 0.8em;
+}
+
+.routeCard:hover {
+    box-shadow: 0 0 15px rgba(113, 94, 78, 0.5);  
+    transform: scale(1.04); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* icon styles */
+.icon {
+    margin-bottom: -8px;
+    margin-right: 4px;
+    font-size: 20px;
+    color: rgba(132, 164, 90, 1) !important;
+}
+
+
+.card-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 80px;
+
+}
+
+.content-image-item {
+    width: 45%;
+}
+
+.content-list-item {
+    width: 55%;
+    margin-top: -10px;
+    padding: 0px;   
+    ul {
+        height: 64px;
+    }
+    
+
+}
+
+.route-name {
+    width: 90%;
+    margin: auto;
+    height: 40px;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.route-name:hover{
+    overflow: auto;
+    overflow-y: hidden;
+}
 
 
 

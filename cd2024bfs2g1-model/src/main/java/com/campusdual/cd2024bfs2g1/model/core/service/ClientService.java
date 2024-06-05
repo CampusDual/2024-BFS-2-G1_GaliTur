@@ -86,6 +86,10 @@ public class ClientService implements IClientService {
         return this.daoHelper.delete(this.clientDao, keyMap);
     }
 
+    @Override
+    public EntityResult clientSingleQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.clientDao, keyMap, attrList, this.clientDao.SINGLE_QUERY);
+    }
 
     /**
      * Gets logged client ID

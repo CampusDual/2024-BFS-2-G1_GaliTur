@@ -43,21 +43,18 @@
         <Query id="allPacks">
             <Sentence>
                 <![CDATA[
-                    SELECT
+                    SELECT DISTINCT
                         #COLUMNS#
                     FROM
-                        ${mainschema}.pack P
-                        INNER JOIN ${mainschema}.image_pack IP
-                        ON P.pck_id=IP.pck_id
-                        INNER JOIN ${mainschema}.image I
-                        ON IP.img_id=I.image_id
-                        INNER JOIN ${mainschema}.gui_cities GC
-                        ON P.gui_c_id=GC.gui_c_id
-                        INNER JOIN ${mainschema}.pack_date PD
-                        ON P.pck_id=PD.pck_id
-                    WHERE
-                        PD.pcs_id = 1
-                    #WHERE#
+                       pack P
+                           INNER JOIN image_pack IP
+                           ON P.pck_id = IP.pck_id
+                           INNER JOIN image I
+                           ON IP.img_id = I.image_id
+                           INNER JOIN gui_cities GC
+                           ON P.gui_c_id = GC.gui_c_id
+                       WHERE P.pck_id in (select distinct spd.pck_id from pack_date spd where spd.pcs_id = 1)
+                    #WHERE_CONCAT#
                     #ORDER#
                 ]]>
             </Sentence>
@@ -136,6 +133,29 @@
                    #ORDER#
                 ]]>
 
+            </Sentence>
+        </Query>
+        <Query id="packCancelDetail">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.pack P
+                        INNER JOIN ${mainschema}.image_pack IP
+                        ON P.pck_id=IP.pck_id
+                        INNER JOIN ${mainschema}.image I
+                        ON IP.img_id=I.image_id
+                        INNER JOIN ${mainschema}.gui_cities GC
+                        ON P.gui_c_id=GC.gui_c_id
+                        INNER JOIN ${mainschema}.pack_date PD
+                        ON P.pck_id=PD.pck_id
+                        INNER JOIN ${mainschema}.pack_booking PB
+                        ON PD.pd_id=PB.pd_id
+                    #WHERE#
+                    #ORDER#
+                    LIMIT 1;
+                ]]>
             </Sentence>
         </Query>
     </Queries>

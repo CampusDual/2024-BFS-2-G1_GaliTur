@@ -14,4 +14,5 @@ public class ClientDao extends OntimizeJdbcDaoSupport {
     public static final String USR_ID = "usr_id";
     public static final String BIRTH_DATE = "birth_date";
 
+    public static final String SINGLE_QUERY = "single";
 }

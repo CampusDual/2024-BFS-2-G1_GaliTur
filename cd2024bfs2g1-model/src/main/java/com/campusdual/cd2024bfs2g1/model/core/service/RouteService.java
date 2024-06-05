@@ -5,8 +5,10 @@ import com.campusdual.cd2024bfs2g1.model.core.dao.ImageDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.ImageRouteDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.LandmarkDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.RouteDao;
+import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
+import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.common.services.user.UserInformation;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +17,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-
-import static com.campusdual.cd2024bfs2g1.model.core.dao.RouteDao.QUERY_ROUTE_IMAGE;
 
 @Lazy
 @Service("RouteService")
@@ -40,7 +40,13 @@ public class RouteService  implements IRouteService {
 
     @Override
     public EntityResult routeQuery(Map<String, Object> keyMap, List<String> attrList) {
-        return this.daoHelper.query(routeDao, keyMap, attrList, routeDao.QUERY_ROUTE_IMAGE);
+        return this.daoHelper.query(routeDao, keyMap, attrList);
+    }
+
+    @Override
+    public EntityResult routeImageQuery(Map<String, Object> keyMap, List<String> attrList) {
+       attrList.remove("route_id");
+        return this.daoHelper.query(routeDao, keyMap, attrList, "multi");
     }
 
     @Override
@@ -102,6 +108,16 @@ public class RouteService  implements IRouteService {
     @Override
     public EntityResult imageInsert(Map<String, Object> attrMap) {
         return this.daoHelper.insert(imageDao, attrMap);
+    }
+
+    @Override
+    public AdvancedEntityResult routePaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy) throws OntimizeJEERuntimeException {
+        return this.daoHelper.paginationQuery(this.routeDao, keysValues, attributes, recordNumber, startIndex, orderBy, RouteDao.QUERY_ROUTE_IMAGE);
+    }
+
+    @Override
+    public EntityResult routesOfPackQuery(Map<String, Object> keyMap, List<String> attrList) {
+        return this.daoHelper.query(routeDao, keyMap, attrList, routeDao.QUERY_ROUTES_OF_PACK);
     }
 }
 

@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RoutesDetailComponent } from '../routes-detail/routes-detail.component';
 import { ImageService } from 'src/app/shared/services/image.service';
+import { OntimizeService } from 'ontimize-web-ngx';
+import { ActivatedRoute} from '@angular/router';
 
 
 @Component({
@@ -10,21 +12,43 @@ import { ImageService } from 'src/app/shared/services/image.service';
   templateUrl: './routes-home.component.html',
   styleUrls: ['./routes-home.component.css']
 })
-export class RoutesHomeComponent implements OnInit {
+export class RoutesHomeComponent {
 galleryOptions: any;
 
   constructor(
     protected dialog: MatDialog,
     protected sanitizer: DomSanitizer,
     private imageService: ImageService,
-  ) { }
+    private ontimizerouteService: OntimizeService,
+    private activeRoute: ActivatedRoute
+  ) {
+    
+  }
 
-  ngOnInit() {
+  ngAfterViewInit(): void {
+    const idRutaActual = +this.getRouteId();
+    const confRoute =
+      this.ontimizerouteService.getDefaultServiceConfiguration("routes");
+    this.ontimizerouteService.configureService(confRoute);
+    if(!isNaN(idRutaActual)){
+      this.ontimizerouteService
+      .query(
+        { route_id: idRutaActual },
+        ["route_id","name", "description", "estimated_duration", "difficulty"],
+        "route"
+      )
+      .subscribe((response) => {
+        this.openDetail(response.data[0]);
+      });
+    }
+  }
+
+  getRouteId(): number {
+    return +this.activeRoute.snapshot.params["route_id"];
   }
 
   /*Recoger img de BD*/
   public getImageSrc(base64: any): any {
-
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/logo-walking.png";
   }
 
@@ -39,6 +63,7 @@ galleryOptions: any;
         });
         data['galleryImages'] = images
       }
+
       this.dialog.open(RoutesDetailComponent, {
         height: '700px',
         width: '1200px',
@@ -46,6 +71,8 @@ galleryOptions: any;
       });
     })
   }
+
+
 
   /*Pasar minutos introducidos a h y min*/
   public convertTime(minutos: number):  string {

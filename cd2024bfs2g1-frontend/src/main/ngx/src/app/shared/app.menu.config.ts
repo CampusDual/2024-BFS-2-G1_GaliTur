@@ -3,15 +3,35 @@ import { BusinessHomeComponent } from '../main/business/business-home/business-h
 
 export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'home', name: 'HOME', icon: 'home', route: '/main/home' },
+  { id: 'home-public', name: 'HOME', icon: 'home', route: '/home' },
+  
+  {  id: 'packssolo', name: 'PACKS', tooltip: 'PACKS', route: '/main/packs', icon: 'hiking'},
+  { id: 'packs-public', name: 'PACKS', tooltip: 'PACKS', route: '/packs', icon: 'inventory_2'},
   { id: 'packmd', name: 'PACKS', tooltip: 'PACKS', icon: 'hiking',
     items: [
       { id: 'packs', name: 'PACKS', tooltip: 'PACKS', route: '/main/packs', icon: 'inventory_2'},
-      { id: 'mypacks', name: 'MYPACKS', tooltip: 'My Packs', route: '/main/pack-client', icon: 'backpack' }
+      { id: 'mypacks', name: 'MYPACKS', tooltip: 'My Packs', route: '/main/pack-client', icon: 'backpack' },
+      { id: 'managepacks', name: 'MANAGEPACKS', tooltip: 'Manage Packs', route: '/main/pack-manage', icon: 'settings' },
+      { id: 'packsnew', name: 'PACKS_NEW', tooltip: 'New Pack', route: '/main/packs/new', icon: 'add' }
     ]
     },
-  { id: 'routes', name: 'ROUTES', icon: 'route', route: '/main/routes' },
-  { id: 'businesses', name: 'BUSINESSES', tooltip: 'BUSINESSES', route: '/main/businesses', icon: 'business'},
-  { id: 'graphics', name: 'GRAPHICS', tooltip: 'GRAPHICS', route: '/main/graphics', icon: 'bar_chart'},
+    {id: 'routessolo', name: 'ROUTES', icon: 'route', route: '/main/routes'},
+    {id: 'routes-public', name: 'ROUTES', icon: 'route', route: '/routes'},
+  { id: 'routesmd', name: 'ROUTES', icon: 'route',
+    items: [
+      {id: 'routes', name: 'ROUTES', icon: 'route', route: '/main/routes'},
+      {id: 'routesnew', name: 'ROUTESNEW', icon: 'add', route: '/main/routes/new'},
+    ]
+  },
+  {id: 'businessessolo', name: 'BUSINESSES', tooltip: 'BUSINESSES', route: '/main/businesses', icon: 'business'},
+  {id: 'businesses-public', name: 'BUSINESSES', tooltip: 'BUSINESSES', route: '/businesses', icon: 'business'},
+  { id: 'businessesmd', name: 'BUSINESSES', tooltip: 'BUSINESSES', icon: 'business',
+  items: [
+    {id: 'businesses', name: 'BUSINESSES', tooltip: 'BUSINESSES', route: '/main/businesses', icon: 'business'},
+    {id: 'businessesnew', name: 'BUSINESSESNEW', tooltip: 'BUSINESSES', route: '/main/businesses/new', icon: 'add'}
+  ]
+  },
+{ id: 'graphics', name: 'GRAPHICS', tooltip: 'GRAPHICS', route: '/main/graphics', icon: 'bar_chart'},
   {
     id: 'admin', name: 'ADMIN', tooltip: 'ADMIN', icon: 'admin_panel_settings',
     items: [

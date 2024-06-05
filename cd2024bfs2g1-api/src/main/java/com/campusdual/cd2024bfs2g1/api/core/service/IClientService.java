@@ -19,4 +19,5 @@ public interface IClientService {
     EntityResult clientDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
     // CUSTOM SQL
+    EntityResult clientSingleQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 }

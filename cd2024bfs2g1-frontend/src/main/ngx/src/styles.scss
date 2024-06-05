@@ -39,6 +39,7 @@
   }
 }
 
+
 /* Estilos globales */
 
 /* Barra arriba */
@@ -69,7 +70,7 @@
 
 /* Fondo de la pagina */
 .application-layout-content-wrapper {
-  background-color: #e2dbd5 !important; 
+  background-color: #e2dbd5 !important;
 }
 
 
@@ -112,9 +113,9 @@ li >a:hover, .o-app-sidenav-menu-group >a:hover{
           background-color: #6a7532 !important;
       }
   }
-  
-  
-}    
+
+
+}
 
 /* Botones de añadir y refrescar dentro de la pagina*/
 .o-grid .o-grid-toolbar button.o-grid-button:not([disabled]).mat-mdc-button-base{
@@ -165,10 +166,7 @@ o-app-sidenav.o-app-sidenav .o-app-header .o-user-info .o-user-info-wrapper, o-a
       .mat-icon {
           color: #e2dbd5 !important;
       }
-  
-  }
-  .o-form form .o-form-content-wrapper {
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.24);
+
   }
 
   o-column.o-column, o-row.o-row {
@@ -195,9 +193,9 @@ o-app-sidenav.o-app-sidenav .o-app-header .o-user-info .o-user-info-wrapper, o-a
       .mat-icon {
           color: #e2dbd5 !important;
       }
-  
+
   }
-  
+
 }
 
 /* dialogos / popups */
@@ -236,7 +234,7 @@ o-app-sidenav.o-app-sidenav .o-app-header .o-user-info .o-user-info-wrapper, o-a
 .md-drppicker td.week, .md-drppicker th.week {
   color: black !important;
   opacity: 0.6;
-  
+
 }
 
 /* desplegable del calendario del login*/
@@ -244,6 +242,12 @@ o-app-sidenav.o-app-sidenav .o-app-header .o-user-info .o-user-info-wrapper, o-a
   background-color:  rgb(221, 218, 212) !important;
 }
 
+
 .md-drppicker td.disabled {
   background-color:  rgb(221, 218, 212) !important;
+}
+
+/* Tamaño de la casilla de ordenación*/
+.mat-mdc-form-field-has-icon-prefix .mat-mdc-text-field-wrapper  {
+  min-width: 360px;
 }

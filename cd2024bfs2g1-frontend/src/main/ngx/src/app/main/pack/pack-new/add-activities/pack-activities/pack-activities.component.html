@@ -1,0 +1,69 @@
+<o-row>
+  <o-column style="padding-top: 1%;padding-left: 1%;">
+    <o-button attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary" (click)="goBack()"></o-button>
+  </o-column>
+  <o-column style="padding-left: 38%;">
+    <h2 style="text-align: center">{{'ADD_BSNPs' | oTranslate }}</h2>
+
+  </o-column>
+
+
+</o-row>
+<o-row style="align-content: space-between; padding-left: 1.5%">
+
+  <o-column id="addBusiness">
+    <o-button label="{{'ADD_BSNP' | oTranslate }}" (click)="insertBsnPack()"> </o-button>
+
+  </o-column>
+
+  <o-column id="selectDay">
+    <o-combo #comboBoxDay class="comboBoxDay" attr="comboDay" label="{{'SELECT_DAY' | oTranslate }}" null-selection="no"
+      [static-data]="arrayDias" [data]="selectedComboDay" value-column="day" columns="day" required="yes"
+      visible-columns="day" (onValueChange)="setBsnData()">
+    </o-combo>
+  </o-column>
+</o-row>
+<o-row style="height: 70vh;">
+  <o-table style="height: 50vh;" fxFill #table  keys="bsn_id"
+    columns="bsn_id;bsn_name;bsn_type;bsn_address;bsn_phone;bsn_photos;bsn_website;bsn_schedule" service="businesses" entity="business" title="BUSINESSES"
+    visible-columns="bsn_name;bsn_address;bsn_type" insert-button="no" delete-button="no" refresh-button="yes"
+    pagination-controls="yes" detail-mode="none" export-button="no" query-rows="20" show-charts-on-demand-option="no"
+    select-all-checkbox-visible="yes" select-all-checkbox="yes" auto-adjust="no" fixed-header="yes" id="tabla"
+    onRowSelected="addRow()" >
+
+    <o-table-row-expandable icon-collapse="keyboard_arrow_down" icon-expand="chevron_right">
+      <ng-template let-row>
+
+        <o-column class="vertical-margin-10" layout-gap="12px">
+          <div fxLayout="row wrap" fxLayoutGap="14px">
+
+          <div fxLayout="column wrap" fxLayoutGap="14px">
+            <img class="preview-image" [src]="getImageSrc(row.bsn_photos)">
+
+          </div>
+          <!-- Direccion y descripcion -->
+          <o-row class="o-rows" class="left" attr="container" icon="business" title="{{'BUSINESS' | oTranslate }}"
+            layout-align="start stretch" elevation="3" aria-orientation="vertical">
+            <ul class="list-to-desc">
+              <li class="list-item"><strong><i>{{'pck_name' | oTranslate }}: </i></strong> {{row.bsn_name}}</li>
+              <li class="list-item"><strong><i>{{'ADDRESS' | oTranslate }}: </i></strong> {{row.bsn_address}}</li>
+            </ul>
+          </o-row>
+
+          <!-- Horario, telefono, website y el cif -->
+
+          <o-row class="o-rows" class="right" attr="container" title="{{'INFO_EXTRA' | oTranslate }}" icon="info"
+            layout-align="start stretch" elevation="3">
+            <ul class="list-to-desc">
+              <li class="list-item"><strong><i>{{'SCHEDULE' | oTranslate }}: </i></strong>{{row.bsn_schedule}}</li>
+              <li class="list-item"><strong><i>{{'PHONE' | oTranslate }}: </i></strong> {{row.bsn_phone}}</li>
+              <li class="list-item"><strong><i>{{'WEBSITE' | oTranslate }}: </i></strong> {{row.bsn_website}}</li>
+            </ul>
+          </o-row>
+          </div>
+        </o-column>
+      </ng-template>
+    </o-table-row-expandable>
+
+  </o-table>
+</o-row>

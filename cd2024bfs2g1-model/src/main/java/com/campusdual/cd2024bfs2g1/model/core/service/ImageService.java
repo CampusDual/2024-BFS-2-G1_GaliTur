@@ -30,5 +30,9 @@ public class ImageService implements IImageService {
         return this.daoHelper.insert(imageDao, attrMap);
     }
 
+    @Override
+    public EntityResult imageDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.delete(this.imageDao, keyMap);
+    }
 
 }

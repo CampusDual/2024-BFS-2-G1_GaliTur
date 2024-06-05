@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { OTranslateService, OntimizeService } from 'ontimize-web-ngx';
-import { PieChartConfiguration } from 'ontimize-web-ngx-charts';
 
 
 @Component({
@@ -11,10 +10,14 @@ import { PieChartConfiguration } from 'ontimize-web-ngx-charts';
 
 export class GraphicsHomeComponent implements OnInit {
 
+  colors = {domain: ["#84b463", "#9cc77f", "#bde0a5", "#def9cc"]}
+
 
   constructor(private ontimizeService: OntimizeService) {  
       this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration("packs"));  
   }
 
   ngOnInit() {}
+
+  
 }

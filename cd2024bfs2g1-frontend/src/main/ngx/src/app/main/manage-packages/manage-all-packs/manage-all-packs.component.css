@@ -1,0 +1,130 @@
+.div-fullpage {
+    background-image: url('../../../../assets/images/fondoPackEditar.png');
+    background-size:cover;
+    height: 84%;
+  }
+
+  .principal-centro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px 10px;
+    margin-bottom: 20px;
+  }
+
+  .secundaria-centro {
+    display: flex;
+    padding: 5px 5px 5px 5px;
+    background-color: #c2b5aa;
+    border-radius: 10px 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .contenedor-centro {
+    display: flex;
+    justify-content: center;
+    background-color: #c2b5aa;
+    padding: 3px 3px 3px 3px;
+  }
+  .datos{
+    width: 1000px;
+  }
+  .card_datos{
+    width: 700px;
+    height: 100%;
+    padding: 0px 0px 15px 25px;
+  }
+
+.button{
+ font-size: 16px;
+ font-size: 20px;
+ width: 150px;
+ border-radius: 5px;
+ border-width: 3px;
+ border-style: solid;
+ border-color: #c2b5aa;
+ background-color: #c2b5aa;
+ cursor: pointer;
+ outline: none;
+}
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+  }
+  10% {
+      transform: scale(1.03);
+  }
+  20% {
+      transform: scale(1.06);
+  }
+  30% {
+      transform: scale(1.08);
+  }
+  40% {
+      transform: scale(1.1);
+  }
+  50% {
+      transform: scale(1.12);
+  }
+  60% {
+      transform: scale(1.1);
+  }
+  70% {
+      transform: scale(1.08);
+  }
+  80% {
+      transform: scale(1.06);
+  }
+  90% {
+      transform: scale(1.03);
+  }
+}
+.button:hover{
+    background-color: white;
+    border-color: white;
+    font-size: 18px;
+    width: 150px;
+    animation: pulse 3s infinite ease-in-out;
+}
+
+.titulo{
+    font-size: 15px;
+    background-color: rgb(255, 254, 253);
+    padding: 5px;
+    color: black;
+}
+.descripction{
+  font-size: 15px;
+  background-color: rgb(255, 254, 253);
+  padding: 5px;
+  color: black;
+}
+
+
+.prueba{
+  background-color: #eee4db;
+}
+
+.imagen{
+  display: flex;
+  align-items: center;
+  padding: 0px 0px 15px 0px;
+}
+
+.titulo_pack{
+ font-size: 30px;
+ display: flex;
+ text-align: center;
+ height: 60px;
+}
+
+.mat-icon{
+  vertical-align: middle;
+  margin: 0px 5px 5px 0px;
+}
+
+
+

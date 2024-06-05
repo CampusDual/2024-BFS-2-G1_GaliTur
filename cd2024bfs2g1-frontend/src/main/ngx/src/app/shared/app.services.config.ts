@@ -58,5 +58,11 @@ export const SERVICE_CONFIG: Object = {
   },
   'packDates': {
     'path': "/packDates",
+  },
+  'businessPacks': {
+    'path': '/businessPacks'
+  },
+  'routePacks': {
+    'path': '/routePacks'
   }
 };
