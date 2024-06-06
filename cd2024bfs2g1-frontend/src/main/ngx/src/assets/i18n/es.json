@@ -213,7 +213,7 @@
   "DAY": "Día",
   "DAYS": "Días",
   "PACK_NAME": "Nombre del pack",
-  "PACKS_NEW": "Paquete nuevo",
+  "PACKS_NEW": "Nuevo pack",
   "PRICE": "Precio",
   "PARTICIPANTS": "Participantes",
   "ACTIVE": "Activo",
@@ -421,7 +421,11 @@
   "DATE_RANGE_MISSING_MESSAGE": "El campo de fechas está vacío",
   "LOCALE_gl": "GL",
   "DATE_R": "Fecha del pack",
-  "COMBO-BOX-DAYS-DESC": "El dia que selecciones mostrará las rutas y negocios disponibles el día seleccionado."
+  "COMBO-BOX-DAYS-DESC": "El dia que selecciones mostrará las rutas y negocios disponibles el día seleccionado.",
+  "MANAGEROUTE": "Gestión de rutas",
+  "ROUTE_TABLE": "Plantillas de rutas",
+  "ROUTE_NAME": "Nombre de la ruta",
+  "LANDMARKDELETECONFIRMED": "Punto de interes borrado satisfactoriamente"
 }
 
 

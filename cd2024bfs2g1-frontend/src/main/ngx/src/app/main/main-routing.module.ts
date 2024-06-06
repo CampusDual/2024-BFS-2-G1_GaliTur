@@ -21,6 +21,8 @@ export const routes: Routes = [
       { path: 'pack-client', canActivate: [AuthGuardService], loadChildren: () => import('./my-packs/my-packs.module').then(m => m.MyPacksModule) },
       { path: 'graphics', canActivate: [AuthGuardService], loadChildren: () => import('./graphics/graphics.module').then(m => m.GraphicsModule) },
       { path: 'pack-manage', canActivate: [AuthGuardService], loadChildren: () => import('./manage-packages/manage-packages.module').then(m => m.ManagePackagesModule) },
+      { path: 'route-manage', canActivate: [AuthGuardService], loadChildren: () => import('./routes-manage/routes-manage.module').then(m => m.RoutesManageModule) },
+
     ]
   }
 ];

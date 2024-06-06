@@ -3,11 +3,14 @@ package com.campusdual.cd2024bfs2g1.model.core.service;
 import com.campusdual.cd2024bfs2g1.api.core.service.ILandmarkService;
 import com.campusdual.cd2024bfs2g1.model.core.dao.*;
 import com.ontimize.jee.common.dto.EntityResult;
+import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.Keymap;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +43,16 @@ public class LandmarkService implements ILandmarkService {
     }
 
     @Override
+    public EntityResult landmarkOfRouteQuery(Map<String, Object> keyMap, List<String> attrList) {
+        if(keyMap.containsKey("route_id")){
+            Object route_id = keyMap.remove("route_id");
+            keyMap.put("r.route_id",Integer.parseInt(route_id+""));
+        }
+        EntityResult aux = this.daoHelper.query(landmarkDao, keyMap, attrList, LandmarkDao.QUERY_LANDMARKS);
+        return aux;
+    }
+
+    @Override
     public EntityResult landmarkInsert(Map<String, Object> attrMap) {
         EntityResult insertLandmarkId = this.daoHelper.insert(landmarkDao, attrMap);
         Map<String,Object> landmarkRouteMapAttr=new HashMap();
@@ -64,4 +77,26 @@ public class LandmarkService implements ILandmarkService {
 //        imageLandmarkMapAttr.put(ImageDao.ATTR_IMAGE_ID, id_image);
 //        return this.daoHelper.insert(imageLandmarkDao, imageLandmarkMapAttr);
 //    }
+
+    @Override
+    public EntityResult landmarkDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        EntityResult landmarkDeleteResult = null;
+        List<String> attrList = new ArrayList<>();
+        attrList.add(routeLandmarkDao.ATTR_LANDMARK_ID);
+        //Buscamos el landmark para borrar
+        EntityResult landmarkDeleteObject = this.daoHelper.query(routeLandmarkDao, keyMap,attrList);
+        //Borramos la entrada de la tabla intermedia
+        EntityResult landmarkRouteDeleteResult = this.daoHelper.delete(routeLandmarkDao, keyMap);
+        if(landmarkRouteDeleteResult.getCode()==EntityResult.OPERATION_SUCCESSFUL){
+            //Borramos el landmark
+           return deleteLandmarkAux(((ArrayList)landmarkDeleteObject.get(landmarkDao.ATTR_ID)).get(0));
+        }
+        return landmarkDeleteResult;
+    }
+
+    public EntityResult deleteLandmarkAux(Object landmark_id){
+        Map<String,Object> landmarkDeleteKey = new HashMap<>();
+        landmarkDeleteKey.put(landmarkDao.ATTR_ID,landmark_id);
+        return this.daoHelper.delete(landmarkDao, landmarkDeleteKey);
+    }
 }

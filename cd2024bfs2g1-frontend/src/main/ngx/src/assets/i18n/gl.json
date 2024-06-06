@@ -381,7 +381,7 @@
     "pck_price_min": "Prezo mínimo",
     "pck_price_max": "Prezo máximo",
     "pck_days": "Días",
-    "PACK_TABLE": "Plantilla de Packs",
+    "PACK_TABLE": "Plantillas de packs",
     "EDIT": "Editar",
     "ADD_DATES": "Engadir Datas",
     "ADD_ROUTES_AND_BUSINESSES": "Engadir Rutas e Negocios",
@@ -653,7 +653,11 @@
     "CONTEXTMENU.CENTER_MAP": "Centrar mapa aquí",
     "CONTEXTMENU.ZOOM_IN": "Acercar",
     "CONTEXTMENU.ZOOM_OUT": "Afastar",
-    "COMBO-BOX-DAYS-DESC": "O día que selecciones mostrarán as rutas e os negocios dispoñibles no día seleccionado."
+    "COMBO-BOX-DAYS-DESC": "O día que selecciones mostrarán as rutas e os negocios dispoñibles no día seleccionado.",
+    "MANAGEROUTE": "Xestión de rutas",
+    "ROUTE_TABLE": "Plantillas de rutas",
+    "ROUTE_NAME": "Nome da ruta",
+    "LANDMARKDELETECONFIRMED": "Punto de interese borrado satisfactoriamente"
 
   }
 
