@@ -38,14 +38,14 @@
                     visible-columns="name;coordinates" query-rows="10" select-all-checkbox="yes" filter-case-sensitive="yes"
                     export-button="no" insert-button="yes" delete-button="no" refresh-button="no" fixed-header="yes"
                     detail-mode="none" edition-mode="click" export-mode="local">
-                    <o-table-button icon="map" (onClick)="onClickMap()">Pulsame Bebe</o-table-button>
+                    <o-table-button icon="map" (onClick)="onClickMap()"></o-table-button>
                 </o-table>
                 </div>
             </div>
         </div>
         </div>
-            <div fxLayout="column" class="landmark-map" *ngIf="!mostrarMapa">
-                <o-map #oMap attr="mapInput" center="{{actualCoordinates}}" zoom="10" min-zoom="3" max-zoom="20" zoom-control="yes"
+            <div fxLayout="column" class="landmark-map" *ngIf="mostrarMapa">
+                <o-map #oMap attr="mapInput" center="{{actualCoordinates}}" zoom="8" min-zoom="3" max-zoom="20" zoom-control="yes"
                     search-control="no" layer-panel-visible="no" fxFlex >
                     <o-map-crs crs="EPSG:4326"></o-map-crs>
                 </o-map>

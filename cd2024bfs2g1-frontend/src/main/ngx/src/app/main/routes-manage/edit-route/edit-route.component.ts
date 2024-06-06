@@ -26,17 +26,22 @@ export class EditRouteComponent implements OnInit {
   idRutaActual: number;
   nameActualRoute: String;
   actualLandkmarkId = null
-  actualCoordinates : string = null
+  actualCoordinates : string = '42.940599,-7.120727'
   mostrarMapa = false
 
-  onClickLandmark(event: any) {
+  async onClickLandmark(event: any) {
+    
+    
     this.actualLandkmarkId = null
     this.actualCoordinates = null
     this.actualLandkmarkId = event.row.landmark_id
     this.actualCoordinates = event.row.coordinates
     if(this.actualCoordinates!=null) {
+      
       const coordinatesArrayAux = this.actualCoordinates.split(',')
       this.oMap.addMarker("1",coordinatesArrayAux[0],coordinatesArrayAux[1],{},true,false,true,"1")
+      await this.delay(300);
+      this.oMap.getMapService().setZoom(12)
     }else alert("Lo sentimos, el punto de interes no cuenta con coordenadas")
   }
   onClickMap() {
@@ -45,7 +50,9 @@ export class EditRouteComponent implements OnInit {
   getRouteId(): number {
     return +this.activeRoute.snapshot.params["route_id"];
   }
-
+  async delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
 
   landmarkRouteQuery(id: any): void {
     const confLandmark =
