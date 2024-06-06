@@ -1,38 +1,112 @@
-*{
-    margin: 0%;
-    padding: 0%;
+* {
+    margin: 0;
+    padding: 0;
 }
-.imagen{
-    height: 300px !important;
-    width: 400px !important;
-    padding: 0px 0px 0px 0px !important;
-}
-.principal{
-    align-items: center;
-    height: 90%;
-    border-radius: 10px;
-    border: 10px solid #c2b5aa;
-    background-color: #eee4db;
-    padding: 10px 20px 10px 20px;
-    margin: 20px;
-    width: 90%;
-}
-.contenedor_imagen{
-    align-items: center !important;
-    height: 500px !important;
-    width: 300px !important;
-    padding: 60px 0px 0px 30px !important;
-}
-.fondo{
+
+.fondo {
     background-image: url('../../../../assets/images/fondoPackEditar.png');
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    padding: 20px;
 }
-.tabla{
+
+.principal {
+    background-color: #eee4db;
+    border: 10px solid #c2b5aa;
     border-radius: 10px;
+    padding: 20px;
+    width: 90%;
+    margin: 20px auto;
 }
+
+.contenedorTodo {
+    border-radius: 10px;
+    width: 100%;
+}
+
+.datosContainer {
+    padding: 20px 0;
+}
+
+.tituloTabla {
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.contenedorTabla {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    width: 80%;
+}
+
+.bordeTabla {
+    border: 10px solid #c2b5aa;
+    border-radius: 10px;
+    background-color: #eee4db;
+    padding: 20px;
+    width: 100%;
+}
+
+.contenedor_imagen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    padding: 60px 30px 0 300px;
+}
+
+.imagen {
+    height: 300px;
+    width: 400px;
+    object-fit: cover;
+}
+
+.landmark-map {
+    height: 600px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.button {
+    font-size: 16px;
+    border-radius: 5px;
+    border: 3px solid #c2b5aa;
+    background-color: #c2b5aa;
+    cursor: pointer;
+    width: 300px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: #fff;
+    border-color: #fff;
+    font-size: 18px;
+    animation: pulse 3s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.description-textarea .mat-textarea {
+    height: 130px;
+    resize: none;
+}
+
 .modal * {
     margin: 0;
     padding: 0;
@@ -43,116 +117,4 @@
     background: none;
     border: none;
     display: revert;
-  }
-
-
-.landmark-map {
-    height: 300px;
-    width: 98%;
 }
-
-.contenedorTabla{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    border-radius: 10px;
-}
-.contenedorTodo{
-    border-radius: 10px;
-    width: 90%;
-}
-.datosContainer{
-    padding: 0px 0px 20px 0px;
-}
-.bordeTabla{
-    border: 10px solid #c2b5aa;
-    width: 100%;
-    background-color: #eee4db;
-    border-radius: 10px;
-    padding: 10px 20px 10px 20px;
-}
-
-.button{
-    font-size: 16px;
-    border-radius: 5px;
-    border-width: 3px;
-    border-style: solid;
-    border-color: #c2b5aa;
-    background-color: #c2b5aa;
-    cursor: pointer;
-    width: 300px;
-    outline: none;
-   }
-
-     @keyframes pulse {
-       0%, 100% {
-         transform: scale(1);
-     }
-     10% {
-         transform: scale(1.01);
-     }
-     20% {
-         transform: scale(1.02);
-     }
-     30% {
-         transform: scale(1.03);
-     }
-     40% {
-         transform: scale(1.04);
-     }
-     50% {
-         transform: scale(1.05);
-     }
-     60% {
-         transform: scale(1.04);
-     }
-     70% {
-         transform: scale(1.03);
-     }
-     80% {
-         transform: scale(1.02);
-     }
-     90% {
-         transform: scale(1.01);
-     }
-   }
-   .button:hover{
-       background-color: white;
-       border-color: white;
-       font-size: 18px;
-       animation: pulse 3s infinite ease-in-out;
-   }
-
-   .description-textarea{
-    .mat-textarea {
-        height: 130px;
-        resize: none;
-    }
-}
-.tituloTabla{
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    font-size: 25px;
-    padding: 15px;
-}
-
-.mat-icon{
-    vertical-align: middle;
-    margin: 0px 0px 2px 0px;
-}
-
-.custom-form {
-    .o-form form .o-form-content-wrapper {
-        box-shadow: transparent;
-    }
-  }
-
-
-
-
-
-
-
-
