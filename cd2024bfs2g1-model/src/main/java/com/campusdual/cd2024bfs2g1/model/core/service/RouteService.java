@@ -5,6 +5,7 @@ import com.campusdual.cd2024bfs2g1.model.core.dao.ImageDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.ImageRouteDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.LandmarkDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.RouteDao;
+import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDao;
 import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
@@ -47,6 +48,19 @@ public class RouteService  implements IRouteService {
     public EntityResult routeImageQuery(Map<String, Object> keyMap, List<String> attrList) {
        attrList.remove("route_id");
         return this.daoHelper.query(routeDao, keyMap, attrList, "multi");
+    }
+
+    @Override
+    public EntityResult packImageForEditQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        if(keyMap.size()>0){
+            Object key = keyMap.remove(RouteDao.ATTR_ID);
+            keyMap.put("r."+RouteDao.ATTR_ID, key);
+        }
+        attrList.remove(RouteDao.ATTR_ID);
+        attrList.add("r."+RouteDao.ATTR_ID);
+
+        EntityResult EntityAux = this.daoHelper.query(this.routeDao, keyMap, attrList, routeDao.QUERY_ALL_ROUTES);
+        return EntityAux;
     }
 
     @Override

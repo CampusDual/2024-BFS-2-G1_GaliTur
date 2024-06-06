@@ -2,7 +2,7 @@
 <o-breadcrumb [form]="myList"  separator=" "></o-breadcrumb>
 <div class="div-fullpage">
     <o-list #myList class="contenedor" #list attr="routeList" service="routes" entity="route" keys="r.route_id"
-    columns="r.route_id;name;description;estimated_duration;difficulty;creation_date;img_code" refresh-button="true" insert-button="false"
+    columns="r.route_id;name;description;estimated_distance;difficulty;creation_date;img_code" refresh-button="true" insert-button="false"
     quick-filter="yes" pageable="yes" delete-button="false" row-height="medium" detail-mode="none" quick-filter-columns="" pagination-controls="yes"
     query-rows="10">
     <div class="titulo_route" fxLayout="column">

@@ -2,39 +2,46 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OntimizeService } from 'ontimize-web-ngx';
 import { Landmark } from '../../routes/routes-new/view-all-landmark/landmark-model';
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { OMapComponent } from 'ontimize-web-ngx-map';
 
 @Component({
   selector: 'app-edit-route',
   templateUrl: './edit-route.component.html',
   styleUrls: ['./edit-route.component.css']
 })
-export class EditRouteComponent implements AfterViewInit {
-onClickLandmark(event: any) {
-  this.actualLandkmarkId = event.row.landmark_id
-  this.actualCoordinates = event.row.coordinates
-  console.log("Estoy tocando la tabla :), y me devuelve: ",event.row.landmark_id)
-  console.log("Tocando la tabla me da estas coordenadas: ",event.row.coordinates)
-}
+export class EditRouteComponent implements OnInit {
+
+@ViewChild('oMap') oMap : OMapComponent
   constructor(
-    protected dialog: MatDialog,
     private ontimizelandmarkService: OntimizeService,
-    private ontimizerouteService: OntimizeService,
     private activeRoute: ActivatedRoute,
-    private router: Router
   ) {}
+  ngOnInit(): void {
+    this.idRutaActual = +this.getRouteId();
+    this.landmarkRouteQuery(this.idRutaActual);
+  }
 
   datosTabla: Landmark[] = [];
   idRutaActual: number;
   nameActualRoute: String;
   actualLandkmarkId = null
-  actualCoordinates = null
+  actualCoordinates : string = null
+  mostrarMapa = false
 
-  ngAfterViewInit(): void {
-    this.idRutaActual = +this.getRouteId();
-    this.landmarkRouteQuery(this.idRutaActual);
+  onClickLandmark(event: any) {
+    this.actualLandkmarkId = null
+    this.actualCoordinates = null
+    this.actualLandkmarkId = event.row.landmark_id
+    this.actualCoordinates = event.row.coordinates
+    if(this.actualCoordinates!=null) {
+      const coordinatesArrayAux = this.actualCoordinates.split(',')
+      this.oMap.addMarker("1",coordinatesArrayAux[0],coordinatesArrayAux[1],{},true,false,true,"1")
+    }else alert("Lo sentimos, el punto de interes no cuenta con coordenadas")
   }
-
+  onClickMap() {
+    this.mostrarMapa = !this.mostrarMapa
+  }
   getRouteId(): number {
     return +this.activeRoute.snapshot.params["route_id"];
   }

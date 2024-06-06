@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-all-routes',
@@ -8,8 +9,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ManageAllRoutesComponent {
 
-  constructor(protected sanitizer: DomSanitizer
-  ){
+  constructor(protected sanitizer: DomSanitizer,
+    private router: Router){
   }
 
 
@@ -18,8 +19,8 @@ export class ManageAllRoutesComponent {
     return image_code
   }
 
-onClicEdit(arg0: any) {
-throw new Error('Method not implemented.');
+onClicEdit(route_id: any) {
+  this.router.navigate(['main','route-manage',route_id])
 }
 
 }
