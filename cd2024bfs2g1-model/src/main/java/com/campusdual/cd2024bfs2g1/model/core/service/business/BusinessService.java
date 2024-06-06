@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -1237,6 +1238,23 @@ public class BusinessService implements IBusinessService {
         return null;
     }
 
+
+    /**
+     * Insert DOWN DATE in Business
+     * @param attributesValues
+     * @param keysValues
+     * @return
+     * @throws OntimizeJEERuntimeException
+     */
+    @Override
+    public EntityResult businessDownDateUpdate(Map<String, Object> attributesValues, Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
+
+        LocalDate ld = LocalDate.now();
+
+        attributesValues.put(BusinessDao.DOWN_DATE, ld);
+
+        return this.daoHelper.update(this.businessDao, attributesValues, keysValues);
+    }
 
     @Override
     public EntityResult businessUpdate(Map<String, Object> attributesValues, Map<String, Object> keysValues) throws OntimizeJEERuntimeException {

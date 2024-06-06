@@ -19,7 +19,7 @@
                         #COLUMNS#
                     FROM
                         ${mainschema}.bsn_business
-                    #WHERE#
+                    WHERE bsn_down_date is null
                     #ORDER#
                 ]]>
             </Sentence>
