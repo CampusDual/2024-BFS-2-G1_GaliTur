@@ -29,10 +29,6 @@
                                 class="icon">groups</mat-icon>{{data.pck_participants}} {{'PEOPLE' | oTranslate}}</li>
                         <li><mat-icon class="icon">calendar_month</mat-icon> {{formatDate(data.pd_date_begin)}}</li>
                         <li><mat-icon class="icon">event_busy</mat-icon> {{formatDate(data.pd_date_end)}}</li>
-                        <li *ngIf="data.pck_days && data.pck_days == 1"><mat-icon
-                                class="icon">timer</mat-icon>{{data.pck_days}} {{'DAY' | oTranslate}}</li>
-                        <li *ngIf="data.pck_days && data.pck_days > 1"><mat-icon
-                                class="icon">timer</mat-icon>{{data.pck_days}} {{'DAYS' | oTranslate}}</li>
                         <li><mat-icon class="icon">pin_drop</mat-icon>{{truncateInfo(data.gui_c_name)}}</li>
                         <li><mat-icon class="icon">payments</mat-icon>{{data.pck_price}} €</li>
                     </ul>
