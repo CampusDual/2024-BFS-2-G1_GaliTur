@@ -13,7 +13,14 @@ const routes: Routes = [
       }
     }
   },
-  {path: ':bsn_id', component: BusinessMerchantDetailComponent}
+  {path: ':bsn_id', component: BusinessMerchantDetailComponent,
+  data: {
+    oPermission: {
+      permissionId: "myBusinessDetail",
+      restrictedPermissionsRedirect: 403
+    }
+  }
+  }
 ];
 
 @NgModule({

@@ -114,8 +114,11 @@
         {
           "permissionId": "myBusiness",
           "enabled": false
+        },
+        {
+          "permissionId": "myBusinessDetail",
+          "enabled": false
         }
-
       ],
       "components": [
         {
