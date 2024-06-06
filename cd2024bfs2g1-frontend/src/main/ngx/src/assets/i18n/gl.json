@@ -658,7 +658,9 @@
     "FOUND": "Atopados",
     "SEARCH": "Buscar",
     "CLEAR_SEARCH": "Eliminar a busca",
-    "SAVE": "Gardar"
+    "SAVE": "Gardar",
+    "NO_ESTIMATED_DISTANCE": "Sen distancia estimada",
+    "ESTIMATED_DISTANCE": "Distancia estimada"
 
   }
 
