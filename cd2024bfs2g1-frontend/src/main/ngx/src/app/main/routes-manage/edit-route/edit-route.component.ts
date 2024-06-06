@@ -1,6 +1,6 @@
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OntimizeService } from 'ontimize-web-ngx';
+import { OTableComponent, OntimizeService } from 'ontimize-web-ngx';
 import { Landmark } from '../../routes/routes-new/view-all-landmark/landmark-model';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { OMapComponent } from 'ontimize-web-ngx-map';
@@ -12,7 +12,9 @@ import { OMapComponent } from 'ontimize-web-ngx-map';
 })
 export class EditRouteComponent implements OnInit {
 
+
 @ViewChild('oMap') oMap : OMapComponent
+@ViewChild('landmarkTable') landmarkTable : OTableComponent
   constructor(
     private ontimizelandmarkService: OntimizeService,
     private activeRoute: ActivatedRoute,
@@ -29,9 +31,9 @@ export class EditRouteComponent implements OnInit {
   actualCoordinates : string = '42.940599,-7.120727'
   mostrarMapa = false
 
+
   async onClickLandmark(event: any) {
-    
-    
+
     this.actualLandkmarkId = null
     this.actualCoordinates = null
     this.actualLandkmarkId = event.row.landmark_id

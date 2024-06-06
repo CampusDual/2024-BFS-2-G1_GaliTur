@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { NavigationService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-manage-all-routes',
@@ -10,7 +11,9 @@ import { Router } from '@angular/router';
 export class ManageAllRoutesComponent {
 
   constructor(protected sanitizer: DomSanitizer,
+    protected injector: Injector,
     private router: Router){
+      this.injector.get(NavigationService).initialize();
   }
 
 

@@ -32,12 +32,13 @@
                     <div class="tituloTabla">
                         <p>{{'LANDMARKS' | oTranslate}}<p>
                     </div>
-                    <o-table #landmarkTable attr="landmarkTable" [static-data]="datosTabla" (onClick)="onClickLandmark($event)"
-                    keys="landmark_id" class="custom-table"
-                    columns="landmark_id;name;coordinates;description"
+                    <o-table #landmarkTable attr="landmarkTable" service="landmarks"  entity="landmark" keys="route_landmark_id;l.landmark_id"
+                    parent-keys="route_id" (onClick)="onClickLandmark($event)"
+                    columns="l.landmark_id;name;coordinates;description;route_landmark_id"
                     visible-columns="name;coordinates" query-rows="10" select-all-checkbox="yes" filter-case-sensitive="yes"
-                    export-button="no" insert-button="yes" delete-button="no" refresh-button="no" fixed-header="yes"
-                    detail-mode="none" edition-mode="click" export-mode="local">
+                    export-button="no" insert-button="yes" delete-button="yes" refresh-button="no" fixed-header="yes"
+                    detail-mode="none" export-mode="local"
+                    static-query='{"additionalParam": "valor"}'>
                     <o-table-button icon="map" (onClick)="onClickMap()"></o-table-button>
                 </o-table>
                 </div>
