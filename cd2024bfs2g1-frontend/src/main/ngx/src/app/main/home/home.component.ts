@@ -20,5 +20,16 @@ export class HomeComponent implements OnInit {
   navigate() {
     this.router.navigate(['../', 'login'], { relativeTo: this.actRoute });
   }
+  
+  public openPacks(): void {
+    this.router.navigate(['../packs'], { relativeTo: this.actRoute });
+  }
 
+  public getLogoImageSrc(): any {
+    return "./assets/images/logo-sidebar.png";
+  }
+
+  public getContentImageSrc(): any {
+    return "./assets/images/home-image.jpeg";
+  }
 }

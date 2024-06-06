@@ -23,7 +23,8 @@ export class RoutesDetailComponent implements OnInit{
     protected dialog: MatDialog,
     protected landmarkService: LandmarksService,
     private dialogRef: MatDialogRef<RoutesDetailComponent>,
-    private router: Router
+    private router: Router,
+    private actRoute: ActivatedRoute
     ) {
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration("landmarks"));
     this.galleryOptions = [
@@ -36,8 +37,8 @@ export class RoutesDetailComponent implements OnInit{
         preview: false
       }
     ]
-    this,dialogRef.disableClose = true;
-    
+    this.dialogRef.disableClose = true;
+
    }
 
   ngOnInit(){
@@ -66,6 +67,7 @@ export class RoutesDetailComponent implements OnInit{
      //Si el usuario viene de routes home actuar como el metodo backToHome original
     } else {
       this.dialogRef.close();
+      this.router.navigate(['../routes'], { relativeTo: this.actRoute })
     }
 }
 

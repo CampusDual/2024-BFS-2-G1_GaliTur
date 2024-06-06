@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-import { OFormComponent, OTableComponent } from 'ontimize-web-ngx';
+import { ActivatedRoute, Router } from '@angular/router';
+import { OFormComponent, OTableComponent, OntimizeService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-business-detail',
@@ -14,8 +14,10 @@ export class BusinessDetailComponent implements OnInit {
 
   constructor(
     protected sanitizer: DomSanitizer,
-    private router: Router
-  ) { }
+    private router: Router,
+    private actRoute: ActivatedRoute
+  ) {
+  }
 
   ngOnInit(): void { }
 
@@ -33,7 +35,7 @@ export class BusinessDetailComponent implements OnInit {
       this.router.navigate(['/main/businesses']);
       //En caso de que entre introduciendo una URL no se contemplada en los casos anteriores redirigir a landing page
     } else {
-      this.router.navigate(['/main']);
+      this.router.navigate(['../'],{ relativeTo: this.actRoute });
     }
 }
 

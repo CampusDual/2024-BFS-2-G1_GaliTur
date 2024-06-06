@@ -1,4 +1,3 @@
-
 <div class="full-page">
   <o-form class="register-form" #form show-header="no" service="clients" entity="client" (onInsert)="navigate()" matchPassword keys="usr_id" after-insert-mode="new" message-service-type="customMessageServiceTypeRegister">
     <div class="contenedor">
@@ -59,10 +58,12 @@
 </o-form>
 
 </div>
-
+<div class="lang"><o-language-selector></o-language-selector></div>
 <div class="header">
   <div class="logo-text-container">
     <img src="./assets/images/logo-walking.png" alt="Logo" class="logo-image"> <!-- Ruta de la imagen del logo -->
     <span class="app-name">GaliTur</span>
   </div>
+
+  
 </div>

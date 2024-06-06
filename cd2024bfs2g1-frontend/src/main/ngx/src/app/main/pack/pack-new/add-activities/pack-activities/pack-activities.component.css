@@ -64,7 +64,7 @@
     max-height: 200px;
     min-width: 200px; 
     min-height: 200px; 
-    object-fit: cover;
+    object-fit:contain;
     margin-bottom: 15px;
     margin-left: 15px;
     padding-top: 10px;
@@ -137,28 +137,10 @@
     margin-left: 15px;
 }
 
-o-column{
-    .o-container-title span {
-        font-size: 18px;
-        font-weight: bold;
-        color: #00000099;
-      
-} 
-background-color: #e2dbd5 !important;
-}
-
-o-row{
- 
-    background-color: #e2dbd5 !important;
-}
-
-
-
 #addBusiness{
     width: 20%;
     padding-left: 25%;
 }
-
 
 #selectDay{
     width: 20%;
@@ -167,40 +149,29 @@ o-row{
 }
 
 ::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
-    background-color: #e2dbd5 !important;
+    background-color:  #e2dbd5 !important;
 }
 
-:host ::ng-deep button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base {
+:host ::ng-deep o-column.o-column, o-row.o-row {
+    background: #e2dbd5 !important;
+}
+
+:host ::ng-deep .o-button button.mat-mdc-outlined-button {
     background-color: #4e4c4a !important;
     color: #e2dbd5 !important;
-    height: 36.3px;
-    padding-top: 5%;
 }
 
-/* cambiar estilo de un componente en concreto */
-:host ::ng-deep .comboBoxDay{
-    
- .mat-mdc-select-value {
-    color: #e2dbd5 !important;
-}
-}
-
-:host ::ng-deep.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+:host ::ng-deep  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
     background-color: #4e4c4a !important;
-    color: #e2dbd5;
 }
 
-:host ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
-    min-width: 0%;
-}
-    
-
-
-:host ::ng-deep .mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label{
+:host ::ng-deep .mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label {
     color: #e2dbd5 !important;
-
 }
 
-:host ::ng-deep .mat-mdc-icon-button.mat-primary {
-    color: #4e4c4a !important;
+:host ::ng-deep .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+    margin-top: -5px !important;
+}
+:host ::ng-deep .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label  {
+    margin-top: 0px !important;
 }

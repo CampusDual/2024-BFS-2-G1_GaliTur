@@ -9,4 +9,6 @@ import java.util.Map;
 public interface IImageService {
     public EntityResult imageInsert(Map<String, Object> attrMap);
     public EntityResult imageQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
+
+    EntityResult imageDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 }

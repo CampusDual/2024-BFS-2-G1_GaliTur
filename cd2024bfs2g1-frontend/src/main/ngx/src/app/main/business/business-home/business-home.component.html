@@ -11,7 +11,6 @@
   orderable="true"
   sort-column="bsn_creation_date:desc"
   sortable-columns="bsn_name;bsn_type;bsn_creation_date;bsn_name:desc;bsn_type:desc;bsn_creation_date:desc"
-  insert-button="true"
   refresh-button="true"
   quick-filter-columns="bsn_name;bsn_type"
   filter-case-sensitive="yes"
@@ -22,6 +21,7 @@
   grid-item-height="350px"
   detail-mode="none"
   insert-button-floatable="no"
+  class="full-page"
 >
   <o-grid-item *ngFor="let data of businessGrid.dataArray">
     <div
