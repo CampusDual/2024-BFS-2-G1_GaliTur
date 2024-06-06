@@ -59,6 +59,19 @@ ontimize:
       query-id: userRole
       role-login-column: usr_login
       role-name-column: rol_name
+  mail:
+    ref-repository: OCSettingsDao
+    filter-column-name: SETTING_KEY
+    value-column-name: SETTING_VALUE
+    query-id: default
+    filter-column-value-encoding: mail_encoding
+    filter-column-value-host: mail_host
+    filter-column-value-port: mail_port
+    filter-column-value-protocol: mail_protocol
+    filter-column-value-user: mail_user
+    filter-column-value-password: mail_password
+    filter-column-value-java-mail-properties: mail_properties
+    engine: default
 server:
   port: 8080
   tomcat:
