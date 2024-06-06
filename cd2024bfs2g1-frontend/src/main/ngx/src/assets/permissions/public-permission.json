@@ -110,6 +110,10 @@
         {
           "permissionId": "home",
           "enabled": false
+        },
+        {
+          "permissionId": "myBusiness",
+          "enabled": false
         }
 
       ],

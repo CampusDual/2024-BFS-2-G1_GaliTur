@@ -2,7 +2,7 @@
   #businessMerchantGrid
   attr="businessMerchantGrid"
   title="MY-BUSINESSES"
-  service="businesses" 
+  service="businesses"
   entity="businessMerchant"
   keys="bsn_id"
   columns="bsn_id;merchant_id;bsn_name;bsn_type;bsn_description;bsn_cif;bsn_address;bsn_phone;bsn_email;bsn_creation_date;bsn_down_date;bsn_photos;bsn_website;bsn_schedule"
@@ -37,7 +37,7 @@
         height="200px"
       />
       <span
-        ><strong>{{ truncateName(data.bsn_name) }}</strong></span
+        ><strong style="text-overflow: ellipsis;">{{ data.bsn_name }}</strong></span
       >
       <span *ngIf="data.bsn_type === 'Restaurant'"
         ><mat-icon class="type-icon">restaurant</mat-icon
