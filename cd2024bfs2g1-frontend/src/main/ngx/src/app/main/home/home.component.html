@@ -16,5 +16,18 @@
         <!--<button class="secondary-button" > <mat-icon class="icon">info_outline</mat-icon>{{'HOME-CONTENT-SECONDARY-BUTTON' | oTranslate}}</button>-->
     </div>
   </div>
+
+  <div class="grid-container">
+    <o-grid #popularsPackGrid class="o-grid-popular-packs" attr="packGrid" service="packs" entity="popularPacks" keys="P.pck_id"
+      columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;img_code;gui_c_name;pck_days;" opacity="0" 
+      refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false"
+      show-page-size="false" cols="2" gutter-size="1px"  grid-item-height="245px"> 
+      <o-grid-item *ngFor="let data of popularsPackGrid.dataArray">
+        <div>
+          <p>{{data.pck_name}}</p>
+        </div>
+      </o-grid-item>
+  </o-grid> 
+  </div>
 </div>
 
