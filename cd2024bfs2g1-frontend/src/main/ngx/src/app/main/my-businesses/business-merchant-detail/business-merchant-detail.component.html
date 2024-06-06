@@ -19,12 +19,31 @@
             <!-- Div que contendrá toda la informacion del negocio -->
             <div class="main-container">
 
-                <!-- Nombre del business -->
-                <div class="name-container">
-                    <o-text-input #businessID read-only="yes" class="o-text-input" appearance="outline" attr="bsn_id" sql-type="INTEGER"
-                        label="Nombre" enabled="no" oHidden></o-text-input>
-                    <h1 *ngFor="let business of businessForm.dataArray"> {{business.bsn_name}}</h1>
-                </div>
+              <!-- Nombre del business -->
+              <o-row style="background-color: transparent !important">
+                <o-column style="width: 80%; background-color: transparent !important">
+                    <div class="name-container">
+                        <o-text-input #businessID read-only="yes" class="o-text-input" appearance="outline" attr="bsn_id" sql-type="INTEGER"
+                            label="Nombre" enabled="no" oHidden></o-text-input>
+                        <h1 *ngFor="let business of businessForm.dataArray"> {{business.bsn_name}}</h1>
+                    </div>
+                </o-column>
+                <o-column style="background-color: transparent !important">
+                    <button class="custom-button" matTooltip="{{'EDIT' | oTranslate }}">
+                        <mat-icon> edit </mat-icon>
+                        
+                    </button>
+                    
+                </o-column>
+                <o-column style="background-color: transparent !important">
+
+                    <button class="custom-button" matTooltip="{{'delete' | oTranslate }}">
+                        <mat-icon> delete </mat-icon>
+                    </button>
+                </o-column>
+           
+            
+        </o-row>
 
                 
 
