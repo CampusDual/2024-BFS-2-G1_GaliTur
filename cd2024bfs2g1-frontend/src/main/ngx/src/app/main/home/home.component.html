@@ -20,7 +20,7 @@
 
     <div class="grid-container">
       <div class="title-container">
-        <p class="title">Packs populares</p>
+        <p class="title">{{'POPULAR_PACKS' |oTranslate }}</p>
       </div>
       <o-grid #popularsPackGrid class="o-grid-popular-packs" attr="packGrid" service="packs" entity="popularPacks" keys="P.pck_id"
         columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;img_code;gui_c_name;pck_days;" opacity="0" 
@@ -31,9 +31,7 @@
             <div class="card-header">
               <div class="pack-title">
                 <div class="pack-ranking">
-                 <em> # </em><em><span>{{ data.rank }} </span></em>
-                  <span *ngIf="data.bsn_type === 'Lodging'"><mat-icon class="type-icon" matTooltip="{{ 'Lodging' | oTranslate }}">house</mat-icon></span>
-                  <span *ngIf="data.bsn_type === 'AgencyGuide'"><mat-icon class="type-icon" matTooltip="{{ 'AgencyGuide' | oTranslate }}">flight</mat-icon></span>
+                  <em> # </em><em><span>{{ data.rank }} </span></em>
                 </div>
                 <div class="pack-name">
                   <span class="pack-name">{{ data.pck_name }}</span>
