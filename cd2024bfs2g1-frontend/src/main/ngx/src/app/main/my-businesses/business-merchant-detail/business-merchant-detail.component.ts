@@ -10,6 +10,7 @@ import { OFormComponent, OSnackBarConfig, OTableComponent, OntimizeService, Snac
 })
 export class BusinessMerchantDetailComponent implements OnInit {
 
+
   @ViewChild('accountCustomerTable') accountTable: OTableComponent;
   @ViewChild('form') form: OFormComponent;
   @Inject(OntimizeService) protected service: OntimizeService
@@ -69,6 +70,11 @@ export class BusinessMerchantDetailComponent implements OnInit {
           this.snackBarService.open("BSN.DELETED", config);
           this.router.navigate(["..", "main", "business-merchant"])
         });
+    }
+
+
+    editBsn(data: any) {
+      this.router.navigate([ "main/business-merchant", data[0].bsn_id,"edit"])
     }
 
 

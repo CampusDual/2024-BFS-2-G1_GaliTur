@@ -52,9 +52,42 @@ public class BusinessService implements IBusinessService {
         return this.daoHelper.query(this.businessDao, keysValues, attributes);
     }
 
+
+
+    @Override
+    public EntityResult businessRestaurantQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        EntityResult er = this.daoHelper.query(this.businessDao, keysValues, attributes);
+        ArrayList <String> business = (ArrayList<String>) er.get(BusinessDao.TYPE);
+        String businessType = business.get(0);
+        if(businessType.equals("Restaurant")){
+            attributes.add("rest_menu");
+            return this.daoHelper.query(this.businessDao, keysValues, attributes, "restaurantBusinesses");
+
+        }else if(businessType.equals("Lodging")){
+            return this.daoHelper.query(this.businessDao, keysValues, attributes, "lodgingBusinesses");
+        }else if(businessType.equals("AgencyGuide")){
+            attributes.add("gui_language");
+            attributes.add("gui_zone");
+            attributes.add("gui_city");
+            return this.daoHelper.query(this.businessDao, keysValues, attributes, "agencyBusinesses");
+
+        }
+
+        return null;
+    }
+
+    @Override
+    public EntityResult businessRestaurantUpdate(Map<String, Object> attributesValues, Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
+        return this.daoHelper.update(this.businessDao, attributesValues, keysValues);
+    }
     @Override
     public AdvancedEntityResult businessDownDatePaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy) {
         return this.daoHelper.paginationQuery(this.businessDao, keysValues, attributes, recordNumber, startIndex, orderBy, "downDate");
+    }
+
+    @Override
+    public EntityResult businessRestaurantInsert(Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
+        return this.daoHelper.insert(this.businessDao, keysValues);
     }
 
     @Override
