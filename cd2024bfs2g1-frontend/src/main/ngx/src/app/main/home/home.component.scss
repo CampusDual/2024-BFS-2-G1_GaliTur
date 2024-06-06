@@ -133,14 +133,13 @@ button {
 
 .grid-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1330px;
   height: auto;
 }
 
 .o-grid-popular-packs {
   width: 100%;
-  height: 380px;
-  background-color: transparent;
+  height: auto;
 }
 
 .title-container {
@@ -156,3 +155,141 @@ button {
   margin-top: 0px;
   margin-bottom: 5px;
 }
+
+/* packCard structure */
+.packCard {
+  width: 620px;
+  min-width: 300px;
+  background-color: #ccc6c0;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.925);
+}
+
+
+/* Image div for pack card structure */
+.packCard img {
+  width: 100%;
+  height: 100%;
+}
+
+/* pack card structure font size */
+.packCard .office {
+  font-size: 0.8em;
+}
+
+/* Image modifiers for pack card image */
+.preview-image {
+  border-radius: 10px;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* card header styles */
+.card-header {
+  width: 100%;
+  text-align: center;
+  background-color:rgba(113, 94, 78, 1);
+  color: white;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border-radius: 10px 10px 10px 10px;
+  flex-direction: column;
+}
+
+.pack-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 40px;
+}
+.pack-ranking {
+  width: 5%;
+  margin: auto;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pack-name {
+  width: 100%;
+  margin: auto;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* pack name styles */
+.pack-name {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+/* card content styles */
+.cardContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* image styles */
+.cardImg {
+  width: 50%;
+  height: 200px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* info styles */
+.cardInfo {
+  width: 50%;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-left: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+/* icon styles */
+.icon {
+  margin-bottom: -7px;
+  font-size: 21px;
+  color: #52733B;
+}
+
+/* info list styles */
+.list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  row-gap: 5px;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-with-spaces {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 90%;
+  row-gap: 10px;
+  height: 170px;
+  max-height: 200px;
+  overflow-y: hidden;
+  font-size: 17px;
+  overflow-x: hidden;
+}
+

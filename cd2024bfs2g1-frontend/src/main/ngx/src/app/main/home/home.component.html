@@ -25,11 +25,39 @@
       <o-grid #popularsPackGrid class="o-grid-popular-packs" attr="packGrid" service="packs" entity="popularPacks" keys="P.pck_id"
         columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;img_code;gui_c_name;pck_days;" opacity="0" 
         refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false"
-        show-page-size="false" cols="2" gutter-size="1px" show-footer="no" grid-item-height="245px"> 
+        show-page-size="false" cols="2" gutter-size="1px" show-footer="no" grid-item-height="380px"> 
         <o-grid-item *ngFor="let data of popularsPackGrid.dataArray">
-          <div>
-            <p>{{data.pck_name}}</p>
+          <div (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-between stretch" class="mat-elevation-z1 packCard">
+            <div class="card-header">
+              <div class="pack-title">
+                  <div class="pack-ranking">
+                      <span >#1</span>
+                      <span *ngIf="data.bsn_type === 'Lodging'"><mat-icon class="type-icon" matTooltip="{{ 'Lodging' | oTranslate }}">house</mat-icon></span>
+                      <span *ngIf="data.bsn_type === 'AgencyGuide'"><mat-icon class="type-icon" matTooltip="{{ 'AgencyGuide' | oTranslate }}">flight</mat-icon></span>
+                  </div>
+                  <div class="pack-name">
+                      <span class="pack-name">{{ data.pck_name}}</span>
+                  </div>
+              </div>
           </div>
+            <div class="cardContent">
+                <div class="cardImg">
+                    <img class="preview-image" [src]="getImageSrc(data.img_code)">
+                </div>
+                <div class="cardInfo">
+                    <ul style="list-style-type: none;" class="list-with-spaces">
+                        <li *ngIf="!data.pck_participants"><mat-icon class="icon">groups</mat-icon>{{'-'}}</li>
+                        <li *ngIf="data.pck_participants && data.pck_participants == 1"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}} {{'PERSON' | oTranslate}}</li>
+                        <li *ngIf="data.pck_participants && data.pck_participants > 1"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}} {{'PEOPLE' | oTranslate}}</li>
+                        <li *ngIf="!data.pck_days"><mat-icon class="icon">timer</mat-icon>-</li>
+                        <li *ngIf="data.pck_days && data.pck_days == 1"><mat-icon class="icon">timer</mat-icon>{{data.pck_days}} {{'DAY' | oTranslate}}</li>
+                        <li *ngIf="data.pck_days && data.pck_days > 1"><mat-icon class="icon">timer</mat-icon>{{data.pck_days}} {{'DAYS' | oTranslate}}</li>
+                        <li><mat-icon class="icon">pin_drop</mat-icon>{{truncateInfo(data.gui_c_name)}}</li>
+                        <li><mat-icon class="icon">payments</mat-icon>{{data.pck_price}} €</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         </o-grid-item>
     </o-grid> 
     </div>

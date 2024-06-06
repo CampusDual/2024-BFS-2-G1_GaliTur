@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -7,16 +8,15 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  sanitizer: any;
-
+  
   constructor(
+    protected sanitizer: DomSanitizer,
     private router: Router,
     private actRoute: ActivatedRoute
   ) {
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {  }
 
   navigate() {
     this.router.navigate(['../', 'login'], { relativeTo: this.actRoute });
@@ -53,5 +53,4 @@ export class HomeComponent implements OnInit {
   truncateInfo(name: string): string {
     return name.length > 10 ? name.substr(0, 10) + "..." : name;
   }
-
 }
