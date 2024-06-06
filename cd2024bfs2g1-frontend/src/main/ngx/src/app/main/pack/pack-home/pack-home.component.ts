@@ -2,7 +2,7 @@
 import { Component, Injector, ViewChild, TemplateRef } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { DomSanitizer } from "@angular/platform-browser";
-import { Expression, FilterExpressionUtils, OFormComponent, OFormValue, OGridComponent, OntimizeService } from "ontimize-web-ngx";
+import { Expression, FilterExpressionUtils, OCurrencyInputComponent, OFormComponent, OFormValue, OGridComponent, OntimizeService } from "ontimize-web-ngx";
 import { Router } from "@angular/router";
 
 @Component({
@@ -110,6 +110,21 @@ export class PackHomeComponent {
   clearFilter () {
     const fieldsToClear = ['pck_name', 'pck_days', 'pck_price_min', 'pck_price_max', 'pck_participants', 'gui_c_name'];
     this.filterForm.clearFieldValues(fieldsToClear);  
+  }
+
+  @ViewChild("minPrice") protected minPrice: OCurrencyInputComponent;
+  @ViewChild("maxPrice") protected maxPrice: OCurrencyInputComponent;
+
+  onCurrencyInputChange() {
+    const minValue = this.minPrice.getValue();
+    const maxValue = this.maxPrice.getValue();
+
+    if (minValue === "" ) {
+      this.minPrice.clearValue();
+    }
+    if (maxValue === "" ) {
+      this.maxPrice.clearValue();
+    }
   }
 
 }

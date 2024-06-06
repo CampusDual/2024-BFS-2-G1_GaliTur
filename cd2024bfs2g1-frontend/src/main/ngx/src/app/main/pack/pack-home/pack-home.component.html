@@ -11,8 +11,8 @@
       </div>
       <!-- Price filter -->
       <div class="filter-column">
-        <o-integer-input class="filter-element" attr="pck_price_min" label="{{ 'MIN-PRICE' | oTranslate }}" min="1"></o-integer-input>
-        <o-integer-input  attr="pck_price_max" label="{{ 'MAX-PRICE' | oTranslate }}" min="1"></o-integer-input>
+        <o-currency-input #minPrice class="filter-element" (onValueChange)="onCurrencyInputChange()" attr="pck_price_min" label="{{ 'MIN-PRICE' | oTranslate }}" min="1"></o-currency-input>
+        <o-currency-input #maxPrice attr="pck_price_max" (onValueChange)="onCurrencyInputChange()" label="{{ 'MAX-PRICE' | oTranslate }}" min="1"></o-currency-input>
       </div>
       <!-- Travellers and city filter -->
       <div class="filter-column">
