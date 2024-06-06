@@ -9,7 +9,7 @@ import { OGridComponent } from 'ontimize-web-ngx';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  @ViewChild('popularsPackGrid', { static: true }) popularsPackGrid: OGridComponent;
+  @ViewChild('popularsPackGrid', { static: false }) popularsPackGrid: OGridComponent;
   packsWithRank: any[] = [];
 
   constructor(
@@ -67,5 +67,6 @@ export class HomeComponent implements OnInit {
     const dataArray = this.popularsPackGrid.dataArray;
     this.packsWithRank = dataArray
       .map((pack, index) => ({ ...pack, rank: index + 1 }))
+      .sort((a, b) => b.reservation_count - a.reservation_count); 
   }
 }

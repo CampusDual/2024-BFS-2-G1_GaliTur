@@ -411,6 +411,8 @@
   "DATE_RANGE_MISSING_MESSAGE": "The date range field is empty",
   "LOCALE_gl": "GL",
   "DATE_R": "Pack date",
-  "COMBO-BOX-DAYS-DESC": "The day you select will show the routes and businesses available on the selected day."
+  "COMBO-BOX-DAYS-DESC": "The day you select will show the routes and businesses available on the selected day.",
+  "POPULAR_PACKS": "Popular packs",
+  "POPULAR_PACKS_SUBTITLE": "Check out our users favourite packs!"
 }
 

@@ -421,7 +421,9 @@
   "DATE_RANGE_MISSING_MESSAGE": "El campo de fechas está vacío",
   "LOCALE_gl": "GL",
   "DATE_R": "Fecha del pack",
-  "COMBO-BOX-DAYS-DESC": "El dia que selecciones mostrará las rutas y negocios disponibles el día seleccionado."
+  "COMBO-BOX-DAYS-DESC": "El dia que selecciones mostrará las rutas y negocios disponibles el día seleccionado.",
+  "POPULAR_PACKS": "Packs populares",
+  "POPULAR_PACKS_SUBTITLE": "¡Echa un vistazo a los packs favoritos de nuestros usuarios!"
 }
 
 

@@ -41,6 +41,8 @@
 .sub-title {
   font-size: 17px;
   margin-top: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .main-content {
@@ -142,15 +144,25 @@ button {
   height: auto;
 }
 
-.title-container {
+.popularPacks-title-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 40px;
+  font-weight: bold;
+  margin-top: 70px;
+  margin-bottom: -20px;
+}
+
+.popularPacks-sub-title{
+  font-size: 17px;
+  margin-top: 10px;
+  margin-bottom: -50px;
+  display: flex;
+  justify-content: center;
 }
 
 .title{
-  font-size: 25px;
+  font-size: 32px;
   font-family: Poppins;
   margin-top: 0px;
   margin-bottom: 5px;
@@ -194,8 +206,7 @@ button {
   text-align: center;
   background-color:rgba(113, 94, 78, 1);
   color: white;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding: 5px;
   margin-bottom: 16px;
   box-sizing: border-box;
   border-radius: 10px 10px 10px 10px;
@@ -298,3 +309,17 @@ button {
   overflow-x: hidden;
 }
 
+.packCard:hover {
+  box-shadow: 0 0 15px rgba(113, 94, 78, 1);
+  transform: scale(0.9325);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+:host ::ng-deep .mat-elevation-z1 packCard ng-star-inserted{
+  &:hover{cursor: pointer !important;} 
+}
+
+:host ::ng-deep .mat-grid-tile-content{
+  &:hover{cursor: default !important;}
+}
