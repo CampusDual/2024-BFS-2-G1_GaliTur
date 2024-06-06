@@ -89,10 +89,10 @@
 
     <!-- RESTAURANT -->
     <div >
-        <ng-container *ngIf="type.getValue() === 'Restaurant'"><o-row id="restaurant" layout-align="start stretch"><o-column
+        <o-row id="restaurant" layout-align="start stretch"><o-column
                     title="{{ 'RESTAURANT_DATA' | oTranslate }}" layout-align="start stretch" fxFlex="60"
                     layout-padding><o-image id="restaurant_img" attr="rest_menu" sql-type="OTHER"
-                        label="{{ 'UPLOAD_MENU' | oTranslate }}" required="no"></o-image></o-column></o-row></ng-container>
+                        label="{{ 'UPLOAD_MENU' | oTranslate }}" required="no"></o-image></o-column></o-row>
 
        
 
@@ -159,13 +159,13 @@
         </o-column>
     </div>
 
-    <div class="agency_guide" *ngIf="type.getValue() === 'AgencyGuide'">
+    <div class="agency_guide">
 
 
         <o-row style="align-content: space-between; width: 200%;  padding-left: 1.5%;">
             <o-column class="column-language">
                 <h3 id="languageH">{{ 'BSN_LANGUAGE' | oTranslate }}</h3>
-                <o-combo attr="comboLanguages" oLocker
+                <o-combo attr="gui_language" oLocker
                 oLockerMode="disable" label="{{ 'SELECT_LANGUAGE' | oTranslate }}" multiple="yes" service="guideLanguages" translate="yes"
                     entity="guideLanguage" sort="ASC" value-column="gui_l_id" columns="gui_l_id;gui_l_name"
                     visible-columns="gui_l_name" separator=", " fxFlex required="yes">
@@ -173,14 +173,14 @@
             </o-column>
             <o-column style="padding-left: 3%;" id="formZones">
                 <h3>{{ 'BSN_PROVINCE' | oTranslate }}</h3>
-                <o-combo #comboZone attr="comboZone" label="{{ 'SELECT_PROVINCE' | oTranslate }}" query-method="query" service="guideZones" translate="yes"
+                <o-combo #comboZone attr="gui_zone" label="{{ 'SELECT_PROVINCE' | oTranslate }}" query-method="query" service="guideZones" translate="yes"
                     entity="guideZone" value-column="gui_z_id" columns="gui_z_name" visible-columns="gui_z_name"
                     keys="gui_z_id" multiple="no" null-selection="no" required="yes">
                 </o-combo>
             </o-column>
             <o-column id="formZones">
                 <h3>{{ 'BSN_CITY' | oTranslate }}</h3>
-                <o-combo id="comboCity" #comboCity attr="comboCity" label="{{ 'SELECT_CITY' | oTranslate }}" multiple="yes" translate="yes"
+                <o-combo id="comboCity" #comboCity attr="gui_city" label="{{ 'SELECT_CITY' | oTranslate }}" multiple="yes" translate="yes"
                     query-method="query" sort="ASC" service="guideCities" entity="guideCities" value-column="gui_c_id"
                     columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id"
                     [query-on-event]="comboZone.onValueChange" parent-keys="gui_z_id:comboZone[gui_z_id]">

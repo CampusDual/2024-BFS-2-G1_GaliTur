@@ -56,6 +56,10 @@ public class BusinessService implements IBusinessService {
 
     @Override
     public EntityResult businessRestaurantQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        attributes.remove("rest_menu");
+        attributes.remove("gui_language");
+        attributes.remove("gui_zone");
+        attributes.remove("gui_city");
         EntityResult er = this.daoHelper.query(this.businessDao, keysValues, attributes);
         ArrayList <String> business = (ArrayList<String>) er.get(BusinessDao.TYPE);
         String businessType = business.get(0);
