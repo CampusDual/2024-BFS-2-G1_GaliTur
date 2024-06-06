@@ -142,6 +142,7 @@
   "name": "Nombre",
   "description": "Descripción",
   "estimated_duration": "Duración Estimada",
+  "estimated_distance": "Distancia Estimada",
   "difficulty": "Dificultad",
   "coordinates": "Coordenadas",
   "images": "Imágenes",
