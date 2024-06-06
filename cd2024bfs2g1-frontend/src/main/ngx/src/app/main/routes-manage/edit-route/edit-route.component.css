@@ -118,3 +118,10 @@
     border: none;
     display: revert;
 }
+
+.landmark-map {
+    margin: 15px;
+    padding: 10px;
+    height: 400px;
+    width: 98%;
+}

@@ -1,58 +1,68 @@
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OntimizeService } from 'ontimize-web-ngx';
+import { OSnackBarConfig, OTableComponent, OntimizeService, SnackBarService } from 'ontimize-web-ngx';
 import { Landmark } from '../../routes/routes-new/view-all-landmark/landmark-model';
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { OMapComponent } from 'ontimize-web-ngx-map';
 
 @Component({
   selector: 'app-edit-route',
   templateUrl: './edit-route.component.html',
   styleUrls: ['./edit-route.component.css']
 })
-export class EditRouteComponent implements AfterViewInit {
-onClickLandmark(event: any) {
-  this.actualLandkmarkId = event.row.landmark_id
-  this.actualCoordinates = event.row.coordinates
-  console.log("Estoy tocando la tabla :), y me devuelve: ",event.row.landmark_id)
-  console.log("Tocando la tabla me da estas coordenadas: ",event.row.coordinates)
-}
+export class EditRouteComponent{
+
+
+
+@ViewChild('oMap') oMap : OMapComponent
+@ViewChild('landmarkTable') landmarkTable : OTableComponent
+
   constructor(
-    protected dialog: MatDialog,
-    private ontimizelandmarkService: OntimizeService,
-    private ontimizerouteService: OntimizeService,
-    private activeRoute: ActivatedRoute,
-    private router: Router
+    private snackBarService: SnackBarService
   ) {}
+
 
   datosTabla: Landmark[] = [];
   idRutaActual: number;
   nameActualRoute: String;
   actualLandkmarkId = null
-  actualCoordinates = null
+  actualCoordinates : string = '42.940599,-7.120727'
+  mostrarMapa = false
 
-  ngAfterViewInit(): void {
-    this.idRutaActual = +this.getRouteId();
-    this.landmarkRouteQuery(this.idRutaActual);
+
+  onDeleteLandMark() {
+    this.sendDeleteMessage()
   }
 
-  getRouteId(): number {
-    return +this.activeRoute.snapshot.params["route_id"];
+  async onClickLandmark(event: any) {
+
+    this.actualLandkmarkId = null
+    this.actualCoordinates = null
+    this.actualLandkmarkId = event.row.landmark_id
+    this.actualCoordinates = event.row.coordinates
+    if(this.actualCoordinates!=null) {
+      
+      const coordinatesArrayAux = this.actualCoordinates.split(',')
+      this.oMap.addMarker("1",coordinatesArrayAux[0],coordinatesArrayAux[1],{},true,false,true,"1")
+      await this.delay(300);
+      this.oMap.getMapService().setZoom(12)
+    }else alert("Lo sentimos, el punto de interes no cuenta con coordenadas")
+  }
+  onClickMap() {
+    this.mostrarMapa = !this.mostrarMapa
+  }
+  async delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
-
-  landmarkRouteQuery(id: any): void {
-    const confLandmark =
-    this.ontimizelandmarkService.getDefaultServiceConfiguration("landmarks");
-    this.ontimizelandmarkService.configureService(confLandmark);
-    this.ontimizelandmarkService
-      .query(
-        { route_id: id },
-        ["l.landmark_id","l.name","l.coordinates","l.description"],
-        "landmark"
-      )
-      .subscribe((response) => {
-        console.log("Datos de landmarks: ", response)
-        this.datosTabla.push(...response.data);
-      });
+  sendDeleteMessage(){
+    const config: OSnackBarConfig = {
+      action: "",
+      milliseconds: 2000,
+      icon: "delete",
+      iconPosition: "left",
+      cssClass: "snackbar",
+    };
+    this.snackBarService.open("LANDMARKDELETECONFIRMED", config);
   }
 }
