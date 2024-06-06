@@ -1,6 +1,6 @@
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OTableComponent, OntimizeService } from 'ontimize-web-ngx';
+import { OSnackBarConfig, OTableComponent, OntimizeService, SnackBarService } from 'ontimize-web-ngx';
 import { Landmark } from '../../routes/routes-new/view-all-landmark/landmark-model';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { OMapComponent } from 'ontimize-web-ngx-map';
@@ -13,11 +13,14 @@ import { OMapComponent } from 'ontimize-web-ngx-map';
 export class EditRouteComponent implements OnInit {
 
 
+
 @ViewChild('oMap') oMap : OMapComponent
 @ViewChild('landmarkTable') landmarkTable : OTableComponent
+
   constructor(
     private ontimizelandmarkService: OntimizeService,
     private activeRoute: ActivatedRoute,
+    private snackBarService: SnackBarService
   ) {}
   ngOnInit(): void {
     this.idRutaActual = +this.getRouteId();
@@ -32,6 +35,10 @@ export class EditRouteComponent implements OnInit {
   mostrarMapa = false
 
 
+  onDeleteLandMark() {
+    this.sendDeleteMessage()
+  }
+  
   async onClickLandmark(event: any) {
 
     this.actualLandkmarkId = null
@@ -70,5 +77,16 @@ export class EditRouteComponent implements OnInit {
         console.log("Datos de landmarks: ", response)
         this.datosTabla.push(...response.data);
       });
+  }
+
+  sendDeleteMessage(){
+    const config: OSnackBarConfig = {
+      action: "",
+      milliseconds: 2000,
+      icon: "delete",
+      iconPosition: "left",
+      cssClass: "snackbar",
+    };
+    this.snackBarService.open("LANDMARKDELETECONFIRMED", config);
   }
 }

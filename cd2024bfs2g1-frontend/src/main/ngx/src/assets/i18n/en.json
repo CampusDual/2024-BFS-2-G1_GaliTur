@@ -414,6 +414,7 @@
   "COMBO-BOX-DAYS-DESC": "The day you select will show the routes and businesses available on the selected day.",
   "MANAGEROUTE": "Manage routes",
   "ROUTE_TABLE": "Route templates",
-  "ROUTE_NAME": "Route Name"
+  "ROUTE_NAME": "Route Name",
+  "LANDMARKDELETECONFIRMED": "Landmark delete successfully"
 }
 

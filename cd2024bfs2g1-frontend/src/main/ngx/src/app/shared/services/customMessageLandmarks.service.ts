@@ -4,7 +4,9 @@ import { OFormMessageService } from "ontimize-web-ngx";
 @Injectable()
 export class CustomMessageServiceLandmarks extends OFormMessageService {
 
-
+  getDeleteSuccessMessage(){
+    return 'MESSAGES_FROM_SUCCESS_DELETE'
+  }
 
   getDiscardChangesConfirmationMessage(): string {
     return 'MESSAGES_FORM_CHANGES_WILL_BE_LOST_LANDMARK';
