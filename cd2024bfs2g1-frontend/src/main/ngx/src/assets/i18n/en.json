@@ -371,6 +371,7 @@
   "NUMBER-TRAVELLERS": "Number of travellers",
   "FILTER-CITY": "City",
   "FILTER-NAME": "Name",
-  "Routes_according_to_difficulty": "Number of routes according to difficultty"
+  "Routes_according_to_difficulty": "Number of routes according to difficultty",
+  "Contracted_packs_per_days": "Contracted packs per days"
 }
 

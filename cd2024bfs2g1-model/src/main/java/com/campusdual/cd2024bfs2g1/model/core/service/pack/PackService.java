@@ -1,7 +1,6 @@
 package com.campusdual.cd2024bfs2g1.model.core.service.pack;
 
 import com.campusdual.cd2024bfs2g1.api.core.service.pack.IPackService;
-import com.campusdual.cd2024bfs2g1.api.core.util.Utils;
 import com.campusdual.cd2024bfs2g1.model.core.dao.ClientDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.ImageDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.business.GuideCitiesDao;
@@ -25,6 +24,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.text.ParseException;
 
 import java.util.*;
+
+import static com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDao.PCK_PER_DAYS_QUERY;
 
 
 @Lazy
@@ -55,6 +56,14 @@ public class PackService implements IPackService {
     public EntityResult packQuery(Map<String, Object> keyMap, List<String> attrList)
             throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.packDao, keyMap, attrList);
+    }
+
+
+
+    @Override
+    public EntityResult packPerDaysQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.packDao, keyMap, attrList,PCK_PER_DAYS_QUERY);
     }
 
     @Override

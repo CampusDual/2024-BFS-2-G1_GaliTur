@@ -157,5 +157,32 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="packPerDays">
+            <Sentence>
+                <![CDATA[
+                select '>10' as rango,
+                COUNT(*) AS days
+                 FROM
+                        ${mainschema}.pack P
+                    WHERE pck_days is not null
+                    and pck_days  >10
+                    union
+                    select '6-10' as rango,
+                COUNT(*) AS days
+                FROM
+                        ${mainschema}.pack P
+                    WHERE pck_days is not null
+                    and pck_days  between 6 and 10
+                    union
+                    select
+                    '1-5' as rango,
+                COUNT(*) AS days
+                from
+                        ${mainschema}.pack P
+                    WHERE pck_days is not null
+                    and pck_days  between 1 and 5
+]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

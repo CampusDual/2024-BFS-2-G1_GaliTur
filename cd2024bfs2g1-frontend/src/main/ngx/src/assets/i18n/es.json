@@ -381,6 +381,7 @@
   "NUMBER-TRAVELLERS": "Numero de viajeros",
   "FILTER-CITY": "Ciudad",
   "FILTER-NAME": "Nombre",
-  "Routes_according_to_difficulty": "Numero de rutas según su dificultad"
+  "Routes_according_to_difficulty": "Numero de rutas según su dificultad",
+  "Contracted_packs_per_days": "Packs contratados por días"
 }
 
