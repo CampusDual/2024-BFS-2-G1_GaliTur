@@ -37,7 +37,7 @@
                 </o-column>
                 <o-column style="background-color: transparent !important">
 
-                    <button class="custom-button" matTooltip="{{'delete' | oTranslate }}">
+                    <button class="custom-button" matTooltip="{{'delete' | oTranslate }}" (click)="deleteBsn(businessForm.dataArray)">
                         <mat-icon> delete </mat-icon>
                     </button>
                 </o-column>

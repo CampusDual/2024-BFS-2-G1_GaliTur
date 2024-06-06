@@ -4,8 +4,8 @@
   title="MY-BUSINESSES"
   service="businesses" 
   entity="businessMerchant"
-  keys="bsn_id"
-  columns="bsn_id;merchant_id;bsn_name;bsn_type;bsn_description;bsn_cif;bsn_address;bsn_phone;bsn_email;bsn_creation_date;bsn_down_date;bsn_photos;bsn_website;bsn_schedule"
+  keys="b.bsn_id"
+  columns="b.bsn_id;merchant_id;bsn_name;bsn_type;bsn_description;bsn_cif;bsn_address;bsn_phone;bsn_email;bsn_creation_date;bsn_down_date;bsn_photos;bsn_website;bsn_schedule"
   query-rows="8"
   page-size-options="8;16;24"
   orderable="true"
@@ -22,8 +22,14 @@
   detail-mode="none"
   insert-button-floatable="no"
   class="full-page"
+  query-parameters="{ 'bsn_down_date': 'IS NULL' }"
 >
-  <o-grid-item *ngFor="let data of businessMerchantGrid.dataArray">
+
+
+
+ 
+  <o-grid-item  *ngFor="let data of businessMerchantGrid.dataArray" >
+    
     <div
       (click)="openDetail(data)"
       fxLayout="column"
@@ -53,4 +59,5 @@
       >
     </div>
   </o-grid-item>
+
 </o-grid>

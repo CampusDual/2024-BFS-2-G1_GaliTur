@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, Injector, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OFormComponent, OTableComponent, OntimizeService } from 'ontimize-web-ngx';
+import { OFormComponent, OSnackBarConfig, OTableComponent, OntimizeService, SnackBarService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-business-merchant-detail',
@@ -9,14 +9,20 @@ import { OFormComponent, OTableComponent, OntimizeService } from 'ontimize-web-n
   styleUrls: ['./business-merchant-detail.component.css']
 })
 export class BusinessMerchantDetailComponent implements OnInit {
+
   @ViewChild('accountCustomerTable') accountTable: OTableComponent;
   @ViewChild('form') form: OFormComponent;
-
+  @Inject(OntimizeService) protected service: OntimizeService
   constructor(
     protected sanitizer: DomSanitizer,
     private router: Router,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    protected injector: Injector,
+    protected bsnService: OntimizeService,
+    protected snackBarService: SnackBarService,
   ) {
+    this.bsnService = this.injector.get(OntimizeService);
+
   }
 
   ngOnInit(): void { }
@@ -42,4 +48,29 @@ export class BusinessMerchantDetailComponent implements OnInit {
     const languageArray = languages.split(',');
     return languageArray[languageArray.length - 1].trim() === languageKey.trim();
   }
+
+  deleteBsn(data) {
+
+    
+      const confBusiness = this.bsnService.getDefaultServiceConfiguration("businesses");
+      this.bsnService.configureService(confBusiness);
+      this.bsnService
+        .delete({bsn_id: data[0].bsn_id},"businessDownDate")
+        .subscribe((resp) => {
+          //TODO: this.form.reload(true);
+  
+          const config: OSnackBarConfig = {
+            action: "",
+            milliseconds: 2000,
+            icon: "check",
+            iconPosition: "left",
+            cssClass: "snackbar",
+          };
+          this.snackBarService.open("BSN.DELETED", config);
+          this.router.navigate(["..", "main", "business-merchant"])
+        });
+    }
+
+
+    
 }

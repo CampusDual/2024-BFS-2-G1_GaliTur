@@ -20,6 +20,10 @@
 }
 
 
+::ng-deep .mdc-snackbar__surface{
+    background-color: #52733B !important;
+}
+
 .main-container {
 
     min-width: 700px;

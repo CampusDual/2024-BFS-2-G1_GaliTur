@@ -53,6 +53,11 @@ public class BusinessService implements IBusinessService {
     }
 
     @Override
+    public AdvancedEntityResult businessDownDatePaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy) {
+        return this.daoHelper.paginationQuery(this.businessDao, keysValues, attributes, recordNumber, startIndex, orderBy, "downDate");
+    }
+
+    @Override
     public EntityResult businessMerchantQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
         keysValues.put(MerchantDao.MERCHANT_ID, merchantService.getMerchantId());
 
@@ -1241,13 +1246,13 @@ public class BusinessService implements IBusinessService {
 
     /**
      * Insert DOWN DATE in Business
-     * @param attributesValues
      * @param keysValues
      * @return
      * @throws OntimizeJEERuntimeException
      */
     @Override
-    public EntityResult businessDownDateUpdate(Map<String, Object> attributesValues, Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
+    public EntityResult businessDownDateDelete(Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
+        Map<String, Object> attributesValues = new HashMap<>();
 
         LocalDate ld = LocalDate.now();
 
@@ -1275,7 +1280,7 @@ public class BusinessService implements IBusinessService {
     public AdvancedEntityResult businessMerchantPaginationQuery(Map<String, Object> keysValues, List<String> attributes, int recordNumber, int startIndex, List<?> orderBy) {
         keysValues.put(MerchantDao.MERCHANT_ID, merchantService.getMerchantId());
 
-        return this.daoHelper.paginationQuery(this.businessDao, keysValues, attributes, recordNumber, startIndex, orderBy);
+        return this.daoHelper.paginationQuery(this.businessDao, keysValues, attributes, recordNumber, startIndex, orderBy, "downDate");
     }
 
     @Override

@@ -19,7 +19,21 @@
                         #COLUMNS#
                     FROM
                         ${mainschema}.bsn_business
-                    WHERE bsn_down_date is null
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="downDate">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.bsn_business b
+                    WHERE
+                    b.bsn_down_date is null
+                    #WHERE_CONCAT#
                     #ORDER#
                 ]]>
             </Sentence>
