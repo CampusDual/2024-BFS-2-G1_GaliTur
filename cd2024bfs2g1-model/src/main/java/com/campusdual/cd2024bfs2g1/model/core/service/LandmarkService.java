@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.Keymap;
+import javax.swing.text.html.parser.Entity;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +39,16 @@ public class LandmarkService implements ILandmarkService {
     @Override
     public EntityResult landmarkQuery(Map<String, Object> keyMap, List<String> attrList) {
         return this.daoHelper.query(landmarkDao, keyMap, attrList, LandmarkDao.QUERY_LANDMARK_NAME);
+    }
+
+    @Override
+    public EntityResult landmarkOfRouteQuery(Map<String, Object> keyMap, List<String> attrList) {
+        if(keyMap.containsKey("route_id")){
+            Object route_id = keyMap.remove("route_id");
+            keyMap.put("r.route_id",Integer.parseInt(route_id+""));
+        }
+        EntityResult aux = this.daoHelper.query(landmarkDao, keyMap, attrList, LandmarkDao.QUERY_LANDMARKS);
+        return aux;
     }
 
     @Override

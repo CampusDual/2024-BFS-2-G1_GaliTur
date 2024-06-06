@@ -4,6 +4,7 @@ import { ManageAllPacksComponent } from '../manage-packages/manage-all-packs/man
 import { PackEditComponent } from '../manage-packages/pack-edit/pack-edit.component';
 import { ManageAllRoutesComponent } from './manage-all-routes/manage-all-routes.component';
 import { EditRouteComponent } from './edit-route/edit-route.component';
+import { AddLandmarkComponent } from '../routes/routes-new/add-landmark/add-landmark.component';
 
 const routes: Routes = [
   {
@@ -13,11 +14,14 @@ const routes: Routes = [
       //   restrictedPermissionsRedirect: '403'
       // }
     }
-  
+
   },
   {
-    path: ':route_id', component: EditRouteComponent, 
-  }
+    path: ':route_id', component: EditRouteComponent,
+  },
+  {
+    path: ':route_id/:landmark_id', component: AddLandmarkComponent
+  },
 ];
 
 
@@ -26,6 +30,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class RoutesManageRoutingModule {
- 
-  
+
+
  }

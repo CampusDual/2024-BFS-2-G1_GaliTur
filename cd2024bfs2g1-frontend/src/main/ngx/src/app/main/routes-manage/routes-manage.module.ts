@@ -5,6 +5,8 @@ import { RoutesManageRoutingModule } from './routes-manage-routing.module';
 import { ManageAllRoutesComponent } from './manage-all-routes/manage-all-routes.component';
 import { EditRouteComponent } from './edit-route/edit-route.component';
 import { OntimizeWebModule } from 'ontimize-web-ngx';
+import { RoutesModule } from '../routes/routes.module';
+import { OMapModule } from 'ontimize-web-ngx-map';
 
 
 @NgModule({
@@ -15,8 +17,10 @@ import { OntimizeWebModule } from 'ontimize-web-ngx';
   imports: [
     CommonModule,
     RoutesManageRoutingModule,
-    OntimizeWebModule
-    
+    OntimizeWebModule,
+    RoutesModule,
+    OMapModule
+
   ]
 })
 export class RoutesManageModule { }

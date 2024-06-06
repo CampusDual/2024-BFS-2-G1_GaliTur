@@ -1,1 +1,58 @@
-<h1>Quieres editar un pack eh????</h1>
+<o-breadcrumb [form]="myList" label-columns="pck_name" separator=" "></o-breadcrumb>
+<div class="fondo">
+    <div>
+    <o-form attr="routeTable" #myList include-breadcrumb="true" service="routes" entity="route"  keys="route_id"
+    show-header="yes" message-service-type="customMessageManageRoute" show-header-navigation="no" class="custom-form">
+    <o-text-input attr="route_id" sql-type="INTEGER" enabled="no"  show-header-navigation="no" oHidden></o-text-input>
+    <div fxloyout="column" class="contenedorTodo">
+            <div class="column"class="principal">
+                <div class="tituloTabla">
+                    <p class="letrasTitulo">{{'ROUTE_INFO' | oTranslate}}</p>
+                </div>
+            <div fxLayout="row"  fxLayoutAlign="center" fxLayoutGap="100px">
+            <div fxLayout="column" fxLayoutGap="16px" class="contenedor_arriba">
+                <div class="datosContainer">
+                    <div fxLayout="column" fxLayoutGap="16px" class="contenido_datos">
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <o-text-input #prouteNameInput fxFlex="100" attr="name" required="yes"></o-text-input>
+                    </div>
+                        <o-textarea-input class="description-textarea" attr="description" required="yes" width="100%"></o-textarea-input>
+                    </div>
+                </div>
+        </div>
+            <div fxLayout="column">
+                <o-form attr="routeImageTable" service="route" entity="routeImage" keys="route_id;image_route_id"
+                parent-keys="route_id" message-service-type="customMessageManageRoute" show-header="yes" show-header-navigation="no" class="contenedor_imagen">
+                <o-text-input attr="route_id"  sql-type="INTEGER" enabled="no" oHidden></o-text-input>
+                    <o-image id="img_code" attr="img_code" empty-image="assets/images/no-image.png" sql-type="OTHER" class="imagen"></o-image>
+                </o-form>
+            </div>
+            <div class="contenedorTabla">
+                <div class="bordeTabla" fxlayout="column">
+                    <div class="tituloTabla">
+                        <p>{{'LANDMARKS' | oTranslate}}<p>
+                    </div>
+                    <o-table #landmarkTable attr="landmarkTable" [static-data]="datosTabla" (onClick)="onClickLandmark($event)"
+                    keys="landmark_id" class="custom-table"
+                    columns="landmark_id;name;coordinates;description"
+                    visible-columns="name;description;coordinates" query-rows="10" select-all-checkbox="yes" filter-case-sensitive="yes"
+                    export-button="no" insert-button="yes" delete-button="no" refresh-button="no" fixed-header="yes"
+                    detail-mode="none" edition-mode="click" export-mode="local">
+                    <o-table-button>Pulsame Bebe</o-table-button>
+                </o-table>
+                </div>
+            </div>
+        </div>
+        </div>
+            <div fxLayout="column" class="landmark-map" *ngIf="actualCoordinates">
+                <o-map #oMap attr="mapInput" center="{{actualCoordinates}}" zoom="8" min-zoom="3" max-zoom="20" zoom-control="yes"
+                    search-control="no" layer-panel-visible="no" fxFlex >
+                    <o-map-crs crs="EPSG:4326"></o-map-crs>
+                </o-map>
+            </div>
+        </div>
+        </o-form>
+    </div>
+</div>
+
+
