@@ -1,3 +1,17 @@
+/*title styles*/
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title{
+    font-weight: bold;
+    font-size: 25px;
+    font-family: Poppins;
+    margin-top: 0px;
+    margin-bottom: 5px;
+  }
 /* packCard structure */
 .packCard {
     width: 400px;
@@ -7,7 +21,7 @@
     padding: 16px;
     display: flex;
     flex-direction: column;
-    transform: scale(0.925); 
+    transform: scale(0.925);
 }
 
 .businessCard img {
@@ -113,12 +127,13 @@
 
 /* hover effect for pack card */
 .packCard:hover {
-    box-shadow: 0 0 15px rgba(113, 94, 78, 1); 
-    transform: scale(0.9325); 
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    box-shadow: 0 0 15px rgba(113, 94, 78, 1);
+    transform: scale(0.9325);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }
 
+/*filter styles*/
 .filter {
     justify-content: space-around;
     width: 100%;
@@ -135,7 +150,7 @@
     flex-direction: column;
     padding: 5px;
     justify-content: space-around;
-    
+
     o-button {
         color: #4e4c4a;
     }
@@ -145,14 +160,8 @@
     margin-bottom: 10px;
 }
 
-.details {
-    summary:hover {
-        width: max-content;
-        cursor: pointer;
-    }
-}
-
 .filter-button {
+    align-items: start;
     margin-top: 10px;
 }
 
@@ -162,11 +171,23 @@
         width: 32vh;
     }
     .o-data-toolbar {
-        align-items: start;
-        .title {
-            font-size: 25px;
-            margin-bottom: 10px;
-        }
+        align-items: end;
+
     }
 }
 
+/*Insert button and sort combobox styles*/
+:host::ng-deep .o-data-toolbar {
+    display: grid !important;
+    grid-template-columns: auto auto !important;
+    justify-content: space-between !important;
+    padding-left: 20px !important;
+    width: 400px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.grid-container {
+    width: 100%;
+    height: 93.5%;
+}

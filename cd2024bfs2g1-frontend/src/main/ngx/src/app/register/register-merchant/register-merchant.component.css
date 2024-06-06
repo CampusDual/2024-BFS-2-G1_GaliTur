@@ -162,3 +162,16 @@ o-column{
     margin: 2px 0;
   }
 }
+
+.lang{
+  position: absolute;
+  top: 40px;
+  width: 99%;
+  justify-content: right;
+  display: flex;
+  color: #e3e6d8;
+}
+
+:host ::ng-deep .mat-mdc-button:not(:disabled) {
+  color: #e3e6d8 !important;
+}

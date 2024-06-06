@@ -38,8 +38,7 @@
   }
 
 .button{
- font-size: 16px;
- font-size: 20px;
+ font-size: 18px;
  width: 150px;
  border-radius: 5px;
  border-width: 3px;
@@ -115,7 +114,8 @@
 }
 
 .titulo_pack{
- font-size: 30px;
+  font-size: 25px;
+  font-weight: bold;
  display: flex;
  text-align: center;
  height: 60px;

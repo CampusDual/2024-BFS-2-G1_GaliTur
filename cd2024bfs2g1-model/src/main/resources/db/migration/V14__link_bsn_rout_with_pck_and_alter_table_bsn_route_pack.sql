@@ -3,7 +3,7 @@ CREATE TABLE public.bsn_pack (
 	bsn_id int4 NOT NULL,
 	pck_id int4 NOT NULL,
 	assigned_date date NOT NULL,
-	CONSTRAINT bsn_pack_id_pk PRIMARY KEY (bsn_pack_id),
+	CONSTRAINT bsn_pack_id_pk PRIMARY KEY (bsn_pack_id)
 );
 
 ALTER TABLE public.bsn_pack ADD CONSTRAINT bsn_pack_bs_fk FOREIGN KEY (bsn_id) REFERENCES public.bsn_business(bsn_id);
