@@ -134,7 +134,7 @@
                 ]]>
             </Sentence>
         </Query>
-        <Query id="packCancelDetail">
+       <Query id="packCancelDetail">
             <Sentence>
                 <![CDATA[
                     SELECT

@@ -91,5 +91,26 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="routesAccordingDifficulty">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                    CASE WHEN R.difficulty = 1 THEN 'Facil'
+                    WHEN R.difficulty = 2 THEN 'Intermedio'
+                    WHEN R.difficulty = 3 THEN 'Dificil'
+                    WHEN R.difficulty = 4 THEN 'Extremo'
+                     END AS difficulty,
+                        COUNT(R.route_id) AS route_difficulty_count
+                    FROM
+                          ${mainschema}.route R
+                    GROUP BY
+                         difficulty;
+                   #ORDER#
+
+
+
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

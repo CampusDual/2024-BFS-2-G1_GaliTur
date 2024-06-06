@@ -27,4 +27,6 @@ public interface IRouteService {
     AdvancedEntityResult routePaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy);
 
     EntityResult routesOfPackQuery(Map<String, Object> keyMap, List<String> attrList);
+
+    EntityResult routeAccordingDifficultyQuery(Map<String, Object> keyMap, List<String> attrList);
 }

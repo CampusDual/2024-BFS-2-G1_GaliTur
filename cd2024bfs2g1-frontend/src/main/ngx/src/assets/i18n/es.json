@@ -380,6 +380,7 @@
   "MAX-PRICE": "Precio máximo",
   "NUMBER-TRAVELLERS": "Numero de viajeros",
   "FILTER-CITY": "Ciudad",
-  "FILTER-NAME": "Nombre"
+  "FILTER-NAME": "Nombre",
+  "Routes_according_to_difficulty": "Numero de rutas según su dificultad"
 }
 

@@ -19,5 +19,36 @@ export class GraphicsHomeComponent implements OnInit {
 
   ngOnInit() {}
 
+
+    /*Mostrar la dificultan en el tooltip*/
+    getDifficultad(difficulty: number): string {
+      if(difficulty==1){
+        return 'Facil';
+      }
+      else if(difficulty==2){
+        return 'Intermedio';
+      }
+      else if(difficulty==3){
+        return 'Dificil';
+      }
+      else if(difficulty==4){
+        return 'Extremo';
+      }
+      
+
+      /*
+      switch(difficulty) {
+        case 1:
+            return 'Dificultad: Fácil';
+        case 2:
+            return 'Dificultad: Intermedio';
+        case 3:
+            return 'Dificultad: Difícil';
+        case 4:
+            return 'Dificultad: Extremo';
+      }
+      */
+    }
+
   
 }

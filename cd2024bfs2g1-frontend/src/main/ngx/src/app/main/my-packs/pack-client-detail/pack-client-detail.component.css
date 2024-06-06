@@ -164,7 +164,7 @@
 }
 
 .cancel-pack{
-    height: 70px;
+    height: 70px; /*CAMBIAR A 35PX*/
     width: 200px;
     background-color: rgba(235, 13, 13, 0.778);
     border-radius: 20px; 

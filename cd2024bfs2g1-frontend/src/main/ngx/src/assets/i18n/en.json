@@ -370,6 +370,7 @@
   "MAX-PRICE": "Max price",
   "NUMBER-TRAVELLERS": "Number of travellers",
   "FILTER-CITY": "City",
-  "FILTER-NAME": "Name"
+  "FILTER-NAME": "Name",
+  "Routes_according_to_difficulty": "Number of routes according to difficultty"
 }
 

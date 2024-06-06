@@ -1,13 +1,42 @@
 
 <mat-card class="card">
     <mat-card-title class="title"> {{"GRAPHICS" | oTranslate}}</mat-card-title>
-    <mat-card-content>
+    <mat-card-content fxLayout="row">
         <div class="chart-row" fxLayout="column">
             <div fxLayout="column" class="name-graphics" >
                 <p ><strong class="name">{{"Contracted_packs_according_to_the_province" | oTranslate}}</strong></p>
             </div>
             <div fxLayout="column" class="view-chart">
                 <o-chart  type="pie" service="packs" entity="packProvince" y-axis="province_count" query-on-init="yes" x-axis="gui_z_name" [color]="colors">
+                </o-chart>
+            </div>
+        </div>
+        <div class="chart-row" fxLayout="column">
+            <div fxLayout="column" class="name-graphics" >
+                <p ><strong class="name">{{"Routes_according_to_difficulty" | oTranslate}}</strong></p>
+            </div>
+            <div fxLayout="column" class="view-chart">
+                <o-chart  type="pie" service="routes" entity="routeAccordingDifficulty" y-axis="route_difficulty_count" query-on-init="yes" x-axis= "difficulty" [color]="colors">
+                </o-chart>
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-content fxLayout="row">
+        <div class="chart-row" fxLayout="column">
+            <div fxLayout="column" class="name-graphics" >
+                <p ><strong class="name">{{"Contracted_packs_according_to_the_province" | oTranslate}}</strong></p>
+            </div>
+            <div fxLayout="column" class="view-chart">
+                <o-chart  type="discreteBar" service="packs" entity="packProvince" y-axis="province_count" query-on-init="yes" x-axis="gui_z_name" [color]="colors">
+                </o-chart>
+            </div>
+        </div>
+        <div class="chart-row" fxLayout="column">
+            <div fxLayout="column" class="name-graphics" >
+                <p ><strong class="name">{{"Routes_according_to_difficulty" | oTranslate}}</strong></p>
+            </div>
+            <div fxLayout="column" class="view-chart">
+                <o-chart  type="discreteBar" service="routes" entity="routeAccordingDifficulty" y-axis="route_difficulty_count" query-on-init="yes" x-axis="difficulty" [color]="colors">
                 </o-chart>
             </div>
         </div>
