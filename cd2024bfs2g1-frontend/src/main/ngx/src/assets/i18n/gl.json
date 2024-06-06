@@ -655,9 +655,9 @@
     "CONTEXTMENU.ZOOM_OUT": "Afastar",
     "COMBO-BOX-DAYS-DESC": "O día que selecciones mostrarán as rutas e os negocios dispoñibles no día seleccionado.",
     "MANAGEROUTE": "Xestión de rutas",
-    "ROUTE_TABLE": "Plantillas de rutas",
+    "ROUTE_TABLE": "Lista de rutas",
     "ROUTE_NAME": "Nome da ruta",
-    "LANDMARKDELETECONFIRMED": "Punto de interese borrado satisfactoriamente"
+    "ROUTE-MANAGE": "Editor de rutas"
 
   }
 
