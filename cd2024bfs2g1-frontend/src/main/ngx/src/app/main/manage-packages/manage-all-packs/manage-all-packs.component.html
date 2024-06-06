@@ -4,7 +4,7 @@
     <o-list #myList class="contenedor" #list attr="packsTable"  columns="p.pck_id;p.pck_name;p.pck_description;i.img_code;i.image_id;ip.imp_id;p.creation_date"
     service="packs" entity="packMulti" keys="p.pck_id" refresh-button="true" insert-button="false" refresh-button="false"
     quick-filter="yes" pageable="yes" delete-button="false" row-height="medium" detail-mode="none" quick-filter-columns="pck_name;pck_description" pagination-controls="yes"
-    query-rows="10" sortColumns="creation_date">
+    query-rows="10" sort-columns="creation_date:desc">
     <div class="titulo_pack" fxLayout="column">
         {{'PACK_TABLE' |  oTranslate}}
     </div>
