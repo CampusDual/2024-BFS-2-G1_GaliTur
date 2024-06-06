@@ -10,7 +10,7 @@ import { OMapComponent } from 'ontimize-web-ngx-map';
   templateUrl: './edit-route.component.html',
   styleUrls: ['./edit-route.component.css']
 })
-export class EditRouteComponent implements OnInit {
+export class EditRouteComponent{
 
 
 
@@ -18,14 +18,9 @@ export class EditRouteComponent implements OnInit {
 @ViewChild('landmarkTable') landmarkTable : OTableComponent
 
   constructor(
-    private ontimizelandmarkService: OntimizeService,
-    private activeRoute: ActivatedRoute,
     private snackBarService: SnackBarService
   ) {}
-  ngOnInit(): void {
-    this.idRutaActual = +this.getRouteId();
-    this.landmarkRouteQuery(this.idRutaActual);
-  }
+
 
   datosTabla: Landmark[] = [];
   idRutaActual: number;
@@ -38,7 +33,7 @@ export class EditRouteComponent implements OnInit {
   onDeleteLandMark() {
     this.sendDeleteMessage()
   }
-  
+
   async onClickLandmark(event: any) {
 
     this.actualLandkmarkId = null
@@ -56,27 +51,8 @@ export class EditRouteComponent implements OnInit {
   onClickMap() {
     this.mostrarMapa = !this.mostrarMapa
   }
-  getRouteId(): number {
-    return +this.activeRoute.snapshot.params["route_id"];
-  }
   async delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
-  }
-
-  landmarkRouteQuery(id: any): void {
-    const confLandmark =
-    this.ontimizelandmarkService.getDefaultServiceConfiguration("landmarks");
-    this.ontimizelandmarkService.configureService(confLandmark);
-    this.ontimizelandmarkService
-      .query(
-        { route_id: id },
-        ["l.landmark_id","l.name","l.coordinates","l.description"],
-        "landmark"
-      )
-      .subscribe((response) => {
-        console.log("Datos de landmarks: ", response)
-        this.datosTabla.push(...response.data);
-      });
   }
 
   sendDeleteMessage(){
