@@ -21,12 +21,8 @@ galleryOptions: any;
     protected sanitizer: DomSanitizer,
     private imageService: ImageService
   ) { }
-    private imageService: ImageService,
-    private ontimizerouteService: OntimizeService,
+    private ontimizerouteService: OntimizeService
     private activeRoute: ActivatedRoute
-  ) {
-
-  }
 
   ngAfterViewInit(): void {
     const idRutaActual = +this.getRouteId();
