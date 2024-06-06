@@ -26,12 +26,12 @@
         <p>{{'POPULAR_PACKS_SUBTITLE'| oTranslate}}</p>
     </div>
     
-      <o-grid #popularsPackGrid class="o-grid-popular-packs" attr="packGrid" service="packs" entity="popularPacks" keys="P.pck_id"
-        columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;img_code;gui_c_name;pck_days;" opacity="0" 
-        refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false"
-        show-page-size="false" cols="2" gutter-size="-10px" show-footer="no" grid-item-height="380px"> 
+    <o-grid #popularsPackGrid class="o-grid-popular-packs" attr="packGrid" service="packs" entity="popularPacks" keys="P.pck_id"
+    columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;img_code;gui_c_name;pck_days;" query-rows="10"
+    refresh-button="false" quick-filter="false" pagination-controls="true" detail-mode="false" page-size-options="true"
+    show-page-size="false" cols="2" gutter-size="1px" show-footer="no" grid-item-height="380px">
         <o-grid-item *ngFor="let data of packsWithRank">
-          <div (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-between stretch" class="mat-elevation-z1 packCard">
+          <div (click)="openDetailPack(data)" fxLayout="column" fxLayoutAlign="space-between stretch" class="mat-elevation-z1 packCard">
             <div class="card-header">
               <div class="pack-title">
                 <div class="pack-ranking">

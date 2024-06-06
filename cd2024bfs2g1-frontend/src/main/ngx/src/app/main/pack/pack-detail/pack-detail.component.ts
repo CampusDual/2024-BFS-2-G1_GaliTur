@@ -36,6 +36,7 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
   protected availableDates: Set<any> = new Set // TODO: CHECK IF NEEDED
   protected bussineses: Array<any> // TODO: CHECK IF NEEDED
   protected routes: Array<any> // TODO: CHECK IF NEEDED
+  dialogRef: any;
   constructor(
     protected sanitizer: DomSanitizer,
     private router: Router,
@@ -46,6 +47,7 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
     protected injector: Injector,
     protected bookingService: OntimizeService,
     protected snackBarService: SnackBarService,
+    private actRoute: ActivatedRoute,
     @Inject(AuthService) private authService: AuthService,
     @Inject(UserInfoService) private userInfoService: UserInfoService,
     @Inject(OntimizeService) protected service: OntimizeService
@@ -197,6 +199,21 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
     };
     this.router.navigate(['../../routes/' + data.route_id], navigationExtras);
   }
+
+
+  public backToHome(): void {
+    const previousUrl = history.state && history.state.previousUrl ? history.state.previousUrl : '';
+    //Si el usuario viene de home redigir a la url anterior para que vea hpme
+    if (previousUrl.includes('home')) {
+      this.router.navigateByUrl(previousUrl);
+     //Si el usuario viene de home redigir de vuelta home
+    } else if (previousUrl.includes('/main/packs')) {
+      this.router.navigate(['/main/packs']);
+      //En caso de que entre introduciendo una URL no se contemplada en los casos anteriores redirigir a landing page
+    } else {
+      this.router.navigate(['../'],{ relativeTo: this.actRoute });
+    }
+}
 
 
 

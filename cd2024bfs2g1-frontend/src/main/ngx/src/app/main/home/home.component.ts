@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router,NavigationExtras } from '@angular/router';
 import { OGridComponent } from 'ontimize-web-ngx';
 
 @Component({
@@ -15,13 +15,14 @@ export class HomeComponent implements OnInit {
   constructor(
     protected sanitizer: DomSanitizer,
     private router: Router,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {}
 
   ngAfterViewInit() {
-    // Calcular posicion cuand los datos esten disponibles
+    // Calcular posicion cuando los datos esten disponibles
     this.popularsPackGrid.onDataLoaded.subscribe(() => {
       this.calculatePackRanks();
     });
@@ -69,4 +70,15 @@ export class HomeComponent implements OnInit {
       .map((pack, index) => ({ ...pack, rank: index + 1 }))
       .sort((a, b) => b.reservation_count - a.reservation_count); 
   }
+
+    //Metodo para redirect dinamico de packs
+    openDetailPack(data: any): void {
+      const currentUrl = this.router.url; // Capturar la URL actual
+      const navigationExtras: NavigationExtras = {
+        state: { previousUrl: currentUrl },
+        relativeTo: this.route  // Enviar la URL actual como navigation state
+      };
+      this.router.navigate(['../main/packs/' + data.pck_id], navigationExtras);
+    }
 }
+
