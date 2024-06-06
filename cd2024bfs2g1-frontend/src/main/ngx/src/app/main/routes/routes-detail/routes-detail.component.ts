@@ -69,20 +69,23 @@ export class RoutesDetailComponent implements OnInit{
     }
 }
 
-  public convertTime(minutos: number):  string {
+public convertTime(distancia: number):  string {
 
-      const horas = Math.floor(minutos / 60);
-      const minutosRestantes = minutos % 60;
-      if(horas == 0 && minutosRestantes != 0){
-        return minutosRestantes + "min";
-      }else if(horas != 0 && minutosRestantes == 0){
-        return horas + "h ";
-      }else{
-         return horas + "h " + minutosRestantes + "min";
-      }
+  var minutos: number
+  minutos = distancia * 11
+  const horas = Math.floor(minutos / 60);
+  const minutosRestantes = minutos % 60;
 
+  if(horas == 0 && minutosRestantes != 0){
+    return minutosRestantes + "min";
 
-    }
+  }else if(horas != 0 && minutosRestantes == 0){
+    return horas + "h ";
+
+  }else{
+     return horas + "h " + minutosRestantes + "min";
+  }
+}
 
     getIconColorClass(difficulty: number): string {
       switch(difficulty) {

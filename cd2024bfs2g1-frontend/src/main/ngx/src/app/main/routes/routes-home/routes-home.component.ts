@@ -13,6 +13,7 @@ import { ActivatedRoute} from '@angular/router';
   styleUrls: ['./routes-home.component.css']
 })
 export class RoutesHomeComponent {
+
 galleryOptions: any;
 
   constructor(
@@ -67,8 +68,10 @@ galleryOptions: any;
       });
     })
   }
-  public convertTime(minutos: number):  string {
+  public convertTime(distancia: number):  string {
 
+    var minutos: number
+    minutos = distancia * 11
     const horas = Math.floor(minutos / 60);
     const minutosRestantes = minutos % 60;
 

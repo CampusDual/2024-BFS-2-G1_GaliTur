@@ -28,7 +28,7 @@
                 
             <!-- Almaceno las rutas de un pack -->
             <o-grid #gridRoutesOfPack attr="routesHome" title="ROUTES" service="routes" entity="routesOfPack" keys="r.route_id;rp.pck_id;"
-                columns="r.route_id;r.name;r.estimated_duration;r.difficulty;i.img_code;rp.pck_id;rp.assigned_date"
+                columns="r.route_id;r.name;r.estimated_distance;r.difficulty;i.img_code;rp.pck_id;rp.assigned_date"
                 query-rows="8" orderable="true" parent-keys="pck_id" oHidden/>
 
             <!-- Almaceno la ciudad del pack -->
@@ -151,7 +151,7 @@
                                             </div>
                                             <div class="content-list-item">
                                                 <ul class="list-with-spaces" style="list-style-type: none;">
-                                                    <li><mat-icon class="icon">timer</mat-icon>{{data.estimated_duration}} Mins</li>
+                                                    <li><mat-icon class="icon">timer</mat-icon>{{data.estimated_distance}} Mins</li>
                                                     <li><mat-icon class="icon">eco</mat-icon>{{getDifficultad(data.difficulty) | oTranslate }}</li>
                                                 </ul>
                                             </div>

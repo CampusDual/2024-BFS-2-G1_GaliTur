@@ -5,12 +5,12 @@
   service="routes"
   entity="route"
   keys="r.route_id"
-  columns="r.route_id;name;description;estimated_duration;difficulty;creation_date;img_code"
+  columns="r.route_id;name;description;estimated_distance;difficulty;creation_date;img_code"
   query-rows="8"
   page-size-options="8;16;24"
   orderable="true"
   sort-column="creation_date:desc"
-  sortable-columns="creation_date;name;estimated_duration;difficulty;creation_date:desc;name:desc;estimated_duration:desc;difficulty:desc"
+  sortable-columns="creation_date;name;estimated_distance;difficulty;creation_date:desc;name:desc;estimated_distance:desc;difficulty:desc"
   insert-button="true"
   quick-filter-columns="name;difficulty"
   filter-case-sensitive="yes"
@@ -74,19 +74,19 @@
 
         <!--Duracion estimada-->
         <div fxLayout="row" class="duration">
-          <div class="tooltipHomeDuration" *ngIf="data.estimated_duration; else no_estimated_duration">
+          <div class="tooltipHomeDuration" *ngIf="data.estimated_distance; else no_estimated_duration">
             <mat-icon class="clockTooltipHome">hiking</mat-icon>
-            <span class="tooltiptextHomeDuration">{{"estimated_duration" | oTranslate}}</span>
+            <span class="tooltiptextHomeDuration">{{"estimated_distance" | oTranslate}}</span>
           </div>
-          <span *ngIf="data.estimated_duration">
-            {{ convertTime(data.estimated_duration) }}
+          <span *ngIf="data.estimated_distance">
+            {{ data.estimated_distance }} km
           </span>
-          <div class="tooltipHomeDuration" *ngIf="data.estimated_duration; else no_estimated_duration">
+          <div class="tooltipHomeDuration" *ngIf="data.estimated_distance; else no_estimated_duration">
             <mat-icon class="clockTooltipHome">schedule</mat-icon>
             <span class="tooltiptextHomeDuration">{{"estimated_duration" | oTranslate}}</span>
           </div>
-          <span *ngIf="data.estimated_duration">
-            {{ convertTime(data.estimated_duration) }}
+          <span *ngIf="data.estimated_distance">
+            {{ convertTime(data.estimated_distance) }}
           </span>
           <ng-template #no_estimated_duration>
             <div class="tooltipHomeDuration">

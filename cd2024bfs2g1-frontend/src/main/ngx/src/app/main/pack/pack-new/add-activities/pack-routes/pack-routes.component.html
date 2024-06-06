@@ -25,8 +25,8 @@
 
 <o-row style="height: 70vh;">
   <o-table style="height: 50vh;" fxFill #table service="routes" entity="routeImage" keys="route_id"
-    columns="R.route_id;name;estimated_duration;difficulty;description;img_code" title="ROUTES"
-    visible-columns="name;estimated_duration;difficulty" insert-button="no" delete-button="no" refresh-button="yes"
+    columns="R.route_id;name;estimated_distance;difficulty;description;img_code" title="ROUTES"
+    visible-columns="name;estimated_distance;difficulty" insert-button="no" delete-button="no" refresh-button="yes"
     pagination-controls="yes" detail-mode="none" export-button="no" query-rows="20" show-charts-on-demand-option="no"
     select-all-checkbox-visible="yes" select-all-checkbox="yes" auto-adjust="no" fixed-header="yes" id="tabla"
     onRowSelected="addRow()">
@@ -52,8 +52,8 @@
               layout-align="start stretch" elevation="3" aria-orientation="horizontal">
               <ul class="list-to-desc-2" appearance="outline" style="max-height: 100px;">
                 <li class="list-item"><strong><i>{{'name' | oTranslate }}: </i></strong>{{ (row.name) }}</li>
-                <li class="list-item"><strong><i>{{'estimated_duration' | oTranslate }}: </i></strong>{{
-                  convertTime(row.estimated_duration) }}</li>
+                <li class="list-item"><strong><i>{{'estimated_distance' | oTranslate }}: </i></strong>{{
+                  convertTime(row.estimated_distance) }}</li>
                 <li class="list-item"><strong><i>{{'difficulty' | oTranslate }}: </i></strong>
                   {{getDifficultad(row.difficulty)}}</li>
               </ul>
