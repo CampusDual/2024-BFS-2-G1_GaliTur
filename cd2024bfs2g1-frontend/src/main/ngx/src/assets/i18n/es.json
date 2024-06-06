@@ -134,7 +134,7 @@
   "FREEROOMS": "Habitaciones Disponibles",
   "FREESERVICES": "Servicios Disponibles",
   "GUIDEINFO": "Información de la guia",
-  "AgencyGuide": "Guia de agencias",
+  "AgencyGuide": "Agencias de guías",
   "Lodging": "Alojamiento",
   "Restaurant": "Restaurante",
   "PASSWORD_TITLE":"Ingresa una contraseña segura (mínimo 8 caracteres, incluyendo una mayúscula, una minúscula, un numero y un caracter especíal mínimo)",
@@ -213,7 +213,7 @@
   "DAY": "Día",
   "DAYS": "Días",
   "PACK_NAME": "Nombre del pack",
-  "PACKS_NEW": "Paquete nuevo",
+  "PACKS_NEW": "Pack nuevo",
   "PRICE": "Precio",
   "PARTICIPANTS": "Participantes",
   "ACTIVE": "Activo",
@@ -383,7 +383,7 @@
   "EDIT": "Editar",
   "ADD_DATES": "Añadir fechas",
   "ADD_ROUTES_AND_BUSINESSES":"Añadir rutas y negocios",
-  "SCHEDULE_PACKAGE": "Agendar paquete",
+  "SCHEDULE_PACKAGE": "Agendar pack",
   "PACK-MANAGE": "Editor de packs",
   "MAIN": "Packs",
   "SHEDULED_PACKS":"Packs agendados",
@@ -423,7 +423,9 @@
   "DATE_R": "Fecha del pack",
   "COMBO-BOX-DAYS-DESC": "El dia que selecciones mostrará las rutas y negocios disponibles el día seleccionado.",
   "POPULAR_PACKS": "Packs populares",
-  "POPULAR_PACKS_SUBTITLE": "¡Echa un vistazo a los packs favoritos de nuestros usuarios!"
+  "POPULAR_PACKS_SUBTITLE": "¡Echa un vistazo a los packs favoritos de nuestros usuarios!",
+  "SEARCH": "Buscar",
+  "CLEAR_SEARCH": "Eliminar búsqueda"
 }
 
 
