@@ -136,7 +136,7 @@
     "FREEROOMS": "Habitacións Dispoñibles",
     "FREESERVICES": "Servizos Dispoñibles",
     "GUIDEINFO": "Información da guía",
-    "AgencyGuide": "Guía de axencias",
+    "AgencyGuide": "Axencia de guías",
     "Lodging": "Aloxamento",
     "Restaurant": "Restaurante",
     "PASSWORD_TITLE": "Introduce un contrasinal seguro (mínimo 8 caracteres, incluíndo unha maiúscula, unha minúscula, un número e un carácter especial mínimo)",
@@ -215,7 +215,7 @@
     "DAY": "Día",
     "DAYS": "Días",
     "PACK_NAME": "Nome do pack",
-    "PACKS_NEW": "Novo paquete",
+    "PACKS_NEW": "Novo pack",
     "PRICE": "Prezo",
     "PARTICIPANTS": "Participantes",
     "ACTIVE": "Activo",
@@ -655,6 +655,13 @@
     "CONTEXTMENU.ZOOM_OUT": "Afastar",
     "COMBO-BOX-DAYS-DESC": "O día que selecciones mostrarán as rutas e os negocios dispoñibles no día seleccionado.",
     "MY-BUSINESSES": "Os meus negocios",
+    "UNDO": "Desfacer",
+    "FOUND": "Atopados",
+    "SEARCH": "Buscar",
+    "CLEAR_SEARCH": "Eliminar a busca",
+    "NO_ESTIMATED_DISTANCE": "Sen distancia estimada",
+    "ESTIMATED_DISTANCE": "Distancia estimada",
+    "SAVE": "Gardar",
     "BSN.DELETED": "Negocio borrado axeitadamente"
   }
 

@@ -5,11 +5,24 @@ import { BusinessMerchantDetailComponent } from './business-merchant-detail/busi
 
 const routes: Routes = [
   {
-    path: '', component: BusinessMerchantComponent
+    path: '', component: BusinessMerchantComponent,
+    data: {
+      oPermission: {
+        permissionId: "myBusiness",
+        restrictedPermissionsRedirect: 403
+      }
+    }
   },
-  {path: ':bsn_id', component: BusinessMerchantDetailComponent}
+  {path: ':bsn_id', component: BusinessMerchantDetailComponent,
+  data: {
+    oPermission: {
+      permissionId: "myBusinessDetail",
+      restrictedPermissionsRedirect: 403
+    }
+  }
+  }
 ];
- 
+
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
