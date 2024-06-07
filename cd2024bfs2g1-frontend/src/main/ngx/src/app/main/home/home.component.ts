@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute, Router,NavigationExtras } from '@angular/router';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { OGridComponent } from 'ontimize-web-ngx';
 
 @Component({
@@ -8,7 +8,7 @@ import { OGridComponent } from 'ontimize-web-ngx';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('popularsPackGrid', { static: false }) popularsPackGrid: OGridComponent;
   packsWithRank: any[] = [];
 
@@ -67,18 +67,16 @@ export class HomeComponent implements OnInit {
   calculatePackRanks() {
     const dataArray = this.popularsPackGrid.dataArray;
     this.packsWithRank = dataArray
-      .map((pack, index) => ({ ...pack, rank: index + 1 }))
-      .sort((a, b) => b.reservation_count - a.reservation_count); 
+      .map((pack, index) => ({ ...pack, rank: index + 1 }));
   }
 
-    //Metodo para redirect dinamico de packs
-    openDetailPack(data: any): void {
-      const currentUrl = this.router.url; // Capturar la URL actual
-      const navigationExtras: NavigationExtras = {
-        state: { previousUrl: currentUrl },
-        relativeTo: this.route  // Enviar la URL actual como navigation state
-      };
-      this.router.navigate(['../main/packs/' + data.pck_id], navigationExtras);
-    }
+  //Metodo para redirect dinamico de packs
+  openDetailPack(data: any): void {
+    const currentUrl = this.router.url; // Capturar la URL actual
+    const navigationExtras: NavigationExtras = {
+      state: { previousUrl: currentUrl },
+      relativeTo: this.route // Enviar la URL actual como navigation state
+    };
+    this.router.navigate(['../main/packs/' + data.pck_id], navigationExtras);
+  }
 }
-
