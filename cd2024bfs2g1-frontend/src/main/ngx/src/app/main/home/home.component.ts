@@ -56,9 +56,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       : "./assets/images/no-image-transparent.png";
   }
 
-  truncateName(name: string): string {
-    return name.length > 25 ? name.substr(0, 25) + "..." : name;
-  }
+
 
   truncateInfo(name: string): string {
     return name.length > 10 ? name.substr(0, 10) + "..." : name;

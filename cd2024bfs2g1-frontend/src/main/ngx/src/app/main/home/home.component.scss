@@ -233,15 +233,17 @@ button {
   margin-bottom: 5px;
 }
 .pack-name {
-  width: 100%;
+  width: calc(90%);
   margin: auto;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  padding-top: 0.35%;
+  overflow:hidden;
+  white-space:nowrap;
+  display:inline-block;
+  text-overflow:ellipsis 
 }
 
 /* pack name styles */
