@@ -423,9 +423,9 @@
   "DATE_R": "Fecha del pack",
   "COMBO-BOX-DAYS-DESC": "El dia que selecciones mostrará las rutas y negocios disponibles el día seleccionado.",
   "MANAGEROUTE": "Gestión de rutas",
-  "ROUTE_TABLE": "Plantillas de rutas",
+  "ROUTE_TABLE": "Lista de rutas",
   "ROUTE_NAME": "Nombre de la ruta",
-  "LANDMARKDELETECONFIRMED": "Punto de interes borrado satisfactoriamente"
+  "ROUTE-MANAGE": "Editor de rutas"
 }
 
 

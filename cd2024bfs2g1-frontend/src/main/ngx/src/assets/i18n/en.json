@@ -413,8 +413,8 @@
   "DATE_R": "Pack date",
   "COMBO-BOX-DAYS-DESC": "The day you select will show the routes and businesses available on the selected day.",
   "MANAGEROUTE": "Manage routes",
-  "ROUTE_TABLE": "Route templates",
+  "ROUTE_TABLE": "List of routes",
   "ROUTE_NAME": "Route Name",
-  "LANDMARKDELETECONFIRMED": "Landmark delete successfully"
+  "ROUTE-MANAGE": "Route editor"
 }
 
