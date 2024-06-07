@@ -15,6 +15,7 @@ export const routes: Routes = [
       { path: 'admin', canActivate: [AuthGuardService], loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
       { path: 'settings', canActivate: [AuthGuardService], loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
       { path: 'businesses', loadChildren: () => import('./business/business.module').then(m => m.BusinessModule) },
+      { path: 'business-merchant', loadChildren: () => import('./my-businesses/my-businesses.module').then(m => m.MyBusinessesModule) },
       { path: 'profile', canActivate: [AuthGuardService], component: ProfileComponent },
       { path: 'routes', loadChildren: () => import('./routes/routes.module').then(m => m.RoutesModule) },
       { path: 'packs', loadChildren: () => import('./pack/pack.module').then(m => m.PackModule) },
