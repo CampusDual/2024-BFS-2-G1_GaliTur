@@ -59,6 +59,8 @@
                         ${mainschema}.bsn_business b
                         INNER JOIN ${mainschema}.bsn_pack bsp
                         ON B.bsn_id=BSP.bsn_id
+                     WHERE
+                    b.bsn_down_date is null
                     #WHERE_CONCAT#
                     #ORDER#
                 ]]>

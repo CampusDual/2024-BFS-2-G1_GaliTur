@@ -53,6 +53,11 @@ public class BusinessService implements IBusinessService {
     }
 
     @Override
+    public EntityResult businessDownDateQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.businessDao, keysValues, attributes,"downDate");
+    }
+
+    @Override
     public AdvancedEntityResult businessDownDatePaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy) {
         return this.daoHelper.paginationQuery(this.businessDao, keysValues, attributes, recordNumber, startIndex, orderBy, "downDate");
     }
