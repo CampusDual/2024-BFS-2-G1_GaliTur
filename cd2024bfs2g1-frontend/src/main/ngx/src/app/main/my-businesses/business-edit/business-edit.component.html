@@ -1,4 +1,4 @@
-<o-form attr="businessNew" class="custom-form" label-header="{{ 'BUSINESS_DATA' | oTranslate }}" label-header-align="start" service="businesses" entity="businessRestaurant" keys="bsn_id" fxLayout="column" #oFormBusinessNew
+<o-form attr="businessNew" class="custom-form" label-header="{{ 'BUSINESS_DATA' | oTranslate }}" label-header-align="start" service="businesses" entity="business" keys="bsn_id" fxLayout="column" #oFormBusinessNew
      keys-sql-types="integer" (onInsert)="insertBusiness($event)" confirm-exit="false" message-service-type="customMessageServiceTypeBusiness">
 
     <o-row id="principalRow" layout-align="start stretch">
@@ -82,24 +82,33 @@
         </o-column>
     </o-row>
 
-
-
     <o-text-input #type read-only="yes" class="o-text-input" appearance="outline" attr="bsn_type"
     sql-type="STRING" label="Nombre" enabled="no" oHidden></o-text-input>
 
+</o-form>
+
+   
+
     <!-- RESTAURANT -->
-    <div >
+    <div  *ngIf="type.getValue() === 'Restaurant'" style="padding-top: 40px;">
+        <o-form attr="restEdit" class="custom-form" label-header-align="start" service="restaurants" entity="restaurant" keys="rest_id;bsn_id" parent-keys="bsn_id" fxLayout="column" #oFormRestaurantNew
+        keys-sql-types="integer" confirm-exit="false" undo-button="false" message-service-type="customMessageServiceTypeBusiness"  label-header="{{ 'RESTAURANT_DATA' | oTranslate }}" oHidden>
+   
+
         <o-row id="restaurant" layout-align="start stretch"><o-column
-                    title="{{ 'RESTAURANT_DATA' | oTranslate }}" layout-align="start stretch" fxFlex="60"
+                    layout-align="start stretch" fxFlex="60"
                     layout-padding><o-image id="restaurant_img" attr="rest_menu" sql-type="OTHER"
                         label="{{ 'UPLOAD_MENU' | oTranslate }}" required="no"></o-image></o-column></o-row>
 
-       
+        </o-form>
 
     </div>
 
     <!-- LODGING -->
-    <div class="lodging" *ngIf="type.getValue() === 'Lodging'">
+    <div  *ngIf="type.getValue() === 'Lodging'"  style="padding-top: 40px;">
+
+        <o-form attr="lodgingEdit" class="custom-form" label-header-align="start" service="hotels" entity="hotelMulti" keys="htl_id;bsn_id" parent-keys="bsn_id" fxLayout="column" #oFormLodgingNew
+        keys-sql-types="integer" confirm-exit="false" undo-button="false" message-service-type="customMessageServiceTypeBusiness"  label-header="{{ 'LODGING' | oTranslate }}" oHidden>
         <o-column>
             <o-row layout-align="start stretch">
                 <o-column>
@@ -157,9 +166,10 @@
                 </div>
             </o-row>
         </o-column>
+        </o-form>
     </div>
 
-    <div class="agency_guide">
+    <div class="agency_guide" *ngIf="type.getValue() === 'AgencyGuide'">
 
 
         <o-row style="align-content: space-between; width: 200%;  padding-left: 1.5%;">
@@ -191,4 +201,3 @@
 
     </div>
 
-</o-form>
