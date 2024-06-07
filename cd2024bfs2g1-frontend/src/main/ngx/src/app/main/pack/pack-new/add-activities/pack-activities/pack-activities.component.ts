@@ -58,7 +58,7 @@ export class PackActivitiesComponent {
 
     this.getBusiness();
 
-   
+
   }
 
   ngAfterViewInit() {
@@ -71,7 +71,7 @@ export class PackActivitiesComponent {
       this.updateSelectedBusinessIds();
     });
   }
-  
+
 
   protected configureService() {
     // Configure the service using the configuration defined in the `app.services.config.ts` file
@@ -129,7 +129,7 @@ export class PackActivitiesComponent {
       if (resp.code === 0) {
         // resp.data contains the data retrieved from the server
         this.AssignedBsn = resp.data;
-       
+
       } else {
         alert("Impossible to query data!");
       }
@@ -141,7 +141,7 @@ export class PackActivitiesComponent {
     this.configureBusinessService();
 
     const filter = {
-      
+
     };
     const columns = ["bsn_id","bsn_name","bsn_type","bsn_address","bsn_phone","bsn_photos","bsn_website","bsn_schedule"];
     this.service.query(filter, columns, "business").subscribe((resp) => {
@@ -150,7 +150,7 @@ export class PackActivitiesComponent {
         this.NotAsgBsn = resp.data;
         this.NotAsgBsn = this.compareBusinessLists();
         this.table.setDataArray(this.NotAsgBsn);
-       
+
       } else {
         alert("Impossible to query data!");
       }
@@ -188,7 +188,7 @@ setBsnData() {
       this.snackBarService.open("BSNPACK.ERROR", config);
       return;
     }
-  
+
     for (let bp of this.selectedBusinessIds) {
       this.bsn_service
         .insert(

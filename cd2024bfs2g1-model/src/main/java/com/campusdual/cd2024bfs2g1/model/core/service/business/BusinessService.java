@@ -1238,8 +1238,6 @@ public class BusinessService implements IBusinessService {
     }
 
 
-
-
     @Override
     public EntityResult businessUpdate(Map<String, Object> attributesValues, Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
         return this.daoHelper.update(this.businessDao, attributesValues, keysValues);
@@ -1256,7 +1254,15 @@ public class BusinessService implements IBusinessService {
     }
 
     @Override
+    public AdvancedEntityResult businessMerchantPaginationQuery(Map<String, Object> keysValues, List<String> attributes, int recordNumber, int startIndex, List<?> orderBy) {
+        keysValues.put(MerchantDao.MERCHANT_ID, merchantService.getMerchantId());
+
+        return this.daoHelper.paginationQuery(this.businessDao, keysValues, attributes, recordNumber, startIndex, orderBy);
+    }
+
+    @Override
     public EntityResult businessOfPackQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.businessDao, keysValues, attributes, BusinessDao.QUERY_BUSINESS_OF_PACK);
     }
+
 }
