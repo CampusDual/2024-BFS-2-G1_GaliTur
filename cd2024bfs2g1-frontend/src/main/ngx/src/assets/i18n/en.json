@@ -414,6 +414,9 @@
   "COMBO-BOX-DAYS-DESC": "The day you select will show the routes and businesses available on the selected day.",
   "POPULAR_PACKS": "Popular packs",
   "POPULAR_PACKS_SUBTITLE": "Check out our users favourite packs!",
+  "CLEAR_SEARCH": "Delete search",
+  "NO_ESTIMATED_DISTANCE": "No estimated distance",
+  "ESTIMATED_DISTANCE": "Estimated distance",
   "MY-BUSINESSES": "My businesses",
   "CLEAR_SEARCH": "Delete search"
 }
