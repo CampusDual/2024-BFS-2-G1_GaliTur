@@ -357,7 +357,7 @@
   "ADD_ROUTES_AND_BUSINESSES": "Add routes and businesses",
   "SCHEDULE_PACKAGE": "Schedule package",
   "PACK-MANAGE": "Packs editor",
-  "MAIN": "Packs",
+  "MAIN": "Home",
   "SHEDULED_PACKS": "Scheduled packs",
   "ADD_SHEDULED_PACKS": "Add scheduled packs",
   "PACKS_INFO": "Packs info",
@@ -415,6 +415,7 @@
   "MANAGEROUTE": "Manage routes",
   "ROUTE_TABLE": "List of routes",
   "ROUTE_NAME": "Route Name",
-  "ROUTE-MANAGE": "Route editor"
+  "ROUTE-MANAGE": "Route editor",
+  "DRAFT": "Draft"
 }
 

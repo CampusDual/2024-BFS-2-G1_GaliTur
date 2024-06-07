@@ -1,9 +1,9 @@
 
-<o-breadcrumb [form]="myList"  separator=" "></o-breadcrumb>
+<o-breadcrumb [form]="myList" separator=" "></o-breadcrumb>
 <div class="div-fullpage">
     <o-list #myList class="contenedor" #list attr="routeList" service="routes" entity="route" keys="r.route_id"
-    columns="r.route_id;name;description;estimated_distance;difficulty;creation_date;img_code" refresh-button="true" insert-button="false"
-    quick-filter="yes" pageable="yes" delete-button="false" row-height="medium" detail-mode="none" quick-filter-columns="" pagination-controls="yes"
+    columns="r.route_id;name;description;estimated_distance;difficulty;creation_date;img_code;is_draft" refresh-button="true" insert-button="false"
+    quick-filter="yes" pageable="yes" delete-button="false" row-height="medium" detail-mode="none" quick-filter-columns="name" pagination-controls="yes"
     query-rows="10" orderable="true" sort-columns="creation_date:desc">
     <div class="titulo_route" fxLayout="column">
         {{'ROUTE_TABLE' |  oTranslate}}
@@ -27,7 +27,10 @@
                             <button (click)="onClicDelete(row.route_id)" class="button">
                                 <mat-icon>delete</mat-icon>
                                 {{'delete' | oTranslate}}</button>
-                        </div>
+                            <div *ngIf="row.is_draft" class="draft">
+                                <label><mat-icon>info_outline</mat-icon>{{'DRAFT' |  oTranslate}}</label> 
+                            </div>
+                        </div> 
                     </div>
                     <div fxLayout="column" fxLayoutAlign="center" class="card-imagen">
                         <img [src]="getImageSrc(row.img_code)" class="imagen"/>

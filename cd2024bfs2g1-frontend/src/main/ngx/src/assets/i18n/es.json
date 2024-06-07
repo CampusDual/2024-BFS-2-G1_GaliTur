@@ -385,7 +385,7 @@
   "ADD_ROUTES_AND_BUSINESSES":"Añadir rutas y negocios",
   "SCHEDULE_PACKAGE": "Agendar paquete",
   "PACK-MANAGE": "Editor de packs",
-  "MAIN": "Packs",
+  "MAIN": "Inicio",
   "SHEDULED_PACKS":"Packs agendados",
   "ADD_SHEDULED_PACKS":"Añadir packs agendados",
   "PACKS_INFO": "Información de packs",
@@ -425,7 +425,8 @@
   "MANAGEROUTE": "Gestión de rutas",
   "ROUTE_TABLE": "Lista de rutas",
   "ROUTE_NAME": "Nombre de la ruta",
-  "ROUTE-MANAGE": "Editor de rutas"
+  "ROUTE-MANAGE": "Editor de rutas",
+  "DRAFT": "Borrador"
 }
 
 

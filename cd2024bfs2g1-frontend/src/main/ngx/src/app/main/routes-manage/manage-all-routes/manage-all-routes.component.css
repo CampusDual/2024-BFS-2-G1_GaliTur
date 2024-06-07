@@ -58,6 +58,8 @@
   outline: none;
 }
 
+
+
 @keyframes pulse {
   0%,
   100% {
@@ -107,6 +109,8 @@
 }
 
 .div-buttons{
+  display: flex;
+  align-items: center;
   height: 40px;
   margin-top: 5px;
 }
@@ -132,9 +136,26 @@
 
 .mat-icon {
   vertical-align: middle;
-  margin: 0px 5px 5px 0px;
+  margin: 3px 5px 5px 0px;
 }
 
+.draft{
+  background-color: #eee4db;
+  font-size: 16px;
+  align-content: center;
+  text-align: center;
+  width: 130px;
+  height: 40px;
+  border-radius: 5px;
+  outline: none;
+}
+
+@media(max-width:1180px){
+  .button, .card{
+    width: 105px;
+    height: 40px;
+  }
+}
 
 @media (max-width:1100px) {
   .card-imagen, .imagen{
@@ -147,6 +168,14 @@
     width: 100%;
   }
 
+
+}
+
+@media(max-width:767px){
+  .button, .card{
+    width: 105px;
+    height: 40px;
+  }
 }
 
 @media (max-width:735px) {

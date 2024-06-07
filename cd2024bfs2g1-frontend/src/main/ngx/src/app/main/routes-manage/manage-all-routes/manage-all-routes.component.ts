@@ -18,7 +18,7 @@ export class ManageAllRoutesComponent {
 
 
   public getImageSrc(base64: any): any {
-    const image_code = base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image-transparent.png';
+    const image_code = base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/logo.png';
     return image_code
   }
 
