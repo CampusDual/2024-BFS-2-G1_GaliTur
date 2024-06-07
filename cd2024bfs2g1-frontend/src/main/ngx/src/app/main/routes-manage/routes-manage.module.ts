@@ -7,12 +7,14 @@ import { EditRouteComponent } from './edit-route/edit-route.component';
 import { OntimizeWebModule } from 'ontimize-web-ngx';
 import { RoutesModule } from '../routes/routes.module';
 import { OMapModule } from 'ontimize-web-ngx-map';
+import { ShowPacksConfirmDeleteComponent } from './manage-all-routes/show-packs-confirm-delete/show-packs-confirm-delete.component';
 
 
 @NgModule({
   declarations: [
     ManageAllRoutesComponent,
-    EditRouteComponent
+    EditRouteComponent,
+    ShowPacksConfirmDeleteComponent
   ],
   imports: [
     CommonModule,

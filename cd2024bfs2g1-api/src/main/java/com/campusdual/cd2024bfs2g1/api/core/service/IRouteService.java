@@ -30,4 +30,11 @@ public interface IRouteService {
     AdvancedEntityResult routePaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy);
 
     EntityResult routesOfPackQuery(Map<String, Object> keyMap, List<String> attrList);
+
+    EntityResult routeUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
+            throws OntimizeJEERuntimeException;
+
+    EntityResult routeDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
+
+    EntityResult searchPacksQuery(Map<String, Object> keyMap, List<String> attrList);
 }

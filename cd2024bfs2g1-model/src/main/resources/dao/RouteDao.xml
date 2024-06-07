@@ -91,5 +91,21 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="searchForPacks">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                       #COLUMNS#
+                    FROM
+                        ${mainschema}.route r
+                        INNER JOIN ${mainschema}.route_pack rp
+                        ON r.route_id=rp.route_id
+                        INNER JOIN ${mainschema}.pack p
+                        ON rp.pck_id=p.pck_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>
