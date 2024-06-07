@@ -415,6 +415,10 @@
   "MANAGEROUTE": "Manage routes",
   "ROUTE_TABLE": "List of routes",
   "ROUTE_NAME": "Route Name",
-  "ROUTE-MANAGE": "Route editor"
+  "ROUTE-MANAGE": "Route editor",
+  "CLEAR_SEARCH": "Delete search",
+  "NO_ESTIMATED_DISTANCE": "No estimated distance",
+  "ESTIMATED_DISTANCE": "Estimated distance",
+  "MY-BUSINESSES": "My businesses",
 }
 

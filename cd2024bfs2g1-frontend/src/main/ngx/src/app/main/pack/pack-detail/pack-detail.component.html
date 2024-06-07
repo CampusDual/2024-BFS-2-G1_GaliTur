@@ -28,7 +28,7 @@
 
             <!-- Almaceno las rutas de un pack -->
             <o-grid #gridRoutesOfPack attr="routesHome" title="ROUTES" service="routes" entity="routesOfPack" keys="r.route_id;rp.pck_id;"
-                columns="r.route_id;r.name;r.estimated_duration;r.difficulty;i.img_code;rp.pck_id;rp.assigned_date"
+                columns="r.route_id;r.name;r.estimated_distance;r.difficulty;i.img_code;rp.pck_id;rp.assigned_date"
                 query-rows="8" orderable="true" parent-keys="pck_id" oHidden/>
 
             <!-- Almaceno la ciudad del pack -->
@@ -131,7 +131,7 @@
                 <o-form #daySelectorForm show-header-navigation="false" show-header="no">
                     <div class="reserve-container">
                         <div class="div-combo-days-container">
-                            <o-combo attr="assigned_date" class="combo-box-dates" label=" {{ 'COMBO-BOX-DAYS-TITLE' | oTranslate }} " [static-data]="arrayDias"
+                            <o-combo #comboDays attr="assigned_date" class="combo-box-dates" label=" {{ 'COMBO-BOX-DAYS-TITLE' | oTranslate }} " [static-data]="arrayDias"
                                 value-column="day" columns="day" visible-columns="day" tooltip="{{'COMBO-BOX-DAYS-DESC' | oTranslate }}" null-selection-label="{{ 'ALL-DAYS' | oTranslate }}"></o-combo>
                         </div>
                     </div>
@@ -147,7 +147,11 @@
                 <div class="routes-container">
                     <o-row class="o-row-o-grid-container" title="{{ 'ROUTES' | oTranslate }}" icon="map" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
                         <div class="o-grid-container">
-                            <o-grid opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false"
+                            <p *ngIf="gridRoutesOfPack.dataArray.length == 0" class="no-business-card">
+                                <span *ngIf="comboDays.getValue() != 0 && comboDays.getValue() != null">No hay rutas el día {{comboDays.getValue()}} !</span>
+                                <span *ngIf="comboDays.getValue() == 0 || comboDays.getValue() == null">En este pack no hay rutas !</span>
+                            </p>
+                            <o-grid *ngIf="gridRoutesOfPack.dataArray.length > 0" opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false"
                             show-page-size="false" disable-page-size-calculation="true" cols="2" gutter-size="1px" grid-item-height="215px">
                                 <o-grid-item *ngFor="let data of gridRoutesOfPack.dataArray">
                                     <div (click)="openDetailRoutes(data)" fxLayout="column" fxLayoutAlign="center" class="mat-elevation-z1 routeCard">
@@ -162,8 +166,8 @@
                                             </div>
                                             <div class="content-list-item">
                                                 <ul class="list-with-spaces" style="list-style-type: none;">
-                                                    <li *ngIf="!data.estimated_duration" matTooltip="{{'N0_ESTIMATED_DURATION'|oTranslate}}"><mat-icon class="icon">timer</mat-icon>- Min</li>
-                                                    <li *ngIf="data.estimated_duration" matTooltip="{{'estimated_duration'|oTranslate}}"><mat-icon class="icon">timer</mat-icon>{{data.estimated_duration}} Min</li>
+                                                    <li *ngIf="!data.estimated_distance"><mat-icon matTooltip="{{'NO_ESTIMATED_DISTANCE'|oTranslate}}" class="icon">directions_run</mat-icon>- Km</li>
+                                                    <li *ngIf="data.estimated_distance"><mat-icon matTooltip="{{'ESTIMATED_DISTANCE'|oTranslate}}" class="icon">directions_run</mat-icon>{{data.estimated_distance}} Km</li>
                                                     <li><mat-icon class="icon" matTooltip="{{'difficulty'|oTranslate}}">eco</mat-icon>{{getDifficultad(data.difficulty) | oTranslate }}</li>
                                                 </ul>
                                             </div>
@@ -179,19 +183,23 @@
                 <div class="business-container">
                     <o-row class="o-row-o-grid-container" title="{{ 'BUSINESSES' | oTranslate }}" icon="business" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
                         <div class="o-grid-container">
-                            <o-grid  opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false"
-                            show-page-size="false" disable-page-size-calculation="true" cols="2" gutter-size="1px" grid-item-height="245px">
+                            <p *ngIf="gridBusinessesOfPack.dataArray.length == 0" class="no-business-card">
+                                <span *ngIf="comboDays.getValue() != 0 && comboDays.getValue() != null">No hay negocios el día {{comboDays.getValue()}} !</span>
+                                <span *ngIf="comboDays.getValue() == 0 || comboDays.getValue() == null">En este pack no hay negocios !</span>
+                            </p>
+                            <o-grid *ngIf="gridBusinessesOfPack.dataArray.length > 0" opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false"
+                            show-page-size="false" disable-page-size-calculation="true" no cols="2" gutter-size="1px" grid-item-height="245px">
                                 <o-grid-item *ngFor="let data of gridBusinessesOfPack.dataArray" >
                                     <div (click)="openDetailBusiness(data)" fxLayout="column" fxLayoutAlign="space-evenly center" class="mat-elevation-z1 businessCard">
                                         <div class="card-header">
                                             <div class="business-title">
                                                 <div class="business-icon">
-                                                    <span *ngIf="data.bsn_type === 'Restaurant'" matTooltip="{{'Restaurant'|oTranslate}}"><mat-icon class="type-icon" >restaurant</mat-icon></span>
+                                                    <span *ngIf="data.bsn_type === 'Restaurant'"><mat-icon class="type-icon" matTooltip="{{'Restaurant'|oTranslate}}">restaurant</mat-icon></span>
                                                     <span *ngIf="data.bsn_type === 'Lodging'"><mat-icon class="type-icon" matTooltip="{{ 'Lodging' | oTranslate }}">house</mat-icon></span>
                                                     <span *ngIf="data.bsn_type === 'AgencyGuide'"><mat-icon class="type-icon" matTooltip="{{ 'AgencyGuide' | oTranslate }}">flight</mat-icon></span>
                                                 </div>
                                                 <div class="business-name">
-                                                    <span class="pack-name">{{ data.bsn_name}}</span>
+                                                    <span class="pack-name">{{ truncateName(data.bsn_name)}}</span>
                                                 </div>
                                             </div>
                                         </div>

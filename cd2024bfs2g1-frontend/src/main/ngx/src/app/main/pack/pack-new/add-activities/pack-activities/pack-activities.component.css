@@ -60,10 +60,10 @@
 .preview-image {
     width: 100%;
     height: auto;
-    max-width: 200px; 
+    max-width: 200px;
     max-height: 200px;
-    min-width: 200px; 
-    min-height: 200px; 
+    min-width: 200px;
+    min-height: 200px;
     object-fit:contain;
     margin-bottom: 15px;
     margin-left: 15px;
@@ -74,15 +74,15 @@
 .menu {
     width: 100%;
     height: auto;
-    max-width: 100%; 
-    
+    max-width: 100%;
+
 }
 
 .left, .right {
     flex: 1;
     padding: 0px 5px 10px 5px;
     background-color: transparent;
-    overflow:hidden; 
+    overflow:hidden;
 }
 
 .desc {
@@ -91,7 +91,7 @@
 
 .o-rows {
     background-color: transparent;
-    
+
 }
 
 
@@ -109,7 +109,7 @@
     word-break: break-word; /* Fuerza un corte en las palabras largas */
     overflow-wrap: break-word; /* Asegura que las palabras largas se dividan en la siguiente línea */
     white-space: normal; /* Permite que el texto haga un salto de línea */
-    
+
     box-sizing: border-box; /* Incluye el padding y el borde en el ancho y alto total del elemento */
 
 }
@@ -137,6 +137,23 @@
     margin-left: 15px;
 }
 
+o-column{
+    .o-container-title span {
+        font-size: 18px;
+        font-weight: bold;
+        color: #00000099;
+
+}
+background-color: #e2dbd5 !important;
+}
+
+o-row{
+
+    background-color: #e2dbd5 !important;
+}
+
+
+
 #addBusiness{
     width: 20%;
     padding-left: 25%;
@@ -146,6 +163,56 @@
     width: 20%;
     padding-left: 10%;
     padding-bottom: 1%;
+}
+
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+    background-color: #e2dbd5 !important;
+}
+
+:host ::ng-deep button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base {
+    background-color: #4e4c4a !important;
+    color: #e2dbd5 !important;
+    height: 36.3px;
+}
+
+/* cambiar estilo de un componente en concreto */
+:host ::ng-deep .comboBoxDay{
+
+ .mat-mdc-select-value {
+    color: #e2dbd5 !important;
+}
+.mat-mdc-select-arrow {
+    color: #e2dbd5 !important;
+}
+}
+
+:host ::ng-deep.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: #4e4c4a !important;
+    color: #e2dbd5;
+}
+
+:host ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    min-width: 0%;
+}
+
+
+
+:host ::ng-deep .mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label{
+    color: #e2dbd5 !important;
+
+}
+
+:host ::ng-deep .mat-mdc-icon-button.mat-primary {
+    color: #4e4c4a !important;
+}
+
+:host ::ng-deep .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+    margin-top: -5px !important;
+}
+
+
+:host ::ng-deep .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label  {
+    margin-top: 0px !important;
 }
 
 ::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {

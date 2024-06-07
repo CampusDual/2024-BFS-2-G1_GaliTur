@@ -66,7 +66,7 @@ export class PackRoutesComponent {
       this.updateSelectedRoutesIds();
     });
   }
-  
+
 
   protected configureService() {
     // Configure the service using the configuration defined in the `app.services.config.ts` file
@@ -125,7 +125,7 @@ export class PackRoutesComponent {
       if (resp.code === 0) {
         // resp.data contains the data retrieved from the server
         this.AssignedRoutes = resp.data;
-       
+
       } else {
         alert("Impossible to query data!");
       }
@@ -145,7 +145,7 @@ export class PackRoutesComponent {
         this.NotAsgRoutes = resp.data;
         this.NotAsgRoutes = this.compareLists();
         this.table.setDataArray(this.NotAsgRoutes);
-       
+
       } else {
         alert("Impossible to query data!");
       }
@@ -162,7 +162,7 @@ export class PackRoutesComponent {
         console.warn('One or both lists are not defined yet.');
         return this.NotAsgRoutes;
     }
-    
+
 }
 
 setRoutesData() {
@@ -173,7 +173,7 @@ setRoutesData() {
 
   insertRoutePack() {
     this.configureRouteService();
-  
+
     if (this.selectedRoutesIds.length === 0) {
       const config: OSnackBarConfig = {
         action: "",
@@ -185,7 +185,7 @@ setRoutesData() {
       this.snackBarService.open("ROUTEPACK.ERROR", config);
       return;
     }
-  
+
     for (let rt of this.selectedRoutesIds) {
       this.route_service
         .insert(
@@ -224,7 +224,7 @@ setRoutesData() {
   }
 
   public getImageSrc(base64: any): any {
- 
+
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/logo-walking.png";
   }
 
@@ -265,8 +265,8 @@ setRoutesData() {
     else {
        return horas + "h " + minutosRestantes + "min";
     }
-  
-    
+
+
   }
 
   getIconColorClass(difficulty: number): string {
@@ -296,6 +296,6 @@ setRoutesData() {
       }
     }
 
-   
+
 
 }

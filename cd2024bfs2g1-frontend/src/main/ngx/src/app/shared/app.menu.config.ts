@@ -4,7 +4,7 @@ import { BusinessHomeComponent } from '../main/business/business-home/business-h
 export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'home', name: 'HOME', icon: 'home', route: '/main/home' },
   { id: 'home-public', name: 'HOME', icon: 'home', route: '/home' },
-  
+
   {  id: 'packssolo', name: 'PACKS', route: '/main/packs', icon: 'hiking'},
   { id: 'packs-public', name: 'PACKS', route: '/packs', icon: 'inventory_2'},
   { id: 'packmd', name: 'PACKS', icon: 'hiking',
@@ -30,7 +30,8 @@ export const MENU_CONFIG: MenuRootItem[] = [
   items: [
     {id: 'businessesnew', name: 'BUSINESSESNEW', route: '/main/businesses/new', icon: 'add'},
     {id: 'businesses', name: 'BUSINESSES', route: '/main/businesses', icon: 'business'},
-    
+    { id: 'mybusinesses', name: 'MY-BUSINESSES', route: '/main/business-merchant', icon: 'insert_chart' },
+
   ]
   },
 { id: 'graphics', name: 'GRAPHICS', route: '/main/graphics', icon: 'bar_chart'},
