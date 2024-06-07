@@ -41,7 +41,6 @@ export class EditRouteComponent{
     this.actualLandkmarkId = event.row.landmark_id
     this.actualCoordinates = event.row.coordinates
     if(this.actualCoordinates!=null) {
-      
       const coordinatesArrayAux = this.actualCoordinates.split(',')
       this.oMap.addMarker("1",coordinatesArrayAux[0],coordinatesArrayAux[1],{},true,false,true,"1")
       await this.delay(300);
