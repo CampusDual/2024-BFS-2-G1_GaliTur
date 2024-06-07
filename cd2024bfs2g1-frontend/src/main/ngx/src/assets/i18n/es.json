@@ -422,6 +422,7 @@
   "LOCALE_gl": "GL",
   "DATE_R": "Fecha del pack",
   "COMBO-BOX-DAYS-DESC": "El dia que selecciones mostrará las rutas y negocios disponibles el día seleccionado.",
+  "MY-BUSINESSES": "Mis negocios",
   "SEARCH": "Buscar",
   "CLEAR_SEARCH": "Eliminar búsqueda"
 }
