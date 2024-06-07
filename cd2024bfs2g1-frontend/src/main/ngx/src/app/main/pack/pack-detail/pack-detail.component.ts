@@ -328,4 +328,15 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
       }
       return permissions.visible
   }
+
+  //TODO: Cambiar metodo por uno responsive (text-overflow: ellipsis)
+  truncateName(name: string): string {
+    if (name.length > 30) {
+        return name.substr(0, 30) + '...';
+    } else {
+        return name;
+    }
+  }
+
+  
 }

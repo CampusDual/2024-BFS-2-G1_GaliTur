@@ -215,7 +215,7 @@
     "DAY": "Día",
     "DAYS": "Días",
     "PACK_NAME": "Nome do pack",
-    "PACKS_NEW": "Novo paquete",
+    "PACKS_NEW": "Novo pack",
     "PRICE": "Prezo",
     "PARTICIPANTS": "Participantes",
     "ACTIVE": "Activo",
@@ -655,8 +655,13 @@
     "CONTEXTMENU.ZOOM_OUT": "Afastar",
     "COMBO-BOX-DAYS-DESC": "O día que selecciones mostrarán as rutas e os negocios dispoñibles no día seleccionado.",
     "POPULAR_PACKS": "Packs populares",
-    "POPULAR_PACKS_SUBTITLE": "Botalle unha ollada aos pack favoritos dos nosos usuarios!"
-
+    "POPULAR_PACKS_SUBTITLE": "Botalle unha ollada aos pack favoritos dos nosos usuarios!",
+    "MY-BUSINESSES": "Os meus negocios",
+    "UNDO": "Desfacer",
+    "FOUND": "Atopados",
+    "SEARCH": "Buscar",
+    "CLEAR_SEARCH": "Eliminar a busca",
+    "SAVE": "Gardar"
   }
 
 

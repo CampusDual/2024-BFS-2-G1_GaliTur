@@ -1,0 +1,56 @@
+<o-grid
+  #businessMerchantGrid
+  attr="businessMerchantGrid"
+  title="MY-BUSINESSES"
+  service="businesses"
+  entity="businessMerchant"
+  keys="bsn_id"
+  columns="bsn_id;merchant_id;bsn_name;bsn_type;bsn_description;bsn_cif;bsn_address;bsn_phone;bsn_email;bsn_creation_date;bsn_down_date;bsn_photos;bsn_website;bsn_schedule"
+  query-rows="8"
+  page-size-options="8;16;24"
+  orderable="true"
+  sort-column="bsn_creation_date:desc"
+  sortable-columns="bsn_name;bsn_type;bsn_creation_date;bsn_name:desc;bsn_type:desc;bsn_creation_date:desc"
+  refresh-button="true"
+  quick-filter-columns="bsn_name;bsn_type"
+  filter-case-sensitive="yes"
+  pageable="yes"
+  pagination-controls="true"
+  gutter-size="8px"
+  fixed-header="yes"
+  grid-item-height="350px"
+  detail-mode="none"
+  insert-button-floatable="no"
+  class="full-page"
+>
+  <o-grid-item *ngFor="let data of businessMerchantGrid.dataArray">
+    <div
+      (click)="openDetail(data)"
+      fxLayout="column"
+      fxLayoutAlign="space-evenly center"
+      class="mat-elevation-z1 businessCard"
+    >
+      <img
+        class="preview-image"
+        [src]="getImageSrc(data.bsn_photos)"
+        width="300px"
+        height="200px"
+      />
+      <span
+        ><strong style="text-overflow: ellipsis;">{{ data.bsn_name }}</strong></span
+      >
+      <span *ngIf="data.bsn_type === 'Restaurant'"
+        ><mat-icon class="type-icon">restaurant</mat-icon
+        ><em>{{ data.bsn_type | oTranslate }}</em></span
+      >
+      <span *ngIf="data.bsn_type === 'Lodging'"
+        ><mat-icon class="type-icon">house</mat-icon>
+        <em>{{ data.bsn_type | oTranslate }}</em></span
+      >
+      <span *ngIf="data.bsn_type === 'AgencyGuide'"
+        ><mat-icon class="type-icon">flight</mat-icon
+        ><em>{{ data.bsn_type | oTranslate }}</em></span
+      >
+    </div>
+  </o-grid-item>
+</o-grid>
