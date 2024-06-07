@@ -660,10 +660,10 @@
     "SEARCH": "Buscar",
     "CLEAR_SEARCH": "Eliminar a busca",
     "SAVE": "Gardar",
-    "NO_ESTIMATED_DISTANCE": "Sen distancia estimada",
+    "NO_ESTIMATED_DISTANCE": "Sen Distancia Estimada",
     "ESTIMATED_DISTANCE": "Distancia estimada",
-    "SAVE": "Gardar",
-    "estimated_distance":"Distancia Estimada"
+    "estimated_distance":"Distancia Estimada",
+    "NO_ESTIMATED_DURATION" : "Sen Duración Estimada"
   }
 
 

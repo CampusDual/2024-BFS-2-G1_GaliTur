@@ -426,8 +426,9 @@
   "MY-BUSINESSES": "Mis negocios",
   "SEARCH": "Buscar",
   "CLEAR_SEARCH": "Eliminar búsqueda",
-  "NO_ESTIMATED_DISTANCE": "Sin distancia estimada",
-  "ESTIMATED_DISTANCE": "Distancia estimada"
+  "NO_ESTIMATED_DISTANCE": "Sin Distancia Estimada",
+  "ESTIMATED_DISTANCE": "Distancia estimada",
+  "NO_ESTIMATED_DURATION" : "Sin Duración Estimada"
 }
 
 

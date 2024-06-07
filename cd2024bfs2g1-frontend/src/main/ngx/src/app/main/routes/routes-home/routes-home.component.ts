@@ -42,6 +42,9 @@ galleryOptions: any;
     }
   }
 
+  private distanciaKm: number = 0;
+  private distanciaM: number = 0;
+
   getRouteId(): number {
     return +this.activeRoute.snapshot.params["route_id"];
   }
@@ -66,23 +69,53 @@ galleryOptions: any;
       });
     })
   }
-  public convertTime(distancia: number):  string {
+  public convertTime():  string {
+    // Convertir la distancia total a metros
+    let totalMetros = (this.distanciaKm * 1000) + this.distanciaM;
 
-    var minutos: number
-    minutos = distancia * 11
+    // Asegúrate de usar la distancia total en metros para calcular minutos.
+    let minutos = Math.floor(totalMetros * 0.011);
+    if(minutos == 0){
+      minutos = 1;
+    }
+
+    console.log(minutos);
+
     const horas = Math.floor(minutos / 60);
     const minutosRestantes = minutos % 60;
 
-    if(horas == 0 && minutosRestantes != 0){
-      return minutosRestantes + "min";
-
-    }else if(horas != 0 && minutosRestantes == 0){
-      return horas + "h ";
-
-    }else{
-       return horas + "h " + minutosRestantes + "min";
+    if (horas == 0 && minutosRestantes != 0) {
+        return `${minutosRestantes}min`;
+    } else if (horas != 0 && minutosRestantes == 0) {
+        return `${horas}h`;
+    } else {
+        return `${horas}h ${minutosRestantes}min`;
     }
   }
+
+  ConvertDistance(metros: number){
+  // Convertir metros a kilómetros
+  const kilometros = Math.floor(metros / 1000);
+  const metrosRestantes = metros % 1000;
+
+  // Almacenar los valores en las propiedades de la clase
+  this.distanciaKm = kilometros;
+  this.distanciaM = metrosRestantes;
+
+  // Construir la cadena de salida
+  if (kilometros == 0 && metrosRestantes != 0) {
+      return `${metrosRestantes}m`;
+  } else if (kilometros != 0 && metrosRestantes == 0) {
+      return `${kilometros}km`;
+  } else if (kilometros != 0 && metrosRestantes != 0) {
+      return `${kilometros},${metrosRestantes}km`;
+  } else {
+      return '0m';
+  }
+}
+
+
+
   getIconColorClass(difficulty: number): string {
     switch(difficulty) {
         case 1:
