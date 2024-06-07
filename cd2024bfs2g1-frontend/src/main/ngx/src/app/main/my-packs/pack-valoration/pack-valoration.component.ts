@@ -67,6 +67,12 @@ export class PackValorationComponent {
         pbk_stars: this.stars,
         pbk_comment: this.comment.getValue(),
         pbk_rating_date: new Date()
+      },
+      'packBooking',
+      {
+        pbk_stars: 4,
+        pbk_comment: 12,
+        pbk_rating_date: 92
       })
       .subscribe((resp) => {
 
