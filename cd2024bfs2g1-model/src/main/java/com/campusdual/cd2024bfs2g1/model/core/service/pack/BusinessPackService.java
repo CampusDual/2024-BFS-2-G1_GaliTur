@@ -31,6 +31,8 @@ public class BusinessPackService implements IBusinessPackService {
 
         return this.daoHelper.query(this.businessPackDao, keyMap, attrList,BusinessPackDao.PCK_BSN_MULTI_QUERY);
     }
+
+
     @Override
     public EntityResult packBusinessQuery(Map<String, Object> keyMap, List<String> attrList)
             throws OntimizeJEERuntimeException {

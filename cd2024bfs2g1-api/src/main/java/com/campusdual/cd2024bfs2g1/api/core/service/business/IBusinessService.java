@@ -12,6 +12,8 @@ public interface IBusinessService {
 
     EntityResult businessQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 
+    EntityResult typesOfBusinessesQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
+
     EntityResult businessMerchantQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 
 

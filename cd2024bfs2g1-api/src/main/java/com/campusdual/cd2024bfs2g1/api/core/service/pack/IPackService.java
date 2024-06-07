@@ -16,6 +16,12 @@ public interface IPackService {
     EntityResult packPerDaysQuery(Map<String, Object> keyMap, List<String> attrList)
             throws OntimizeJEERuntimeException;
 
+    EntityResult packByPriceQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException;
+
+    EntityResult packByStationQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException;
+
     EntityResult packImageQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 
     EntityResult packProvinceQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;

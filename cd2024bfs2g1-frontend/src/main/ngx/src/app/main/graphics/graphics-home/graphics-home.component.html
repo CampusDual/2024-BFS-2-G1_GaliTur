@@ -33,12 +33,44 @@
         </div>
         <div class="chart-row" fxLayout="column">
             <div fxLayout="column" class="name-graphics" >
-                <p ><strong class="name">{{"Routes_according_to_difficulty" | oTranslate}}</strong></p>
+                <p ><strong class="name">{{"Packs by price" | oTranslate}}</strong></p>
             </div>
             <div fxLayout="column" class="view-chart">
-                <o-chart  type="discreteBar" service="routes" entity="routeAccordingDifficulty" y-axis="route_difficulty_count" query-on-init="yes" x-axis="difficulty" [color]="colors">
+                <o-chart  type="discreteBar" service="packs" entity="packByPrice" y-axis="packs" query-on-init="yes" x-axis="rango" [color]="colors">
                 </o-chart>
             </div>
         </div>
+    </mat-card-content>
+    <mat-card-content fxLayout="row">
+        <div class="chart-row" fxLayout="column">
+            <div fxLayout="column" class="name-graphics" >
+                <p ><strong class="name">{{"Types of bussiness" | oTranslate}}</strong></p>
+            </div>
+            <div fxLayout="column" class="view-chart">
+                <o-chart  type="stackedAreaChart" service="businesses" entity="typesOfBusinesses" y-axis="cantidad" query-on-init="yes" x-axis="bsn_type" [color]="colors">
+                </o-chart>
+            </div>
+        </div>
+        <div class="chart-row" fxLayout="column">
+            <div fxLayout="column" class="name-graphics" >
+                <p ><strong class="name">{{"Packs by station" | oTranslate}}</strong></p>
+            </div>
+            <div fxLayout="column" class="view-chart">
+                <o-chart  type="stackedAreaChart" service="packs" entity="packByStation" y-axis="cantidad" query-on-init="yes" x-axis="estacion" [color]="colors">
+                </o-chart>
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-content fxLayout="row">
+        <div class="chart-row" fxLayout="column">
+            <div fxLayout="column" class="name-graphics" >
+                <p ><strong class="name">{{"Top 5 most valuated packs" | oTranslate}}</strong></p>
+            </div>
+            <div fxLayout="column" class="view-chart">
+                <o-chart  type="multiBarHorizontalChart" service="routes" entity="routeAccordingDifficulty" y-axis="route_difficulty_count" query-on-init="yes" x-axis="difficulty" [color]="colors">
+                </o-chart>
+            </div>
+        </div>
+       
     </mat-card-content>
 </mat-card> 

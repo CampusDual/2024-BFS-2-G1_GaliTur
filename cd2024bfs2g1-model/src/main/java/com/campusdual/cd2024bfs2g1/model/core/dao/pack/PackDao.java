@@ -26,5 +26,8 @@ public class PackDao extends OntimizeJdbcDaoSupport {
     public static String PCK_CANCEL_DETAIL = "packCancelDetail";
     public static String PCK_DETAILS_QUERY = "packsDetails";
     public static String PCK_PER_DAYS_QUERY = "packPerDays";
+    public static String PCK_BY_PRICE_QUERY = "packByPrice";
+    public static String PCK_BY_STATION_QUERY = "packByStation";
+
 
 }
