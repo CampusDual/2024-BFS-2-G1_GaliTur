@@ -480,10 +480,6 @@
     text-overflow: ellipsis;
 }
 
-.route-name:hover{
-    overflow: auto;
-    overflow-y: hidden;
-}
 
 
 

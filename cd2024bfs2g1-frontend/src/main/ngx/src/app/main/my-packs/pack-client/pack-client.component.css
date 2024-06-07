@@ -7,7 +7,7 @@
     padding: 16px;
     display: flex;
     flex-direction: column;
-    transform: scale(0.925); 
+    transform: scale(0.925);
 }
 
 .businessCard img {
@@ -129,8 +129,31 @@
 
 /* hover effect for pack card */
 .packCard:hover {
-    box-shadow: 0 0 15px rgba(113, 94, 78, 1); 
-    transform: scale(0.9325); 
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    box-shadow: 0 0 15px rgba(113, 94, 78, 1);
+    transform: scale(0.9325);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+}
+.route-name:hover{
+    overflow: auto;
+    overflow-y: hidden;
+}
+
+.button_star{
+    background: transparent;
+    border: none;
+}
+
+.star {
+    cursor: pointer;
+    transition: color 0.2s;
+    color: rgba(113, 94, 78, 1);
+}
+
+/* Seleccionar la estrella y todas las anteriores para cambiar su color */
+.button_star:hover,
+.button_star:hover ~ .button_star{
+    .star{
+        color: gold;
+    }
 }
