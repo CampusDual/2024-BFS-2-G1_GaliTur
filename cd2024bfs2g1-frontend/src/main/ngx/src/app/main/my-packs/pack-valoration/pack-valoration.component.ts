@@ -33,6 +33,7 @@ export class PackValorationComponent {
   ) {
     this.stars = data.stars
     console.log(data)
+    console.log(this.userInfoService.getUserInfo().usr_id)
   }
 
 
@@ -55,17 +56,17 @@ export class PackValorationComponent {
   }
 
   insertRating() {
-    const confRatingService = this.ratingService.getDefaultServiceConfiguration("packRatings");
+    const confRatingService = this.ratingService.getDefaultServiceConfiguration("packBookings");
     this.ratingService.configureService(confRatingService);
-    this.ratingService.insert(
+    this.ratingService.update(
       {
+        usr_id: this.userInfoService.getUserInfo().usr_id,
         pck_id: this.data.data.pck_id,
         pd_id: this.data.data.pd_id,
-        usr_id: this.userInfoService.getUserInfo().usr_id,
+        
         pcr_stars: this.stars,
         pcr_comment: this.comment.getValue()
-      },
-      "packBooking")
+      },)
       .subscribe((resp) => {
 
         const config: OSnackBarConfig = {
