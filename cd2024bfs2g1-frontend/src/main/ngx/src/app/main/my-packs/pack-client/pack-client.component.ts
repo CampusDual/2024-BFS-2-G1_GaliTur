@@ -66,7 +66,7 @@ export class PackClientComponent {
 
   openValoration(stars: Number, data: any): void{
     this.dialog.open(PackValorationComponent, {
-      height: '35%',
+      height: '40%',
       width: '40%',
       data: {
         stars: stars,

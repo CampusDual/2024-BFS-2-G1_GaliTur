@@ -15,8 +15,10 @@ public class PackBookingDao extends OntimizeJdbcDaoSupport {
 
     public static final String PBK_BOOKING_ID = "pbk_booking_id";
     public static final String CLIENT_ID = "client_id";
+    public static final String PD_ID = "pd_id";
     public static final String PBK_BOOKING_DATE = "pbk_booking_date";
     public static final String PBK_DOWN_DATE = "pbk_down_date";
-    public static final String PD_ID = "pd_id";
-
+    public static final String PBK_RATING_DATE = "pbk_rating_date";
+    public static final String PBK_STARS = "pbk_stars";
+    public static final String PBK_COMMENT = "pbk_comment";
 }

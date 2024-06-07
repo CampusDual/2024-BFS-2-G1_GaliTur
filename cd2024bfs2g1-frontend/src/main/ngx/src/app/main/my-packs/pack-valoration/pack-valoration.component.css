@@ -33,7 +33,7 @@
     object-fit: cover;
     width: 100%;
     height: 100%;
-}  
+}
 .cardImg {
     width: 40%;
     height: 250px;
@@ -95,13 +95,13 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    
 
-  
+
+
 }
 
 .star_color{
-    background: linear-gradient(to top, rgba(94,60,6,1) 20%, rgba(9,121,10,1) 34%, rgb(27, 209, 20) 100%);
+  background: linear-gradient(to top, rgba(94,60,6,1) 22%, rgba(9,121,19,1) 28%, rgba(51,193,13,1) 83%);
     -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
@@ -115,7 +115,7 @@
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
-    } 
+    }
 } */
 
 #coment{

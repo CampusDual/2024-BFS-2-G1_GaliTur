@@ -6,5 +6,6 @@ CREATE TABLE pack_booking (
     pbk_down_date timestamp NULL
 );
 
+
 ALTER TABLE pack_booking ADD CONSTRAINT pck_id_fk FOREIGN KEY (pck_id) REFERENCES pack(pck_id);
 ALTER TABLE pack_booking ADD CONSTRAINT client_id_fk FOREIGN KEY (client_id) REFERENCES client(client_id);

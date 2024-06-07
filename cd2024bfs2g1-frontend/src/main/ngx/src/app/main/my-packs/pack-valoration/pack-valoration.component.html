@@ -26,11 +26,12 @@
                             <mat-icon #star5 class="star" [ngClass]="stars >= 5?'star_color':''">park</mat-icon>
                         </button>
                     </div>
-                    <o-textarea-input id="coment" attr="pck_description" label="{{ 'DESCRIPTION' | oTranslate }}" rows="6"
+                    <o-textarea-input #comment id="coment" attr="pck_description"
+                                      label="{{ 'DESCRIPTION' | oTranslate }}" rows="6"
                                     required="yes" max-length="255"></o-textarea-input>
                 </div>
             </div>
-            <button id="button_valoration" mat-raised-button color="primary" type="button" (click)="backToHome()">{{ 'POST_VALORATION' | oTranslate }}</button>
-        </div>    
+            <button id="button_valoration" mat-raised-button color="primary" type="button" (click)="insertRating()">{{ 'POST_VALORATION' | oTranslate }}</button>
+        </div>
     </o-form>
 </div>
