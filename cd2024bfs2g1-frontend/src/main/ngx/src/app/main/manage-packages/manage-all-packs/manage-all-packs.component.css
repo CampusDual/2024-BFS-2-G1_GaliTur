@@ -38,15 +38,17 @@
   }
 
 .button{
- font-size: 18px;
- width: 150px;
- border-radius: 5px;
- border-width: 3px;
- border-style: solid;
- border-color: #c2b5aa;
- background-color: #c2b5aa;
- cursor: pointer;
- outline: none;
+  font-size: 18px;
+  width: 150px;
+  border-radius: 5px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: #c2b5aa;
+  background-color: #c2b5aa;
+  cursor: pointer;
+  outline: none;
+  margin-left: 3px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
   @keyframes pulse {
@@ -82,11 +84,9 @@
   }
 }
 .button:hover{
-    background-color: white;
-    border-color: white;
-    font-size: 18px;
-    width: 150px;
-    animation: pulse 3s infinite ease-in-out;
+    background-color: #a89d93;
+    border-color: #a89d93;
+    transform: scale(1.03);
 }
 
 .titulo{
@@ -94,12 +94,14 @@
     background-color: rgb(255, 254, 253);
     padding: 5px;
     color: black;
+    background-color: transparent;
 }
 .descripction{
   font-size: 15px;
   background-color: rgb(255, 254, 253);
   padding: 5px;
   color: black;
+  background-color: transparent;
 }
 
 
@@ -126,5 +128,15 @@
   margin: 0px 5px 5px 0px;
 }
 
+/* Estilo global de los o-rows */
+.o-rows {
+  overflow-x: hidden;
+}
+.o-row.o-appearance-outline {
+  background-color: #eee4db;
+  mat-icon{
+      color:#84A45A;
+  }
+}
 
 
