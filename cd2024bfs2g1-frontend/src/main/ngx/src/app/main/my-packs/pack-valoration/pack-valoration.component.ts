@@ -3,7 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatIcon, MatIconModule} from '@angular/material/icon';
 import {DomSanitizer} from '@angular/platform-browser';
 import {ActivatedRoute, Router} from '@angular/router';
-import {OntimizeService, OSnackBarConfig, OTextareaInputComponent} from "ontimize-web-ngx";
+import {OntimizeService, OSnackBarConfig, OTextareaInputComponent, SnackBarService} from "ontimize-web-ngx";
 import {UserInfoService} from "../../../shared/services/user-info.service";
 
 @Component({
@@ -28,6 +28,7 @@ export class PackValorationComponent {
     protected sanitizer: DomSanitizer,
     private actRoute: ActivatedRoute,
     private dialogRef: MatDialogRef<PackValorationComponent>,
+    protected snackBarService: SnackBarService,
     @Inject(OntimizeService) protected ratingService: OntimizeService,
     @Inject(UserInfoService) private userInfoService: UserInfoService,
   ) {
@@ -60,26 +61,25 @@ export class PackValorationComponent {
     this.ratingService.configureService(confRatingService);
     this.ratingService.update(
       {
-        usr_id: this.userInfoService.getUserInfo().usr_id,
-        pck_id: this.data.data.pck_id,
-        pd_id: this.data.data.pd_id,
-        
-        pcr_stars: this.stars,
-        pcr_comment: this.comment.getValue()
-      },)
+        pbk_booking_id: this.data.data.pbk_booking_id
+      },
+      {
+        pbk_stars: this.stars,
+        pbk_comment: this.comment.getValue(),
+        pbk_rating_date: new Date()
+      })
       .subscribe((resp) => {
 
         const config: OSnackBarConfig = {
           action: "",
           milliseconds: 2000,
-          icon: "booking",
+          icon: "star",
           iconPosition: "left",
           cssClass: "snackbar",
         };
-        // this.snackBarService.open("BOOKING.CONFIRMED", config);
-        this.router.navigate(["..", "main", "pack-client"])
+        this.snackBarService.open("BOOKING.CONFIRMED", config);
+        this.dialogRef.close();
       });
-    this.dialogRef.close();
   }
 
   public getImageSrc(base64: any): any {
