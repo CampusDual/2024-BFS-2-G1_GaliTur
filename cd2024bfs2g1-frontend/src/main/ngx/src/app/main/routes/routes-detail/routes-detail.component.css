@@ -278,6 +278,11 @@
 
 .clockTooltip {
   color: #84A45A;
+  padding: 10px 20px 0px 0px;
+}
+
+.clockTooltipDetail{
+  color: #84A45A;
   padding: 10px 30px 0px 0px;
 }
 
