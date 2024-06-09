@@ -97,13 +97,15 @@ export class PackHomeComponent {
           filters.push(FilterExpressionUtils.buildExpressionEquals("gui_c_name", fil.value));
         }
         if (fil.attr === 'pd_date_begin') {
-          /* La funcion buildExpressionEquals genera esta consulta "AND  (UPPER(pd_date_begin) = UPPER( '2024-06-02 00:00:00.000' ))"
-              el problema radica en que esto esta preparado para strings, de ahí la función UPPER, y cuando le aplica el UPPER al timestamp da error.
+          /* Si nos fijamos en el error que daba en el back, funcion buildExpressionEquals genera esta consulta "AND  (UPPER(pd_date_begin) = UPPER( '2024-06-02 00:00:00.000' ))"
+              el problema radica en que esto esta preparado para strings, de ahí la función UPPER, y cuando le aplica el UPPER al timestamp "pd_date_begin" da error. 
+              Error del back: "ERROR: function upper(timestamp without time zone) does not exist"
               Para solucionar esto en vez de hacer la solicitud directamente a la fecha en la BBDD hacemos una pequeña subconsulta que convierte la fecha 
               a un "string" con el formato de la fecha sin hora, aparte de pasarle la fecha que selecciona el usuario con el mismo formato y en tipo string.
           */
+
           let consulta = "(SELECT TO_CHAR(pd_date_begin , 'YYYY-MM-DD'))";
-          filters.push(FilterExpressionUtils.buildExpressionEquals(consulta, fil.value.toString()));
+          filters.push(FilterExpressionUtils.buildExpressionEquals(consulta, fil.value));
 
         }
         
