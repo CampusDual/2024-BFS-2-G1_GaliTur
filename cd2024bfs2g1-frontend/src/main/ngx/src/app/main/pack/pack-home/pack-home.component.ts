@@ -69,6 +69,7 @@ export class PackHomeComponent {
 
   //FILTROS
   @ViewChild("filterForm") protected filterForm: OFormComponent;
+
   createFilter(values: Array<{ attr: string, value: any }>): Expression {
     let filters: Array<Expression> = [];
 
@@ -95,12 +96,23 @@ export class PackHomeComponent {
         if (fil.attr === 'gui_c_name') {
           filters.push(FilterExpressionUtils.buildExpressionEquals("gui_c_name", fil.value));
         }
+        if (fil.attr === 'pd_date_begin') {
+          /* La funcion buildExpressionEquals genera esta consulta "AND  (UPPER(pd_date_begin) = UPPER( '2024-06-02 00:00:00.000' ))"
+              el problema radica en que esto esta preparado para strings, de ahí la función UPPER, y cuando le aplica el UPPER al timestamp da error.
+              Para solucionar esto en vez de hacer la solicitud directamente a la fecha en la BBDD hacemos una pequeña subconsulta que convierte la fecha 
+              a un "string" con el formato de la fecha sin hora, aparte de pasarle la fecha que selecciona el usuario con el mismo formato y en tipo string.
+          */
+          let consulta = "(SELECT TO_CHAR(pd_date_begin , 'YYYY-MM-DD'))";
+          filters.push(FilterExpressionUtils.buildExpressionEquals(consulta, fil.value.toString()));
+
+        }
+        
       }
     });
 
     if (filters.length > 0) {
       return filters.reduce((exp1, exp2) => 
-        FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_AND)
+        FilterExpressionUtils.buildComplexExpression(exp1, exp2, 'AND')
       );
     } else {
       return null;
@@ -108,7 +120,7 @@ export class PackHomeComponent {
   }
 
   clearFilter () {
-    const fieldsToClear = ['pck_name', 'pck_days', 'pck_price_min', 'pck_price_max', 'pck_participants', 'gui_c_name'];
+    const fieldsToClear = ['pck_name', 'pck_days', 'pck_price_min', 'pck_price_max', 'pck_participants', 'gui_c_name', 'pd_date_begin'];
     this.filterForm.clearFieldValues(fieldsToClear);  
   }
 
@@ -126,5 +138,4 @@ export class PackHomeComponent {
       this.maxPrice.clearValue();
     }
   }
-
 }

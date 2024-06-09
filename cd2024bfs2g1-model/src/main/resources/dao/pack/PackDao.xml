@@ -53,7 +53,8 @@
                            ON IP.img_id = I.image_id
                            INNER JOIN gui_cities GC
                            ON P.gui_c_id = GC.gui_c_id
-                       WHERE P.pck_id in (select distinct spd.pck_id from pack_date spd where spd.pcs_id = 1)
+                           INNER JOIN (select distinct pck_id, pd_date_begin from pack_date spd where spd.pcs_id = 1) PD
+                           ON P.pck_id=PD.pck_id
                     #WHERE_CONCAT#
                     #ORDER#
                 ]]>
