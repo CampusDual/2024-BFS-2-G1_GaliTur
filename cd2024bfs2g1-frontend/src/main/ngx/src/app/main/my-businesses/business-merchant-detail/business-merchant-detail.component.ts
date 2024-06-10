@@ -93,6 +93,7 @@ export class BusinessMerchantDetailComponent implements OnInit {
           this.deleteBsn(data);
           // Actions on confirmation
         } else {
+          
           // Actions on cancellation
         }
       });
