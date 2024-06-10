@@ -82,35 +82,36 @@ public class HotelService implements IHotelService {
         ArrayList <Boolean> bool = new ArrayList<>();
         bool.add(true);
 
-        for(String service : serviceList){
+        if(serviceList!=null) {
+            for (String service : serviceList) {
 
 
+                switch (service) {
+                    case "Wifi":
+                        er.put("toggleWifi", bool);
+                        break;
+                    case "Parking":
+                        er.put("toggleParking", bool);
+                        break;
+                    case "Pool":
+                        er.put("togglePool", bool);
+                        break;
+                    case "Breakfast":
+                        er.put("toggleBreakfast", bool);
+                        break;
+                    case "Lunch":
+                        er.put("toggleLunch", bool);
+                        break;
+                    case "Dinner":
+                        er.put("toggleDinner", bool);
+                        break;
+                    default:
+                        break;
 
-            switch (service){
-                case "Wifi":
-                    er.put("toggleWifi",bool);
-                    break;
-                case "Parking":
-                    er.put("toggleParking",bool);
-                    break;
-                case "Pool":
-                    er.put("togglePool",bool);
-                    break;
-                case "Breakfast":
-                    er.put("toggleBreakfast",bool);
-                    break;
-                case "Lunch":
-                    er.put("toggleLunch",bool);
-                    break;
-                case "Dinner":
-                    er.put("toggleDinner",bool);
-                    break;
-                default:
-                    break;
 
+                }
 
             }
-
         }
 
         keysValues.put("htl_id",hotelId);
@@ -126,30 +127,35 @@ public class HotelService implements IHotelService {
         ArrayList <String> roomTypeList = (ArrayList<String>) erRooms.get("rm_type");
         ArrayList <BigDecimal> roomCostList = (ArrayList<BigDecimal>) erRooms.get("rm_cost");
 
-        for(int i = 0; i<roomTypeList.size(); i++){
-           String roomType = roomTypeList.get(i);
-           BigDecimal rCost = roomCostList.get(i);
-           double roomCost = rCost.doubleValue();
-           ArrayList <Double> arrayCoste = new ArrayList<>();
-           arrayCoste.add(roomCost);
+        if(roomTypeList!=null){
+            for(int i = 0; i<roomTypeList.size(); i++){
+                String roomType = roomTypeList.get(i);
+                BigDecimal rCost = roomCostList.get(i);
+                double roomCost = rCost.doubleValue();
+                ArrayList <Double> arrayCoste = new ArrayList<>();
+                arrayCoste.add(roomCost);
 
-            switch (roomType){
-                case "Single":
-                    er.put("roomTypeSingle",bool);
-                    er.put("priceSingleRoom", arrayCoste);
-                    break;
-                case "Double":
-                    er.put("roomTypeDouble",bool);
-                    er.put("priceDoubleRoom", arrayCoste);
-                    break;
-                case "Triple":
-                    er.put("roomTypeTriple",bool);
-                    er.put("priceTripleRoom", arrayCoste);
-                    break;
+                switch (roomType){
+                    case "Single":
+                        er.put("roomTypeSingle",bool);
+                        er.put("priceSingleRoom", arrayCoste);
+                        break;
+                    case "Double":
+                        er.put("roomTypeDouble",bool);
+                        er.put("priceDoubleRoom", arrayCoste);
+                        break;
+                    case "Triple":
+                        er.put("roomTypeTriple",bool);
+                        er.put("priceTripleRoom", arrayCoste);
+                        break;
+
+                }
 
             }
 
         }
+
+
 
 
         return er;
@@ -171,6 +177,8 @@ public class HotelService implements IHotelService {
     @Override
     public EntityResult hotelMultiUpdate(Map<String, Object> attributesValues, Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
 
+        int idHotel = (int) keysValues.get("htl_id");
+
         List <String> attributesRooms = new ArrayList<>();
         attributesRooms.add("rm_id");
         attributesRooms.add("rm_type");
@@ -188,154 +196,291 @@ public class HotelService implements IHotelService {
         ArrayList <String> roomTypeList = (ArrayList<String>) roomsEr.get("rm_type");
         ArrayList <BigDecimal> roomCostList = (ArrayList<BigDecimal>) roomsEr.get("rm_cost");
 
-        for(int i = 0; i<roomTypeList.size(); i++){
-            int idRoom = idsRooms.get(i);
-            String roomType = roomTypeList.get(i);
+        if(roomTypeList!=null){
 
-            Map <String, Object> mapSingleRoom = new HashMap<>();
-            Map <String, Object> values = new HashMap<>();
+            for(int i = 0; i<roomTypeList.size(); i++){
+                int idRoom = idsRooms.get(i);
+                String roomType = roomTypeList.get(i);
 
-
-            switch (roomType){
-                case "Single":
-                    if( attributesValues.containsKey("priceSingleRoom") && attributesValues.get("priceSingleRoom").toString().equals("")){
-                        mapSingleRoom.put("rm_id",idRoom);
-                        this.daoHelper.delete(this.hotelRoomsDao, mapSingleRoom);
-                    }else if(attributesValues.containsKey("priceSingleRoom")){
-                        Float pricelist = (Float) attributesValues.get("priceSingleRoom");
+                Map <String, Object> mapSingleRoom = new HashMap<>();
+                Map <String, Object> values = new HashMap<>();
 
 
-                        mapSingleRoom.put("rm_id",idRoom);
-                        values.put("rm_cost",pricelist);
-                        this.daoHelper.update(this.hotelRoomsDao, values, mapSingleRoom);
-
-                    }
-
-                    break;
-                case "Double":
-                    if( attributesValues.containsKey("priceDoubleRoom") && attributesValues.get("priceDoubleRoom").toString().equals("")){
-                        mapSingleRoom.put("rm_id",idRoom);
-                        this.daoHelper.delete(this.hotelRoomsDao, mapSingleRoom);
-                    }else if(attributesValues.containsKey("priceDoubleRoom")){
-
-                        Float pricelist = (Float) attributesValues.get("priceDoubleRoom");
+                switch (roomType){
+                    case "Single":
+                        if( attributesValues.containsKey("priceSingleRoom") && attributesValues.get("priceSingleRoom").toString().equals("")){
+                            mapSingleRoom.put("rm_id",idRoom);
+                            this.daoHelper.delete(this.hotelRoomsDao, mapSingleRoom);
+                        }else if(attributesValues.containsKey("priceSingleRoom") && !attributesValues.containsKey("roomTypeSingle")){
+                            Float pricelist = (Float) attributesValues.get("priceSingleRoom");
 
 
-                        mapSingleRoom.put("rm_id",idRoom);
-                        values.put("rm_cost",pricelist);
-                        this.daoHelper.update(this.hotelRoomsDao, values, mapSingleRoom);
+                            mapSingleRoom.put("rm_id",idRoom);
+                            values.put("rm_cost",pricelist);
+                            this.daoHelper.update(this.hotelRoomsDao, values, mapSingleRoom);
 
-                    }
-                    break;
-                case "Triple":
-                    if( attributesValues.containsKey("priceTripleRoom") && attributesValues.get("priceTripleRoom").toString().equals("")){
-                        mapSingleRoom.put("rm_id",idRoom);
-                        this.daoHelper.delete(this.hotelRoomsDao, mapSingleRoom);
-                    }else if(attributesValues.containsKey("priceTripleRoom")){
+                        }
 
-                        Float pricelist = (Float) attributesValues.get("priceTripleRoom");
+                        break;
+                    case "Double":
+                        if( attributesValues.containsKey("priceDoubleRoom") && attributesValues.get("priceDoubleRoom").toString().equals("")){
+                            mapSingleRoom.put("rm_id",idRoom);
+                            this.daoHelper.delete(this.hotelRoomsDao, mapSingleRoom);
+                        }else if(attributesValues.containsKey("priceDoubleRoom") && !attributesValues.containsKey("roomTypeDouble")){
+
+                            Float pricelist = (Float) attributesValues.get("priceDoubleRoom");
 
 
-                        mapSingleRoom.put("rm_id",idRoom);
-                        values.put("rm_cost",pricelist);
-                        this.daoHelper.update(this.hotelRoomsDao, values, mapSingleRoom);
+                            mapSingleRoom.put("rm_id",idRoom);
+                            values.put("rm_cost",pricelist);
+                            this.daoHelper.update(this.hotelRoomsDao, values, mapSingleRoom);
 
-                    }
-                    break;
+                        }
+                        break;
+                    case "Triple":
+                        if( attributesValues.containsKey("priceTripleRoom") && attributesValues.get("priceTripleRoom").toString().equals("")){
+                            mapSingleRoom.put("rm_id",idRoom);
+                            this.daoHelper.delete(this.hotelRoomsDao, mapSingleRoom);
+                        }else if(attributesValues.containsKey("priceTripleRoom") && !attributesValues.containsKey("roomTypeTriple")){
+
+                            Float pricelist = (Float) attributesValues.get("priceTripleRoom");
+
+
+                            mapSingleRoom.put("rm_id",idRoom);
+                            values.put("rm_cost",pricelist);
+                            this.daoHelper.update(this.hotelRoomsDao, values, mapSingleRoom);
+
+                        }
+                        break;
+
+                }
 
             }
-
         }
 
-        if(attributesValues.containsKey("roomTypeSingle")){
+
+
+        if(attributesValues.containsKey("roomTypeSingle") && (boolean)attributesValues.get("roomTypeSingle")==true){
 
             Map <String,Object> mapaHotel = new HashMap<>();
             Float price = (Float) attributesValues.get("priceSingleRoom");
             mapaHotel.put("rm_type","Single");
             mapaHotel.put("rm_cost",price);
+            mapaHotel.put("htl_id",idHotel);
 
             this.daoHelper.insert(this.hotelRoomsDao, mapaHotel);
 
         }
 
-        if(attributesValues.containsKey("roomTypeDouble")){
+        if(attributesValues.containsKey("roomTypeDouble") && (boolean)attributesValues.get("roomTypeDouble")==true){
 
             Map <String,Object> mapaHotel = new HashMap<>();
             Float price = (Float) attributesValues.get("priceDoubleRoom");
             mapaHotel.put("rm_type","Double");
             mapaHotel.put("rm_cost",price);
+            mapaHotel.put("htl_id",idHotel);
+
 
             this.daoHelper.insert(this.hotelRoomsDao, mapaHotel);
 
         }
 
-        if(attributesValues.containsKey("roomTypeTriple")){
+        if(attributesValues.containsKey("roomTypeTriple") && (boolean)attributesValues.get("roomTypeTriple")==true){
 
             Map <String,Object> mapaHotel = new HashMap<>();
             Float price = (Float) attributesValues.get("priceTripleRoom");
             mapaHotel.put("rm_type","Triple");
             mapaHotel.put("rm_cost",price);
+            mapaHotel.put("htl_id",idHotel);
+
 
             this.daoHelper.insert(this.hotelRoomsDao, mapaHotel);
 
         }
 
         /*
-        if(attributesValues.containsKey("toggleWifi")){
+             ----------- TOGGLES --------------------
+        */
 
-            if(attributesValues.get("toggleWifi")){
+        Map<String, Object> mapaServices = keysValues;
+        mapaServices.remove("bsn_id");
+
+        List <String> attributesServices = new ArrayList<>();
+        attributesServices.add("srv_id");
+        attributesServices.add("srv_type");
+
+        EntityResult servicesEr =  this.daoHelper.query(this.hotelServicesDao,mapaServices, attributesServices);
+
+        List <Integer> idsServices = (List<Integer>) servicesEr.get("srv_id");
+        ArrayList <String> serviceTypeList = (ArrayList<String>) servicesEr.get("srv_type");
+
+        if(serviceTypeList!=null) {
+
+            for (int i = 0; i < serviceTypeList.size(); i++) {
+                int idServ = idsServices.get(i);
+                String srvType = serviceTypeList.get(i);
+
+                Map<String, Object> mapSrv = new HashMap<>();
+
+
+                switch (srvType) {
+                    case "Wifi":
+                        if (attributesValues.containsKey("toggleWifi") && (boolean) attributesValues.get("toggleWifi") == false) {
+                            mapSrv.put("srv_id", idServ);
+                            this.daoHelper.delete(this.hotelServicesDao, mapSrv);
+                        }
+
+                        break;
+                    case "Parking":
+                        if (attributesValues.containsKey("toggleParking") && (boolean) attributesValues.get("toggleParking") == false) {
+                            mapSrv.put("srv_id", idServ);
+                            this.daoHelper.delete(this.hotelServicesDao, mapSrv);
+                        } else if (attributesValues.containsKey("toggleParking") && (boolean) attributesValues.get("toggleParking") == true && !serviceTypeList.contains("Parking")) {
+
+                            mapSrv.put("srv_type", "Parking");
+                            mapSrv.put("srv_cost", 0.0);
+                            mapSrv.put("htl_id", idHotel);
+
+                            this.daoHelper.insert(this.hotelServicesDao, mapSrv);
+
+                        }
+
+                        break;
+                    case "Pool":
+                        if (attributesValues.containsKey("togglePool") && (boolean) attributesValues.get("togglePool") == false) {
+                            mapSrv.put("srv_id", idServ);
+                            this.daoHelper.delete(this.hotelServicesDao, mapSrv);
+                        } else if (attributesValues.containsKey("togglePool") && (boolean) attributesValues.get("togglePool") == true && !serviceTypeList.contains("Pool")) {
+
+                            mapSrv.put("srv_type", "Pool");
+                            mapSrv.put("srv_cost", 0.0);
+                            mapSrv.put("htl_id", idHotel);
+
+                            this.daoHelper.insert(this.hotelServicesDao, mapSrv);
+
+                        }
+
+                        break;
+                    case "Breakfast":
+                        if (attributesValues.containsKey("toggleBreakfast") && (boolean) attributesValues.get("toggleBreakfast") == false) {
+                            mapSrv.put("srv_id", idServ);
+                            this.daoHelper.delete(this.hotelServicesDao, mapSrv);
+                        } else if (attributesValues.containsKey("toggleBreakfast") && (boolean) attributesValues.get("toggleBreakfast") == true && !serviceTypeList.contains("Breakfast")) {
+
+                            mapSrv.put("srv_type", "Breakfast");
+                            mapSrv.put("srv_cost", 0.0);
+                            mapSrv.put("htl_id", idHotel);
+                            this.daoHelper.insert(this.hotelServicesDao, mapSrv);
+
+                        }
+
+                        break;
+                    case "Lunch":
+                        if (attributesValues.containsKey("toggleLunch") && (boolean) attributesValues.get("toggleLunch") == false) {
+                            mapSrv.put("srv_id", idServ);
+                            this.daoHelper.delete(this.hotelServicesDao, mapSrv);
+                        } else if (attributesValues.containsKey("toggleLunch") && (boolean) attributesValues.get("toggleLunch") == true && !serviceTypeList.contains("Lunch")) {
+
+                            mapSrv.put("srv_type", "Lunch");
+                            mapSrv.put("srv_cost", 0.0);
+                            mapSrv.put("htl_id", idHotel);
+
+                            this.daoHelper.insert(this.hotelServicesDao, mapSrv);
+
+                        }
+
+                        break;
+                    case "Dinner":
+                        if (attributesValues.containsKey("toggleDinner") && (boolean) attributesValues.get("toggleDinner") == false) {
+                            mapSrv.put("srv_id", idServ);
+                            this.daoHelper.delete(this.hotelServicesDao, mapSrv);
+                        } else if (attributesValues.containsKey("toggleDinner") && (boolean) attributesValues.get("toggleDinner") == true && !serviceTypeList.contains("Dinner")) {
+
+                            mapSrv.put("srv_type", "Dinner");
+                            mapSrv.put("srv_cost", 0.0);
+                            mapSrv.put("htl_id", idHotel);
+
+                            this.daoHelper.insert(this.hotelServicesDao, mapSrv);
+
+                        }
+
+                        break;
+
+                }
 
             }
 
-            Map <String,Object> mapaHotel = new HashMap<>();
+            if (attributesValues.containsKey("toggleWifi") && (boolean) attributesValues.get("toggleWifi") == true && !serviceTypeList.contains("Wifi")) {
+                Map<String, Object> mapSrv = new HashMap<>();
 
-            mapaHotel.put("srv_type","Wifi");
-            mapaHotel.put("srv_cost",0.0);
+                mapSrv.put("srv_type", "Wifi");
+                mapSrv.put("srv_cost", 0.0);
+                mapSrv.put("htl_id", idHotel);
 
-            this.daoHelper.insert(this.hotelServicesDao, mapaHotel);
+                this.daoHelper.insert(this.hotelServicesDao, mapSrv);
+
+            }
+
+            if (attributesValues.containsKey("toggleParking") && (boolean) attributesValues.get("toggleParking") == true && !serviceTypeList.contains("Parking")) {
+                Map<String, Object> mapSrv = new HashMap<>();
+
+                mapSrv.put("srv_type", "Parking");
+                mapSrv.put("srv_cost", 0.0);
+                mapSrv.put("htl_id", idHotel);
+
+                this.daoHelper.insert(this.hotelServicesDao, mapSrv);
+
+            }
+
+            if (attributesValues.containsKey("togglePool") && (boolean) attributesValues.get("togglePool") == true && !serviceTypeList.contains("Pool")) {
+                Map<String, Object> mapSrv = new HashMap<>();
+
+                mapSrv.put("srv_type", "Pool");
+                mapSrv.put("srv_cost", 0.0);
+                mapSrv.put("htl_id", idHotel);
+
+                this.daoHelper.insert(this.hotelServicesDao, mapSrv);
+
+            }
+
+            if (attributesValues.containsKey("toggleBreakfast") && (boolean) attributesValues.get("toggleBreakfast") == true && !serviceTypeList.contains("Breakfast")) {
+                Map<String, Object> mapSrv = new HashMap<>();
+
+                mapSrv.put("srv_type", "Breakfast");
+                mapSrv.put("srv_cost", 0.0);
+                mapSrv.put("htl_id", idHotel);
+
+                this.daoHelper.insert(this.hotelServicesDao, mapSrv);
+
+            }
+
+            if (attributesValues.containsKey("toggleLunch") && (boolean) attributesValues.get("toggleLunch") == true && !serviceTypeList.contains("Lunch")) {
+                Map<String, Object> mapSrv = new HashMap<>();
+
+                mapSrv.put("srv_type", "Lunch");
+                mapSrv.put("srv_cost", 0.0);
+                mapSrv.put("htl_id", idHotel);
+
+                this.daoHelper.insert(this.hotelServicesDao, mapSrv);
+
+            }
+
+            if (attributesValues.containsKey("toggleDinner") && (boolean) attributesValues.get("toggleDinner") == true && !serviceTypeList.contains("Dinner")) {
+                Map<String, Object> mapSrv = new HashMap<>();
+
+                mapSrv.put("srv_type", "Dinner");
+                mapSrv.put("srv_cost", 0.0);
+                mapSrv.put("htl_id", idHotel);
+
+                this.daoHelper.insert(this.hotelServicesDao, mapSrv);
+
+            }
+
+
+
 
         }
 
-        if(attributesValues.containsKey("toggleParking")){
-
-            Map <String,Object> mapaHotel = new HashMap<>();
-
-            mapaHotel.put("srv_type","Parking");
-            mapaHotel.put("srv_cost",0.0);
-
-            this.daoHelper.insert(this.hotelServicesDao, mapaHotel);
-        }
-
-        if(attributesValues.containsKey("togglePool")){
-
-            Map <String,Object> mapaHotel = new HashMap<>();
-
-            mapaHotel.put("srv_type","Pool");
-            mapaHotel.put("srv_cost",0.0);
-
-            this.daoHelper.insert(this.hotelServicesDao, mapaHotel);
-        }
-
-        if(attributesValues.containsKey("toggleBreakfast")){
-
-            Map <String,Object> mapaHotel = new HashMap<>();
-
-            mapaHotel.put("srv_type","Breakfast");
-            mapaHotel.put("srv_cost",0.0);
-
-            this.daoHelper.insert(this.hotelServicesDao, mapaHotel);
-        }
-
-        if(attributesValues.containsKey("toggleBreakfast")){
-
-            Map <String,Object> mapaHotel = new HashMap<>();
-
-            mapaHotel.put("srv_type","Breakfast");
-            mapaHotel.put("srv_cost",0.0);
-
-            this.daoHelper.insert(this.hotelServicesDao, mapaHotel);
-        }
-        */
 
 
 
@@ -344,9 +489,16 @@ public class HotelService implements IHotelService {
 
 
 
-        EntityResult er = this.daoHelper.update(this.hotelDao, attributesValues, keysValues);
 
-        return er;
+
+
+
+
+
+
+
+
+        return roomsEr;
     }
 
     @Override
