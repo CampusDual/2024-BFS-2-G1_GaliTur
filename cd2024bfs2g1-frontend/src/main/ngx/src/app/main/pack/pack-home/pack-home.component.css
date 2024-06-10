@@ -25,9 +25,7 @@
     transform: scale(0.925);
 }
 
-.businessCard img {
-    justify-content: center;
-}
+
 
 /* Image div for pack card structure */
 .packCard img {
