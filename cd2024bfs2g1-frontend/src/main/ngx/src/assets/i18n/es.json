@@ -422,6 +422,8 @@
   "LOCALE_gl": "GL",
   "DATE_R": "Fecha del pack",
   "COMBO-BOX-DAYS-DESC": "El dia que selecciones mostrará las rutas y negocios disponibles el día seleccionado.",
+  "POPULAR_PACKS": "Packs populares",
+  "POPULAR_PACKS_SUBTITLE": "¡Echa un vistazo a los packs favoritos de nuestros usuarios!",
   "MY-BUSINESSES": "Mis negocios",
   "SEARCH": "Buscar",
   "CLEAR_SEARCH": "Eliminar búsqueda",
