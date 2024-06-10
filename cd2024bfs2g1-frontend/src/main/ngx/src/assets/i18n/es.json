@@ -426,7 +426,8 @@
   "SEARCH": "Buscar",
   "CLEAR_SEARCH": "Eliminar búsqueda",
   "NO_ESTIMATED_DISTANCE": "Sin distancia estimada",
-  "ESTIMATED_DISTANCE": "Distancia estimada"
+  "ESTIMATED_DISTANCE": "Distancia estimada",
+  "BEGIN-DATE": "Fecha de inicio"
 }
 
 
