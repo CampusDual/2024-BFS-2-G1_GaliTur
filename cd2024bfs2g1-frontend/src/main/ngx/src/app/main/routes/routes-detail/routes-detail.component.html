@@ -33,7 +33,7 @@
                                 <span class="tooltiptextDuration">{{ "estimated_distance" | oTranslate }}</span>
                             </div>
                             <span *ngIf="data.estimated_distance">
-                                {{ ConvertDistance(data.estimated_distance) }}  
+                                {{ convertDistance(data.estimated_distance) }}  
                             </span>
                             <ng-template #no_estimated_distance>
                                 <div class="tooltipDuration">
@@ -47,7 +47,7 @@
                                 <span class="tooltiptextDuration">{{ "estimated_duration" | oTranslate }}</span>
                             </div>
                             <span *ngIf="data.estimated_distance">
-                                {{ ConvertTime() }}
+                                {{ convertTime(data.estimated_distance) }}
                             </span>
                             <ng-template #no_estimated_duration>
                                 <div class="tooltipDuration">
@@ -80,3 +80,4 @@
         </div>
     </div>
 </div>
+

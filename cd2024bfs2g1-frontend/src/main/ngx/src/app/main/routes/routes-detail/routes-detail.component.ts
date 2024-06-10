@@ -15,8 +15,7 @@ import { LandmarksService } from 'src/app/shared/services/landmarks.service';
 })
 export class RoutesDetailComponent implements OnInit{
   galleryOptions: any;
-  private distanciaKm: number = 0;
-  private distanciaM: number = 0;
+
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -73,9 +72,9 @@ export class RoutesDetailComponent implements OnInit{
     }
 }
 
-public ConvertTime():  string {
+public convertTime(metros: number):  string {
   // Convertir la distancia total a metros
-  let totalMetros = (this.distanciaKm * 1000) + this.distanciaM;
+  let totalMetros = metros;
 
   // Asegúrate de usar la distancia total en metros para calcular minutos.
   let minutos = Math.floor(totalMetros * 0.011);
@@ -97,8 +96,7 @@ public ConvertTime():  string {
   }
 }
 
-ConvertDistance(metros: number){
-// Convertir metros a kilómetros
+convertDistance(metros: number){
   let kilometros = Math.floor(metros / 1000);
   let metrosRestantes = metros % 1000;
 
@@ -107,10 +105,6 @@ ConvertDistance(metros: number){
 
   metrosRestantes = Number(metrosRestantesDecimal);
 
-  this.distanciaKm = kilometros;
-  this.distanciaM = metrosRestantes;
-
-  // Construir la cadena de salida
   if (kilometros == 0 && metrosRestantes != 0) {
     return `${metrosRestantes}m`;
   } else if (kilometros != 0 && metrosRestantes == 0) {

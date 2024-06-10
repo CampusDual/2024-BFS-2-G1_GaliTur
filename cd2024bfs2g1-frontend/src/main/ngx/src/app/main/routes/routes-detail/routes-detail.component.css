@@ -1,10 +1,10 @@
 .routesSecond {
   height: 480px;
-  width: 1170px;
+  width: auto;
   display: flex;
   align-items: center;
   border-radius: 150px;
-  background-color: #eff1f3;
+  background-color: #e2dbd5;
 }
 
 .backButton {
@@ -17,7 +17,8 @@
 }
 
 .mainPanel {
-  position: relative;
+  width: 100%;
+  overflow: auto;
   background-color: #e2dbd5;
 }
 

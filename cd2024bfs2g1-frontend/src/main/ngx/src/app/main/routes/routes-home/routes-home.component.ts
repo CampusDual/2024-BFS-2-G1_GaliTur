@@ -42,8 +42,6 @@ galleryOptions: any;
     }
   }
 
-  private distanciaKm: number = 0;
-  private distanciaM: number = 0;
 
   getRouteId(): number {
     return +this.activeRoute.snapshot.params["route_id"];
@@ -69,8 +67,8 @@ galleryOptions: any;
       });
     })
   }
-  public ConvertTime():  string {
-    let totalMetros = (this.distanciaKm * 1000) + this.distanciaM;
+  public convertTime(metros: number):  string {
+    let totalMetros = metros;
 
     let minutos = Math.floor(totalMetros * 0.011);
     if(minutos == 0){
@@ -91,7 +89,7 @@ galleryOptions: any;
     }
   }
 
-  ConvertDistance(metros: number){
+  convertDistance(metros: number){
   let kilometros = Math.floor(metros / 1000);
   let metrosRestantes = Number((metros % 1000).toFixed(1));
 
@@ -100,8 +98,6 @@ galleryOptions: any;
 
   metrosRestantes = Number(metrosRestantesDecimal);
   
-  this.distanciaKm = kilometros;
-  this.distanciaM = metrosRestantes;
 
   if (kilometros == 0 && metrosRestantes != 0) {
       return `${metrosRestantes}m`;
