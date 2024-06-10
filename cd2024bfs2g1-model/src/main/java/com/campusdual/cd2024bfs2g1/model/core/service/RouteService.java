@@ -1,10 +1,7 @@
 package com.campusdual.cd2024bfs2g1.model.core.service;
 
 import com.campusdual.cd2024bfs2g1.api.core.service.IRouteService;
-import com.campusdual.cd2024bfs2g1.model.core.dao.ImageDao;
-import com.campusdual.cd2024bfs2g1.model.core.dao.ImageRouteDao;
-import com.campusdual.cd2024bfs2g1.model.core.dao.LandmarkDao;
-import com.campusdual.cd2024bfs2g1.model.core.dao.RouteDao;
+import com.campusdual.cd2024bfs2g1.model.core.dao.*;
 import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
@@ -28,14 +25,21 @@ public class RouteService  implements IRouteService {
     private ImageDao imageDao;
     private ImageRouteDao image_routeDao;
     private DefaultOntimizeDaoHelper daoHelper;
+    private LandmarkService landmarkService;
+    private RouteLandmarkDao routeLandmarkDao;
 
     @Autowired
-    public RouteService(RouteDao routeDao, LandmarkDao landmarkDao, ImageDao imageDao, ImageRouteDao image_routeDao, DefaultOntimizeDaoHelper daoHelper) {
+    public RouteService(RouteDao routeDao, LandmarkDao landmarkDao,
+                        ImageDao imageDao, ImageRouteDao image_routeDao,
+                        DefaultOntimizeDaoHelper daoHelper,LandmarkService landmarkService,
+                        RouteLandmarkDao routeLandmarkDao) {
         this.routeDao = routeDao;
         this.landmarkDao = landmarkDao;
         this.imageDao = imageDao;
         this.image_routeDao = image_routeDao;
         this.daoHelper = daoHelper;
+        this.landmarkService = landmarkService;
+        this.routeLandmarkDao = routeLandmarkDao;
     }
 
     @Override
@@ -143,22 +147,36 @@ public class RouteService  implements IRouteService {
     public EntityResult routeDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         EntityResult finalResponse = null;
         List<String> attrList = new ArrayList<>();
+        //ImagePart
         attrList.add(image_routeDao.ATTR_IMAGE_ROUTE_ID);
         attrList.add(image_routeDao.ATTR_IMAGE_ID);
-        EntityResult actualImageRoute = this.daoHelper.query(image_routeDao, keyMap, attrList);
-        EntityResult responseDeleteImageRoute = deleteImageRouteAux(((ArrayList)actualImageRoute.get(image_routeDao.ATTR_IMAGE_ROUTE_ID)).get(0));
-        if(responseDeleteImageRoute.getCode()==EntityResult.OPERATION_SUCCESSFUL){
-            //Ya se borro la intermedia de la imagen
+        EntityResult actualImageRoute = null;
+        actualImageRoute = this.daoHelper.query(image_routeDao, keyMap, attrList);
+        if(!actualImageRoute.isEmpty()){
+            EntityResult responseDeleteImageRoute = deleteImageRouteAux(((ArrayList)actualImageRoute.get(image_routeDao.ATTR_IMAGE_ROUTE_ID)).get(0));
             EntityResult responseDeleteImage = deleteImageAux(((ArrayList)actualImageRoute
                     .get(image_routeDao.ATTR_IMAGE_ID)).get(0));
-            if(responseDeleteImage.getCode()==EntityResult.OPERATION_SUCCESSFUL){
-                //Ya se borro la imagen
-                return finalResponse = this.daoHelper.delete(routeDao, keyMap);
-            }
         }
 
-        return finalResponse;
+        attrList.clear();
+        //Landkmark part
+        attrList.add(landmarkDao.ATTR_ID);
+        attrList.add(routeLandmarkDao.ATTR_ROUTE_LANDMARK_ID);
+        EntityResult routeLandmark = null;
+        routeLandmark = this.daoHelper.query(routeLandmarkDao, keyMap, attrList);
+
+        if(!routeLandmark.isEmpty()){
+            for (Object iter : ((ArrayList)routeLandmark.get(routeLandmarkDao.ATTR_ROUTE_LANDMARK_ID))) {
+                Map landmarkDeleteMap = new HashMap<String,Object>();
+                landmarkDeleteMap.put(routeLandmarkDao.ATTR_ROUTE_LANDMARK_ID,
+                        iter);
+                landmarkService.landmarkDelete(landmarkDeleteMap);
+            }
+        }
+        //Route delete
+        return finalResponse = this.daoHelper.delete(routeDao, keyMap);
     }
+
 
     private EntityResult deleteImageRouteAux(Object imageRouteObject){
         Map<String,Object> imageRouteDeleteKey = new HashMap<>();

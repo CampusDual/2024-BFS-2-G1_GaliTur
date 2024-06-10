@@ -28,14 +28,15 @@ export class ManageAllRoutesComponent {
     this.ontimizeRouteService.configureService(conf);
   }
 
-  confirmAction(mensaje: string,packs:any):boolean {
-    let userResponse: boolean = false
+  confirmAction(mensaje: string,packs:any,route_id:any) {
     const dialogRef = this.dialog.open(ShowPacksConfirmDeleteComponent,{data:{mensaje:mensaje,packs:packs}});
     dialogRef.afterClosed().subscribe((result)=>{
       console.log("El resultado es ", result)
-      userResponse = result
+      if (result){
+          this.deleteRoute(route_id)
+      } else return
     })
-    return userResponse
+
   }
   
 
@@ -53,12 +54,11 @@ onClicDelete(route_id:any) {
   this.ontimizeRouteService.query({route_id:route_id},['p.pck_name'],'searchPacks').subscribe((response)=>{
     const packsOfActualRoute: [] = response.data
     if(packsOfActualRoute.length>0){
-      if(this.confirmAction("DELETE_ROUTE_CONFIRM_MESSAGE",response.data)){
-        this.deleteRoute(route_id)
-      }else return null
+      this.confirmAction("DELETE_ROUTE_CONFIRM_MESSAGE",response.data,route_id)
     }else{
       this.deleteRoute(route_id)
     }
+    
   })
 }
 
