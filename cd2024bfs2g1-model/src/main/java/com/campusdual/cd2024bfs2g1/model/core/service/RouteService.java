@@ -170,6 +170,7 @@ public class RouteService  implements IRouteService {
         EntityResult routeLandmark = null;
         routeLandmark = this.daoHelper.query(routeLandmarkDao, keyMap, attrList);
 
+
         if(!routeLandmark.isEmpty()){
             for (Object iter : ((ArrayList)routeLandmark.get(routeLandmarkDao.ATTR_ROUTE_LANDMARK_ID))) {
                 Map landmarkDeleteMap = new HashMap<String,Object>();
