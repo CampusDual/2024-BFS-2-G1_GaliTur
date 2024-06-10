@@ -40,26 +40,42 @@
                 ]]>
             </Sentence>
         </Query>
+
         <Query id="allPacks">
             <Sentence>
                 <![CDATA[
+                    WITH temp_table AS (
+                        SELECT DISTINCT
+                            P.pck_id,
+                            P.pck_name,
+                            P.pck_description,
+                            P.pck_price,
+                            P.pck_participants,
+                            P.pck_days,
+                            P.creation_date,
+                            I.img_code,
+                            GC.gui_c_name
+                        FROM
+                            pack P
+                            INNER JOIN image_pack IP ON P.pck_id = IP.pck_id
+                            INNER JOIN image I ON IP.img_id = I.image_id
+                            INNER JOIN gui_cities GC ON P.gui_c_id = GC.gui_c_id
+                            INNER JOIN (
+                                SELECT DISTINCT pck_id, pd_date_begin
+                                FROM pack_date
+                                WHERE pcs_id = 1
+                            ) PD ON P.pck_id = PD.pck_id
+                        #WHERE#
+                    )
                     SELECT DISTINCT
                         #COLUMNS#
                     FROM
-                       pack P
-                           INNER JOIN image_pack IP
-                           ON P.pck_id = IP.pck_id
-                           INNER JOIN image I
-                           ON IP.img_id = I.image_id
-                           INNER JOIN gui_cities GC
-                           ON P.gui_c_id = GC.gui_c_id
-                           INNER JOIN (select distinct pck_id, pd_date_begin from pack_date spd where spd.pcs_id = 1) PD
-                           ON P.pck_id=PD.pck_id
-                    #WHERE_CONCAT#
-                    #ORDER#
-                ]]>
+                        temp_table
+        ]]>
             </Sentence>
         </Query>
+
+
         <Query id="multi">
             <Sentence>
                 <![CDATA[
