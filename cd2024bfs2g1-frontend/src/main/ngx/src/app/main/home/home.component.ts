@@ -8,7 +8,7 @@ import { OGridComponent } from 'ontimize-web-ngx';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements AfterViewInit {
   @ViewChild('popularsPackGrid', { static: false }) popularsPackGrid: OGridComponent;
   packsWithRank: any[] = [];
 
