@@ -14,8 +14,13 @@
                 <div fxLayout="row">
                     <div fxLayout="column" fxLayoutGap="6px" class="card-datos">
                         <div class="borde-description">
-                            <o-row class="o-rows" class="description" attr="container" icon="route" mat
-                            title="{{row.name | oTranslate }}" layout-align="start stretch"
+                            <o-row class="o-rows" class="titulo" attr="container" icon="route" mat
+                            title="{{'ROUTE_NAME' | oTranslate }}" layout-align="start stretch"
+                            aria-orientation="vertical" appearance="outline" style="border-radius: 10px; padding: 3px;">
+                            <mat-card-title class="titulo">{{ row.name }}</mat-card-title>
+                            </o-row>
+                            <o-row class="o-rows" class="description" attr="container" icon="description" mat
+                            title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch"
                             aria-orientation="vertical" appearance="outline"  style="border-radius: 10px; padding: 3px;">
                             <mat-card-subtitle class="descripction">{{row.description}}</mat-card-subtitle>
                             </o-row>
