@@ -63,11 +63,10 @@ export class BusinessMerchantDetailComponent implements OnInit {
       .subscribe((result) => {
         if (result.data.length) {
         
-          this.confirmDeleteDialog(data);
+          this.confirmDeleteDialog(data, false);
         }else{
 
-          this.deleteBsn(data);
-
+          this.confirmDeleteDialog(data, true);
         }
       });
 
@@ -75,16 +74,18 @@ export class BusinessMerchantDetailComponent implements OnInit {
   }
 
 
-  confirmDeleteDialog(data) {
+  confirmDeleteDialog(data, boolean) {
     const config: ODialogConfig = {
       icon: "warning",
       alertType: "warn",
     };
+
+    
  
     if (this.dialogService) {
       this.dialogService.confirm(
-        this.oTranslate.get("CANCEL-DELETE-BSN-DIALOG"),
-        this.oTranslate.get("CANCEL-DELETE-BSN-DIALOG-B"),
+        this.oTranslate.get(boolean ? "CANCEL-DELETE-BSN-DIALOG": "CANCEL-DELETE-BSN-DIAG"),
+        this.oTranslate.get(boolean ? "CANCEL-DELETE-BSN-DIALOG-B": "CANCEL-DELETE-BSN-DIAG-B"),
         config
       );
       this.dialogService.dialogRef.afterClosed().subscribe((result) => {
