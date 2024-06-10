@@ -357,7 +357,7 @@
   "ADD_ROUTES_AND_BUSINESSES": "Add routes and businesses",
   "SCHEDULE_PACKAGE": "Schedule package",
   "PACK-MANAGE": "Packs editor",
-  "MAIN": "Packs",
+  "MAIN": "Home",
   "SHEDULED_PACKS": "Scheduled packs",
   "ADD_SHEDULED_PACKS": "Add scheduled packs",
   "PACKS_INFO": "Packs info",
@@ -422,6 +422,13 @@
   "NO_ESTIMATED_DISTANCE": "No estimated distance",
   "ESTIMATED_DISTANCE": "Estimated distance",
   "MY-BUSINESSES": "My businesses",
-  "CLEAR_SEARCH": "Delete search"
+  "CLEAR_SEARCH": "Delete search",
+  "DRAFT": "Draft",
+  "MESSAGES_ROUTE_INSERT_ERROR": "There was an error inserting the route",
+  "MESSAGES_ROUTE_UPDATE_SUCCESS": "Route updated successfully",
+  "MESSAGES_ROUTE_UPDATE_ERROR": "There was an error updating the route",
+  "MESSAGES_ROUTE_DELETE_SUCCESS": "Route deleted successfully",
+  "MESSAGES_ROUTE_DELETE_ERROR": "There was an error deleting the route",
+  "MESSAGES_LANDMARK_DELETE":"Landmark deleted successfully"
 }
 

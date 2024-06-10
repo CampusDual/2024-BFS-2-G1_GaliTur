@@ -5,7 +5,7 @@ import { OFormMessageService } from "ontimize-web-ngx";
 export class CustomMessageServiceLandmarks extends OFormMessageService {
 
   getDeleteSuccessMessage(){
-    return 'MESSAGES_FROM_SUCCESS_DELETE'
+    return 'MESSAGES_LANDMARK_DELETE';
   }
 
   getDiscardChangesConfirmationMessage(): string {
@@ -15,4 +15,6 @@ export class CustomMessageServiceLandmarks extends OFormMessageService {
   getInsertSuccessMessage(): any {
       return 'MESSAGES_INSERTED_LANDMARK';
   }
+
+
 }

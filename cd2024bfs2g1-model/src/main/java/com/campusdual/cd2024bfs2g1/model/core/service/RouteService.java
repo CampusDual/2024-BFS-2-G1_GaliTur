@@ -2,6 +2,7 @@ package com.campusdual.cd2024bfs2g1.model.core.service;
 
 import com.campusdual.cd2024bfs2g1.api.core.service.IRouteService;
 import com.campusdual.cd2024bfs2g1.model.core.dao.*;
+import com.campusdual.cd2024bfs2g1.model.core.dao.pack.RoutePackDao;
 import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
@@ -27,12 +28,13 @@ public class RouteService  implements IRouteService {
     private DefaultOntimizeDaoHelper daoHelper;
     private LandmarkService landmarkService;
     private RouteLandmarkDao routeLandmarkDao;
+    private RoutePackDao routePackDao;
 
     @Autowired
     public RouteService(RouteDao routeDao, LandmarkDao landmarkDao,
                         ImageDao imageDao, ImageRouteDao image_routeDao,
                         DefaultOntimizeDaoHelper daoHelper,LandmarkService landmarkService,
-                        RouteLandmarkDao routeLandmarkDao) {
+                        RouteLandmarkDao routeLandmarkDao,RoutePackDao routePackDao) {
         this.routeDao = routeDao;
         this.landmarkDao = landmarkDao;
         this.imageDao = imageDao;
@@ -40,6 +42,7 @@ public class RouteService  implements IRouteService {
         this.daoHelper = daoHelper;
         this.landmarkService = landmarkService;
         this.routeLandmarkDao = routeLandmarkDao;
+        this.routePackDao = routePackDao;
     }
 
     @Override
@@ -177,6 +180,23 @@ public class RouteService  implements IRouteService {
                 landmarkDeleteMap.put(routeLandmarkDao.ATTR_ROUTE_LANDMARK_ID,
                         iter);
                 landmarkService.landmarkDelete(landmarkDeleteMap);
+            }
+
+        }
+        //Pack part
+        attrList.clear();
+        //Landkmark part
+        attrList.add(routePackDao.ROUTE_PACK_ID);
+        EntityResult routePack = null;
+        routePack = this.daoHelper.query(routePackDao, keyMap, attrList);
+
+
+        if(!routePack.isEmpty()){
+            for (Object iter : ((ArrayList)routePack.get(routePackDao.ROUTE_PACK_ID))) {
+                Map routePackDeleteMap = new HashMap<String,Object>();
+                routePackDeleteMap.put("route_pack_id",
+                        iter);
+                this.daoHelper.delete(routePackDao, routePackDeleteMap);
             }
 
         }
