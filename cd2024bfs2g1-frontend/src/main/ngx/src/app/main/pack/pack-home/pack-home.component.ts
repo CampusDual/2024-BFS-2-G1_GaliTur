@@ -133,10 +133,10 @@ export class PackHomeComponent {
     const minValue = this.minPrice.getValue();
     const maxValue = this.maxPrice.getValue();
 
-    if (minValue === "" ) {
+    if (minValue === "" || minValue === "0.00") {
       this.minPrice.clearValue();
     }
-    if (maxValue === "" ) {
+    if (maxValue === "" || maxValue === "0.00") {
       this.maxPrice.clearValue();
     }
   }
