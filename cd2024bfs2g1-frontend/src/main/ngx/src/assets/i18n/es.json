@@ -382,10 +382,10 @@
   "FILTER-CITY": "Ciudad",
   "FILTER-NAME": "Nombre",
   "Routes_according_to_difficulty": "Numero de rutas según su dificultad",
-  "Contracted_packs_per_days": "Packs contratados por días",
-  "Types of bussiness":"Tipos de negocios",
-  "Packs by station": "Packs por estación",
+  "Contracted_packs_per_days": "Número de días que tienen los packs",
+  "Types of bussiness":"Número de tipos de negocios",
+  "Packs by station": "Packs creados según la estación",
   "Top 5 most valuated packs": "Top 5 packs mas valorados",
-  "Packs by price":"Packs contratados por precio"
+  "Packs by price":"Precio de los packs (€)"
 }
 
