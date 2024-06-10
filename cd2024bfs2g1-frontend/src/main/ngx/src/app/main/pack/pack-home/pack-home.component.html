@@ -6,40 +6,53 @@
     <div class="filter">
       <!-- Name and number of days filters -->
       <div class="filter-column">
-        <o-text-input class="filter-element" attr="pck_name" read-only="no" fxFlex="100" label="{{ 'FILTER-NAME' | oTranslate }}" ></o-text-input>
-        <o-integer-input  attr="pck_days" label="{{ 'NUMBER-DAYS' | oTranslate }}" min="1"></o-integer-input>
+        <o-text-input class="filter-element" attr="pck_name" read-only="no" fxFlex="100"
+          label="{{ 'FILTER-NAME' | oTranslate }}"></o-text-input>
+        <o-integer-input class="filter-element" attr="pck_days" label="{{ 'NUMBER-DAYS' | oTranslate }}" min="1"></o-integer-input>
       </div>
       <!-- Price filter -->
       <div class="filter-column">
-        <o-currency-input #minPrice class="filter-element" (onValueChange)="onCurrencyInputChange()" attr="pck_price_min" label="{{ 'MIN-PRICE' | oTranslate }}" min="1"></o-currency-input>
-        <o-currency-input #maxPrice attr="pck_price_max" (onValueChange)="onCurrencyInputChange()" label="{{ 'MAX-PRICE' | oTranslate }}" min="1"></o-currency-input>
+        <div class="filter-row">
+          <o-currency-input #minPrice class="filter-element" (onValueChange)="onCurrencyInputChange()"
+          attr="pck_price_min"  label="{{ 'MIN-PRICE' | oTranslate }}" min="1"></o-currency-input>
+          <o-currency-input class="filter-element" #maxPrice attr="pck_price_max" (onValueChange)="onCurrencyInputChange()"
+            label="{{ 'MAX-PRICE' | oTranslate }}" min="1"></o-currency-input>
+        </div>
+        <o-date-input class="filter-element" attr="pd_date_begin" format="YYYY-MM-DD" value-type="string" label="{{ 'BEGIN-DATE' | oTranslate }}" read-only="no" required="no"></o-date-input>
       </div>
       <!-- Travellers and city filter -->
       <div class="filter-column">
-        <o-integer-input class="filter-element" attr="pck_participants" min="1" label="{{ 'NUMBER-TRAVELLERS' | oTranslate }}" ></o-integer-input>
-        <o-combo  #comboCity attr="gui_c_name" label="{{ 'FILTER-CITY' | oTranslate }}"  translate="yes"
-          query-method="query" sort="ASC" value-column="gui_c_name" required="no" service="guideCities" multiple="no" null-selection="yes" entity="guideCities"
-          columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id" searchable="yes" > </o-combo>
+        <o-integer-input class="filter-element" attr="pck_participants" min="1"
+          label="{{ 'NUMBER-TRAVELLERS' | oTranslate }}"></o-integer-input>
+        <o-combo #comboCity class="filter-element" attr="gui_c_name" label="{{ 'FILTER-CITY' | oTranslate }}" translate="yes"
+          query-method="query" sort="ASC" value-column="gui_c_name" required="no" service="guideCities" multiple="no"
+          null-selection="yes" entity="guideCities" columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id"
+          searchable="yes"> </o-combo>
       </div>
       <!-- Filter buttons -->
-      <div class="filter-column">
-        <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="ICON" icon="search" matTooltip="{{ 'SEARCH' | oTranslate }}" class="filter-button"></o-button>
-        <o-button attr="clear" type="ICON" icon="delete" matTooltip="{{ 'CLEAR_SEARCH' | oTranslate }}" class="filter-button" [oFilterBuilderClear]="filterBuilder"  [oFilterBuilderQuery]="filterBuilder" ></o-button>
+      <div class="filter-column-buttons">
+        <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="ICON" icon="search"
+          matTooltip="{{ 'SEARCH' | oTranslate }}" class="filter-button"></o-button>
+        <o-button attr="clear" type="ICON" icon="delete" matTooltip="{{ 'CLEAR_SEARCH' | oTranslate }}"
+          class="filter-button" [oFilterBuilderClear]="filterBuilder" [oFilterBuilderQuery]="filterBuilder"></o-button>
       </div>
     </div>
+    <!-- start date -->
+
 
     <!-- Filter builder -->
     <o-filter-builder #filterBuilder attr="thefilter"
-      filters="pck_name:pck_name;pck_days:pck_days;pck_price_min:pck_price_min;pck_price_max:pck_price_max;pck_participants:pck_participants;gui_c_name:gui_c_name"
-      [target]="packGrid" query-on-change="no" query-on-change-delay="500" [expression-builder]="createFilter"></o-filter-builder>
+      filters="pck_name:pck_name;pck_days:pck_days;pck_price_min:pck_price_min;pck_price_max:pck_price_max;pck_participants:pck_participants;gui_c_name:gui_c_name;pd_date_begin:pd_date_begin"
+      [target]="packGrid" query-on-change="no" query-on-change-delay="500"
+      [expression-builder]="createFilter"></o-filter-builder>
   </o-form>
   <div class="grid-container">
-    <o-grid #packGrid attr="packGrid" service="packs" entity="allPacks" keys="P.pck_id"
-    columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;gui_c_name;img_code;pck_days;P.creation_date"
+    <o-grid #packGrid attr="packGrid" service="packs" entity="allPacks" keys="pck_id"
+    columns="pck_id;pck_name;pck_description;pck_price;pck_participants;gui_c_name;img_code;pck_days;creation_date"
     query-rows="8" page-size-options="8;16;24" orderable="true"
     sort-column="creation_date:desc"
-    sortable-columns="pck_name;gui_c_name;creation_date;pck_name:desc;gui_c_name:desc;creation_date:desc" quick-filter="false"  filter-case-sensitive="yes"
-    insert-button="false" refresh-button="false" pageable="yes" filter
+    sortable-columns="pck_name;gui_c_name;creation_date;pck_name:desc;gui_c_name:desc;creation_date:desc" quick-filter="false"
+    insert-button="false" refresh-button="false" pageable="yes"
     pagination-controls="true" gutter-size="4px" fixed-header="yes" grid-item-height="280px" detail-mode="none"
     insert-button-floatable="no">
     <o-grid-item *ngFor="let data of packGrid.dataArray">

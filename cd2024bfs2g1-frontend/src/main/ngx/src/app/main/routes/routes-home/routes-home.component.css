@@ -26,7 +26,7 @@
   margin-top: 8px;
   border-radius: 10px;
   background-color: #52733B;
-  height: 45px;
+  height: 34px;
   color: #ffffff; 
 }
 
@@ -148,7 +148,7 @@
 .name {
   width: 270px;
   text-align: left;
-  font-size: 22px;
+  font-size: 1.2em;
   border-radius: 20px;
   font-family: Arial;
   align-items: center;

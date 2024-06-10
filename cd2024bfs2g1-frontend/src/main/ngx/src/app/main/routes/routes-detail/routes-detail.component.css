@@ -70,6 +70,11 @@
   background-color: transparent;
 }
 
+.descriptionText {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .titulo {
   font-size: 24px;
   font-weight: bold;
@@ -194,9 +199,28 @@
 .icon-difficulty-4 {
   color: #dc1d0f;
 }
+.div_principal .backButton{
+  align-items: left;
+}
+.mainPanel {
+  position: relative;
+}
+
+.backButton {
+  position: absolute;
+  left: 35px;
+}
 
 .o-rows {
+
   background-color: transparent;
+
+}
+
+.o-row.o-appearance-outline > .o-container .o-container-title {
+  mat-icon {
+    color: white !important;
+  }
 }
 
 .tooltiptextDifficulty {
@@ -288,3 +312,9 @@
 }
 
 
+
+:host ::ng-deep .o-container-title {
+  .mat-icon {
+    color: #84A45A !important;
+  }
+}

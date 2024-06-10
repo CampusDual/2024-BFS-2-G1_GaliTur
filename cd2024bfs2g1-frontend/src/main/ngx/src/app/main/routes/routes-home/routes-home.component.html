@@ -20,6 +20,7 @@
   grid-item-height="350px"
   detail-mode="none"
   insert-button-floatable="no"
+  class="full-page"
 >
   <o-grid-item *ngFor="let data of routesGrid.dataArray" class="gridItem">
     <!--Contenedor principal-->
@@ -78,7 +79,7 @@
             <span class="tooltiptextHomeDuration">{{"estimated_distance" | oTranslate}}</span>
           </div>
           <span *ngIf="data.estimated_distance; else no_distance">
-            {{ convertDistance(data.estimated_distance) }} 
+            {{ convertDistance(data.estimated_distance) }}
           </span>
           <ng-template #no_distance>
             <div class="tooltipHomeDuration">
