@@ -203,6 +203,43 @@
                     </o-row>
                 </div>
 
+                <div class="business-container">
+                    <details class="details">
+                        <summary>{{"VALORATIONS" | oTranslate}}</summary>
+                        <o-row class="o-row-o-grid-container" title="{{ 'BUSINESSES' | oTranslate }}" icon="business" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+                            <div class="o-grid-container">
+                                <o-grid  opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" page-size-options="false"
+                                show-page-size="false" disable-page-size-calculation="true" cols="1" gutter-size="1px" grid-item-height="245px">
+                                    <o-grid-item>
+                                        <div fxLayout="column" class="mat-elevation-z1 valorations">
+                                            <p id="date-rating">fecha</p>
+                                            <div fxLayout="row">
+                                                <div class="card-valorations-header">
+                                                    <div class="business-title">
+                                                        <div class="valoracions-name">
+                                                            
+                                                            <span class="user-name">{{ "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <mat-icon class="star" [ngClass]="4 >= 1?'star_color':''">park</mat-icon>
+                                                <mat-icon class="star" [ngClass]="4 >= 2?'star_color':''">park</mat-icon>
+                                                <mat-icon class="star" [ngClass]="4 >= 3?'star_color':''">park</mat-icon>
+                                                <mat-icon class="star" [ngClass]="4 >= 4?'star_color':''">park</mat-icon>
+                                                <mat-icon class="star" [ngClass]="4 >= 5?'star_color':''">park</mat-icon>
+                                            </div>
+                                            <o-row class="o-row-coment" attr="container"
+                                                title="COMENT" layout-align="start stretch" elevation="1"
+                                                aria-orientation="vertical" appearance="outline">
+                                                <p class="list-to-desc">a</p>
+                                            </o-row>
+                                        </div>
+                                    </o-grid-item>
+                                </o-grid>
+                            </div>
+                        </o-row>
+                    </details>
+                </div>
 
             </div>
         </o-form>
