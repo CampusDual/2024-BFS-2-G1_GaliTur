@@ -178,6 +178,7 @@ public class RouteService  implements IRouteService {
                         iter);
                 landmarkService.landmarkDelete(landmarkDeleteMap);
             }
+
         }
         //Route delete
         return finalResponse = this.daoHelper.delete(routeDao, keyMap);
