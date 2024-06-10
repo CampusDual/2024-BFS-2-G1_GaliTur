@@ -667,5 +667,6 @@
   "NO_ROUTES_TODAY": "Non hai rutas o día",
   "NO_ROUTES_IN_PACK": "Neste pack non hai rutas !",
   "NO_BUSINESS_TODAY": "Non hai negocios o día",
-  "NO_BUSINESS_IN_PACK": "Neste pack non hai negocios !"
+  "NO_BUSINESS_IN_PACK": "Neste pack non hai negocios !",
+  "BEGIN-DATE": "Fecha de inicio"
 }
