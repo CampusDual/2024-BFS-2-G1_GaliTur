@@ -133,30 +133,55 @@
 }
 
 /*filter styles*/
+/*filter styles*/
 .filter {
     justify-content: space-around;
     width: 100%;
     display: flex;
     flex-direction: row;
-    padding-top: 20px;
-    padding-bottom: 20px;
-
+    
     background-color: #ccc6c0;
     margin-bottom: 16px;
+
+
 }
 .filter-column {
     display: flex;
     flex-direction: column;
     padding: 5px;
     justify-content: space-around;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.filter-column-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 4%;
+    margin-top: 20px;
+    margin-bottom: 20px;
 
     o-button {
         color: #4e4c4a;
     }
 }
 
+.filter-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 10px;
+    width: 50%;
+}
+
 .filter-element {
     margin-bottom: 10px;
+    flex: 1 1 auto !important; /* Ajuste para que los elementos se expandan */
+    
 }
 
 .filter-button {
@@ -167,12 +192,16 @@
 .full-page {
     height: 77vh;
     .mdc-text-field--filled:not(.mdc-text-field--disabled) {
-        width: 32vh;
+        width: 100%;
     }
     .o-data-toolbar {
         align-items: end;
 
     }
+}
+
+o-text-input, o-integer-input, o-currency-input, o-date-input, o-combo {
+    width: 100% !important;
 }
 
 /*Insert button and sort combobox styles*/

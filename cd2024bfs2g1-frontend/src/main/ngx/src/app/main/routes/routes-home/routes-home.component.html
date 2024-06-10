@@ -74,25 +74,33 @@
 
         <!--Duracion estimada-->
         <div fxLayout="row" class="duration">
-          <div
-            class="tooltipHomeDuration"
-            *ngIf="data.estimated_distance; else no_estimated_duration"
-          >
-            <mat-icon class="clockTooltipHome">schedule</mat-icon>
-            <span class="tooltiptextHomeDuration">{{
-              "estimated_distance" | oTranslate
-            }}</span>
+          <div class="tooltipHomeDuration" *ngIf="data.estimated_distance">
+            <mat-icon class="clockTooltipHome">hiking</mat-icon>
+            <span class="tooltiptextHomeDuration">{{"estimated_distance" | oTranslate}}</span>
           </div>
-          <span *ngIf="data.estimated_distance">
+          <span *ngIf="data.estimated_distance; else no_distance">
+            {{ convertDistance(data.estimated_distance) }}
+          </span>
+          <ng-template #no_distance>
+            <div class="tooltipHomeDuration">
+              <mat-icon class="clockTooltipHome">hiking</mat-icon>
+              <span class="tooltiptextHomeDuration">{{"NO_ESTIMATED_DISTANCE" | oTranslate}}</span>
+            </div>
+            <span class="guion">-</span>
+          </ng-template>
+          <div class="tooltipHomeDuration" *ngIf="data.estimated_distance">
+            <mat-icon class="clockTooltipHome">schedule</mat-icon>
+            <span class="tooltiptextHomeDuration">{{"estimated_duration" | oTranslate}}</span>
+          </div>
+          <span *ngIf="data.estimated_distance; else no_duration">
             {{ convertTime(data.estimated_distance) }}
           </span>
-          <ng-template #no_estimated_duration>
+          <ng-template #no_duration>
             <div class="tooltipHomeDuration">
-              <a><mat-icon class="clockTooltipHome">schedule</mat-icon>-</a>
-              <span class="tooltiptextHomeDuration">{{
-                "N0_ESTIMATED_DURATION" | oTranslate
-              }}</span>
+              <mat-icon class="clockTooltipHome">schedule</mat-icon>
+              <span class="tooltiptextHomeDuration">{{"NO_ESTIMATED_DURATION" | oTranslate}}</span>
             </div>
+            <span>-</span>
           </ng-template>
         </div>
       </div>

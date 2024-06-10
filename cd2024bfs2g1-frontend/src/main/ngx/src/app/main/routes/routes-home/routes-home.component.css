@@ -121,6 +121,7 @@
   padding: 5px;
 }
 
+
 .tooltipHomeDuration {
   margin-bottom: 5px;
 }
@@ -260,4 +261,7 @@ mat-icon {
           font-weight: bold;
       }
   }
+}
+.guion{
+  margin-right: 10px;
 }

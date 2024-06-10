@@ -16,6 +16,7 @@ import { LandmarksService } from 'src/app/shared/services/landmarks.service';
 export class RoutesDetailComponent implements OnInit{
   galleryOptions: any;
 
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private ontimizeService: OntimizeService,
@@ -71,39 +72,56 @@ export class RoutesDetailComponent implements OnInit{
     }
 }
 
-  public convertTime(minutos: number):  string {
-
-      const horas = Math.floor(minutos / 60);
-      const minutosRestantes = minutos % 60;
-      if(horas == 0 && minutosRestantes != 0){
-        return minutosRestantes + "min";
-      }else if(horas != 0 && minutosRestantes == 0){
-        return horas + "h ";
-      }else{
-         return horas + "h " + minutosRestantes + "min";
-      }
-
-
-    }
-
-    getIconColorClass(difficulty: number): string {
-      switch(difficulty) {
-        case 1:
-            return 'icon-difficulty-1';
-        case 2:
-            return 'icon-difficulty-2';
-        case 3:
-            return 'icon-difficulty-3';
-        case 4:
-            return 'icon-difficulty-4';
-
-    }
-
+public convertTime(metros: number):  string {
+  let minutos = Math.floor(metros * 0.011);
+  if(minutos == 0){
+    minutos = 1;
   }
 
+  const horas = Math.floor(minutos / 60);
+  const minutosRestantes = minutos % 60;
 
+  if (horas == 0 && minutosRestantes != 0) {
+      return `${minutosRestantes}min`;
+  } else if (horas != 0 && minutosRestantes == 0) {
+      return `${horas}h`;
+  } else {
+      return `${horas}h ${minutosRestantes}min`;
+  }
+}
 
+convertDistance(metros: number){
+  let kilometros = Math.floor(metros / 1000);
+  let metrosRestantes = metros % 1000;
 
+  let metrosRestantesStr = metrosRestantes.toString();
+  let metrosRestantesDecimal = metrosRestantesStr.split('.')[0].slice(0, 2);
+
+  metrosRestantes = Number(metrosRestantesDecimal);
+
+  if (kilometros == 0 && metrosRestantes != 0) {
+    return `${metrosRestantes}m`;
+  } else if (kilometros != 0 && metrosRestantes == 0) {
+    return `${kilometros}km`;
+  } else if (kilometros != 0 && metrosRestantes != 0) {
+    return `${kilometros},${metrosRestantes}km`;
+  } else {
+    return '0m';
+  }
+}
+
+getIconColorClass(difficulty: number): string {
+  switch(difficulty) {
+    case 1:
+      return 'icon-difficulty-1';
+    case 2:
+      return 'icon-difficulty-2';
+    case 3:
+      return 'icon-difficulty-3';
+    case 4:
+      return 'icon-difficulty-4';
+    }
+  }
 
 getDifficultad(difficulty: number): string {
   switch(difficulty) {
@@ -115,6 +133,6 @@ getDifficultad(difficulty: number): string {
         return 'Dificultad: Difícil';
     case 4:
         return 'Dificultad: Extremo';
-}
-}
+    }
+  }
 }
