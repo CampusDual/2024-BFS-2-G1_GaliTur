@@ -97,7 +97,7 @@
                     SELECT
                     CASE WHEN R.difficulty = 1 THEN 'EASY'
                     WHEN R.difficulty = 2 THEN 'INTERMEDIATE'
-                    WHEN R.difficulty = 3 THEN 'DIFFICULT'
+                    WHEN R.difficulty = 3 THEN 'HARD'
                     WHEN R.difficulty = 4 THEN 'EXTREME'
                      END AS difficulty,
                         COUNT(R.route_id) AS route_difficulty_count
@@ -106,9 +106,6 @@
                     GROUP BY
                          difficulty;
                    #ORDER#
-
-
-
                 ]]>
             </Sentence>
         </Query>

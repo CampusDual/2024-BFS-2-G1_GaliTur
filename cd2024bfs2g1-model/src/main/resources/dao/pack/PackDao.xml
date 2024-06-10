@@ -224,10 +224,10 @@
                 FROM ${mainschema}.pack_date
                 GROUP BY
                     CASE
-                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (12, 1, 2) THEN 'Invierno'
-                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (3, 4, 5) THEN 'Primavera'
-                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (6, 7, 8) THEN 'Verano'
-                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (9, 10, 11) THEN 'Otoño'
+                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (12, 1, 2) THEN 'Winter'
+                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (3, 4, 5) THEN 'Spring'
+                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (6, 7, 8) THEN 'Summer'
+                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (9, 10, 11) THEN 'Autumn'
                     END
                 ORDER BY estacion;
                 ]]>
