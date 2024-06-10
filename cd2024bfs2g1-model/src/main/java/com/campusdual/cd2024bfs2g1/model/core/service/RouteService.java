@@ -148,7 +148,7 @@ public class RouteService  implements IRouteService {
         EntityResult actualImageRoute = this.daoHelper.query(image_routeDao, keyMap, attrList);
         EntityResult responseDeleteImageRoute = deleteImageRouteAux(((ArrayList)actualImageRoute.get(image_routeDao.ATTR_IMAGE_ROUTE_ID)).get(0));
         if(responseDeleteImageRoute.getCode()==EntityResult.OPERATION_SUCCESSFUL){
-            //Ya se borro la intermedia
+            //Ya se borro la intermedia de la imagen
             EntityResult responseDeleteImage = deleteImageAux(((ArrayList)actualImageRoute
                     .get(image_routeDao.ATTR_IMAGE_ID)).get(0));
             if(responseDeleteImage.getCode()==EntityResult.OPERATION_SUCCESSFUL){

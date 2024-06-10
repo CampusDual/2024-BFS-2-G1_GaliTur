@@ -1,11 +1,15 @@
 <h1 mat-dialog-title>CONFIRM_ACTION_DELETE_ROUTE</h1>
-    <div mat-dialog-content>
-      <h3>{{mensaje}}</h3>
-      <ul>
-        <li *ngFor="let pack of packs;let i = index"></li>
-      </ul>
-    </div>
-    <div mat-dialog-actions>
-      <button mat-button [mat-dialog-close]="false">MESSAGE_DELETE_BUTTON</button>
-      <button mat-button [mat-dialog-close]="true">MESSAGE_CONFIM_DELETE_BUTTON</button>
-    </div>
+<div mat-dialog-content>
+  <h3>{{mensaje}}</h3>
+  <div class="pack-list-container">
+    <ul>
+      <li *ngFor="let pack of packs; let i = index">
+        <p>PACK_NAME: {{pack.pck_name}}</p>
+      </li>
+    </ul>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="false">CANCEL_BUTTON</button>
+  <button mat-button [mat-dialog-close]="true">CONFIRM_DELETE_BUTTON</button>
+</div>

@@ -28,9 +28,9 @@ export class ManageAllRoutesComponent {
     this.ontimizeRouteService.configureService(conf);
   }
 
-  confirmAction(mensaje: string):boolean {
+  confirmAction(mensaje: string,packs:any):boolean {
     let userResponse: boolean = false
-    const dialogRef = this.dialog.open(ShowPacksConfirmDeleteComponent,{data:{mensaje:mensaje,packs:this.packsWithThisRoute}});
+    const dialogRef = this.dialog.open(ShowPacksConfirmDeleteComponent,{data:{mensaje:mensaje,packs:packs}});
     dialogRef.afterClosed().subscribe((result)=>{
       console.log("El resultado es ", result)
       userResponse = result
@@ -49,50 +49,22 @@ onClicEdit(route_id: any) {
 }
 
 onClicDelete(route_id:any) {
-  if(this.canSafeDelete(route_id)){
-    this.deleteRoute(route_id)
-  }else{
-    console.log("No se puede borrar porque tiene estos packs ", this.packsWithThisRoute)
-    if(this.confirmAction("DELETE_ROUTE_CONFIRM_MESSAGE")){
-
-    }
-    
-  }
-  this.packsWithThisRoute = []
-}
-//safe delete
-//ESTA MIERDA NO ESTA DEVOLVIENDO BIEN LOS DATOS
-//REVISALA ANDA <----------------
-//BUEN FINDE
-private canSafeDelete(route_id:any):boolean{
-  let safeDelete = false
   this.configureRouteService()
   this.ontimizeRouteService.query({route_id:route_id},['p.pck_name'],'searchPacks').subscribe((response)=>{
-    if(response.data){
-      console.log('Hay response data')
-      safeDelete = false
-      this.packsWithThisRoute.push(...response.data)
-    }
-    else{
-      console.log('No hay response data')
-      safeDelete = true
+    const packsOfActualRoute: [] = response.data
+    if(packsOfActualRoute.length>0){
+      if(this.confirmAction("DELETE_ROUTE_CONFIRM_MESSAGE",response.data)){
+        this.deleteRoute(route_id)
+      }else return null
+    }else{
+      this.deleteRoute(route_id)
     }
   })
-
-  console.log("packsWithThisRoute antes del return: ", this.packsWithThisRoute)
-  return safeDelete
-
 }
 
 private deleteRoute(route_id:any){
-  this.ontimizeRouteService.delete({route_id:route_id},'route').subscribe((updateResponse)=>{
+  this.ontimizeRouteService.delete({route_id:route_id},'route').subscribe((deleteResponse)=>{
   })
-}
-//????????????
-showConfirm(evt: any) {
-  if (this.dialogService) {
-    this.dialogService.confirm('Confirm dialog title', 'Do you really want to accept?')
-  }
 }
 
 }
