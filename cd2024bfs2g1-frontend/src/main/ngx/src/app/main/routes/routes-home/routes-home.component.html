@@ -5,12 +5,12 @@
   service="routes"
   entity="route"
   keys="r.route_id"
-  columns="r.route_id;name;description;estimated_duration;difficulty;creation_date;img_code"
+  columns="r.route_id;name;description;estimated_distance;difficulty;creation_date;img_code"
   query-rows="8"
   page-size-options="8;16;24"
   orderable="true"
   sort-column="creation_date:desc"
-  sortable-columns="creation_date;name;estimated_duration;difficulty;creation_date:desc;name:desc;estimated_duration:desc;difficulty:desc"
+  sortable-columns="creation_date;name;estimated_distance;difficulty;creation_date:desc;name:desc;estimated_distance:desc;difficulty:desc"
   quick-filter-columns="name;difficulty"
   filter-case-sensitive="yes"
   pageable="yes"
@@ -80,7 +80,7 @@
           >
             <mat-icon class="clockTooltipHome">schedule</mat-icon>
             <span class="tooltiptextHomeDuration">{{
-              "estimated_duration" | oTranslate
+              "estimated_distance" | oTranslate
             }}</span>
           </div>
           <span *ngIf="data.estimated_duration">

@@ -205,7 +205,15 @@
 }
 
 .o-rows {
+  
   background-color: transparent;
+  
+}
+
+.o-row.o-appearance-outline > .o-container .o-container-title {
+  mat-icon {
+    color: white !important;
+  }
 }
 
 .tooltiptextDifficulty {

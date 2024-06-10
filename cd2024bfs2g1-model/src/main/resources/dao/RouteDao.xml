@@ -20,7 +20,7 @@
                         route_id,
                         name,
                         description,
-                        estimated_duration,
+                        estimated_distance,
                         difficulty
                     FROM
                         ${mainschema}.route
