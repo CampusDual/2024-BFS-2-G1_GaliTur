@@ -422,12 +422,18 @@
   "LOCALE_gl": "GL",
   "DATE_R": "Fecha del pack",
   "COMBO-BOX-DAYS-DESC": "El dia que selecciones mostrará las rutas y negocios disponibles el día seleccionado.",
+  "POPULAR_PACKS": "Packs populares",
+  "POPULAR_PACKS_SUBTITLE": "¡Echa un vistazo a los packs favoritos de nuestros usuarios!",
   "MY-BUSINESSES": "Mis negocios",
   "SEARCH": "Buscar",
   "CLEAR_SEARCH": "Eliminar búsqueda",
   "NO_ESTIMATED_DISTANCE": "Sin distancia estimada",
   "ESTIMATED_DISTANCE": "Distancia estimada",
-  "BEGIN-DATE": "Fecha de inicio"
+  "BEGIN-DATE": "Fecha de inicio",
+  "NO_ROUTES_TODAY": "¡No hay rutas el día",
+  "NO_ROUTES_IN_PACK": "¡En este pack no hay rutas!",
+  "NO_BUSINESS_TODAY": "¡No hay negocios el día",
+  "NO_BUSINESS_IN_PACK": "¡En este pack no hay negocios!"
 }
 
 

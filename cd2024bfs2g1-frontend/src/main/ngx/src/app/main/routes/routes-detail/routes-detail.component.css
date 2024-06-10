@@ -205,7 +205,15 @@
 }
 
 .o-rows {
+  
   background-color: transparent;
+  
+}
+
+.o-row.o-appearance-outline > .o-container .o-container-title {
+  mat-icon {
+    color: white !important;
+  }
 }
 
 .tooltiptextDifficulty {
@@ -287,4 +295,10 @@
 
 .clockTooltip {
   color: #84A45A;
+}
+
+:host ::ng-deep .o-container-title {
+  .mat-icon {
+    color: #84A45A !important;
+  }
 }

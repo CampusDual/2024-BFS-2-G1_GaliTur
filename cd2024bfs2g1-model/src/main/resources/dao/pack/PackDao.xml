@@ -158,5 +158,40 @@
                 ]]>
             </Sentence>
         </Query>
+
+        <Query id="popularPacks">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        p.pck_id,
+                        p.pck_name,
+                        p.pck_description,
+                        p.pck_price,
+                        p.pck_participants,
+                        p.gui_c_id,
+                        I.img_code,
+                        GC.gui_c_name,
+                        COUNT(pd.pd_id) AS reservation_count
+                    FROM
+                        pack p
+                    JOIN
+                        pack_date pd ON p.pck_id = pd.pck_id
+                    JOIN
+                        ${mainschema}.image_pack IP ON P.pck_id=IP.pck_id
+                    JOIN
+                        ${mainschema}.image I ON IP.img_id = I.image_id
+                    JOIN
+                        ${mainschema}.gui_cities GC ON p.gui_c_id = GC.gui_c_id
+                    WHERE
+                        pd.pcs_id = 2
+                    GROUP BY
+                        p.pck_id, p.pck_name, p.pck_description, p.pck_price, p.pck_participants, p.gui_c_id, I.img_code, GC.gui_c_name
+                    ORDER BY
+                        reservation_count DESC
+                    LIMIT 10;
+
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>
