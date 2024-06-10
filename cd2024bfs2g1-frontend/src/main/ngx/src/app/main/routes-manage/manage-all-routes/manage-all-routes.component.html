@@ -13,7 +13,7 @@
             <mat-card class="card-entera">
                 <div fxLayout="row">
                     <div fxLayout="column" fxLayoutGap="6px" class="card-datos">
-                        <div class="borde-description">
+                        <div>
                             <o-row class="o-rows" class="titulo" attr="container" icon="route" mat
                             title="{{'ROUTE_NAME' | oTranslate }}" layout-align="start stretch"
                             aria-orientation="vertical" appearance="outline" style="border-radius: 10px; padding: 3px;">
@@ -46,12 +46,3 @@
     </div>
     </o-list>
 </div>
-
-
- <!-- <div><h2>Prueba de datos</h2>
-    <o-table attr="routeTable" service="routes" entity="route" keys="r.route_id"
-    columns="r.route_id;name;description;estimated_duration;difficulty;creation_date;img_code" row-height="large" pagination-controls= "yes" pageable="yes"
-    delete-button='yes' insert-button='no' refresh-button='yes' keys-sql-types="integer"
-    visible-columns="route_id;name;description;estimated_duration;difficulty;creation_date;img_code" query-rows="10" class="custom-table">
-</o-table>
-</div> -->

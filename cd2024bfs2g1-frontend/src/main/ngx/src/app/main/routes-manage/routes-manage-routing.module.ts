@@ -11,7 +11,7 @@ const routes: Routes = [
     path: '', component: ManageAllRoutesComponent,  data: {
       // oPermission: {
       //   permissionId: 'managepacks',
-      //   restrictedPermissionsRedirect: '403'
+      //   restrictedPermissionsRedirect: '403' 
       // }
     }
 
