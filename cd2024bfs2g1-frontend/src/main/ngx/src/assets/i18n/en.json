@@ -435,6 +435,9 @@
   "MESSAGES_ROUTE_UPDATE_ERROR": "There was an error updating the route",
   "MESSAGES_ROUTE_DELETE_SUCCESS": "Route deleted successfully",
   "MESSAGES_ROUTE_DELETE_ERROR": "There was an error deleting the route",
-  "MESSAGES_LANDMARK_DELETE":"Landmark deleted successfully"
+  "MESSAGES_LANDMARK_DELETE":"Landmark deleted successfully",
+  "ROUTE_INFO": "Route info",
+  "LANDMARKS": "Landmarks",
+  "LANDMARKDELETECONFIRMED":"Landmark deleted successfully"
 }
 

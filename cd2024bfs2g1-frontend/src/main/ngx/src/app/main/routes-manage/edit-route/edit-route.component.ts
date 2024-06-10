@@ -1,6 +1,6 @@
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OSnackBarConfig, OTableComponent, OntimizeService, SnackBarService } from 'ontimize-web-ngx';
+import { OSnackBarConfig, OTableComponent, OTranslateService, OntimizeService, SnackBarService } from 'ontimize-web-ngx';
 import { Landmark } from '../../routes/routes-new/view-all-landmark/landmark-model';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { OMapComponent } from 'ontimize-web-ngx-map';
@@ -18,7 +18,8 @@ export class EditRouteComponent{
 @ViewChild('landmarkTable') landmarkTable : OTableComponent
 
   constructor(
-    private snackBarService: SnackBarService
+    private snackBarService: SnackBarService,
+    private translate: OTranslateService
   ) {}
 
 
@@ -64,4 +65,18 @@ export class EditRouteComponent{
     };
     this.snackBarService.open("LANDMARKDELETECONFIRMED", config);
   }
+
+  public difficultyArray = [{
+    difficultyCode: 1,
+    difficultyText: this.translate.get("EASY")
+  }, {
+    difficultyCode: 2,
+    difficultyText:  this.translate.get("INTERMEDIATE")
+  }, {
+    difficultyCode: 3,
+    difficultyText:  this.translate.get("HARD")
+  }, {
+    difficultyCode: 4,
+    difficultyText:  this.translate.get("EXTREME")
+  }]
 }

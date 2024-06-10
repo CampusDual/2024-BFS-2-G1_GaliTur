@@ -386,7 +386,7 @@
   "ADD_ROUTES_AND_BUSINESSES":"Añadir rutas y negocios",
   "SCHEDULE_PACKAGE": "Agendar pack",
   "PACK-MANAGE": "Editor de packs",
-  "MAIN": "Packs",
+  "MAIN": "Inicio",
   "SHEDULED_PACKS":"Packs agendados",
   "ADD_SHEDULED_PACKS":"Añadir packs agendados",
   "PACKS_INFO": "Información de packs",
@@ -446,7 +446,10 @@
   "MESSAGES_ROUTE_UPDATE_ERROR": "Hubo un error al actualizar la ruta",
   "MESSAGES_ROUTE_DELETE_SUCCESS": "Ruta eliminada con éxito",
   "MESSAGES_ROUTE_DELETE_ERROR": "Hubo un error al eliminar la ruta",
-  "MESSAGES_LANDMARK_DELETE":"Punto de interes eliminado con éxito"
+  "MESSAGES_LANDMARK_DELETE":"Punto de interes eliminado con éxito",
+  "ROUTE_INFO": "Información de la ruta",
+  "LANDMARKS": "Puntos de interés",
+  "LANDMARKDELETECONFIRMED":"Punto de interés eliminado con éxito"
 }
 
 

@@ -145,7 +145,7 @@
 
                 <!-- Muestro todos las rutas en un grid -->
                 <div class="routes-container">
-                    <o-row class="o-row-o-grid-container" title="{{ 'ROUTES' | oTranslate }}" icon="map" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+                    <o-row class="o-row-o-grid-container" title="{{ 'ROUTES' | oTranslate }}" icon="route" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
                         <div class="o-grid-container">
                             <p *ngIf="gridRoutesOfPack.dataArray.length == 0" class="no-business-card">
                                 <span *ngIf="comboDays.getValue() != 0 && comboDays.getValue() != null">{{"NO_ROUTES_TODAY" | oTranslate}} {{comboDays.getValue()}} !</span>
