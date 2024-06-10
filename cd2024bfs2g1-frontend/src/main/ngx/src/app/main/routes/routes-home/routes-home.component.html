@@ -92,7 +92,7 @@
             <span class="tooltiptextHomeDuration">{{"estimated_duration" | oTranslate}}</span>
           </div>
           <span *ngIf="data.estimated_distance; else no_duration">
-            {{ convertTime() }}
+            {{ ConvertTime() }}
           </span>
           <ng-template #no_duration>
             <div class="tooltipHomeDuration">

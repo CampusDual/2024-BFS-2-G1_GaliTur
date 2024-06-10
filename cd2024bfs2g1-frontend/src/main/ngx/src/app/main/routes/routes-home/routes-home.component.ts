@@ -69,11 +69,9 @@ galleryOptions: any;
       });
     })
   }
-  public convertTime():  string {
-    // Convertir la distancia total a metros
+  public ConvertTime():  string {
     let totalMetros = (this.distanciaKm * 1000) + this.distanciaM;
 
-    // Asegúrate de usar la distancia total en metros para calcular minutos.
     let minutos = Math.floor(totalMetros * 0.011);
     if(minutos == 0){
       minutos = 1;
@@ -94,15 +92,17 @@ galleryOptions: any;
   }
 
   ConvertDistance(metros: number){
-  // Convertir metros a kilómetros
-  const kilometros = Math.floor(metros / 1000);
-  const metrosRestantes = metros % 1000;
+  let kilometros = Math.floor(metros / 1000);
+  let metrosRestantes = Number((metros % 1000).toFixed(1));
 
-  // Almacenar los valores en las propiedades de la clase
+  let metrosRestantesStr = metrosRestantes.toString();
+  let metrosRestantesDecimal = metrosRestantesStr.split('.')[0].slice(0, 2);
+
+  metrosRestantes = Number(metrosRestantesDecimal);
+  
   this.distanciaKm = kilometros;
   this.distanciaM = metrosRestantes;
 
-  // Construir la cadena de salida
   if (kilometros == 0 && metrosRestantes != 0) {
       return `${metrosRestantes}m`;
   } else if (kilometros != 0 && metrosRestantes == 0) {

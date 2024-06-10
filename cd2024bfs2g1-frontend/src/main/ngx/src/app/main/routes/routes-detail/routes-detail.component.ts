@@ -73,7 +73,7 @@ export class RoutesDetailComponent implements OnInit{
     }
 }
 
-public convertTime():  string {
+public ConvertTime():  string {
   // Convertir la distancia total a metros
   let totalMetros = (this.distanciaKm * 1000) + this.distanciaM;
 
@@ -99,43 +99,41 @@ public convertTime():  string {
 
 ConvertDistance(metros: number){
 // Convertir metros a kilómetros
-const kilometros = Math.floor(metros / 1000);
-const metrosRestantes = metros % 1000;
+  let kilometros = Math.floor(metros / 1000);
+  let metrosRestantes = metros % 1000;
 
-// Almacenar los valores en las propiedades de la clase
-this.distanciaKm = kilometros;
-this.distanciaM = metrosRestantes;
+  let metrosRestantesStr = metrosRestantes.toString();
+  let metrosRestantesDecimal = metrosRestantesStr.split('.')[0].slice(0, 2);
 
-// Construir la cadena de salida
-if (kilometros == 0 && metrosRestantes != 0) {
+  metrosRestantes = Number(metrosRestantesDecimal);
+
+  this.distanciaKm = kilometros;
+  this.distanciaM = metrosRestantes;
+
+  // Construir la cadena de salida
+  if (kilometros == 0 && metrosRestantes != 0) {
     return `${metrosRestantes}m`;
-} else if (kilometros != 0 && metrosRestantes == 0) {
+  } else if (kilometros != 0 && metrosRestantes == 0) {
     return `${kilometros}km`;
-} else if (kilometros != 0 && metrosRestantes != 0) {
+  } else if (kilometros != 0 && metrosRestantes != 0) {
     return `${kilometros},${metrosRestantes}km`;
-} else {
+  } else {
     return '0m';
-}
-}
-
-    getIconColorClass(difficulty: number): string {
-      switch(difficulty) {
-        case 1:
-            return 'icon-difficulty-1';
-        case 2:
-            return 'icon-difficulty-2';
-        case 3:
-            return 'icon-difficulty-3';
-        case 4:
-            return 'icon-difficulty-4';
-
-    }
-
   }
+}
 
-
-
-
+getIconColorClass(difficulty: number): string {
+  switch(difficulty) {
+    case 1:
+      return 'icon-difficulty-1';
+    case 2:
+      return 'icon-difficulty-2';
+    case 3:
+      return 'icon-difficulty-3';
+    case 4:
+      return 'icon-difficulty-4';
+    }
+  }
 
 getDifficultad(difficulty: number): string {
   switch(difficulty) {
@@ -147,6 +145,6 @@ getDifficultad(difficulty: number): string {
         return 'Dificultad: Difícil';
     case 4:
         return 'Dificultad: Extremo';
-}
-}
+    }
+  }
 }
