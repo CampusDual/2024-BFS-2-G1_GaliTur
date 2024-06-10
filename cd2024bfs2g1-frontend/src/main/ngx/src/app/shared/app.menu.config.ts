@@ -4,7 +4,7 @@ import { BusinessHomeComponent } from '../main/business/business-home/business-h
 export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'home', name: 'HOME', icon: 'home', route: '/main/home' },
   { id: 'home-public', name: 'HOME', icon: 'home', route: '/home' },
-  
+
   {  id: 'packssolo', name: 'PACKS', route: '/main/packs', icon: 'hiking'},
   { id: 'packs-public', name: 'PACKS', route: '/packs', icon: 'inventory_2'},
   { id: 'packmd', name: 'PACKS', icon: 'hiking',
@@ -14,9 +14,9 @@ export const MENU_CONFIG: MenuRootItem[] = [
       { id: 'mypacks', name: 'MYPACKS', route: '/main/pack-client', icon: 'backpack' },
       { id: 'managepacks', name: 'MANAGEPACKS', route: '/main/pack-manage', icon: 'settings' },
     ]
-    },
-    {id: 'routessolo', name: 'ROUTES', icon: 'route', route: '/main/routes'},
-    {id: 'routes-public', name: 'ROUTES', icon: 'route', route: '/routes'},
+  },
+  {id: 'routessolo', name: 'ROUTES', icon: 'route', route: '/main/routes'},
+  {id: 'routes-public', name: 'ROUTES', icon: 'route', route: '/routes'},
   { id: 'routesmd', name: 'ROUTES', icon: 'route',
     items: [
       {id: 'routesnew', name: 'ROUTESNEW', icon: 'add', route: '/main/routes/new'},
@@ -27,13 +27,14 @@ export const MENU_CONFIG: MenuRootItem[] = [
   {id: 'businessessolo', name: 'BUSINESSES', route: '/main/businesses', icon: 'business'},
   {id: 'businesses-public', name: 'BUSINESSES', route: '/businesses', icon: 'business'},
   { id: 'businessesmd', name: 'BUSINESSES', icon: 'business',
-  items: [
-    {id: 'businessesnew', name: 'BUSINESSESNEW', route: '/main/businesses/new', icon: 'add'},
-    {id: 'businesses', name: 'BUSINESSES', route: '/main/businesses', icon: 'business'},
-    
-  ]
+    items: [
+      {id: 'businessesnew', name: 'BUSINESSESNEW', route: '/main/businesses/new', icon: 'add'},
+      {id: 'businesses', name: 'BUSINESSES', route: '/main/businesses', icon: 'business'},
+      { id: 'mybusinesses', name: 'MY-BUSINESSES', route: '/main/business-merchant', icon: 'insert_chart' },
+
+    ]
   },
-{ id: 'graphics', name: 'GRAPHICS', route: '/main/graphics', icon: 'bar_chart'},
+  { id: 'graphics', name: 'GRAPHICS', route: '/main/graphics', icon: 'bar_chart'},
   {
     id: 'admin', name: 'ADMIN', icon: 'admin_panel_settings',
     items: [
