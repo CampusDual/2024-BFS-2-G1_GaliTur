@@ -296,3 +296,9 @@
 .clockTooltip {
   color: #84A45A;
 }
+
+:host ::ng-deep .o-container-title {
+  .mat-icon {
+    color: #84A45A !important;
+  }
+}
