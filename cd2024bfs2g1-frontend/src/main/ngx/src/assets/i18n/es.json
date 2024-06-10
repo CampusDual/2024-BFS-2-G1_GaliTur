@@ -427,7 +427,9 @@
   "CLEAR_SEARCH": "Eliminar búsqueda",
   "NO_ESTIMATED_DISTANCE": "Sin distancia estimada",
   "ESTIMATED_DISTANCE": "Distancia estimada",
-  "BSN.DELETED": "Negocio borrado correctamente"
+  "BSN.DELETED": "Negocio borrado correctamente",
+  "CANCEL-DELETE-BSN-DIALOG": "Borrar negocio",
+  "CANCEL-DELETE-BSN-DIALOG-B": "Este negocio está asignado a un pack, ¿Está seguro de que desea borrarlo?"
 }
 
 

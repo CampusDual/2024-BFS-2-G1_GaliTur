@@ -1,7 +1,7 @@
 import { Component, Inject, Injector, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OFormComponent, OSnackBarConfig, OTableComponent, OntimizeService, SnackBarService } from 'ontimize-web-ngx';
+import { DialogService, ODialogConfig, OFormComponent, OSnackBarConfig, OTableComponent, OTranslateService, OntimizeService, SnackBarService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-business-merchant-detail',
@@ -20,6 +20,8 @@ export class BusinessMerchantDetailComponent implements OnInit {
     protected injector: Injector,
     protected bsnService: OntimizeService,
     protected snackBarService: SnackBarService,
+    private oTranslate: OTranslateService,
+    protected dialogService: DialogService
   ) {
     this.bsnService = this.injector.get(OntimizeService);
 
@@ -48,6 +50,54 @@ export class BusinessMerchantDetailComponent implements OnInit {
     const languageArray = languages.split(',');
     return languageArray[languageArray.length - 1].trim() === languageKey.trim();
   }
+
+  confirmDeleteBsn(data){
+
+    const confBusiness = this.bsnService.getDefaultServiceConfiguration("businesses");          
+    this.bsnService.configureService(confBusiness);
+
+
+
+    this.bsnService.query(
+      {"b.bsn_id": data[0].bsn_id},["bsn_pack_id"],"businessOfPack")
+      .subscribe((result) => {
+        if (result.data.length) {
+        
+          this.confirmDeleteDialog(data);
+        }else{
+
+          this.deleteBsn(data);
+
+        }
+      });
+
+
+  }
+
+
+  confirmDeleteDialog(data) {
+    const config: ODialogConfig = {
+      icon: "warning",
+      alertType: "warn",
+    };
+ 
+    if (this.dialogService) {
+      this.dialogService.confirm(
+        this.oTranslate.get("CANCEL-DELETE-BSN-DIALOG"),
+        this.oTranslate.get("CANCEL-DELETE-BSN-DIALOG-B"),
+        config
+      );
+      this.dialogService.dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          this.deleteBsn(data);
+          // Actions on confirmation
+        } else {
+          // Actions on cancellation
+        }
+      });
+    }
+  }
+
 
   deleteBsn(data) {
 
