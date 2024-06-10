@@ -437,7 +437,13 @@
   "ROUTE_TABLE": "Lista de rutas",
   "ROUTE_NAME": "Nombre de la ruta",
   "ROUTE-MANAGE": "Editor de rutas",
-  "DRAFT": "Borrador"
+  "DRAFT": "Borrador",
+  "MESSAGES_ROUTE_INSERT_ERROR": "Hubo un error al insertar la ruta",
+  "MESSAGES_ROUTE_UPDATE_SUCCESS": "Ruta actualizada con éxito",
+  "MESSAGES_ROUTE_UPDATE_ERROR": "Hubo un error al actualizar la ruta",
+  "MESSAGES_ROUTE_DELETE_SUCCESS": "Ruta eliminada con éxito",
+  "MESSAGES_ROUTE_DELETE_ERROR": "Hubo un error al eliminar la ruta",
+  "MESSAGES_LANDMARK_DELETE":"Punto de interes eliminado con éxito"
 }
 
 

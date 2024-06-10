@@ -136,7 +136,7 @@
     "FREEROOMS": "Habitacións Dispoñibles",
     "FREESERVICES": "Servizos Dispoñibles",
     "GUIDEINFO": "Información da guía",
-    "AgencyGuide": "Guía de axencias",
+    "AgencyGuide": "Axencia de guías",
     "Lodging": "Aloxamento",
     "Restaurant": "Restaurante",
     "PASSWORD_TITLE": "Introduce un contrasinal seguro (mínimo 8 caracteres, incluíndo unha maiúscula, unha minúscula, un número e un carácter especial mínimo)",
@@ -385,7 +385,7 @@
     "EDIT": "Editar",
     "ADD_DATES": "Engadir Datas",
     "ADD_ROUTES_AND_BUSINESSES": "Engadir Rutas e Negocios",
-    "SCHEDULE_PACKAGE": "Axendar Paquete",
+    "SCHEDULE_PACKAGE": "Axendar Pack",
     "PACK-MANAGE": "Editor de Packs",
     "MAIN": "Inicio",
     "SHEDULED_PACKS": "Packs Axendados",
@@ -672,7 +672,13 @@
     "ROUTE_TABLE": "Lista de rutas",
     "ROUTE_NAME": "Nome da ruta",
     "ROUTE-MANAGE": "Editor de rutas",
-    "DRAFT": "Bosquexo"
-}
+    "DRAFT": "Bosquexo",
+    "MESSAGES_ROUTE_INSERT_ERROR": "Houbo un erro ao inserir a ruta",
+    "MESSAGES_ROUTE_UPDATE_SUCCESS": "Ruta actualizada con éxito",
+    "MESSAGES_ROUTE_UPDATE_ERROR": "Houbo un erro ao actualizar a ruta",
+    "MESSAGES_ROUTE_DELETE_SUCCESS": "Ruta eliminada con éxito",
+    "MESSAGES_ROUTE_DELETE_ERROR": "Houbo un erro ao eliminar a ruta",
+    "MESSAGES_LANDMARK_DELETE":"Punto de interese eliminado con éxito"
+  }
 
 
