@@ -1,7 +1,7 @@
 <o-breadcrumb [form]="myList" label-columns="pck_name" separator=" "></o-breadcrumb>
 <div class="fondo">
     <o-form attr="routeTable" #myList include-breadcrumb="true" service="routes" entity="route" keys="route_id"
-        show-header="yes" message-service-type="customMessageManageRoute" show-header-navigation="no"
+        show-header="yes" message-service-type="customMessageServiceTypeRoutes" show-header-navigation="no"
         class="custom-form">
         <o-text-input attr="route_id" sql-type="INTEGER" enabled="no" show-header-navigation="no"
             oHidden></o-text-input>
@@ -29,7 +29,7 @@
                             </div>
                             <o-table #landmarkTable attr="landmarkTable" service="landmarks"  entity="landmark" keys="route_landmark_id;l.landmark_id"
                     parent-keys="route_id" (onClick)="onClickLandmark($event)" (onRowDeleted)="onDeleteLandMark()"
-                    columns="l.landmark_id;name;coordinates;description;route_landmark_id" message-service-type="CustomMessageServiceLandmarks"
+                    columns="l.landmark_id;name;coordinates;description;route_landmark_id"
                     visible-columns="name;coordinates" query-rows="10" select-all-checkbox="yes" filter-case-sensitive="yes"
                     export-button="no" insert-button="yes" delete-button="yes" refresh-button="no" fixed-header="yes"
                     detail-mode="none" export-mode="local" class="custom-table"

@@ -662,12 +662,17 @@
     "SAVE": "Gardar",
     "NO_ESTIMATED_DISTANCE": "Sen distancia estimada",
     "ESTIMATED_DISTANCE": "Distancia estimada",
-    "SAVE": "Gardar",
     "MANAGEROUTE": "Xestión de rutas",
     "ROUTE_TABLE": "Lista de rutas",
     "ROUTE_NAME": "Nome da ruta",
     "ROUTE-MANAGE": "Editor de rutas",
-    "DRAFT": "Bosquexo"
+    "DRAFT": "Bosquexo",
+    "MESSAGES_ROUTE_INSERT_ERROR": "Houbo un erro ao inserir a ruta",
+    "MESSAGES_ROUTE_UPDATE_SUCCESS": "Ruta actualizada con éxito",
+    "MESSAGES_ROUTE_UPDATE_ERROR": "Houbo un erro ao actualizar a ruta",
+    "MESSAGES_ROUTE_DELETE_SUCCESS": "Ruta eliminada con éxito",
+    "MESSAGES_ROUTE_DELETE_ERROR": "Houbo un erro ao eliminar a ruta",
+    "MESSAGES_LANDMARK_DELETE":"Punto de interese eliminado con éxito"
   }
 
 

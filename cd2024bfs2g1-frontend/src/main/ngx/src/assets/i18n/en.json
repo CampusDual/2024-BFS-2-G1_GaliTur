@@ -420,6 +420,12 @@
   "ROUTE_TABLE": "List of routes",
   "ROUTE_NAME": "Route Name",
   "ROUTE-MANAGE": "Route editor",
-  "DRAFT": "Draft"
+  "DRAFT": "Draft",
+  "MESSAGES_ROUTE_INSERT_ERROR": "There was an error inserting the route",
+  "MESSAGES_ROUTE_UPDATE_SUCCESS": "Route updated successfully",
+  "MESSAGES_ROUTE_UPDATE_ERROR": "There was an error updating the route",
+  "MESSAGES_ROUTE_DELETE_SUCCESS": "Route deleted successfully",
+  "MESSAGES_ROUTE_DELETE_ERROR": "There was an error deleting the route",
+  "MESSAGES_LANDMARK_DELETE":"Landmark deleted successfully"
 }
 
