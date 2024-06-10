@@ -19,10 +19,10 @@ galleryOptions: any;
   constructor(
     protected dialog: MatDialog,
     protected sanitizer: DomSanitizer,
-    private imageService: ImageService
-  ) { }
-    private ontimizerouteService: OntimizeService
+    private imageService: ImageService,
+    private ontimizerouteService: OntimizeService,
     private activeRoute: ActivatedRoute
+  ) { }
 
   ngAfterViewInit(): void {
     const idRutaActual = +this.getRouteId();
@@ -68,14 +68,11 @@ galleryOptions: any;
     })
   }
   public convertTime(metros: number):  string {
-    let totalMetros = metros;
 
-    let minutos = Math.floor(totalMetros * 0.011);
+    let minutos = Math.floor(metros * 0.011);
     if(minutos == 0){
       minutos = 1;
     }
-
-    console.log(minutos);
 
     const horas = Math.floor(minutos / 60);
     const minutosRestantes = minutos % 60;

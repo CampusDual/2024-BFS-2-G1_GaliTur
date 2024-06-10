@@ -73,16 +73,10 @@ export class RoutesDetailComponent implements OnInit{
 }
 
 public convertTime(metros: number):  string {
-  // Convertir la distancia total a metros
-  let totalMetros = metros;
-
-  // Asegúrate de usar la distancia total en metros para calcular minutos.
-  let minutos = Math.floor(totalMetros * 0.011);
+  let minutos = Math.floor(metros * 0.011);
   if(minutos == 0){
     minutos = 1;
   }
-
-  console.log(minutos);
 
   const horas = Math.floor(minutos / 60);
   const minutosRestantes = minutos % 60;
