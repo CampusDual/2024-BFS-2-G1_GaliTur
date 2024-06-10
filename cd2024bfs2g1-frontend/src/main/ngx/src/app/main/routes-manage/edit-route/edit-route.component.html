@@ -46,11 +46,13 @@
                         </div>
                     </div>
                 </div>
-                <div fxLayout="column" class="landmark-map" *ngIf="actualCoordinates">
+                <div>
+                    <div fxLayout="column" [ngClass]="{'landmark-map':mostrarMapa}" *ngIf="actualCoordinates">
                   <o-map #oMap *ngIf="mostrarMapa" attr="mapInput" center="{{actualCoordinates}}" zoom="8" min-zoom="3" max-zoom="20" zoom-control="yes"
                   search-control="no" layer-panel-visible="no" fxFlex >
                   <o-map-crs crs="EPSG:4326"></o-map-crs>
               </o-map>
+                </div>
                 </div>
             </div>
         </div>
