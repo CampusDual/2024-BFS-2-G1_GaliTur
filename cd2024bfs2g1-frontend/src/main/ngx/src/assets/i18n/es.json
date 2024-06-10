@@ -426,7 +426,9 @@
   "POPULAR_PACKS_SUBTITLE": "¡Echa un vistazo a los packs favoritos de nuestros usuarios!",
   "MY-BUSINESSES": "Mis negocios",
   "SEARCH": "Buscar",
-  "CLEAR_SEARCH": "Eliminar búsqueda"
+  "CLEAR_SEARCH": "Eliminar búsqueda",
+  "NO_ESTIMATED_DISTANCE": "Sin distancia estimada",
+  "ESTIMATED_DISTANCE": "Distancia estimada"
 }
 
 
