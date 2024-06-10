@@ -133,6 +133,11 @@ public class RouteService  implements IRouteService {
     }
 
     @Override
+    public AdvancedEntityResult routeNotDraftPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy) throws OntimizeJEERuntimeException {
+        return this.daoHelper.paginationQuery(this.routeDao, keysValues, attributes, recordNumber, startIndex, orderBy, RouteDao.QUERY_ROUTE_NOT_DRAFT);
+    }
+
+    @Override
     public EntityResult routesOfPackQuery(Map<String, Object> keyMap, List<String> attrList) {
         return this.daoHelper.query(routeDao, keyMap, attrList, routeDao.QUERY_ROUTES_OF_PACK);
     }

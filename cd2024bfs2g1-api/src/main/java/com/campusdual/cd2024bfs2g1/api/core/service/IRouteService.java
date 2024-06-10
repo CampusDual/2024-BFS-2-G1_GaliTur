@@ -29,6 +29,8 @@ public interface IRouteService {
 
     AdvancedEntityResult routePaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy);
 
+    AdvancedEntityResult routeNotDraftPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy) throws OntimizeJEERuntimeException;
+
     EntityResult routesOfPackQuery(Map<String, Object> keyMap, List<String> attrList);
 
     EntityResult routeUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
