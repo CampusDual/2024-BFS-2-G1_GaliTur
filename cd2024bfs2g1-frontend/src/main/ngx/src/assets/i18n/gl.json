@@ -136,7 +136,7 @@
     "FREEROOMS": "Habitacións Dispoñibles",
     "FREESERVICES": "Servizos Dispoñibles",
     "GUIDEINFO": "Información da guía",
-    "AgencyGuide": "Axencia de guías",
+    "AgencyGuide": "Guía de axencias",
     "Lodging": "Aloxamento",
     "Restaurant": "Restaurante",
     "PASSWORD_TITLE": "Introduce un contrasinal seguro (mínimo 8 caracteres, incluíndo unha maiúscula, unha minúscula, un número e un carácter especial mínimo)",
@@ -654,6 +654,8 @@
     "CONTEXTMENU.ZOOM_IN": "Acercar",
     "CONTEXTMENU.ZOOM_OUT": "Afastar",
     "COMBO-BOX-DAYS-DESC": "O día que selecciones mostrarán as rutas e os negocios dispoñibles no día seleccionado.",
+    "POPULAR_PACKS": "Packs populares",
+    "POPULAR_PACKS_SUBTITLE": "Botalle unha ollada aos pack favoritos dos nosos usuarios!",
     "MY-BUSINESSES": "Os meus negocios",
     "UNDO": "Desfacer",
     "FOUND": "Atopados",
@@ -662,12 +664,15 @@
     "SAVE": "Gardar",
     "NO_ESTIMATED_DISTANCE": "Sen distancia estimada",
     "ESTIMATED_DISTANCE": "Distancia estimada",
-    "SAVE": "Gardar",
+    "NO_ROUTES_TODAY": "Non hai rutas o día",
+    "NO_ROUTES_IN_PACK": "Neste pack non hai rutas !",
+    "NO_BUSINESS_TODAY": "Non hai negocios o día",
+    "NO_BUSINESS_IN_PACK": "Neste pack non hai negocios !",
     "MANAGEROUTE": "Xestión de rutas",
     "ROUTE_TABLE": "Lista de rutas",
     "ROUTE_NAME": "Nome da ruta",
     "ROUTE-MANAGE": "Editor de rutas",
     "DRAFT": "Bosquexo"
-  }
+}
 
 

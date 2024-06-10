@@ -2,7 +2,7 @@
 
 
     <o-button class="back-button" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary"
-        (click)="openPacks()"></o-button>
+        (click)="backToHome()"></o-button>
 
 
     <mat-card class="mainCard"
@@ -148,8 +148,8 @@
                     <o-row class="o-row-o-grid-container" title="{{ 'ROUTES' | oTranslate }}" icon="map" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
                         <div class="o-grid-container">
                             <p *ngIf="gridRoutesOfPack.dataArray.length == 0" class="no-business-card">
-                                <span *ngIf="comboDays.getValue() != 0 && comboDays.getValue() != null">No hay rutas el día {{comboDays.getValue()}} !</span>
-                                <span *ngIf="comboDays.getValue() == 0 || comboDays.getValue() == null">En este pack no hay rutas !</span>
+                                <span *ngIf="comboDays.getValue() != 0 && comboDays.getValue() != null">{{"NO_ROUTES_TODAY" | oTranslate}} {{comboDays.getValue()}} !</span>
+                                <span *ngIf="comboDays.getValue() == 0 || comboDays.getValue() == null">{{"NO_ROUTES_IN_PACK" | oTranslate}}</span>
                             </p>
                             <o-grid *ngIf="gridRoutesOfPack.dataArray.length > 0" opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false"
                             show-page-size="false" disable-page-size-calculation="true" cols="2" gutter-size="1px" grid-item-height="215px">
@@ -184,8 +184,8 @@
                     <o-row class="o-row-o-grid-container" title="{{ 'BUSINESSES' | oTranslate }}" icon="business" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
                         <div class="o-grid-container">
                             <p *ngIf="gridBusinessesOfPack.dataArray.length == 0" class="no-business-card">
-                                <span *ngIf="comboDays.getValue() != 0 && comboDays.getValue() != null">No hay negocios el día {{comboDays.getValue()}} !</span>
-                                <span *ngIf="comboDays.getValue() == 0 || comboDays.getValue() == null">En este pack no hay negocios !</span>
+                                <span *ngIf="comboDays.getValue() != 0 && comboDays.getValue() != null">{{"NO_BUSINESS_TODAY"|oTranslate}} {{comboDays.getValue()}} !</span>
+                                <span *ngIf="comboDays.getValue() == 0 || comboDays.getValue() == null">{{"NO_BUSINESS_IN_PACK"|oTranslate}}</span>
                             </p>
                             <o-grid *ngIf="gridBusinessesOfPack.dataArray.length > 0" opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false"
                             show-page-size="false" disable-page-size-calculation="true" no cols="2" gutter-size="1px" grid-item-height="245px">
