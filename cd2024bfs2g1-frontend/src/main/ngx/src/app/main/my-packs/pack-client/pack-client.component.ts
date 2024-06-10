@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { OGridComponent, OntimizeService } from 'ontimize-web-ngx';
 import { Router } from '@angular/router';
 import { PackHomeComponent } from '../../pack/pack-home/pack-home.component';
+import { PackValorationComponent } from '../pack-valoration/pack-valoration.component';
 
 @Component({
   selector: 'app-business-home',
@@ -63,6 +64,16 @@ export class PackClientComponent {
     return tempFecha.toLocaleDateString();
   }
 
+  openValoration(stars: Number, data: any): void{
+    this.dialog.open(PackValorationComponent, {
+      height: '40%',
+      width: '40%',
+      data: {
+        stars: stars,
+        data: data
+      }
+    })
+  }
 
 
 }
