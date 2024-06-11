@@ -19,8 +19,22 @@ const routes: Routes = [
       }
     }
   },
-  { path: 'new/:route_id', component: ViewAllLandmarkComponent},
-  { path: 'new/:route_id/:landmark_id', component: AddLandmarkComponent},
+  { path: 'new/:route_id', component: ViewAllLandmarkComponent,
+    data: {
+      oPermission: {
+        permissionId: "RoutesNew",
+        restrictedPermissionsRedirect: 403
+      }
+    }
+  },
+  { path: 'new/:route_id/:landmark_id', component: AddLandmarkComponent,
+    data: {
+      oPermission: {
+        permissionId: "RoutesNew",
+        restrictedPermissionsRedirect: 403
+      }
+    }
+  },
   { path: ':route_id', component: RoutesHomeComponent},
  
   

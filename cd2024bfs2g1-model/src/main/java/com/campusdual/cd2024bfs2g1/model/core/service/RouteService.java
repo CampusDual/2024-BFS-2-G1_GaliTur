@@ -194,7 +194,7 @@ public class RouteService  implements IRouteService {
         if(!routePack.isEmpty()){
             for (Object iter : ((ArrayList)routePack.get(routePackDao.ROUTE_PACK_ID))) {
                 Map routePackDeleteMap = new HashMap<String,Object>();
-                routePackDeleteMap.put("route_pack_id",
+                routePackDeleteMap.put(routePackDao.ROUTE_PACK_ID,
                         iter);
                 this.daoHelper.delete(routePackDao, routePackDeleteMap);
             }

@@ -7,12 +7,14 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./show-packs-confirm-delete.component.css']
 })
 export class ShowPacksConfirmDeleteComponent {
+
+  mensaje: string=''
+  packs: [] = []
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any){
     this.mensaje = data.mensaje
     this.packs = data.packs
     console.log("packs :", this.packs)
   }
 
-  mensaje: string=''
-  packs: [] = []
 }

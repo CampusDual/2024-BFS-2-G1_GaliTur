@@ -9,18 +9,30 @@ import { AddLandmarkComponent } from '../routes/routes-new/add-landmark/add-land
 const routes: Routes = [
   {
     path: '', component: ManageAllRoutesComponent,  data: {
-      // oPermission: {
-      //   permissionId: 'managepacks',
-      //   restrictedPermissionsRedirect: '403' 
-      // }
+       oPermission: {
+         permissionId: 'manageroutes',
+         restrictedPermissionsRedirect: '403' 
+       }
     }
 
   },
   {
     path: ':route_id', component: EditRouteComponent,
+    data: {
+      oPermission: {
+        permissionId: 'manageroutesedit',
+        restrictedPermissionsRedirect: '403' 
+      }
+   }
   },
   {
-    path: ':route_id/:landmark_id', component: AddLandmarkComponent
+    path: ':route_id/:landmark_id', component: AddLandmarkComponent,
+    data: {
+      oPermission: {
+        permissionId: 'managerlandmarkadd',
+        restrictedPermissionsRedirect: '403' 
+      }
+   }
   },
 ];
 

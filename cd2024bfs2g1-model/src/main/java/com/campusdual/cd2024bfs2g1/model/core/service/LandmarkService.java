@@ -44,9 +44,9 @@ public class LandmarkService implements ILandmarkService {
 
     @Override
     public EntityResult landmarkOfRouteQuery(Map<String, Object> keyMap, List<String> attrList) {
-        if(keyMap.containsKey("route_id")){
-            Object route_id = keyMap.remove("route_id");
-            keyMap.put("r.route_id",Integer.parseInt(route_id+""));
+        if(keyMap.containsKey(routeLandmarkDao.ATTR_ROUTE_ID)){
+            Object route_id = keyMap.remove(routeLandmarkDao.ATTR_ROUTE_ID);
+            keyMap.put("r."+routeLandmarkDao.ATTR_ROUTE_ID,Integer.parseInt(route_id+""));
         }
         EntityResult aux = this.daoHelper.query(landmarkDao, keyMap, attrList, LandmarkDao.QUERY_LANDMARKS);
         return aux;
@@ -56,27 +56,12 @@ public class LandmarkService implements ILandmarkService {
     public EntityResult landmarkInsert(Map<String, Object> attrMap) {
         EntityResult insertLandmarkId = this.daoHelper.insert(landmarkDao, attrMap);
         Map<String,Object> landmarkRouteMapAttr=new HashMap();
-        //TODO uso posterior en el siguiente sprint
-//        Map<String,Object> imageMapAttr=new HashMap();
-//        if (attrMap.get("images")!=null) {
-//            imageMapAttr.put(ImageDao.ATTR_IMAGE_CODE,attrMap.get("images"));
-//            EntityResult image_id_entity = this.daoHelper.insert(imageDao, imageMapAttr);
-//            insertImageAux(insertLandmarkId.get(LandmarkDao.ATTR_ID),image_id_entity.get(ImageDao.ATTR_IMAGE_ID));
-//        }
         if (attrMap.get("inputIdRoute")!=null) {
             landmarkRouteMapAttr.put(RouteDao.ATTR_ID,attrMap.get("inputIdRoute"));
             landmarkRouteMapAttr.put(LandmarkDao.ATTR_ID, insertLandmarkId.get(LandmarkDao.ATTR_ID));
         }
         return this.daoHelper.insert(routeLandmarkDao, landmarkRouteMapAttr);
     }
-
-    //TODO uso posterior en el siguiente sprint
-//    public EntityResult insertImageAux(Object id_landmark,Object id_image) {
-//        Map<String,Object> imageLandmarkMapAttr=new HashMap();
-//        imageLandmarkMapAttr.put(LandmarkDao.ATTR_ID, id_landmark);
-//        imageLandmarkMapAttr.put(ImageDao.ATTR_IMAGE_ID, id_image);
-//        return this.daoHelper.insert(imageLandmarkDao, imageLandmarkMapAttr);
-//    }
 
     @Override
     public EntityResult landmarkDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
