@@ -37,7 +37,7 @@
          <!--Packs contratados por precio-->
         <div class="chart-row" fxLayout="column">
             <div fxLayout="column" class="name-graphics" >
-                <p ><strong class="name">{{"Packs by price" | oTranslate}}</strong></p>
+                <p ><strong class="name">{{"Packs_by_price" | oTranslate}}</strong></p>
             </div>
             <div fxLayout="column" class="view-chart">
                 <o-chart  type="discreteBar" service="packs" entity="packByPrice" y-axis="packs" query-on-init="yes" x-axis="rango" [color]="colors">
@@ -49,7 +49,7 @@
          <!--Tipos de negocios-->
         <div class="chart-row" fxLayout="column">
             <div fxLayout="column" class="name-graphics" >
-                <p ><strong class="name">{{"Types of bussiness" | oTranslate}}</strong></p>
+                <p ><strong class="name">{{"Types_of_bussiness" | oTranslate}}</strong></p>
             </div>
             <div fxLayout="column" class="view-chart">
                 <o-chart  type="stackedAreaChart" service="businesses" entity="typesOfBusinesses" y-axis="cantidad" query-on-init="yes" x-axis="bsn_type" [color]="colors">
@@ -59,7 +59,7 @@
         <!--Packs por estación-->
         <div class="chart-row" fxLayout="column">
             <div fxLayout="column" class="name-graphics" >
-                <p ><strong class="name">{{"Packs by station" | oTranslate}}</strong></p>
+                <p ><strong class="name">{{"Packs_by_station" | oTranslate}}</strong></p>
             </div>
             <div fxLayout="column" class="view-chart">
                 <o-chart  type="stackedAreaChart" service="packs" entity="packByStation" y-axis="cantidad" query-on-init="yes" x-axis="estacion" [color]="colors">
@@ -71,7 +71,7 @@
         <!--Top 5 packs mas valorados-->
         <div class="chart-row" fxLayout="column">
             <div fxLayout="column" class="name-graphics" >
-                <p ><strong class="name">{{"Top 5 most valuated packs" | oTranslate}}</strong></p>
+                <p ><strong class="name">{{"Top_most_valuated_packs" | oTranslate}}</strong></p>
             </div>
             <div fxLayout="column" class="view-chart">
                 <o-chart  type="discreteBar" service="packBookings" entity="topMostPacks" y-axis="media" query-on-init="yes" x-axis="pck_name" [color]="colors">
@@ -81,7 +81,7 @@
          <!--Top 5 packs mas valorados-->
          <div class="chart-row" fxLayout="column">
             <div fxLayout="column" class="name-graphics" >
-                <p ><strong class="name">{{"Top 5 least rated packs" | oTranslate}}</strong></p>
+                <p ><strong class="name">{{"Top_least_rated_packs" | oTranslate}}</strong></p>
             </div>
             <div fxLayout="column" class="view-chart">
                 <o-chart  type="discreteBar" service="packBookings" entity="topLeastPacks" y-axis="media" query-on-init="yes" x-axis="pck_name" [color]="colors">

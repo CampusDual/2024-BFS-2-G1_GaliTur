@@ -228,7 +228,7 @@
     "DATERANGE.APPLYLABEL": "Seleccionar data",
     "DATERANGE.W": "S",
     "COMBO_DIFFICULTY": "Seleccione dificultade",
-    "EASY": "Doado",
+    "EASY": "Fácil",
     "INTERMEDIATE": "Intermedio",
     "HARD": "Difícil",
     "EXTREME": "Extremo",
@@ -673,11 +673,11 @@
     "Contracted_packs_according_to_the_province": "Packs contratados segundo a provincia",
     "Routes_according_to_difficulty": "Número de rutas segundo a súa dificultade.",
     "Contracted_packs_per_days": "Número de días que teñen os paquetes.",
-    "Types of bussiness":"Número de tipos de empresas.",
-    "Packs by station":"Packs creados segundo a estación.",
-    "Top 5 most valuated packs": "Os packs máis valorados.",
-    "Packs by price":"Precio dos packs. (€)",
-    "Top 5 least rated packs":"Os packs menos valorados."
+    "Types_of_bussiness":"Número de tipos de empresas.",
+    "Packs_by_station":"Packs creados segundo a estación.",
+    "Top_most_valuated_packs": "Os packs máis valorados.",
+    "Packs_by_price":"Precio dos packs. (€)",
+    "Top_least_rated_packs":"Os packs menos valorados."
     
   }
 

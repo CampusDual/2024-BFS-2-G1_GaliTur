@@ -431,10 +431,10 @@
   "Contracted_packs_according_to_the_province": "Contracted packs according to the province.",
   "Routes_according_to_difficulty": "Number of routes according to difficultty.",
   "Contracted_packs_per_days": "Number of days the packs have.",
-  "Types of bussiness":"Number of business types.",
-  "Packs by station":"Packs created according to the season.",
-  "Top 5 most valuated packs": "Top most valuated packs.",
-  "Packs by price":"Price of the packs. (€)",
-  "Top 5 least rated packs":"Top least rated packs."
+  "Types_of_bussiness":"Number of business types.",
+  "Packs_by_station":"Packs created according to the season.",
+  "Top_most_valuated_packs": "Top most valuated packs.",
+  "Packs_by_price":"Price of the packs. (€)",
+  "Top_least_rated_packs":"Top least rated packs."
 }
 
