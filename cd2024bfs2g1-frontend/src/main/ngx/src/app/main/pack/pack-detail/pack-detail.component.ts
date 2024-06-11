@@ -338,5 +338,27 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
     }
   }
 
+  //Metodo para pasar a Km las distanecia guardada en m
+  convertDistance(metros: number){
+    let kilometros = Math.floor(metros / 1000);
+    let metrosRestantes = Number((metros % 1000).toFixed(1));
+  
+    let metrosRestantesStr = metrosRestantes.toString();
+    let metrosRestantesDecimal = metrosRestantesStr.split('.')[0].slice(0, 2);
+  
+    metrosRestantes = Number(metrosRestantesDecimal);
+    
+  
+    if (kilometros == 0 && metrosRestantes != 0) {
+        return `${metrosRestantes}m`;
+    } else if (kilometros != 0 && metrosRestantes == 0) {
+        return `${kilometros}km`;
+    } else if (kilometros != 0 && metrosRestantes != 0) {
+        return `${kilometros},${metrosRestantes}km`;
+    } else {
+        return '0m';
+    }
+  }
+
   
 }
