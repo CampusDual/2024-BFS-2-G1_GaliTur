@@ -23,7 +23,8 @@
 
     <div *ngIf="popularsPackGrid.dataArray.length < 1 || popularsPackGrid.dataArray.length == null" class="blank-div"></div>
 
-    <div class="grid-container" *ngIf="popularsPackGrid.dataArray.length > 0">
+    <div><mat-icon (click)="openPopularPacks()" class="down-icon">arrow_downward</mat-icon></div>
+    <div id="visibleGrid" class="grid-container" *ngIf="popularsPackGrid.dataArray.length > 0">
       <div class="popularPacks-title-container">
         <p class="title">{{'POPULAR_PACKS' |oTranslate }}</p>
       </div>
@@ -33,7 +34,7 @@
 
     
     
-    <o-grid *ngIf="popularsPackGrid.dataArray.length > 0" class="o-grid-popular-packs" attr="packGrid" service="packs" entity="popularPacks" keys="P.pck_id"
+    <o-grid  *ngIf="popularsPackGrid.dataArray.length > 0" class="o-grid-popular-packs" attr="packGrid" service="packs" entity="popularPacks" keys="P.pck_id"
     columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;img_code;gui_c_name;pck_days;" query-rows="10"
     refresh-button="false" quick-filter="false" pagination-controls="true" detail-mode="false" page-size-options="true"
     show-page-size="false" cols="2" gutter-size="1px" show-footer="no" grid-item-height="380px">
