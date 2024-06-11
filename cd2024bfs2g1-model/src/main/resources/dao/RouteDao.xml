@@ -17,11 +17,7 @@
             <Sentence>
                 <![CDATA[
                     SELECT
-                        route_id,
-                        name,
-                        description,
-                        estimated_distance,
-                        difficulty
+                       #COLUMNS#
                     FROM
                         ${mainschema}.route
                     #WHERE#
@@ -77,6 +73,7 @@
                         r.description,
                         r.estimated_distance,
                         r.difficulty,
+                        r.is_accessible,
                         i.image_id,
                         i.img_code,
                         rp.pck_id,

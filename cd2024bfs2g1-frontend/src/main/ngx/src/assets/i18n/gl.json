@@ -670,7 +670,8 @@
     "NO_ESTIMATED_DISTANCE": "Sen Distancia Estimada",
     "ESTIMATED_DISTANCE": "Distancia estimada",
     "estimated_distance":"Distancia Estimada",
-    "NO_ESTIMATED_DURATION" : "Sen Duración Estimada"
+    "NO_ESTIMATED_DURATION" : "Sen Duración Estimada",
+    "is_accessible": "¿É accesible?"
   }
 
 
