@@ -311,4 +311,5 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
       }
       return permissions.visible
   }
+
 }

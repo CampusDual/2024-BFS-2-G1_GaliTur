@@ -21,4 +21,6 @@ public class PackBookingDao extends OntimizeJdbcDaoSupport {
     public static final String PBK_RATING_DATE = "pbk_rating_date";
     public static final String PBK_STARS = "pbk_stars";
     public static final String PBK_COMMENT = "pbk_comment";
+
+    public static final String PBK_BOOKING_CLIENT_USER_DATE_PACK_QUERY = "bookingClientUserDatePack";
 }

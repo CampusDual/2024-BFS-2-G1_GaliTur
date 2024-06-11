@@ -281,7 +281,7 @@
     .o-grid .o-grid-container .o-grid-footer .o-grid-totals {
         color: transparent !important;
     }
-    mat-icon{
+    mat-icon:not(.star){
         color:#84A45A;
     }
 }
@@ -429,7 +429,7 @@
     font-size: 0.8em;
 }
 
-.routeCard:hover {
+.routeCard:hover , .valorations:hover{
     box-shadow: 0 0 15px rgba(113, 94, 78, 0.5);
     transform: scale(1.04);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -437,7 +437,7 @@
 }
 
 /* icon styles */
-.icon {
+.icon{
     margin-bottom: -8px;
     margin-right: 4px;
     font-size: 20px;
@@ -481,12 +481,78 @@
 }
 
 
+.valorations{
+    width: 800px;
+    height: 240px;
+    background-color: #ccc6c0;
+    border-radius: 10px;
+    padding: 16px;
+    overflow-x: hidden;
+}
 
+.card-valorations-header{
+    width: auto;
+    align-content:start;
+    background-color:rgba(113, 94, 78, 1);
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 0px 2%;
+}
 
+#date-rating{
+    margin: 0px;
+}
 
+.star {
+    cursor: pointer;
+    transition: color 0.2s;
+    color: rgba(113, 94, 78, 1);
+    width: 4.7%;
+    height: 100%;
+    font-size: 230%;
+}
 
+.star_color{
+    background: linear-gradient(to top, rgba(94,60,6,1) 51%, rgba(9,121,19,1) 28%, rgba(51,193,13,1) 83%);
+      -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+}
 
+.list-to-desc{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    margin: 0px;
+    width: 100%;
+}
 
+.o-row-coment{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: auto;
+    flex: 1;
+    background-color: transparent;
+    font-size: 13px;
+}
 
+.user-name{
+    /* font-size: 12px; */
+    width: 100%;
+}
 
-
+.valoracions-name{
+    
+    margin: auto;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
