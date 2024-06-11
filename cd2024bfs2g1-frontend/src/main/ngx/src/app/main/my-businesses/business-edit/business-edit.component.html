@@ -181,15 +181,15 @@
             <o-column class="column-language">
                 <h3 id="languageH">{{ 'BSN_LANGUAGE' | oTranslate }}</h3>
                 <o-combo #comboLanguages attr="comboLanguages" oLocker
-                oLockerMode="disable" label="{{ 'SELECT_LANGUAGE' | oTranslate }}" multiple="yes" (onValueChange)="getAgencyData()" service="guideLanguages" translate="yes" [data]="respuesta"
+                oLockerMode="disable" label="{{ 'SELECT_LANGUAGE' | oTranslate }}" multiple="yes" (onValueChange)="getLanguageData()" service="guideLanguages" translate="yes" [data]="respuestaLanguage"
                     entity="guideLanguage" sort="ASC" value-column="gui_l_id" columns="gui_l_id;gui_l_name"
                     visible-columns="gui_l_name" separator=", " fxFlex required="yes">
                 </o-combo>
             </o-column>
             <o-column style="padding-left: 3%;" id="formZones">
                 <h3>{{ 'BSN_PROVINCE' | oTranslate }}</h3>
-                <o-combo #comboZone attr="comboZone" label="{{ 'SELECT_PROVINCE' | oTranslate }}" query-method="query" service="guideZones" translate="yes"
-                    entity="guideZone" value-column="gui_z_id" columns="gui_z_name" visible-columns="gui_z_name"
+                <o-combo #comboZone attr="comboZone" label="{{ 'SELECT_PROVINCE' | oTranslate }}"  (onValueChange)="getZoneData()" query-method="query" service="guideZones" translate="yes"
+                    entity="guideZone" value-column="gui_z_id" columns="gui_z_name" visible-columns="gui_z_name" 
                     keys="gui_z_id" multiple="no" null-selection="no" required="yes">
                 </o-combo>
             </o-column>

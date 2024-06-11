@@ -13,6 +13,10 @@ public interface IAgencyGuideService {
 
     EntityResult agencyGuideEditQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 
+    EntityResult agencyGuideEditProvinceQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
+
+    EntityResult agencyGuideEditCityQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
+
     EntityResult agencyGuideInsert(Map<String, Object> keysValues) throws OntimizeJEERuntimeException;
 
     EntityResult agencyGuideUpdate(Map<String, Object> attributesValues, Map<String, Object> keysValues) throws OntimizeJEERuntimeException;

@@ -28,8 +28,13 @@ export class BusinessEditComponent {
   validatorsDniCif: ValidatorFn[] = [];
   blankValidator: ValidatorFn[] = [];
   protected agencyGuideService: OntimizeService;
-  public respuesta = []
-  esInicial = true
+  public respuestaLanguage = []
+  public respuestaZone = []
+  public respuestaCity = []
+
+  esLanguageInicial = true
+  esZoneInicial = true
+  esCityInicial = true
 
 
   public switchDestinationState: boolean = false;
@@ -48,6 +53,9 @@ export class BusinessEditComponent {
   @ViewChild("currency3", { static: false }) currency3: OCurrencyInputComponent;
   @ViewChild("oFormAgencyNew") form: OFormComponent
   @ViewChild("comboLanguages") comboLanguages: OComboComponent
+  @ViewChild("comboZone") comboZone: OComboComponent
+  @ViewChild("comboCity") comboCity: OComboComponent
+
 
   constructor(public injector: Injector, private translate: OTranslateService, private router:Router, protected sanitizer: DomSanitizer, private activeRoute: ActivatedRoute) {
     this.validatorsDniCif.push(this.dniAndCifValidator);
@@ -155,9 +163,9 @@ export class BusinessEditComponent {
   }
 
 
-  getAgencyData() {
+  getLanguageData() {
 
-    if(this.esInicial){
+    if(this.esLanguageInicial){
 
       this.configureAGService();
 
@@ -168,18 +176,87 @@ export class BusinessEditComponent {
       this.agencyGuideService.query(filter, columns, "agencyGuideEdit").subscribe((resp) => {
         if (resp.code === 0) {
           // resp.data contains the data retrieved from the server
-          console.log("hola")
           const data = resp.data[0]
-          this.respuesta = data["comboLanguages"];
-          this.comboLanguages.setSelectedItems(this.respuesta)
+          this.respuestaLanguage = data["comboLanguages"];
+          this.comboLanguages.setSelectedItems(this.respuestaLanguage)
           console.log(this.comboLanguages.getSelectedItems())
-          //this.comboLanguages.setDataArray(this.respuesta)
           
   
-         // console.log(this.respuesta)
   
   
-          this.esInicial = false
+          this.esLanguageInicial = false
+          
+  
+  
+  
+        } else {
+          alert("Impossible to query data!");
+        }
+      });
+    }
+
+    
+  }
+
+  getZoneData() {
+
+    if(this.esZoneInicial){
+
+      this.configureAGService();
+
+      const filter = {
+        bsn_id: parseInt(this.activeRoute.snapshot.params["bsn_id"]),
+      };
+      const columns = ["bsn_id"];
+      this.agencyGuideService.query(filter, columns, "agencyGuideEditProvince").subscribe((resp) => {
+        if (resp.code === 0) {
+          // resp.data contains the data retrieved from the server
+          const data = resp.data[0]
+          this.respuestaZone = data["comboZone"];
+          this.comboZone.setSelectedItems(this.respuestaZone)
+          console.log(this.comboZone.getSelectedItems())
+          
+  
+  
+  
+          this.esZoneInicial = false
+
+          this.getCityData() 
+          
+  
+  
+  
+        } else {
+          alert("Impossible to query data!");
+        }
+      });
+    }
+
+    
+  }
+
+  getCityData() {
+
+    if(this.esCityInicial){
+
+      this.configureAGService();
+
+      const filter = {
+        bsn_id: parseInt(this.activeRoute.snapshot.params["bsn_id"]),
+      };
+      const columns = ["bsn_id"];
+      this.agencyGuideService.query(filter, columns, "agencyGuideEditCity").subscribe((resp) => {
+        if (resp.code === 0) {
+          // resp.data contains the data retrieved from the server
+          const data = resp.data[0]
+          this.respuestaCity = data["comboCity"];
+          this.comboCity.setSelectedItems(this.respuestaCity)
+          console.log(this.comboCity.getSelectedItems())
+          
+  
+  
+  
+          this.esCityInicial = false
           
   
   
