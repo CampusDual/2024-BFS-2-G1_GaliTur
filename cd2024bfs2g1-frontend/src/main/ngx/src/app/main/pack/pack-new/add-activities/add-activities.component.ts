@@ -229,7 +229,7 @@ export class AddActivitiesComponent {
     const filter = {
       "R.pck_id": parseInt(this.packId) ,
     };
-    const columns = ["name", "estimated_duration","difficulty","assigned_date","route_pack_id"];
+    const columns = ["name", "estimated_distance","difficulty","assigned_date","route_pack_id"];
     this.service.query(filter, columns, "routePack").subscribe((resp) => {
       if (resp.code === 0) {
         // resp.data contains the data retrieved from the server
