@@ -1,5 +1,5 @@
 <div fxFill fxLayout="column" fxLayoutAlign="space-evenly center" class="mainPanel">
-    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="150px" class="contenedorTitulo">
         <o-button class="backButton" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary" (click)="backToHome(data)"></o-button>
         <p class="titulo"><strong>{{ data.name }}</strong></p>
     </div>
@@ -24,6 +24,7 @@
             </o-row>
             <br>
             <div fxLayout="row" class="divDeBotones">
+                <o-column>
                 <o-row class="o-rows" class="information" attr="container" icon="info" mat
                         title="{{'INFO' | oTranslate }}" layout-align="start stretch" elevation="1"
                         aria-orientation="vertical" appearance="outline">
@@ -70,12 +71,17 @@
                         <span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span>
                     </ng-template>
                 </div>
+                <div fxLayout="row" class="tooltipDifficulty">
+                    <mat-icon class="accessible">accessible</mat-icon>
+                    <span class="tooltiptextAccessible">{{"accessible" | oTranslate}}</span>
+                </div> 
+                </o-row>
                 <div fxLayout="column" class="landmarkInfo">
                     <button (click)="openDetailLandmark(data)" class="custom-button">
                         <mat-icon> location_on </mat-icon><strong>{{ "landmark" | oTranslate}}</strong>
                     </button>
                 </div>
-                </o-row>
+            </o-column>
             </div>
         </div>
     </div>

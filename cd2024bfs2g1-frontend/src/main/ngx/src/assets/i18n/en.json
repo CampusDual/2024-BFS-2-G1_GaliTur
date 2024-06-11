@@ -423,13 +423,16 @@
   "CANCEL-DELETE-BSN-DIALOG-TITLE": "Delete business",
   "CANCEL-DELETE-BSN-DIALOG-DESCRIPTION-PACK": "This business is assigned to packs, are you sure that you want to proceed?",
   "CANCEL-DELETE-BSN-DIAG-DESCRIPTION": "Are you sure that you want to proceed?",
-  "MY-BUSINESSES": "My businesses",
   "NO_ESTIMATED_DURATION" : "No Estimated Duration",
   "BEGIN-DATE": "Begin date",
   "NO_ROUTES_TODAY": "There are no routes for day",
   "NO_ROUTES_IN_PACK": "There are no routes in this pack !",
   "NO_BUSINESS_TODAY": "There are no businesses for day",
   "NO_BUSINESS_IN_PACK": "There are no businesses in this pack !",
-  "is_accessible": "Is accessible?"
+  "is_accessible": "Is accessible?",
+  "accessible": "Accessible",
+  "Explanation_is_accessible": "To indicate if the route is accessible for people with physical, sensory, or cognitive disabilities, consider the following aspects: the presence of ramps or elevators, braille signage, non-slip surfaces, adequate rest areas, and any other features that facilitate safe and comfortable mobility and use of the route for everyone.",
+  "Draft": "To indicate if the route is a draft, consider that it is in a preliminary stage of development and is subject to changes and improvements before its final version. This means that modifications may occur in its layout, structure, and additional details."
+
 }
 

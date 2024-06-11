@@ -27,3 +27,39 @@
     padding-bottom: 1.7%;
 }
 
+.tool{
+    visibility: hidden;
+    font-size: 12px;
+    width: 2500px;
+}
+
+.tool2{
+    visibility: hidden;
+    font-size: 12px;
+    width: 2500px;
+}
+
+.toolTipContainer{
+    height: 100px;
+}
+.toolTipContainer:hover .tool{
+    visibility: visible;
+    background-color: #ddd5cc;
+    margin: 15px 0px 0px 0px;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+.toolTipContainer:hover .tool2{
+    visibility: visible;
+    background-color: #ddd5cc;
+    margin: 15px 0px 0px 0px;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+.slice{
+    width: 600px;
+}
+
+

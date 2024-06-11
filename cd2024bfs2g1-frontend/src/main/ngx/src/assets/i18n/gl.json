@@ -666,12 +666,12 @@
     "CANCEL-DELETE-BSN-DIALOG-TITLE": "Borrar negocio",
     "CANCEL-DELETE-BSN-DIALOG-DESCRIPTION-PACK": "O negocio está asignado a un pack, ¿Está vostede seguro de que desexa borralo?",
     "CANCEL-DELETE-BSN-DIAG-DESCRIPTION": "¿Está vostede seguro de que desexa borralo?",
-    "SAVE": "Gardar",
-    "NO_ESTIMATED_DISTANCE": "Sen Distancia Estimada",
-    "ESTIMATED_DISTANCE": "Distancia estimada",
     "estimated_distance":"Distancia Estimada",
     "NO_ESTIMATED_DURATION" : "Sen Duración Estimada",
-    "is_accessible": "¿É accesible?"
+    "is_accessible": "¿É accesible?",
+    "accessible": "Accesible",
+    "Explanation_is_accessible":"Para indicar se a ruta é accesible para persoas con discapacidades físicas, sensoriais ou cognitivas, considera os seguintes aspectos: a presenza de ramplas ou elevadores, sinalización en braille, superficies antideslizantes, áreas de descanso adecuadas e calquera outra característica que facilite a mobilidade e o uso seguro e cómodo da ruta para todos.",
+    "Draft": "Para indicar se a ruta é un borrador, considera que se atopa nunha etapa preliminar de desenvolvemento e está suxeita a cambios e melloras antes da súa versión final. Isto significa que poden ocorrer modificacións no seu trazado, estrutura e detalles adicionais."
   }
 
 
