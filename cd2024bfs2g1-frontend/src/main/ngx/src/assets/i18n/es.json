@@ -258,7 +258,6 @@
   "IM_NOT_PROFESSIONAL": "No soy un profesional",
   "N0_ESTIMATED_DURATION": "Sin Duración Estimada",
   "GRAPHICS": "Análisis de Datos",
-  "Contracted_packs_according_to_the_province": "Packs contratados según la provincia",
   "ABADIN": "ABADÍN",
   "BECERREA": "BECERREÁ",
   "BOVEDA": "BÓVEDA",
@@ -439,7 +438,15 @@
   "NO_ROUTES_TODAY": "¡No hay rutas el día",
   "NO_ROUTES_IN_PACK": "¡En este pack no hay rutas!",
   "NO_BUSINESS_TODAY": "¡No hay negocios el día",
-  "NO_BUSINESS_IN_PACK": "¡En este pack no hay negocios!"
+  "NO_BUSINESS_IN_PACK": "¡En este pack no hay negocios!",
+  "Contracted_packs_according_to_the_province": "Packs contratados según la provincia",
+  "Routes_according_to_difficulty": "Número de rutas según su dificultad.",
+  "Contracted_packs_per_days": "Número de días que tienen los paquetes.",
+  "Types of bussiness":"Cantidad de tipos de negocios.",
+  "Packs by station":"Packs creados según la estacion.",
+  "Top 5 most valuated packs": "Top de packs más valorados.",
+  "Packs by price":"Precio de los packs. (€)",
+  "Top 5 least rated packs":"Top de packs menos valorados."
 }
 
 

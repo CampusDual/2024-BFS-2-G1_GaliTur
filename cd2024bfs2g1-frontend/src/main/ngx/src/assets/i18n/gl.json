@@ -259,7 +259,6 @@
     "IM_NOT_PROFESSIONAL": "Non son un profesional",
     "N0_ESTIMATED_DURATION": "Sen Duración Estimada",
     "GRAPHICS": "Análise de Datos",
-    "Contracted_packs_according_to_the_province": "Packs contratados segundo a provincia",
     "ABADIN": "ABADÍN",
     "BECERREA": "BECERREÁ",
     "BOVEDA": "BÓVEDA",
@@ -670,7 +669,16 @@
     "NO_ESTIMATED_DURATION" : "Sen Duración Estimada",
     "POPULAR_PACKS": "Packs populares",
     "POPULAR_PACKS_SUBTITLE": "¡Bota unha ollada aos paquetes favoritos dos nosos usuarios!",
-    "BEGIN-DATE": "Fecha de inicio"
+    "BEGIN-DATE": "Fecha de inicio",
+    "Contracted_packs_according_to_the_province": "Packs contratados segundo a provincia",
+    "Routes_according_to_difficulty": "Número de rutas segundo a súa dificultade.",
+    "Contracted_packs_per_days": "Número de días que teñen os paquetes.",
+    "Types of bussiness":"Número de tipos de empresas.",
+    "Packs by station":"Packs creados segundo a estación.",
+    "Top 5 most valuated packs": "Os packs máis valorados.",
+    "Packs by price":"Precio dos packs. (€)",
+    "Top 5 least rated packs":"Os packs menos valorados."
+    
   }
 
 
