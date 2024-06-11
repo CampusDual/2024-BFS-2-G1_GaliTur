@@ -18,6 +18,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+import static com.campusdual.cd2024bfs2g1.model.core.dao.RouteDao.QUERY_ROUTES_ACCORDING_DIFFICULTY;
+
 @Lazy
 @Service("RouteService")
 public class RouteService  implements IRouteService {
@@ -41,6 +43,11 @@ public class RouteService  implements IRouteService {
     @Override
     public EntityResult routeQuery(Map<String, Object> keyMap, List<String> attrList) {
         return this.daoHelper.query(routeDao, keyMap, attrList);
+    }
+
+    @Override
+    public EntityResult routeAccordingDifficultyQuery(Map<String, Object> keyMap, List<String> attrList) {
+        return this.daoHelper.query(routeDao, keyMap, attrList, QUERY_ROUTES_ACCORDING_DIFFICULTY);
     }
 
     @Override

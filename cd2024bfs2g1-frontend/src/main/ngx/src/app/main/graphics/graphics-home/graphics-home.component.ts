@@ -19,5 +19,4 @@ export class GraphicsHomeComponent implements OnInit {
 
   ngOnInit() {}
 
-  
 }

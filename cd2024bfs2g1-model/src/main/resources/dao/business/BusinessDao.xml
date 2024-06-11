@@ -66,5 +66,18 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="typesOfBusinesses">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                     bsn_type,
+                    COUNT(*) AS cantidad
+                    FROM ${mainschema}.bsn_business
+                    GROUP BY bsn_type;
+                    #WHERE#
+
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

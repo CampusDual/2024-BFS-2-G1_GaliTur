@@ -25,6 +25,8 @@ import java.text.ParseException;
 
 import java.util.*;
 
+import static com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDao.*;
+
 
 @Lazy
 @Service("PackService")
@@ -63,6 +65,26 @@ public class PackService implements IPackService {
             throws OntimizeJEERuntimeException {
         attrList.remove("comboDates");
         return this.daoHelper.query(this.packDao, keyMap, attrList);
+    }
+
+
+
+    @Override
+    public EntityResult packPerDaysQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.packDao, keyMap, attrList,PCK_PER_DAYS_QUERY);
+    }
+
+    @Override
+    public EntityResult packByPriceQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.packDao, keyMap, attrList,PCK_BY_PRICE_QUERY);
+    }
+
+    @Override
+    public EntityResult packByStationQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.packDao, keyMap, attrList,PCK_BY_STATION_QUERY);
     }
 
     @Override
