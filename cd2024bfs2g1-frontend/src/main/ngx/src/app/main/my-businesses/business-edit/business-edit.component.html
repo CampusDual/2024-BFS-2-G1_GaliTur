@@ -171,7 +171,7 @@
 
     <!--AGENCIA DE GUIAS-->
 
-    <div style="padding-top: 40px;" *ngIf="type.getValue() === 'AgencyGuide'">
+    <div style="padding-top: 40px;" >
 
         <o-form #oFormAgencyNew attr="agencyEdit" class="custom-form" label-header-align="start" service="agencyGuides" entity="agencyGuideEdit" keys="gui_id;bsn_id" parent-keys="bsn_id" fxLayout="column" 
         keys-sql-types="integer" confirm-exit="false" undo-button="false" message-service-type="customMessageServiceTypeBusiness"  label-header="{{ 'AgencyGuide' | oTranslate }}" oHidden>
@@ -180,8 +180,8 @@
         <o-row style="align-content: space-between; padding-left: 1.5%;">
             <o-column class="column-language">
                 <h3 id="languageH">{{ 'BSN_LANGUAGE' | oTranslate }}</h3>
-                <o-combo attr="comboLanguages" oLocker
-                oLockerMode="disable" label="{{ 'SELECT_LANGUAGE' | oTranslate }}" multiple="yes" service="guideLanguages" translate="yes"
+                <o-combo #comboLanguages attr="comboLanguages" oLocker
+                oLockerMode="disable" label="{{ 'SELECT_LANGUAGE' | oTranslate }}" multiple="yes" service="guideLanguages" translate="yes" [data]="respuesta"
                     entity="guideLanguage" sort="ASC" value-column="gui_l_id" columns="gui_l_id;gui_l_name"
                     visible-columns="gui_l_name" separator=", " fxFlex required="yes">
                 </o-combo>

@@ -7,8 +7,8 @@ import {
   Validators
 } from "@angular/forms";
 import { DomSanitizer } from "@angular/platform-browser";
-import { Router } from "@angular/router";
-import { OCheckboxComponent, OCurrencyInputComponent, OPermissions, OTranslateService, Util } from "ontimize-web-ngx";
+import { ActivatedRoute, Router } from "@angular/router";
+import { OCheckboxComponent, OComboComponent, OCurrencyInputComponent, OFormCacheClass, OFormComponent, OPermissions, OTranslateService, OntimizeService, Util } from "ontimize-web-ngx";
 
 @Component({
   selector: "app-business-edit",
@@ -27,6 +27,10 @@ export class BusinessEditComponent {
   selectedOption: number;
   validatorsDniCif: ValidatorFn[] = [];
   blankValidator: ValidatorFn[] = [];
+  protected agencyGuideService: OntimizeService;
+  respuesta: []
+  numeroRespuesta
+
 
   public switchDestinationState: boolean = false;
   @ViewChild("switchDestination", { static: false })
@@ -42,13 +46,23 @@ export class BusinessEditComponent {
   @ViewChild("switchDestination3", { static: false })
   switchDestination3: OCheckboxComponent;
   @ViewChild("currency3", { static: false }) currency3: OCurrencyInputComponent;
+  @ViewChild("oFormAgencyNew") form: OFormComponent
+  @ViewChild("comboLanguages") comboLanguages: OComboComponent
 
-  constructor(public injector: Injector, private translate: OTranslateService, private router:Router, protected sanitizer: DomSanitizer) {
+  constructor(public injector: Injector, private translate: OTranslateService, private router:Router, protected sanitizer: DomSanitizer, private activeRoute: ActivatedRoute) {
     this.validatorsDniCif.push(this.dniAndCifValidator);
     this.blankValidator.push(this.blanksValidator)
-    this.blankValidator.push(this.lengthInvalid)
+    this.blankValidator.push(this.lengthInvalid),
+    this.agencyGuideService = this.injector.get(OntimizeService);
+
   }
 
+  // viewchild (form) - afterViewInit - procesar info formulario - seleccionar en combobox
+  ngOnInit() {
+    this.getAgencyData();
+  }
+
+ 
 
   getSwitchValue() {
     this.switchDestinationState = this.switchDestination.getValue();
@@ -138,6 +152,47 @@ export class BusinessEditComponent {
       value: this.translate.get("AgencyGuide"),
     });
     return array;
+  }
+
+
+  getAgencyData() {
+
+    this.configureAGService();
+
+    const filter = {
+      bsn_id: parseInt(this.activeRoute.snapshot.params["bsn_id"]),
+    };
+    const columns = ["bsn_id"];
+    this.agencyGuideService.query(filter, columns, "agencyGuideEdit").subscribe((resp) => {
+      if (resp.code === 0) {
+        // resp.data contains the data retrieved from the server
+        console.log("hola")
+        const data = resp.data[0]
+        this.respuesta = data["comboLanguages"];
+        //this.comboLanguages.setSelectedItems(this.respuesta)
+
+        this.comboLanguages.setDataArray(this.respuesta)
+        
+
+        console.log(this.respuesta)
+
+
+
+        
+
+
+
+      } else {
+        alert("Impossible to query data!");
+      }
+    });
+  }
+
+  protected configureAGService() {
+    // Configure the service using the configuration defined in the `app.services.config.ts` file
+    const conf =
+      this.agencyGuideService.getDefaultServiceConfiguration("agencyGuides");
+    this.agencyGuideService.configureService(conf);
   }
 
 }
