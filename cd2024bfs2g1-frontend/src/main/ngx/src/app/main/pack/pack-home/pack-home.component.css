@@ -79,9 +79,6 @@
 }
 
 
-
-
-
 /* deep styling for grid sort and search input */
 :host ::ng-deep .o-grid-sort {
     min-width: 325px;
@@ -309,7 +306,10 @@ o-text-input, o-integer-input, o-currency-input, o-date-input, o-combo {
     text-align: center;
     background-color: #615e5b;
     color: white;
-    padding: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 4px; 
+    padding-right: 10px;
     margin-inline: auto;
     margin-bottom: 16px;
     box-sizing: border-box;
@@ -319,6 +319,11 @@ o-text-input, o-integer-input, o-currency-input, o-date-input, o-combo {
 .pack-info-title {
     font-size: 1.25em;
     font-weight: 500;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    text-overflow: ellipsis;
+    width: calc(90%);
 }
   
 /* icon styles */

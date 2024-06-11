@@ -45,7 +45,7 @@ export class PackHomeComponent {
       ? this.sanitizer.bypassSecurityTrustResourceUrl(
           "data:image/*;base64," + base64
         )
-      : "./assets/images/no-image-transparent.png";
+      : "./assets/images/home-image.jpeg";
   }
 
   truncateName(name: string): string {
