@@ -1,5 +1,6 @@
 <o-form attr="businessNew" class="custom-form" label-header="{{ 'BUSINESS_DATA' | oTranslate }}" label-header-align="start" service="businesses" entity="business" keys="bsn_id" fxLayout="column" #oFormBusinessNew
-     keys-sql-types="integer" (onInsert)="insertBusiness($event)" confirm-exit="false" message-service-type="customMessageServiceTypeBusiness">
+     keys-sql-types="integer"  (onInsert)="insertBusiness($event)" (onCancel)="reloadPage()"   message-service-type="customMessageServiceTypeBusiness" (onUpdate)="reloadPage()">
+     
 
     <o-row id="principalRow" layout-align="start stretch">
         <!-- Titulo del formulario -->
@@ -90,9 +91,9 @@
    
 
     <!-- RESTAURANT -->
-    <div  *ngIf="type.getValue() === 'Restaurant'" style="padding-top: 40px;">
+    <div  class="formExtra"  *ngIf="type.getValue() === 'Restaurant'" style="padding-top: 40px;">
         <o-form attr="restEdit" class="custom-form" label-header-align="start" service="restaurants" entity="restaurant" keys="rest_id;bsn_id" parent-keys="bsn_id" fxLayout="column" #oFormRestaurantNew
-        keys-sql-types="integer" confirm-exit="false" undo-button="false" message-service-type="customMessageServiceTypeBusiness"  label-header="{{ 'RESTAURANT_DATA' | oTranslate }}" oHidden>
+        keys-sql-types="integer" confirm-exit="no"  undo-button="false" message-service-type="customMessageServiceTypeBusiness"  label-header="{{ 'RESTAURANT_DATA' | oTranslate }}" oHidden (onUpdate)="reloadPage()">
    
 
         <o-row id="restaurant" layout-align="start stretch"><o-column
@@ -105,10 +106,10 @@
     </div>
 
     <!-- LODGING -->
-    <div  *ngIf="type.getValue() === 'Lodging'"  style="padding-top: 40px;">
+    <div  class="formExtra"  *ngIf="type.getValue() === 'Lodging'"  style="padding-top: 40px;">
 
         <o-form attr="lodgingEdit" class="custom-form" label-header-align="start" service="hotels" entity="hotelMulti" keys="htl_id;bsn_id" parent-keys="bsn_id" fxLayout="column" #oFormLodgingNew
-        keys-sql-types="integer" confirm-exit="false" undo-button="false" message-service-type="customMessageServiceTypeBusiness"  label-header="{{ 'LODGING' | oTranslate }}" oHidden>
+        keys-sql-types="integer" confirm-exit="no"  undo-button="false" message-service-type="customMessageServiceTypeBusiness"  label-header="{{ 'LODGING' | oTranslate }}" oHidden (onUpdate)="reloadPage()">
         <o-column>
             <o-row layout-align="start stretch">
                 <o-column>
@@ -171,10 +172,10 @@
 
     <!--AGENCIA DE GUIAS-->
 
-    <div style="padding-top: 40px;" *ngIf="type.getValue() === 'AgencyGuide'">
+    <div class="formExtra" style="padding-top: 40px;" *ngIf="type.getValue() === 'AgencyGuide'">
 
         <o-form #oFormAgencyNew attr="agencyEdit" class="custom-form" label-header-align="start" service="agencyGuides" entity="agencyGuideEdit" keys="gui_id;bsn_id" parent-keys="bsn_id" fxLayout="column" 
-        keys-sql-types="integer" confirm-exit="false" undo-button="false" message-service-type="customMessageServiceTypeBusiness"  label-header="{{ 'AgencyGuide' | oTranslate }}" oHidden>
+        keys-sql-types="integer" confirm-exit="no"  undo-button="false" message-service-type="customMessageServiceTypeBusiness"  label-header="{{ 'AgencyGuide' | oTranslate }}" oHidden (onUpdate)="reloadPage()">
 
 
         <o-row style="align-content: space-between; padding-left: 1.5%;">

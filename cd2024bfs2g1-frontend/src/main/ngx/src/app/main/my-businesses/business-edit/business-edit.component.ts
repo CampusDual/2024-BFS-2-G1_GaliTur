@@ -162,6 +162,9 @@ export class BusinessEditComponent {
     return array;
   }
 
+  reloadPage(): void {
+    window.location.reload()
+  }
 
   getLanguageData() {
 

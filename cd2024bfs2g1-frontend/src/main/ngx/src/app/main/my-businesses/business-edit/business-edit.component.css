@@ -119,7 +119,9 @@ span {
     background-color: #52733B !important;
 }
 
-
+.formExtra ::ng-deep  .o-form-toolbar-button-cancel{
+    visibility: hidden !important;
+}
 
 
 
