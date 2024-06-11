@@ -25,8 +25,7 @@ galleryOptions: any;
   ) {
 
   }
-  ) { }
-
+  
   ngAfterViewInit(): void {
     const idRutaActual = +this.getRouteId();
     const confRoute =

@@ -428,8 +428,7 @@
   "NO_ROUTES_TODAY": "There are no routes for day",
   "NO_ROUTES_IN_PACK": "There are no routes in this pack !",
   "NO_BUSINESS_TODAY": "There are no businesses for day",
-  "NO_BUSINESS_IN_PACK": "There are no businesses in this pack !"
-  "FILTER-NAME": "Name",
+  "NO_BUSINESS_IN_PACK": "There are no businesses in this pack !",
   "Routes_according_to_difficulty": "Number of routes according to difficultty",
   "Contracted_packs_per_days": "Number of days the packs have",
   "Types of bussiness":"Number of business types",
