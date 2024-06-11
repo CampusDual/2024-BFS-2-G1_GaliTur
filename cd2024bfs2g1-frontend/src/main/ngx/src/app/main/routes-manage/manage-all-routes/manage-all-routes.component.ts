@@ -1,9 +1,10 @@
-import { Component, Injector } from "@angular/core";
+import { Component, Injector, ViewChild } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
 import { Router } from "@angular/router";
 import {
   DialogService,
   NavigationService,
+  OListComponent,
   OSnackBarConfig,
   OntimizeService,
   SnackBarService,
@@ -21,6 +22,7 @@ export class ManageAllRoutesComponent {
 
   packsWithThisRoute = [];
 
+  @ViewChild("myList") myList: OListComponent
   constructor(
     protected sanitizer: DomSanitizer,
     private router: Router,
@@ -46,7 +48,6 @@ export class ManageAllRoutesComponent {
       console.log("El resultado es ", result);
       if (result) {
         this.deleteRoute(route_id);
-        this.sendDeleteMessage();
       } else return;
     });
   }
@@ -89,7 +90,10 @@ export class ManageAllRoutesComponent {
   private deleteRoute(route_id: any) {
     this.ontimizeRouteService
       .delete({ route_id: route_id }, "route")
-      .subscribe((deleteResponse) => {});
+      .subscribe((deleteResponse) => {
+        this.sendDeleteMessage();
+        this.myList.reloadPaginatedDataFromStart(true);
+      });
   }
 
   sendDeleteMessage(){
