@@ -1166,6 +1166,12 @@ public class AgencyGuideService implements IAgencyGuideService {
     }
 
     @Override
+    public EntityResult agencyGuideEditUpdate(Map<String, Object> attributesValues, Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
+
+        return this.daoHelper.update(this.agencyGuideDao, BusinessService.guideAgencyDataProcessor(attributesValues), keysValues);
+    }
+
+    @Override
     public EntityResult agencyGuideDelete(Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
         return this.daoHelper.delete(this.agencyGuideDao, keysValues);
     }

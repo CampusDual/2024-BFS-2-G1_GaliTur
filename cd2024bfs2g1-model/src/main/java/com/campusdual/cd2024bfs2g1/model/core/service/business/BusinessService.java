@@ -211,7 +211,7 @@ public class BusinessService implements IBusinessService {
         hotelServicesService.hotelServicesInsert(dataMap);
     }
 
-    private static Map guideAgencyDataProcessor(Map<String, Object> dataMap) {
+    public static Map guideAgencyDataProcessor(Map<String, Object> dataMap) {
         switch ((int) dataMap.get("comboZone")) {
             case 1:
                 dataMap.remove("comboZone");

@@ -21,6 +21,8 @@ public interface IAgencyGuideService {
 
     EntityResult agencyGuideUpdate(Map<String, Object> attributesValues, Map<String, Object> keysValues) throws OntimizeJEERuntimeException;
 
+    EntityResult agencyGuideEditUpdate(Map<String, Object> attributesValues, Map<String, Object> keysValues) throws OntimizeJEERuntimeException;
+
     EntityResult agencyGuideDelete(Map<String, Object> keysValues) throws OntimizeJEERuntimeException;
 
 
