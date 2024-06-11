@@ -24,6 +24,20 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="downDate">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.bsn_business b
+                    WHERE
+                    b.bsn_down_date is null
+                    #WHERE_CONCAT#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
         <Query id="allBusinesses">
             <Sentence>
                 <![CDATA[
@@ -45,6 +59,8 @@
                         ${mainschema}.bsn_business b
                         INNER JOIN ${mainschema}.bsn_pack bsp
                         ON B.bsn_id=BSP.bsn_id
+                     WHERE
+                    b.bsn_down_date is null
                     #WHERE_CONCAT#
                     #ORDER#
                 ]]>

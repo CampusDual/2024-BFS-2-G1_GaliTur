@@ -124,7 +124,7 @@ export class PackActivitiesComponent {
       "BP.pck_id": parseInt(this.data.packId),
       assigned_date: this.comboBoxDay.getValue()
     };
-    const columns = ["BP.bsn_id","bsn_name","bsn_type","bsn_address","bsn_phone","bsn_photos","bsn_website","bsn_schedule"];
+    const columns = ["BP.bsn_id","bsn_name","bsn_type","bsn_address","bsn_phone","bsn_photos","bsn_website","bsn_schedule","bsn_down_date"];
     this.service.query(filter, columns, "packBusiness").subscribe((resp) => {
       if (resp.code === 0) {
         // resp.data contains the data retrieved from the server
