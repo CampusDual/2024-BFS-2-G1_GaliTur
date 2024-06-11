@@ -32,4 +32,5 @@ public class BusinessDao extends OntimizeJdbcDaoSupport {
     public static final String QUERY_BUSINESS_OF_PACK  = "businessOfPack";
     public static String QUERY_TYPE_OF_BUSINESSES = "typesOfBusinesses";
 
+    public static final String QUERY_BUSINESS_DOWN_DATE  = "downDate";
 }

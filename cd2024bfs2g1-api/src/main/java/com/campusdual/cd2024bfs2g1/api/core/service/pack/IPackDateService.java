@@ -9,6 +9,10 @@ import java.util.Map;
 
 public interface IPackDateService {
     EntityResult packDateQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
+    EntityResult packDateWithStateQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
+
+    EntityResult packDateWithStateDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
+
     EntityResult packDateInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException, ParseException;
     EntityResult packDateUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
     EntityResult packDateDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;

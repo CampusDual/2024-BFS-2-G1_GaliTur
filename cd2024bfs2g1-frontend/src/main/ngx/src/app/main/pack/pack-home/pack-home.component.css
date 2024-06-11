@@ -1,3 +1,17 @@
+/*title styles*/
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title{
+    font-weight: bold;
+    font-size: 25px;
+    font-family: Poppins;
+    margin-top: 0px;
+    margin-bottom: 5px;
+  }
 /* packCard structure */
 .packCard {
     width: 400px;
@@ -7,12 +21,10 @@
     padding: 16px;
     display: flex;
     flex-direction: column;
-    transform: scale(0.925); 
+    transform: scale(0.925);
 }
 
-.businessCard img {
-    justify-content: center;
-}
+
 
 /* Image div for pack card structure */
 .packCard img {
@@ -47,7 +59,7 @@
 
 /* pack name styles */
 .pack-name {
-    font-size: 1.2em;
+    font-size: 1.25em;
     font-weight: bold;
 }
 
@@ -113,60 +125,96 @@
 
 /* hover effect for pack card */
 .packCard:hover {
-    box-shadow: 0 0 15px rgba(113, 94, 78, 1); 
-    transform: scale(0.9325); 
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    box-shadow: 0 0 15px rgba(113, 94, 78, 1);
+    transform: scale(0.9325);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }
 
+/*filter styles*/
+/*filter styles*/
 .filter {
     justify-content: space-around;
     width: 100%;
     display: flex;
     flex-direction: row;
-    padding-top: 20px;
-    padding-bottom: 20px;
-
+    
     background-color: #ccc6c0;
     margin-bottom: 16px;
+
+
 }
 .filter-column {
     display: flex;
     flex-direction: column;
     padding: 5px;
     justify-content: space-around;
-    
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.filter-column-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 4%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
     o-button {
         color: #4e4c4a;
     }
 }
 
-.filter-element {
-    margin-bottom: 10px;
+.filter-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 10px;
+    width: 50%;
 }
 
-.details {
-    summary:hover {
-        width: max-content;
-        cursor: pointer;
-    }
+.filter-element {
+    margin-bottom: 10px;
+    flex: 1 1 auto !important; /* Ajuste para que los elementos se expandan */
+    
 }
 
 .filter-button {
+    align-items: start;
     margin-top: 10px;
 }
 
 .full-page {
     height: 77vh;
     .mdc-text-field--filled:not(.mdc-text-field--disabled) {
-        width: 32vh;
+        width: 100%;
     }
     .o-data-toolbar {
-        align-items: start;
-        .title {
-            font-size: 25px;
-            margin-bottom: 10px;
-        }
+        align-items: end;
+
     }
 }
 
+o-text-input, o-integer-input, o-currency-input, o-date-input, o-combo {
+    width: 100% !important;
+}
+
+/*Insert button and sort combobox styles*/
+:host::ng-deep .o-data-toolbar {
+    display: grid !important;
+    grid-template-columns: auto auto !important;
+    justify-content: space-between !important;
+    padding-left: 20px !important;
+    width: 400px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.grid-container {
+    width: 100%;
+    height: 93.5%;
+}

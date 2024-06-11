@@ -40,25 +40,42 @@
                 ]]>
             </Sentence>
         </Query>
+
         <Query id="allPacks">
             <Sentence>
                 <![CDATA[
+                    WITH temp_table AS (
+                        SELECT DISTINCT
+                            P.pck_id,
+                            P.pck_name,
+                            P.pck_description,
+                            P.pck_price,
+                            P.pck_participants,
+                            P.pck_days,
+                            P.creation_date,
+                            I.img_code,
+                            GC.gui_c_name
+                        FROM
+                            pack P
+                            INNER JOIN image_pack IP ON P.pck_id = IP.pck_id
+                            INNER JOIN image I ON IP.img_id = I.image_id
+                            INNER JOIN gui_cities GC ON P.gui_c_id = GC.gui_c_id
+                            INNER JOIN (
+                                SELECT DISTINCT pck_id, pd_date_begin
+                                FROM pack_date
+                                WHERE pcs_id = 1
+                            ) PD ON P.pck_id = PD.pck_id
+                        #WHERE#
+                    )
                     SELECT DISTINCT
                         #COLUMNS#
                     FROM
-                       pack P
-                           INNER JOIN image_pack IP
-                           ON P.pck_id = IP.pck_id
-                           INNER JOIN image I
-                           ON IP.img_id = I.image_id
-                           INNER JOIN gui_cities GC
-                           ON P.gui_c_id = GC.gui_c_id
-                       WHERE P.pck_id in (select distinct spd.pck_id from pack_date spd where spd.pcs_id = 1)
-                    #WHERE_CONCAT#
-                    #ORDER#
-                ]]>
+                        temp_table
+        ]]>
             </Sentence>
         </Query>
+
+
         <Query id="multi">
             <Sentence>
                 <![CDATA[
@@ -230,6 +247,41 @@
                         WHEN EXTRACT(MONTH FROM pd_date_begin) IN (9, 10, 11) THEN 'Autumn'
                     END
                 ORDER BY estacion;
+                ]]>
+            </Sentence>
+        </Query>
+
+        <Query id="popularPacks">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        p.pck_id,
+                        p.pck_name,
+                        p.pck_description,
+                        p.pck_price,
+                        p.pck_participants,
+                        p.gui_c_id,
+                        I.img_code,
+                        GC.gui_c_name,
+                        COUNT(pd.pd_id) AS reservation_count
+                    FROM
+                        pack p
+                    JOIN
+                        pack_date pd ON p.pck_id = pd.pck_id
+                    JOIN
+                        ${mainschema}.image_pack IP ON P.pck_id=IP.pck_id
+                    JOIN
+                        ${mainschema}.image I ON IP.img_id = I.image_id
+                    JOIN
+                        ${mainschema}.gui_cities GC ON p.gui_c_id = GC.gui_c_id
+                    WHERE
+                        pd.pcs_id = 2
+                    GROUP BY
+                        p.pck_id, p.pck_name, p.pck_description, p.pck_price, p.pck_participants, p.gui_c_id, I.img_code, GC.gui_c_name
+                    ORDER BY
+                        reservation_count DESC
+                    LIMIT 10;
+
                 ]]>
             </Sentence>
         </Query>

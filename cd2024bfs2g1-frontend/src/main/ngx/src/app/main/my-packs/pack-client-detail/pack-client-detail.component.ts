@@ -36,6 +36,10 @@ export class PackClientDetailComponent {
     //this.isInstanceOfPack()
   }
 
+  public formatDate(date:any) : any {
+    return new Date(date).toLocaleDateString();
+  }
+
   public getImageSrc(base64: any): any {
     return base64
       ? this.sanitizer.bypassSecurityTrustResourceUrl(
@@ -102,7 +106,7 @@ export class PackClientDetailComponent {
         this.snackBarService.open("CANCEL-BOOKING.CONFIRMED", config);
         this.router.navigate(["main/pack-client"]);
     });
-   
+
   }
 
   isLogged() {
@@ -131,6 +135,6 @@ export class PackClientDetailComponent {
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     return diffDays;
   }
-  
+
 }
 

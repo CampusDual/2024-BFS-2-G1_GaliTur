@@ -29,7 +29,7 @@ export const CONFIG: Config = {
 
   appMenuConfiguration: MENU_CONFIG,
 
-  applicationLocales: ['es', 'en'],
+  applicationLocales: ['es', 'en', 'gl'],
 
   permissionsServiceType: 'OntimizeEEPermissions' /* Optional, OntimizeEEPermissions is the default value */,
   permissionsConfiguration: {

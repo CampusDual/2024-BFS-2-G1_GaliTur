@@ -1,0 +1,195 @@
+
+<div class="page">
+    <o-button class="back-button" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary" (click)="openBusinesses()" ></o-button>
+
+    <mat-card class="mainCard" style="background-color: #eff1f3; border-radius: 10px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); padding: 40px; margin: 10px;">
+
+        <o-form #packForm class="mainForm" #form attr="businessDetail" service="businesses" entity="business"
+            keys="bsn_id" header-actions="false" undo-button="false" action show-header-actions-text="false"
+            show-header-navigation="no" class="fill-form" show-header="no">
+
+
+
+            <!-- Almaceno el negocio que he clicado -->
+            <o-grid #businessForm attr="businessDetail" service="businesses" entity="business" keys="bsn_id"
+                columns="bsn_id;merchant_id;bsn_name;bsn_type;bsn_description;bsn_cif;bsn_address;bsn_phone;bsn_email;bsn_creation_date;bsn_down_date;bsn_photos;bsn_website;bsn_schedule"
+                visible-columns="bsn_id;merchant_id;bsn_name;bsn_type;bsn_description;bsn_cif;bsn_address;bsn_phone;bsn_email;bsn_creation_date;bsn_down_date;bsn_photos;bsn_website;bsn_schedule"
+                parent-keys="bsn_id" refresh-button="false" quick-filter="false" oHidden/>
+
+            <!-- Div que contendrá toda la informacion del negocio -->
+            <div class="main-container">
+
+              <!-- Nombre del business -->
+              <o-row style="background-color: transparent !important">
+                <o-column style="width: 80%; background-color: transparent !important">
+                    <div class="name-container">
+                        <o-text-input #businessID read-only="yes" class="o-text-input" appearance="outline" attr="bsn_id" sql-type="INTEGER"
+                            label="Nombre" enabled="no" oHidden></o-text-input>
+                        <h1 *ngFor="let business of businessForm.dataArray"> {{business.bsn_name}}</h1>
+                    </div>
+                </o-column>
+                <o-column style="background-color: transparent !important">
+                    <button class="custom-button" matTooltip="{{'EDIT' | oTranslate }}">
+                        <mat-icon> edit </mat-icon>
+                        
+                    </button>
+                    
+                </o-column>
+                <o-column style="background-color: transparent !important">
+
+                    <button class="custom-button" matTooltip="{{'delete' | oTranslate }}" (click)="confirmDeleteBsn(businessForm.dataArray)">
+                        <mat-icon> delete </mat-icon>
+                    </button>
+                </o-column>
+           
+            
+        </o-row>
+
+                
+
+
+                <!-- Imagen del business -->
+                <div class="data-container">
+                    <div class="div-image-container">
+                        <img class="image" *ngFor="let business of businessForm.dataArray" [src]="getImageSrc(business.bsn_photos)">
+                    </div>
+                </div>
+
+                <!-- Informacion adicional del business divididos en dos columnas (o-rows) -->
+                <div class="data-container" *ngFor="let business of businessForm.dataArray" line-height="2">
+
+                    <!-- Direccion y descripcion -->
+                    <o-row  class="o-rows" class="left" attr="container" icon="explore" title="{{'DESCR_&_ADDR' | oTranslate }}"
+                        layout-align="start stretch" elevation="1" aria-orientation="vertical" appearance="outline" >
+                        <ul class="list-with-spaces">
+                            <li><strong><i>{{'ADDRESS' | oTranslate }}: </i></strong>{{business.bsn_address}}</li>
+                            <li><strong><i>{{'DESCRIPTION' | oTranslate }}: </i></strong>{{business.bsn_description}}</li>
+                        </ul>
+                    </o-row>
+
+                    <!-- Horario, telefono, website y el cif -->
+                    <o-row class="o-rows" class="right" attr="container" title="{{'INFO_EXTRA' | oTranslate }}" icon="info"
+                        layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+                        <ul class="list-with-spaces">
+                            <li><strong><i>{{'SCHEDULE' | oTranslate }}: </i></strong>{{business.bsn_schedule}}</li>
+                            <li><strong><i>{{'PHONE' | oTranslate }}: </i></strong>{{business.bsn_phone}}</li>
+                            <li><strong><i>{{'WEBSITE' | oTranslate }}: </i></strong>{{business.bsn_website}}</li>
+                            <li><strong><i>CIF: </i></strong>{{business.bsn_cif}}</li>
+                        </ul>
+                    </o-row>
+
+                </div>
+
+
+                <!-- Almaceno el tipo de negocio para verificarlo después y mostrar la informacion correspondiente -->
+                <o-text-input #type read-only="yes" class="o-text-input" appearance="outline" attr="bsn_type"
+                    sql-type="STRING" label="Nombre" enabled="no" oHidden></o-text-input>
+
+
+                <!-- Restaurante -->
+                <div *ngIf="type.getValue() === 'Restaurant'">
+
+                    <o-grid #restaurantForm attr="restaurantDetail" service="restaurants" keys="rest_id;bsn_id" parent-keys="bsn_id"
+                        entity="restaurant" columns="rest_id;bsn_id;rest_menu" visible-columns="rest_id;bsn_id;rest_menu"
+                        refresh-button="false" quick-filter="false" oHidden />
+                    <details class="details">
+                        <summary>{{"CLICK_MENU" | oTranslate}}</summary>
+                        <o-row class="o-rows" class="right" attr="container" title="{{'MENU' | oTranslate }}" icon="menu_book"
+                        layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+                        <div class="row-image-container">
+
+                            <img class="menu" *ngFor="let restaurant of restaurantForm.dataArray"
+                            [src]="getImageSrc(restaurant.rest_menu)">
+
+                        </div>
+
+                    </o-row>
+                    </details>
+                    
+                </div>
+
+
+                <!-- Alojamiento -->
+                <div *ngIf="type.getValue() === 'Lodging'">
+                    <!-- Creo un formulario para trabajar con los datos de la tabla hotel -->
+                    <o-form attr="hotelDetail" service="hotels" entity="hotel" keys="htl_id;bsn_id" parent-keys="bsn_id"
+                        columns="bsn_id;htl_id" visible-columns="bsn_id;htl_id" header-actions="false" undo-button="false"
+                        action show-header-actions-text="false" show-header-navigation="no" class="fill-form"
+                        show-header="no">
+                        <div class="data-container" line-height="2">
+                            <!-- Obtengo los datos necesarios para trabajar con ellos mas abajo -->
+                            <o-text-input #type read-only="yes" class="o-text-input" appearance="outline" attr="bsn_id"
+                                sql-type="INTEGER" label="bsn_id" enabled="no" oHidden></o-text-input>
+                            <o-text-input #type read-only="yes" class="o-text-input" appearance="outline" attr="htl_id"
+                                sql-type="INTEGER" label="htl_id" enabled="no" oHidden></o-text-input>
+
+                            <o-grid #hotelRoomForm attr="hotelRoomsDetail" service="hotelRooms" entity="hotelRooms"
+                                keys="rm_id;htl_id" parent-keys="htl_id" columns="rm_id;htl_id;rm_type;rm_cost"
+                                visible-columns="rm_id;htl_id;rm_type;rm_cost" refresh-button="false" quick-filter="false"
+                                oHidden />
+
+                            <o-grid #hotelServiceForm attr="hotelServiceDetail" service="hotelServices"
+                                entity="hotelServices" keys="srv_id;htl_id" parent-keys="htl_id"
+                                columns="srv_id;htl_id;srv_type;srv_cost" visible-columns="srv_id;htl_id;srv_type;srv_cost"
+                                refresh-button="false" quick-filter="false" oHidden />
+
+
+                            <!--Muestro las habitaciones disponibles del hotel seleccionado -->
+                            <o-row class="left" icon="meeting_room" title="{{'FREEROOMS' | oTranslate }}"
+                                layout-align="start stretch" elevation="1" aria-orientation="vertical" appearance="outline">
+                                <ul class="list-with-spaces">
+                                    <li *ngFor="let room of hotelRoomForm.dataArray"><strong><i>{{room.rm_type | oTranslate }}: </i></strong>{{room.rm_cost}}€</li>
+                                </ul>
+                            </o-row>
+
+                            <!-- Muestro los servicios disponibles del hotel seleccionado -->
+                            <o-row class="right" icon="restaurant" title="{{'FREESERVICES' | oTranslate }}"
+                                layout-align="start stretch" elevation="1" aria-orientation="vertical" appearance="outline">
+                                <ul class="list-with-spaces">
+                                    <li *ngFor="let service of hotelServiceForm.dataArray"><i>{{service.srv_type | oTranslate }}</i></li>
+                                </ul>
+                            </o-row>
+                        </div>
+                    </o-form>
+                </div>
+
+                <!-- Agencia de guias -->
+                <div class="data-container" *ngIf="type.getValue() === 'AgencyGuide'">
+                    <!-- Obtengo los datos necesarios para trabajar con ellos mas abajo -->
+                    <o-grid #agencyGuideForm attr="agencyGuideDetail" service="agencyGuides" entity="agencyGuide" keys="gui_id;bsn_id"
+                        parent-keys="bsn_id" columns="gui_id;bsn_id;gui_language;gui_zone;gui_city"
+                        visible-columns="gui_id;bsn_id;gui_language;gui_zone;gui_city"
+                        refresh-button="false" quick-filter="false" oHidden />
+
+                    <!-- Muestro los idiomas, las zonas y las ciudades disponibles en la agencia -->
+                    <o-row class="o-rows" class="right" title="{{'GUIDEINFO' | oTranslate }}" icon="map" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+                        <ul class="list-with-spaces">
+                            <li *ngFor="let agencyGuide of agencyGuideForm.dataArray">
+                                <strong><i>{{'LANGUAGE' | oTranslate }}: </i></strong>
+                                <ng-container *ngFor="let languageKey of agencyGuide.gui_language.split(',')">
+                                    {{ languageKey.trim() | oTranslate }}<span *ngIf="!isLastLanguage(languageKey, agencyGuide.gui_language)">, </span>
+                                </ng-container>
+                            </li>
+                            
+                            <li *ngFor="let agencyGuide of agencyGuideForm.dataArray">
+                                <strong><i>{{'ZONE' | oTranslate }}: </i></strong>{{agencyGuide.gui_zone | oTranslate }}
+                            </li>
+                            <li *ngFor="let agencyGuide of agencyGuideForm.dataArray">
+                                <strong><i>{{'CITY' | oTranslate }}: </i></strong>
+                                <ng-container *ngFor="let cityKey of agencyGuide.gui_city.split(',')">
+                                    {{ cityKey.trim() | oTranslate }}<span *ngIf="!isLastCity(cityKey, agencyGuide.gui_city)">, </span>
+                                </ng-container>
+                            </li>
+                        </ul>
+                    </o-row>
+                    
+                </div>
+            </div>
+        </o-form>
+
+        
+    </mat-card>
+</div>
+
+
+

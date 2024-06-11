@@ -1,10 +1,10 @@
 .routesSecond {
-  height: 450px;
-  width: 1100px;
+  height: 480px;
+  width: auto;
   display: flex;
   align-items: center;
   border-radius: 150px;
-  background-color: #eff1f3;
+  background-color: #e2dbd5;
 }
 
 .backButton {
@@ -17,7 +17,8 @@
 }
 
 .mainPanel {
-  position: relative;
+  width: 100%;
+  overflow: auto;
   background-color: #e2dbd5;
 }
 
@@ -69,6 +70,11 @@
   background-color: transparent;
 }
 
+.descriptionText {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .titulo {
   font-size: 24px;
   font-weight: bold;
@@ -78,8 +84,8 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   width: 900px;
-  max-width: 1100px;
-  margin-right: 105px;
+  max-width: 1150px;
+  margin-right: 95px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -93,7 +99,10 @@
   justify-content: space-between;
   padding-top: 20px;
   padding-left: 30px;
+  width: 290px;
 }
+
+
 
 .difficulty {
   display: flex;
@@ -190,9 +199,28 @@
 .icon-difficulty-4 {
   color: #dc1d0f;
 }
+.div_principal .backButton{
+  align-items: left;
+}
+.mainPanel {
+  position: relative;
+}
+
+.backButton {
+  position: absolute;
+  left: 35px;
+}
 
 .o-rows {
+
   background-color: transparent;
+
+}
+
+.o-row.o-appearance-outline > .o-container .o-container-title {
+  mat-icon {
+    color: white !important;
+  }
 }
 
 .tooltiptextDifficulty {
@@ -234,6 +262,7 @@
 
 .helpTooltip{
   color: #84A45A;
+  padding: 10px 0px 0px 0px;
 }
 
 .tooltiptextDuration {
@@ -274,4 +303,18 @@
 
 .clockTooltip {
   color: #84A45A;
+  padding: 10px 20px 0px 0px;
+}
+
+.clockTooltipDetail{
+  color: #84A45A;
+  padding: 10px 30px 0px 0px;
+}
+
+
+
+:host ::ng-deep .o-container-title {
+  .mat-icon {
+    color: #84A45A !important;
+  }
 }

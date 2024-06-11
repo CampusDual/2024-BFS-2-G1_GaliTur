@@ -164,15 +164,15 @@
 }
 
 .cancel-pack{
-    height: 70px; /*CAMBIAR A 35PX*/
+    height: 35px;
     width: 200px;
     background-color: rgba(235, 13, 13, 0.778);
-    border-radius: 20px; 
-    font-size: 18px; 
+    border-radius: 20px;
+    font-size: 18px;
     color: white;
     font-style: bold;
-    border: none; 
-    cursor: pointer; 
+    border: none;
+    cursor: pointer;
 }
 
 .div-cancel-pack-container {
@@ -182,15 +182,15 @@
 }
 
 .cancel-pack-disabled {
-    height: 70px;
+    height: 35px;
     width: 200px;
     background-color: gray;
-    border-radius: 20px; 
-    font-size: 18px; 
+    border-radius: 20px;
+    font-size: 18px;
     color: white;
     font-style: bold;
-    border: none; 
-    cursor: pointer;  
+    border: none;
+    cursor: pointer;
 }
 
 .tooltipTextCancelButton {
@@ -205,13 +205,13 @@
   border-radius: 6px;
   position: absolute;
   transform: translateX(-70%) translateY(-10px);
-  bottom: 14%;
+  bottom: 11%;
   opacity: 0;
   transition: opacity 0.3s;
   white-space: nowrap;
-  padding: 5px; 
+  padding: 5px;
 }
-  
+
 .tooltipCancelButton:hover .tooltipTextCancelButton {
   visibility: visible;
   transform: translateX(-70%) translateY(0);

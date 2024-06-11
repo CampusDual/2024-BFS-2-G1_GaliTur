@@ -1,6 +1,12 @@
 
-<o-form attr="routesNew" label-header="{{'info_route' | oTranslate }}" class="custom-form" label-header-align="start" service="routes" entity="route" keys="route_id" title="" (onInsert)="onClickOk($event)" (onCancel)="onClickCancel()" confirm-exit="false" message-service-type="customMessageServiceTypeRoutes" ignore-default-navigation="yes">
+<o-form attr="routesNew" label-header="{{'info_route' | oTranslate }}"
+label-header-align="start" service="routes" entity="route"
+keys="route_id" title="" (onInsert)="onClickOk($event)"
+(onCancel)="onClickCancel()" confirm-exit="false"
+message-service-type="customMessageServiceTypeRoutes"
+ignore-default-navigation="yes" class="custom-form">
     <o-column>
+
         <div class="divPrincipal" fxLayout="row">
                 <div fxLayout="column" class="routeInfo">
                     <div fxLayout="column">
@@ -19,8 +25,8 @@
                     </div>
                     <br>
                     <div fxLayout="column">
-                        <o-integer-input  class="txt" attr="estimated_duration"
-                        sql-type="NUMERIC" enabled="yes" min="1" max="5000" label="{{'estimated_duration' | oTranslate }} (min)"></o-integer-input>
+                        <o-integer-input  class="txt" attr="estimated_distance"
+                        sql-type="NUMERIC" enabled="yes" min="1" max="60000" required="no" label="{{'estimated_distance' | oTranslate }} (m)"></o-integer-input>
                     </div>
                     <br>
                     <div fxLayout="column">

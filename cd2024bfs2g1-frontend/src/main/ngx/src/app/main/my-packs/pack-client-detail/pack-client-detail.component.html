@@ -16,18 +16,18 @@
             columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;pck_days;pd_date_begin;pd_date_end;pcs_id;P.gui_c_id;pbk_booking_id"
             show-header-navigation="no" class="fill-form" show-header="no">
 
-         
+
 
             <!-- Almaceno el pack que he clicado -->
             <o-grid #packForm attr="packDetail" service="packs" entity="packAndBookingDetail" keys="P.pck_id;P.gui_c_id;pcs_id"
                 columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;pck_days;pd_date_begin;pd_date_end;pcs_id;P.gui_c_id"
                 parent-keys="pbk_booking_id" refresh-button="false" quick-filter="false" oHidden />
-             
+
             <!-- Almaceno el pack que he clicado -->
             <o-grid #cancelPackForm attr="packCancelDetail" service="packs" entity="packCancelDetail" keys="PB.pbk_booking_id"
             columns="PB.pbk_booking_id"
             parent-keys="pbk_booking_id" refresh-button="false" quick-filter="false" oHidden />
-           
+
 
             <!-- Almaceno la ciudad del pack -->
             <o-grid #gui_cities attr="guiCities" service="guideCities" entity="guideCities" keys="gui_c_id"
@@ -66,6 +66,15 @@
                     </span>
                 </span>
 
+                <ng-container *ngIf="isLogged()">
+                    <o-grid #isCliente attr="isclient" service="clients" entity="isClient" columns="client_id" visible-columns="client_id"
+                    refresh-button="false" quick-filter="false" oHidden />
+                    <span *ngFor="let client of isCliente.dataArray">
+                        <div class="div-cancel-pack-container" *ngFor="let pack of packForm.dataArray">
+                            <p><strong>{{'DATE_R' | oTranslate }}:</strong> {{formatDate(pack.pd_date_begin)}} - {{formatDate(pack.pd_date_end)}}</p>
+                        </div>
+                      </span>
+                </ng-container>
 
                 <!-- Informacion adicional del business divididos en dos columnas (o-rows) -->
                 <div class="data-container" *ngFor="let packs of packForm.dataArray" line-height="2">
@@ -106,7 +115,7 @@
                     </o-row>
                 </div>
                 <ng-container *ngIf="isLogged()">
-                    <o-grid #isCliente attr="isclient" service="clients" entity="isClient" columns="client_id" visible-columns="client_id" 
+                    <o-grid #isCliente attr="isclient" service="clients" entity="isClient" columns="client_id" visible-columns="client_id"
                     refresh-button="false" quick-filter="false" oHidden />
                     <span *ngFor="let client of isCliente.dataArray">
                         <div class="div-cancel-pack-container" *ngFor="let pack of cancelPackForm.dataArray">

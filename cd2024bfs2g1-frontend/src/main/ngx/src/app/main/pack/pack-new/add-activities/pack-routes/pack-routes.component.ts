@@ -1,5 +1,5 @@
-import { Component, Injector, ViewChild } from "@angular/core";
-import { MatDialogRef } from "@angular/material/dialog";
+import { Component, Inject, Injector, ViewChild } from "@angular/core";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { DomSanitizer } from "@angular/platform-browser";
 import { ActivatedRoute } from "@angular/router";
 import { AddActivitiesComponent } from "../add-activities.component";
@@ -24,12 +24,17 @@ export class PackRoutesComponent {
 
   protected service: OntimizeService;
   protected route_service: OntimizeService;
+  protected routesService: OntimizeService;
+
   public arrayDias = [];
   public selectedDay;
   public selectedComboDay;
   selectedRoutesIds: any[] = [];
+  public AssignedRoutes: any[];
+  public NotAsgRoutes: any[]
 
-  constructor(
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
     protected sanitizer: DomSanitizer,
     private dialogRef: MatDialogRef<PackRoutesComponent>,
     private activeRoute: ActivatedRoute,
@@ -39,11 +44,12 @@ export class PackRoutesComponent {
   ) {
     this.service = this.injector.get(OntimizeService);
     this.route_service = this.injector.get(OntimizeService);
+    this.routesService = this.injector.get(OntimizeService);
   }
 
   ngOnInit(): void {
     console.log(
-      "Al emergente le llego el id: " + AddActivitiesComponent.packId
+      "Al emergente le llego el id: " + this.data.packId
     );
     this.configureService();
     this.getDays();
@@ -60,7 +66,7 @@ export class PackRoutesComponent {
       this.updateSelectedRoutesIds();
     });
   }
-  
+
 
   protected configureService() {
     // Configure the service using the configuration defined in the `app.services.config.ts` file
@@ -75,9 +81,16 @@ export class PackRoutesComponent {
     this.route_service.configureService(conf);
   }
 
+  protected configureRoutesService() {
+    // Configure the service using the configuration defined in the `app.services.config.ts` file
+    const conf =
+      this.routesService.getDefaultServiceConfiguration("routes");
+    this.routesService.configureService(conf);
+  }
+
   getDays() {
     const filter = {
-      pck_id: AddActivitiesComponent.packId,
+      pck_id: this.data.packId,
     };
     const columns = ["pck_name", "pck_days"];
     this.service.query(filter, columns, "packDays").subscribe((resp) => {
@@ -99,9 +112,68 @@ export class PackRoutesComponent {
     });
   }
 
+  getAssignedRoutes() {
+
+    this.configureRouteService();
+
+    const filter = {
+      "R.pck_id": parseInt(this.data.packId),
+      assigned_date: this.comboBoxDay.getValue()
+    };
+    const columns = ["R.route_id","name","estimated_duration","difficulty","description"];
+    this.service.query(filter, columns, "routePack").subscribe((resp) => {
+      if (resp.code === 0) {
+        // resp.data contains the data retrieved from the server
+        this.AssignedRoutes = resp.data;
+
+      } else {
+        alert("Impossible to query data!");
+      }
+    });
+  }
+
+  getRoutes() {
+
+    this.configureRoutesService();
+
+    const filter = {
+    };
+    const columns = ["R.route_id","name","estimated_duration","difficulty","description"];
+    this.service.query(filter, columns, "routeImage").subscribe((resp) => {
+      if (resp.code === 0) {
+        // resp.data contains the data retrieved from the server
+        this.NotAsgRoutes = resp.data;
+        this.NotAsgRoutes = this.compareLists();
+        this.table.setDataArray(this.NotAsgRoutes);
+
+      } else {
+        alert("Impossible to query data!");
+      }
+    });
+  }
+
+  compareLists() {
+    if (this.AssignedRoutes[0] && this.NotAsgRoutes) {
+        const assignedIds = new Set(this.AssignedRoutes.map(rou => rou.route_id));
+        const notAssignedRoutes = this.NotAsgRoutes.filter(rou => !assignedIds.has(rou.route_id));
+        console.log('Routes not assigned:', notAssignedRoutes);
+        return notAssignedRoutes;
+    } else {
+        console.warn('One or both lists are not defined yet.');
+        return this.NotAsgRoutes;
+    }
+
+}
+
+setRoutesData() {
+  this.getAssignedRoutes();
+  this.getRoutes();
+  this.table.clearSelection();
+}
+
   insertRoutePack() {
     this.configureRouteService();
-  
+
     if (this.selectedRoutesIds.length === 0) {
       const config: OSnackBarConfig = {
         action: "",
@@ -113,12 +185,12 @@ export class PackRoutesComponent {
       this.snackBarService.open("ROUTEPACK.ERROR", config);
       return;
     }
-  
+
     for (let rt of this.selectedRoutesIds) {
       this.route_service
         .insert(
           {
-            pck_id: AddActivitiesComponent.packId,
+            pck_id: this.data.packId,
             assigned_date: this.comboBoxDay.getValue(),
             route_id: rt
           },
@@ -126,6 +198,7 @@ export class PackRoutesComponent {
         )
         .subscribe(
           (resp) => {
+            this.setRoutesData();
             this.table.clearSelection();
             const config: OSnackBarConfig = {
               action: "",
@@ -151,7 +224,7 @@ export class PackRoutesComponent {
   }
 
   public getImageSrc(base64: any): any {
- 
+
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/logo-walking.png";
   }
 
@@ -192,8 +265,8 @@ export class PackRoutesComponent {
     else {
        return horas + "h " + minutosRestantes + "min";
     }
-  
-    
+
+
   }
 
   getIconColorClass(difficulty: number): string {
@@ -223,6 +296,6 @@ export class PackRoutesComponent {
       }
     }
 
-   
+
 
 }

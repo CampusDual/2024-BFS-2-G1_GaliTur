@@ -27,7 +27,6 @@ import { PackRoutesComponent } from './pack-new/add-activities/pack-routes/pack-
     OGalleryModule,
     OntimizeWebModule,
     OTranslateModule
-
   ]
 })
 export class PackModule { }
