@@ -46,13 +46,15 @@
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: flex; /* Cambiado a flex */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
     font-size: 16px;
     cursor: pointer;
     border-radius: 10px;
     transition: background-color 0.3s;
-  
-  }
+}
+
 
   .custom-button:hover {
     background-color: #5f9b62;
