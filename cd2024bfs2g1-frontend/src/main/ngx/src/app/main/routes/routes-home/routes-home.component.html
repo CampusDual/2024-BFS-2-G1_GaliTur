@@ -56,7 +56,7 @@
             <h3></h3>
             <div fxLayout="row" fxLayoutAlign="space-around stretch">
               <ul style="list-style-type: none;" class="list">
-                <li *ngIf="data.estimated_distance"><mat-icon class="icon">hiking</mat-icon>{{data.estimated_distance}} Km</li>
+                <li *ngIf="data.estimated_distance"><mat-icon class="icon">hiking</mat-icon>{{convertDistance(data.estimated_distance)}}</li>
                 <li *ngIf="!data.estimated_distance"><mat-icon class="icon">hiking</mat-icon>- Km</li>
                       
                 <li *ngIf="data.estimated_distance"><mat-icon class="icon">schedule</mat-icon>{{convertTime(data.estimated_distance)}}</li>

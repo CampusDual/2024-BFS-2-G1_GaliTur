@@ -29,7 +29,7 @@ export class PackClientComponent {
   }
   
   public getImageSrc(base64: any): any {
-    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image-transparent.png';
+    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/home-image.jpeg';
   }
 
   public openDetail(data: any): void {

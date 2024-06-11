@@ -97,13 +97,13 @@ galleryOptions: any;
   
 
   if (kilometros == 0 && metrosRestantes != 0) {
-      return `${metrosRestantes}m`;
+      return `${metrosRestantes} m`;
   } else if (kilometros != 0 && metrosRestantes == 0) {
-      return `${kilometros}km`;
+      return `${kilometros} km`;
   } else if (kilometros != 0 && metrosRestantes != 0) {
-      return `${kilometros},${metrosRestantes}km`;
+      return `${kilometros},${metrosRestantes} km`;
   } else {
-      return '0m';
+      return '0 m';
   }
 }
 
