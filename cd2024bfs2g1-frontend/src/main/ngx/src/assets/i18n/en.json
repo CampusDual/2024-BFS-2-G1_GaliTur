@@ -375,7 +375,8 @@
   "Contracted_packs_per_days": "Number of days the packs have",
   "Types of bussiness":"Number of business types",
   "Packs by station":"Packs created according to the season",
-  "Top 5 most valuated packs": "Top 5 most valuated packs",
-  "Packs by price":"Price of the packs (€)"
+  "Top 5 most valuated packs": "Top most valuated packs",
+  "Packs by price":"Price of the packs (€)",
+  "Top 5 least rated packs":"Top least rated packs"
 }
 

@@ -74,17 +74,17 @@
                 <p ><strong class="name">{{"Top 5 most valuated packs" | oTranslate}}</strong></p>
             </div>
             <div fxLayout="column" class="view-chart">
-                <o-chart  type="multiBarHorizontalChart" service="routes" entity="routeAccordingDifficulty" y-axis="route_difficulty_count" query-on-init="yes" x-axis="difficulty" [color]="colors">
+                <o-chart  type="discreteBar" service="packBookings" entity="topMostPacks" y-axis="media" query-on-init="yes" x-axis="pck_name" [color]="colors">
                 </o-chart>
             </div>
         </div>
          <!--Top 5 packs mas valorados-->
          <div class="chart-row" fxLayout="column">
             <div fxLayout="column" class="name-graphics" >
-                <p ><strong class="name">{{"Top 5 most valuated packs" | oTranslate}}</strong></p>
+                <p ><strong class="name">{{"Top 5 least rated packs" | oTranslate}}</strong></p>
             </div>
             <div fxLayout="column" class="view-chart">
-                <o-chart  type="multiBarHorizontalChart" service="routes" entity="routeAccordingDifficulty" y-axis="route_difficulty_count" query-on-init="yes" x-axis="difficulty" [color]="colors">
+                <o-chart  type="discreteBar" service="packBookings" entity="topLeastPacks" y-axis="media" query-on-init="yes" x-axis="pck_name" [color]="colors">
                 </o-chart>
             </div>
         </div>
