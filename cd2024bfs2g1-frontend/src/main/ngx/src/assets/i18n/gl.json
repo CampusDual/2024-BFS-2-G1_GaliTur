@@ -666,11 +666,10 @@
     "CANCEL-DELETE-BSN-DIALOG-TITLE": "Borrar negocio",
     "CANCEL-DELETE-BSN-DIALOG-DESCRIPTION-PACK": "O negocio está asignado a un pack, ¿Está vostede seguro de que desexa borralo?",
     "CANCEL-DELETE-BSN-DIAG-DESCRIPTION": "¿Está vostede seguro de que desexa borralo?",
-    "SAVE": "Gardar",
-    "NO_ESTIMATED_DISTANCE": "Sen Distancia Estimada",
-    "ESTIMATED_DISTANCE": "Distancia estimada",
     "estimated_distance":"Distancia Estimada",
-    "NO_ESTIMATED_DURATION" : "Sen Duración Estimada"
+    "NO_ESTIMATED_DURATION" : "Sen Duración Estimada",
+    "POPULAR_PACKS": "Packs populares",
+    "POPULAR_PACKS_SUBTITLE": "¡Bota unha ollada aos paquetes favoritos dos nosos usuarios!"
   }
 
 
