@@ -11,7 +11,7 @@
             </ng-template>
         </div>
         
-        <div fxLayout="column" fxFlex="70">
+        <div fxLayout="column">
             <o-row class="o-rows" class="description" attr="container" icon="description" mat
                         title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" elevation="1"
                         aria-orientation="vertical" appearance="outline">
@@ -23,23 +23,38 @@
                 </ng-template>
             </o-row>
             <br>
-            <div fxLayout="row" fxLayoutGap="8px" class="divDeBotones">
+            <div fxLayout="row" class="divDeBotones">
                 <o-row class="o-rows" class="information" attr="container" icon="info" mat
                         title="{{'INFO' | oTranslate }}" layout-align="start stretch" elevation="1"
                         aria-orientation="vertical" appearance="outline">
-                        <div fxLayout="row" class="estimatedDuration">
-                            <div class="tooltipDuration" *ngIf="data.estimated_duration; else no_estimated_duration">
+                        <div fxLayout="row" class="estimatedDuration" >
+                            <div class="tooltipDuration" *ngIf="data.estimated_distance; else no_estimated_distance">
+                                <mat-icon class="clockTooltip">hiking</mat-icon>
+                                <span class="tooltiptextDuration">{{ "estimated_distance" | oTranslate }}</span>
+                            </div>
+                            <span *ngIf="data.estimated_distance">
+                                {{ convertDistance(data.estimated_distance) }}  
+                            </span>
+                            <ng-template #no_estimated_distance>
+                                <div class="tooltipDuration">
+                                    <mat-icon class="clockTooltipDetail">hiking</mat-icon>
+                                    <span class="tooltiptextDuration">{{ "NO_ESTIMATED_DISTANCE" | oTranslate }}</span>
+                                </div>
+                                <span>-</span>
+                            </ng-template>
+                            <div class="tooltipDuration" *ngIf="data.estimated_distance; else no_estimated_duration">
                                 <mat-icon class="clockTooltip">schedule</mat-icon>
                                 <span class="tooltiptextDuration">{{ "estimated_duration" | oTranslate }}</span>
                             </div>
-                            <span *ngIf="data.estimated_duration">
-                                {{ convertTime(data.estimated_duration) }}
+                            <span *ngIf="data.estimated_distance">
+                                {{ convertTime(data.estimated_distance) }}
                             </span>
                             <ng-template #no_estimated_duration>
                                 <div class="tooltipDuration">
-                                    <a><mat-icon class="clockTooltipHome">schedule</mat-icon>-</a>
-                                    <span class="tooltiptextDuration">{{ "N0_ESTIMATED_DURATION" | oTranslate }}</span>
+                                    <mat-icon class="clockTooltipDetail">schedule</mat-icon>
+                                    <span class="tooltiptextDuration">{{ "NO_ESTIMATED_DURATION" | oTranslate }}</span>
                                 </div>
+                                <span>-</span>
                             </ng-template>
                         </div>
                 <div class="difficulty" [ngClass]="'di-' + data.difficulty">
@@ -65,3 +80,4 @@
         </div>
     </div>
 </div>
+

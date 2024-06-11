@@ -145,6 +145,7 @@
   "name": "Nombre",
   "description": "Descripción",
   "estimated_duration": "Duración Estimada",
+  "estimated_distance": "Distancia Estimada",
   "difficulty": "Dificultad",
   "coordinates": "Coordenadas",
   "images": "Imágenes",
@@ -432,7 +433,15 @@
   "BSN.DELETED": "Negocio borrado correctamente",
   "CANCEL-DELETE-BSN-DIALOG-TITLE": "Borrar negocio",
   "CANCEL-DELETE-BSN-DIALOG-DESCRIPTION-PACK": "Este negocio está asignado a un pack, ¿Está seguro de que desea continuar?",
-  "CANCEL-DELETE-BSN-DIAG-DESCRIPTION": "¿Está seguro de que desea continuar?"
+  "CANCEL-DELETE-BSN-DIAG-DESCRIPTION": "¿Está seguro de que desea continuar?",
+  "NO_ESTIMATED_DISTANCE": "Sin Distancia Estimada",
+  "ESTIMATED_DISTANCE": "Distancia estimada",
+  "NO_ESTIMATED_DURATION" : "Sin Duración Estimada",
+  "BEGIN-DATE": "Fecha de inicio",
+  "NO_ROUTES_TODAY": "¡No hay rutas el día",
+  "NO_ROUTES_IN_PACK": "¡En este pack no hay rutas!",
+  "NO_BUSINESS_TODAY": "¡No hay negocios el día",
+  "NO_BUSINESS_IN_PACK": "¡En este pack no hay negocios!"
 }
 
 

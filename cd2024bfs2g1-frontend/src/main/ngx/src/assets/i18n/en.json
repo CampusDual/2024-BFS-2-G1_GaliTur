@@ -146,6 +146,7 @@
   "name": "Name",
   "description": "Description",
   "estimated_duration": "Estimated Duration",
+  "estimated_distance": "Estimated Distance",
   "difficulty": "Difficulty",
   "coordinates": "Coordinates",
   "images": "Images",
@@ -421,6 +422,13 @@
   "ESTIMATED_DISTANCE": "Estimated distance",
   "CANCEL-DELETE-BSN-DIALOG-TITLE": "Delete business",
   "CANCEL-DELETE-BSN-DIALOG-DESCRIPTION-PACK": "This business is assigned to packs, are you sure that you want to proceed?",
-  "CANCEL-DELETE-BSN-DIAG-DESCRIPTION": "Are you sure that you want to proceed?"
+  "CANCEL-DELETE-BSN-DIAG-DESCRIPTION": "Are you sure that you want to proceed?",
+  "MY-BUSINESSES": "My businesses",
+  "NO_ESTIMATED_DURATION" : "No Estimated Duration",
+  "BEGIN-DATE": "Begin date",
+  "NO_ROUTES_TODAY": "There are no routes for day",
+  "NO_ROUTES_IN_PACK": "There are no routes in this pack !",
+  "NO_BUSINESS_TODAY": "There are no businesses for day",
+  "NO_BUSINESS_IN_PACK": "There are no businesses in this pack !"
 }
 

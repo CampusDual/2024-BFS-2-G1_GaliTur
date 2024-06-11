@@ -37,6 +37,8 @@
     background-color: #c2b5aa;
     cursor: pointer; 
     outline: none; 
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
    
      @keyframes pulse {
@@ -71,11 +73,10 @@
          transform: scale(1.03);
      }
    }
-.button-true:hover{
-    background-color: white;
-    border-color: white;
-    font-size: 18px;
-    animation: pulse 3s infinite ease-in-out;
+.button:hover{
+    background-color: #a89d93;
+    border-color: #a89d93;
+    transform: scale(1.03);
 }
 .button-false {
    background-color: #d8d5d2;

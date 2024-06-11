@@ -136,7 +136,7 @@
     "FREEROOMS": "Habitacións Dispoñibles",
     "FREESERVICES": "Servizos Dispoñibles",
     "GUIDEINFO": "Información da guía",
-    "AgencyGuide": "Guía de axencias",
+    "AgencyGuide": "Axencia de guías",
     "Lodging": "Aloxamento",
     "Restaurant": "Restaurante",
     "PASSWORD_TITLE": "Introduce un contrasinal seguro (mínimo 8 caracteres, incluíndo unha maiúscula, unha minúscula, un número e un carácter especial mínimo)",
@@ -654,8 +654,6 @@
     "CONTEXTMENU.ZOOM_IN": "Acercar",
     "CONTEXTMENU.ZOOM_OUT": "Afastar",
     "COMBO-BOX-DAYS-DESC": "O día que selecciones mostrarán as rutas e os negocios dispoñibles no día seleccionado.",
-    "POPULAR_PACKS": "Packs populares",
-    "POPULAR_PACKS_SUBTITLE": "Botalle unha ollada aos pack favoritos dos nosos usuarios!",
     "MY-BUSINESSES": "Os meus negocios",
     "UNDO": "Desfacer",
     "FOUND": "Atopados",
@@ -667,7 +665,12 @@
     "BSN.DELETED": "Negocio borrado axeitadamente",
     "CANCEL-DELETE-BSN-DIALOG-TITLE": "Borrar negocio",
     "CANCEL-DELETE-BSN-DIALOG-DESCRIPTION-PACK": "O negocio está asignado a un pack, ¿Está vostede seguro de que desexa borralo?",
-    "CANCEL-DELETE-BSN-DIAG-DESCRIPTION": "¿Está vostede seguro de que desexa borralo?"
+    "CANCEL-DELETE-BSN-DIAG-DESCRIPTION": "¿Está vostede seguro de que desexa borralo?",
+    "SAVE": "Gardar",
+    "NO_ESTIMATED_DISTANCE": "Sen Distancia Estimada",
+    "ESTIMATED_DISTANCE": "Distancia estimada",
+    "estimated_distance":"Distancia Estimada",
+    "NO_ESTIMATED_DURATION" : "Sen Duración Estimada"
   }
 
 
