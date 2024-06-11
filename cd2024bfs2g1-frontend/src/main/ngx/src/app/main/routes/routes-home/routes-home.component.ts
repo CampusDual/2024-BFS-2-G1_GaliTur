@@ -94,7 +94,7 @@ galleryOptions: any;
   let metrosRestantesDecimal = metrosRestantesStr.split('.')[0].slice(0, 2);
 
   metrosRestantes = Number(metrosRestantesDecimal);
-  
+
 
   if (kilometros == 0 && metrosRestantes != 0) {
       return `${metrosRestantes}m`;

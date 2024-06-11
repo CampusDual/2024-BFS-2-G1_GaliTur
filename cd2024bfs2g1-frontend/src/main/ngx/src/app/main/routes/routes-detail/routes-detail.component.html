@@ -10,7 +10,7 @@
                 <img src="./assets/images/logo.png" class="noImageRoute">
             </ng-template>
         </div>
-        
+
         <div fxLayout="column">
             <o-row class="o-rows" class="description" attr="container" icon="description" mat
                         title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" elevation="1"
@@ -23,7 +23,7 @@
                 </ng-template>
             </o-row>
             <br>
-            <div fxLayout="row" class="divDeBotones">
+            <div fxLayout="column" class="divDeBotones">
                 <o-column>
                 <o-row class="o-rows" class="information" attr="container" icon="info" mat
                         title="{{'INFO' | oTranslate }}" layout-align="start stretch" elevation="1"
@@ -34,7 +34,7 @@
                                 <span class="tooltiptextDuration">{{ "estimated_distance" | oTranslate }}</span>
                             </div>
                             <span *ngIf="data.estimated_distance">
-                                {{ convertDistance(data.estimated_distance) }}  
+                                {{ convertDistance(data.estimated_distance) }}
                             </span>
                             <ng-template #no_estimated_distance>
                                 <div class="tooltipDuration">
@@ -58,7 +58,7 @@
                                 <span>-</span>
                             </ng-template>
                         </div>
-                <div class="difficulty" [ngClass]="'di-' + data.difficulty">
+                <div fxLayout="row" class="difficulty" [ngClass]="'di-' + data.difficulty">
                     <div class="tooltipDifficulty">
                         <mat-icon class="helpTooltip">help</mat-icon>
                         <span class="tooltiptextDifficulty">{{getDifficultad(data.difficulty)  | oTranslate }}</span>
@@ -74,7 +74,7 @@
                 <div fxLayout="row" class="tooltipDifficulty">
                     <mat-icon class="accessible">accessible</mat-icon>
                     <span class="tooltiptextAccessible">{{"accessible" | oTranslate}}</span>
-                </div> 
+                </div>
                 </o-row>
                 <div fxLayout="column" class="landmarkInfo">
                     <button (click)="openDetailLandmark(data)" class="custom-button">
@@ -83,6 +83,8 @@
                 </div>
             </o-column>
             </div>
+
+
         </div>
     </div>
 </div>
