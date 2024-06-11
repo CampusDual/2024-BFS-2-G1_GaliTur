@@ -232,6 +232,7 @@ o-text-input, o-integer-input, o-currency-input, o-date-input, o-combo {
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden;
     border-radius: 10px;
+    padding: 1px;
 }   
   
 .flip-card-front {
@@ -276,9 +277,10 @@ o-text-input, o-integer-input, o-currency-input, o-date-input, o-combo {
     color: white; /* ajusta el color del texto según sea necesario */
     text-align: center;
     z-index: 10;
+    width: 100%;
     hr {
         width: 3.5em;
-        margin-top: 3px;
+        margin-top: -12px;
         margin-bottom: 10px;
         border-style: solid;
     }
@@ -314,7 +316,7 @@ o-text-input, o-integer-input, o-currency-input, o-date-input, o-combo {
     border-radius: 10px 10px 10px 10px;
 }
 
-.pack-name {
+.pack-info-title {
     font-size: 1.25em;
     font-weight: 500;
 }
@@ -336,4 +338,16 @@ o-text-input, o-integer-input, o-currency-input, o-date-input, o-combo {
     justify-content: space-around;
     display: flex;
     flex-direction: column;
+}
+
+.pack-name {
+    overflow: hidden;
+    white-space: wrap;
+    display: inline-block;
+    text-overflow: ellipsis;
+    width: calc(90%);
+    span {
+        font-size: 1.7em;
+
+    }
 }
