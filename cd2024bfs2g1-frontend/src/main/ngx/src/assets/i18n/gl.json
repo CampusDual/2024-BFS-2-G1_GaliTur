@@ -10,7 +10,7 @@
     "client_permission": "Permisos do cliente",
     "confirm_new_password": "Confirmar nova contrasinal",
     "DARK_MODE": "Modo noite",
-    "delete": "Borrar",
+    "delete": "Eliminar",
     "ERROR_MIN_LENGTH_REQUIRED": "O valor introducido debe ter unha lonxitude mínima de 8 caracteres",
     "ERROR_PASS_REQUIRED": "Contrasinal incorrecto.",
     "ERROR_REQUIRED_FIELD": "O campo é obrigatorio",
@@ -683,7 +683,11 @@
     "MESSAGES_LANDMARK_DELETE":"Punto de interese eliminado con éxito",
     "ROUTE_INFO": "Información da ruta",
     "LANDMARKS": "Puntos de interese",
-    "LANDMARKDELETECONFIRMED":"Punto de interese eliminado con éxito"
+    "LANDMARKDELETECONFIRMED":"Punto de interese eliminado con éxito",
+    "CONFIRM_ACTION_DELETE_ROUTE": "Seguro que desexa eliminar esta ruta?",
+    "DELETE_ROUTE_CONFIRM_MESSAGE": "Eliminarase dos seguintes packs:",
+    "CANCEL_BUTTON": "Cancelar",
+    "CONFIRM_DELETE_BUTTON": "Eliminar ruta"
   }
 
 

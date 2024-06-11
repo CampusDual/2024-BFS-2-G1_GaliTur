@@ -13,7 +13,7 @@
           <o-textarea-input class="description-textarea" attr="description" required="yes"
           ></o-textarea-input>
           <o-integer-input  class="txt" attr="estimated_distance"
-                        sql-type="NUMERIC" enabled="yes" min="1" max="60000" required="no" 
+                        enabled="yes" min="1" max="60000" required="no" 
                         label="{{'estimated_distance' | oTranslate }} (m)"></o-integer-input>
           <o-combo attr="difficulty" label="{{ 'COMBO_DIFFICULTY' | oTranslate }}"[static-data]="difficultyArray"
                    value-column="difficultyCode" columns="difficultyCode;difficultyText" null-selection="no"
@@ -21,7 +21,7 @@
           <o-checkbox attr="is_draft" class="txt" label="{{ 'DRAFT' | oTranslate }}" read-only="no"></o-checkbox>
         </div>
         <div fxLayout="column" fxFlexAlign="center" class="contenedor_imagen">
-          <o-form attr="routeImageTable" service="routes" entity="packImageForEdit"
+          <o-form attr="routeImageTable" service="routes" entity="routeImageForEdit"
                   keys="route_id;image_route_id" parent-keys="route_id"
                   message-service-type="customMessageManageRoute" show-header="yes"
                   show-header-navigation="no">

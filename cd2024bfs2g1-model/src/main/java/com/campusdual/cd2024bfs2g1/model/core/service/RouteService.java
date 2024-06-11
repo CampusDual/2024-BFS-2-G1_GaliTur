@@ -1,11 +1,8 @@
 package com.campusdual.cd2024bfs2g1.model.core.service;
 
 import com.campusdual.cd2024bfs2g1.api.core.service.IRouteService;
-import com.campusdual.cd2024bfs2g1.model.core.dao.ImageDao;
-import com.campusdual.cd2024bfs2g1.model.core.dao.ImageRouteDao;
-import com.campusdual.cd2024bfs2g1.model.core.dao.LandmarkDao;
-import com.campusdual.cd2024bfs2g1.model.core.dao.RouteDao;
-import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDao;
+import com.campusdual.cd2024bfs2g1.model.core.dao.*;
+import com.campusdual.cd2024bfs2g1.model.core.dao.pack.RoutePackDao;
 import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
@@ -29,14 +26,23 @@ public class RouteService  implements IRouteService {
     private ImageDao imageDao;
     private ImageRouteDao image_routeDao;
     private DefaultOntimizeDaoHelper daoHelper;
+    private LandmarkService landmarkService;
+    private RouteLandmarkDao routeLandmarkDao;
+    private RoutePackDao routePackDao;
 
     @Autowired
-    public RouteService(RouteDao routeDao, LandmarkDao landmarkDao, ImageDao imageDao, ImageRouteDao image_routeDao, DefaultOntimizeDaoHelper daoHelper) {
+    public RouteService(RouteDao routeDao, LandmarkDao landmarkDao,
+                        ImageDao imageDao, ImageRouteDao image_routeDao,
+                        DefaultOntimizeDaoHelper daoHelper,LandmarkService landmarkService,
+                        RouteLandmarkDao routeLandmarkDao,RoutePackDao routePackDao) {
         this.routeDao = routeDao;
         this.landmarkDao = landmarkDao;
         this.imageDao = imageDao;
         this.image_routeDao = image_routeDao;
         this.daoHelper = daoHelper;
+        this.landmarkService = landmarkService;
+        this.routeLandmarkDao = routeLandmarkDao;
+        this.routePackDao = routePackDao;
     }
 
     @Override
@@ -46,12 +52,12 @@ public class RouteService  implements IRouteService {
 
     @Override
     public EntityResult routeImageQuery(Map<String, Object> keyMap, List<String> attrList) {
-       attrList.remove("route_id");
+        attrList.remove("route_id");
         return this.daoHelper.query(routeDao, keyMap, attrList, "multi");
     }
 
     @Override
-    public EntityResult packImageForEditQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+    public EntityResult routeImageForEditQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
         if(keyMap.size()>0){
             Object key = keyMap.remove(RouteDao.ATTR_ID);
             keyMap.put("r."+RouteDao.ATTR_ID, key);
@@ -130,7 +136,111 @@ public class RouteService  implements IRouteService {
     }
 
     @Override
+    public AdvancedEntityResult routeNotDraftPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy) throws OntimizeJEERuntimeException {
+        return this.daoHelper.paginationQuery(this.routeDao, keysValues, attributes, recordNumber, startIndex, orderBy, RouteDao.QUERY_ROUTE_NOT_DRAFT);
+    }
+
+    @Override
     public EntityResult routesOfPackQuery(Map<String, Object> keyMap, List<String> attrList) {
         return this.daoHelper.query(routeDao, keyMap, attrList, routeDao.QUERY_ROUTES_OF_PACK);
+    }
+
+    @Override
+    public EntityResult routeUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.update(routeDao, attrMap, keyMap);
+    }
+
+    @Override
+    public EntityResult routeDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        EntityResult finalResponse = null;
+        List<String> attrList = new ArrayList<>();
+        //ImagePart
+        attrList.add(image_routeDao.ATTR_IMAGE_ROUTE_ID);
+        attrList.add(image_routeDao.ATTR_IMAGE_ID);
+        EntityResult actualImageRoute = null;
+        actualImageRoute = this.daoHelper.query(image_routeDao, keyMap, attrList);
+        if(!actualImageRoute.isEmpty()){
+            EntityResult responseDeleteImageRoute = deleteImageRouteAux(((ArrayList)actualImageRoute.get(image_routeDao.ATTR_IMAGE_ROUTE_ID)).get(0));
+            EntityResult responseDeleteImage = deleteImageAux(((ArrayList)actualImageRoute
+                    .get(image_routeDao.ATTR_IMAGE_ID)).get(0));
+        }
+
+        attrList.clear();
+        //Landkmark part
+        attrList.add(landmarkDao.ATTR_ID);
+        attrList.add(routeLandmarkDao.ATTR_ROUTE_LANDMARK_ID);
+        EntityResult routeLandmark = null;
+        routeLandmark = this.daoHelper.query(routeLandmarkDao, keyMap, attrList);
+
+
+        if(!routeLandmark.isEmpty()){
+            for (Object iter : ((ArrayList)routeLandmark.get(routeLandmarkDao.ATTR_ROUTE_LANDMARK_ID))) {
+                Map landmarkDeleteMap = new HashMap<String,Object>();
+                landmarkDeleteMap.put(routeLandmarkDao.ATTR_ROUTE_LANDMARK_ID,
+                        iter);
+                landmarkService.landmarkDelete(landmarkDeleteMap);
+            }
+
+        }
+        //Pack part
+        attrList.clear();
+        //Landkmark part
+        attrList.add(routePackDao.ROUTE_PACK_ID);
+        EntityResult routePack = null;
+        routePack = this.daoHelper.query(routePackDao, keyMap, attrList);
+
+
+        if(!routePack.isEmpty()){
+            for (Object iter : ((ArrayList)routePack.get(routePackDao.ROUTE_PACK_ID))) {
+                Map routePackDeleteMap = new HashMap<String,Object>();
+                routePackDeleteMap.put("route_pack_id",
+                        iter);
+                this.daoHelper.delete(routePackDao, routePackDeleteMap);
+            }
+
+        }
+        //Route delete
+        return finalResponse = this.daoHelper.delete(routeDao, keyMap);
+    }
+
+
+    private EntityResult deleteImageRouteAux(Object imageRouteObject){
+        Map<String,Object> imageRouteDeleteKey = new HashMap<>();
+        imageRouteDeleteKey.put(image_routeDao.ATTR_IMAGE_ROUTE_ID,imageRouteObject);
+        return this.daoHelper.delete(image_routeDao, imageRouteDeleteKey);
+    }
+    private EntityResult deleteImageAux(Object imageObject){
+        Map<String,Object> imageDeleteKey = new HashMap<>();
+        imageDeleteKey.put(imageDao.ATTR_IMAGE_ID,imageObject);
+        return this.daoHelper.delete(imageDao, imageDeleteKey);
+    }
+
+    @Override
+    public EntityResult searchPacksQuery(Map<String, Object> keyMap, List<String> attrList) {
+        if(keyMap.containsKey("route_id")){
+            Object route_idAux = keyMap.remove("route_id");
+            keyMap.put("r."+routeDao.ATTR_ID,route_idAux);
+        }
+        EntityResult auxObject = this.daoHelper.query(routeDao, keyMap, attrList,routeDao.QUERY_SEARCH_PACKS);
+        return auxObject;
+    }
+
+
+    @Override
+    public EntityResult routeImageForEditUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
+            throws OntimizeJEERuntimeException {
+        Map<String, Object> attrMapUpdate = new HashMap<>();
+        //Meter la imagen
+        EntityResult imageRouteUpdate  = null;
+        EntityResult imageInsert = this.daoHelper.insert(imageDao, attrMap);
+
+        if(imageInsert.getCode()==EntityResult.OPERATION_SUCCESSFUL){
+            attrMapUpdate.put(image_routeDao.ATTR_IMAGE_ID,imageInsert.get("image_id"));
+            keyMap.remove("route_id");
+            return imageRouteUpdate = this.daoHelper.update(image_routeDao,attrMapUpdate,keyMap);
+        }
+        //Meter la relacion
+        return imageRouteUpdate;
     }
 }

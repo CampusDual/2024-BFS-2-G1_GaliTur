@@ -1,0 +1,17 @@
+<div class="all-dialog">
+  <h1 mat-dialog-title>{{'CONFIRM_ACTION_DELETE_ROUTE' | oTranslate }}</h1>
+  <div [ngClass]="{'div-info': data.mensaje}" mat-dialog-content>
+    <h3>{{mensaje | oTranslate }}</h3>
+    <div [ngClass]="{'pack-list-container':data.mensaje}">
+      <ul>
+        <li *ngFor="let pack of packs; let i = index">
+          <p>{{pack.pck_name}}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="div-buttons" mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]="false">{{'CANCEL_BUTTON' | oTranslate }}</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true">{{'CONFIRM_DELETE_BUTTON' | oTranslate }}</button>
+  </div>
+</div>

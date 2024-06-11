@@ -438,6 +438,10 @@
   "MESSAGES_LANDMARK_DELETE":"Landmark deleted successfully",
   "ROUTE_INFO": "Route info",
   "LANDMARKS": "Landmarks",
-  "LANDMARKDELETECONFIRMED":"Landmark deleted successfully"
+  "LANDMARKDELETECONFIRMED":"Landmark deleted successfully",
+  "CONFIRM_ACTION_DELETE_ROUTE": "Are you sure you want to delete this route?",
+  "DELETE_ROUTE_CONFIRM_MESSAGE": "It will be deleted from the following packs:",
+  "CANCEL_BUTTON": "Cancel",
+  "CONFIRM_DELETE_BUTTON": "Delete route"
 }
 
