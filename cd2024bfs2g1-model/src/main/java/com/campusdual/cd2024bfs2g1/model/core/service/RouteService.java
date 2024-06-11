@@ -225,4 +225,22 @@ public class RouteService  implements IRouteService {
         EntityResult auxObject = this.daoHelper.query(routeDao, keyMap, attrList,routeDao.QUERY_SEARCH_PACKS);
         return auxObject;
     }
+
+
+    @Override
+    public EntityResult packImageForEditUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
+            throws OntimizeJEERuntimeException {
+        Map<String, Object> attrMapUpdate = new HashMap<>();
+        //Meter la imagen
+        EntityResult imageRouteUpdate  = null;
+        EntityResult imageInsert = this.daoHelper.insert(imageDao, attrMap);
+
+        if(imageInsert.getCode()==EntityResult.OPERATION_SUCCESSFUL){
+                attrMapUpdate.put(image_routeDao.ATTR_IMAGE_ID,imageInsert.get("image_id"));
+            keyMap.remove("route_id");
+            return imageRouteUpdate = this.daoHelper.update(image_routeDao,attrMapUpdate,keyMap);
+        }
+        //Meter la relacion
+        return imageRouteUpdate;
+    }
 }

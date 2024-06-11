@@ -39,4 +39,7 @@ public interface IRouteService {
     EntityResult routeDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
     EntityResult searchPacksQuery(Map<String, Object> keyMap, List<String> attrList);
+
+    EntityResult packImageForEditUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
+            throws OntimizeJEERuntimeException;
 }
