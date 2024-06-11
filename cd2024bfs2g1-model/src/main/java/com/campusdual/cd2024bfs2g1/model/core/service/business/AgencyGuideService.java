@@ -57,77 +57,64 @@ public class AgencyGuideService implements IAgencyGuideService {
             languagesStr.remove(0);
 
 
-        List<List<Map<String,Object>>> listaDelistas = new ArrayList<>();
-        List<Map<String, Object>> listaMapas = new ArrayList<>();
+        List<Integer> listaCodes = new ArrayList<>();
 
         for (String language : languagesStr) {
-            Map <String,Object> mapa = new HashMap<>();
 
             switch (language) {
                 case "SPANISH":
-                    mapa.put("gui_l_id",1);
-                    mapa.put("gui_l_name","SPANISH");
+                    listaCodes.add(1);
                     break;
                 case "GALICIAN":
-                    mapa.put("gui_l_id",2);
-                    mapa.put("gui_l_name","GALICIAN");
+                    listaCodes.add(2);
+
                     break;
                 case "ENGLISH":
-                    mapa.put("gui_l_id",3);
-                    mapa.put("gui_l_name","ENGLISH");
+                    listaCodes.add(3);
+
                     break;
                 case "GERMAN":
-                    mapa.put("gui_l_id",4);
-                    mapa.put("gui_l_name","GERMAN");
+                    listaCodes.add(4);
+
                     break;
                 case "PORTUGUESE":
-                    mapa.put("gui_l_id",5);
-                    mapa.put("gui_l_name","PORTUGUESE");
+                    listaCodes.add(5);
                     break;
                 case "FRENCH":
-                    mapa.put("gui_l_id",6);
-                    mapa.put("gui_l_name","FRENCH");
+                    listaCodes.add(6);
                     break;
                 case "RUSSIAN":
-                    mapa.put("gui_l_id",7);
-                    mapa.put("gui_l_name","RUSSIAN");
+                    listaCodes.add(7);
                     break;
                 case "ITALIAN":
-                    mapa.put("gui_l_id",8);
-                    mapa.put("gui_l_name","ITALIAN");
+                    listaCodes.add(8);
                     break;
                 case "BASQUE":
-                    mapa.put("gui_l_id",9);
-                    mapa.put("gui_l_name","BASQUE");
+                    listaCodes.add(9);
                     break;
                 case "CATALAN":
-                    mapa.put("gui_l_id",10);
-                    mapa.put("gui_l_name","CATALAN");
+                    listaCodes.add(10);
                     break;
                 case "POLISH":
-                    mapa.put("gui_l_id",11);
-                    mapa.put("gui_l_name","POLISH");
+                    listaCodes.add(11);
                     break;
                 case "UKRAINIAN":
-                    mapa.put("gui_l_id",12);
-                    mapa.put("gui_l_name","UKRAINIAN");
+                    listaCodes.add(12);
                     break;
                 case "DUTCH":
-                    mapa.put("gui_l_id",13);
-                    mapa.put("gui_l_name","DUTCH");
+                    listaCodes.add(13);
                     break;
                 case "CHINESE":
-                    mapa.put("gui_l_id",14);
-                    mapa.put("gui_l_name","CHINESE");
+                    listaCodes.add(14);
                     break;
                 case "ARABIC":
-                    mapa.put("gui_l_id",15);
-                    mapa.put("gui_l_name","ARABIC");
+                    listaCodes.add(15);
                     break;
             }
-            listaMapas.add(mapa);
         }
-        listaDelistas.add(listaMapas);
+
+        List<List<Integer>> listaDelistas = new ArrayList<>();
+        listaDelistas.add(listaCodes);
 
         er.put("comboLanguages",listaDelistas);
 

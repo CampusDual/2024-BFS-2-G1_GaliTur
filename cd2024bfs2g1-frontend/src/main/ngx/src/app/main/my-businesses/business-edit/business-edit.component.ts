@@ -28,8 +28,8 @@ export class BusinessEditComponent {
   validatorsDniCif: ValidatorFn[] = [];
   blankValidator: ValidatorFn[] = [];
   protected agencyGuideService: OntimizeService;
-  respuesta: []
-  numeroRespuesta
+  public respuesta = []
+  esInicial = true
 
 
   public switchDestinationState: boolean = false;
@@ -59,7 +59,7 @@ export class BusinessEditComponent {
 
   // viewchild (form) - afterViewInit - procesar info formulario - seleccionar en combobox
   ngOnInit() {
-    this.getAgencyData();
+
   }
 
  
@@ -157,35 +157,40 @@ export class BusinessEditComponent {
 
   getAgencyData() {
 
-    this.configureAGService();
+    if(this.esInicial){
 
-    const filter = {
-      bsn_id: parseInt(this.activeRoute.snapshot.params["bsn_id"]),
-    };
-    const columns = ["bsn_id"];
-    this.agencyGuideService.query(filter, columns, "agencyGuideEdit").subscribe((resp) => {
-      if (resp.code === 0) {
-        // resp.data contains the data retrieved from the server
-        console.log("hola")
-        const data = resp.data[0]
-        this.respuesta = data["comboLanguages"];
-        //this.comboLanguages.setSelectedItems(this.respuesta)
+      this.configureAGService();
 
-        this.comboLanguages.setDataArray(this.respuesta)
-        
+      const filter = {
+        bsn_id: parseInt(this.activeRoute.snapshot.params["bsn_id"]),
+      };
+      const columns = ["bsn_id"];
+      this.agencyGuideService.query(filter, columns, "agencyGuideEdit").subscribe((resp) => {
+        if (resp.code === 0) {
+          // resp.data contains the data retrieved from the server
+          console.log("hola")
+          const data = resp.data[0]
+          this.respuesta = data["comboLanguages"];
+          this.comboLanguages.setSelectedItems(this.respuesta)
+          console.log(this.comboLanguages.getSelectedItems())
+          //this.comboLanguages.setDataArray(this.respuesta)
+          
+  
+         // console.log(this.respuesta)
+  
+  
+          this.esInicial = false
+          
+  
+  
+  
+        } else {
+          alert("Impossible to query data!");
+        }
+      });
+    }
 
-        console.log(this.respuesta)
-
-
-
-        
-
-
-
-      } else {
-        alert("Impossible to query data!");
-      }
-    });
+    
   }
 
   protected configureAGService() {
