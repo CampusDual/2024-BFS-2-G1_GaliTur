@@ -430,10 +430,9 @@
   "NO_ESTIMATED_DISTANCE": "Sin distancia estimada",
   "ESTIMATED_DISTANCE": "Distancia estimada",
   "BSN.DELETED": "Negocio borrado correctamente",
-  "CANCEL-DELETE-BSN-DIALOG": "Borrar negocio",
-  "CANCEL-DELETE-BSN-DIALOG-B": "Este negocio está asignado a un pack, ¿Está seguro de que desea continuar?",
-  "CANCEL-DELETE-BSN-DIAG": "Borrar negocio",
-  "CANCEL-DELETE-BSN-DIAG-B": "¿Está seguro de que desea continuar?"
+  "CANCEL-DELETE-BSN-DIALOG-TITLE": "Borrar negocio",
+  "CANCEL-DELETE-BSN-DIALOG-DESCRIPTION-PACK": "Este negocio está asignado a un pack, ¿Está seguro de que desea continuar?",
+  "CANCEL-DELETE-BSN-DIAG-DESCRIPTION": "¿Está seguro de que desea continuar?"
 }
 
 

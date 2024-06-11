@@ -419,9 +419,8 @@
   "CLEAR_SEARCH": "Delete search",
   "NO_ESTIMATED_DISTANCE": "No estimated distance",
   "ESTIMATED_DISTANCE": "Estimated distance",
-  "CANCEL-DELETE-BSN-DIALOG": "Delete business",
-  "CANCEL-DELETE-BSN-DIALOG-B": "This business is assigned to packs, are you sure that you want to proceed?",
-  "CANCEL-DELETE-BSN-DIAG": "Delete business",
-  "CANCEL-DELETE-BSN-DIAG-B": "Are you sure that you want to proceed?"
+  "CANCEL-DELETE-BSN-DIALOG-TITLE": "Delete business",
+  "CANCEL-DELETE-BSN-DIALOG-DESCRIPTION-PACK": "This business is assigned to packs, are you sure that you want to proceed?",
+  "CANCEL-DELETE-BSN-DIAG-DESCRIPTION": "Are you sure that you want to proceed?"
 }
 
