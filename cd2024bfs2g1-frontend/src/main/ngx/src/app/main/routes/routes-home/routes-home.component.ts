@@ -33,7 +33,7 @@ galleryOptions: any;
       this.ontimizerouteService
       .query(
         { route_id: idRutaActual },
-        ["route_id","name", "description", "estimated_duration", "difficulty"],
+        ["route_id","name", "description", "estimated_distance", "difficulty"],
         "route"
       )
       .subscribe((response) => {
