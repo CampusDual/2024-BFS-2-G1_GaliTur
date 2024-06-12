@@ -2,7 +2,16 @@ import { Component, Injector, ViewChild } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { PackActivitiesComponent } from "./pack-activities/pack-activities.component";
 import { ActivatedRoute, Router } from "@angular/router";
-import { DialogService, FilterExpressionUtils, ODialogConfig, OSnackBarConfig, OTableComponent, OTranslateService, OntimizeService, SnackBarService } from "ontimize-web-ngx";
+import {
+  DialogService,
+  FilterExpressionUtils,
+  ODialogConfig,
+  OSnackBarConfig,
+  OTableComponent,
+  OTranslateService,
+  OntimizeService,
+  SnackBarService,
+} from "ontimize-web-ngx";
 import { PackRoutesComponent } from "./pack-routes/pack-routes.component";
 
 @Component({
@@ -11,15 +20,12 @@ import { PackRoutesComponent } from "./pack-routes/pack-routes.component";
   styleUrls: ["./add-activities.component.css"],
 })
 export class AddActivitiesComponent {
-
   @ViewChild("tableBsn", { static: false }) tableBsn: OTableComponent;
   @ViewChild("tableRoutes", { static: false }) tableRoutes: OTableComponent;
   packId: any;
   protected service: OntimizeService;
   public bsnArray = [];
-  
- 
-
+  public pack_name;
 
   constructor(
     protected dialog: MatDialog,
@@ -31,6 +37,7 @@ export class AddActivitiesComponent {
     private oTranslate: OTranslateService
   ) {
     this.service = this.injector.get(OntimizeService);
+    this.setPackName();
   }
   ngOnInit(): void {
     this.packId = this.activeRoute.snapshot.params["pck_id"];
@@ -39,8 +46,18 @@ export class AddActivitiesComponent {
     this.getBsn();
     this.getRoute();
   }
-  
 
+  setPackName() {
+    const conf = this.service.getDefaultServiceConfiguration("packs");
+    this.service.configureService(conf);
+    const filter = {
+      pck_id: parseInt(this.activeRoute.snapshot.params["pck_id"]),
+    };
+    const columns = ["pck_name"];
+    this.service.query(filter, columns, "pack").subscribe((resp) => {
+      this.pack_name = resp.data[0].pck_name;
+    });
+  }
   deleteBsn() {
     const config: ODialogConfig = {
       icon: "warning",
@@ -62,7 +79,7 @@ export class AddActivitiesComponent {
     }
 
     // Obtener los IDs de los registros seleccionados
-    const idsToDelete = selectedItems.map(item => item.bsn_pack_id);
+    const idsToDelete = selectedItems.map((item) => item.bsn_pack_id);
     if (this.dialogService) {
       this.dialogService.confirm(
         this.oTranslate.get("BSN-DELETE-DIALOG"),
@@ -71,35 +88,37 @@ export class AddActivitiesComponent {
       );
       this.dialogService.dialogRef.afterClosed().subscribe((result) => {
         if (result) {
-           // Confirmación de eliminación
-   
-      const conf = this.service.getDefaultServiceConfiguration("businessPacks");
-      this.service.configureService(conf);
+          // Confirmación de eliminación
 
-      // Eliminar cada registro
-      idsToDelete.forEach(id => {
-        const filter = { "bsn_pack_id": id };
-        this.service.delete(filter, "businessPack").subscribe((resp) => {
-          if (resp.code === 0) {
-            console.log(`Deleted bsn_pack_id: ${id}`);
-            // Actualizar la tabla después de la eliminación
-            this.getBsn();
-            const config: OSnackBarConfig = {
-              action: "",
-              milliseconds: 2000,
-              icon: "check",
-              iconPosition: "left",
-              cssClass: "snackbar",
-            };
-            this.snackBarService.open("BSNPACK.DELETE", config);
-          } else {
-            alert(`Failed to delete bsn_pack_id: ${id}`);
-          }
-        });
+          const conf =
+            this.service.getDefaultServiceConfiguration("businessPacks");
+          this.service.configureService(conf);
+
+          // Eliminar cada registro
+          idsToDelete.forEach((id) => {
+            const filter = { bsn_pack_id: id };
+            this.service.delete(filter, "businessPack").subscribe((resp) => {
+              if (resp.code === 0) {
+                console.log(`Deleted bsn_pack_id: ${id}`);
+                // Actualizar la tabla después de la eliminación
+                this.getBsn();
+                const config: OSnackBarConfig = {
+                  action: "",
+                  milliseconds: 2000,
+                  icon: "check",
+                  iconPosition: "left",
+                  cssClass: "snackbar",
+                };
+                this.snackBarService.open("BSNPACK.DELETE", config);
+              } else {
+                alert(`Failed to delete bsn_pack_id: ${id}`);
+              }
+            });
+          });
+        }
       });
-      };
-    })
-  }}
+    }
+  }
 
   deleteRoute() {
     const config: ODialogConfig = {
@@ -122,7 +141,7 @@ export class AddActivitiesComponent {
     }
 
     // Obtener los IDs de los registros seleccionados
-    const idsToDelete = selectedItems.map(item => item.route_pack_id);
+    const idsToDelete = selectedItems.map((item) => item.route_pack_id);
     if (this.dialogService) {
       this.dialogService.confirm(
         this.oTranslate.get("ROUTE-DELETE-DIALOG"),
@@ -131,92 +150,93 @@ export class AddActivitiesComponent {
       );
       this.dialogService.dialogRef.afterClosed().subscribe((result) => {
         if (result) {
-           // Confirmación de eliminación
-   
-      const conf = this.service.getDefaultServiceConfiguration("routePacks");
-      this.service.configureService(conf);
+          // Confirmación de eliminación
 
-      // Eliminar cada registro
-      idsToDelete.forEach(id => {
-        const filter = { "route_pack_id": id };
-        this.service.delete(filter, "routePack").subscribe((resp) => {
-          if (resp.code === 0) {
-            console.log(`Deleted route_pack_id: ${id}`);
-            // Actualizar la tabla después de la eliminación
-            this.getRoute();
-            const config: OSnackBarConfig = {
-              action: "",
-              milliseconds: 2000,
-              icon: "check",
-              iconPosition: "left",
-              cssClass: "snackbar",
-            };
-            this.snackBarService.open("ROUTEPACK.DELETE", config);
-          } else {
-            alert(`Failed to delete route_pack_id: ${id}`);
-          }
-        });
+          const conf =
+            this.service.getDefaultServiceConfiguration("routePacks");
+          this.service.configureService(conf);
+
+          // Eliminar cada registro
+          idsToDelete.forEach((id) => {
+            const filter = { route_pack_id: id };
+            this.service.delete(filter, "routePack").subscribe((resp) => {
+              if (resp.code === 0) {
+                console.log(`Deleted route_pack_id: ${id}`);
+                // Actualizar la tabla después de la eliminación
+                this.getRoute();
+                const config: OSnackBarConfig = {
+                  action: "",
+                  milliseconds: 2000,
+                  icon: "check",
+                  iconPosition: "left",
+                  cssClass: "snackbar",
+                };
+                this.snackBarService.open("ROUTEPACK.DELETE", config);
+              } else {
+                alert(`Failed to delete route_pack_id: ${id}`);
+              }
+            });
+          });
+        }
       });
-      };
-    })
-  }}
-
+    }
+  }
 
   addActivity() {
-
     const dataToPass = {
       // Define los datos que quieres pasar al componente emergente
       packId: this.packId,
     };
-    
-   const diaglogRef = this.dialog.open(PackActivitiesComponent, {
+
+    const diaglogRef = this.dialog.open(PackActivitiesComponent, {
       width: "1200px",
       maxHeight: "800px",
       minHeight: "800px",
       maxWidth: "80vw",
-      data: dataToPass
+      data: dataToPass,
     });
     diaglogRef.afterClosed().subscribe(() => {
-      this.getBsn()
+      this.getBsn();
     });
   }
 
-  
-
   addRoute() {
-
     const dataToPass = {
       // Define los datos que quieres pasar al componente emergente
       packId: this.packId,
     };
-    
+
     const diaglogRef = this.dialog.open(PackRoutesComponent, {
-       width: "1200px",
-       maxHeight: "800px",
-       minHeight: "800px",
-       maxWidth: "80vw",
-       data: dataToPass
-     });
-     diaglogRef.afterClosed().subscribe(() => {
-       this.getRoute()
-     });
-   }
+      width: "1200px",
+      maxHeight: "800px",
+      minHeight: "800px",
+      maxWidth: "80vw",
+      data: dataToPass,
+    });
+    diaglogRef.afterClosed().subscribe(() => {
+      this.getRoute();
+    });
+  }
 
   getBsn() {
     const conf = this.service.getDefaultServiceConfiguration("businessPacks");
     this.service.configureService(conf);
     const filter = {
-      "BP.pck_id": parseInt(this.packId) ,
+      "BP.pck_id": parseInt(this.packId),
     };
-    const columns = ["bsn_name", "bsn_type","bsn_address","assigned_date","bsn_pack_id"];
+    const columns = [
+      "bsn_name",
+      "bsn_type",
+      "bsn_address",
+      "assigned_date",
+      "bsn_pack_id",
+    ];
     this.service.query(filter, columns, "packBusiness").subscribe((resp) => {
       if (resp.code === 0) {
         // resp.data contains the data retrieved from the server
 
         this.tableBsn.setDataArray(resp.data);
-        this.tableBsn.reloadData()
-
-
+        this.tableBsn.reloadData();
       } else {
         alert("Impossible to query data!");
       }
@@ -227,17 +247,21 @@ export class AddActivitiesComponent {
     const conf = this.service.getDefaultServiceConfiguration("routePacks");
     this.service.configureService(conf);
     const filter = {
-      "R.pck_id": parseInt(this.packId) ,
+      "R.pck_id": parseInt(this.packId),
     };
-    const columns = ["name", "estimated_duration","difficulty","assigned_date","route_pack_id"];
+    const columns = [
+      "name",
+      "estimated_duration",
+      "difficulty",
+      "assigned_date",
+      "route_pack_id",
+    ];
     this.service.query(filter, columns, "routePack").subscribe((resp) => {
       if (resp.code === 0) {
         // resp.data contains the data retrieved from the server
-        
+
         this.tableRoutes.setDataArray(resp.data);
-        this.tableRoutes.reloadData()
-
-
+        this.tableRoutes.reloadData();
       } else {
         alert("Impossible to query data!");
       }
@@ -245,5 +269,6 @@ export class AddActivitiesComponent {
   }
 
   public goBack(): void {
-    this.router.navigate(['main/packs/' + this.packId]);  }
+    this.router.navigate(["main/packs/" + this.packId]);
+  }
 }
