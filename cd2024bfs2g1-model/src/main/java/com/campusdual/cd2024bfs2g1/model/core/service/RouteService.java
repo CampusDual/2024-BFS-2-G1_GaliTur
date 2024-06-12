@@ -243,7 +243,7 @@ public class RouteService  implements IRouteService {
         EntityResult imageInsert = this.daoHelper.insert(imageDao, attrMap);
 
         if(imageInsert.getCode()==EntityResult.OPERATION_SUCCESSFUL){
-            attrMapUpdate.put(image_routeDao.ATTR_IMAGE_ID,imageInsert.get("image_id"));
+            attrMapUpdate.put(image_routeDao.ATTR_IMAGE_ID,imageInsert.get(image_routeDao.ATTR_IMAGE_ID));
             keyMap.remove("route_id");
             return imageRouteUpdate = this.daoHelper.update(image_routeDao,attrMapUpdate,keyMap);
         }
