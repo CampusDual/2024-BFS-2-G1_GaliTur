@@ -1,7 +1,7 @@
 ::ng-deep .principal {
     display: flex;
     flex-direction: column;
-    height: 90%; 
+    height: 90%;
     width: 100%;
     background-color: #e2dbd5 !important;
 }
@@ -24,9 +24,8 @@
     flex-direction: column;
     height: 100%;
     background-color: #e2dbd5;
-    
-}
 
+}
 
 
 
@@ -71,7 +70,11 @@
     }
     padding-left: 87.7%;
     padding-bottom: 1.5%;
-    
+
+}
+
+:host ::ng-deep .o-table .o-table-container .mat-mdc-table .mat-mdc-row .mat-mdc-cell div {
+    color: black;
 }
 
 

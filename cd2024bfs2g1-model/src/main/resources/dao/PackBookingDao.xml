@@ -40,6 +40,52 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="topMostPacks">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        AVG(PB.pbk_stars) AS media,
+                        P.pck_name
+                    FROM
+                        ${mainschema}.pack_booking PB
+                        INNER JOIN ${mainschema}.pack_date PD
+                        ON PB.pd_id = PD.pd_id
+                        INNER JOIN ${mainschema}.pack P
+                        ON PD.pck_id = P.pck_id
+                    WHERE
+                        PB.pbk_stars is not null
+                    GROUP BY
+                        P.pck_name
+                    ORDER BY
+                        media ASC
+                    LIMIT 5
+
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="topLeastPacks">
+            <Sentence>
+                <![CDATA[
+                      SELECT
+                        AVG(PB.pbk_stars) AS media,
+                        P.pck_name
+                    FROM
+                        ${mainschema}.pack_booking PB
+                        INNER JOIN ${mainschema}.pack_date PD
+                        ON PB.pd_id = PD.pd_id
+                        INNER JOIN ${mainschema}.pack P
+                        ON PD.pck_id = P.pck_id
+                    WHERE
+                        PB.pbk_stars is not null
+                    GROUP BY
+                        P.pck_name
+                    ORDER BY
+                        media DESC
+                    LIMIT 5
+
+                ]]>
+            </Sentence>
+        </Query>
         <Query id="bookingClientUserDatePack">
             <Sentence>
                     <![CDATA[

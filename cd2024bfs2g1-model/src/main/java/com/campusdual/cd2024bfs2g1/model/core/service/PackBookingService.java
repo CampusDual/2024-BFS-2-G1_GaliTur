@@ -46,6 +46,16 @@ public class PackBookingService implements IPackBookingService {
     }
 
     @Override
+    public EntityResult topMostPacksQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.packBookingDao,keysValues, attributes, packBookingDao.QUERY_TOP_MOST_PACKS);
+    }
+
+    @Override
+    public EntityResult topLeastPacksQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.packBookingDao,keysValues, attributes, packBookingDao.QUERY_TOP_LEAST_PACKS);
+    }
+
+    @Override
     @Transactional(rollbackFor = Exception.class)
     public EntityResult  packBookingInsert(Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
         EntityResult erUpdatePackDate = this.packDateService.packDateUpdate(

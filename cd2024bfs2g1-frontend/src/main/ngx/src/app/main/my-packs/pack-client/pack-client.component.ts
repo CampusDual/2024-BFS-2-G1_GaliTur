@@ -25,6 +25,10 @@ export class PackClientComponent {
   ngOnInit() {
   }
 
+  public formatDate(date:any) : any {
+    return new Date(date).toLocaleDateString();
+  }
+  
   public getImageSrc(base64: any): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image-transparent.png';
   }

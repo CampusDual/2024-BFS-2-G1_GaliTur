@@ -1,7 +1,8 @@
 
 <mat-card class="card">
     <mat-card-title class="title"> {{"GRAPHICS" | oTranslate}}</mat-card-title>
-    <mat-card-content>
+    <mat-card-content fxLayout="row">
+        <!--Packs contratados según la provincia-->
         <div class="chart-row" fxLayout="column">
             <div fxLayout="column" class="name-graphics" >
                 <p ><strong class="name">{{"Contracted_packs_according_to_the_province" | oTranslate}}</strong></p>
@@ -11,5 +12,82 @@
                 </o-chart>
             </div>
         </div>
+        <!--Numero de rutas según su dificultad-->
+        <div class="chart-row" fxLayout="column">
+            <div fxLayout="column" class="name-graphics" >
+                <p ><strong class="name">{{"Routes_according_to_difficulty" | oTranslate}}</strong></p>
+            </div>
+            <div fxLayout="column" class="view-chart">
+                <o-chart  type="pie" service="routes" entity="routeAccordingDifficulty" y-axis="route_difficulty_count" query-on-init="yes" x-axis= "difficulty" [color]="colors">
+                </o-chart>
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-content fxLayout="row">
+         <!--Packs contratados por días-->
+        <div class="chart-row" fxLayout="column">
+            <div fxLayout="column" class="name-graphics" >
+                <p ><strong class="name">{{"Contracted_packs_per_days" | oTranslate}}</strong></p>
+            </div>
+            <div fxLayout="column" class="view-chart">
+                <o-chart  type="discreteBar" service="packs" entity="packPerDays" y-axis="days" query-on-init="yes" x-axis="rango" [color]="colors">
+                </o-chart>
+            </div>
+        </div>
+         <!--Packs contratados por precio-->
+        <div class="chart-row" fxLayout="column">
+            <div fxLayout="column" class="name-graphics" >
+                <p ><strong class="name">{{"Packs_by_price" | oTranslate}}</strong></p>
+            </div>
+            <div fxLayout="column" class="view-chart">
+                <o-chart  type="discreteBar" service="packs" entity="packByPrice" y-axis="packs" query-on-init="yes" x-axis="rango" [color]="colors">
+                </o-chart>
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-content fxLayout="row">
+         <!--Tipos de negocios-->
+        <div class="chart-row" fxLayout="column">
+            <div fxLayout="column" class="name-graphics" >
+                <p ><strong class="name">{{"Types_of_bussiness" | oTranslate}}</strong></p>
+            </div>
+            <div fxLayout="column" class="view-chart">
+                <o-chart  type="stackedAreaChart" service="businesses" entity="typesOfBusinesses" y-axis="cantidad" query-on-init="yes" x-axis="bsn_type" [color]="colors">
+                </o-chart>
+            </div>
+        </div>
+        <!--Packs por estación-->
+        <div class="chart-row" fxLayout="column">
+            <div fxLayout="column" class="name-graphics" >
+                <p ><strong class="name">{{"Packs_by_station" | oTranslate}}</strong></p>
+            </div>
+            <div fxLayout="column" class="view-chart">
+                <o-chart  type="stackedAreaChart" service="packs" entity="packByStation" y-axis="cantidad" query-on-init="yes" x-axis="estacion" [color]="colors">
+                </o-chart>
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-content fxLayout="row">
+        <!--Top 5 packs mas valorados-->
+        <div class="chart-row" fxLayout="column">
+            <div fxLayout="column" class="name-graphics" >
+                <p ><strong class="name">{{"Top_most_valuated_packs" | oTranslate}}</strong></p>
+            </div>
+            <div fxLayout="column" class="view-chart">
+                <o-chart  type="discreteBar" service="packBookings" entity="topMostPacks" y-axis="media" query-on-init="yes" x-axis="pck_name" [color]="colors">
+                </o-chart>
+            </div>
+        </div>
+         <!--Top 5 packs mas valorados-->
+         <div class="chart-row" fxLayout="column">
+            <div fxLayout="column" class="name-graphics" >
+                <p ><strong class="name">{{"Top_least_rated_packs" | oTranslate}}</strong></p>
+            </div>
+            <div fxLayout="column" class="view-chart">
+                <o-chart  type="discreteBar" service="packBookings" entity="topLeastPacks" y-axis="media" query-on-init="yes" x-axis="pck_name" [color]="colors">
+                </o-chart>
+            </div>
+        </div>
+       
     </mat-card-content>
 </mat-card> 

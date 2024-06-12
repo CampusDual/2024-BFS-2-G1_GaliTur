@@ -1,9 +1,9 @@
 <o-grid
-  #businessGrid
-  attr="businessGrid"
-  title="BUSINESSES"
+  #businessMerchantGrid
+  attr="businessMerchantGrid"
+  title="MY-BUSINESSES"
   service="businesses"
-  entity="businessDownDate"
+  entity="businessMerchant"
   keys="b.bsn_id"
   columns="b.bsn_id;merchant_id;bsn_name;bsn_type;bsn_description;bsn_cif;bsn_address;bsn_phone;bsn_email;bsn_creation_date;bsn_down_date;bsn_photos;bsn_website;bsn_schedule"
   query-rows="8"
@@ -22,8 +22,14 @@
   detail-mode="none"
   insert-button-floatable="no"
   class="full-page"
+  query-parameters="{ 'bsn_down_date': 'IS NULL' }"
 >
-  <o-grid-item *ngFor="let data of businessGrid.dataArray">
+
+
+
+ 
+  <o-grid-item  *ngFor="let data of businessMerchantGrid.dataArray" >
+    
     <div
       (click)="openDetail(data)"
       fxLayout="column"
@@ -37,7 +43,7 @@
         height="200px"
       />
       <span
-        ><strong>{{ truncateName(data.bsn_name) }}</strong></span
+        ><strong style="text-overflow: ellipsis;">{{ data.bsn_name }}</strong></span
       >
       <span *ngIf="data.bsn_type === 'Restaurant'"
         ><mat-icon class="type-icon">restaurant</mat-icon
@@ -53,4 +59,5 @@
       >
     </div>
   </o-grid-item>
+
 </o-grid>

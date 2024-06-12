@@ -13,6 +13,7 @@ import { ActivatedRoute} from '@angular/router';
   styleUrls: ['./routes-home.component.css']
 })
 export class RoutesHomeComponent {
+
 galleryOptions: any;
 
   constructor(
@@ -22,9 +23,9 @@ galleryOptions: any;
     private ontimizerouteService: OntimizeService,
     private activeRoute: ActivatedRoute
   ) {
-    
-  }
 
+  }
+  
   ngAfterViewInit(): void {
     const idRutaActual = +this.getRouteId();
     const confRoute =
@@ -34,7 +35,7 @@ galleryOptions: any;
       this.ontimizerouteService
       .query(
         { route_id: idRutaActual },
-        ["route_id","name", "description", "estimated_duration", "difficulty"],
+        ["route_id","name", "description", "estimated_distance", "difficulty"],
         "route"
       )
       .subscribe((response) => {
@@ -43,16 +44,13 @@ galleryOptions: any;
     }
   }
 
+
   getRouteId(): number {
     return +this.activeRoute.snapshot.params["route_id"];
   }
-
-  /*Recoger img de BD*/
   public getImageSrc(base64: any): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/logo-walking.png";
   }
-
-  /*Abrir detalle de la ruta*/
   public openDetail(data: any): void {
     this.imageService.getImage(data.route_id).subscribe((imageData)=> {
       const images = []
@@ -71,27 +69,48 @@ galleryOptions: any;
       });
     })
   }
+  public convertTime(metros: number):  string {
 
-
-
-  /*Pasar minutos introducidos a h y min*/
-  public convertTime(minutos: number):  string {
+    let minutos = Math.floor(metros * 0.011);
+    if(minutos == 0){
+      minutos = 1;
+    }
 
     const horas = Math.floor(minutos / 60);
     const minutosRestantes = minutos % 60;
 
-    if(horas == 0 && minutosRestantes != 0){
-      return minutosRestantes + "min";
-
-    }else if(horas != 0 && minutosRestantes == 0){
-      return horas + "h ";
-
-    }else{
-       return horas + "h " + minutosRestantes + "min";
+    if (horas == 0 && minutosRestantes != 0) {
+        return `${minutosRestantes}min`;
+    } else if (horas != 0 && minutosRestantes == 0) {
+        return `${horas}h`;
+    } else {
+        return `${horas}h ${minutosRestantes}min`;
     }
   }
 
-  /*Modificar color de  hojas según su dificultad*/
+  convertDistance(metros: number){
+  let kilometros = Math.floor(metros / 1000);
+  let metrosRestantes = Number((metros % 1000).toFixed(1));
+
+  let metrosRestantesStr = metrosRestantes.toString();
+  let metrosRestantesDecimal = metrosRestantesStr.split('.')[0].slice(0, 2);
+
+  metrosRestantes = Number(metrosRestantesDecimal);
+
+
+  if (kilometros == 0 && metrosRestantes != 0) {
+      return `${metrosRestantes}m`;
+  } else if (kilometros != 0 && metrosRestantes == 0) {
+      return `${kilometros}km`;
+  } else if (kilometros != 0 && metrosRestantes != 0) {
+      return `${kilometros},${metrosRestantes}km`;
+  } else {
+      return '0m';
+  }
+}
+
+
+
   getIconColorClass(difficulty: number): string {
     switch(difficulty) {
         case 1:
@@ -104,8 +123,6 @@ galleryOptions: any;
             return 'icon-difficulty-4';
     }
   }
-
-  /*Mostrar la dificultan en el tooltip*/
   getDifficultad(difficulty: number): string {
     switch(difficulty) {
       case 1:
@@ -119,3 +136,6 @@ galleryOptions: any;
     }
   }
 }
+
+
+

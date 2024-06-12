@@ -110,8 +110,15 @@
         {
           "permissionId": "home",
           "enabled": false
+        },
+        {
+          "permissionId": "myBusiness",
+          "enabled": false
+        },
+        {
+          "permissionId": "myBusinessDetail",
+          "enabled": false
         }
-
       ],
       "components": [
         {

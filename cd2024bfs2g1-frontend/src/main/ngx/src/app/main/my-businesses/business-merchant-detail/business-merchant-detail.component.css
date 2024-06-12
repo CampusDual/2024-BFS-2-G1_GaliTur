@@ -20,6 +20,10 @@
 }
 
 
+::ng-deep .mdc-snackbar__surface{
+    background-color: #52733B !important;
+}
+
 .main-container {
 
     min-width: 700px;
@@ -33,10 +37,28 @@
 
 }
 
-.name-container {
+.custom-button {
     margin-top: 20px;
-    margin-bottom:20px;
-}
+    margin-left: 20px;
+    background-color: #52733B;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+  
+  }
+
+  .custom-button:hover {
+    background-color: #5f9b62;
+  }
+
+
 
 .data-container {
     display: flex;
@@ -126,14 +148,6 @@
         cursor: pointer;
     }
 }
-
-:host ::ng-deep .o-container-title {
-    .mat-icon {
-      color: #84A45A !important;
-    }
-  }
-
-
 
 
 

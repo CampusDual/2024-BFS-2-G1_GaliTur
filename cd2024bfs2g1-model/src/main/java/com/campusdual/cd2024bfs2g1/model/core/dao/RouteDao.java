@@ -21,5 +21,6 @@ public class RouteDao extends OntimizeJdbcDaoSupport {
     public static final String QUERY_ROUTE_IMAGE = "multi";
     public static final String QUERY_ALL_ROUTES = "allRoutes";
     public static final String QUERY_ROUTES_OF_PACK = "routesOfPack";
+    public static final String QUERY_ROUTES_ACCORDING_DIFFICULTY = "routesAccordingDifficulty";
 
 }

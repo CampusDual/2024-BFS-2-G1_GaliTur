@@ -2,7 +2,7 @@
 import { Component, Injector, ViewChild, TemplateRef } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { DomSanitizer } from "@angular/platform-browser";
-import { Expression, FilterExpressionUtils, OFormComponent, OFormValue, OGridComponent, OntimizeService } from "ontimize-web-ngx";
+import { Expression, FilterExpressionUtils, OCurrencyInputComponent, OFormComponent, OFormValue, OGridComponent, OntimizeService } from "ontimize-web-ngx";
 import { Router } from "@angular/router";
 
 @Component({
@@ -69,6 +69,7 @@ export class PackHomeComponent {
 
   //FILTROS
   @ViewChild("filterForm") protected filterForm: OFormComponent;
+
   createFilter(values: Array<{ attr: string, value: any }>): Expression {
     let filters: Array<Expression> = [];
 
@@ -95,12 +96,25 @@ export class PackHomeComponent {
         if (fil.attr === 'gui_c_name') {
           filters.push(FilterExpressionUtils.buildExpressionEquals("gui_c_name", fil.value));
         }
+        if (fil.attr === 'pd_date_begin') {
+          /* Si nos fijamos en el error que daba en el back, funcion buildExpressionEquals genera esta consulta "AND  (UPPER(pd_date_begin) = UPPER( '2024-06-02 00:00:00.000' ))"
+              el problema radica en que esto esta preparado para strings, de ahí la función UPPER, y cuando le aplica el UPPER al timestamp "pd_date_begin" da error. 
+              Error del back: "ERROR: function upper(timestamp without time zone) does not exist"
+              Para solucionar esto en vez de hacer la solicitud directamente a la fecha en la BBDD hacemos una pequeña subconsulta que convierte la fecha 
+              a un "string" con el formato de la fecha sin hora, aparte de pasarle la fecha que selecciona el usuario con el mismo formato y en tipo string.
+          */
+
+          let consulta = "(SELECT TO_CHAR(pd_date_begin , 'YYYY-MM-DD'))";
+          filters.push(FilterExpressionUtils.buildExpressionEquals(consulta, fil.value));
+
+        }
+        
       }
     });
 
     if (filters.length > 0) {
       return filters.reduce((exp1, exp2) => 
-        FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_AND)
+        FilterExpressionUtils.buildComplexExpression(exp1, exp2, 'AND')
       );
     } else {
       return null;
@@ -108,8 +122,22 @@ export class PackHomeComponent {
   }
 
   clearFilter () {
-    const fieldsToClear = ['pck_name', 'pck_days', 'pck_price_min', 'pck_price_max', 'pck_participants', 'gui_c_name'];
+    const fieldsToClear = ['pck_name', 'pck_days', 'pck_price_min', 'pck_price_max', 'pck_participants', 'gui_c_name', 'pd_date_begin'];
     this.filterForm.clearFieldValues(fieldsToClear);  
   }
 
+  @ViewChild("minPrice") protected minPrice: OCurrencyInputComponent;
+  @ViewChild("maxPrice") protected maxPrice: OCurrencyInputComponent;
+
+  onCurrencyInputChange() {
+    const minValue = this.minPrice.getValue();
+    const maxValue = this.maxPrice.getValue();
+
+    if (minValue === "" || minValue === "0.00") {
+      this.minPrice.clearValue();
+    }
+    if (maxValue === "" || maxValue === "0.00") {
+      this.maxPrice.clearValue();
+    }
+  }
 }

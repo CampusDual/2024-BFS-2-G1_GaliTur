@@ -1,3 +1,17 @@
+/*title styles*/
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title{
+    font-weight: bold;
+    font-size: 25px;
+    font-family: Poppins;
+    margin-top: 0px;
+    margin-bottom: 5px;
+  }
 /* packCard structure */
 .packCard {
     width: 400px;
@@ -32,7 +46,6 @@
     width: 100%;
     height: 100%;
 }
-
 /* card header styles */
 .cardHeader {
     width: 100%;
@@ -57,11 +70,10 @@
     flex-direction: row;
     justify-content: space-between;
 }
-
 /* image styles */
 .cardImg {
     width: 50%;
-    height: 200px;
+    height: 160px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -71,12 +83,12 @@
 /* info styles */
 .cardInfo {
     width: 50%;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-right: -40px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-left: 40px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 /* icon styles */
