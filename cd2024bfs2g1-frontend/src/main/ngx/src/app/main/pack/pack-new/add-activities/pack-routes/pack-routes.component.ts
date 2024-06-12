@@ -120,7 +120,7 @@ export class PackRoutesComponent {
       "R.pck_id": parseInt(this.data.packId),
       assigned_date: this.comboBoxDay.getValue()
     };
-    const columns = ["R.route_id","name","estimated_duration","difficulty","description"];
+    const columns = ["R.route_id","name","estimated_distance","difficulty","description"];
     this.service.query(filter, columns, "routePack").subscribe((resp) => {
       if (resp.code === 0) {
         // resp.data contains the data retrieved from the server
