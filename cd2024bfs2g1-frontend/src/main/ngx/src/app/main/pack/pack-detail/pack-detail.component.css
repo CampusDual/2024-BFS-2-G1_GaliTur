@@ -32,7 +32,9 @@
     margin-right: 50px;
     margin-top: 10px;
 }
-
+:host::ng-deep .o-data-toolbar {
+    height: 0px !important;
+}
 
 /* Div para el nombre y la imagen */
 .name-container {
@@ -112,18 +114,6 @@
     mat-icon{
         color:#84A45A;
     }
-}
-
-/* Espaciar las listas <ul> de forma correcta independientemente del numero de items que tenga */
-.list-with-spaces {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 90%;
-    row-gap: 10px;
-    max-height: 155px;
-    overflow-y: auto;
-    overflow-x: hidden;
 }
 
 /* Estilos de la lista de la descripcion*/
@@ -268,7 +258,15 @@
 .routes-container {
     padding: 25px;
 }
+.no-business-card {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+}
 
 /* Estilos del contenedor del o-row de los NEGOCIOS pertenecientes al pack */
 .business-container {
@@ -289,8 +287,8 @@
 /* Estilos del contenedor de los o-grid de laas rutas y los negocios */
 .o-grid-container {
     width: 100%;
-    max-height: 310px;
-    height: 310px;
+    max-height: 492px;
+    height: 492px;
     padding: 0px;
     margin:0px;
     display: flex;
@@ -321,6 +319,8 @@
 
 
 .preview-image {
+    width: 100%;
+    height: 100%;
     border-radius: 10px;
     object-fit: cover;
 }
@@ -332,10 +332,10 @@
 }
 
 .type-icon {
-    margin-bottom: -6.5px;
-    margin-right: 5px;
+    margin-bottom: -8.5px;
+    margin-right: 2px;
     color: white !important;
-    font-size: 22px;
+    font-size: 17px;
 
 }
 
@@ -386,110 +386,220 @@
     margin: auto;
     height: 40px;
     display: flex;
-    align-items: center; 
-    justify-content: center; 
+    align-items: center;
+    justify-content: center;
 }
 
 
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.card-name {
+    overflow: hidden;
+    white-space: wrap;
+    display: inline-block;
+    text-overflow: ellipsis;
+    width: calc(90%);
+    span {
+        font-size: 1.7em;
 
-
-/* Estilos de las rutas del pack*/
-.routeCard {
-    width: 365px;
-    background-color: #ccc6c0;
-    border-radius: 10px;
-    padding: 16px;
-    overflow-x: hidden;
+    }
 }
-
-.routeCard img {
+.route-preview-image {
     width: 100%;
+    height: 100%;
 }
-
-.routeCard .office {
-    font-size: 0.8em;
+.flip-card {
+    background-color: transparent;
+    width: 85%;
+    height: 85%;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    border-radius: 10px;
+    border-color: transparent;
 }
-
-.routeCard:hover {
-    box-shadow: 0 0 15px rgba(113, 94, 78, 0.5);
-    transform: scale(1.04);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.flip-card:hover {
     cursor: pointer;
+
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    border-radius: 10px;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    border-radius: 10px;
+    padding: 1px;
+}
+
+.flip-card-front {
+    position: absolute;
+    background-color: #bbb;
+    color: black;
+
+
+}
+
+.flip-card-front::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    border-radius: 10px;
+}
+
+/* Style the back side */
+.flip-card-back {
+    background-color: #ccc6c0;
+    color:#444240;
+    transform: rotateY(180deg);
+}
+
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* ajusta el color del texto según sea necesario */
+    text-align: center;
+    z-index: 10;
+    width: 100%;
+    hr {
+        width: 3.5em;
+        margin-top: -12px;
+        margin-bottom: 10px;
+        border-style: solid;
+    }
+    h2 {
+        font-weight: 250;
+        margin: 0;
+        font-size: 1.8em;
+    }
+    h4 {
+        font-weight: 10;
+        font-size: 1.3em;
+        margin: 0;
+    }
 }
 
 /* icon styles */
 .icon {
-    margin-bottom: -8px;
+    margin-bottom: -10px;
+    font-size: 16px;
+    color: #444240 !important;
     margin-right: 4px;
-    font-size: 20px;
-    color: rgba(132, 164, 90, 1) !important;
 }
 
-
-.card-content {
+/* info list styles */
+.list {
+    margin-left: -10%;
+    list-style: none;
+    row-gap: 15px;
+    justify-content: space-around;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 80px;
-
+    flex-direction: column;
 }
 
-.content-image-item {
-    width: 45%;
+/* card header styles */
+.cardHeader {
+    width: 80%;
+    text-align: center;
+    background-color: #615e5b;
+    color: white;
+    padding: 10px;
+    margin-inline: auto;
+    margin-top: 8%;
+    box-sizing: border-box;
+    border-radius: 10px 10px 10px 10px;
 }
-
-.content-list-item {
-    width: 55%;
-    margin-top: -10px;
-    padding: 0px;
-    ul {
-        height: 64px;
+.leafsDifficulty {
+    margin-top: 15px;
+    mat-icon {
+      margin-right: 5px;
+      margin-left: 5px;
+      vertical-align: middle;
     }
-
-
-}
-
-.route-name {
-    width: 90%;
-    margin: auto;
-    height: 40px;
-    display: flex;
+  }
+  .empty-leafs {
+    color: rgba(255, 255, 255, 0.548) !important;
+  
+  }
+  .difficulty {
+    text-align: left;
+    margin-top: 12px;
+  }
+  
+  .duration {
+    text-align: left;
+  }
+  
+  .icon-difficulty-1 {
+    color: #a3e77a !important;
+  }
+  
+  .icon-difficulty-2 {
+    color: #e2dd8a !important;
+  }
+  
+  .icon-difficulty-3 {
+    color: #fabf72 !important;
+  }
+  
+  .icon-difficulty-4 {
+    color: #f4817c !important;
+  }
+  .d-1 {
+    background-color: #E4EBF2;
+    border-radius: 20px;
+    padding: 10px 10px;
+    height: 70px;
+    width: 300px;
     align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.route-name:hover{
-    overflow: auto;
-    overflow-y: hidden;
-}
-.no-business-cover {
-    display: flex;
-    justify-content: center;
+  }
+  
+  .d-2 {
+    background-color: #E4EBF2;
+    border-radius: 20px;
+    height: 70px;
+    padding: 10px 10px;
     align-items: center;
-    width: 100%;    
-    height: 100%;
-    margin: auto;
-}
-
-.no-business-card {
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    display: flex;
-    justify-content: center;
+    width: 300px;
+  }
+  
+  .d-3 {
+    background-color: #E4EBF2;
+    border-radius: 20px;
+    height: 70px;
+    padding: 10px 10px;
     align-items: center;
-    
-}
-
-
-
-
-
-
-
-
-
-
+    width: 300px;
+  }
+  
+  .d-4 {
+    background-color: #E4EBF2;
+    border-radius: 20px;
+    height: 70px;
+    padding: 10px 10px;
+    align-items: center;
+    width: 300px;
+  }

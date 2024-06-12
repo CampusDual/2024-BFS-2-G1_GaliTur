@@ -137,7 +137,73 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
         this.router.navigate(["..", "main", "pack-client"])
       });
   }
+  public convertTime(metros: number):  string {
 
+    let minutos = Math.floor(metros * 0.011);
+    if(minutos == 0){
+      minutos = 1;
+    }
+
+    const horas = Math.floor(minutos / 60);
+    const minutosRestantes = minutos % 60;
+
+    if (horas == 0 && minutosRestantes != 0) {
+        return `${minutosRestantes}min`;
+    } else if (horas != 0 && minutosRestantes == 0) {
+        return `${horas}h`;
+    } else {
+        return `${horas}h ${minutosRestantes}min`;
+    }
+  }
+
+  convertDistance(metros: number){
+  let kilometros = Math.floor(metros / 1000);
+  let metrosRestantes = Number((metros % 1000).toFixed(1));
+
+  let metrosRestantesStr = metrosRestantes.toString();
+  let metrosRestantesDecimal = metrosRestantesStr.split('.')[0].slice(0, 2);
+
+  metrosRestantes = Number(metrosRestantesDecimal);
+  
+
+  if (kilometros == 0 && metrosRestantes != 0) {
+      return `${metrosRestantes} m`;
+  } else if (kilometros != 0 && metrosRestantes == 0) {
+      return `${kilometros} km`;
+  } else if (kilometros != 0 && metrosRestantes != 0) {
+      return `${kilometros},${metrosRestantes} km`;
+  } else {
+      return '0 m';
+  }
+}
+
+
+
+  getIconColorClass(difficulty: number): string {
+    switch(difficulty) {
+        case 1:
+            return 'icon-difficulty-1';
+        case 2:
+            return 'icon-difficulty-2';
+        case 3:
+            return 'icon-difficulty-3';
+        case 4:
+            return 'icon-difficulty-4';
+    }
+  }
+
+  getDifficultad2(difficulty: number): string {
+    switch(difficulty) {
+      case 1:
+          return 'Dificultad Fácil';
+      case 2:
+          return 'Dificultad Intermedia';
+      case 3:
+          return 'Dificultad Difícil';
+      case 4:
+          return 'Dificultad Extremo';
+    }
+  }
   populateDates() {
     const confPack = this.packDateService.getDefaultServiceConfiguration('packDates');
     this.packDateService.configureService(confPack);
@@ -223,7 +289,7 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
 
 
   public getRouteImageSrc(base64: any): any {
-    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/logo-walking.png";
+    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/home-image.jpeg";
   }
 
   getDifficultad(difficulty: number): string {
@@ -343,5 +409,5 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
     }
   }
 
-  
+
 }
