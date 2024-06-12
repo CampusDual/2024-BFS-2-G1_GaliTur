@@ -18,14 +18,16 @@ import java.util.Map;
 @Service("AgencyGuideService")
 public class AgencyGuideService implements IAgencyGuideService {
 
-    @Autowired
-    private DefaultOntimizeDaoHelper daoHelper;
+    private final DefaultOntimizeDaoHelper daoHelper;
+
+    private final AgencyGuideDao agencyGuideDao;
 
     @Autowired
-    private AgencyGuideDao agencyGuideDao;
+    public AgencyGuideService(DefaultOntimizeDaoHelper daoHelper, AgencyGuideDao agencyGuideDao) {
+        this.daoHelper = daoHelper;
+        this.agencyGuideDao = agencyGuideDao;
+    }
 
-    @Autowired
-    private BusinessDao businessDao;
 
     @Override
     public EntityResult agencyGuideQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
