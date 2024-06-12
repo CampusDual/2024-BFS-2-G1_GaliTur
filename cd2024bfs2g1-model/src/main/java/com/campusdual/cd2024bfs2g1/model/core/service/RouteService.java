@@ -244,7 +244,7 @@ public class RouteService  implements IRouteService {
 
         if(imageInsert.getCode()==EntityResult.OPERATION_SUCCESSFUL){
             attrMapUpdate.put(image_routeDao.ATTR_IMAGE_ID,imageInsert.get(image_routeDao.ATTR_IMAGE_ID));
-            keyMap.remove("route_id");
+            keyMap.remove(routeDao.ATTR_ID);
             return imageRouteUpdate = this.daoHelper.update(image_routeDao,attrMapUpdate,keyMap);
         }
         //Meter la relacion
