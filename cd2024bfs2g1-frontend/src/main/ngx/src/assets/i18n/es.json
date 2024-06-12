@@ -464,7 +464,8 @@
   "CONFIRM_ACTION_DELETE_ROUTE": "¿Seguro que desea eliminar esta ruta?",
   "DELETE_ROUTE_CONFIRM_MESSAGE": "Se eliminará de los siguientes packs:",
   "CANCEL_BUTTON": "Cancelar",
-  "CONFIRM_DELETE_BUTTON": "Eliminar ruta"
+  "CONFIRM_DELETE_BUTTON": "Eliminar ruta",
+  "SHOW_MAP": "Ver mapa"
 }
 
 

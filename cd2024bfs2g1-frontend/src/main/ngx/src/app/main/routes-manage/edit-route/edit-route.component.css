@@ -99,6 +99,15 @@
   margin: 0 0 2px 0;
 }
 
+.toolbar-buttons {
+  margin-right: 5%;
+}
+
+:host ::ng-deep .finishBT {
+  font-weight: lighter !important;
+  font-size: 13px !important;
+}
+
 
 @media (max-width:1540px) {
   .contenedor_imagen{
