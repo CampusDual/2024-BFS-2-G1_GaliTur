@@ -1,14 +1,16 @@
 .routesSecond {
   height: 480px;
-  width: auto;
+  margin-inline: 50px;
+  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-around;
   border-radius: 150px;
-  background-color: #e2dbd5;
 }
 
 .backButton {
-  padding-right: 70px;
+  margin-left: -20px;
+  margin-top: 27px;
 }
 
 .arrow_back {
@@ -18,42 +20,22 @@
 
 .mainPanel {
   width: 100%;
-  overflow: auto;
   background-color: #e2dbd5;
-  padding: 50px;
+  padding-inline: 70px;
+  padding-top: 30px;
+  padding-bottom: 50px;
   overflow-x: hidden;
 }
 
-.routesSecond span {
-  display: flex;
-  align-items: center;
-  flex: 1;
-}
 
-.routesSecond mat-icon {
-  margin-right: 4px;
-  margin-left: 6px;
-  vertical-align: middle;
-}
-
-.routesSecond img {
-  width: 250px;
-  height: 220px;
-  padding: 0px 0px 0px 30px;
-  vertical-align: middle;
-}
 
 .routesFirst, .routesSecond {
-  background-color: #ffffff;
+  background-color: #EFF1F3;
   border-radius: 8px;
-  padding: 16px;
+  padding: 40px;
   margin: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
-}
-
-.routesFirst:hover, .routesSecond:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .routesFirst span strong {
@@ -78,19 +60,20 @@
 }
 
 .titulo {
-  font-size: 24px;
-  font-weight: bold;
+  font-weight: 250;
+  font-size: 1.7em;
   text-align: center;
   background-color: #52733B;
   color: #ffffff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  width: 900px;
-  max-width: 1150px;
+  width: 100%;
   margin-right: 95px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  margin-inline: auto;
+  padding-block: 7px;
 
 }
 
@@ -145,62 +128,10 @@
   background-color: #5f9b62;
 }
 
-.d-1{
-  background-color: #E4EBF2;
-  border-radius: 20px;
-  padding: 10px 10px;
-  height: 70px;
-  width: 300px;
-  align-items: center;
-
-}
-
-.d-2{
-  background-color: #E4EBF2;
-  border-radius: 20px;
-  height: 70px;
-  padding: 10px 10px;
-  align-items: center;
-  width: 300px;
-}
-
-.d-3{
-  background-color: #E4EBF2;
-  border-radius: 20px;
-  height: 70px;
-  padding: 10px 10px;
-  align-items: center;
-  width: 300px;
-}
-
-.d-4{
-  background-color: #E4EBF2;
-  border-radius: 20px;
-  height: 70px;
-  padding: 10px 10px;
-  align-items: center;
-  width: 300px;
-}
-
 .difficulty{
   text-align: center;
 }
 
-.icon-difficulty-1 {
-  color: #69b704e7;
-}
-
-.icon-difficulty-2 {
-  color: #d1cb1fde;
-}
-
-.icon-difficulty-3 {
-  color: #f69c15;
-}
-
-.icon-difficulty-4 {
-  color: #dc1d0f;
-}
 .div_principal .backButton{
   align-items: left;
 }
@@ -319,4 +250,143 @@
   .mat-icon {
     color: #84A45A !important;
   }
+}
+
+.image-container {
+  width: 50%;
+  height: 100%;
+  .img-cover {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+}
+
+.data-container {
+  width: 50%;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding-inline: 30px;
+}
+
+.leafsDifficulty {
+  margin-top: 15px;
+  mat-icon {
+    margin-right: 5px;
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+}
+.empty-leafs {
+  color: rgba(255, 255, 255, 0.548);
+
+}
+
+.duration, .difficulty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.d-1 {
+  background-color: #E4EBF2;
+  border-radius: 20px;
+  padding: 10px 10px;
+  height: 70px;
+  width: 300px;
+  align-items: center;
+}
+
+.d-2 {
+  background-color: #E4EBF2;
+  border-radius: 20px;
+  height: 70px;
+  padding: 10px 10px;
+  align-items: center;
+  width: 300px;
+}
+
+.d-3 {
+  background-color: #E4EBF2;
+  border-radius: 20px;
+  height: 70px;
+  padding: 10px 10px;
+  align-items: center;
+  width: 300px;
+}
+
+.d-4 {
+  background-color: #E4EBF2;
+  border-radius: 20px;
+  height: 70px;
+  padding: 10px 10px;
+  align-items: center;
+  width: 300px;
+}
+
+.difficulty {
+  text-align: left;
+  margin-top: 12px;
+}
+
+.duration {
+  text-align: left;
+}
+
+.icon-difficulty-1 {
+  color: #a3e77a;
+}
+
+.icon-difficulty-2 {
+  color: #e2dd8a;
+}
+
+.icon-difficulty-3 {
+  color: #fabf72;
+}
+
+.icon-difficulty-4 {
+  color: #f4817c;
+}
+
+/* Espaciar las listas <ul> de forma correcta independientemente del numero de items que tenga */
+.list-with-spaces {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 90%;
+  row-gap: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+/* Estilos de la lista de la descripcion*/
+.list-to-desc {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  row-gap: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.o-rows {
+  background-color: transparent;
+  height: 50%;
+  width: 100%;
+  mat-icon{
+      color:#84A45A;
+  }
+}
+
+.title-container {
+  width: 100%;
+  margin-inline: 0px;
+  height: fit-content;
 }
