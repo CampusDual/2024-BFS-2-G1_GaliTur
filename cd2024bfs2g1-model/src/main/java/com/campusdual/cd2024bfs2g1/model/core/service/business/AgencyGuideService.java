@@ -38,15 +38,15 @@ public class AgencyGuideService implements IAgencyGuideService {
         attributes.remove("comboLanguages");
         attributes.remove("comboZone");
         attributes.remove("comboCity");
-        attributes.add("gui_language");
-        attributes.add("gui_zone");
-        attributes.add("gui_city");
+        attributes.add(AgencyGuideDao.LANGUAGE);
+        attributes.add(AgencyGuideDao.ZONE);
+        attributes.add(AgencyGuideDao.CITY);
 
 
 
         EntityResult er = this.daoHelper.query(this.agencyGuideDao, keysValues, attributes);
 
-        ArrayList<String> languagesStr = (ArrayList<String>) er.get("gui_language");
+        ArrayList<String> languagesStr = (ArrayList<String>) er.get(AgencyGuideDao.LANGUAGE);
 
 
             String[] array = languagesStr.get(0).split(", ");
@@ -133,13 +133,13 @@ public class AgencyGuideService implements IAgencyGuideService {
         attributes.remove("comboLanguages");
         attributes.remove("comboZone");
         attributes.remove("comboCity");
-        attributes.add("gui_language");
-        attributes.add("gui_zone");
-        attributes.add("gui_city");
+        attributes.add(AgencyGuideDao.LANGUAGE);
+        attributes.add(AgencyGuideDao.ZONE);
+        attributes.add(AgencyGuideDao.CITY);
 
         EntityResult er = this.daoHelper.query(this.agencyGuideDao, keysValues, attributes);
 
-        ArrayList<String> zoneStr = (ArrayList<String>) er.get("gui_zone");
+        ArrayList<String> zoneStr = (ArrayList<String>) er.get(AgencyGuideDao.ZONE);
 
         List<Integer> listaCodes = new ArrayList<>();
 
@@ -175,15 +175,15 @@ public class AgencyGuideService implements IAgencyGuideService {
         attributes.remove("comboLanguages");
         attributes.remove("comboZone");
         attributes.remove("comboCity");
-        attributes.add("gui_language");
-        attributes.add("gui_zone");
-        attributes.add("gui_city");
+        attributes.add(AgencyGuideDao.LANGUAGE);
+        attributes.add(AgencyGuideDao.ZONE);
+        attributes.add(AgencyGuideDao.CITY);
 
 
 
         EntityResult er = this.daoHelper.query(this.agencyGuideDao, keysValues, attributes);
 
-        ArrayList<String> citiesStr = (ArrayList<String>) er.get("gui_city");
+        ArrayList<String> citiesStr = (ArrayList<String>) er.get(AgencyGuideDao.CITY);
 
 
         String[] array = citiesStr.get(0).split(", ");
