@@ -80,7 +80,11 @@
       ],
       "routes": [
         {
-          "permissionId": "BusinessNew",
+          "permissionId": "BusinessNew", 
+          "enabled": false
+        },
+        {
+          "permissionId": "MyBusinessEdit", 
           "enabled": false
         },
         {

@@ -181,7 +181,7 @@
                 <o-combo id="comboCity" #comboCity attr="comboCity" label="{{ 'SELECT_CITY' | oTranslate }}" multiple="yes" translate="yes"
                     query-method="query" sort="ASC" service="guideCities" entity="guideCities" value-column="gui_c_id"
                     columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id"
-                    [query-on-event]="comboZone.onValueChange" parent-keys="gui_z_id:comboZone[gui_z_id]" searchable="yes">
+                    [query-on-event]="comboZone.onValueChange" parent-keys="gui_z_id:comboZone[gui_z_id]" searchable="yes" required="yes">
                 </o-combo>
 
             </o-column>

@@ -21,9 +21,15 @@ const routes: Routes = [
       restrictedPermissionsRedirect: 403
     }
   }
+  },
+  {path: ':bsn_id/edit', component: BusinessEditComponent,
+    data: {
+      oPermission: {
+        permissionId: "MyBusinessEdit",
+        restrictedPermissionsRedirect: 403
+      }
+    }
   }
-  {path: ':bsn_id', component: BusinessMerchantDetailComponent},
-  {path: ':bsn_id/edit', component: BusinessEditComponent}
 ];
 
 @NgModule({

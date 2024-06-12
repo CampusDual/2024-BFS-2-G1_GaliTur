@@ -72,7 +72,7 @@
 
             <o-text-input attr="bsn_website" label="{{ 'WEBSITE' | oTranslate }}" fxFlex.lg="80" fxFlex.xl="80"
                 read-only="no" fxFlex="100" max-length="200" required="no" [validators]="blankValidator">
-                <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
+               <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
             </o-text-input>
             <br>
 
@@ -114,7 +114,7 @@
 
         <o-row id="restaurant" layout-align="start stretch"><o-column layout-align="start stretch" fxFlex="60"
                 layout-padding><o-image id="restaurant_img" attr="rest_menu" sql-type="OTHER"
-                    label="{{ 'UPLOAD_MENU' | oTranslate }}" required="no"></o-image></o-column></o-row>
+                    label="{{ 'UPLOAD_MENU' | oTranslate }}" required="yes"></o-image></o-column></o-row>
 
     </o-form>
 
@@ -231,7 +231,7 @@
                     multiple="yes" translate="yes" query-method="query" sort="ASC" service="guideCities"
                     entity="guideCities" value-column="gui_c_id" columns="gui_c_name" visible-columns="gui_c_name"
                     keys="gui_c_id" [query-on-event]="comboZone.onValueChange"
-                    parent-keys="gui_z_id:comboZone[gui_z_id]" searchable="yes">
+                    parent-keys="gui_z_id:comboZone[gui_z_id]" searchable="yes" required="yes">
                 </o-combo>
 
             </o-column>
