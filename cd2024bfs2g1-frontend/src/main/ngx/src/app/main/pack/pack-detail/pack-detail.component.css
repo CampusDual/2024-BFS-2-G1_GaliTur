@@ -399,7 +399,7 @@
     text-overflow: ellipsis;
     width: calc(90%);
     span {
-        font-size: 1.7em;
+        font-size: 1.55em;
 
     }
 }
@@ -474,6 +474,32 @@
     transform: rotateY(180deg);
 }
 
+/* card header styles */
+.cardHeader {
+    width: 80%;
+    text-align: center;
+    background-color: #615e5b;
+    margin-top: 7%;
+    color: white;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 4px; 
+    padding-right: 10px;
+    margin-inline: auto;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.pack-info-title {
+    font-size: 1.25em;
+    font-weight: 500;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    text-overflow: ellipsis;
+    width: calc(90%);
+}
 
 .text-overlay {
     position: absolute;
@@ -520,18 +546,7 @@
     flex-direction: column;
 }
 
-/* card header styles */
-.cardHeader {
-    width: 80%;
-    text-align: center;
-    background-color: #615e5b;
-    color: white;
-    padding: 10px;
-    margin-inline: auto;
-    margin-top: 8%;
-    box-sizing: border-box;
-    border-radius: 10px 10px 10px 10px;
-}
+
 .leafsDifficulty {
     margin-top: 15px;
     mat-icon {

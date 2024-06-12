@@ -232,18 +232,17 @@ button {
   margin-top: 0px;
   margin-bottom: 5px;
 }
+
 .pack-name {
+  overflow: hidden;
+  white-space: wrap;
+  display: inline-block;
+  text-overflow: ellipsis;
   width: calc(90%);
-  margin: auto;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 0.35%;
-  overflow:hidden;
-  white-space:nowrap;
-  display:inline-block;
-  text-overflow:ellipsis 
+  span {
+    font-size: 1.7em;
+    font-weight: 250;
+  }
 }
 
 /* pack name styles */
@@ -331,7 +330,7 @@ button {
 .flip-card {
   background-color: transparent;
   width: 500px;
-  height: 320px;
+  height: 280px;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
   border-radius: 10px;
   
@@ -403,17 +402,18 @@ button {
 
 .text-overlay {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white; /* ajusta el color del texto según sea necesario */
-  text-align: center;
-  z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* ajusta el color del texto según sea necesario */
+    text-align: center;
+    z-index: 10;
+    width: 100%;
   hr {
-      width: 3.5em;
-      margin-top: 3px;
-      margin-bottom: 10px;
-      border-style: solid;
+    width: 3.5em;
+    margin-top: -11px;
+    margin-bottom: 10px;
+    border-style: solid;
   }
   h2 {
       font-weight: 250;
@@ -423,12 +423,13 @@ button {
   h4 {
       font-weight: 10;
       margin: 0;
+      font-size: 1.3em;
   }
 }    
 
 .info-container {
   color: #444240;
-  margin-top: 9%;
+  margin-top: 7%;
   justify-content: center;
 }    
 
@@ -438,16 +439,24 @@ button {
   text-align: center;
   background-color: #615e5b;
   color: white;
-  padding-top: 15px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 4px; 
+  padding-right: 10px;
   margin-inline: auto;
   margin-bottom: 16px;
   box-sizing: border-box;
   border-radius: 10px 10px 10px 10px;
 }
 
-.pack-name {
-  font-size: 1.50em;
+.pack-info-title {
+  font-size: 1.25em;
   font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  text-overflow: ellipsis;
+  width: calc(90%);
 }
 
 /* icon styles */
@@ -463,7 +472,7 @@ button {
   padding: 0;
   margin: 0;
   list-style: none;
-  row-gap: 15px;
+  row-gap: 13px;
   justify-content: space-around;
   display: flex;
   flex-direction: column;

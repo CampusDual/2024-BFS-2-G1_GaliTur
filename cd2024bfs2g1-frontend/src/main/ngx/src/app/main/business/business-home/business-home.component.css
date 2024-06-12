@@ -28,10 +28,10 @@
 }
 
 .type-icon {
-    margin-bottom: -6.5px;
-    margin-right: 5px;
-    color: white;
-    font-size: 22px;
+    margin-bottom: -9.3px;
+    margin-right: 1px;
+    color: white !important;
+    font-size: 17px;
 
 }
 
@@ -153,16 +153,26 @@
     text-align: center;
     background-color: #615e5b;
     color: white;
-    padding: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 4px; 
+    padding-right: 10px;
     margin-inline: auto;
     margin-bottom: 16px;
     box-sizing: border-box;
     border-radius: 10px 10px 10px 10px;
 }
+
 .pack-info-title {
     font-size: 1.25em;
     font-weight: 500;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    text-overflow: ellipsis;
+    width: calc(90%);
 }
+
 .pack-name {
     overflow: hidden;
     white-space: wrap;

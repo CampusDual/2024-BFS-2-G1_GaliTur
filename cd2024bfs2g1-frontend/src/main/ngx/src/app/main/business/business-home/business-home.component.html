@@ -3,7 +3,7 @@
   query-rows="8" page-size-options="8;16;24" orderable="true" sort-column="bsn_creation_date:desc"
   sortable-columns="bsn_name;bsn_type;bsn_creation_date;bsn_name:desc;bsn_type:desc;bsn_creation_date:desc"
   refresh-button="true" quick-filter-columns="bsn_name;bsn_type" filter-case-sensitive="yes" pageable="yes"
-  pagination-controls="true" gutter-size="8px" fixed-header="yes" grid-item-height="350px" detail-mode="none"
+  pagination-controls="true" gutter-size="8px" fixed-header="yes" grid-item-height="280px" detail-mode="none"
   insert-button-floatable="no" class="full-page">
   <o-grid-item *ngFor="let data of businessGrid.dataArray">
     <div (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-evenly center"
@@ -12,18 +12,11 @@
         <div class="flip-card-front">
           <img class="pack-img" [src]="getImageSrc(data.bsn_photos)" width="300px" height="200px" />
           <div class="text-overlay">
-            <span class="pack-name"><strong class="pack-name">{{ truncateName(data.bsn_name) }}</strong></span>
+            <span class="pack-name"><span class="pack-name">{{ truncateName(data.bsn_name) }}</span></span>
             <hr>
-            <ul style="list-style-type: none;" class="list">
-              <span *ngIf="data.bsn_type === 'Restaurant'"><mat-icon class="type-icon">restaurant</mat-icon><em>{{
-                  data.bsn_type
-                  | oTranslate }}</em></span>
-              <span *ngIf="data.bsn_type === 'Lodging'"><mat-icon class="type-icon">house</mat-icon>
-                <em>{{ data.bsn_type | oTranslate }}</em></span>
-              <span *ngIf="data.bsn_type === 'AgencyGuide'"><mat-icon class="type-icon">flight</mat-icon><em>{{
-                  data.bsn_type |
-                  oTranslate }}</em></span>
-            </ul>
+            <span *ngIf="data.bsn_type === 'Restaurant'"><mat-icon class="type-icon">restaurant</mat-icon>{{ data.bsn_type | oTranslate }}</span>
+            <span *ngIf="data.bsn_type === 'Lodging'"><mat-icon class="type-icon">house</mat-icon> {{ data.bsn_type | oTranslate }}</span>
+            <span *ngIf="data.bsn_type === 'AgencyGuide'"><mat-icon class="type-icon">flight</mat-icon>{{data.bsn_type | oTranslate }}</span>
           </div>
           
         </div>
@@ -32,7 +25,7 @@
       <div class="flip-card-back">
         <div class="info-container">
           <div class="cardHeader">
-            <span class="pack-info-title">Información Extra</span>
+            <span class="pack-info-title">{{data.bsn_name}}</span>
           </div>
           <h3></h3>
           <div fxLayout="row" fxLayoutAlign="space-around stretch">

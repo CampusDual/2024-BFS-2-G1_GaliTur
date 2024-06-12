@@ -37,15 +37,15 @@
             <div class="flip-card-front">
               <img class="pack-img" [src]="getImageSrc(data.img_code)" alt="Avatar">
               <div class="text-overlay">
-                <h2>{{data.pck_name}}</h2>
+                <div class="pack-name"><span class="pack-name">{{data.pck_name}}</span></div>
                 <hr/>
-                <p class="rankStyles"><em> # </em><em><span>{{ data.rank }} </span></em><p>
+                <h4>#<span>{{ data.rank }}</span></h4>
               </div>
             </div>
             <div class="flip-card-back">
               <div class="info-container">
                 <div class="cardHeader">
-                  <span class="pack-name">{{data.pck_name}}</span>
+                  <span class="pack-info-title">{{data.pck_name}}</span>
                 </div>
                 <h3></h3>
                 <div fxLayout="row" fxLayoutAlign="space-around stretch">

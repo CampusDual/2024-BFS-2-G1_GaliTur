@@ -195,7 +195,7 @@
                                             <div class="flip-card-back">
                                                 <div class="info-container">
                                                     <div class="cardHeader">
-                                                        <span class="pack-info-title">Información Extra</span>
+                                                        <span class="pack-info-title">{{data.name}}</span>
                                                     </div>
                                                     <div class="content-list-item">
                                                         <ul class="list" style="list-style-type: none;">
@@ -238,20 +238,15 @@
                                             <img class="preview-image" [src]="getRouteImageSrc(data.img_code)">
                                             <div class="text-overlay">
                                                 <div class="card-name"><span class="card-name">{{ truncateName(data.bsn_name)}}</span></div><hr/>
-                                                    <span *ngIf="data.bsn_type === 'Restaurant'"><mat-icon class="type-icon">restaurant</mat-icon>{{
-                                                        data.bsn_type
-                                                        | oTranslate }}</span>
-                                                    <span *ngIf="data.bsn_type === 'Lodging'"><mat-icon class="type-icon">house</mat-icon>
-                                                      <em>{{ data.bsn_type | oTranslate }}</em></span>
-                                                    <span *ngIf="data.bsn_type === 'AgencyGuide'"><mat-icon class="type-icon">flight</mat-icon>{{
-                                                        data.bsn_type |
-                                                        oTranslate }}</span>
+                                                <span *ngIf="data.bsn_type === 'Restaurant'"><mat-icon class="type-icon">restaurant</mat-icon>{{ data.bsn_type | oTranslate }}</span>
+                                                <span *ngIf="data.bsn_type === 'Lodging'"><mat-icon class="type-icon">house</mat-icon> {{ data.bsn_type | oTranslate }}</span>
+                                                <span *ngIf="data.bsn_type === 'AgencyGuide'"><mat-icon class="type-icon">flight</mat-icon>{{data.bsn_type | oTranslate }}</span>
                                             </div>
                                         </div>
                                         <div class="flip-card-back">
                                             <div class="info-container">
                                                 <div class="cardHeader">
-                                                    <span class="pack-info-title">Información Extra</span>
+                                                    <span class="pack-info-title">{{data.bsn_name}}</span>
                                                 </div>
                                                 <div class="content-list-item">
                                                     <ul class="list" style="list-style-type: none;">
