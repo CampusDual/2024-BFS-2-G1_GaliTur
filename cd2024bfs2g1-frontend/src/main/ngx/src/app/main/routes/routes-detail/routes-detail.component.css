@@ -6,11 +6,21 @@
   align-items: center;
   justify-content: space-around;
   border-radius: 150px;
+  height: 100%;
+  background-color: transparent;
+  border-radius: 8px;
+  padding-inline: 70px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  margin: 10px;
 }
 
-.backButton {
-  margin-left: -20px;
-  margin-top: 27px;
+.back-button {
+  align-self: center;
+  margin-left: -50px;
+  margin-right: 15px;
+
+  z-index: 2;
 }
 
 .arrow_back {
@@ -21,22 +31,10 @@
 .mainPanel {
   width: 100%;
   background-color: #e2dbd5;
-  padding-inline: 70px;
-  padding-top: 30px;
-  padding-bottom: 50px;
+  padding: 0px;
   overflow-x: hidden;
 }
 
-
-
-.routesFirst, .routesSecond {
-  background-color: #EFF1F3;
-  border-radius: 8px;
-  padding: 40px;
-  margin: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-}
 
 .routesFirst span strong {
   font-weight: bold;
@@ -65,15 +63,14 @@
   text-align: center;
   background-color: #52733B;
   color: #ffffff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   width: 100%;
-  margin-right: 95px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
   margin-inline: auto;
   padding-block: 7px;
+  margin-block: 0px;
 
 }
 
@@ -107,27 +104,6 @@
   background-color: #EFEFEF;
 }
 
-.custom-button {
-  margin-left: 155px;
-  margin-bottom: 20px;
-  background-color: #52733B;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 10px;
-  transition: background-color 0.3s;
-
-}
-
-.custom-button:hover {
-  background-color: #5f9b62;
-}
-
 .difficulty{
   text-align: center;
 }
@@ -156,93 +132,6 @@
   }
 }
 
-.tooltiptextDifficulty {
-  visibility: hidden;
-  width: auto;
-  background-color: white;
-  border: 2px solid;
-  border-color: #84A45A;
-  color: #000000;
-  text-align: center;
-  font-size: 15px;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 1;
-  left: 70%;
-  bottom: 90%;
-  margin-left: -60px;
-  opacity: 0;
-  transition: opacity 0.3s;
-  white-space: nowrap;
-  padding: 5px;
-
-}
-
-.tooltipDifficulty{
-  margin-top: 20px;
-}
-
-.tooltipDifficulty:hover{
-  transform: scale(1.2);
-  padding: 0px 0px 0px 0px;
-}
-
-.tooltipDifficulty:hover .tooltiptextDifficulty {
-  visibility: visible;
-  transform: scale(0.9);
-  opacity: 1;
-}
-
-.helpTooltip{
-  color: #84A45A;
-  padding: 10px 0px 0px 0px;
-}
-
-.tooltiptextDuration {
-  visibility: hidden;
-  width: auto;
-  background-color: white;
-  border: 2px solid;
-  border-color: #84A45A;
-  color: #000000;
-  text-align: center;
-  font-size: 15px;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 1;
-  left: 80%;
-  bottom: 90%;
-  margin-left: -60px;
-  opacity: 0;
-  transition: opacity 0.3s;
-  white-space: nowrap;
-  padding: 5px;
-}
-
-.tooltipDuration {
-  margin-top: 20px;
-}
-
-.tooltipDuration:hover {
-  transform: scale(1.2);
-  padding: 0px 0px 0px 0px;
-}
-
-.tooltipDuration:hover .tooltiptextDuration {
-  visibility: visible;
-  transform: scale(0.9);
-  opacity: 1;
-}
-
-.clockTooltip {
-  color: #84A45A;
-  padding: 10px 20px 0px 0px;
-}
-
-.clockTooltipDetail{
-  color: #84A45A;
-  padding: 10px 30px 0px 0px;
-}
 
 
 
@@ -255,6 +144,7 @@
 .image-container {
   width: 50%;
   height: 100%;
+  padding-right: 15px;
   .img-cover {
     object-fit: cover;
     width: 100%;
@@ -270,7 +160,7 @@
   display: flex;
   flex-direction: column;
   justify-content: start;
-  padding-inline: 30px;
+  padding-left: 15px;
 }
 
 .leafsDifficulty {
@@ -388,5 +278,40 @@
 .title-container {
   width: 100%;
   margin-inline: 0px;
-  height: fit-content;
+  padding-top: 0px;
+  height: 10%;
 }
+.content {
+  height: 65%;
+}
+
+.main-button {
+  background-color: #52733B;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 250;
+  border-width: 0px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  mat-icon {
+    margin-bottom: -8px;
+    margin-right: 3px;
+    font-size: 20px;
+  }
+  &:hover {
+    transform: scale(1.03);
+    background-color: #466132;
+    mat-icon {
+      margin-bottom: -8.5px;
+    }
+  }
+}
+
+.button-container {
+  height: 10%;
+  
+}
+

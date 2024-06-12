@@ -1,38 +1,43 @@
 <div fxFill fxLayout="column" fxLayoutAlign="center center" class="mainPanel">
-    <div fxLayout="row" class="title-container">
-        <o-button class="backButton" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary" (click)="backToHome(data)"></o-button>
-        <p class="titulo">{{ data.name }}</p>
-    </div>
-    <div fxLayout="row" class="routesSecond" >
-        <div class="image-container">
-            <img class="img-cover" [src]="getImageSrc(data.img_code)">
+
+    <div fxLayout="column" class="routesSecond" >
+        <div fxLayout="row" class="title-container">
+            <o-button class="back-button" attr="fab2" type="ICON" icon="arrow_back" color="primary" (click)="backToHome(data)"></o-button>
+
+            <p class="titulo">{{ data.name }}</p>
         </div>
-        
-        <div class="data-container">
-            <o-row class="o-rows"  attr="container" icon="description" mat
-                title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" elevation="1"
-                aria-orientation="vertical" appearance="outline">
-                <ul class="list-to-desc">
-                    <li>{{data.description}}</li>
-                </ul>
-            </o-row>
-            <o-row class="o-rows"  attr="container" title="{{'INFO' | oTranslate }}" icon="info"
-                layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
-                <ul class="list-with-spaces">
-                    <li *ngIf="data.estimated_distance"><i><strong>Distancia: </strong></i>{{convertDistance(data.estimated_distance)}}</li>
-                    <li *ngIf="!data.estimated_distance"><i><strong>Distancia: </strong></i>- Km</li>
-                        
-                    <li *ngIf="data.estimated_distance"><i><strong>Duracion estimada: </strong></i>{{convertTime(data.estimated_distance)}}</li>
-                    <li *ngIf="!data.estimated_distance"><i><strong>Duracion estimada: </strong></i>- Min</li>
-
-                    <li><i><strong>Dificultad: </strong></i>{{getDifficultad2(data.difficulty)}}</li>
-                </ul>
-            </o-row>
-
+        <div fxLayout="row" class="content">
+            <div class="image-container">
+                <img class="img-cover" [src]="getImageSrc(data.img_code)">
+            </div>
             
+            <div class="data-container">
+                <o-row class="o-rows"  attr="container" icon="description" mat
+                    title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" elevation="1"
+                    aria-orientation="vertical" appearance="outline">
+                    <ul class="list-to-desc">
+                        <li>{{data.description}}</li>
+                    </ul>
+                </o-row>
+                <o-row class="o-rows"  attr="container" title="{{'INFO' | oTranslate }}" icon="info"
+                    layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+                    <ul class="list-with-spaces">
+                        <li *ngIf="data.estimated_distance"><i><strong>Distancia: </strong></i> {{convertDistance(data.estimated_distance)}}</li>
+                        <li *ngIf="!data.estimated_distance"><i><strong>Distancia: </strong></i>- Km</li>
+                            
+                        <li *ngIf="data.estimated_distance"><i><strong>Duracion estimada: </strong></i> {{convertTime(data.estimated_distance)}}</li>
+                        <li *ngIf="!data.estimated_distance"><i><strong>Duracion estimada: </strong></i>- Min</li>
+    
+                        <li><i><strong>Dificultad: </strong></i>{{getDifficultad2(data.difficulty)}}</li>
+                    </ul>
+                </o-row>
+            </div>
+        </div>
 
-                    
-            
+        <div fxLayout="column" class="button-container">
+            <button (click)="openDetailLandmark(data)" class="main-button">
+                <mat-icon> location_on </mat-icon><span>{{ "landmark" | oTranslate}}</span>
+            </button>
         </div>
     </div>
 </div>
