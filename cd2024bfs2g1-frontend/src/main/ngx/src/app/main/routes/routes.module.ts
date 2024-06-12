@@ -14,6 +14,7 @@ import { OMapModule } from 'ontimize-web-ngx-map';
 import { RoutesDetailComponent } from './routes-detail/routes-detail.component';
 
 
+
 @NgModule({
   declarations: [
     RoutesHomeComponent,
@@ -22,6 +23,7 @@ import { RoutesDetailComponent } from './routes-detail/routes-detail.component';
     AddLandmarkComponent,
     ViewAllLandmarkComponent,
     ViewLandmarkDetailComponent,
+   
   ],
   imports: [
     SharedModule,
