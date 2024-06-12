@@ -429,7 +429,7 @@
     font-size: 0.8em;
 }
 
-.routeCard:hover , .valorations:hover{
+.routeCard:hover{
     box-shadow: 0 0 15px rgba(113, 94, 78, 0.5);
     transform: scale(1.04);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -482,8 +482,8 @@
 
 
 .valorations{
-    width: 800px;
-    height: 240px;
+    width: 100%;
+    height: auto;
     background-color: #ccc6c0;
     border-radius: 10px;
     padding: 16px;
@@ -517,7 +517,7 @@
 }
 
 .star_color{
-    background: linear-gradient(to top, rgba(94,60,6,1) 51%, rgba(9,121,19,1) 28%, rgba(51,193,13,1) 83%);
+    background: linear-gradient(to top, rgba(94,60,6,1) 22%, rgba(9,121,19,1) 28%, rgba(51,193,13,1) 83%);
       -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
@@ -534,7 +534,6 @@
     margin: 0px;
     padding: 0px;
     width: 100%;
-    height: auto;
     flex: 1;
     background-color: transparent;
     font-size: 13px;
