@@ -3,7 +3,7 @@ import { Component, Injector, ViewChild, TemplateRef } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { DomSanitizer } from "@angular/platform-browser";
 import { Expression, FilterExpressionUtils, OCurrencyInputComponent, OFormComponent, OFormValue, OGridComponent, OntimizeService } from "ontimize-web-ngx";
-import { Router } from "@angular/router";
+import { ActivatedRoute, NavigationExtras, Router } from "@angular/router";
 
 @Component({
   selector: "app-pack-home",
@@ -26,6 +26,7 @@ export class PackHomeComponent {
     protected dialog: MatDialog,
     protected sanitizer: DomSanitizer,
     private router: Router,
+    private route: ActivatedRoute
   ) {
     this.ontimizeService.configureService(
       this.ontimizeService.getDefaultServiceConfiguration("packs")
@@ -35,10 +36,18 @@ export class PackHomeComponent {
 
   ngOnInit() {}
 
-  public openDetail(data: any): void {
-    PackHomeComponent.page = 1;
-    this.router.navigate(['packs/' + data.pck_id]);
-  }
+
+
+    //Metodo para redirect dinamico de rutas
+    openDetail(data: any): void {
+      PackHomeComponent.page = 1;
+      const currentUrl = this.router.url; // Capturar la URL actual
+      const navigationExtras: NavigationExtras = {
+        state: { previousUrl: currentUrl },
+        relativeTo: this.route  // Enviar la URL actual como navigation state
+      };
+      this.router.navigate(['/packs/' + data.pck_id], navigationExtras);
+    }
 
   public getImageSrc(base64: any): any {
     return base64

@@ -274,7 +274,7 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
     if (previousUrl.includes('/home')) {
       this.router.navigateByUrl(previousUrl);
     }else if (previousUrl.includes('/packs')) {
-      this.router.navigate(previousUrl);
+      this.router.navigateByUrl(previousUrl);
     }else if (previousUrl.includes('/businesses')){
       this.router.navigate(['/home'])
       //Si el usuario entra a un pack desde home redirigir a home
@@ -285,10 +285,10 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
       this.router.navigate(['/home']);
        //En caso de que entre introduciendo una URL no se contemplada en los casos anteriores redirigir a landing page
     }  else if((previousUrl.includes('/packs'))){
-      this.router.navigate(previousUrl)
+      this.router.navigateByUrl(previousUrl)
      //Si el usuario viene de packs redigir de vuelta packs
     } else  {
-      this.router.navigate(['../'],{ relativeTo: this.actRoute });
+      this.router.navigate(['/home'],{ relativeTo: this.actRoute });
     }
 }
 
