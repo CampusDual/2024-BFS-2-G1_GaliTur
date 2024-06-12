@@ -1,7 +1,6 @@
 package com.campusdual.cd2024bfs2g1.model.core.service.pack;
 
 import com.campusdual.cd2024bfs2g1.api.core.service.pack.IPackService;
-import com.campusdual.cd2024bfs2g1.api.core.util.Utils;
 import com.campusdual.cd2024bfs2g1.model.core.dao.ClientDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.ImageDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.business.GuideCitiesDao;
@@ -25,6 +24,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.text.ParseException;
 
 import java.util.*;
+
+import static com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDao.*;
 
 
 @Lazy
@@ -64,6 +65,26 @@ public class PackService implements IPackService {
             throws OntimizeJEERuntimeException {
         attrList.remove("comboDates");
         return this.daoHelper.query(this.packDao, keyMap, attrList);
+    }
+
+
+
+    @Override
+    public EntityResult packPerDaysQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.packDao, keyMap, attrList,PCK_PER_DAYS_QUERY);
+    }
+
+    @Override
+    public EntityResult packByPriceQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.packDao, keyMap, attrList,PCK_BY_PRICE_QUERY);
+    }
+
+    @Override
+    public EntityResult packByStationQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.packDao, keyMap, attrList,PCK_BY_STATION_QUERY);
     }
 
     @Override
@@ -260,5 +281,10 @@ public class PackService implements IPackService {
     @Override
     public EntityResult newestQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.packDao, keyMap, attrList, PackDao.PCK_NEWEST_QUERY);
+    }
+
+    @Override
+    public EntityResult popularPacksQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.packDao, keyMap, attrList, PackDao.PCK_POPULARS_QUERY);
     }
 }

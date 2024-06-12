@@ -73,4 +73,8 @@
 
 }
 
+:host ::ng-deep .o-table .o-table-container .mat-mdc-table .mat-mdc-row .mat-mdc-cell div {
+    color: black;
+}
+
 

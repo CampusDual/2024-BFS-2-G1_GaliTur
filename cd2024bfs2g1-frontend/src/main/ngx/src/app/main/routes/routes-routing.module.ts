@@ -7,6 +7,7 @@ import { AddLandmarkComponent } from './routes-new/add-landmark/add-landmark.com
 import { ViewAllLandmarkComponent } from './routes-new/view-all-landmark/view-all-landmark.component';
 import { ViewLandmarkDetailComponent } from './routes-detail/view-landmark-detail/view-landmark-detail.component';
 
+
 const routes: Routes = [
   { path: '', component: RoutesHomeComponent },
   { path: 'landmark', component: ViewLandmarkDetailComponent},
@@ -18,8 +19,22 @@ const routes: Routes = [
       }
     }
   },
-  { path: 'new/:route_id', component: ViewAllLandmarkComponent},
-  { path: 'new/:route_id/:landmark_id', component: AddLandmarkComponent},
+  { path: 'new/:route_id', component: ViewAllLandmarkComponent,
+    data: {
+      oPermission: {
+        permissionId: "RoutesNew",
+        restrictedPermissionsRedirect: 403
+      }
+    }
+  },
+  { path: 'new/:route_id/:landmark_id', component: AddLandmarkComponent,
+    data: {
+      oPermission: {
+        permissionId: "RoutesNew",
+        restrictedPermissionsRedirect: 403
+      }
+    }
+  },
   { path: ':route_id', component: RoutesHomeComponent},
  
   

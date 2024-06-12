@@ -3,7 +3,7 @@
     padding: 0px;
 }
 
-.fondoTrajeta{
+.fondoTarjeta{
     background-color: #eee4db;
 }
 
@@ -13,14 +13,19 @@
 }
 
 .div_principal{
-    padding: 30px 60px 60px 60px;
+    padding: 20px 40px 40px 40px;
     background-color: #eee4db;
 }
 
 .campos{
     font-size: 15px;
-    background-color: rgb(255, 254, 253);
-    padding: 5px;
+    background-color: #eee4db;
+}
+
+::ng-deep .mat-form-field-disabled{
+    div {
+        background-color: rgb(221, 218, 212) !important;
+    }
 }
 
 .nombre{
@@ -37,6 +42,8 @@
     background-color: #c2b5aa;
     cursor: pointer; 
     outline: none; 
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
    
      @keyframes pulse {
@@ -72,10 +79,9 @@
      }
    }
 .button-true:hover{
-    background-color: white;
-    border-color: white;
-    font-size: 18px;
-    animation: pulse 3s infinite ease-in-out;
+    background-color: #a89d93;
+    border-color: #a89d93;
+    transform: scale(1.03);
 }
 .button-false {
    background-color: #d8d5d2;
@@ -96,4 +102,22 @@
 .mat-icon{
     vertical-align: middle;
     margin: 0px 5px 5px 0px;
+  }
+
+  .div-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  /* Estilo global de los o-rows */
+.o-rows {
+    overflow-x: hidden;
+  }
+  .o-row.o-appearance-outline {
+    background-color: #eee4db;
+    mat-icon{
+        color:#84A45A;
+    }
   }

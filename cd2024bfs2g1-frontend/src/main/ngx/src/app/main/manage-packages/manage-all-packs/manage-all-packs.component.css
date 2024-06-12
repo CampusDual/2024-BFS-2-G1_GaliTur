@@ -1,53 +1,63 @@
 .div-fullpage {
-    background-image: url('../../../../assets/images/fondoPackEditar.png');
-    background-size:cover;
-    height: 84%;
-  }
+  background-image: url("../../../../assets/images/fondoPackEditar.png");
+  background-size: cover;
+  height: 84%;
+}
 
-  .principal-centro {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border-radius: 10px 10px;
-    margin-bottom: 20px;
-  }
+.principal-centro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px 10px;
+  margin-bottom: 20px;
+}
 
-  .secundaria-centro {
-    display: flex;
-    padding: 5px 5px 5px 5px;
-    background-color: #c2b5aa;
-    border-radius: 10px 10px;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  .contenedor-centro {
-    display: flex;
-    justify-content: center;
-    background-color: #c2b5aa;
-    padding: 3px 3px 3px 3px;
-  }
-  .datos{
-    width: 1000px;
-  }
-  .card_datos{
-    width: 700px;
-    height: 100%;
-    padding: 0px 0px 15px 25px;
-  }
+.secundaria-centro {
+  display: flex;
+  padding: 10px;
+  background-color: #c2b5aa;
+  border-radius: 10px 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 70%;
+}
+
+.card-entera {
+  background-color: #eee4db;
+  width: 100%;
+}
+
+.card-datos{
+  width: 60%;
+  padding: 20px;
+}
+
+.card-imagen {
+  width: 40%;
+  padding: 20px;
+}
+
+.imagen{
+  object-fit: cover;
+  height: 200px;
+  width: 100%;
+  min-width: 200px;
+}
 
 .button{
- font-size: 16px;
- font-size: 20px;
- width: 150px;
- border-radius: 5px;
- border-width: 3px;
- border-style: solid;
- border-color: #c2b5aa;
- background-color: #c2b5aa;
- cursor: pointer;
- outline: none;
+  font-size: 17px;
+  width: 150px;
+  border-radius: 5px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: #c2b5aa;
+  background-color: #c2b5aa;
+  cursor: pointer;
+  outline: none;
+  margin-left: 3px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
   @keyframes pulse {
@@ -83,49 +93,119 @@
   }
 }
 .button:hover{
-    background-color: white;
-    border-color: white;
-    font-size: 18px;
-    width: 150px;
-    animation: pulse 3s infinite ease-in-out;
+    background-color: #a89d93;
+    border-color: #a89d93;
+    transform: scale(1.03);
 }
 
-.titulo{
-    font-size: 15px;
-    background-color: rgb(255, 254, 253);
-    padding: 5px;
-    color: black;
-}
-.descripction{
+.titulo {
   font-size: 15px;
   background-color: rgb(255, 254, 253);
   padding: 5px;
   color: black;
 }
 
-
-.prueba{
-  background-color: #eee4db;
-}
-
-.imagen{
+.div-buttons{
   display: flex;
   align-items: center;
-  padding: 0px 0px 15px 0px;
+  height: 40px;
+  margin-top: 5px;
 }
 
-.titulo_pack{
+
+
+.descripction {
+  font-size: 15px;
+  padding: 5px;
+  color: black;
+  background-color: transparent;
+}
+
+.titulo_pack {
   font-size: 25px;
   font-weight: bold;
- display: flex;
- text-align: center;
- height: 60px;
+  display: flex;
+  text-align: center;
+  height: 60px;
+  background-color: transparent;
 }
 
-.mat-icon{
+.titulo {
+  font-size: 15px;
+  display: flex;
+  text-align: center;
+  background-color: transparent;
+}
+
+.mat-icon {
   vertical-align: middle;
-  margin: 0px 5px 5px 0px;
+  margin: 3px 5px 5px 0px;
 }
 
+.draft{
+  background-color: #eee4db;
+  font-size: 16px;
+  align-content: center;
+  text-align: center;
+  width: 130px;
+  height: 40px;
+  border-radius: 5px;
+  outline: none;
+}
+
+/* Estilo global de los o-rows */
+.o-rows {
+  overflow-x: hidden;
+}
+.o-row.o-appearance-outline {
+  background-color: #eee4db;
+  mat-icon{
+      color:#84A45A;
+  }
+}
+
+@media(max-width:1180px){
+  .button, .card{
+    width: 105px;
+    height: 40px;
+  }
+}
+
+@media (max-width:1100px) {
+  .card-imagen, .imagen{
+    width: 0px;
+    visibility: hidden;
+    padding:0px;
+  }
+
+  .card-datos{
+    width: 100%;
+  }
 
 
+}
+
+@media(max-width:767px){
+  .button, .card{
+    width: 105px;
+    height: 40px;
+  }
+}
+
+@media (max-width:735px) {
+  .card-imagen, .imagen{
+    width: 0px;
+    visibility: hidden;
+    padding:0px;
+  }
+
+  .card-datos{
+    width: 100%;
+  }
+
+  .button{
+    width: 40px;
+    height: 40px;
+  }
+
+}

@@ -10,7 +10,6 @@ import { OFormComponent, OSnackBarConfig, OTableComponent, OntimizeService, Snac
 })
 export class BusinessMerchantDetailComponent implements OnInit {
 
-
   @ViewChild('accountCustomerTable') accountTable: OTableComponent;
   @ViewChild('form') form: OFormComponent;
   @Inject(OntimizeService) protected service: OntimizeService
@@ -21,9 +20,10 @@ export class BusinessMerchantDetailComponent implements OnInit {
     protected injector: Injector,
     protected bsnService: OntimizeService,
     protected snackBarService: SnackBarService,
+    private oTranslate: OTranslateService,
+    protected dialogService: DialogService
   ) {
     this.bsnService = this.injector.get(OntimizeService);
-
   }
 
   ngOnInit(): void { }
@@ -36,7 +36,6 @@ export class BusinessMerchantDetailComponent implements OnInit {
     const previousUrl = history.state && history.state.previousUrl ? history.state.previousUrl : '';
     this.router.navigateByUrl('/main/business-merchant');
     //Si el usuario viene de business-detail redigir a la url anterior para que vea el pack en el que estaba
-  
 }
 
 
@@ -50,16 +49,56 @@ export class BusinessMerchantDetailComponent implements OnInit {
     return languageArray[languageArray.length - 1].trim() === languageKey.trim();
   }
 
-  deleteBsn(data) {
+  confirmDeleteBsn(data){
 
-    
+    const confBusiness = this.bsnService.getDefaultServiceConfiguration("businesses");
+    this.bsnService.configureService(confBusiness);
+
+
+
+    this.bsnService.query(
+      {"b.bsn_id": data[0].bsn_id},["bsn_pack_id"],"businessOfPack")
+      .subscribe((result) => {
+        if (result.data.length) {
+
+          this.confirmDeleteDialog(data, false);
+        }else{
+
+          this.confirmDeleteDialog(data, true);
+        }
+      });
+  }
+
+
+  confirmDeleteDialog(data, isInPack) {
+    const config: ODialogConfig = {
+      icon: "warning",
+      alertType: "warn",
+    };
+
+
+
+    if (this.dialogService) {
+      this.dialogService.confirm(
+        this.oTranslate.get( "CANCEL-DELETE-BSN-DIALOG-TITLE"),
+        this.oTranslate.get(isInPack ? "CANCEL-DELETE-BSN-DIALOG-DESCRIPTION-PACK": "CANCEL-DELETE-BSN-DIAG-DESCRIPTION"),
+        config
+      );
+      this.dialogService.dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          this.deleteBsn(data);
+        }
+      });
+    }
+  }
+
+
+  deleteBsn(data) {
       const confBusiness = this.bsnService.getDefaultServiceConfiguration("businesses");
       this.bsnService.configureService(confBusiness);
       this.bsnService
         .delete({bsn_id: data[0].bsn_id},"businessDownDate")
         .subscribe((resp) => {
-          //TODO: this.form.reload(true);
-  
           const config: OSnackBarConfig = {
             action: "",
             milliseconds: 2000,
@@ -78,5 +117,5 @@ export class BusinessMerchantDetailComponent implements OnInit {
     }
 
 
-    
+
 }

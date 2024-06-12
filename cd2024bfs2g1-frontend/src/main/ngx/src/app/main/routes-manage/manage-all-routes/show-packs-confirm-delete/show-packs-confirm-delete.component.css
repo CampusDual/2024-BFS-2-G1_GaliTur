@@ -1,0 +1,58 @@
+.all-dialog{
+  padding:10px;
+  background-color: #e2dbd5;
+}
+
+.div-buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.div-info{
+  padding-bottom:10px;
+}
+
+button{
+  background-color: #4e4c4a !important;
+  color: #e2dbd5 !important;
+}
+
+.pack-list-container {
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #c2b5aa;
+    border: 1px solid #ccc; 
+    border-radius: 8px;
+    padding: 10px; 
+  }
+  
+  .pack-list-container ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .pack-list-container li {
+    background-color: #e2dbd5; 
+    margin-bottom: 8px; 
+    padding: 10px;
+    border-radius: 4px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex; 
+    align-items: center;
+  }
+  
+  .pack-list-container li:last-child {
+    margin-bottom: 0; 
+  }
+  
+  .pack-list-container p {
+    margin: 0;
+    color: #4e342e; 
+    font-weight: 500;
+  }
+  
+  .pack-list-container li:hover {
+    background-color: #ddd1c7; 
+  }

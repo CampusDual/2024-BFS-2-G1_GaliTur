@@ -121,7 +121,7 @@
     justify-content: space-around;
     width: 90%;
     row-gap: 10px;
-    max-height: 130px;
+    max-height: 200px;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -132,7 +132,7 @@
     flex-direction: column;
     width: 90%;
     row-gap: 10px;
-    max-height: 130px;
+    max-height: 200px;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -386,30 +386,11 @@
     margin: auto;
     height: 40px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    align-items: center; 
+    justify-content: center; 
 }
 
-.business-name:hover {
-    overflow: auto;
-    overflow-y: hidden;
-}
 
-/* Scrollbar styling */
-.business-name:hover::-webkit-scrollbar {
-    height: 8px;
-}
-
-.business-name:hover::-webkit-scrollbar-track {
-    background: #715e4e;
-}
-
-.business-name:hover::-webkit-scrollbar-thumb {
-    background: #ccc6c0;
-}
 
 
 /* Estilos de las rutas del pack*/
@@ -483,6 +464,24 @@
 .route-name:hover{
     overflow: auto;
     overflow-y: hidden;
+}
+.no-business-cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;    
+    height: 100%;
+    margin: auto;
+}
+
+.no-business-card {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 
