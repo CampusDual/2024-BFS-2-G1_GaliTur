@@ -357,3 +357,7 @@ o-text-input, o-integer-input, o-currency-input, o-date-input, o-combo {
 
     }
 }
+
+:host ::ng-deep .mat-mdc-paginator-container .mat-mdc-paginator-page-size{
+    visibility: hidden !important;
+}
