@@ -26,6 +26,10 @@
                 columns="B.bsn_id;B.merchant_id;B.bsn_name;B.bsn_type;B.bsn_photos;BSP.pck_id;BSP.bsn_pack_id;assigned_date"
                 query-rows="16" parent-keys="pck_id" oHidden/>
 
+            <o-grid  #gridPackRating attr="gridPackRating" service="packBookings" entity="packbookingClientUserDatePack" keys="C.client_id;US.usr_id;PB.pd_id;PC.pck_id"
+            columns="US.usr_name;PB.pbk_rating_date;PB.pbk_stars;PB.pbk_comment" parent-keys="PC.pck_name:pck_name"
+            query-rows="16" oHidden/>
+
             <!-- Almaceno las rutas de un pack -->
             <o-grid #gridRoutesOfPack attr="routesHome" title="ROUTES" service="routes" entity="routesOfPack" keys="r.route_id;rp.pck_id;"
                 columns="r.route_id;r.name;r.estimated_duration;r.difficulty;i.img_code;rp.pck_id;rp.assigned_date"
@@ -35,6 +39,7 @@
             <o-grid #gui_cities attr="guiCities" service="guideCities" entity="guideCities" keys="gui_c_id"
                 columns="gui_z_id;gui_c_id;gui_c_name" visible-columns="gui_z_id;gui_c_id;gui_c_name"
                 parent-keys="gui_c_id" refresh-button="false" quick-filter="false" oHidden />
+
 
             <!-- Div que contendrá toda la informacion del pack -->
             <div class="main-container">
@@ -206,38 +211,35 @@
                 <div class="business-container">
                     <details class="details">
                         <summary>{{"VALORATIONS" | oTranslate}}</summary>
-                        <o-row class="o-row-o-grid-container" title="{{ 'BUSINESSES' | oTranslate }}" icon="business" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
-                            <div class="o-grid-container">
-                                <o-grid  opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" page-size-options="false"
-                                show-page-size="false" disable-page-size-calculation="true" cols="1" gutter-size="1px" grid-item-height="245px">
-                                    <o-grid-item>
-                                        <div fxLayout="column" class="mat-elevation-z1 valorations">
-                                            <p id="date-rating">fecha</p>
-                                            <div fxLayout="row">
-                                                <div class="card-valorations-header">
-                                                    <div class="business-title">
-                                                        <div class="valoracions-name">
-                                                            
-                                                            <span class="user-name">{{ "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"}}</span>
-                                                        </div>
-                                                    </div>
+                        <o-grid
+                        opacity="0" refresh-button="false" quick-filter="false"  page-size-options="false"
+                        show-page-size="false" disable-page-size-calculation="true" cols="1" gutter-size="1px" grid-item-height="245px">
+                            <o-grid-item *ngFor="let data of gridPackRating.dataArray">
+                                <div fxLayout="column" class="mat-elevation-z1 valorations">
+                                    <p id="date-rating">{{data.pbk_rating_date}}</p>
+                                    <div fxLayout="row">
+                                        <div class="card-valorations-header">
+                                            <div class="business-title">
+                                                <div class="valoracions-name">
+                                                    
+                                                    <span class="user-name">{{data.usr_name}}</span>
                                                 </div>
-                                                <mat-icon class="star" [ngClass]="4 >= 1?'star_color':''">park</mat-icon>
-                                                <mat-icon class="star" [ngClass]="4 >= 2?'star_color':''">park</mat-icon>
-                                                <mat-icon class="star" [ngClass]="4 >= 3?'star_color':''">park</mat-icon>
-                                                <mat-icon class="star" [ngClass]="4 >= 4?'star_color':''">park</mat-icon>
-                                                <mat-icon class="star" [ngClass]="4 >= 5?'star_color':''">park</mat-icon>
                                             </div>
-                                            <o-row class="o-row-coment" attr="container"
-                                                title="COMENT" layout-align="start stretch" elevation="1"
-                                                aria-orientation="vertical" appearance="outline">
-                                                <p class="list-to-desc">a</p>
-                                            </o-row>
                                         </div>
-                                    </o-grid-item>
-                                </o-grid>
-                            </div>
-                        </o-row>
+                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 1?'star_color':''">park</mat-icon>
+                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 2?'star_color':''">park</mat-icon>
+                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 3?'star_color':''">park</mat-icon>
+                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 4?'star_color':''">park</mat-icon>
+                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 5?'star_color':''">park</mat-icon>
+                                    </div>
+                                    <o-row class="o-row-coment" attr="container"
+                                        title="COMENT" layout-align="start stretch" elevation="1"
+                                        aria-orientation="vertical" appearance="outline">
+                                        <p class="list-to-desc">{{data.pbk_comment}}</p>
+                                    </o-row>
+                                </div>
+                            </o-grid-item>
+                        </o-grid>
                     </details>
                 </div>
 
