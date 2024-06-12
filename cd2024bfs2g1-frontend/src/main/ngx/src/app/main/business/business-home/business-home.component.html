@@ -12,7 +12,7 @@
         <div class="flip-card-front">
           <img class="pack-img" [src]="getImageSrc(data.bsn_photos)" width="300px" height="200px" />
           <div class="text-overlay">
-            <span class="pack-name"><span class="pack-name">{{ truncateName(data.bsn_name) }}</span></span>
+            <span class="pack-name"><span class="pack-name">{{ data.bsn_name }}</span></span>
             <hr>
             <span *ngIf="data.bsn_type === 'Restaurant'"><mat-icon class="type-icon">restaurant</mat-icon>{{ data.bsn_type | oTranslate }}</span>
             <span *ngIf="data.bsn_type === 'Lodging'"><mat-icon class="type-icon">house</mat-icon> {{ data.bsn_type | oTranslate }}</span>

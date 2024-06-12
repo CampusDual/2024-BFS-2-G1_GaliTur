@@ -32,13 +32,7 @@ export class BusinessMerchantComponent {
   public openDetail(data: any): void {
     this.router.navigate(['main/business-merchant', data.bsn_id]);
   }
-  truncateName(name: string): string {
-    if (name.length > 30) {
-        return name.substr(0, 30) + '...';
-    } else {
-        return name;
-    }
-  }
+
 
 
 }
