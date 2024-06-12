@@ -49,7 +49,7 @@ galleryOptions: any;
     return +this.activeRoute.snapshot.params["route_id"];
   }
   public getImageSrc(base64: any): any {
-    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/logo-walking.png";
+    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/home-image.jpeg";
   }
   public openDetail(data: any): void {
     this.imageService.getImage(data.route_id).subscribe((imageData)=> {
@@ -99,13 +99,13 @@ galleryOptions: any;
 
 
   if (kilometros == 0 && metrosRestantes != 0) {
-      return `${metrosRestantes}m`;
+      return `${metrosRestantes} m`;
   } else if (kilometros != 0 && metrosRestantes == 0) {
-      return `${kilometros}km`;
+      return `${kilometros} km`;
   } else if (kilometros != 0 && metrosRestantes != 0) {
-      return `${kilometros},${metrosRestantes}km`;
+      return `${kilometros},${metrosRestantes} km`;
   } else {
-      return '0m';
+      return '0 m';
   }
 }
 
@@ -133,6 +133,18 @@ galleryOptions: any;
           return 'Dificultad: Difícil';
       case 4:
           return 'Dificultad: Extremo';
+    }
+  }
+  getDifficultad2(difficulty: number): string {
+    switch(difficulty) {
+      case 1:
+          return 'Dificultad Fácil';
+      case 2:
+          return 'Dificultad Intermedia';
+      case 3:
+          return 'Dificultad Difícil';
+      case 4:
+          return 'Dificultad Extremo';
     }
   }
 }
