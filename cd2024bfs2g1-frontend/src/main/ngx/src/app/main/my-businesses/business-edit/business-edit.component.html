@@ -106,67 +106,79 @@
     </div>
 
     <!-- LODGING -->
-    <div  class="formExtra"  *ngIf="type.getValue() === 'Lodging'"  style="padding-top: 40px;">
-
-        <o-form attr="lodgingEdit" class="custom-form" label-header-align="start" service="hotels" entity="hotelMulti" keys="htl_id;bsn_id" parent-keys="bsn_id" fxLayout="column" #oFormLodgingNew
-        keys-sql-types="integer" confirm-exit="no"  undo-button="false" message-service-type="customMessageServiceTypeBusiness"  label-header="{{ 'LODGING' | oTranslate }}" oHidden (onUpdate)="reloadPage()">
-        <o-column>
+    <div class="formExtra" *ngIf="type.getValue() === 'Lodging'" style="padding-top: 40px;">
+    
+        <o-form attr="lodgingEdit" class="custom-form" label-header-align="start" service="hotels" entity="hotelMulti"
+            keys="htl_id;bsn_id" parent-keys="bsn_id" fxLayout="column" #oFormLodgingNew keys-sql-types="integer"
+            confirm-exit="no" undo-button="false" message-service-type="customMessageServiceTypeBusiness"
+            label-header="{{ 'LODGING' | oTranslate }}" oHidden (onUpdate)="reloadPage()">
+    
             <o-row layout-align="start stretch">
-                <o-column>
-                    <o-row class="lodging-column" title="LODGING" layout-align="start stretch" layout-padding>
-                        <o-column>
-                            <o-row>
-                                <o-checkbox #switchDestination type="checkbox" (onValueChange)="getSwitchValue()"
-                                    attr="roomTypeSingle" label="{{ 'Single' | oTranslate }}" data="Individual" read-only="no"></o-checkbox>
-
-                                <o-currency-input #currency1 [required]="switchDestinationState? true : false"
-                                    [enabled]="switchDestinationState? true : false" class="price"
-                                    attr="priceSingleRoom" label="{{ 'Price' | oTranslate }}" read-only="no" required="no"
-                                    min-decimal-digits="2" max-decimal-digits="2" min="0" max="1000"></o-currency-input>
-                            </o-row>
-                            <br>
-                            <o-row>
-                                <o-checkbox #switchDestination2 type="checkbox" (onValueChange)="getSwitchValue2()"
-                                    attr="roomTypeDouble" label="{{ 'Double' | oTranslate }}" data="Doble" read-only="no"></o-checkbox>
-
-                                <o-currency-input #currency2 [required]="switchDestinationState2? true : false"
-                                    [enabled]="switchDestinationState2? true : false" class="price"
-                                    attr="priceDoubleRoom" label="{{ 'Price' | oTranslate }}" read-only="no" required="no"
-                                    min-decimal-digits="2" max-decimal-digits="2" min="0" max="1000"></o-currency-input>
-                            </o-row>
-                            <br>
-                            <o-row>
-                                <o-checkbox #switchDestination3 type="checkbox" (onValueChange)="getSwitchValue3()"
-                                    attr="roomTypeTriple" label="{{ 'Triple' | oTranslate }}" data="Triple" read-only="no"></o-checkbox>
-
-                                <o-currency-input #currency3 [required]="switchDestinationState3? true : false"
-                                    [enabled]="switchDestinationState3? true : false" class="price"
-                                    attr="priceTripleRoom" label="{{ 'Price' | oTranslate }}" read-only="no" required="no"
-                                    min-decimal-digits="2" max-decimal-digits="2" min="0" max="1000"></o-currency-input>
-                            </o-row>
-                        </o-column>
+    
+                <o-column class="lodging-column" title="LODGING" layout-align="start stretch" layout-padding>
+    
+                    <o-row>
+                        <o-checkbox #switchDestination type="checkbox" (onValueChange)="getSwitchValue()"
+                            attr="roomTypeSingle" label="{{ 'Single' | oTranslate }}" data="Individual"
+                            read-only="no"></o-checkbox>
+    
+                        <o-currency-input #currency1 [required]="switchDestinationState? true : false"
+                            [enabled]="switchDestinationState? true : false" class="price" attr="priceSingleRoom"
+                            label="{{ 'Price' | oTranslate }}" read-only="no" required="no" min-decimal-digits="2"
+                            max-decimal-digits="2" min="0" max="1000"></o-currency-input>
                     </o-row>
-
+                    <br>
+                    <o-row>
+                        <o-checkbox #switchDestination2 type="checkbox" (onValueChange)="getSwitchValue2()"
+                            attr="roomTypeDouble" label="{{ 'Double' | oTranslate }}" data="Doble"
+                            read-only="no"></o-checkbox>
+    
+                        <o-currency-input #currency2 [required]="switchDestinationState2? true : false"
+                            [enabled]="switchDestinationState2? true : false" class="price" attr="priceDoubleRoom"
+                            label="{{ 'Price' | oTranslate }}" read-only="no" required="no" min-decimal-digits="2"
+                            max-decimal-digits="2" min="0" max="1000"></o-currency-input>
+                    </o-row>
+                    <br>
+                    <o-row>
+                        <o-checkbox #switchDestination3 type="checkbox" (onValueChange)="getSwitchValue3()"
+                            attr="roomTypeTriple" label="{{ 'Triple' | oTranslate }}" data="Triple"
+                            read-only="no"></o-checkbox>
+    
+                        <o-currency-input #currency3 [required]="switchDestinationState3? true : false"
+                            [enabled]="switchDestinationState3? true : false" class="price" attr="priceTripleRoom"
+                            label="{{ 'Price' | oTranslate }}" read-only="no" required="no" min-decimal-digits="2"
+                            max-decimal-digits="2" min="0" max="1000"></o-currency-input>
+                    </o-row>
+    
                 </o-column>
-
+    
+    
+    
+    
+    
+    
+                <o-column>
+                    <o-row class="lodging-column" title="{{ 'SERVICES' | oTranslate }}" layout-align="start stretch"
+                        appearance="none" fxLayout="row" fxLayoutAlign="start center">
+                        <div fxLayout="column" fxLayoutAlign="start" style="margin-right: 30px;">
+                            <o-slide-toggle attr="toggleWifi" class="toggleFirst" label="{{ 'Wifi' | oTranslate }}"
+                                read-only="no"></o-slide-toggle>
+                            <o-slide-toggle attr="toggleParking" class="toggles" label="{{ 'Parking' | oTranslate }}"
+                                read-only="no"></o-slide-toggle>
+                            <o-slide-toggle attr="togglePool" class="toggles" label="{{ 'Pool' | oTranslate }}"
+                                read-only="no"></o-slide-toggle>
+                        </div>
+                        <div fxLayout="column" fxLayoutAlign="start">
+                            <o-slide-toggle attr="toggleBreakfast" class="toggleFirst"
+                                label="{{ 'Breakfast' | oTranslate }}" read-only="no"></o-slide-toggle>
+                            <o-slide-toggle attr="toggleLunch" class="toggles" label="{{ 'Lunch' | oTranslate }}"
+                                read-only="no"></o-slide-toggle>
+                            <o-slide-toggle attr="toggleDinner" class="toggles" label="{{ 'Dinner' | oTranslate }}"
+                                read-only="no"></o-slide-toggle>
+                        </div>
+                    </o-row>
+                </o-column>
             </o-row>
-
-        </o-column>
-        <o-column>
-            <o-row class="lodging-column" title="{{ 'SERVICES' | oTranslate }}" layout-align="start stretch" appearance="none" fxLayout="row"
-                fxLayoutAlign="start center">
-                <div fxLayout="column" fxLayoutAlign="start" style="margin-right: 30px;">
-                    <o-slide-toggle attr="toggleWifi" class="toggleFirst" label="{{ 'Wifi' | oTranslate }}" read-only="no"></o-slide-toggle>
-                    <o-slide-toggle attr="toggleParking" class="toggles" label="{{ 'Parking' | oTranslate }}" read-only="no"></o-slide-toggle>
-                    <o-slide-toggle attr="togglePool" class="toggles" label="{{ 'Pool' | oTranslate }}" read-only="no"></o-slide-toggle>
-                </div>
-                <div fxLayout="column" fxLayoutAlign="start">
-                    <o-slide-toggle attr="toggleBreakfast" class="toggleFirst" label="{{ 'Breakfast' | oTranslate }}" read-only="no"></o-slide-toggle>
-                    <o-slide-toggle attr="toggleLunch" class="toggles" label="{{ 'Lunch' | oTranslate }}" read-only="no"></o-slide-toggle>
-                    <o-slide-toggle attr="toggleDinner" class="toggles" label="{{ 'Dinner' | oTranslate }}" read-only="no"></o-slide-toggle>
-                </div>
-            </o-row>
-        </o-column>
         </o-form>
     </div>
 
