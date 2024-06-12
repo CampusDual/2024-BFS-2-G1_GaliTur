@@ -17,7 +17,7 @@ export class AddActivitiesComponent {
   packId: any;
   protected service: OntimizeService;
   public bsnArray = [];
-  
+  public pack_name
  
 
 
@@ -31,6 +31,7 @@ export class AddActivitiesComponent {
     private oTranslate: OTranslateService
   ) {
     this.service = this.injector.get(OntimizeService);
+    this.getName()
   }
   ngOnInit(): void {
     this.packId = this.activeRoute.snapshot.params["pck_id"];
@@ -38,9 +39,20 @@ export class AddActivitiesComponent {
     console.log("Al pack le llego el id: " + this.packId);
     this.getBsn();
     this.getRoute();
+    
   }
   
-
+getName(){
+  const conf = this.service.getDefaultServiceConfiguration("packs");
+      this.service.configureService(conf);
+      const filter = {
+        "pck_id" : parseInt(this.activeRoute.snapshot.params["pck_id"])
+      }
+      const columns = ["pck_name"]
+      this.service.query(filter, columns, "pack").subscribe((resp) => {
+        this.pack_name = resp.data[0].pck_name
+      });
+}
   deleteBsn() {
     const config: ODialogConfig = {
       icon: "warning",
