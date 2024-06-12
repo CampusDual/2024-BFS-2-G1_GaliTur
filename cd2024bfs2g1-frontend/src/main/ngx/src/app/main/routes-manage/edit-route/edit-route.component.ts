@@ -29,7 +29,8 @@ export class EditRouteComponent {
 
   constructor(
     private snackBarService: SnackBarService,
-    private translate: OTranslateService
+    private translate: OTranslateService,
+    private router: Router
   ) {}
 
   onDeleteLandMark() {
@@ -93,4 +94,8 @@ export class EditRouteComponent {
       difficultyText: this.translate.get("EXTREME"),
     },
   ];
+
+  finish() {
+    this.router.navigate(["main/route-manage"]);
+  }
 }

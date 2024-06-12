@@ -92,6 +92,10 @@ export class PackEditComponent implements AfterViewInit{
     } catch (e){}
   }
 
+  finish() {
+    this.router.navigate(["main/pack-manage"]);
+  }
+
 }
 
 

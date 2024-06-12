@@ -3,6 +3,12 @@
     <div>
     <o-form attr="packsTable" #myList include-breadcrumb="true" service="packs" entity="pack"  keys="pck_id"
     show-header="yes" message-service-type="customMessageManagePack" show-header-navigation="no" class="custom-form">
+    <div o-form-toolbar-buttons class="toolbar-buttons">
+        <button type="button" class="o-form-toolbar-button" mat-stroked-button (click)="finish()" attr="accountBalance">
+            <mat-icon>logout</mat-icon>
+            <span class="finishBT">{{ 'FINISH_BT' | oTranslate }}</span>
+        </button>
+    </div>
     <o-text-input attr="pck_id" sql-type="INTEGER" enabled="no"  show-header-navigation="no" oHidden></o-text-input>
     <div fxloyout="column" class="contenedorTodo">
             <div class="column"class="principal">
