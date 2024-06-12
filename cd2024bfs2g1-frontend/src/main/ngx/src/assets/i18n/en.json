@@ -414,6 +414,7 @@
   "COMBO-BOX-DAYS-DESC": "The day you select will show the routes and businesses available on the selected day.",
   "MY-BUSINESSES": "My businesses",
   "BSN.DELETED": "Business deleted succesfully",
+  "FINISH_BT": "Finish",
   "POPULAR_PACKS": "Popular packs",
   "POPULAR_PACKS_SUBTITLE": "Check out our users favourite packs!",
   "CLEAR_SEARCH": "Delete search",
@@ -453,6 +454,7 @@
   "CONFIRM_ACTION_DELETE_ROUTE": "Are you sure you want to delete this route?",
   "DELETE_ROUTE_CONFIRM_MESSAGE": "It will be deleted from the following packs:",
   "CANCEL_BUTTON": "Cancel",
-  "CONFIRM_DELETE_BUTTON": "Delete route"
+  "CONFIRM_DELETE_BUTTON": "Delete route",
+  "BUSINESS_DATA_EDIT": "Edit business"
 }
 

@@ -31,6 +31,9 @@ public class BusinessDao extends OntimizeJdbcDaoSupport {
     public static final String QUERY_ALL_BUSINESSES  = "allBusinesses";
     public static final String QUERY_BUSINESS_OF_PACK  = "businessOfPack";
     public static String QUERY_TYPE_OF_BUSINESSES = "typesOfBusinesses";
-
     public static final String QUERY_BUSINESS_DOWN_DATE  = "downDate";
+    public static final String QUERY_RESTAURANT_BUSINESS = "restaurantBusinesses";
+    public static final String QUERY_LODGING_BUSINESS = "lodgingBusinesses";
+    public static final String QUERY_AGENCY_BUSINESS = "agencyBusinesses";
+
 }
