@@ -52,6 +52,40 @@ public class BusinessService implements IBusinessService {
         return this.daoHelper.query(this.businessDao, keysValues, attributes);
     }
 
+
+
+    @Override
+    public EntityResult businessRestaurantQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        attributes.remove("rest_menu");
+        attributes.remove("gui_language");
+        attributes.remove("gui_zone");
+        attributes.remove("gui_city");
+        EntityResult er = this.daoHelper.query(this.businessDao, keysValues, attributes);
+        ArrayList <String> business = (ArrayList<String>) er.get(BusinessDao.TYPE);
+        String businessType = business.get(0);
+        if(businessType.equals("Restaurant")){
+            attributes.add("rest_menu");
+            return this.daoHelper.query(this.businessDao, keysValues, attributes, "restaurantBusinesses");
+
+        }else if(businessType.equals("Lodging")){
+            return this.daoHelper.query(this.businessDao, keysValues, attributes, "lodgingBusinesses");
+        }else if(businessType.equals("AgencyGuide")){
+            attributes.add("gui_language");
+            attributes.add("gui_zone");
+            attributes.add("gui_city");
+            return this.daoHelper.query(this.businessDao, keysValues, attributes, "agencyBusinesses");
+
+        }
+
+        return null;
+    }
+
+    @Override
+    public EntityResult businessRestaurantUpdate(Map<String, Object> attributesValues, Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
+        return this.daoHelper.update(this.businessDao, attributesValues, keysValues);
+    }
+
+
     @Override
     public EntityResult typesOfBusinessesQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
 
@@ -66,6 +100,11 @@ public class BusinessService implements IBusinessService {
     @Override
     public AdvancedEntityResult businessDownDatePaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy) {
         return this.daoHelper.paginationQuery(this.businessDao, keysValues, attributes, recordNumber, startIndex, orderBy, BusinessDao.QUERY_BUSINESS_DOWN_DATE);
+    }
+
+    @Override
+    public EntityResult businessRestaurantInsert(Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
+        return this.daoHelper.insert(this.businessDao, keysValues);
     }
 
     @Override
@@ -183,7 +222,7 @@ public class BusinessService implements IBusinessService {
         hotelServicesService.hotelServicesInsert(dataMap);
     }
 
-    private static Map guideAgencyDataProcessor(Map<String, Object> dataMap) {
+    public static Map guideAgencyDataProcessor(Map<String, Object> dataMap) {
         switch ((int) dataMap.get("comboZone")) {
             case 1:
                 dataMap.remove("comboZone");
@@ -785,7 +824,7 @@ public class BusinessService implements IBusinessService {
                 case 192:
                     cityName = "CHANDREXA DE QUEIXA";
                     break;
-                 case 193:
+                case 193:
                     cityName = "COLES";
                     break;
                 case 194:

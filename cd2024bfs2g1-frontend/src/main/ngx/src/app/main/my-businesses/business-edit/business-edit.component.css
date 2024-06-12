@@ -1,0 +1,121 @@
+o-checkbox {
+  width: 72px;
+}
+
+.toolbar-buttons {
+  margin-right: -105%;
+}
+
+:host ::ng-deep .finishBT {
+  font-weight: lighter !important;
+}
+
+.price {
+  margin-inline-start: 35px;
+  width: 30%;
+}
+
+.lodging {
+  display: flex;
+  padding-left: 3%;
+  background-color: #ccc6c0;
+}
+
+.toggleFirst {
+  margin-bottom: 30px;
+  margin-top: 25px;
+}
+
+.toggles {
+  margin-bottom: 30px;
+}
+
+.agency_guide {
+  display: flex;
+  margin-bottom: 30px;
+  flex: 1;
+}
+
+h3 {
+  text-align: center;
+}
+
+.column-language {
+  width: 20%;
+}
+
+.o-image {
+  width: 65%;
+  height: 74%;
+}
+
+#text {
+  padding-right: 15px;
+}
+
+o-phone-input {
+  height: 150%;
+}
+
+span {
+  font-size: 15px;
+  font-weight: bold;
+  margin-left: 5%;
+  width: 10px;
+}
+
+#agency-radio {
+  width: 10%;
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+
+#restaurant {
+  margin-bottom: 30px;
+}
+
+.lodging-column {
+  text-align: center;
+}
+
+#comboCity {
+  margin-left: 15%;
+}
+
+#formZones {
+  width: 20%;
+}
+
+#restaurant_img {
+  width: 100%;
+  height: 100%;
+}
+
+#principalRow {
+  padding-top: 2%;
+  padding-left: 1%;
+  padding-bottom: 1%;
+}
+
+.description-textarea {
+  .mat-textarea {
+    resize: none;
+  }
+}
+
+::ng-deep .mat-form-field-disabled {
+  div {
+    background-color: rgb(221, 218, 212) !important;
+  }
+}
+
+::ng-deep .mat-primary .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-full {
+  background-color: #52733b !important;
+}
+
+.formExtra ::ng-deep .o-form-toolbar-button-cancel {
+  visibility: hidden !important;
+}
+
+.custom-form ::ng-deep .o-form-toolbar-button-cancel {
+  visibility: hidden !important;
+}

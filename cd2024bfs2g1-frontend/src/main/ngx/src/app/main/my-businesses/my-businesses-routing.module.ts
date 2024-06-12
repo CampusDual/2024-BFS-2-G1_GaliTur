@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BusinessMerchantComponent } from './business-merchant/business-merchant.component';
 import { BusinessMerchantDetailComponent } from './business-merchant-detail/business-merchant-detail.component';
+import { BusinessEditComponent } from './business-edit/business-edit.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,14 @@ const routes: Routes = [
       restrictedPermissionsRedirect: 403
     }
   }
+  },
+  {path: ':bsn_id/edit', component: BusinessEditComponent,
+    data: {
+      oPermission: {
+        permissionId: "MyBusinessEdit",
+        restrictedPermissionsRedirect: 403
+      }
+    }
   }
 ];
 

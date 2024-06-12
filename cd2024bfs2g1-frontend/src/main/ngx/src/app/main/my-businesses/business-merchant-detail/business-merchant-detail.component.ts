@@ -1,6 +1,6 @@
 import { Component, Inject, Injector, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DialogService, ODialogConfig, OFormComponent, OSnackBarConfig, OTableComponent, OTranslateService, OntimizeService, SnackBarService } from 'ontimize-web-ngx';
 
 @Component({
@@ -16,6 +16,7 @@ export class BusinessMerchantDetailComponent implements OnInit {
   constructor(
     protected sanitizer: DomSanitizer,
     private router: Router,
+    private actRoute: ActivatedRoute,
     protected injector: Injector,
     protected bsnService: OntimizeService,
     protected snackBarService: SnackBarService,
@@ -50,7 +51,7 @@ export class BusinessMerchantDetailComponent implements OnInit {
 
   confirmDeleteBsn(data){
 
-    const confBusiness = this.bsnService.getDefaultServiceConfiguration("businesses");          
+    const confBusiness = this.bsnService.getDefaultServiceConfiguration("businesses");
     this.bsnService.configureService(confBusiness);
 
 
@@ -59,7 +60,7 @@ export class BusinessMerchantDetailComponent implements OnInit {
       {"b.bsn_id": data[0].bsn_id},["bsn_pack_id"],"businessOfPack")
       .subscribe((result) => {
         if (result.data.length) {
-        
+
           this.confirmDeleteDialog(data, false);
         }else{
 
@@ -75,8 +76,8 @@ export class BusinessMerchantDetailComponent implements OnInit {
       alertType: "warn",
     };
 
-    
- 
+
+
     if (this.dialogService) {
       this.dialogService.confirm(
         this.oTranslate.get( "CANCEL-DELETE-BSN-DIALOG-TITLE"),
@@ -109,4 +110,12 @@ export class BusinessMerchantDetailComponent implements OnInit {
           this.router.navigate(["..", "main", "business-merchant"])
         });
     }
+
+
+    editBsn(data: any) {
+      this.router.navigate([ "main/business-merchant", data[0].bsn_id,"edit"])
+    }
+
+
+
 }

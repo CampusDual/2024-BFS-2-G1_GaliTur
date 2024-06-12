@@ -425,11 +425,12 @@
   "POPULAR_PACKS": "Packs populares",
   "POPULAR_PACKS_SUBTITLE": "¡Echa un vistazo a los packs favoritos de nuestros usuarios!",
   "MY-BUSINESSES": "Mis negocios",
+  "BSN.DELETED": "Negocio borrado correctamente",
+  "FINISH_BT": "Finalizar",
   "SEARCH": "Buscar",
   "CLEAR_SEARCH": "Eliminar búsqueda",
   "NO_ESTIMATED_DISTANCE": "Sin distancia estimada",
   "ESTIMATED_DISTANCE": "Distancia estimada",
-  "BSN.DELETED": "Negocio borrado correctamente",
   "CANCEL-DELETE-BSN-DIALOG-TITLE": "Borrar negocio",
   "CANCEL-DELETE-BSN-DIALOG-DESCRIPTION-PACK": "Este negocio está asignado a un pack, ¿Está seguro de que desea continuar?",
   "CANCEL-DELETE-BSN-DIAG-DESCRIPTION": "¿Está seguro de que desea continuar?",
@@ -441,7 +442,7 @@
   "NO_BUSINESS_IN_PACK": "¡En este pack no hay negocios!",
   "Contracted_packs_according_to_the_province": "Packs contratados según la provincia.",
   "Routes_according_to_difficulty": "Número de rutas según su dificultad.",
-  "Contracted_packs_per_days": "Número de días que tienen los paquetes.",
+  "Contracted_packs_per_days": "Número de días que tienen los packs.",
   "Types_of_bussiness":"Cantidad de tipos de negocios.",
   "Packs_by_station":"Packs creados según la estación.",
   "Top_most_valuated_packs": "Top de packs más valorados.",
@@ -465,6 +466,7 @@
   "DELETE_ROUTE_CONFIRM_MESSAGE": "Se eliminará de los siguientes packs:",
   "CANCEL_BUTTON": "Cancelar",
   "CONFIRM_DELETE_BUTTON": "Eliminar ruta",
+  "BUSINESS_DATA_EDIT": "Editar negocio",
   "SHOW_MAP": "Ver mapa"
 }
 
