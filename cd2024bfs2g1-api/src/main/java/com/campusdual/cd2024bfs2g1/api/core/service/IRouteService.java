@@ -42,4 +42,5 @@ public interface IRouteService {
 
     EntityResult routeImageForEditUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
             throws OntimizeJEERuntimeException;
+    EntityResult routeAccordingDifficultyQuery(Map<String, Object> keyMap, List<String> attrList);
 }

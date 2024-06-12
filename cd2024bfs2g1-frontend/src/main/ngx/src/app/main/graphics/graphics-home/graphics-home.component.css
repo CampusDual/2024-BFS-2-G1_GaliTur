@@ -2,7 +2,7 @@
 /*Estilo de la carta*/
 .card {
     margin: 20px 40px 0px 40px;
-    height: 800px;
+    height: 2700px;
     background-color: #ccc6c0;
 }
 
@@ -24,8 +24,8 @@
 /*Fila donde está la gráfica*/
 .chart-row {
     display: flex;
-    justify-content: space-around;
-    margin: 100px 390px 0px 390px;
+    justify-content: left;
+    margin: 150px 100px 0px 150px;
     background-color: #ffffffe7;
 }
 
