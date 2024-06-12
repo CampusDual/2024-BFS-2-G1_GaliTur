@@ -20,6 +20,8 @@
   width: 100%;
   overflow: auto;
   background-color: #e2dbd5;
+  padding: 50px;
+  overflow-x: hidden;
 }
 
 .routesSecond span {
