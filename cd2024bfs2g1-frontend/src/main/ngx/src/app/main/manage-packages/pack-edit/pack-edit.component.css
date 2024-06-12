@@ -132,10 +132,6 @@
     padding: 15px;
 }
 
-.mat-icon{
-    vertical-align: middle;
-    margin: 0px 0px 2px 0px;
-}
 
 .custom-form {
     .o-form form .o-form-content-wrapper {
@@ -144,9 +140,11 @@
   }
 
 
-
-
-
-
-
-
+  .toolbar-buttons {
+    margin-right: 5%;
+  }
+  
+  :host ::ng-deep .finishBT {
+    font-weight: lighter !important;
+    font-size: 13px !important;
+  }

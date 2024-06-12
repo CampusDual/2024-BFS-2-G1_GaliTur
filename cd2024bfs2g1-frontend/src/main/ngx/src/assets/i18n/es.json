@@ -466,7 +466,8 @@
   "DELETE_ROUTE_CONFIRM_MESSAGE": "Se eliminará de los siguientes packs:",
   "CANCEL_BUTTON": "Cancelar",
   "CONFIRM_DELETE_BUTTON": "Eliminar ruta",
-  "BUSINESS_DATA_EDIT": "Editar negocio"
+  "BUSINESS_DATA_EDIT": "Editar negocio",
+  "SHOW_MAP": "Ver mapa"
 }
 
 

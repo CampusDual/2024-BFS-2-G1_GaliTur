@@ -2,6 +2,12 @@
 <div class="fondo">
   <o-form attr="routeTable" #myList include-breadcrumb="true" service="routes" entity="route" keys="route_id"
           show-header="yes" message-service-type="customMessageServiceTypeRoutes" show-header-navigation="no" class="custom-form">
+    <div o-form-toolbar-buttons class="toolbar-buttons">
+        <button type="button" class="o-form-toolbar-button" mat-stroked-button (click)="finish()" attr="accountBalance">
+            <mat-icon>logout</mat-icon>
+            <span class="finishBT">{{ 'FINISH_BT' | oTranslate }}</span>
+        </button>
+    </div>
     <o-text-input attr="route_id" sql-type="INTEGER" enabled="no" show-header-navigation="no" oHidden></o-text-input>
     <div class="principal" fxFlexAlign="center">
       <div class="tituloTabla">
@@ -46,7 +52,7 @@
                  insert-button="yes" delete-button="yes" refresh-button="no" fixed-header="yes"
                  detail-mode="none" export-mode="local" class="custom-table"
                  static-query='{"additionalParam": "valor"}'>
-          <o-table-button icon="map" (onClick)="onClickMap()"></o-table-button>
+          <o-table-button icon="map" label="{{'SHOW_MAP' | oTranslate}}" (onClick)="onClickMap()"></o-table-button>
         </o-table>
         <div fxLayout="column" [ngClass]="{'landmark-map':mostrarMapa}" *ngIf="actualCoordinates" style="margin-top: 20px;">
           <o-map #oMap *ngIf="mostrarMapa" attr="mapInput" center="{{actualCoordinates}}" zoom="8"
