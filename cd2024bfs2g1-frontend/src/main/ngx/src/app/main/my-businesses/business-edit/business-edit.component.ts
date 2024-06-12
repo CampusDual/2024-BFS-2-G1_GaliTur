@@ -3,39 +3,36 @@ import {
   AbstractControl,
   FormControl,
   ValidationErrors,
-  ValidatorFn,
-  Validators
+  ValidatorFn
 } from "@angular/forms";
 import { DomSanitizer } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
-import { OCheckboxComponent, OComboComponent, OCurrencyInputComponent, OFormCacheClass, OFormComponent, OPermissions, OTranslateService, OntimizeService, Util } from "ontimize-web-ngx";
+import {
+  OCheckboxComponent,
+  OComboComponent,
+  OCurrencyInputComponent,
+  OFormComponent,
+  OTranslateService,
+  OntimizeService
+} from "ontimize-web-ngx";
 
 @Component({
   selector: "app-business-edit",
   templateUrl: "./business-edit.component.html",
-  styleUrls: ["./business-edit.component.css"]
+  styleUrls: ["./business-edit.component.css"],
 })
 export class BusinessEditComponent {
-
-
-
-  insertBusiness($event:Event){
-    //this.router.navigate([ "main/business-merchant", data[0].bsn_id,"edit"])
-
-  }
-
   selectedOption: number;
   validatorsDniCif: ValidatorFn[] = [];
   blankValidator: ValidatorFn[] = [];
   protected agencyGuideService: OntimizeService;
-  public respuestaLanguage = []
-  public respuestaZone = []
-  public respuestaCity = []
+  public respuestaLanguage = [];
+  public respuestaZone = [];
+  public respuestaCity = [];
 
-  esLanguageInicial = true
-  esZoneInicial = true
-  esCityInicial = true
-
+  esLanguageInicial = true;
+  esZoneInicial = true;
+  esCityInicial = true;
 
   public switchDestinationState: boolean = false;
   @ViewChild("switchDestination", { static: false })
@@ -51,42 +48,50 @@ export class BusinessEditComponent {
   @ViewChild("switchDestination3", { static: false })
   switchDestination3: OCheckboxComponent;
   @ViewChild("currency3", { static: false }) currency3: OCurrencyInputComponent;
-  @ViewChild("oFormAgencyNew") form: OFormComponent
-  @ViewChild("comboLanguages") comboLanguages: OComboComponent
-  @ViewChild("comboZone") comboZone: OComboComponent
-  @ViewChild("comboCity") comboCity: OComboComponent
+  @ViewChild("oFormAgencyNew") form: OFormComponent;
+  @ViewChild("comboLanguages") comboLanguages: OComboComponent;
+  @ViewChild("comboZone") comboZone: OComboComponent;
+  @ViewChild("comboCity") comboCity: OComboComponent;
 
-
-  constructor(public injector: Injector, private translate: OTranslateService, private router:Router, protected sanitizer: DomSanitizer, private activeRoute: ActivatedRoute) {
+  constructor(
+    public injector: Injector,
+    private router: Router,
+    protected sanitizer: DomSanitizer,
+    private activeRoute: ActivatedRoute
+  ) {
     this.validatorsDniCif.push(this.dniAndCifValidator);
-    this.blankValidator.push(this.blanksValidator)
+    this.blankValidator.push(this.blanksValidator);
     this.blankValidator.push(this.lengthInvalid),
-    this.agencyGuideService = this.injector.get(OntimizeService);
-
+      (this.agencyGuideService = this.injector.get(OntimizeService));
   }
 
-  // viewchild (form) - afterViewInit - procesar info formulario - seleccionar en combobox
-  ngOnInit() {
-
+  protected configureAGService() {
+    // Configure the service using the configuration defined in the `app.services.config.ts` file
+    const conf =
+      this.agencyGuideService.getDefaultServiceConfiguration("agencyGuides");
+    this.agencyGuideService.configureService(conf);
   }
 
- 
+  finish() {
+    this.router.navigate([
+      "main/business-merchant",
+      this.activeRoute.snapshot.params["bsn_id"],
+    ]);
+  }
+
+  reloadPage(): void {
+    window.location.reload();
+  }
 
   getSwitchValue() {
     this.switchDestinationState = this.switchDestination.getValue();
     this.currency1.setValue(null);
   }
 
-  public getImageSrc(base64: any): any {
-    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image-transparent.png';
-  }
-
-
   getSwitchValue2() {
     this.switchDestinationState2 = this.switchDestination2.getValue();
     this.currency2.setValue(null);
   }
-
 
   getSwitchValue3() {
     this.switchDestinationState3 = this.switchDestination3.getValue();
@@ -94,14 +99,10 @@ export class BusinessEditComponent {
   }
 
   lengthInvalid = (control: FormControl) => {
-    const isTooLong = (control.value || '').length > 500;
+    const isTooLong = (control.value || "").length > 500;
     const isValid = !isTooLong;
-    return isValid ? null : {'lengthInvalid': true};
+    return isValid ? null : { lengthInvalid: true };
   };
-
-  setSelectedOption($event: any) {
-    this.selectedOption = $event;
-  }
 
   dniAndCifValidator(control: AbstractControl): ValidationErrors | null {
     try {
@@ -131,153 +132,96 @@ export class BusinessEditComponent {
     } catch (e) {}
   }
 
-
-  blanksValidator(control: AbstractControl): ValidationErrors | null{
-    try{
+  blanksValidator(control: AbstractControl): ValidationErrors | null {
+    try {
       const blank = /^[a-zA-Z].*/;
       const inputValue = control.value.trim();
 
-      if(blank.test(inputValue)){
+      if (blank.test(inputValue)) {
         return null;
       } else {
         return { blankInvalid: true };
       }
-    } catch (e){}
-  }
-
-  getDataArray(): any {
-    const array: Array<Object> = [];
-    array.push({
-      key: 1,
-      value: this.translate.get("Restaurant"),
-    });
-    array.push({
-      key: 2,
-      value: this.translate.get("Lodging"),
-    });
-    array.push({
-      key: 3,
-      value: this.translate.get("AgencyGuide"),
-    });
-    return array;
-  }
-
-  reloadPage(): void {
-    window.location.reload()
+    } catch (e) {}
   }
 
   getLanguageData() {
-
-    if(this.esLanguageInicial){
-
+    if (this.esLanguageInicial) {
       this.configureAGService();
 
       const filter = {
         bsn_id: parseInt(this.activeRoute.snapshot.params["bsn_id"]),
       };
       const columns = ["bsn_id"];
-      this.agencyGuideService.query(filter, columns, "agencyGuideEdit").subscribe((resp) => {
-        if (resp.code === 0) {
-          // resp.data contains the data retrieved from the server
-          const data = resp.data[0]
-          this.respuestaLanguage = data["comboLanguages"];
-          this.comboLanguages.setSelectedItems(this.respuestaLanguage)
-          console.log(this.comboLanguages.getSelectedItems())
-          
-  
-  
-  
-          this.esLanguageInicial = false
-          
-  
-  
-  
-        } else {
-          alert("Impossible to query data!");
-        }
-      });
-    }
+      this.agencyGuideService
+        .query(filter, columns, "agencyGuideEdit")
+        .subscribe((resp) => {
+          if (resp.code === 0) {
+            // resp.data contains the data retrieved from the server
+            const data = resp.data[0];
+            this.respuestaLanguage = data["comboLanguages"];
+            this.comboLanguages.setSelectedItems(this.respuestaLanguage);
+            console.log(this.comboLanguages.getSelectedItems());
 
-    
+            this.esLanguageInicial = false;
+          } else {
+            alert("Impossible to query data!");
+          }
+        });
+    }
   }
 
   getZoneData() {
-
-    if(this.esZoneInicial){
-
+    if (this.esZoneInicial) {
       this.configureAGService();
 
       const filter = {
         bsn_id: parseInt(this.activeRoute.snapshot.params["bsn_id"]),
       };
       const columns = ["bsn_id"];
-      this.agencyGuideService.query(filter, columns, "agencyGuideEditProvince").subscribe((resp) => {
-        if (resp.code === 0) {
-          // resp.data contains the data retrieved from the server
-          const data = resp.data[0]
-          this.respuestaZone = data["comboZone"];
-          this.comboZone.setSelectedItems(this.respuestaZone)
-          console.log(this.comboZone.getSelectedItems())
-          
-  
-  
-  
-          this.esZoneInicial = false
+      this.agencyGuideService
+        .query(filter, columns, "agencyGuideEditProvince")
+        .subscribe((resp) => {
+          if (resp.code === 0) {
+            // resp.data contains the data retrieved from the server
+            const data = resp.data[0];
+            this.respuestaZone = data["comboZone"];
+            this.comboZone.setSelectedItems(this.respuestaZone);
+            console.log(this.comboZone.getSelectedItems());
 
-          this.getCityData() 
-          
-  
-  
-  
-        } else {
-          alert("Impossible to query data!");
-        }
-      });
+            this.esZoneInicial = false;
+
+            this.getCityData();
+          } else {
+            alert("Impossible to query data!");
+          }
+        });
     }
-
-    
   }
 
   getCityData() {
-
-    if(this.esCityInicial){
-
+    if (this.esCityInicial) {
       this.configureAGService();
 
       const filter = {
         bsn_id: parseInt(this.activeRoute.snapshot.params["bsn_id"]),
       };
       const columns = ["bsn_id"];
-      this.agencyGuideService.query(filter, columns, "agencyGuideEditCity").subscribe((resp) => {
-        if (resp.code === 0) {
-          // resp.data contains the data retrieved from the server
-          const data = resp.data[0]
-          this.respuestaCity = data["comboCity"];
-          this.comboCity.setSelectedItems(this.respuestaCity)
-          console.log(this.comboCity.getSelectedItems())
-          
-  
-  
-  
-          this.esCityInicial = false
-          
-  
-  
-  
-        } else {
-          alert("Impossible to query data!");
-        }
-      });
+      this.agencyGuideService
+        .query(filter, columns, "agencyGuideEditCity")
+        .subscribe((resp) => {
+          if (resp.code === 0) {
+            // resp.data contains the data retrieved from the server
+            const data = resp.data[0];
+            this.respuestaCity = data["comboCity"];
+            this.comboCity.setSelectedItems(this.respuestaCity);
+            console.log(this.comboCity.getSelectedItems());
+
+            this.esCityInicial = false;
+          } else {
+            alert("Impossible to query data!");
+          }
+        });
     }
-
-    
   }
-
-  protected configureAGService() {
-    // Configure the service using the configuration defined in the `app.services.config.ts` file
-    const conf =
-      this.agencyGuideService.getDefaultServiceConfiguration("agencyGuides");
-    this.agencyGuideService.configureService(conf);
-  }
-
 }

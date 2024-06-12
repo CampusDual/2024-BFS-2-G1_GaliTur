@@ -413,6 +413,7 @@
   "DATE_R": "Pack date",
   "COMBO-BOX-DAYS-DESC": "The day you select will show the routes and businesses available on the selected day.",
   "MY-BUSINESSES": "My businesses",
-  "BSN.DELETED": "Business deleted succesfully"
+  "BSN.DELETED": "Business deleted succesfully",
+  "FINISH_BT": "Finish"
 }
 
