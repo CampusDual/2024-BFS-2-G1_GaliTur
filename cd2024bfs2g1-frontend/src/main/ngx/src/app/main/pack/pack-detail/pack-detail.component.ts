@@ -202,19 +202,22 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
 
 
   public backToHome(): void {
+    const currentUrl = this.router.url; // Capturar la URL actual
     const previousUrl = history.state && history.state.previousUrl ? history.state.previousUrl : '';
-    //Si el usuario viene de home redigir a la url anterior para que vea hpme
+    //Si el usuario viene de home redigir a la url anterior para que vea home
     if (previousUrl.includes('home')) {
       this.router.navigateByUrl(previousUrl);
-     //Si el usuario viene de home redigir de vuelta home
-    } else if (previousUrl.includes('/main/packs')) {
-      this.router.navigate(['/main/packs']);
-      //En caso de que entre introduciendo una URL no se contemplada en los casos anteriores redirigir a landing page
-    } else {
+     //Si el usuario viene de packs redigir de vuelta packs
+    } else if (previousUrl.includes('/packs')) {
+      this.router.navigate(previousUrl);
+      //Si el usuario entra a un pack desde home redirigir a home
+    } else if ((currentUrl.includes('/main/packs'))){
+      this.router.navigate(['/home']);
+       //En caso de que entre introduciendo una URL no se contemplada en los casos anteriores redirigir a landing page
+    } else  {
       this.router.navigate(['../'],{ relativeTo: this.actRoute });
     }
 }
-
 
 
   public getRouteImageSrc(base64: any): any {
