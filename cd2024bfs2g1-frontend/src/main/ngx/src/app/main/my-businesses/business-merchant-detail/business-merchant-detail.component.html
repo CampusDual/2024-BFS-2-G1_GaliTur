@@ -29,7 +29,7 @@
                     </div>
                 </o-column>
                 <o-column style="background-color: transparent !important">
-                    <button class="custom-button" matTooltip="{{'EDIT' | oTranslate }}">
+                    <button class="custom-button" matTooltip="{{'EDIT' | oTranslate }}" (click)="editBsn(businessForm.dataArray)">
                         <mat-icon> edit </mat-icon>
                         
                     </button>
@@ -37,7 +37,7 @@
                 </o-column>
                 <o-column style="background-color: transparent !important">
 
-                    <button class="custom-button" matTooltip="{{'delete' | oTranslate }}">
+                    <button class="custom-button" matTooltip="{{'delete' | oTranslate }}" (click)="confirmDeleteBsn(businessForm.dataArray)">
                         <mat-icon> delete </mat-icon>
                     </button>
                 </o-column>

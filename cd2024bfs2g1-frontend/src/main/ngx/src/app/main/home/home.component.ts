@@ -77,4 +77,11 @@ export class HomeComponent implements AfterViewInit {
     };
     this.router.navigate(['../packs/' + data.pck_id], navigationExtras);
   }
+
+  
+
+  openPopularPacks() {
+    const visibleGrid = document.getElementById('visibleGrid');
+    visibleGrid.scrollIntoView({ behavior: 'smooth' });
+  }
 }

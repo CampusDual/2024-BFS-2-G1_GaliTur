@@ -17,14 +17,10 @@
             <Sentence>
                 <![CDATA[
                     SELECT
-                        l.landmark_id,
-                        l.name,
-                        l.description,
-                        l.opening_time,
-                        l.closing_time,
-                        rl.route_id,
-                        rl.route_landmark_id
-                        FROM ${mainschema}.route_landmark rl
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.route_landmark rl
+                        JOIN ${mainschema}.route r
                         ON rl.route_id=r.route_id
                         JOIN ${mainschema}.landmark l
                         ON rl.landmark_id=l.landmark_id;

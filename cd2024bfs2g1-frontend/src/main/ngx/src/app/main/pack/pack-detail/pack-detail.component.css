@@ -116,13 +116,25 @@
     }
 }
 
+
+/* Espaciar las listas <ul> de forma correcta independientemente del numero de items que tenga */
+.list-with-spaces {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 90%;
+    row-gap: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
 /* Estilos de la lista de la descripcion*/
 .list-to-desc {
     display: flex;
     flex-direction: column;
     width: 90%;
     row-gap: 10px;
-    max-height: 155px;
+    max-height: 200px;
     overflow-y: auto;
     overflow-x: hidden;
 }

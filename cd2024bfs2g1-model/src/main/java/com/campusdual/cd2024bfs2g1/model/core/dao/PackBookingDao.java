@@ -18,5 +18,8 @@ public class PackBookingDao extends OntimizeJdbcDaoSupport {
     public static final String PBK_BOOKING_DATE = "pbk_booking_date";
     public static final String PBK_DOWN_DATE = "pbk_down_date";
     public static final String PD_ID = "pd_id";
+    public static final String QUERY_TOP_MOST_PACKS = "topMostPacks";
+    public static final String QUERY_TOP_LEAST_PACKS = "topLeastPacks";
+
 
 }

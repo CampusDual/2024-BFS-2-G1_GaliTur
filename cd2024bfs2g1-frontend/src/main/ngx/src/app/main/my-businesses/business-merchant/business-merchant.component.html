@@ -5,7 +5,7 @@
   sortable-columns="bsn_name;bsn_type;bsn_creation_date;bsn_name:desc;bsn_type:desc;bsn_creation_date:desc"
   refresh-button="true" quick-filter-columns="bsn_name;bsn_type" filter-case-sensitive="yes" pageable="yes"
   pagination-controls="true" gutter-size="8px" fixed-header="yes" grid-item-height="350px" detail-mode="none"
-  insert-button-floatable="no" class="full-page">
+  insert-button-floatable="no" class="full-page" query-parameters="{ 'bsn_down_date': 'IS NULL' }">
   <o-grid-item *ngFor="let data of businessMerchantGrid.dataArray">
   
     <div (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-evenly center"

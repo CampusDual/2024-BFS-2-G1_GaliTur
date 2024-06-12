@@ -77,47 +77,47 @@
     cursor: pointer;
     width: 300px;
     outline: none;
-   }
-
-     @keyframes pulse {
-       0%, 100% {
-         transform: scale(1);
-     }
-     10% {
-         transform: scale(1.01);
-     }
-     20% {
-         transform: scale(1.02);
-     }
-     30% {
-         transform: scale(1.03);
-     }
-     40% {
-         transform: scale(1.04);
-     }
-     50% {
-         transform: scale(1.05);
-     }
-     60% {
-         transform: scale(1.04);
-     }
-     70% {
-         transform: scale(1.03);
-     }
-     80% {
-         transform: scale(1.02);
-     }
-     90% {
-         transform: scale(1.01);
-     }
-   }
-   .button:hover{
-       background-color: white;
-       border-color: white;
-       font-size: 18px;
-       animation: pulse 3s infinite ease-in-out;
-   }
-
+    margin-left: 3px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+  
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+    }
+    10% {
+        transform: scale(1.03);
+    }
+    20% {
+        transform: scale(1.06);
+    }
+    30% {
+        transform: scale(1.08);
+    }
+    40% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1.12);
+    }
+    60% {
+        transform: scale(1.1);
+    }
+    70% {
+        transform: scale(1.08);
+    }
+    80% {
+        transform: scale(1.06);
+    }
+    90% {
+        transform: scale(1.03);
+    }
+  }
+  .button:hover{
+      background-color: #a89d93;
+      border-color: #a89d93;
+      transform: scale(1.03);
+  }
    .description-textarea{
     .mat-textarea {
         height: 130px;

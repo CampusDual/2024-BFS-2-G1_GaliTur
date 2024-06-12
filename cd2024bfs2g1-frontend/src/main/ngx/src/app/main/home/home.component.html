@@ -1,3 +1,6 @@
+<o-grid #popularsPackGrid class="o-grid-popular-packs" attr="packGrid" service="packs" entity="popularPacks" keys="P.pck_id"
+    columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;img_code;gui_c_name;pck_days;" oHidden></o-grid>
+
 <div class="background-container">
   <div class="body-container">
     <div class="header">
@@ -18,14 +21,16 @@
       </div>
     </div>
 
-    <div class="grid-container">
+    <div *ngIf="popularsPackGrid.dataArray.length < 1 || popularsPackGrid.dataArray.length == null" class="blank-div"></div>
+
+    <div><mat-icon (click)="openPopularPacks()" class="down-icon">arrow_downward</mat-icon></div>
+    <div id="visibleGrid" class="grid-container" *ngIf="popularsPackGrid.dataArray.length > 0">
       <div class="popularPacks-title-container">
         <p class="title">{{'POPULAR_PACKS' |oTranslate }}</p>
       </div>
       <div class="popularPacks-sub-title">
         <p>{{'POPULAR_PACKS_SUBTITLE'| oTranslate}}</p>
     </div>
-
     <div class="grid-container">
       <o-grid #popularsPackGrid class="o-grid-popular-packs" attr="packGrid" service="packs" entity="popularPacks" keys="P.pck_id"
       columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;img_code;gui_c_name;pck_days;" query-rows="10"
@@ -40,6 +45,7 @@
                 <div class="pack-name"><span class="pack-name">{{data.pck_name}}</span></div>
                 <hr/>
                 <h4>#<span>{{ data.rank }}</span></h4>
+
               </div>
             </div>
             <div class="flip-card-back">
