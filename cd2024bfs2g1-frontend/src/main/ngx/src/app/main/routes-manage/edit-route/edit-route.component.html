@@ -52,13 +52,17 @@
                  insert-button="yes" delete-button="yes" refresh-button="no" fixed-header="yes"
                  detail-mode="none" export-mode="local" class="custom-table"
                  static-query='{"additionalParam": "valor"}'>
-          <o-table-button icon="map" label="{{'SHOW_MAP' | oTranslate}}" (onClick)="onClickMap()"></o-table-button>
+          <o-table-button icon="map" label="{{'SHOW_MAP' | oTranslate}}" (onClick)="onClickMap(landmarkTable)"></o-table-button>
         </o-table>
         <div fxLayout="column" [ngClass]="{'landmark-map':mostrarMapa}" *ngIf="actualCoordinates" style="margin-top: 20px;">
           <o-map #oMap *ngIf="mostrarMapa" attr="mapInput" center="{{actualCoordinates}}" zoom="8"
                  min-zoom="3" max-zoom="20" zoom-control="yes" search-control="no" layer-panel-visible="no" 
                  show-base-layers-menu="no" fxFlex>
             <o-map-crs crs="EPSG:4326"></o-map-crs>
+            <div *ngFor="let landmark of this.datosTabla">
+                <o-map-layer layer-type="marker" [layer-id]="landmark.name" [layer-center]="landmark.coordinates" layer-menu-label="landmark.name "
+                layer-menu-label-secondary="landmark.name"></o-map-layer>
+            </div>
           </o-map>
         </div>
       </div>
