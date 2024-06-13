@@ -80,7 +80,11 @@
       ],
       "routes": [
         {
-          "permissionId": "BusinessNew",
+          "permissionId": "BusinessNew", 
+          "enabled": false
+        },
+        {
+          "permissionId": "MyBusinessEdit", 
           "enabled": false
         },
         {
@@ -117,6 +121,18 @@
         },
         {
           "permissionId": "myBusinessDetail",
+          "enabled": false
+        },
+        {
+          "permissionId": "manageroutes",
+          "enabled": false
+        },
+        {
+          "permissionId": "manageroutesedit",
+          "enabled": false
+        },
+        {
+          "permissionId": "managerlandmarkadd",
           "enabled": false
         }
       ],

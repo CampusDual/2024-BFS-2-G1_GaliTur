@@ -96,6 +96,10 @@ onClicEdit(pck_id: any) {
   this.router.navigate(['main','pack-manage',pck_id])
 }
 
+//TODO onClicDelete(pck_id: any) {
+  
+// }
+
 getPacks(page: number, limit: number): Observable<any> {
   let params = new HttpParams().set('page', page.toString()).set('limit', limit.toString());
   return this.http.get<any>(`${this.baseUrl}/advancedsearch`, { params });

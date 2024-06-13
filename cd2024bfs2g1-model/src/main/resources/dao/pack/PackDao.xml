@@ -262,6 +262,7 @@
                         p.pck_price,
                         p.pck_participants,
                         p.gui_c_id,
+                        p.pck_days,
                         I.img_code,
                         GC.gui_c_name,
                         COUNT(pd.pd_id) AS reservation_count

@@ -18,11 +18,15 @@ import java.util.Map;
 @Service("GuideZoneService")
 public class GuideZoneService implements IGuideZoneService {
 
-    @Autowired
-    private DefaultOntimizeDaoHelper daoHelper;
+    private final DefaultOntimizeDaoHelper daoHelper;
+
+    private final GuideZoneDao guideZoneDao;
 
     @Autowired
-    private GuideZoneDao guideZoneDao;
+    public GuideZoneService(DefaultOntimizeDaoHelper daoHelper, GuideZoneDao guideZoneDao) {
+        this.daoHelper = daoHelper;
+        this.guideZoneDao = guideZoneDao;
+    }
 
     @Override
     public EntityResult guideZoneQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
