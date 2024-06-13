@@ -19,7 +19,6 @@ import java.util.Map;
 public class RestaurantService implements IRestaurantService {
 
     private final DefaultOntimizeDaoHelper daoHelper;
-
     private final RestaurantDao restaurantDao;
 
     @Autowired
