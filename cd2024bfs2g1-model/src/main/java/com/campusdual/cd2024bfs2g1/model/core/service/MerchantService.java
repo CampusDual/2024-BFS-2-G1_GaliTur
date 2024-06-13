@@ -57,7 +57,6 @@ public class MerchantService implements IMerchantService {
                 this.daoHelper.insert(this.userRoleDao, userIdMap);
             }
             return insertMerchant;
-
         }
 
         return entityResult;
