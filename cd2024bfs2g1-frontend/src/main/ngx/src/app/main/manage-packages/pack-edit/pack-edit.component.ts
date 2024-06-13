@@ -29,6 +29,7 @@ export class PackEditComponent implements AfterViewInit{
     private dialog: MatDialog
   ){
     this.injector.get(NavigationService).initialize();
+    this.blankValidator.push(this.lengthInvalid)
   }
 
   ngAfterViewInit(): void {
