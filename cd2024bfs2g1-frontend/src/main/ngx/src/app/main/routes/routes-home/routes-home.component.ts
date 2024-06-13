@@ -128,23 +128,11 @@ galleryOptions: any;
       case 1:
           return 'Dificultad: Fácil';
       case 2:
-          return 'Dificultad: Intermedio';
+          return 'Dificultad: Intermedia';
       case 3:
           return 'Dificultad: Difícil';
       case 4:
           return 'Dificultad: Extremo';
-    }
-  }
-  getDifficultad2(difficulty: number): string {
-    switch(difficulty) {
-      case 1:
-          return 'Dificultad Fácil';
-      case 2:
-          return 'Dificultad Intermedia';
-      case 3:
-          return 'Dificultad Difícil';
-      case 4:
-          return 'Dificultad Extremo';
     }
   }
 }

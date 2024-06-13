@@ -62,7 +62,7 @@
                 <li *ngIf="data.estimated_distance"><mat-icon class="icon">schedule</mat-icon>{{convertTime(data.estimated_distance)}}</li>
                 <li *ngIf="!data.estimated_distance"><mat-icon class="icon">schedule</mat-icon>- Min</li>
 
-                <li><mat-icon class="icon">eco</mat-icon>{{getDifficultad2(data.difficulty)}}</li>
+                <li><mat-icon class="icon">eco</mat-icon>{{ getDifficultad(data.difficulty) | oTranslate }}</li>
               </ul>
             </div>
           </div>
