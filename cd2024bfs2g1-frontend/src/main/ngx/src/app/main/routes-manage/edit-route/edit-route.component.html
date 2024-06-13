@@ -48,7 +48,7 @@
                  (onClick)="onClickLandmark($event)" (onRowDeleted)="onDeleteLandMark()"
                  columns="l.landmark_id;name;coordinates;description;route_landmark_id"
                  message-service-type="CustomMessageServiceLandmarks" visible-columns="name;coordinates"
-                 query-rows="4" select-all-checkbox="yes" filter-case-sensitive="yes" export-button="no"
+                 pagination-controls="no" select-all-checkbox="yes" filter-case-sensitive="yes" export-button="no"
                  insert-button="yes" delete-button="yes" refresh-button="no" fixed-header="yes"
                  detail-mode="none" export-mode="local" class="custom-table"
                  static-query='{"additionalParam": "valor"}'>
