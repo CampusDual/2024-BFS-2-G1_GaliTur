@@ -48,6 +48,30 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="multiNotDraft">
+            <Sentence>
+                <![CDATA[
+                  SELECT
+                        #COLUMNS#
+                    FROM
+                        route R
+                    left JOIN (
+                        select ssc.route_id as route_id, img_code
+                        from image i
+                        inner join
+                        (
+                        SELECT image_route.route_id, MIN(image.image_id) as image_id
+                        FROM image
+                        INNER JOIN image_route ON image.image_id = image_route.image_id
+                        GROUP BY image_route.route_id
+                        ) SSC on SSC.image_id = i.image_id
+                    ) SC ON SC.route_id = R.route_id
+                    WHERE NOT is_draft
+                    #WHERE_CONCAT#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
         <Query id="allRoutes">
             <Sentence>
                 <![CDATA[
@@ -85,6 +109,40 @@
                         LEFT JOIN route_pack rp ON r.route_id = rp.route_id
                     #WHERE#
                     #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="searchForPacks">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                       #COLUMNS#
+                    FROM
+                        ${mainschema}.route r
+                        INNER JOIN ${mainschema}.route_pack rp
+                        ON r.route_id=rp.route_id
+                        INNER JOIN ${mainschema}.pack p
+                        ON rp.pck_id=p.pck_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="routesAccordingDifficulty">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                    CASE WHEN R.difficulty = 1 THEN 'EASY'
+                    WHEN R.difficulty = 2 THEN 'INTERMEDIATE'
+                    WHEN R.difficulty = 3 THEN 'HARD'
+                    WHEN R.difficulty = 4 THEN 'EXTREME'
+                     END AS difficulty,
+                        COUNT(R.route_id) AS route_difficulty_count
+                    FROM
+                          ${mainschema}.route R
+                    GROUP BY
+                         difficulty;
+                   #ORDER#
                 ]]>
             </Sentence>
         </Query>

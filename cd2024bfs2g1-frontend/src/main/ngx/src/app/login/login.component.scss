@@ -39,11 +39,12 @@ $card-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       flex-direction: column;
 
       img {
-        max-height: 40px;
+        max-height: 60px;
+        margin-bottom: -7px;
       }
 
       .app-name {
-        font-size: 32px;
+        font-size: 35px;
         font-weight: 700;
         color: #FFFFFF;
         text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);

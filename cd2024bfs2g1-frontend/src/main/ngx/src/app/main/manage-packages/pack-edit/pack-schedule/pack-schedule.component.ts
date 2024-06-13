@@ -125,7 +125,7 @@ export class PackScheduleComponent implements AfterViewInit {
       this.vacio = false;
     }
   }
-  a(): string {
+  disabledButton(): string {
     if (this.vacio == true) {
       return "button-true";
     } else {

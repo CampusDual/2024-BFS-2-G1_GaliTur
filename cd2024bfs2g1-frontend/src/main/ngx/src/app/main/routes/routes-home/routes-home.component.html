@@ -3,11 +3,11 @@
   attr="routesHome"
   title="ROUTES"
   service="routes"
-  entity="route"
+  entity="routeNotDraft"
   keys="r.route_id"
   columns="r.route_id;name;description;estimated_distance;difficulty;creation_date;img_code"
   query-rows="8"
-  page-size-options="8;16;24"
+  page-size-options="8"
   orderable="true"
   sort-column="creation_date:desc"
   sortable-columns="creation_date;name;estimated_distance;difficulty;creation_date:desc;name:desc;estimated_distance:desc;difficulty:desc"
@@ -15,95 +15,68 @@
   filter-case-sensitive="yes"
   pageable="yes"
   pagination-controls="true"
-  gutter-size="8px"
+  gutter-size="1px"
   fixed-header="yes"
-  grid-item-height="350px"
+  grid-item-height="280px"
   detail-mode="none"
   insert-button-floatable="no"
   class="full-page"
 >
   <o-grid-item *ngFor="let data of routesGrid.dataArray" class="gridItem">
-    <!--Contenedor principal-->
-    <div
-      *ngIf="!data.isdraft"
-      (click)="openDetail(data)"
-      fxLayout="column"
-      fxLayoutAlign="space-evenly center"
-      [ngClass]="'card-'"
-      class="routeCard"
-    >
-      <!--Contenedor Nombre Ruta-->
-      <div class="routeName">
-        <mat-icon>location_on</mat-icon>
-        <span class="name"
-          ><strong class="nameStrong">{{ data.name }} </strong></span
-        >
-      </div>
-      <!--Contenedor Dificultad, Duracion y Imagen-->
-      <div Class="containerDatos">
-        <!--Contenedor Imagen Ruta-->
-        <img
-          class="preview-image"
-          [src]="getImageSrc(data.img_code)"
-          width="350px"
-          height="125px"
-        />
-
-        <!--Dificultad-->
-        <div class="leafsDifficulty">
-          <span *ngIf="data.difficulty; else no_difficulty">
-            <div class="tooltipHomeDifficulty">
-              <mat-icon class="helpTooltipHome">help</mat-icon>
-              <span class="tooltiptextHomeDifficulty">{{
-                getDifficultad(data.difficulty) | oTranslate
-              }}</span>
+    <div (click)="openDetail(data)" class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img class="pack-img" [src]="getImageSrc(data.img_code)" alt="Avatar">
+          <div class="text-overlay">
+            <div class="pack-name"><span class="pack-name">{{data.name}}</span></div>
+            <hr/>
+            <!--Dificultad-->
+            <div class="leafsDifficulty">
+              <span *ngIf="data.difficulty; else no_difficulty">
+                <mat-icon
+                  [ngClass]="getIconColorClass(data.difficulty)"
+                  *ngFor="let _ of [].constructor(data.difficulty)"
+                  >eco</mat-icon
+                >
+                <mat-icon class="empty-leafs" *ngFor="let _ of [].constructor(4 - data.difficulty)"
+                  >eco</mat-icon
+                >
+              </span>
+              <ng-template #no_difficulty>
+                <span>{{ "NO_DATA_AVAILABLE" | oTranslate }}</span>
+              </ng-template>
             </div>
-            <mat-icon
-              [ngClass]="getIconColorClass(data.difficulty)"
-              *ngFor="let _ of [].constructor(data.difficulty)"
-              >eco</mat-icon
-            >
-            <mat-icon *ngFor="let _ of [].constructor(4 - data.difficulty)"
-              >eco</mat-icon
-            >
-          </span>
-          <ng-template #no_difficulty>
-            <span>{{ "NO_DATA_AVAILABLE" | oTranslate }}</span>
-          </ng-template>
+          </div>
         </div>
+        <div class="flip-card-back">
+          <div class="info-container">
+            <div class="cardHeader">
+              <span class="pack-info-title">{{data.name}}</span>
+            </div>
+            <h3></h3>
+            <div fxLayout="row" fxLayoutAlign="space-around stretch">
+              <ul style="list-style-type: none;" class="list">
+                <li *ngIf="data.estimated_distance"><mat-icon class="icon">hiking</mat-icon>{{convertDistance(data.estimated_distance)}}</li>
+                <li *ngIf="!data.estimated_distance"><mat-icon class="icon">hiking</mat-icon>- Km</li>
+                      
+                <li *ngIf="data.estimated_distance"><mat-icon class="icon">schedule</mat-icon>{{convertTime(data.estimated_distance)}}</li>
+                <li *ngIf="!data.estimated_distance"><mat-icon class="icon">schedule</mat-icon>- Min</li>
 
-        <!--Duracion estimada-->
-        <div fxLayout="row" class="duration">
-          <div class="tooltipHomeDuration" *ngIf="data.estimated_distance">
-            <mat-icon class="clockTooltipHome">hiking</mat-icon>
-            <span class="tooltiptextHomeDuration">{{"estimated_distance" | oTranslate}}</span>
-          </div>
-          <span *ngIf="data.estimated_distance; else no_distance">
-            {{ convertDistance(data.estimated_distance) }}
-          </span>
-          <ng-template #no_distance>
-            <div class="tooltipHomeDuration">
-              <mat-icon class="clockTooltipHome">hiking</mat-icon>
-              <span class="tooltiptextHomeDuration">{{"NO_ESTIMATED_DISTANCE" | oTranslate}}</span>
+                <li><mat-icon class="icon">eco</mat-icon>{{getDifficultad2(data.difficulty)}}</li>
+              </ul>
             </div>
-            <span class="guion">-</span>
-          </ng-template>
-          <div class="tooltipHomeDuration" *ngIf="data.estimated_distance">
-            <mat-icon class="clockTooltipHome">schedule</mat-icon>
-            <span class="tooltiptextHomeDuration">{{"estimated_duration" | oTranslate}}</span>
           </div>
-          <span *ngIf="data.estimated_distance; else no_duration">
-            {{ convertTime(data.estimated_distance) }}
-          </span>
-          <ng-template #no_duration>
-            <div class="tooltipHomeDuration">
-              <mat-icon class="clockTooltipHome">schedule</mat-icon>
-              <span class="tooltiptextHomeDuration">{{"NO_ESTIMATED_DURATION" | oTranslate}}</span>
-            </div>
-            <span>-</span>
-          </ng-template>
         </div>
       </div>
     </div>
+
+    <!--Contenedor principal-->
+    
   </o-grid-item>
 </o-grid>
+
+
+
+
+
+

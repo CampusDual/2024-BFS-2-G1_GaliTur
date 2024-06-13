@@ -18,11 +18,15 @@ import java.util.Map;
 @Service("GuideLanguageService")
 public class GuideLanguageService implements IGuideLanguageService {
 
-    @Autowired
-    private DefaultOntimizeDaoHelper daoHelper;
+    private final DefaultOntimizeDaoHelper daoHelper;
+
+    private final GuideLanguageDao guideLanguageDao;
 
     @Autowired
-    private GuideLanguageDao guideLanguageDao;
+    public GuideLanguageService(DefaultOntimizeDaoHelper daoHelper, GuideLanguageDao guideLanguageDao) {
+        this.daoHelper = daoHelper;
+        this.guideLanguageDao = guideLanguageDao;
+    }
 
     @Override
     public EntityResult guideLanguageQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {

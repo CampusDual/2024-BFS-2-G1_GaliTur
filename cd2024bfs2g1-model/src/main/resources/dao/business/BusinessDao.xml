@@ -50,6 +50,47 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="restaurantBusinesses">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.bsn_business
+                        NATURAL JOIN ${mainschema}.bsn_restaurant
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="lodgingBusinesses">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.bsn_business
+                        NATURAL JOIN ${mainschema}.bsn_hotel
+                        NATURAL JOIN ${mainschema}.bsn_hotel_rooms
+                        NATURAL JOIN ${mainschema}.bsn_hotel_services
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="agencyBusinesses">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.bsn_business
+                        NATURAL JOIN ${mainschema}.bsn_guide_agency
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
         <Query id="businessOfPack">
             <Sentence>
                 <![CDATA[
@@ -63,6 +104,19 @@
                     b.bsn_down_date is null
                     #WHERE_CONCAT#
                     #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="typesOfBusinesses">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                     bsn_type,
+                    COUNT(*) AS cantidad
+                    FROM ${mainschema}.bsn_business
+                    GROUP BY bsn_type;
+                    #WHERE#
+
                 ]]>
             </Sentence>
         </Query>

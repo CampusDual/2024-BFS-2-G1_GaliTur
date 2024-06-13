@@ -75,6 +75,13 @@ export class HomeComponent implements AfterViewInit {
       state: { previousUrl: currentUrl },
       relativeTo: this.route // Enviar la URL actual como navigation state
     };
-    this.router.navigate(['../main/packs/' + data.pck_id], navigationExtras);
+    this.router.navigate(['../packs/' + data.pck_id], navigationExtras);
+  }
+
+  
+
+  openPopularPacks() {
+    const visibleGrid = document.getElementById('visibleGrid');
+    visibleGrid.scrollIntoView({ behavior: 'smooth' });
   }
 }
