@@ -69,14 +69,9 @@ export class EditRouteComponent implements AfterViewInit {
       "1"
     );
   }
-  async onClickMap(table:OTableComponent) {
+  onClickMap(table:OTableComponent) {
     this.mostrarMapa = !this.mostrarMapa;
-    await(500)
     this.datosTabla = table.dataSource.getAllRendererData()
-    // datos.forEach(datoArray => {
-    //   console.log(datoArray.coordinates)
-    //   this.addMarkerOnMap(datoArray.coordinates)
-    // });
     console.log(this.datosTabla)
   }
   async delay(ms: number) {
