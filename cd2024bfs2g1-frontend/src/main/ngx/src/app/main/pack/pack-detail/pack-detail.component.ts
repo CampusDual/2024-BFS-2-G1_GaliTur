@@ -284,13 +284,13 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
         break;
       case 'businesses'||'routes':
         // Si el usuario viene de 'businesses' o 'routes', redirigir a 'home'
-        this.router.navigate(['/home']);
+        this.router.navigate(['/main/home']);
         break;
       default:
         // Comprobaciones adicionales para otros casos
         if (currentUrl.includes('/main/packs')) {
           // Si la URL actual incluye '/main/packs', redirigir a 'home'
-          this.router.navigate(['/home']);
+          this.router.navigate(['/main/home']);
         } else if (previousUrl.includes('/packs')) {
           // Si la URL anterior incluye '/packs', redirigir a la URL anterior
           this.router.navigateByUrl(previousUrl);
