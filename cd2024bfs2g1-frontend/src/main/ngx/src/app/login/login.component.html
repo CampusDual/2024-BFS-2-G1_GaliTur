@@ -30,8 +30,8 @@
         <label for="remember-me">{{ 'REMEMBER_ME' | oTranslate }}</label>
       </div>
       <button mat-raised-button color="primary" type="submit">{{ 'LOGIN' | oTranslate }}</button>
-      <button mat-raised-button color="primary" (click)="goToRegistrer()">{{ 'REGISTER' | oTranslate }}</button>
-      <button id="professional" mat-raised-button color="primary" (click)="goToRegistrerProfesional()">{{ 'PROFESSIONAL' | oTranslate }}</button>
+      <button mat-raised-button color="primary" type="button" (click)="goToRegistrer()">{{ 'REGISTER' | oTranslate }}</button>
+      <button id="professional" mat-raised-button color="primary" type="button" (click)="goToRegistrerProfesional()">{{ 'PROFESSIONAL' | oTranslate }}</button>
     </form>
     <div class="footer-text">
       <span>{{'Developed by GaliTur'}} &copy; 2024 {{'All rights reserved'}}</span>
