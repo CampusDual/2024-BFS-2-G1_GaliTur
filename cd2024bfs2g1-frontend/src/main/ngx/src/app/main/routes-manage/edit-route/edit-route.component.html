@@ -17,7 +17,9 @@
         <div fxLayout="column" class="contenido_datos" fxLayoutGap="16px" >
           <o-text-input #prouteNameInput attr="name" required="yes"></o-text-input>
           <o-textarea-input class="description-textarea" attr="description" required="yes"
-          ></o-textarea-input>
+          max-length="500" [validators]="blankValidator" rows="9">
+          <o-validator error-name="lengthInvalid" error-text="{{ 'LENGTH_ERROR' | oTranslate }}"></o-validator>
+        </o-textarea-input>
           <o-integer-input  class="txt" attr="estimated_distance"
                         enabled="yes" min="1" max="60000" required="no" 
                         label="{{'estimated_distance' | oTranslate }} (m)"></o-integer-input>

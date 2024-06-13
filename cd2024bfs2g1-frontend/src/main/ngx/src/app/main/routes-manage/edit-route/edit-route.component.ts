@@ -10,6 +10,7 @@ import {
 import { Landmark } from "../../routes/routes-new/view-all-landmark/landmark-model";
 import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 import { OMapComponent } from "ontimize-web-ngx-map";
+import { FormControl, ValidatorFn } from "@angular/forms";
 
 @Component({
   selector: "app-edit-route",
@@ -23,6 +24,7 @@ export class EditRouteComponent implements AfterViewInit {
   actualLandkmarkId = null;
   actualCoordinates: string = "42.940599,-7.120727";
   mostrarMapa = false;
+  blankValidator: ValidatorFn[] = [];
 
   @ViewChild("oMap") oMap: OMapComponent;
   @ViewChild("landmarkTable") landmarkTable: OTableComponent;
@@ -31,7 +33,9 @@ export class EditRouteComponent implements AfterViewInit {
     private snackBarService: SnackBarService,
     private translate: OTranslateService,
     private router: Router
-  ) {}
+  ) {
+    this.blankValidator.push(this.lengthInvalid)
+  }
 
   ngAfterViewInit(): void {
     console.log('Datos que tiene la tabla: ', this.datosTabla = this.landmarkTable.dataSource.getColumnData('coordinates'))
@@ -111,4 +115,9 @@ export class EditRouteComponent implements AfterViewInit {
   finish() {
     this.router.navigate(["main/route-manage"]);
   }
+  lengthInvalid = (control: FormControl) => {
+    const isTooLong = (control.value || '').length > 500;
+    const isValid = !isTooLong;
+    return isValid ? null : {'lengthInvalid': true};
+  };
 }
