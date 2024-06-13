@@ -20,7 +20,6 @@ public class RestaurantService implements IRestaurantService {
 
     private final DefaultOntimizeDaoHelper daoHelper;
     private final RestaurantDao restaurantDao;
-
     @Autowired
     public RestaurantService(DefaultOntimizeDaoHelper daoHelper, RestaurantDao restaurantDao) {
         this.daoHelper = daoHelper;
