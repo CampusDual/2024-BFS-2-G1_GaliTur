@@ -63,7 +63,7 @@ galleryOptions: any;
       }
 
       this.dialog.open(RoutesDetailComponent, {
-        height: '700px',
+        height: '650px',
         width: '1200px',
         data: data
       });
