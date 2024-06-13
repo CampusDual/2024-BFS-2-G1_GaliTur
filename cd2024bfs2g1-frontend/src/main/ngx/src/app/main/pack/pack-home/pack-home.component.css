@@ -348,7 +348,7 @@ o-text-input, o-integer-input, o-currency-input, o-date-input, o-combo {
 
 .pack-name {
     overflow: hidden;
-    white-space: wrap;
+    white-space: nowrap;
     display: inline-block;
     text-overflow: ellipsis;
     width: calc(90%);
