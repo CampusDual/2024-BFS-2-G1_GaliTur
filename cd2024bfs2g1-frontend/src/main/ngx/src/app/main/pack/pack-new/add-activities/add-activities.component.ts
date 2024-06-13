@@ -251,7 +251,7 @@ export class AddActivitiesComponent {
     };
     const columns = [
       "name",
-      "estimated_duration",
+      "estimated_distance",
       "difficulty",
       "assigned_date",
       "route_pack_id",
@@ -259,7 +259,6 @@ export class AddActivitiesComponent {
     this.service.query(filter, columns, "routePack").subscribe((resp) => {
       if (resp.code === 0) {
         // resp.data contains the data retrieved from the server
-
         this.tableRoutes.setDataArray(resp.data);
         this.tableRoutes.reloadData();
       } else {
