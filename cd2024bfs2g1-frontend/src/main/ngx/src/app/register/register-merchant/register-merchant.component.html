@@ -1,5 +1,5 @@
 <div class="full-page">
-  <o-form class="register-form" #form show-header="no" (submit)="register()" (onInsert)="navigate()" service="merchants" entity="merchant" matchPassword keys="usr_id" message-service-type="customMessageServiceTypeRegister">
+  <o-form class="register-form" #form show-header="no" (onInsert)="navigate()" service="merchants" entity="merchant" matchPassword keys="usr_id" message-service-type="customMessageServiceTypeRegister">
     <div class="contenedor">
       <o-column>
         <div class="register-container">
