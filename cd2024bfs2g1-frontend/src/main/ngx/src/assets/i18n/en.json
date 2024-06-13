@@ -455,6 +455,6 @@
   "DELETE_ROUTE_CONFIRM_MESSAGE": "It will be deleted from the following packs:",
   "CANCEL_BUTTON": "Cancel",
   "CONFIRM_DELETE_BUTTON": "Delete route",
-  "BUSINESS_DATA_EDIT": "Edit business"
+  "BUSINESS_DATA_EDIT": "Edit business",
+  "SHOW_MAP": "View map"
 }
-

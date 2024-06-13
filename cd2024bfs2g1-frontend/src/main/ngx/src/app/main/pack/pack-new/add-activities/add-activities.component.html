@@ -1,5 +1,10 @@
-<div style="display: flex;justify-content: flex-end;">
-<o-button label="{{'button_table_finish' | oTranslate }}" class="end_btn" icon="check" (click)="goBack()"></o-button>
+<div style="display: flex; justify-content: space-between; width: 100%;">
+  <div style="display: flex; justify-content: flex-start;">
+    <h2>Pack: {{pack_name}}</h2> 
+  </div>
+  <div style="display: flex; justify-content: flex-end; margin-right: 170px; margin-top: 19px">
+    <o-button label="{{'button_table_finish' | oTranslate }}" class="end_btn" icon="check" (click)="goBack()"></o-button>
+  </div>
 </div>
 <o-row class="principal">
  

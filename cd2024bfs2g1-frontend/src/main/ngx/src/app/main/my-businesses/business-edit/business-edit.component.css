@@ -8,6 +8,7 @@ o-checkbox {
 
 :host ::ng-deep .finishBT {
   font-weight: lighter !important;
+  font-size: 13px !important; 
 }
 
 .price {

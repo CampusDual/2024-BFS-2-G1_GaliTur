@@ -234,3 +234,7 @@
     color: #444240;
     margin-right: 4px;
 }
+
+:host ::ng-deep .mat-mdc-paginator-container .mat-mdc-paginator-page-size{
+    visibility: hidden !important;
+  }

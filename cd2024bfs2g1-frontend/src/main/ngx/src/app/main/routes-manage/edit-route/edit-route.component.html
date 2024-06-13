@@ -2,6 +2,12 @@
 <div class="fondo">
   <o-form attr="routeTable" #myList include-breadcrumb="true" service="routes" entity="route" keys="route_id"
           show-header="yes" message-service-type="customMessageServiceTypeRoutes" show-header-navigation="no" class="custom-form">
+    <div o-form-toolbar-buttons class="toolbar-buttons">
+        <button type="button" class="o-form-toolbar-button" mat-stroked-button (click)="finish()" attr="accountBalance">
+            <mat-icon>logout</mat-icon>
+            <span class="finishBT">{{ 'FINISH_BT' | oTranslate }}</span>
+        </button>
+    </div>
     <o-text-input attr="route_id" sql-type="INTEGER" enabled="no" show-header-navigation="no" oHidden></o-text-input>
     <div class="principal" fxFlexAlign="center">
       <div class="tituloTabla">
@@ -11,7 +17,9 @@
         <div fxLayout="column" class="contenido_datos" fxLayoutGap="16px" >
           <o-text-input #prouteNameInput attr="name" required="yes"></o-text-input>
           <o-textarea-input class="description-textarea" attr="description" required="yes"
-          ></o-textarea-input>
+          max-length="500" [validators]="blankValidator" rows="9">
+          <o-validator error-name="lengthInvalid" error-text="{{ 'LENGTH_ERROR' | oTranslate }}"></o-validator>
+        </o-textarea-input>
           <o-integer-input  class="txt" attr="estimated_distance"
                         enabled="yes" min="1" max="60000" required="no" 
                         label="{{'estimated_distance' | oTranslate }} (m)"></o-integer-input>
@@ -42,17 +50,21 @@
                  (onClick)="onClickLandmark($event)" (onRowDeleted)="onDeleteLandMark()"
                  columns="l.landmark_id;name;coordinates;description;route_landmark_id"
                  message-service-type="CustomMessageServiceLandmarks" visible-columns="name;coordinates"
-                 query-rows="4" select-all-checkbox="yes" filter-case-sensitive="yes" export-button="no"
+                 pagination-controls="no" select-all-checkbox="yes" filter-case-sensitive="yes" export-button="no"
                  insert-button="yes" delete-button="yes" refresh-button="no" fixed-header="yes"
                  detail-mode="none" export-mode="local" class="custom-table"
                  static-query='{"additionalParam": "valor"}'>
-          <o-table-button icon="map" (onClick)="onClickMap()"></o-table-button>
+          <o-table-button icon="map" label="{{'SHOW_MAP' | oTranslate}}" (onClick)="onClickMap(landmarkTable)"></o-table-button>
         </o-table>
         <div fxLayout="column" [ngClass]="{'landmark-map':mostrarMapa}" *ngIf="actualCoordinates" style="margin-top: 20px;">
           <o-map #oMap *ngIf="mostrarMapa" attr="mapInput" center="{{actualCoordinates}}" zoom="8"
                  min-zoom="3" max-zoom="20" zoom-control="yes" search-control="no" layer-panel-visible="no" 
                  show-base-layers-menu="no" fxFlex>
             <o-map-crs crs="EPSG:4326"></o-map-crs>
+            <div *ngFor="let landmark of this.datosTabla">
+                <o-map-layer layer-type="marker" [layer-id]="landmark.name" [layer-center]="landmark.coordinates" layer-menu-label="landmark.name "
+                layer-menu-label-secondary="landmark.name"></o-map-layer>
+            </div>
           </o-map>
         </div>
       </div>
