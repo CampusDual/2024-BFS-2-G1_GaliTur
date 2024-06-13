@@ -31,29 +31,31 @@
   margin-right: 200px;
   margin-top: 75px;
 }
+
+.landmark-container{
+  background-color: #ffffff;
+  height: 600px;
+  margin: 0px 30px 0px 30px;
+}
  
 .landmark-map {
-  height: 117%;
+  height: 95%;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 30px;
   overflow: hidden;
   border-radius: 10px;
-}
- 
-.map {
-  height: 100%;
-}
- 
-.landmark-map {
   cursor: pointer;
+}
+ 
+
+.listLandmarks{
+  margin-top: 35px;
+  width: 115%;
 }
  
 .container {
   width: 240px;
-  height: 400px;
-  margin-top: 40px;
-  margin-right: 20px;
-  margin-left: 20px;
+  height: 470px;
   padding: 15px;
   border-radius: 10px;
   display: flex;
@@ -64,7 +66,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   text-align: center;
-  background-color: #e2dbd5;
+  background-color: #ffffff;
 }
  
 .landmarkName {
@@ -93,7 +95,6 @@
   overflow-y: hidden;
   overflow-x: hidden;
 }
- 
 .landmarkName:hover {
   transform: scale(1.1);
   transition: transform 0.4s ease;
