@@ -357,3 +357,17 @@ o-text-input, o-integer-input, o-currency-input, o-date-input, o-combo {
 
     }
 }
+
+
+:host ::ng-deep .mat-mdc-paginator-container .mat-mdc-paginator-page-size{
+    visibility: hidden !important;
+}
+
+:host ::ng-deep .end_btn {
+    button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base {
+        background-color: #4e4c4a !important;
+        color: #e2dbd5 !important;
+        height: 36.3px;
+        width: 100px;
+    }}
+
