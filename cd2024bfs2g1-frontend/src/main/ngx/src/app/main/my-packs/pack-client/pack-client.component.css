@@ -304,7 +304,7 @@
     padding: 0;
     margin: 0;
     list-style: none;
-    row-gap: 15px;
+    row-gap: 5px;
     justify-content: space-around;
     display: flex;
     flex-direction: column;
@@ -324,4 +324,4 @@
 
 :host ::ng-deep .mat-mdc-paginator-container .mat-mdc-paginator-page-size{
     visibility: hidden !important;
-  }
+}
