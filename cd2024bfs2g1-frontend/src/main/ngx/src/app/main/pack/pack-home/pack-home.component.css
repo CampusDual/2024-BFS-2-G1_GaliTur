@@ -371,3 +371,8 @@ o-text-input, o-integer-input, o-currency-input, o-date-input, o-combo {
         width: 100px;
     }}
 
+
+.front-price{
+    margin-top: 45px;
+    margin-bottom: -60px;
+}
