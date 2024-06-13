@@ -266,34 +266,43 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
     this.router.navigate(['../../routes/' + data.route_id], navigationExtras);
   }
 
-
   public backToHome(): void {
     const currentUrl = this.router.url; // Capturar la URL actual
     const previousUrl = history.state && history.state.previousUrl ? history.state.previousUrl : '';
-    //Si el usuario viene de home redigir a la url anterior para que vea home
-    if (previousUrl.includes('/home')) {
-      this.router.navigateByUrl(previousUrl);
-    //Si el usuario viene de packs redigir a la url anterior
-    }else if (previousUrl.includes('/packs')) {
-      this.router.navigateByUrl(previousUrl);
-      //Si el usuario entra a un pack desde un negocio redirigir a home
-    }else if (previousUrl.includes('/businesses')){
-      this.router.navigate(['/home'])
-      //Si el usuario entra a un pack desde una ruta redirigir a home
-    } else if (previousUrl.includes('/routes')){
-      this.router.navigate(['/home'])
-      //Si el usuario entra a un pack desde home redirigir a home
-    } else if ((currentUrl.includes('/main/packs'))){
-      this.router.navigate(['/home']);
-      // Comprobar si es necesario
-    }  else if((previousUrl.includes('/packs'))){
-      this.router.navigateByUrl(previousUrl)
-     //Si la opcion no se contempla retroceder 1 nivel 
-    } else  {
-      this.router.navigate(['../'],{ relativeTo: this.actRoute });
+  
+    // Regex para aislar el segmento de la url relevante para el switch statement
+    const relevantSegment = previousUrl.split('/')[2] || '';
+  
+    switch (relevantSegment) {
+      case 'home':
+        // Si el usuario viene de 'home', redirigir a la URL anterior
+        this.router.navigateByUrl(previousUrl);
+        break;
+      case 'packs':
+        // Si el usuario viene de 'packs', redirigir a la URL anterior
+        this.router.navigateByUrl(previousUrl);
+        break;
+      case 'businesses':
+      case 'routes':
+        // Si el usuario viene de 'businesses' o 'routes', redirigir a 'home'
+        this.router.navigate(['/home']);
+        break;
+      default:
+        // Comprobaciones adicionales para otros casos
+        if (currentUrl.includes('/main/packs')) {
+          // Si la URL actual incluye '/main/packs', redirigir a 'home'
+          this.router.navigate(['/home']);
+        } else if (previousUrl.includes('/packs')) {
+          // Si la URL anterior incluye '/packs', redirigir a la URL anterior
+          this.router.navigateByUrl(previousUrl);
+        } else {
+          // En caso de que no se controle la URL recivida, retroceder un nivel
+          this.router.navigate(['../'], { relativeTo: this.actRoute });
+        }
+        break;
     }
-}
-
+  }
+  
 
   public getRouteImageSrc(base64: any): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/home-image.jpeg";
@@ -375,7 +384,6 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
       });
     }
 
-
     returnArray(): any[] {
       return this.array;
     }
@@ -415,6 +423,4 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
         return name;
     }
   }
-
-
 }
