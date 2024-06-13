@@ -4,35 +4,39 @@
   </div>
   <o-form #filterForm class="form" editable-detail="yes" show-header="no">
     <div class="filter">
-
-        <!-- Price filter -->
-        <div class="filter-column">
-            <o-currency-input #minPrice class="filter-element" (onValueChange)="onCurrencyInputChange()"
-            attr="pck_price_min"  label="{{ 'MIN-PRICE' | oTranslate }}" min="1"></o-currency-input>
-            <o-currency-input class="filter-element" #maxPrice attr="pck_price_max" (onValueChange)="onCurrencyInputChange()"
-              label="{{ 'MAX-PRICE' | oTranslate }}" min="1"></o-currency-input>
-        </div>
-        
-      <!-- Date and number of days filters -->
+      <!-- Name and number of days filters -->
       <div class="filter-column">
-        <o-integer-input class="filter-element" attr="pck_days" label="{{ 'NUMBER-DAYS' | oTranslate }}" min="1"></o-integer-input>
-        <o-date-input class="filter-element" attr="pd_date_begin" format="YYYY-MM-DD" value-type="string" label="{{ 'BEGIN-DATE' | oTranslate }}" read-only="no" required="no"></o-date-input>
+        <o-text-input class="filter-element" attr="pck_name" read-only="no" fxFlex="100"
+          label="{{ 'FILTER-NAME' | oTranslate }}"></o-text-input>
+          <o-date-input class="filter-element" attr="pd_date_begin" format="YYYY-MM-DD" value-type="string" label="{{ 'BEGIN-DATE' | oTranslate }}" read-only="no" required="no"></o-date-input>
       </div>
-    
+      <!-- Price filter -->
+      <div class="filter-column">
+        <div class="filter-row">
+          <o-currency-input #minPrice class="filter-element" (onValueChange)="onCurrencyInputChange()"
+          attr="pck_price_min"  label="{{ 'MIN-PRICE' | oTranslate }}" min="1"></o-currency-input>
+          <o-currency-input class="filter-element" #maxPrice attr="pck_price_max" (onValueChange)="onCurrencyInputChange()"
+            label="{{ 'MAX-PRICE' | oTranslate }}" min="1"></o-currency-input>
+        </div>
+        <div class="filter-row">
+          <o-integer-input class="filter-element" attr="pck_days" label="{{ 'NUMBER-DAYS' | oTranslate }}" min="1"></o-integer-input>
+          <o-integer-input class="filter-element" attr="pck_participants" min="1" label="{{ 'NUMBER-TRAVELLERS' | oTranslate }}"></o-integer-input>
+        </div>
+      </div>
       <!-- Travellers and city filter -->
       <div class="filter-column">
-        <o-integer-input class="filter-element" attr="pck_participants" min="1"
-        label="{{ 'NUMBER-TRAVELLERS' | oTranslate }}"></o-integer-input>
         <o-combo #comboCity class="filter-element" attr="gui_c_name" label="{{ 'FILTER-CITY' | oTranslate }}" translate="yes"
           query-method="query" sort="ASC" value-column="gui_c_name" required="no" service="guideCities" multiple="no"
           null-selection="yes" entity="guideCities" columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id"
           searchable="yes"> </o-combo>
+          <div class="filter-row">
+            <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="BASIC" label="{{ 'SEARCH' | oTranslate }}" icon="search"
+            matTooltip="{{ 'SEARCH' | oTranslate }}" class="filter-button"></o-button>
+            <o-button attr="clear" type="BASIC" icon="delete" matTooltip="{{ 'CLEAR_SEARCH' | oTranslate }}" label="{{ 'delete' | oTranslate }}"
+              class="filter-button" [oFilterBuilderClear]="filterBuilder" [oFilterBuilderQuery]="filterBuilder"></o-button>
+          </div>
       </div>
-      <!-- Filter buttons -->
-      <div class="filter-column-buttons">
-          <o-button  attr="filter" label="{{'SEARCH' | oTranslate }}" class="end_btn" icon="search" [oFilterBuilderQuery]="filterBuilder"></o-button>
-          <o-button style="padding-top: 8%;" attr="clear" label="{{'delete' | oTranslate }}" class="end_btn" icon="delete" [oFilterBuilderClear]="filterBuilder" [oFilterBuilderQuery]="filterBuilder"></o-button>
-      </div>
+
     </div>
     <!-- start date -->
 
