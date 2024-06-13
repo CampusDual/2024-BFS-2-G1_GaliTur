@@ -118,7 +118,6 @@ public class UserAndRoleService implements IUserAndRoleService {
 	// TODO	@Secured({ PermissionsProviderSecured.SECURED })
 	@Transactional(rollbackFor = Throwable.class)
 	public EntityResult userInsert(final Map<?, ?> keysValues) throws OntimizeJEERuntimeException {
-		System.out.println("insert");
 		return this.daoHelper.insert(this.userDao, this.encryptPassword(keysValues));
 	}
 
