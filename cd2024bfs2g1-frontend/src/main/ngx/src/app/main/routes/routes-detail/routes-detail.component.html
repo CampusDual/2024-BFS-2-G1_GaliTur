@@ -22,13 +22,13 @@
                 <o-row class="o-rows"  attr="container" title="{{'INFO' | oTranslate }}" icon="info"
                     layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
                     <ul class="list-with-spaces" style="list-style-type: none;">
-                        <li *ngIf="data.estimated_distance"><i><mat-icon matTooltip="Distancia estimada">directions_run</mat-icon></i> {{convertDistance(data.estimated_distance)}}</li>
-                        <li *ngIf="!data.estimated_distance"><i><mat-icon matTooltip="Distancia estimada">directions_run</mat-icon></i> - Km</li>
+                        <li *ngIf="data.estimated_distance"><i><mat-icon matTooltip="{{'estimated_distance' | oTranslate }}">directions_run</mat-icon></i> {{convertDistance(data.estimated_distance)}}</li>
+                        <li *ngIf="!data.estimated_distance"><i><mat-icon matTooltip="{{'estimated_distance' | oTranslate }}">directions_run</mat-icon></i> - Km</li>
                             
-                        <li *ngIf="data.estimated_distance"><i><mat-icon matTooltip="Duracion estimada">timer</mat-icon></i> {{convertTime(data.estimated_distance)}}</li>
-                        <li *ngIf="!data.estimated_distance"><i><mat-icon matTooltip="Duracion estimada">timer</mat-icon></i> - Min</li>
+                        <li *ngIf="data.estimated_distance"><i><mat-icon matTooltip="{{'estimated_duration' | oTranslate }}">timer</mat-icon></i> {{convertTime(data.estimated_distance)}}</li>
+                        <li *ngIf="!data.estimated_distance"><i><mat-icon matTooltip="{{'estimated_duration' | oTranslate }}">timer</mat-icon></i> - Min</li>
     
-                        <li><i><mat-icon matTooltip="Dificultad">eco</mat-icon></i> {{getDifficultad2(data.difficulty)}}</li>
+                        <li><i><mat-icon matTooltip="{{'difficulty' | oTranslate }}">eco</mat-icon></i> {{getDifficultad2(data.difficulty)}}</li>
 
                         <li *ngIf="data.is_accessible is true"><i><mat-icon matTooltip="Accesibilidad">accessible</mat-icon></i> Es accesible</li>
                     </ul>
