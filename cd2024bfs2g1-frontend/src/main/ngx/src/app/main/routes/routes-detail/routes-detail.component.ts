@@ -130,6 +130,10 @@ convertDistance(metros: number){
   }
 }
 
+public getImageSrc(base64: any): any {
+  return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/home-image.jpeg";
+}
+
 getIconColorClass(difficulty: number): string {
   switch(difficulty) {
     case 1:
@@ -153,6 +157,19 @@ getDifficultad(difficulty: number): string {
         return 'Dificultad: Difícil';
     case 4:
         return 'Dificultad: Extremo';
+    }
+  }
+
+  getDifficultad2(difficulty: number): string {
+    switch(difficulty) {
+      case 1:
+          return 'Fácil';
+      case 2:
+          return 'Intermedia';
+      case 3:
+          return 'Difícil';
+      case 4:
+          return 'Extremo';
     }
   }
 }

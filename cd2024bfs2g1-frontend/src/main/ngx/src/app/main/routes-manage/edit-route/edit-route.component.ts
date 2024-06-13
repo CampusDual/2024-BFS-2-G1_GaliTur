@@ -10,19 +10,21 @@ import {
 import { Landmark } from "../../routes/routes-new/view-all-landmark/landmark-model";
 import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 import { OMapComponent } from "ontimize-web-ngx-map";
+import { FormControl, ValidatorFn } from "@angular/forms";
 
 @Component({
   selector: "app-edit-route",
   templateUrl: "./edit-route.component.html",
   styleUrls: ["./edit-route.component.css"],
 })
-export class EditRouteComponent {
-  datosTabla: Landmark[] = [];
+export class EditRouteComponent implements AfterViewInit {
+  datosTabla: any[] = [];
   idRutaActual: number;
   nameActualRoute: String;
   actualLandkmarkId = null;
   actualCoordinates: string = "42.940599,-7.120727";
   mostrarMapa = false;
+  blankValidator: ValidatorFn[] = [];
 
   @ViewChild("oMap") oMap: OMapComponent;
   @ViewChild("landmarkTable") landmarkTable: OTableComponent;
@@ -31,7 +33,13 @@ export class EditRouteComponent {
     private snackBarService: SnackBarService,
     private translate: OTranslateService,
     private router: Router
-  ) {}
+  ) {
+    this.blankValidator.push(this.lengthInvalid)
+  }
+
+  ngAfterViewInit(): void {
+    console.log('Datos que tiene la tabla: ', this.datosTabla = this.landmarkTable.dataSource.getColumnData('coordinates'))
+  }
 
   onDeleteLandMark() {
     this.sendDeleteMessage();
@@ -43,23 +51,32 @@ export class EditRouteComponent {
     this.actualLandkmarkId = event.row.landmark_id;
     this.actualCoordinates = event.row.coordinates;
     if (this.actualCoordinates != null) {
-      const coordinatesArrayAux = this.actualCoordinates.split(",");
-      this.oMap.addMarker(
-        "1",
-        coordinatesArrayAux[0],
-        coordinatesArrayAux[1],
-        {},
-        true,
-        false,
-        true,
-        "1"
-      );
+      this.addMarkerOnMap(this.actualCoordinates)
       await this.delay(300);
       this.oMap.getMapService().setZoom(12);
     } else alert("Lo sentimos, el punto de interes no cuenta con coordenadas");
   }
-  onClickMap() {
+  splitCoordinates(actualCoordinates:any):string[]{
+    const coordinatesArrayAux = this.actualCoordinates.split(",");
+    return coordinatesArrayAux
+  }
+  addMarkerOnMap(coordinatesArrayAux){
+    const coordinatesAux = this.splitCoordinates(coordinatesArrayAux)
+    this.oMap.addMarker(
+      "1",
+      coordinatesAux[0],
+      coordinatesAux[1],
+      {},
+      true,
+      false,
+      true,
+      "1"
+    );
+  }
+  onClickMap(table:OTableComponent) {
     this.mostrarMapa = !this.mostrarMapa;
+    this.datosTabla = table.dataSource.getAllRendererData()
+    console.log(this.datosTabla)
   }
   async delay(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -98,4 +115,9 @@ export class EditRouteComponent {
   finish() {
     this.router.navigate(["main/route-manage"]);
   }
+  lengthInvalid = (control: FormControl) => {
+    const isTooLong = (control.value || '').length > 500;
+    const isValid = !isTooLong;
+    return isValid ? null : {'lengthInvalid': true};
+  };
 }
