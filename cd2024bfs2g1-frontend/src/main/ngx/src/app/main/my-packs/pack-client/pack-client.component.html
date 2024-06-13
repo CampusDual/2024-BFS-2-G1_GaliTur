@@ -4,7 +4,7 @@
     sortable-columns="pck_name;pck_participants;gui_c_name;pck_name:desc:desc;pck_participants:desc;gui_c_name:desc"
     quick-filter-columns="pck_name;pck_price;pck_participants;gui_c_name" filter-case-sensitive="yes"
     insert-button="false" refresh-button="true" pageable="yes" pagination-controls="true" gutter-size="4px"
-    fixed-header="yes" grid-item-height="280px" detail-mode="none" insert-button-floatable="no">
+    fixed-header="yes" grid-item-height="280px" detail-mode="none" insert-button-floatable="no" class="full-page">
 
     <o-grid #packForm attr="packDetail" service="packs" entity="packAndBookingDetail" keys="P.pck_id;P.gui_c_id;pcs_id"
         columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;pck_days;pd_date_begin;pd_date_end;pcs_id;P.gui_c_id"
