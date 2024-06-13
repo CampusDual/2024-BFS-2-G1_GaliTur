@@ -408,6 +408,7 @@ public class HotelService implements IHotelService {
         if (attributesValues.containsKey("toggleBreakfast") && (boolean) attributesValues.get("toggleBreakfast") == true) {
             Map<String, Object> mapSrv = new HashMap<>();
 
+
             mapSrv.put(HotelServicesDao.TYPE, "Breakfast");
             mapSrv.put(HotelServicesDao.COST, 0.0);
             mapSrv.put(HotelDao.HTL_ID, idHotel);
