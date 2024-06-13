@@ -266,43 +266,43 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
     this.router.navigate(['../../routes/' + data.route_id], navigationExtras);
   }
 
-  public backToHome(): void {
-    const currentUrl = this.router.url; // Capturar la URL actual
+
+  backToHome(): void {
+    const currentUrl = this.router.url;
     const previousUrl = history.state && history.state.previousUrl ? history.state.previousUrl : '';
-  
-    // Regex para aislar el segmento de la url relevante para el switch statement
+
+    // Determinar el segmento relevante de la URL anterior
     const relevantSegment = previousUrl.split('/')[2] || '';
-  
+
     switch (relevantSegment) {
       case 'home':
-        // Si el usuario viene de 'home', redirigir a la URL anterior
+        // Si la URL anterior contiene 'home', redirigir a esa URL
         this.router.navigateByUrl(previousUrl);
         break;
       case 'packs':
-        // Si el usuario viene de 'packs', redirigir a la URL anterior
+        // Si la URL anterior contiene 'packs', redirigir a esa URL
         this.router.navigateByUrl(previousUrl);
         break;
       case 'businesses':
       case 'routes':
-        // Si el usuario viene de 'businesses' o 'routes', redirigir a 'home'
-        this.router.navigate(['/home']);
+        // Si la URL anterior contiene 'businesses' o 'routes', redirigir a 'home'
+        this.router.navigateByUrl(previousUrl);
         break;
       default:
         // Comprobaciones adicionales para otros casos
         if (currentUrl.includes('/main/packs')) {
-          // Si la URL actual incluye '/main/packs', redirigir a 'home'
-          this.router.navigate(['/home']);
+          // Si la URL actual contiene '/main/packs', redirigir a 'home'
+          this.router.navigateByUrl(previousUrl);
         } else if (previousUrl.includes('/packs')) {
-          // Si la URL anterior incluye '/packs', redirigir a la URL anterior
+          // Si la URL anterior contiene '/packs', redirigir a esa URL
           this.router.navigateByUrl(previousUrl);
         } else {
-          // En caso de que no se controle la URL recivida, retroceder un nivel
-          this.router.navigate(['../'], { relativeTo: this.actRoute });
+          // En caso de no coincidir con ninguno de los casos anteriores, retroceder un nivel
+          this.router.navigate(['../'], { relativeTo: this.route});
         }
         break;
     }
   }
-  
 
   public getRouteImageSrc(base64: any): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/home-image.jpeg";
