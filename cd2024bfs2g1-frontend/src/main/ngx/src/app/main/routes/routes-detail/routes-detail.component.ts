@@ -13,7 +13,7 @@ import { LandmarksService } from 'src/app/shared/services/landmarks.service';
   templateUrl: './routes-detail.component.html',
   styleUrls: ['./routes-detail.component.css']
 })
-export class RoutesDetailComponent implements OnInit,AfterViewInit{
+export class RoutesDetailComponent implements OnInit{
   galleryOptions: any;
 
 
@@ -41,9 +41,8 @@ export class RoutesDetailComponent implements OnInit,AfterViewInit{
     this.dialogRef.disableClose = true;
 
    }
-  ngAfterViewInit(): void {
-    console.log(this.data)
-  }
+
+
 
   ngOnInit(){
   }
@@ -147,20 +146,7 @@ getIconColorClass(difficulty: number): string {
     }
   }
 
-getDifficultad(difficulty: number): string {
-  switch(difficulty) {
-    case 1:
-        return 'Dificultad: Fácil';
-    case 2:
-        return 'Dificultad: Intermedio';
-    case 3:
-        return 'Dificultad: Difícil';
-    case 4:
-        return 'Dificultad: Extremo';
-    }
-  }
-
-  getDifficultad2(difficulty: number): string {
+  getDifficultad(difficulty: number): string {
     switch(difficulty) {
       case 1:
           return 'Fácil';

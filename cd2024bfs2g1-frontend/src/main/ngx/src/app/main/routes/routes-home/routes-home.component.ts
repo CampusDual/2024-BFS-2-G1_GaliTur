@@ -126,13 +126,13 @@ galleryOptions: any;
   getDifficultad(difficulty: number): string {
     switch(difficulty) {
       case 1:
-          return 'Dificultad: Fácil';
+          return 'Dificultad_facil';
       case 2:
-          return 'Dificultad: Intermedia';
+          return 'Dificultad_intermedia';
       case 3:
-          return 'Dificultad: Difícil';
+          return 'Dificultad_dificil';
       case 4:
-          return 'Dificultad: Extremo';
+          return 'Dificultad_extremo';
     }
   }
 }
