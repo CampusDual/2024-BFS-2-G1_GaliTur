@@ -164,7 +164,7 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
   let metrosRestantesDecimal = metrosRestantesStr.split('.')[0].slice(0, 2);
 
   metrosRestantes = Number(metrosRestantesDecimal);
-  
+
 
   if (kilometros == 0 && metrosRestantes != 0) {
       return `${metrosRestantes} m`;
@@ -269,10 +269,10 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
   public backToHome(): void {
     const currentUrl = this.router.url; // Capturar la URL actual
     const previousUrl = history.state && history.state.previousUrl ? history.state.previousUrl : '';
-  
+
     // Regex para aislar el segmento de la url relevante para el switch statement
     const relevantSegment = previousUrl.split('/')[2] || '';
-  
+
     switch (relevantSegment) {
       case 'home':
         // Si el usuario viene de 'home', redirigir a la URL anterior
@@ -301,7 +301,7 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
         break;
     }
   }
-  
+
 
   public getRouteImageSrc(base64: any): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/home-image.jpeg";
