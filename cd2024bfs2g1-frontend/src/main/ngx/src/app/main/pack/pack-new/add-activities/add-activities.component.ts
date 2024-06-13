@@ -251,7 +251,7 @@ export class AddActivitiesComponent {
     };
     const columns = [
       "name",
-      "estimated_duration",
+      "estimated_distance",
       "difficulty",
       "assigned_date",
       "route_pack_id",
