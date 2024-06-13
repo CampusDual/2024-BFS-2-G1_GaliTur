@@ -6,12 +6,12 @@
 
             <p class="titulo">{{ data.name }}</p>
         </div>
-        <div fxLayout="row" class="content">
+        <div fxLayout="row" class="content" >
             <div class="image-container">
                 <img class="img-cover" [src]="getImageSrc(data.img_code)">
             </div>
             
-            <div class="data-container">
+            <div fxLayout="column" class="data-container">
                 <o-row class="o-rows"  attr="container" icon="description" mat
                     title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" elevation="1"
                     aria-orientation="vertical" appearance="outline">
@@ -22,13 +22,15 @@
                 <o-row class="o-rows"  attr="container" title="{{'INFO' | oTranslate }}" icon="info"
                     layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
                     <ul class="list-with-spaces" style="list-style-type: none;">
-                        <li *ngIf="data.estimated_distance"><i><mat-icon matTooltip="Distancia">directions_run</mat-icon></i> {{convertDistance(data.estimated_distance)}}</li>
-                        <li *ngIf="!data.estimated_distance"><i><mat-icon>directions_run</mat-icon></i> - Km</li>
+                        <li *ngIf="data.estimated_distance"><i><mat-icon matTooltip="Distancia estimada">directions_run</mat-icon></i> {{convertDistance(data.estimated_distance)}}</li>
+                        <li *ngIf="!data.estimated_distance"><i><mat-icon matTooltip="Distancia estimada">directions_run</mat-icon></i> - Km</li>
                             
-                        <li *ngIf="data.estimated_distance"><i><mat-icon>timer</mat-icon></i> {{convertTime(data.estimated_distance)}}</li>
-                        <li *ngIf="!data.estimated_distance"><i><mat-icon>timer</mat-icon></i> - Min</li>
+                        <li *ngIf="data.estimated_distance"><i><mat-icon matTooltip="Duracion estimada">timer</mat-icon></i> {{convertTime(data.estimated_distance)}}</li>
+                        <li *ngIf="!data.estimated_distance"><i><mat-icon matTooltip="Duracion estimada">timer</mat-icon></i> - Min</li>
     
-                        <li><i><mat-icon>eco</mat-icon></i> {{getDifficultad2(data.difficulty)}}</li>
+                        <li><i><mat-icon matTooltip="Dificultad">eco</mat-icon></i> {{getDifficultad2(data.difficulty)}}</li>
+
+                        <li *ngIf="data.is_accessible is true"><i><mat-icon matTooltip="Accesibilidad">accessible</mat-icon></i> Es accesible</li>
                     </ul>
                 </o-row>
             </div>

@@ -16,10 +16,17 @@
   margin: 10px;
 }
 
+.accessible-icon {
+  align-self: center;
+  margin-right: -40px;
+  margin-left: 25px;
+  z-index: 2;
+}
+
 .back-button {
   align-self: center;
   margin-left: -50px;
-  margin-right: 15px;
+  margin-right: 25px;
 
   z-index: 2;
 }
@@ -34,6 +41,7 @@
   background-color: #e2dbd5;
   padding: 0px;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 
@@ -145,13 +153,16 @@
 .image-container {
   width: 50%;
   max-width: 50%;
+  min-width: 50%;
   height: 100%;
   padding-right: 15px;
+  margin-inline: 0px;
   .img-cover {
     object-fit: cover;
     width: 100%;
     height: 100%;
     border-radius: 10px;
+    margin-inline: 0px;
   }
 }
 
@@ -164,6 +175,7 @@
   flex-direction: column;
   justify-content: start;
   padding-left: 15px;
+  margin-inline: 0px;
 }
 
 .leafsDifficulty {
@@ -252,9 +264,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 90%;
   row-gap: 10px;
   max-height: 190px;
+  
   overflow-y: auto;
   overflow-x: hidden;
   margin-left: -25px;
@@ -280,6 +292,7 @@
   min-width: 90%;
   row-gap: 10px;
   max-height: 200px;
+  overflow-wrap: anywhere;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -307,10 +320,15 @@
 .content {
   height: 65%;
   max-width: 1050px;
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  padding-inline: 10px;
+
 }
 
 .main-button {
-  background-color: #52733B;
+  background-color: #715e4e;
   color: white;
   padding: 10px 20px;
   font-size: 16px;
@@ -319,18 +337,25 @@
   border-radius: 4px;
   cursor: pointer;
   margin: 5px;
+  box-shadow: 1.5px 1.5px 1.5px 1px rgba(0, 0, 0, 0.05);
   transition: background-color 0.3s ease, transform 0.3s ease;
+
   mat-icon {
     margin-bottom: -8px;
     margin-right: 3px;
     font-size: 20px;
   }
+  
   &:hover {
     transform: scale(1.03);
-    background-color: #466132;
+    background-color: #5e4e41;
     mat-icon {
       margin-bottom: -8.5px;
     }
+  }
+
+  &:focus-visible {
+    outline-color: #52733B;
   }
 }
 
