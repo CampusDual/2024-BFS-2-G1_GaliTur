@@ -25,7 +25,7 @@ galleryOptions: any;
   ) {
 
   }
-  
+
   ngAfterViewInit(): void {
     const idRutaActual = +this.getRouteId();
     const confRoute =
@@ -35,7 +35,7 @@ galleryOptions: any;
       this.ontimizerouteService
       .query(
         { route_id: idRutaActual },
-        ["route_id","name", "description", "estimated_distance", "difficulty"],
+        ["route_id","name", "description", "estimated_distance", "difficulty","is_accessible"],
         "route"
       )
       .subscribe((response) => {

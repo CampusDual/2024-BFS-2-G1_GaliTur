@@ -30,18 +30,17 @@
 .tool{
     visibility: hidden;
     font-size: 12px;
-    width: 2500px;
 }
 
 .tool2{
     visibility: hidden;
     font-size: 12px;
-    width: 2500px;
 }
 
 .toolTipContainer{
-    height: 100px;
+    padding-right: 200px;
 }
+
 .toolTipContainer:hover .tool{
     visibility: visible;
     background-color: #ddd5cc;
@@ -59,7 +58,7 @@
 }
 
 .slice{
-    width: 600px;
+    padding-right: 10px;
 }
 
 

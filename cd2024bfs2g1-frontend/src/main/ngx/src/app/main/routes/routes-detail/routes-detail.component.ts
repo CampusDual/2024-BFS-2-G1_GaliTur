@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ViewLandmarkDetailComponent } from './view-landmark-detail/view-landmark-detail.component';
@@ -13,7 +13,7 @@ import { LandmarksService } from 'src/app/shared/services/landmarks.service';
   templateUrl: './routes-detail.component.html',
   styleUrls: ['./routes-detail.component.css']
 })
-export class RoutesDetailComponent implements OnInit{
+export class RoutesDetailComponent implements OnInit,AfterViewInit{
   galleryOptions: any;
 
 
@@ -41,6 +41,9 @@ export class RoutesDetailComponent implements OnInit{
     this.dialogRef.disableClose = true;
 
    }
+  ngAfterViewInit(): void {
+    console.log(this.data)
+  }
 
   ngOnInit(){
   }
@@ -57,6 +60,23 @@ export class RoutesDetailComponent implements OnInit{
           data: data,
         });
       })
+  }
+
+
+  coverEyes(): void {
+    const leftHand = document.querySelector('.hand.left') as HTMLElement;
+    const rightHand = document.querySelector('.hand.right') as HTMLElement;
+
+    leftHand.style.transform = 'rotate(20deg)';
+    rightHand.style.transform = 'rotate(-20deg)';
+  }
+
+  uncoverEyes(): void {
+    const leftHand = document.querySelector('.hand.left') as HTMLElement;
+    const rightHand = document.querySelector('.hand.right') as HTMLElement;
+
+    leftHand.style.transform = 'rotate(-45deg)';
+    rightHand.style.transform = 'rotate(45deg)';
   }
 
   public backToHome(data:any): void {
