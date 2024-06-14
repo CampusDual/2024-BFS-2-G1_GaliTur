@@ -16,7 +16,7 @@
                     title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" elevation="1"
                     aria-orientation="vertical" appearance="outline">
                     <ul class="list-to-desc">
-                        <li>{{data.description}}</li>
+                        <p>{{data.description}}</p>
                     </ul>
                 </o-row>
                 <o-row class="o-rows"  attr="container" title="{{'INFO' | oTranslate }}" icon="info"
@@ -30,7 +30,7 @@
 
                         <li><i><mat-icon matTooltip="{{'difficulty' | oTranslate }}">eco</mat-icon></i> {{getDifficultad(data.difficulty)}}</li>
 
-                        <li *ngIf="data.is_accessible is true"><i><mat-icon matTooltip="Accesibilidad">accessible</mat-icon></i> Es accesible</li>
+                        <li *ngIf="data.is_accessible is true"><i><mat-icon matTooltip="Accesibilidad">accessible</mat-icon></i>{{'accessible' | oTranslate }}</li>
                     </ul>
                 </o-row>
             </div>
