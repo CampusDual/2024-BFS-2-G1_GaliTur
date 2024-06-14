@@ -237,10 +237,10 @@
     "MESSAGES_FORM_CHANGES_WILL_BE_LOST_LANDMARK": "¿Estás realmente seguro de que queres facer isto? Todos os cambios perderanse.",
     "landmark_id": "Id",
     "button_table_finish": "Finalizar",
-    "Dificultad_intermedia": "Dificultade Intermedio",
-    "Dificultad_facil": "Dificultade Doado",
-    "Dificultad_dificil": "Dificultade Difícil",
-    "Dificultad_extremo": "Dificultade Extremo",
+    "Dificultad_intermedia": "Intermedio",
+    "Dificultad_facil": "Doado",
+    "Dificultad_dificil": "Difícil",
+    "Dificultad_extremo": "Extremo",
     "MYPACKS": "Os meus Packs",
     "pck_date_begin": "Data de Inicio",
     "gui_c_name": "Cidade",
@@ -704,7 +704,10 @@
     "BUSINESS_DATA_EDIT": "Editar negocio",
     "SHOW_MAP": "Ver mapa",
     "CLEAR_FILTER":"Limpar",
-    "accessible": "Acesible"
+    "accessible": "Acesible",
+    "is_accessible": "¿É accesible?",
+    "Explanation_is_accessible":"Esta ruta é accesible para persoas con algún tipo de discapacidade.",
+    "draft": "Se a túa ruta non está rematada, permíteche gardar os datos introducidos ata agora."
   }
 
 

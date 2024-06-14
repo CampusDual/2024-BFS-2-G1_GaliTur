@@ -80,11 +80,11 @@ galleryOptions: any;
     const minutosRestantes = minutos % 60;
 
     if (horas == 0 && minutosRestantes != 0) {
-        return `${minutosRestantes}min`;
+        return `${minutosRestantes} min`;
     } else if (horas != 0 && minutosRestantes == 0) {
-        return `${horas}h`;
+        return `${horas} h`;
     } else {
-        return `${horas}h ${minutosRestantes}min`;
+        return `${horas} h ${minutosRestantes} min`;
     }
   }
 

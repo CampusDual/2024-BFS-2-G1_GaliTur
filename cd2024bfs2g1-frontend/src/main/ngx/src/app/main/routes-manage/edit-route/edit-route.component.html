@@ -26,7 +26,11 @@
           <o-combo attr="difficulty" label="{{ 'COMBO_DIFFICULTY' | oTranslate }}"[static-data]="difficultyArray"
                    value-column="difficultyCode" columns="difficultyCode;difficultyText" null-selection="no"
                    visible-columns="difficultyText" required="yes"></o-combo>
-          <o-checkbox attr="is_draft" class="txt" label="{{ 'DRAFT' | oTranslate }}" read-only="no"></o-checkbox>
+        <div class="slide-toggle">
+          <o-slide-toggle attr="is_accessible" label="{{ 'is_accessible' | oTranslate }}" read-only="no" matTooltip="{{ 'Explanation_is_accessible' | oTranslate }}"  matTooltipPosition="after"></o-slide-toggle>
+          <o-slide-toggle attr="is_draft" label="{{ 'is_draft' | oTranslate }}" read-only="no" matTooltip="{{'draft' | oTranslate}}"  matTooltipPosition="after"></o-slide-toggle>
+        </div>
+
         </div>
         <div fxLayout="column" fxFlexAlign="center" class="contenedor_imagen">
           <o-form attr="routeImageTable" service="routes" entity="routeImageForEdit"

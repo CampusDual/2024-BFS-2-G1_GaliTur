@@ -11,8 +11,8 @@
 }
 
 .routeCard:hover {
-  box-shadow: 0 0 8px rgba(40, 63, 28, 0.55); 
-  transform: scale(1.04); 
+  box-shadow: 0 0 8px rgba(40, 63, 28, 0.55);
+  transform: scale(1.04);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
@@ -27,7 +27,7 @@
   border-radius: 10px;
   background-color: #52733B;
   height: 34px;
-  color: #ffffff; 
+  color: #ffffff;
 }
 
 .containerDatos {
@@ -133,7 +133,7 @@
 
 .tooltipHomeDuration:hover .tooltiptextHomeDuration {
   visibility: visible;
-  transform: scale(0.9);
+  transform: scale(0.5);
   opacity: 1;
 }
 
@@ -177,6 +177,31 @@
   align-items: center;
   justify-content: center;
   margin-top: 10px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  row-gap: 10px;
+  max-height: 190px;
+  z-index: 2;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-left: -25px;
+
+  mat-icon {
+    color: black !important;
+    margin-bottom: -6.5px;
+    font-size: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      color: #615e5b !important;
+      transform: scale(1.06);
+    }
+  }
 }
 
 .card {
@@ -279,13 +304,13 @@
     height: 240px;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
     border-radius: 10px;
-    
-}   
+
+}
 .flip-card:hover {
     cursor: pointer;
 
-} 
-  
+}
+
 /* This container is needed to position the front and back side */
 .flip-card-inner {
     position: relative;
@@ -295,13 +320,13 @@
     transition: transform 0.8s;
     transform-style: preserve-3d;
     border-radius: 10px;
-}    
-  
+}
+
 /* Do an horizontal flip when you move the mouse over the flip box container */
 .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
-}    
-  
+}
+
 /* Position the front and back side */
 .flip-card-front, .flip-card-back {
     position: absolute;
@@ -311,13 +336,14 @@
     backface-visibility: hidden;
     border-radius: 10px;
     padding: 1px;
-}   
-  
+    z-index: 1;
+}
+
 .flip-card-front {
     position: absolute;
     background-color: #bbb;
     color: black;
-}    
+}
 
 .flip-card-front::before {
     content: '';
@@ -326,17 +352,17 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); 
-    z-index: 1; 
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
     border-radius: 10px;
-}   
-  
+}
+
 /* Style the back side */
 .flip-card-back {
-    background-color: #ccc6c0;   
+    background-color: #ccc6c0;
     color: white;
     transform: rotateY(180deg);
-}   
+}
 
 .pack-img {
     object-fit: cover;
@@ -345,7 +371,7 @@
     position: relative; /* Asegura que la imagen esté debajo del overlay */
     z-index: 0; /* Coloca la imagen debajo del overlay */
     border-radius: 10px;
-}    
+}
 
 .text-overlay {
     position: absolute;
@@ -371,7 +397,7 @@
         font-weight: 10;
         margin: 0;
     }
-}    
+}
 
 .info-container {
     color: #444240;
@@ -379,7 +405,7 @@
     justify-content: center;
 
 
-}    
+}
 
 /* card header styles */
 .cardHeader {
@@ -389,14 +415,16 @@
   color: white;
   padding-left: 10px;
   padding-top: 10px;
-  padding-bottom: 4px; 
+  padding-bottom: 4px;
   padding-right: 10px;
   margin-inline: auto;
   margin-bottom: 16px;
   box-sizing: border-box;
   border-radius: 10px 10px 10px 10px;
+  display: flex; 
+  flex-direction: row;
+  justify-content: space-around;
 }
-
 
 .pack-info-title {
   font-size: 1.25em;
@@ -406,8 +434,12 @@
   display: inline-block;
   text-overflow: ellipsis;
   width: calc(90%);
-}
+
+
+
   
+}
+
 /* icon styles */
 .icon {
     margin-bottom: -10px;
@@ -443,3 +475,5 @@
 :host ::ng-deep .mat-mdc-paginator-container .mat-mdc-paginator-page-size{
   visibility: hidden !important;
 }
+
+

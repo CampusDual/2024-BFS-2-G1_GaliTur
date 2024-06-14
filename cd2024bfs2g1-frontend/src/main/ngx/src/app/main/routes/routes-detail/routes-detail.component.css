@@ -294,6 +294,8 @@
   overflow-wrap: anywhere;
   overflow-y: auto;
   overflow-x: hidden;
+  padding-left: 20px;
+  padding-bottom: 50px;
 }
 
 .o-rows {
@@ -316,6 +318,7 @@
   padding-top: 0px;
   height: 10%;
 }
+
 .content {
   height: 65%;
   max-width: 1050px;
@@ -323,7 +326,6 @@
   margin: 0px;
   width: 100%;
   padding-inline: 10px;
-
 }
 
 .main-button {
