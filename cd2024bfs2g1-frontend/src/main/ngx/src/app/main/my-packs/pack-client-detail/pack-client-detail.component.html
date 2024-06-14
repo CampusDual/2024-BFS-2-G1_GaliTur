@@ -77,19 +77,19 @@
                         </span>
                         <div fxLayout="row-reverse" class="stars">
                             <button class="button_star" type="button" (click)="openValoration(5,{pck_name:pack.pck_name, img_code:imagePack.img_code, pbk_booking_id: pack.pbk_booking_id}); $event.stopPropagation()">
-                                <mat-icon class="star" >park</mat-icon>
+                                <mat-icon class="star" >grade</mat-icon>
                             </button>
                             <button class="button_star" type="button" (click)="openValoration(4,{pck_name:pack.pck_name, img_code:imagePack.img_code, pbk_booking_id: pack.pbk_booking_id}); $event.stopPropagation()">
-                                <mat-icon class="star">park</mat-icon>
+                                <mat-icon class="star">grade</mat-icon>
                             </button>
                             <button class="button_star" type="button" (click)="openValoration(3,{pck_name:pack.pck_name, img_code:imagePack.img_code, pbk_booking_id: pack.pbk_booking_id}); $event.stopPropagation()">
-                                <mat-icon class="star">park</mat-icon>
+                                <mat-icon class="star">grade</mat-icon>
                             </button>
                             <button class="button_star" type="button" (click)="openValoration(2,{pck_name:pack.pck_name, img_code:imagePack.img_code, pbk_booking_id: pack.pbk_booking_id}); $event.stopPropagation()">
-                                <mat-icon class="star">park</mat-icon>
+                                <mat-icon class="star">grade</mat-icon>
                             </button>
                             <button class="button_star" type="button" (click)="openValoration(1,{pck_name:pack.pck_name, img_code:imagePack.img_code, pbk_booking_id: pack.pbk_booking_id}); $event.stopPropagation()">
-                                <mat-icon class="star">park</mat-icon>
+                                <mat-icon class="star">grade</mat-icon>
                             </button>
                           </div>
 
@@ -320,11 +320,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 1?'star_color':''">park</mat-icon>
-                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 2?'star_color':''">park</mat-icon>
-                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 3?'star_color':''">park</mat-icon>
-                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 4?'star_color':''">park</mat-icon>
-                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 5?'star_color':''">park</mat-icon>
+                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 1?'star_color':''">grade</mat-icon>
+                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 2?'star_color':''">grade</mat-icon>
+                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 3?'star_color':''">grade</mat-icon>
+                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 4?'star_color':''">grade</mat-icon>
+                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 5?'star_color':''">grade</mat-icon>
                                     </div>
                                     <o-row *ngIf="data.pbk_comment != null" class="o-row-coment" attr="container"
                                         title="COMENT" layout-align="start stretch" elevation="1"

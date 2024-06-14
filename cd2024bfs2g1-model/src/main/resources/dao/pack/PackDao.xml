@@ -98,6 +98,27 @@
                 ]]>
             </Sentence>
         </Query>
+
+        <Query id="multiRatingAVG">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        AVG(PB.pbk_stars) AS rating_avg, P.pck_id
+                    FROM
+                        ${mainschema}.pack P
+                        INNER JOIN ${mainschema}.pack_date PD
+                        ON P.pck_id=PD.pck_id
+                        INNER JOIN ${mainschema}.pack_booking PB
+                        ON PD.pd_id=PB.pd_id
+                    WHERE
+                     PB.pbk_stars is not null
+                    #WHERE_CONCAT#
+                    GROUP BY
+                        P.pck_id
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
         <Query id="packDetail">
             <Sentence>
                 <![CDATA[

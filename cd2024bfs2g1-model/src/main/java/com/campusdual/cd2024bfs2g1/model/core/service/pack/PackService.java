@@ -172,6 +172,12 @@ public class PackService implements IPackService {
     }
 
     @Override
+    public EntityResult packRatingQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        EntityResult er = this.daoHelper.query(this.packDao, keysValues, attributes, this.packDao.PCK_RATING_AVG_QUERY);
+        return er;
+    }
+
+    @Override
     public EntityResult allPacksQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.packDao, keysValues, attributes, this.packDao.PCK_ALL_QUERY);
     }

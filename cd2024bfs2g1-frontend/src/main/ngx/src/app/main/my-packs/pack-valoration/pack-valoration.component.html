@@ -13,19 +13,19 @@
         <div fxLayout="column" id="valoraciones">
           <div fxLayout="row" class="stars">
             <button class="button_star" type="button" (click)="valorateSelect(1)">
-              <mat-icon class="star star_color">park</mat-icon>
+              <mat-icon class="star star_color">grade</mat-icon>
             </button>
             <button class="button_star" type="button" (click)="valorateSelect(2)">
-              <mat-icon #star2 class="star" [ngClass]="stars >= 2?'star_color':''">park</mat-icon>
+              <mat-icon #star2 class="star" [ngClass]="stars >= 2?'star_color':''">grade</mat-icon>
             </button>
             <button class="button_star" type="button" (click)="valorateSelect(3)">
-              <mat-icon #star3 class="star" [ngClass]="stars >= 3?'star_color':''">park</mat-icon>
+              <mat-icon #star3 class="star" [ngClass]="stars >= 3?'star_color':''">grade</mat-icon>
             </button>
             <button class="button_star" type="button" (click)="valorateSelect(4)">
-              <mat-icon #star4 class="star" [ngClass]="stars >= 4?'star_color':''">park</mat-icon>
+              <mat-icon #star4 class="star" [ngClass]="stars >= 4?'star_color':''">grade</mat-icon>
             </button>
             <button class="button_star" type="button" (click)="valorateSelect(5)">
-              <mat-icon #star5 class="star" [ngClass]="stars >= 5?'star_color':''">park</mat-icon>
+              <mat-icon #star5 class="star" [ngClass]="stars >= 5?'star_color':''">grade</mat-icon>
             </button>
           </div>
           <o-textarea-input #comment id="coment" attr="pck_description"

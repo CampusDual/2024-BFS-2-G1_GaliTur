@@ -34,6 +34,7 @@ public class PackDao extends OntimizeJdbcDaoSupport {
     public static String PCK_PER_DAYS_QUERY = "packPerDays";
     public static String PCK_BY_PRICE_QUERY = "packByPrice";
     public static String PCK_BY_STATION_QUERY = "packByStation";
+    public static String PCK_RATING_AVG_QUERY = "multiRatingAVG";
 
 
 }
