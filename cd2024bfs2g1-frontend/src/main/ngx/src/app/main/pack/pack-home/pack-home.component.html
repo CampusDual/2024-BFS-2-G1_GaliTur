@@ -32,14 +32,9 @@
           <div class="filter-row">
             <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="BASIC" label="{{ 'SEARCH' | oTranslate }}" icon="search"
             matTooltip="{{ 'SEARCH' | oTranslate }}" class="filter-button"></o-button>
-            <o-button attr="clear" type="BASIC" icon="delete" matTooltip="{{ 'CLEAR_SEARCH' | oTranslate }}" label="{{ 'delete' | oTranslate }}"
+            <o-button attr="clear" type="BASIC" icon="delete" matTooltip="{{ 'CLEAR_SEARCH' | oTranslate }}" label="{{ 'CLEAR_FILTER' | oTranslate }}"
               class="filter-button" [oFilterBuilderClear]="filterBuilder" [oFilterBuilderQuery]="filterBuilder"></o-button>
           </div>
-      </div>
-      <!-- Filter buttons -->
-      <div class="filter-column-buttons">
-          <o-button  attr="filter" label="{{'SEARCH' | oTranslate }}" class="end_btn" icon="search" [oFilterBuilderQuery]="filterBuilder"></o-button>
-          <o-button style="padding-top: 8%;" attr="clear" label="{{'CLEAR_FILTER' | oTranslate }}" class="end_btn" icon="delete" [oFilterBuilderClear]="filterBuilder" [oFilterBuilderQuery]="filterBuilder"></o-button>
       </div>
     </div>
     <!-- start date -->
