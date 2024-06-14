@@ -111,10 +111,10 @@
             <Sentence>
                 <![CDATA[
                     SELECT
-                     bsn_type,
+                    UPPER(bsn_type) AS bsn_type,
                     COUNT(*) AS cantidad
                     FROM ${mainschema}.bsn_business
-                    GROUP BY bsn_type;
+                    GROUP BY 1;
                     #WHERE#
 
                 ]]>
