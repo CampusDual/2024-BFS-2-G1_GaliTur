@@ -85,7 +85,7 @@ export class PackClientComponent {
     const conf = this.service.getDefaultServiceConfiguration("packs");
     this.service.configureService(conf);
     const filter = {
-      "P.pck_id": data.pck_id,
+      "P.pck_id": data,
     };
     const columns = ["P.pck_id"];
     this.service.query(filter, columns, "packRating").subscribe((resp) => {
