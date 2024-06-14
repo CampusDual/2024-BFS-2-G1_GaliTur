@@ -294,6 +294,12 @@
   overflow-wrap: anywhere;
   overflow-y: auto;
   overflow-x: hidden;
+  padding-left: 20px;
+  padding-bottom: 50px;
+}
+
+.textToolTips {
+  color: green;
 }
 
 .o-rows {

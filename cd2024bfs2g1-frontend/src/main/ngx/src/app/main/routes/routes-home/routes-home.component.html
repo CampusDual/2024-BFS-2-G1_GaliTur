@@ -63,6 +63,8 @@
                 <li *ngIf="!data.estimated_distance"><mat-icon class="icon">schedule</mat-icon>- Min</li>
 
                 <li><mat-icon class="icon">eco</mat-icon>{{ getDifficultad(data.difficulty) | oTranslate }}</li>
+
+                <li *ngIf="data.is_accessible is true"><i><mat-icon matTooltip="Accesibilidad">accessible</mat-icon></i>{{'accessible' | oTranslate }}</li>
               </ul>
             </div>
           </div>
