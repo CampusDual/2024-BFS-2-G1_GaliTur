@@ -22,7 +22,10 @@
             <div class="pack-name"><span class="pack-name">{{data.pck_name}}</span></div>
             <hr />
             <h4>{{data.gui_c_name}}</h4>
-            <div class="rating"><span class="rating">{{data.rating_avg}}</span> <mat-icon class="star">grade</mat-icon>
+            <div class="rating">
+              <span class="ratingTxt" *ngIf="!data.rating_avg">-</span> 
+              <span class="ratingTxt" *ngIf="data.rating_avg">{{ data.rating_avg }}</span> 
+              <mat-icon class="star">grade</mat-icon>
             </div>
           </div>
         </div>

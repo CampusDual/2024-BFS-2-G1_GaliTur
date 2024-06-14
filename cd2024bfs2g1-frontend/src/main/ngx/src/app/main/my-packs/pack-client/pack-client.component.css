@@ -139,21 +139,18 @@
     border: none;
 }
 
-.star {
-    cursor: pointer;
-    transition: color 0.2s;
-    color: rgba(113, 94, 78, 1);
+.ratingTxt { 
+    font-size: 20px;
+    position: initial;
 }
 
-/* Seleccionar la estrella y todas las anteriores para cambiar su color */
-.button_star:hover,
-.button_star:hover ~ .button_star{
-    .star{
-        background: linear-gradient(to top, rgba(94,60,6,1) 22%, rgba(9,121,19,1) 28%, rgba(51,193,13,1) 83%);
-      -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
-    }
+
+
+.star {
+    color: rgb(237, 218, 7);
+    font-size: 30px;
+    height: 30px;
+    width: 30px;
 }
 
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
