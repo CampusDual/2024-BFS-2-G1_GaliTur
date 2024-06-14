@@ -27,7 +27,6 @@
   align-self: center;
   margin-left: -50px;
   margin-right: 25px;
-
   z-index: 2;
 }
 
@@ -266,17 +265,17 @@
   justify-content: space-around;
   row-gap: 10px;
   max-height: 190px;
-  
+
   overflow-y: auto;
   overflow-x: hidden;
   margin-left: -25px;
-  
+
   mat-icon {
     color: black !important;
     margin-bottom: -6.5px;
     font-size: 20px;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    
+
     &:hover {
       color: #615e5b !important;
       transform: scale(1.06);
@@ -310,7 +309,7 @@
       color:#84A45A;
   }
 }
- 
+
 .title-container {
   width: 100%;
   margin-inline: 0px;
@@ -345,7 +344,7 @@
     margin-right: 3px;
     font-size: 20px;
   }
-  
+
   &:hover {
     transform: scale(1.03);
     background-color: #5e4e41;
@@ -361,6 +360,6 @@
 
 .button-container {
   height: 10%;
-  
+
 }
 

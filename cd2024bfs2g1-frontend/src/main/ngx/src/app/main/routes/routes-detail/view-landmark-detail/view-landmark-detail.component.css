@@ -8,52 +8,64 @@
 }
  
 .backButton {
-  padding-right: 70px;
-  margin-top: 55px;
-  margin-left: 50px;
+  align-self: center;
+  margin-right: -80px;
+  margin-left: 20px;
+  z-index: 2;
 }
- 
+
 .arrow_back {
   margin: auto;
   color: #0c0c0c;
 }
- 
+
+  
 .titulo {
-  font-size: 24px;
-  font-weight: bold;
+  font-weight: 250;
+  font-size: 1.7em;
   text-align: center;
   background-color: #52733B;
   color: #ffffff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  width: 900px; 
-  max-width: 1100px;
-  margin-right: 200px;
-  margin-top: 75px;
+  width: 90%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-inline: auto;
+  padding-block: 7px;
+  margin-top: 30px;
+  margin-right: 50px;
+
+}
+
+.landmark-container{
+  background-color: transparent;
+  height: 600px;
+  margin: 0px 30px 0px 30px;
 }
  
 .landmark-map {
-  height: 117%;
+  height: 95%;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 30px;
   overflow: hidden;
   border-radius: 10px;
-}
- 
-.map {
-  height: 100%;
-}
- 
-.landmark-map {
   cursor: pointer;
+}
+ 
+
+.listLandmarks{
+  margin-top: 35px;
+  width: 120%;
+  background-color: transparent;
+  mat-icon{
+    color:#84A45A;
+  }
 }
  
 .container {
   width: 240px;
-  height: 400px;
-  margin-top: 40px;
-  margin-right: 20px;
-  margin-left: 20px;
+  height: 470px;
   padding: 15px;
   border-radius: 10px;
   display: flex;
@@ -64,22 +76,30 @@
   overflow-y: auto;
   overflow-x: hidden;
   text-align: center;
-  background-color: #e2dbd5;
+  background-color: transparent;
+ 
+}
+
+mat-icon{
+  color:#84A45A;
 }
  
 .landmarkName {
-  width: 180px;
+  width: 170px;
   height: 65px;
   font-family: "Arial", sans-serif;
   font-size: 17px;
-  border: solid 2px;
-  border-color: #3a3027;
   font-weight: bold;
-  margin-top: 15px;
-  margin-right: 10px;
-  margin-left: 10px;
-  background-color: #d3c3b6;
-  border-radius: 15px;
+  margin-top: 20px;
+  margin-right: 5px;
+  margin-left: 25px;
+  background-color:#715e4e;
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border: none;
+  color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
@@ -90,9 +110,10 @@
   overflow-y: hidden;
   overflow-x: hidden;
 }
- 
 .landmarkName:hover {
-  transform: scale(1.1);
+  transform: scale(0.9);
   transition: transform 0.4s ease;
 }
+
+
  

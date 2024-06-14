@@ -35,8 +35,14 @@ ignore-default-navigation="yes" class="custom-form">
                         visible-columns="difficultyText" required="yes"></o-combo>
                     </div>
                     <br>
-                    <div fxLayout="column">
-                        <o-slide-toggle attr="is_draft" class="txt" label="{{ 'is_draft' | oTranslate }}" read-only="no"></o-slide-toggle>
+                    <div fxLayout="row" class="toolTipContainer">
+                        <o-slide-toggle attr="is_accessible" class="slice" label="{{ 'is_accessible' | oTranslate }}" read-only="no"></o-slide-toggle>
+                        <p class="tool">{{ 'Explanation_is_accessible' | oTranslate }}</p>
+                    </div>
+                    <br>
+                    <div fxLayout="row"  class="toolTipContainer">
+                        <o-slide-toggle attr="is_draft" class="slice" label="{{ 'is_draft' | oTranslate }}" read-only="no"></o-slide-toggle>
+                        <p class="tool2"> {{"Draft" | oTranslate}} </p>
                     </div>
 
                 </div>

@@ -25,7 +25,7 @@ galleryOptions: any;
   ) {
 
   }
-  
+
   ngAfterViewInit(): void {
     const idRutaActual = +this.getRouteId();
     const confRoute =
@@ -35,7 +35,7 @@ galleryOptions: any;
       this.ontimizerouteService
       .query(
         { route_id: idRutaActual },
-        ["route_id","name", "description", "estimated_distance", "difficulty"],
+        ["route_id","name", "description", "estimated_distance", "difficulty","is_accessible"],
         "route"
       )
       .subscribe((response) => {
@@ -126,25 +126,13 @@ galleryOptions: any;
   getDifficultad(difficulty: number): string {
     switch(difficulty) {
       case 1:
-          return 'Dificultad: Fácil';
+          return 'Dificultad_facil';
       case 2:
-          return 'Dificultad: Intermedio';
+          return 'Dificultad_intermedia';
       case 3:
-          return 'Dificultad: Difícil';
+          return 'Dificultad_dificil';
       case 4:
-          return 'Dificultad: Extremo';
-    }
-  }
-  getDifficultad2(difficulty: number): string {
-    switch(difficulty) {
-      case 1:
-          return 'Dificultad Fácil';
-      case 2:
-          return 'Dificultad Intermedia';
-      case 3:
-          return 'Dificultad Difícil';
-      case 4:
-          return 'Dificultad Extremo';
+          return 'Dificultad_extremo';
     }
   }
 }
