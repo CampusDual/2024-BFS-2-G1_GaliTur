@@ -298,10 +298,6 @@
   padding-bottom: 50px;
 }
 
-.textToolTips {
-  color: green;
-}
-
 .o-rows {
   flex: 1;
   padding: 0px;
@@ -322,6 +318,7 @@
   padding-top: 0px;
   height: 10%;
 }
+
 .content {
   height: 65%;
   max-width: 1050px;
@@ -329,7 +326,6 @@
   margin: 0px;
   width: 100%;
   padding-inline: 10px;
-
 }
 
 .main-button {
