@@ -26,7 +26,7 @@
                         <li *ngIf="!data.estimated_distance"><i><mat-icon matTooltip="{{'estimated_distance' | oTranslate }}">directions_run</mat-icon></i> - Km</li>
 
                         <li *ngIf="data.estimated_distance"><i><mat-icon matTooltip="{{'estimated_duration' | oTranslate }}">timer</mat-icon></i> {{convertTime(data.estimated_distance)}}</li>
-                        <li *ngIf="!data.estimated_distance"><i><mat-icon matTooltip="{{'estimated_duration' | oTranslate }}">timer</mat-icon></i> - Min</li>
+                        <li *ngIf="!data.estimated_distance"><i><mat-icon matTooltip="{{'estimated_durtaion' | oTranslate }}">timer</mat-icon></i> - Min</li>
 
                         <li><i><mat-icon matTooltip="{{'difficulty' | oTranslate }}">eco</mat-icon></i> {{getDifficultad(data.difficulty)}}</li>
 

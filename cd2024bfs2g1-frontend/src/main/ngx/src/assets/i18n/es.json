@@ -469,7 +469,10 @@
   "BUSINESS_DATA_EDIT": "Editar negocio",
   "SHOW_MAP": "Ver mapa",
   "CLEAR_FILTER":"Limpiar",
-  "accessible": "Accesible"
+  "accessible": "Accesible",
+  "is_accessible": "¿Es accesible?",
+  "Explanation_is_accessible":"Esta ruta es accesible para personas con algún tipo de discapacidad.",
+  "draft": "Si tu ruta no está finalizada, te permite guardar los datos ingresados ​​hasta el momento."
 }
 
 

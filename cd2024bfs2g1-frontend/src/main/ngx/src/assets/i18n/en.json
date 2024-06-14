@@ -458,5 +458,8 @@
   "BUSINESS_DATA_EDIT": "Edit business",
   "SHOW_MAP": "View map",
   "CLEAR_FILTER":"Clear",
-  "accessible": "Accessible"
+  "accessible": "Accessible",
+  "is_accessible": "¿Is accessible?",
+  "Explanation_is_accessible":"This route is accessible to people with some type of disability.",
+  "draft": "If your route is not finished, it allows you to save the data entered so far."
 }
