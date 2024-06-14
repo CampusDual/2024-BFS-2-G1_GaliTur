@@ -457,6 +457,11 @@
   "CONFIRM_DELETE_BUTTON": "Delete route",
   "BUSINESS_DATA_EDIT": "Edit business",
   "SHOW_MAP": "View map",
-  "RATING.CONFIRMED": "Pack rated"
+  "RATING.CONFIRMED": "Pack rated",
+  "pbk_stars": "Stars",
+  "pbk_rating_date": "Rating date",
+  "pbk_comment": "Comment",
+  "POST_VALORATION": "Rate",
+  "RATED": "Thanks for your rating!"
 }
 

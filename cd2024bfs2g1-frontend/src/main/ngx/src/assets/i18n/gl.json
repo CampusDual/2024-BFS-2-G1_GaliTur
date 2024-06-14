@@ -703,7 +703,12 @@
     "Top_least_rated_packs":"Os packs menos valorados.",
     "BUSINESS_DATA_EDIT": "Editar negocio",
     "SHOW_MAP": "Ver mapa",
-    "RATING.CONFIRMED": "Pack valorado"
+    "RATING.CONFIRMED": "Pack valorado",
+    "pbk_stars": "Estrela",
+    "pbk_rating_date": "Fecha de valoración",
+    "pbk_comment": "Comentario",
+    "POST_VALORATION": "Valorar",
+    "RATED": "Grazas pola sua valoración!"
   }
 
 
