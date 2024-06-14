@@ -3,8 +3,9 @@ import { AuthService, DialogService, Expression, FilterExpressionUtils, ODialogC
 import { PackHomeComponent } from '../../pack/pack-home/pack-home.component';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { formatDate } from '@angular/common';
+import { PackValorationComponent } from '../pack-valoration/pack-valoration.component';
 
 @Component({
   selector: 'app-pack-client-detail',
@@ -16,6 +17,7 @@ export class PackClientDetailComponent implements OnInit{
   protected isPackInstance: boolean
   public arrayDias = [];
   public selectedComboDay;
+  
 
   constructor(
     protected sanitizer: DomSanitizer,
@@ -24,6 +26,7 @@ export class PackClientDetailComponent implements OnInit{
     private oTranslate: OTranslateService,
     private packDateService: OntimizeService,
     protected dialogService: DialogService,
+    protected dialog: MatDialog,
     protected injector: Injector,
     protected bookingService: OntimizeService,
     protected snackBarService: SnackBarService,
@@ -248,5 +251,18 @@ export class PackClientDetailComponent implements OnInit{
     }
   }
 
+  openValoration(stars: Number, data: any): void{
+    this.dialog.open(PackValorationComponent, {
+      height: '40%',
+      width: '40%',
+      data: {
+        stars: stars,
+        data: data
+      }
+    })
+  }
+  
 }
+
+
 

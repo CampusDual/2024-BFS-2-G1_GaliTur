@@ -54,12 +54,12 @@
                 <o-text-input #pck_id read-only="yes" class="o-text-input" appearance="outline" attr="pck_id"
                     sql-type="INTEGER" label="Nombre" enabled="no" oHidden></o-text-input>
 
-
+                
                 <!--Grids que almacenan la informacion de las imagenes-->
                 <o-grid #imagesPackForm attr="imagePacks" service="imagePacks" entity="imagePack" parent-keys="pck_id"
                     keys="IP.imp_id;IP.pck_id;IP.img_id" columns="IP.imp_id;IP.pck_id;IP.img_id;I.img_code"
                     visible-columns="imp_id;pck_id;img_id" refresh-button="false" quick-filter="false" oHidden />
-
+                
                 <!--Recorrido entre tablas para sacar la imagen correspondiente al pack-->
                 <span *ngFor="let pack of packForm.dataArray">
                     <span *ngFor="let imagePack of imagesPackForm.dataArray">
@@ -75,9 +75,27 @@
                                 <img class="image" [src]="getImageSrc(imagePack.img_code)">
                             </div>
                         </span>
+                        <div fxLayout="row-reverse" class="stars">
+                            <button class="button_star" type="button" (click)="openValoration(5,{pck_name:pack.pck_name, img_code:imagePack.img_code, pbk_booking_id: pack.pbk_booking_id}); $event.stopPropagation()">
+                                <mat-icon class="star" >park</mat-icon>
+                            </button>
+                            <button class="button_star" type="button" (click)="openValoration(4,{pck_name:pack.pck_name, img_code:imagePack.img_code, pbk_booking_id: pack.pbk_booking_id}); $event.stopPropagation()">
+                                <mat-icon class="star">park</mat-icon>
+                            </button>
+                            <button class="button_star" type="button" (click)="openValoration(3,{pck_name:pack.pck_name, img_code:imagePack.img_code, pbk_booking_id: pack.pbk_booking_id}); $event.stopPropagation()">
+                                <mat-icon class="star">park</mat-icon>
+                            </button>
+                            <button class="button_star" type="button" (click)="openValoration(2,{pck_name:pack.pck_name, img_code:imagePack.img_code, pbk_booking_id: pack.pbk_booking_id}); $event.stopPropagation()">
+                                <mat-icon class="star">park</mat-icon>
+                            </button>
+                            <button class="button_star" type="button" (click)="openValoration(1,{pck_name:pack.pck_name, img_code:imagePack.img_code, pbk_booking_id: pack.pbk_booking_id}); $event.stopPropagation()">
+                                <mat-icon class="star">park</mat-icon>
+                            </button>
+                          </div>
 
                     </span>
                 </span>
+                
 
                 <ng-container *ngIf="isLogged()">
                     <o-grid #isCliente attr="isclient" service="clients" entity="isClient" columns="client_id" visible-columns="client_id"

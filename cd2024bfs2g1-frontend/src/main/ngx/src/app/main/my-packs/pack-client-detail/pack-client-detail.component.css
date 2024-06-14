@@ -616,6 +616,9 @@
       cursor: pointer;
       transition: color 0.2s;
       color: rgba(113, 94, 78, 1);
+  }
+
+  .valorations .star{
       width: 4.7%;
       height: 100%;
       font-size: 230%;
@@ -702,6 +705,28 @@
     }
 }
 
+.button_star{
+    background: transparent;
+    border: none;
+    width: 5%;
+}
+
+.button_star .star{
+    width: 110%;
+    height: 100%;
+    font-size: 260%;
+}
+
+/* Seleccionar la estrella y todas las anteriores para cambiar su color */
+.button_star:hover,
+.button_star:hover ~ .button_star{
+    .star{
+        background: linear-gradient(to top, rgba(94,60,6,1) 22%, rgba(9,121,19,1) 28%, rgba(51,193,13,1) 83%);
+      -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+    }
+}
 
 
 

@@ -16,6 +16,7 @@ import {
 } from "ontimize-web-ngx";
 import {PackHomeComponent} from "../pack-home/pack-home.component";
 import {UserInfoService} from "../../../shared/services/user-info.service";
+import { PackValorationComponent } from "../../my-packs/pack-valoration/pack-valoration.component";
 
 @Component({
   selector: "app-pack-detail",
@@ -409,6 +410,8 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
         return name;
     }
   }
+
+  
 
 
 }
