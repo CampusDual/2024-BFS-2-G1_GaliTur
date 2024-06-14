@@ -1,9 +1,15 @@
-
 /*Estilo de la carta*/
 .card {
     margin: 20px 40px 0px 40px;
-    height: 2700px;
+    height: auto;
     background-color: #ccc6c0;
+    display:flex;
+    align-items: center;
+}
+
+.graphics{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 /*Define el estilo del titulo*/
@@ -18,6 +24,7 @@
     background: linear-gradient(90deg,#52733B, #7b8839,#52733B);
     height: 45px;
     font-size: 30px;
+    width: 80%;
     color: #ffffff; 
 }
 
@@ -25,7 +32,7 @@
 .chart-row {
     display: flex;
     justify-content: left;
-    margin: 150px 100px 0px 150px;
+    margin: 150px 100px 0px 100px;
     background-color: #ffffffe7;
 }
 
@@ -55,10 +62,22 @@
     font-size: 15px !important; 
 }
 
+@media(max-width:1800px){
+    .chart-row{
+        margin:150px 50px 0px 50px;
+    }
+  }
 
+@media(max-width:1700px){
+    .graphics{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        margin:50px 50px 0px 50px;
+    }
+  }
 
-
-
-
-
-
+@media(max-width:1020px){
+    .card{
+        width: 657px;
+    }
+  }

@@ -7,19 +7,49 @@
     </div>
   </div>
   <div class="login-card">
+    <div class="login-container">
+      <div class="chractherContainer">
+      <div class="character">
+        <div class="body">
+          <div class="eyes">
+            <div class="eyeContainer">
+              <div class="eye left">
+                <div class="pupil left">
+                  <div class="pupilW left"></div>
+                </div>
+              </div>
+            </div>
+            <div class="eyeContainer">
+              <div class="eye right">
+                <div class="pupil right">
+                  <div class="pupilW right"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="mouth"></div>
+        <div class="hands">
+            <div class="hand left"></div>
+            <div class="hand right"></div>
+        </div>
+      </div>
+      </div>
+      </div>
     <div class="login-title-container">
       <p class="session-expired text" *ngIf="sessionExpired">{{ 'ERROR_SESSION_EXPIRED' | oTranslate }}</p>
       <span class="title_text">{{ 'LOGIN_TITLE' | oTranslate }}</span>
     </div>
+
     <form [formGroup]="loginForm" (ngSubmit)="login()">
       <mat-form-field fxFill>
-        <input matInput #user placeholder="{{ 'USERNAME' | oTranslate }}" id="username" [formControl]="userCtrl">
+        <input matInput #user placeholder="{{ 'USERNAME' | oTranslate }}" id="username" [formControl]="userCtrl" >
         <mat-error *ngIf="userCtrl.hasError('required')">
           {{ 'ERROR_USER_REQUIRED' | oTranslate }}
         </mat-error>
       </mat-form-field>
       <mat-form-field fxFill>
-        <input matInput #password placeholder="{{ 'PASSWORD' | oTranslate }}" id="password" type="password"
+        <input matInput #password placeholder="{{ 'PASSWORD' | oTranslate }}" id="password" type="password" (focus)="coverEyes()" (blur)="uncoverEyes()"
           [formControl]="pwdCtrl">
         <mat-error *ngIf="pwdCtrl.hasError('required')">
           {{ 'ERROR_PASS_REQUIRED' | oTranslate }}
@@ -30,8 +60,8 @@
         <label for="remember-me">{{ 'REMEMBER_ME' | oTranslate }}</label>
       </div>
       <button mat-raised-button color="primary" type="submit">{{ 'LOGIN' | oTranslate }}</button>
-      <button mat-raised-button color="primary" (click)="goToRegistrer()">{{ 'REGISTER' | oTranslate }}</button>
-      <button id="professional" mat-raised-button color="primary" (click)="goToRegistrerProfesional()">{{ 'PROFESSIONAL' | oTranslate }}</button>
+      <button mat-raised-button color="primary" type="button" (click)="goToRegistrer()">{{ 'REGISTER' | oTranslate }}</button>
+      <button id="professional" mat-raised-button color="primary" type="button" (click)="goToRegistrerProfesional()">{{ 'PROFESSIONAL' | oTranslate }}</button>
     </form>
     <div class="footer-text">
       <span>{{'Developed by GaliTur'}} &copy; 2024 {{'All rights reserved'}}</span>

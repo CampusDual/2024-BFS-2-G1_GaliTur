@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ViewLandmarkDetailComponent } from './view-landmark-detail/view-landmark-detail.component';
@@ -42,6 +42,8 @@ export class RoutesDetailComponent implements OnInit{
 
    }
 
+
+
   ngOnInit(){
   }
 
@@ -57,6 +59,23 @@ export class RoutesDetailComponent implements OnInit{
           data: data,
         });
       })
+  }
+
+
+  coverEyes(): void {
+    const leftHand = document.querySelector('.hand.left') as HTMLElement;
+    const rightHand = document.querySelector('.hand.right') as HTMLElement;
+
+    leftHand.style.transform = 'rotate(20deg)';
+    rightHand.style.transform = 'rotate(-20deg)';
+  }
+
+  uncoverEyes(): void {
+    const leftHand = document.querySelector('.hand.left') as HTMLElement;
+    const rightHand = document.querySelector('.hand.right') as HTMLElement;
+
+    leftHand.style.transform = 'rotate(-45deg)';
+    rightHand.style.transform = 'rotate(45deg)';
   }
 
   public backToHome(data:any): void {
@@ -110,6 +129,10 @@ convertDistance(metros: number){
   }
 }
 
+public getImageSrc(base64: any): any {
+  return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/home-image.jpeg";
+}
+
 getIconColorClass(difficulty: number): string {
   switch(difficulty) {
     case 1:
@@ -123,16 +146,16 @@ getIconColorClass(difficulty: number): string {
     }
   }
 
-getDifficultad(difficulty: number): string {
-  switch(difficulty) {
-    case 1:
-        return 'Dificultad: Fácil';
-    case 2:
-        return 'Dificultad: Intermedio';
-    case 3:
-        return 'Dificultad: Difícil';
-    case 4:
-        return 'Dificultad: Extremo';
+  getDifficultad(difficulty: number): string {
+    switch(difficulty) {
+      case 1:
+          return 'Fácil';
+      case 2:
+          return 'Intermedia';
+      case 3:
+          return 'Difícil';
+      case 4:
+          return 'Extremo';
     }
   }
 }

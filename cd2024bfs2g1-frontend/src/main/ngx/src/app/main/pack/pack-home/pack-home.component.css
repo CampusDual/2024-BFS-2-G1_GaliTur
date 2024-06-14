@@ -1,7 +1,6 @@
 /*title styles*/
 .title-container {
     display: flex;
-    justify-content: center;
     align-items: center;
   }
 
@@ -11,7 +10,12 @@
     font-family: Poppins;
     margin-top: 0px;
     margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
+
+
   
 /* packCard structure */
 .packCard {
@@ -115,13 +119,15 @@
 
 
 }
+
+
 .filter-column {
     display: flex;
     flex-direction: column;
     padding: 5px;
     justify-content: space-around;
     width: 100%;
-    max-width: 400px;
+    max-width: 460px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -145,7 +151,7 @@
     flex-direction: row;
     justify-content: space-around;
     gap: 10px;
-    width: 50%;
+    width: 100%;
 }
 
 .filter-element {
@@ -157,6 +163,13 @@
 .filter-button {
     align-items: start;
     margin-top: 10px;
+    background-color: #4e4c4a;
+    border-radius: 5px;
+
+   
+    button.mat-mdc-button-base.mat-mdc-button {
+        color: #e2dbd5 !important;
+    }
 }
 
 .full-page {
@@ -305,7 +318,7 @@ o-text-input, o-integer-input, o-currency-input, o-date-input, o-combo {
 .cardHeader {
     width: 80%;
     text-align: center;
-    background-color: #615e5b;
+    background-color:#52733B;
     color: white;
     padding-left: 10px;
     padding-top: 10px;
@@ -348,7 +361,7 @@ o-text-input, o-integer-input, o-currency-input, o-date-input, o-combo {
 
 .pack-name {
     overflow: hidden;
-    white-space: wrap;
+    white-space: nowrap;
     display: inline-block;
     text-overflow: ellipsis;
     width: calc(90%);
@@ -371,3 +384,8 @@ o-text-input, o-integer-input, o-currency-input, o-date-input, o-combo {
         width: 100px;
     }}
 
+
+.front-price{
+    margin-top: 45px;
+    margin-bottom: -60px;
+}
