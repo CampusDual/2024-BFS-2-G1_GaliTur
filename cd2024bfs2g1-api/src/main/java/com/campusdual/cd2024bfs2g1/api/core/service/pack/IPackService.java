@@ -36,6 +36,9 @@ public interface IPackService {
     AdvancedEntityResult packRatingPaginationQuery(Map<String, Object> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
             throws OntimizeJEERuntimeException;
 
+    AdvancedEntityResult allPacksRatingPaginationQuery(Map<String, Object> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
+            throws OntimizeJEERuntimeException;
+
     EntityResult packInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException, ParseException;
 
 

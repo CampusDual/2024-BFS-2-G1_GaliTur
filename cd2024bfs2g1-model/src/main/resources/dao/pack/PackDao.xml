@@ -104,7 +104,7 @@
                 <![CDATA[
                  WITH temp_table AS (
                     SELECT
-                        AVG(PB.pbk_stars) AS rating_avg, P.pck_id AS id, pck_name, pck_description , pck_price , pck_participants , gui_c_name , img_code , pck_days , pd_date_begin , pd_date_end , pcs_id , P.gui_c_id AS city, pbk_booking_id
+                        AVG(PB.pbk_stars) AS rating_avg, P.pck_id AS id, pck_name, pck_description , pck_price , pck_participants , gui_c_name , img_code , pck_days , pd_date_begin , pd_date_end , pcs_id , P.creation_date AS creation, P.gui_c_id AS city, pbk_booking_id
                     FROM
                         ${mainschema}.pack P
                         INNER JOIN ${mainschema}.image_pack IP

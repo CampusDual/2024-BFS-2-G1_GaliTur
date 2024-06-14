@@ -47,14 +47,15 @@
       [expression-builder]="createFilter"></o-filter-builder>
   </o-form>
   <div class="grid-container">
-    <o-grid #packGrid attr="packGrid" service="packs" entity="allPacks" keys="pck_id"
-    columns="pck_id;pck_name;pck_description;pck_price;pck_participants;gui_c_name;img_code;pck_days;creation_date"
-    query-rows="8" page-size-options="8" orderable="true"
-    sort-column="creation_date:desc"
-    sortable-columns="pck_name;gui_c_name;creation_date;pck_name:desc;gui_c_name:desc;creation_date:desc" quick-filter="false"
-    insert-button="false" refresh-button="false" pageable="yes"
-    pagination-controls="true" gutter-size="4px" fixed-header="yes" grid-item-height="280px" detail-mode="none"
-    insert-button-floatable="no">
+    
+    <o-grid #packGrid attr="packGrid" title="packs" service="packs" entity="allPacksRating" keys="id"
+    columns="id;pck_name;pck_description;pck_price;pck_participants;gui_c_name;img_code;pck_days;creation;rating_avg"
+    query-rows="8" page-size-options="8" orderable="true" sort-column="creation:desc"
+    quick-filter="false" 
+    insert-button="false" refresh-button="false" pageable="yes" pagination-controls="true" gutter-size="4px"
+    fixed-header="yes" grid-item-height="280px" detail-mode="none" insert-button-floatable="no">
+
+
     <o-grid-item *ngFor="let data of packGrid.dataArray">
       <div (click)="openDetail(data)" class="flip-card">
         <div class="flip-card-inner">
@@ -64,6 +65,11 @@
               <div class="pack-name"><span class="pack-name">{{data.pck_name}}</span></div>
               <hr/>
               <h4>{{data.gui_c_name}}</h4>
+              <div class="rating">
+                <span class="ratingNumber" *ngIf="!data.rating_avg">-</span>
+                <span class="ratingNumber" *ngIf="data.rating_avg">{{ data.rating_avg }}</span>
+                <mat-icon class="star">grade</mat-icon>
+              </div>
               <p class="front-price">{{data.pck_price}} €</p>
             </div>
           </div>
