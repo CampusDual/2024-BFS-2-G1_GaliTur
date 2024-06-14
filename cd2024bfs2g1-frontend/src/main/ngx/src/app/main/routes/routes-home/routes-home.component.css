@@ -311,12 +311,14 @@
     backface-visibility: hidden;
     border-radius: 10px;
     padding: 1px;
+    
 }   
   
 .flip-card-front {
     position: absolute;
     background-color: #bbb;
     color: black;
+    z-index: 1;
 }    
 
 .flip-card-front::before {
@@ -335,7 +337,7 @@
 .flip-card-back {
     background-color: #ccc6c0;   
     color: white;
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) !important;
 }   
 
 .pack-img {
