@@ -20,5 +20,6 @@ public interface IPackBookingService {
     EntityResult topLeastPacksQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 
     EntityResult packbookingClientUserDatePackQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
+    EntityResult packBookingDatePackQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 }
 

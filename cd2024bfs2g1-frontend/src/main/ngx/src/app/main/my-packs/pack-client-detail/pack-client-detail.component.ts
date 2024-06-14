@@ -13,11 +13,10 @@ import { PackValorationComponent } from '../pack-valoration/pack-valoration.comp
   styleUrls: ['./pack-client-detail.component.css']
 })
 export class PackClientDetailComponent implements OnInit{
-
+  private pckId: number
   protected isPackInstance: boolean
   public arrayDias = [];
   public selectedComboDay;
-  
 
   constructor(
     protected sanitizer: DomSanitizer,
@@ -40,8 +39,27 @@ export class PackClientDetailComponent implements OnInit{
   ngOnInit(): void {
     this.isPackInstance = false
     //this.isInstanceOfPack()
-    this.getDays()
-    
+    this.getPckId()
+      .then(() => this.getDays())
+      .catch((err) => console.error('Error during initialization:', err));
+  }
+
+  private getPckId(): Promise<void> {
+    const confPack = this.packDateService.getDefaultServiceConfiguration('packBookings');
+    this.packDateService.configureService(confPack);
+    return new Promise((resolve, reject) => {
+      this.bookingService.query({ pbk_booking_id: +this.route.snapshot.params['pbk_booking_id'] }, ['PC.pck_id'], 'packBookingDatePack')
+        .subscribe({
+          next: (result) => {
+            this.pckId = result.data[0].pck_id;
+            resolve();
+          },
+          error: (err) => {
+            console.error('Error fetching pckId:', err);
+            reject(err);
+          }
+        });
+    });
   }
 
   public formatDate(date:any) : any {
@@ -69,7 +87,6 @@ export class PackClientDetailComponent implements OnInit{
     const diferencia = Math.abs(fechaFin - fechaInicio);
     return Math.round(diferencia / unDia);
   }
-
 
   getDate(fechaNumber: number): string {
     const tempFecha = new Date(fechaNumber);
@@ -190,9 +207,8 @@ export class PackClientDetailComponent implements OnInit{
       return null;
     }
   }
-
-
   //Metodos para redirect dinamico de business
+
   openDetailBusiness(data: any): void {
     const currentUrl = this.router.url; // Capturar la URL actual
     const navigationExtras: NavigationExtras = {
@@ -201,9 +217,8 @@ export class PackClientDetailComponent implements OnInit{
     };
     this.router.navigate(['../../businesses/' + data.bsn_id], navigationExtras);
   }
-
-
   //Metodo para redirect dinamico de rutas
+
   openDetailRoutes(data: any): void {
     const currentUrl = this.router.url; // Capturar la URL actual
     const navigationExtras: NavigationExtras = {
@@ -261,8 +276,6 @@ export class PackClientDetailComponent implements OnInit{
       }
     })
   }
-  
+
 }
-
-
 
