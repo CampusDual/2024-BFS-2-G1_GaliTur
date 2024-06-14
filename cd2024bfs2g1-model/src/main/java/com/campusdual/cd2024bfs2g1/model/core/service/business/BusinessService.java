@@ -88,7 +88,6 @@ public class BusinessService implements IBusinessService {
 
     @Override
     public EntityResult typesOfBusinessesQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
-
         return this.daoHelper.query(this.businessDao, keysValues, attributes,businessDao.QUERY_TYPE_OF_BUSINESSES);
     }
 
