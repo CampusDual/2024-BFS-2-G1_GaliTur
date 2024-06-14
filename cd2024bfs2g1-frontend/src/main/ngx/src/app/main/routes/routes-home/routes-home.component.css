@@ -421,6 +421,9 @@
   margin-bottom: 16px;
   box-sizing: border-box;
   border-radius: 10px 10px 10px 10px;
+  display: flex; 
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .pack-info-title {
@@ -431,6 +434,10 @@
   display: inline-block;
   text-overflow: ellipsis;
   width: calc(90%);
+
+
+
+  
 }
 
 /* icon styles */
@@ -467,4 +474,10 @@
 
 :host ::ng-deep .mat-mdc-paginator-container .mat-mdc-paginator-page-size{
   visibility: hidden !important;
+}
+
+.titleIcon{
+
+
+
 }
