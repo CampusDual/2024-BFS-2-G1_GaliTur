@@ -457,5 +457,6 @@
   "CONFIRM_DELETE_BUTTON": "Delete route",
   "BUSINESS_DATA_EDIT": "Edit business",
   "SHOW_MAP": "View map",
+  "CLEAR_FILTER":"Clear",
   "accessible": "Accessible"
 }
