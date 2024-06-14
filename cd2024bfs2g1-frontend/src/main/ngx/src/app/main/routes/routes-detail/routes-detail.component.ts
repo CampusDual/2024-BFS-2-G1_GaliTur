@@ -15,11 +15,11 @@ import { LandmarksService } from 'src/app/shared/services/landmarks.service';
 })
 export class RoutesDetailComponent implements OnInit{
   galleryOptions: any;
-
+  num_landmarks: number;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private ontimizeService: OntimizeService,
+    private ontimizelandmarkService: OntimizeService,
     protected sanitizer: DomSanitizer,
     protected dialog: MatDialog,
     protected landmarkService: LandmarksService,
@@ -27,7 +27,7 @@ export class RoutesDetailComponent implements OnInit{
     private router: Router,
     private actRoute: ActivatedRoute
     ) {
-    this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration("landmarks"));
+    
     this.galleryOptions = [
       {
         image: true,
@@ -39,19 +39,27 @@ export class RoutesDetailComponent implements OnInit{
       }
     ]
     this.dialogRef.disableClose = true;
-
+    
    }
 
 
 
   ngOnInit(){
+    const confLandmark =
+      this.ontimizelandmarkService.getDefaultServiceConfiguration("landmarks");
+    this.ontimizelandmarkService.configureService(confLandmark);
+    this.ontimizelandmarkService.query({route_id: this.data.route_id}, ['num_landmarks'], 'route_landmark' ).subscribe((landmarkData) => {
+      this.num_landmarks=landmarkData.data[0]['num_landmarks'];
+    });
   }
 
   public openDetailLandmark(data: any): void {
-
+    const confLandmark =
+      this.ontimizelandmarkService.getDefaultServiceConfiguration("landmarks");
+    this.ontimizelandmarkService.configureService(confLandmark);
     const landmarkCoordinates= []
 
-       this.ontimizeService.query({route_id: data.route_id}, ['name', 'l.landmark_id', 'coordinates'], 'landmark' ).subscribe((landmarkData) => {
+       this.ontimizelandmarkService.query({route_id: data.route_id}, ['name', 'l.landmark_id', 'coordinates'], 'landmark' ).subscribe((landmarkData) => {
         data['landmark'] = landmarkData.data
         this.dialog.open(ViewLandmarkDetailComponent, {
           height: '800px',

@@ -15,6 +15,7 @@ import { ActivatedRoute} from '@angular/router';
 export class RoutesHomeComponent {
 
 galleryOptions: any;
+num_landmarks: number;
 
   constructor(
     protected dialog: MatDialog,
@@ -31,6 +32,7 @@ galleryOptions: any;
     const confRoute =
       this.ontimizerouteService.getDefaultServiceConfiguration("routes");
     this.ontimizerouteService.configureService(confRoute);
+    
     if(!isNaN(idRutaActual)){
       this.ontimizerouteService
       .query(
@@ -42,6 +44,8 @@ galleryOptions: any;
         this.openDetail(response.data[0]);
       });
     }
+
+    
   }
 
 
@@ -68,6 +72,7 @@ galleryOptions: any;
         data: data
       });
     })
+    
   }
   public convertTime(metros: number):  string {
 
