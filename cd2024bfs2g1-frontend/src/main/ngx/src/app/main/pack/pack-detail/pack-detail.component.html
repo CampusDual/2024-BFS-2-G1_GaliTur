@@ -94,9 +94,7 @@
                     <o-row class="o-rows" class="left" attr="container" icon="description" mat
                         title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" elevation="1"
                         aria-orientation="vertical" appearance="outline">
-                        <ul class="list-to-desc">
-                            <li *ngFor="let packs of packForm.dataArray">{{packs.pck_description}}</li>
-                        </ul>
+                        <li *ngFor="let packs of packForm.dataArray" class="list-to-desc">{{packs.pck_description}} </li>
                     </o-row>
 
 
