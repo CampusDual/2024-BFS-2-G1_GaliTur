@@ -133,7 +133,7 @@
 
 .tooltipHomeDuration:hover .tooltiptextHomeDuration {
   visibility: visible;
-  transform: scale(0.9);
+  transform: scale(0.5);
   opacity: 1;
 }
 
