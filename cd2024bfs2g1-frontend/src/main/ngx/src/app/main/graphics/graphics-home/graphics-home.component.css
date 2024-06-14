@@ -1,11 +1,15 @@
-
 /*Estilo de la carta*/
 .card {
     margin: 20px 40px 0px 40px;
     height: auto;
     background-color: #ccc6c0;
-    display: flex;
+    display:flex;
     align-items: center;
+}
+
+.graficas{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 /*Define el estilo del titulo*/
@@ -58,10 +62,22 @@
     font-size: 15px !important; 
 }
 
+@media(max-width:1800px){
+    .chart-row{
+        margin:150px 50px 0px 50px;
+    }
+  }
 
+@media(max-width:1700px){
+    .graphics{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        margin:50px 50px 0px 50px;
+    }
+  }
 
-
-
-
-
-
+@media(max-width:1020px){
+    .card{
+        width: 657px;
+    }
+  }
