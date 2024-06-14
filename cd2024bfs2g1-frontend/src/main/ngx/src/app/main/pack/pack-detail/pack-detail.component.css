@@ -130,6 +130,8 @@
 }
 /* Estilos de la lista de la descripcion*/
 .list-to-desc {
+    margin-left: 25px;
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
     width: 90%;
