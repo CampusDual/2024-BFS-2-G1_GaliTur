@@ -173,8 +173,8 @@ public class PackService implements IPackService {
 
     @Override
     public EntityResult packRatingQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
-        EntityResult er = this.daoHelper.query(this.packDao, keysValues, attributes, this.packDao.PCK_RATING_AVG_QUERY);
-        return er;
+        keysValues.put(ClientDao.CLIENT_ID, clientService.getClientId());
+        return this.daoHelper.query(this.packDao, keysValues, attributes, this.packDao.PCK_RATING_AVG_QUERY);
     }
 
     @Override
@@ -221,6 +221,12 @@ public class PackService implements IPackService {
             throws OntimizeJEERuntimeException {
         keysValues.put(ClientDao.CLIENT_ID, clientService.getClientId());
         return this.daoHelper.paginationQuery(this.packDao, keysValues, attributes, recordNumber, startIndex, orderBy, this.packDao.PCK_MULTI_QUERY);
+    }
+
+    @Override
+    public AdvancedEntityResult packRatingPaginationQuery(Map<String, Object> keysValues, List<String> attributes, int recordNumber, int startIndex, List<?> orderBy) throws OntimizeJEERuntimeException {
+        keysValues.put(ClientDao.CLIENT_ID, clientService.getClientId());
+        return this.daoHelper.paginationQuery(this.packDao, keysValues, attributes, recordNumber, startIndex, orderBy, this.packDao.PCK_RATING_AVG_QUERY);
     }
 
     @Override

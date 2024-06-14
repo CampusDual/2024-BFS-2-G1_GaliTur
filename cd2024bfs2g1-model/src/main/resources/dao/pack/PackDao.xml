@@ -103,18 +103,28 @@
             <Sentence>
                 <![CDATA[
                     SELECT
-                        AVG(PB.pbk_stars) AS rating_avg, P.pck_id
+                        AVG(PB.pbk_stars) AS rating_avg, P.*, IP.*, I.*, GC.*, PD.*, PB.*
                     FROM
                         ${mainschema}.pack P
+                        INNER JOIN ${mainschema}.image_pack IP
+                        ON P.pck_id=IP.pck_id
+                        INNER JOIN ${mainschema}.image I
+                        ON IP.img_id=I.image_id
+                        INNER JOIN ${mainschema}.gui_cities GC
+                        ON P.gui_c_id=GC.gui_c_id
                         INNER JOIN ${mainschema}.pack_date PD
                         ON P.pck_id=PD.pck_id
                         INNER JOIN ${mainschema}.pack_booking PB
                         ON PD.pd_id=PB.pd_id
-                    WHERE
-                     PB.pbk_stars is not null
-                    #WHERE_CONCAT#
+                    #WHERE#
                     GROUP BY
-                        P.pck_id
+                     P.pck_id,
+                     IP.imp_id,
+                     I.image_id,
+                     GC.gui_z_id,
+                     GC.gui_c_id,
+                     PD.pd_id,
+                     PB.pbk_booking_id
                     #ORDER#
                 ]]>
             </Sentence>
