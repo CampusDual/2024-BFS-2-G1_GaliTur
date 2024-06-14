@@ -76,7 +76,6 @@ public class BusinessService implements IBusinessService {
             return this.daoHelper.query(this.businessDao, keysValues, attributes, "agencyBusinesses");
 
         }
-
         return null;
     }
 
