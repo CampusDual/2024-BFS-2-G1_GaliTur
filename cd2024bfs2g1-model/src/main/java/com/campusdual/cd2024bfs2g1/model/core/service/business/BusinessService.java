@@ -1206,66 +1206,71 @@ public class BusinessService implements IBusinessService {
         String concatLanguages = "";
         String languageName = "";
 
-        for (Integer num : languagesValues) {
-            switch (num) {
-                case 1:
-                    languageName = "SPANISH";
-                    break;
-                case 2:
-                    languageName = "GALICIAN";
-                    break;
-                case 3:
-                    languageName = "ENGLISH";
-                    break;
-                case 4:
-                    languageName = "GERMAN";
-                    break;
-                case 5:
-                    languageName = "PORTUGUESE";
-                    break;
-                case 6:
-                    languageName = "FRENCH";
-                    break;
-                case 7:
-                    languageName = "RUSSIAN";
-                    break;
-                case 8:
-                    languageName = "ITALIAN";
-                    break;
-                case 9:
-                    languageName = "BASQUE";
-                    break;
-                case 10:
-                    languageName = "CATALAN";
-                    break;
-                case 11:
-                    languageName = "POLISH";
-                    break;
-                case 12:
-                    languageName = "UKRAINIAN";
-                    break;
-                case 13:
-                    languageName = "DUTCH";
-                    break;
-                case 14:
-                    languageName = "CHINESE";
-                    break;
-                case 15:
-                    languageName = "ARABIC";
-                    break;
+        if(languagesValues!=null){
+            for (Integer num : languagesValues) {
+                switch (num) {
+                    case 1:
+                        languageName = "SPANISH";
+                        break;
+                    case 2:
+                        languageName = "GALICIAN";
+                        break;
+                    case 3:
+                        languageName = "ENGLISH";
+                        break;
+                    case 4:
+                        languageName = "GERMAN";
+                        break;
+                    case 5:
+                        languageName = "PORTUGUESE";
+                        break;
+                    case 6:
+                        languageName = "FRENCH";
+                        break;
+                    case 7:
+                        languageName = "RUSSIAN";
+                        break;
+                    case 8:
+                        languageName = "ITALIAN";
+                        break;
+                    case 9:
+                        languageName = "BASQUE";
+                        break;
+                    case 10:
+                        languageName = "CATALAN";
+                        break;
+                    case 11:
+                        languageName = "POLISH";
+                        break;
+                    case 12:
+                        languageName = "UKRAINIAN";
+                        break;
+                    case 13:
+                        languageName = "DUTCH";
+                        break;
+                    case 14:
+                        languageName = "CHINESE";
+                        break;
+                    case 15:
+                        languageName = "ARABIC";
+                        break;
+                }
+
+                concatLanguages += languageName + ", ";
             }
 
-            concatLanguages += languageName + ", ";
+            if (concatLanguages.endsWith(",")) {
+                concatLanguages = concatLanguages.substring(0, concatLanguages.length() - 1);
+            }
+
+
+            dataMap.remove("comboLanguages");
+            concatLanguages = concatLanguages.substring(0, concatLanguages.length() - 2);
+            dataMap.put(AgencyGuideDao.LANGUAGE, concatLanguages);
+
+
         }
 
-        if (concatLanguages.endsWith(",")) {
-            concatLanguages = concatLanguages.substring(0, concatLanguages.length() - 1);
-        }
-
-
-        dataMap.remove("comboLanguages");
-        concatLanguages = concatLanguages.substring(0, concatLanguages.length() - 2);
-        dataMap.put(AgencyGuideDao.LANGUAGE, concatLanguages);
 
         return dataMap;
     }
