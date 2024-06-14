@@ -190,6 +190,7 @@ public class PackService implements IPackService {
         return this.daoHelper.query(this.packDao, keysValues, attributes, this.packDao.PCK_DETAIL);
     }
 
+
     @Override
     public EntityResult packAndBookingDetailQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
         if(keysValues.containsKey(PackDao.PCK_ID)){
