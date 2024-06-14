@@ -65,8 +65,9 @@ export class RegisterClientComponent{
   public register(){
      this.mainService.getUserInfoByLoginAndId(this.login.getValue(), this.email.getValue()).subscribe(
        (result) => {
-         this.form.insert()
+         
          if (result.data[0] === undefined){
+          this.form.insert()
         } else if (result.data[0].usr_login === this.login.getValue()){
           this.dialogService.error('Username error', 'Username already exists');
           } else if (result.data[0].usr_email === this.email.getValue()){

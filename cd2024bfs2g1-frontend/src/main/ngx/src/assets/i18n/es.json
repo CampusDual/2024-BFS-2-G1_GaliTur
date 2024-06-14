@@ -236,10 +236,10 @@
   "MESSAGES_FORM_CHANGES_WILL_BE_LOST_LANDMARK": "¿Estás realmente seguro de que quieres hacer esto? Todos los cambios se perderán.",
   "landmark_id": "Id",
   "button_table_finish": "Finalizar",
-  "Dificultad: Intermedio": "Dificultad: Intermedio",
-  "Dificultad: Fácil": "Dificultad: Fácil",
-  "Dificultad: Difícil": "Dificultad: Difícil",
-  "Dificultad: Extremo": "Dificultad: Extremo",
+  "Dificultad_intermedia": "Dificultad Intermedio",
+  "Dificultad_facil": "Dificultad Fácil",
+  "Dificultad_dificil": "Dificultad Difícil",
+  "Dificultad_extremo": "Dificultad Extremo",
   "MYPACKS": "Mis Packs",
   "pck_date_begin": "Fecha de Inicio",
   "gui_c_name": "Ciudad",
@@ -467,7 +467,9 @@
   "CANCEL_BUTTON": "Cancelar",
   "CONFIRM_DELETE_BUTTON": "Eliminar ruta",
   "BUSINESS_DATA_EDIT": "Editar negocio",
-  "SHOW_MAP": "Ver mapa"
+  "SHOW_MAP": "Ver mapa",
+  "CLEAR_FILTER":"Limpiar",
+  "accessible": "Accesible"
 }
 
 

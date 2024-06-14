@@ -236,10 +236,10 @@
   "button_table_finish": "Finish",
   "NOT_SPECIFIED": "Not specified",
   "REGISTER_BUTTON": "Register",
-  "Dificultad: Intermedio": "Difficulty: Intermediate",
-  "Dificultad: Fácil": "Difficulty: Easy",
-  "Dificultad: Difícil": "Difficulty: Hard",
-  "Dificultad: Extremo": "Difficulty: Extreme",
+  "Dificultad_intermedia": "Difficulty Intermediate",
+  "Dificultad_facil": "Difficulty Easy",
+  "Dificultad_dificil": "Difficulty Hard",
+  "Dificultad_extremo": "Difficulty Extreme",
   "BOOK": "Reserve",
   "BOOKING.CONFIRMED": "Booking confirmed",
   "BOOKED": "Reserved",
@@ -404,7 +404,7 @@
   "HOME-TITLE": "Your ultimate travel companion",
   "HOME-SUBTITLE": "Explore, connect and live unique experiences",
   "HOME-CONTENT-TITLE": "Discover Galicia like never before",
-  "HOME-CONTENT-DESCRIPTION": "Delve into the depths of this beautiful territory! Our app will guide you through its charming routes and connect you with the best restaurants, accommodations and local guides. Explore our pre-designed packs for an unforgettable experience. Start your adventure today!",
+  "HOME-CONTENT-DESCRIPTION": "Dive into the depths of this beautiful territory! Our app will guide you through its charming routes and connect you with the best restaurants, accommodations and local guides. Explore our pre-designed packs for an unforgettable experience. Start your adventure today!",
   "HOME-CONTENT-BUTTON": "Explore the Packs",
   "HOME-CONTENT-SECONDARY-BUTTON": "More info",
   "DATE_RANGE_FIELD": "Date range field",
@@ -456,5 +456,7 @@
   "CANCEL_BUTTON": "Cancel",
   "CONFIRM_DELETE_BUTTON": "Delete route",
   "BUSINESS_DATA_EDIT": "Edit business",
-  "SHOW_MAP": "View map"
+  "SHOW_MAP": "View map",
+  "CLEAR_FILTER":"Clear",
+  "accessible": "Accessible"
 }
