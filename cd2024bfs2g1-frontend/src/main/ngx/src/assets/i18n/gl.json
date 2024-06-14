@@ -703,7 +703,8 @@
     "Top_least_rated_packs":"Os packs menos valorados.",
     "BUSINESS_DATA_EDIT": "Editar negocio",
     "SHOW_MAP": "Ver mapa",
-    "CLEAR_FILTER":"Limpar"
+    "CLEAR_FILTER":"Limpar",
+    "accessible": "Acesible"
   }
 
 
