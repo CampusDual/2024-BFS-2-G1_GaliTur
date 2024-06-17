@@ -86,5 +86,35 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="bookingClientUserDatePack">
+            <Sentence>
+                    <![CDATA[
+                        SELECT
+                            #COLUMNS#
+                        FROM
+                        ${mainschema}.pack_booking PB
+                        INNER JOIN ${mainschema}.client C ON C.client_id = PB.client_id
+                        INNER JOIN ${mainschema}.usr_user US ON US.usr_id = C.usr_id
+                        INNER JOIN ${mainschema}.pack_date PD ON PD.pd_id = PB.pd_id
+                        INNER JOIN ${mainschema}.pack PC ON PC.pck_id = PD.pck_id
+                        #WHERE# AND PB.pbk_rating_date IS NOT NULL
+                        #ORDER#
+                    ]]>
+            </Sentence>
+        </Query>
+        <Query id="bookingDatePack">
+            <Sentence>
+                <![CDATA[
+                        SELECT
+                            #COLUMNS#
+                        FROM
+                        ${mainschema}.pack_booking PB
+                        INNER JOIN ${mainschema}.pack_date PD ON PD.pd_id = PB.pd_id
+                        INNER JOIN ${mainschema}.pack PC ON PC.pck_id = PD.pck_id
+                        #WHERE#
+                        #ORDER#
+                    ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

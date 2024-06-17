@@ -16,6 +16,7 @@ import {
 } from "ontimize-web-ngx";
 import {PackHomeComponent} from "../pack-home/pack-home.component";
 import {UserInfoService} from "../../../shared/services/user-info.service";
+import { PackValorationComponent } from "../../my-packs/pack-valoration/pack-valoration.component";
 
 @Component({
   selector: "app-pack-detail",
@@ -266,6 +267,7 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
     this.router.navigate(['../../routes/' + data.route_id], navigationExtras);
   }
 
+
   public backToHome(): void {
     const currentUrl = this.router.url; // Capturar la URL actual
     const previousUrl = history.state && history.state.previousUrl ? history.state.previousUrl : '';
@@ -300,7 +302,7 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
         }
         break;
     }
-  }
+}
 
 
   public getRouteImageSrc(base64: any): any {
@@ -359,7 +361,7 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
 
     getDays() {
       const filter = {
-        pck_id: this.route.snapshot.params["pck_id"],
+        pck_id: +this.route.snapshot.params["pck_id"],
       };
       const confPack = this.packDateService.getDefaultServiceConfiguration('packs');
       this.packDateService.configureService(confPack);
@@ -382,6 +384,7 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
         }
       });
     }
+
 
     returnArray(): any[] {
       return this.array;
@@ -421,5 +424,18 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
     } else {
         return name;
     }
+  }
+
+  valorationStars(star:number, stars:number): string{
+    let result: string
+
+    if(star-1 == Math.trunc(stars) && star == Math.round(stars)){
+      result="star_half_white"
+    }
+    else  if(star >stars){
+      result="star_white"
+    }
+
+    return result
   }
 }
