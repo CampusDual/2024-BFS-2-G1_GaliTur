@@ -5,6 +5,12 @@
   margin: auto;
 }
 
+.space {
+  padding-top: 20%;
+  margin-right: 50px;
+  width: 100%;
+}
+
 .principal {
   align-items: center;
   height: 90%;
