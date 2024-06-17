@@ -232,10 +232,11 @@ public class PackService implements IPackService {
     @Override
     public AdvancedEntityResult allPacksRatingPaginationQuery(Map<String, Object> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
             throws OntimizeJEERuntimeException {
-        keysValues.put(ClientDao.CLIENT_ID, clientService.getClientId());
-        AdvancedEntityResult er = this.daoHelper.paginationQuery(this.packDao, keysValues, attributes, recordNumber, startIndex, orderBy, this.packDao.PCK_RATING_AVG_QUERY);
+        AdvancedEntityResult er = this.daoHelper.paginationQuery(this.packDao, keysValues, attributes, recordNumber, startIndex, orderBy, this.packDao.PCK_ALL_RATING_AVG_QUERY);
         return er;
     }
+
+
 
     @Override
     @Secured(PermissionsProviderSecured.SECURED)

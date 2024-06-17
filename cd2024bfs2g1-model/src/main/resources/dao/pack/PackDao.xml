@@ -135,6 +135,68 @@
                 ]]>
             </Sentence>
         </Query>
+
+        <Query id="allRatingAVG">
+            <Sentence>
+                <![CDATA[
+                 WITH temp_table AS (
+                    select DISTINCT
+	rating_avg,
+	P.pck_id as id,
+	pck_name,
+	pck_description ,
+	pck_price ,
+	pck_participants ,
+	gui_c_name ,
+	img_code ,
+	pck_days ,
+	P.creation_date as creation,
+	P.gui_c_id as city
+from
+	pack P
+inner join ${mainschema}.image_pack IP
+                        on
+	P.pck_id = IP.pck_id
+inner join ${mainschema}.image I
+                        on
+	IP.img_id = I.image_id
+inner join ${mainschema}.gui_cities GC
+                        on
+	P.gui_c_id = GC.gui_c_id
+inner join (
+	select
+		distinct pck_id,
+		pd_date_begin
+	from
+		pack_date pd
+where
+	PD.pcs_id = 1
+ ) spd on
+	P.pck_id = spd.pck_id
+left join (
+select
+		pck_id,
+		AVG(PB.pbk_stars) as rating_avg
+	from
+		pack_date pd
+	INNER join ${mainschema}.pack_booking PB
+                        on
+		PD.pd_id = PB.pd_id
+ group by pck_id
+                            ) spb
+                        on
+	P.pck_id = spb.pck_id
+	#WHERE#
+                    #ORDER#
+                    )
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        temp_table
+                ]]>
+            </Sentence>
+        </Query>
+
         <Query id="packDetail">
             <Sentence>
                 <![CDATA[

@@ -36,5 +36,7 @@ public class PackDao extends OntimizeJdbcDaoSupport {
     public static String PCK_BY_STATION_QUERY = "packByStation";
     public static String PCK_RATING_AVG_QUERY = "multiRatingAVG";
 
+    public static String PCK_ALL_RATING_AVG_QUERY = "allRatingAVG";
+
 
 }

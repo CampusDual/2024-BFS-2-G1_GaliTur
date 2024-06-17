@@ -47,11 +47,11 @@
       [expression-builder]="createFilter"></o-filter-builder>
   </o-form>
   <div class="grid-container">
-    
-    <o-grid #packGrid attr="packGrid" title="packs" service="packs" entity="allPacksRating" keys="id"
+
+    <o-grid #packGrid attr="packGrid" service="packs" entity="allPacksRating" keys="id"
     columns="id;pck_name;pck_description;pck_price;pck_participants;gui_c_name;img_code;pck_days;creation;rating_avg"
     query-rows="8" page-size-options="8" orderable="true" sort-column="creation:desc"
-    quick-filter="false" 
+    quick-filter="false"
     insert-button="false" refresh-button="false" pageable="yes" pagination-controls="true" gutter-size="4px"
     fixed-header="yes" grid-item-height="280px" detail-mode="none" insert-button-floatable="no">
 
@@ -73,7 +73,7 @@
                 </div>
                 <p class="front-price">{{data.pck_price}} <span class="euro">€</span></p>
               </div>
-              
+
             </div>
           </div>
           <div class="flip-card-back">
@@ -86,7 +86,7 @@
                 <ul style="list-style-type: none;" class="list">
                   <li *ngIf="data.pck_participants && data.pck_participants == 1"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}} {{'PERSON' | oTranslate}}</li>
                   <li *ngIf="data.pck_participants && data.pck_participants > 1"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}} {{'PEOPLE' | oTranslate}}</li>
-                        
+
                   <li *ngIf="!data.pck_days"><mat-icon class="icon">timer</mat-icon>-</li>
                   <li *ngIf="data.pck_days && data.pck_days == 1"><mat-icon class="icon">timer</mat-icon>{{data.pck_days}} {{'DAY' | oTranslate}}</li>
                   <li *ngIf="data.pck_days && data.pck_days > 1"><mat-icon class="icon">timer</mat-icon>{{data.pck_days}} {{'DAYS' | oTranslate}}</li>
@@ -101,7 +101,7 @@
     </o-grid-item>
 </o-grid>
 
-  
+
   </div>
 </div>
 
@@ -122,7 +122,7 @@
                 </div>
                 <p class="front-price">{{data.pck_price}} <mat-icon class="euro-symbol">euro</mat-icon></p>
               </div>
-              
+
             </div>
           </div>
 
