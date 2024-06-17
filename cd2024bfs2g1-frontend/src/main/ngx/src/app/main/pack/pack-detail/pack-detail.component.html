@@ -26,8 +26,6 @@
                 columns="B.bsn_id;B.merchant_id;B.bsn_name;B.bsn_type;B.bsn_photos;BSP.pck_id;BSP.bsn_pack_id;assigned_date;bsn_website;bsn_schedule"
                 query-rows="16" parent-keys="pck_id" oHidden />
 
-            <o-grid   oHidden/>
-
             <!-- Almaceno las rutas de un pack -->
             <o-grid #gridRoutesOfPack attr="routesHome" title="ROUTES" service="routes" entity="routesOfPack"
                 keys="r.route_id;rp.pck_id;"
