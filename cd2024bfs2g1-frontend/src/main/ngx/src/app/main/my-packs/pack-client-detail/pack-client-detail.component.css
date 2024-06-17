@@ -106,29 +106,30 @@
     background-color: transparent;
 }
 
+/* Espaciar las listas <ul> de forma correcta independientemente del numero de items que tenga */
 .list-with-spaces {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     width: 90%;
     row-gap: 10px;
-    max-height: 130px;
+    max-height: 200px;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-
+/* Estilos de la lista de la descripcion*/
 .list-to-desc {
     display: flex;
     flex-direction: column;
     width: 90%;
     row-gap: 10px;
-    max-height: 130px;
+    max-height: 200px;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-
+/* Estilos de los text-inputs */
 .o-text-input {
     outline: transparent;
     width: 100%;
@@ -136,11 +137,13 @@
     margin-top: 15px;
 }
 
+/* Estilo de los o-grid-items */
 .o-grid-items {
     width: 100%;
     height: 100%
 }
 
+/* Estilo de los <li> de las listas para espaciarlos verticalmente o separarlos de los bordes superiores */
 .li-with-margin {
     margin-top: 10px;
 }
@@ -152,15 +155,11 @@
     }
 }
 
-
-::ng-deep .mdc-snackbar__surface{
-        background-color: #52733B !important;
-}
-
 .div-cancel-pack-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 25px;
 }
 
 .cancel-pack{
@@ -219,10 +218,582 @@
 }
 
 
+/* Estilos del contenedor del o-row de las RUTAS pertenecientes al pack */
+.routes-container {
+    padding: 25px;
+}
+.no-business-card {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+/* Estilos del contenedor del o-row de los NEGOCIOS pertenecientes al pack */
+.business-container {
+    padding: 25px;
+}
+
+/* Estilos de los o-rows que contienen los o-grid de laas rutas y los negocios */
+.o-row-o-grid-container {
+    background-color: transparent;
+    .o-grid .o-grid-container .o-grid-footer .o-grid-totals {
+        color: transparent !important;
+    }
+    mat-icon:not(.star){
+        color:#84A45A;
+    }
+}
+
+/* Estilos del contenedor de los o-grid de laas rutas y los negocios */
+.o-grid-container {
+    width: 100%;
+    max-height: 492px;
+    height: 492px;
+    padding: 0px;
+    margin:0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
 
 
+/* Estilos de las cartas de los business del pack*/
+.businessCard {
+    width: 365px;
+    background-color: #ccc6c0;
+    border-radius: 10px;
+    padding: 16px;
+    overflow-x: hidden;
+
+}
+
+.businessCard img {
+    width: 100%;
+}
+
+.businessCard .office {
+    font-size: 0.8em;
+}
 
 
+.preview-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.text-style {
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.type-icon {
+    margin-bottom: -8.5px;
+    margin-right: 2px;
+    color: white !important;
+    font-size: 17px;
+
+}
+
+:host ::ng-deep .o-grid-sort {
+    min-width: 300px;
+    mat-form-field {
+        min-width: 300px;
+    }
+}
+
+.businessCard:hover {
+    box-shadow: 0 0 15px rgba(113, 94, 78, 0.5);
+    transform: scale(1.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.card-header {
+    width: 100%;
+    text-align: center;
+    background-color:rgba(113, 94, 78, 1);
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.business-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 40px;
+}
+.business-icon {
+    width: 10%;
+    margin: auto;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2px;
+}
+
+.business-name {
+    width: 90%;
+    margin: auto;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.card-name {
+    overflow: hidden;
+    white-space: wrap;
+    display: inline-block;
+    text-overflow: ellipsis;
+    width: calc(90%);
+    span {
+        font-size: 1.55em;
 
+    }
+}
+.route-preview-image {
+    width: 100%;
+    height: 100%;
+}
+.flip-card {
+    background-color: transparent;
+    width: 85%;
+    height: 85%;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    border-radius: 10px;
+    border-color: transparent;
+}
+.flip-card:hover {
+    cursor: pointer;
+
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    border-radius: 10px;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    border-radius: 10px;
+    padding: 1px;
+}
+
+.flip-card-front {
+    position: absolute;
+    background-color: #bbb;
+    color: black;
+
+
+}
+
+.flip-card-front::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    border-radius: 10px;
+}
+
+/* Style the back side */
+.flip-card-back {
+    background-color: #ccc6c0;
+    color:#444240;
+    transform: rotateY(180deg);
+}
+
+/* card header styles */
+.cardHeader {
+    width: 80%;
+    text-align: center;
+    background-color: #615e5b;
+    margin-top: 7%;
+    color: white;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 4px;
+    padding-right: 10px;
+    margin-inline: auto;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.pack-info-title {
+    font-size: 1.25em;
+    font-weight: 500;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    text-overflow: ellipsis;
+    width: calc(90%);
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* ajusta el color del texto según sea necesario */
+    text-align: center;
+    z-index: 10;
+    width: 100%;
+    hr {
+        width: 3.5em;
+        margin-top: -12px;
+        margin-bottom: 10px;
+        border-style: solid;
+    }
+    h2 {
+        font-weight: 250;
+        margin: 0;
+        font-size: 1.8em;
+    }
+    h4 {
+        font-weight: 10;
+        font-size: 1.3em;
+        margin: 0;
+    }
+}
+
+/* icon styles */
+.icon {
+    margin-bottom: -10px;
+    font-size: 16px;
+    color: #444240 !important;
+    margin-right: 4px;
+}
+
+/* info list styles */
+.list {
+    margin-left: -10%;
+    list-style: none;
+    row-gap: 15px;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.leafsDifficulty {
+    margin-top: 15px;
+    mat-icon {
+      margin-right: 5px;
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+  }
+  .empty-leafs {
+    color: rgba(255, 255, 255, 0.548) !important;
+
+  }
+  .difficulty {
+    text-align: left;
+    margin-top: 12px;
+  }
+
+  .duration {
+    text-align: left;
+  }
+
+  .icon-difficulty-1 {
+    color: #a3e77a !important;
+  }
+
+  .icon-difficulty-2 {
+    color: #e2dd8a !important;
+  }
+
+  .icon-difficulty-3 {
+    color: #fabf72 !important;
+  }
+
+  .icon-difficulty-4 {
+    color: #f4817c !important;
+  }
+  .d-1 {
+    background-color: #E4EBF2;
+    border-radius: 20px;
+    padding: 10px 10px;
+    height: 70px;
+    width: 300px;
+    align-items: center;
+  }
+
+  .d-2 {
+    background-color: #E4EBF2;
+    border-radius: 20px;
+    height: 70px;
+    padding: 10px 10px;
+    align-items: center;
+    width: 300px;
+  }
+
+  .d-3 {
+    background-color: #E4EBF2;
+    border-radius: 20px;
+    height: 70px;
+    padding: 10px 10px;
+    align-items: center;
+    width: 300px;
+  }
+
+  .d-4 {
+    background-color: #E4EBF2;
+    border-radius: 20px;
+    height: 70px;
+    padding: 10px 10px;
+    align-items: center;
+    width: 300px;
+  }
+
+  .valorations{
+      width: 100%;
+      height: auto;
+      background-color: #e7e6e6;
+      border-radius: 10px;
+      padding: 16px;
+      overflow-x: hidden;
+  }
+
+  .card-valorations-header{
+      width: auto;
+      align-content:start;
+      background-color:#a2c07b;
+      color: white;
+      padding-left: 5px;
+      padding-right: 5px;
+      margin-right: 16px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+      border-radius: 10px;
+      padding: 0px 2%;
+  }
+
+  #date-rating{
+      margin: 0.8%;
+  }
+
+  .star {
+      cursor: pointer;
+      transition: color 0.2s;
+      color: rgba(113, 94, 78, 1);
+  }
+
+  .valorations .star{
+      width: 4.7%;
+      height: 100%;
+      font-size: 230%;
+  }
+
+  .star_color{
+      color: rgb(238, 202, 1);;
+  }
+
+  .list-to-desc{
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      margin: 0px;
+      width: 100%;
+  }
+
+  .o-row-coment{
+      margin: 0px;
+      padding: 0px;
+      width: 100%;
+      flex: 1;
+      background-color: transparent;
+      font-size: 13px;
+  }
+
+  .user-name{
+      /* font-size: 12px; */
+      width: 100%;
+  }
+
+  .valoracions-name{
+
+      margin: auto;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }
+
+/* Estilos del contenedor del combo-box de las fechas disponibles */
+.div-combo-container{
+    width: 75%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+        background-color: rgba(132, 164, 90, 0.35) !important;
+        border-top-left-radius: 8px !important;
+        border-top-right-radius: 8px !important;
+    }
+    .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+        margin-top: -5px !important;
+    }
+    .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label  {
+        margin-top: 5px !important;
+    }
+}
+
+.div-combo-days-container{
+    width: 50%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+        background-color: #ccc6c0 !important;
+        border-top-left-radius: 8px !important;
+        border-top-right-radius: 8px !important;
+    }
+    .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+        margin-top: -5px !important;
+    }
+    .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label  {
+        margin-top: 5px !important;
+    }
+}
+
+.button_star{
+    background: transparent;
+    border: none;
+    width: 5%;
+}
+
+.button_star .star{
+    width: 110%;
+    height: 100%;
+    font-size: 260%;
+}
+
+/* Seleccionar la estrella y todas las anteriores para cambiar su color */
+.button_star:hover,
+.button_star:hover ~ .button_star{
+    .star{
+        color: rgb(238, 202, 1);;
+    }
+}
+
+#valorated_title{
+    margin: 0.5% 2%;
+    color: #84A45A;
+
+}
+
+#valorated_star{
+    margin: 0;
+    color: rgb(238, 202, 1);
+    margin: 0.5% 0;
+}
+
+#valorated_number{
+    margin: 0;
+    color:#52733B;
+}
+
+.valoration_average{
+    background-color: rgba(0, 0, 0, 0.336);
+    border-radius: 10px;
+    width: 20%;
+    height: 9%;
+    justify-content: center;
+    align-self: flex-end;
+    float: right;
+}
+
+
+#valoration_data{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#valoration_data *:not(.star_white, .star_half_white){
+    margin: 0;
+    color: white;
+}
+
+.star_white{
+    color: rgba(255, 255, 255, 0.301);
+}
+
+.star_half_white{
+    background: linear-gradient(90deg, rgba(255,255,255,1) 49%, rgba(255, 255, 255, 0.301) 50%);
+    -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+}
+
+
+.valoration_container{
+    position: absolute;
+    width: 80%;
+    justify-content: right;
+    display: flex;
+    align-self: flex-end;
+    /* margin-right: 20%; */
+    margin-bottom: 2%;
+}
+
+.pack_title{
+    position: absolute;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+summary {
+  padding-bottom: 20px;
+}
+
+summary:hover {
+  cursor: pointer;
+}

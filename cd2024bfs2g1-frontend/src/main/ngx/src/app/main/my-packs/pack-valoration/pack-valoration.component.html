@@ -1,0 +1,43 @@
+<div class="main_panel">
+  <o-form
+          show-header="no" id="valoration_div"
+  >
+    <div fxLayout="column" >
+
+      <div fxLayout="row" class="image_valoration_row">
+        <div class="cardImg">
+          <img class="preview-image" [src]="getImageSrc(data.data.img_code)">
+        </div>
+        <div fxLayout="column" id="valoraciones">
+          <div class="cardHeader">
+            <span class="pack-name">{{ data.data.pck_name }}</span>
+          </div>
+          <div fxLayout="row" class="stars">
+            <button class="button_star" type="button" (click)="valorateSelect(1)">
+              <mat-icon class="star star_color">star</mat-icon>
+            </button>
+            <button class="button_star" type="button" (click)="valorateSelect(2)">
+              <mat-icon #star2 class="star" [ngClass]="stars >= 2?'star_color':''">star</mat-icon>
+            </button>
+            <button class="button_star" type="button" (click)="valorateSelect(3)">
+              <mat-icon #star3 class="star" [ngClass]="stars >= 3?'star_color':''">star</mat-icon>
+            </button>
+            <button class="button_star" type="button" (click)="valorateSelect(4)">
+              <mat-icon #star4 class="star" [ngClass]="stars >= 4?'star_color':''">star</mat-icon>
+            </button>
+            <button class="button_star" type="button" (click)="valorateSelect(5)">
+              <mat-icon #star5 class="star" [ngClass]="stars >= 5?'star_color':''">star</mat-icon>
+            </button>
+          </div>
+          <o-textarea-input #comment id="coment" attr="pck_description"
+                            label="{{ 'DESCRIPTION' | oTranslate }}" rows="6"
+                            max-length="255"></o-textarea-input>
+          <button id="button_valoration" mat-raised-button color="primary" type="button"
+          (click)="insertRating()">{{ 'POST_VALORATION' | oTranslate }}
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </o-form>
+</div>

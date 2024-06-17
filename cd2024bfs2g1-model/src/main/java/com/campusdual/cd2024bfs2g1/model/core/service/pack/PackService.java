@@ -136,7 +136,7 @@ public class PackService implements IPackService {
     @Override
     public EntityResult packDaysQuery(Map<String, Object> keyMap, List<String> attrList)
             throws OntimizeJEERuntimeException {
-        int n = Integer.parseInt((String) keyMap.get(PackDao.PCK_ID));
+        Integer n = (Integer) keyMap.get(PackDao.PCK_ID);
         keyMap.put(PackDao.PCK_ID, n);
         EntityResult er = this.daoHelper.query(this.packDao, keyMap, attrList);
         List<Integer> lista = (List<Integer>) er.get(PackDao.PCK_DAYS);
@@ -155,9 +155,6 @@ public class PackService implements IPackService {
         return er;
     }
 
-
-
-
     /**
      * Lists set of packs purchased by a client (logged user)
      * @param keysValues filter (client id)
@@ -172,6 +169,12 @@ public class PackService implements IPackService {
     }
 
     @Override
+    public EntityResult packRatingQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        keysValues.put(ClientDao.CLIENT_ID, clientService.getClientId());
+        return this.daoHelper.query(this.packDao, keysValues, attributes, this.packDao.PCK_RATING_AVG_QUERY);
+    }
+
+    @Override
     public EntityResult allPacksQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.packDao, keysValues, attributes, this.packDao.PCK_ALL_QUERY);
     }
@@ -183,6 +186,7 @@ public class PackService implements IPackService {
         }
         return this.daoHelper.query(this.packDao, keysValues, attributes, this.packDao.PCK_DETAIL);
     }
+
 
     @Override
     public EntityResult packAndBookingDetailQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
@@ -216,6 +220,23 @@ public class PackService implements IPackService {
         keysValues.put(ClientDao.CLIENT_ID, clientService.getClientId());
         return this.daoHelper.paginationQuery(this.packDao, keysValues, attributes, recordNumber, startIndex, orderBy, this.packDao.PCK_MULTI_QUERY);
     }
+
+    @Override
+    public AdvancedEntityResult packRatingPaginationQuery(Map<String, Object> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
+            throws OntimizeJEERuntimeException {
+        keysValues.put(ClientDao.CLIENT_ID, clientService.getClientId());
+        AdvancedEntityResult er = this.daoHelper.paginationQuery(this.packDao, keysValues, attributes, recordNumber, startIndex, orderBy, this.packDao.PCK_RATING_AVG_QUERY);
+        return er;
+    }
+
+    @Override
+    public AdvancedEntityResult allPacksRatingPaginationQuery(Map<String, Object> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
+            throws OntimizeJEERuntimeException {
+        AdvancedEntityResult er = this.daoHelper.paginationQuery(this.packDao, keysValues, attributes, recordNumber, startIndex, orderBy, this.packDao.PCK_ALL_RATING_AVG_QUERY);
+        return er;
+    }
+
+
 
     @Override
     @Secured(PermissionsProviderSecured.SECURED)
@@ -286,5 +307,10 @@ public class PackService implements IPackService {
     @Override
     public EntityResult popularPacksQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.packDao, keyMap, attrList, PackDao.PCK_POPULARS_QUERY);
+    }
+
+    @Override
+    public EntityResult avgAndCountQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.packDao, keyMap, attrList, PCK_RATING_AVG_COUNT_QUERY);
     }
 }

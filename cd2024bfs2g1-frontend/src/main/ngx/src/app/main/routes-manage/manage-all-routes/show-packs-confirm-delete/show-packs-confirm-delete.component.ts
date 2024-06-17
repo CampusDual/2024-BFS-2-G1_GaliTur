@@ -14,7 +14,6 @@ export class ShowPacksConfirmDeleteComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any){
     this.mensaje = data.mensaje
     this.packs = data.packs
-    console.log("packs :", this.packs)
   }
 
 }
