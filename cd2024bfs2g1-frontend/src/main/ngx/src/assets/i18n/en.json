@@ -461,5 +461,8 @@
   "accessible": "Accessible",
   "is_accessible": "Is accessible?",
   "Explanation_is_accessible":"This route is accessible to people with some type of disability.",
-  "draft": "If your route is not finished, it allows you to save the data entered so far."
+  "draft": "If your route is not finished, it allows you to save the data entered so far.",
+  "horario_apertura": "Opening Hours",
+  "numero_telefono": "Telephone Number",
+  "sitio_web" : "Website"
 }

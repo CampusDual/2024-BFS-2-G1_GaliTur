@@ -707,7 +707,10 @@
     "accessible": "Acesible",
     "is_accessible": "¿É accesible?",
     "Explanation_is_accessible":"Esta ruta é accesible para persoas con algún tipo de discapacidade.",
-    "draft": "Se a túa ruta non está rematada, permíteche gardar os datos introducidos ata agora."
+    "draft": "Se a túa ruta non está rematada, permíteche gardar os datos introducidos ata agora.",
+    "horario_apertura": "Horario Apertura",
+    "numero_telefono": "Teléfono",
+    "sitio_web" : "Sitio Web"
   }
 
 
