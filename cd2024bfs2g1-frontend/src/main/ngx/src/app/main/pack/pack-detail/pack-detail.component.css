@@ -167,11 +167,6 @@
     }
 }
 
-/* Estilos del snackbar */
-::ng-deep .mdc-snackbar__surface{
-    background-color: #52733B !important;
-}
-
 /* Estilos del DIV que contiene el botón y el combo-box de la reserva */
 .reserve-container {
     display: flex;

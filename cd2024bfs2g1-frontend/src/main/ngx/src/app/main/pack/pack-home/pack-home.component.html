@@ -88,10 +88,10 @@
                   <li *ngIf="data.pck_participants && data.pck_participants > 1"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}} {{'PEOPLE' | oTranslate}}</li>
 
                   <li *ngIf="!data.pck_days"><mat-icon class="icon">timer</mat-icon>-</li>
-                  <li *ngIf="data.pck_days && data.pck_days == 1"><mat-icon class="icon">timer</mat-icon>{{data.pck_days}} {{'DAY' | oTranslate}}</li>
-                  <li *ngIf="data.pck_days && data.pck_days > 1"><mat-icon class="icon">timer</mat-icon>{{data.pck_days}} {{'DAYS' | oTranslate}}</li>
+                  <li *ngIf="data.pck_days && data.pck_days == 1"><mat-icon class="icon" matTooltip="{{'DAYS' | oTranslate }}" matTooltipPosition="before">timer</mat-icon>{{data.pck_days}} {{'DAY' | oTranslate}}</li>
+                  <li *ngIf="data.pck_days && data.pck_days > 1"><mat-icon class="icon" matTooltip="{{'DAYS' | oTranslate }}" matTooltipPosition="before">timer</mat-icon>{{data.pck_days}} {{'DAYS' | oTranslate}}</li>
 
-                  <li><mat-icon class="icon">payments</mat-icon>{{data.pck_price}} €</li>
+                  <li><mat-icon class="icon" matTooltip="{{'Price' | oTranslate }}" matTooltipPosition="before">payments</mat-icon>{{data.pck_price}} €</li>
                 </ul>
               </div>
             </div>
@@ -104,27 +104,3 @@
 
   </div>
 </div>
-
-
-<!--
-
- <div class="flip-card-front">
-            <img class="pack-img" [src]="getImageSrc(data.img_code)" alt="Avatar">
-            <div class="text-overlay">
-              <div class="pack-name"><span class="pack-name">{{data.pck_name}}</span></div>
-              <hr/>
-              <h4>{{data.gui_c_name}}</h4>
-              <div class="extra-info">
-                <div class="rating">
-                  <span class="ratingNumber" *ngIf="!data.rating_avg">-</span>
-                  <span class="ratingNumber" *ngIf="data.rating_avg">{{ data.rating_avg }}</span>
-                  <mat-icon class="star">grade</mat-icon>
-                </div>
-                <p class="front-price">{{data.pck_price}} <mat-icon class="euro-symbol">euro</mat-icon></p>
-              </div>
-
-            </div>
-          </div>
-
-
--->
