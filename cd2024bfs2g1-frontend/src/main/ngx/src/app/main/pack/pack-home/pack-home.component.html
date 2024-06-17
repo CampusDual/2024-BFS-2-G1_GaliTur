@@ -75,14 +75,14 @@
               <h3></h3>
               <div fxLayout="row" fxLayoutAlign="space-around stretch">
                 <ul style="list-style-type: none;" class="list">
-                  <li *ngIf="data.pck_participants && data.pck_participants == 1"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}} {{'PERSON' | oTranslate}}</li>
-                  <li *ngIf="data.pck_participants && data.pck_participants > 1"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}} {{'PEOPLE' | oTranslate}}</li>
+                  <li *ngIf="data.pck_participants && data.pck_participants == 1"><mat-icon class="icon" matTooltip="{{'pck_participants' | oTranslate }}" matTooltipPosition="before">groups</mat-icon>{{data.pck_participants}} {{'PERSON' | oTranslate}}</li>
+                  <li *ngIf="data.pck_participants && data.pck_participants > 1"><mat-icon class="icon" matTooltip="{{'pck_participants' | oTranslate }}" matTooltipPosition="before">groups</mat-icon>{{data.pck_participants}} {{'PEOPLE' | oTranslate}}</li>
                         
                   <li *ngIf="!data.pck_days"><mat-icon class="icon">timer</mat-icon>-</li>
-                  <li *ngIf="data.pck_days && data.pck_days == 1"><mat-icon class="icon">timer</mat-icon>{{data.pck_days}} {{'DAY' | oTranslate}}</li>
-                  <li *ngIf="data.pck_days && data.pck_days > 1"><mat-icon class="icon">timer</mat-icon>{{data.pck_days}} {{'DAYS' | oTranslate}}</li>
+                  <li *ngIf="data.pck_days && data.pck_days == 1"><mat-icon class="icon" matTooltip="{{'DAYS' | oTranslate }}" matTooltipPosition="before">timer</mat-icon>{{data.pck_days}} {{'DAY' | oTranslate}}</li>
+                  <li *ngIf="data.pck_days && data.pck_days > 1"><mat-icon class="icon" matTooltip="{{'DAYS' | oTranslate }}" matTooltipPosition="before">timer</mat-icon>{{data.pck_days}} {{'DAYS' | oTranslate}}</li>
 
-                  <li><mat-icon class="icon">payments</mat-icon>{{data.pck_price}} €</li>
+                  <li><mat-icon class="icon" matTooltip="{{'Price' | oTranslate }}" matTooltipPosition="before">payments</mat-icon>{{data.pck_price}} €</li>
                 </ul>
               </div>
             </div>
