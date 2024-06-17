@@ -61,19 +61,13 @@
                         <span *ngFor="let avg of gridPackRatingavg.dataArray">
                         <span *ngIf="imagePack.img_id == 1">
                             <div class="div-image-container">
-                                <h1 class="image-title"> {{pack.pck_name}} </h1>
-                                <img class="image-logo" [src]="getImageSrc(imagePack.img_code)">
-                            </div>
-                        </span>
-                        <span *ngIf="imagePack.img_id != 1">
-                            <div class="div-image-container">
                                 <div class="pack_title">
                                     <h1 class="image-title"> {{pack.pck_name}} </h1>
                                 </div>
-                                <div class="valoration_container">
-                                    
+                              <div class="valoration_container">
+
                                         <div class="valoration_average"  *ngIf="avg.rating_avg !=null">
-                                            <div fxLayout="column" id="valoration_data">
+                                            <div fxLayout="column" class="valoration_data">
                                                 <h1>{{avg.rating_avg}}</h1>
                                                 <div>
                                                     <mat-icon [ngClass]="valorationStars(1,avg.rating_avg)">star</mat-icon>
@@ -85,13 +79,39 @@
                                                 <p>({{avg.rating_count}})</p>
                                             </div>
                                         </div>
-                                    
-                                    
+
+
                                 </div>
-                                
+                                <img class="image-logo" [src]="getImageSrc(imagePack.img_code)">
+                            </div>
+                        </span>
+                        <span *ngIf="imagePack.img_id != 1">
+                            <div class="div-image-container">
+                                <div class="pack_title">
+                                    <h1 class="image-title"> {{pack.pck_name}} </h1>
+                                </div>
+                                <div class="valoration_container">
+
+                                        <div class="valoration_average"  *ngIf="avg.rating_avg !=null">
+                                            <div fxLayout="column" class="valoration_data">
+                                                <h1>{{avg.rating_avg}}</h1>
+                                                <div>
+                                                    <mat-icon [ngClass]="valorationStars(1,avg.rating_avg)">star</mat-icon>
+                                                    <mat-icon [ngClass]="valorationStars(2,avg.rating_avg)">star</mat-icon>
+                                                    <mat-icon [ngClass]="valorationStars(3,avg.rating_avg)">star</mat-icon>
+                                                    <mat-icon [ngClass]="valorationStars(4,avg.rating_avg)">star</mat-icon>
+                                                    <mat-icon [ngClass]="valorationStars(5,avg.rating_avg)">star</mat-icon>
+                                                </div>
+                                                <p>({{avg.rating_count}})</p>
+                                            </div>
+                                        </div>
+
+
+                                </div>
+
                                 <img class="image" [src]="getImageSrc(imagePack.img_code)">
                             </div>
-                        
+
                         </span>
                         </span>
                     </span>
@@ -301,7 +321,7 @@
                         opacity="0" refresh-button="false" quick-filter-columns="pbk_comment" gutter-size="0px" grid-item-height="245px">
                             <o-grid-item *ngFor="let data of gridPackRating.dataArray">
                                 <div fxLayout="column" class="mat-elevation-z1 valorations">
-                                    
+
                                     <div fxLayout="row">
                                         <div class="card-valorations-header">
                                             <div class="rating-title">

@@ -32,7 +32,7 @@
     padding-left: 5%;
     padding-right: 5%;
     margin: 2%;
-    
+
 }
 
 /* pack name styles */
@@ -58,17 +58,6 @@
     align-items: center;
     border-radius: 10px;
 }
-
-/* image styles */
-/* .cardImg {
-    width: 50%;
-    height: 200px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 2% 25%;
-} */
 
 #valoraciones{
     width: 100%;
@@ -112,17 +101,6 @@
 .star_color{
     color: rgb(218, 186, 7);
 }
-
-/* Seleccionar la estrella y todas las anteriores para cambiar su color */
-/* .button_star:hover,
-.button_star:hover ~ .button_star {
-    .star{
-        background: linear-gradient(to top, rgba(94,60,6,1) 20%, rgba(9,121,10,1) 34%, rgb(27, 209, 20) 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
-} */
 
 #coment{
     margin: 2%;
