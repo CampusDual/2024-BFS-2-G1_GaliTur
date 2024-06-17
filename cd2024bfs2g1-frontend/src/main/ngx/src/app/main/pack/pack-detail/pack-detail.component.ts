@@ -271,23 +271,38 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
   public backToHome(): void {
     const currentUrl = this.router.url; // Capturar la URL actual
     const previousUrl = history.state && history.state.previousUrl ? history.state.previousUrl : '';
-    //Si el usuario viene de home redigir a la url anterior para que vea home
-    if (previousUrl.includes('home')) {
-      this.router.navigateByUrl(previousUrl);
-    } else if((currentUrl.includes('/packs'))){
-      this.router.navigate(['/home'])
-     //Si el usuario viene de packs redigir de vuelta packs
-    }else if (previousUrl.includes('/packs')) {
-      this.router.navigate(previousUrl);
-      //Si el usuario entra a un pack desde home redirigir a home
-    } else if ((currentUrl.includes('/main/packs'))){
-      this.router.navigate(['/home']);
-       //En caso de que entre introduciendo una URL no se contemplada en los casos anteriores redirigir a landing page
-    } else  {
-      this.router.navigate(['../'],{ relativeTo: this.actRoute });
+
+    // Regex para aislar el segmento de la url relevante para el switch statement
+    const relevantSegment = previousUrl.split('/')[2] || '';
+
+    switch (relevantSegment) {
+      case 'home':
+        // Si el usuario viene de 'home', redirigir a la URL anterior
+        this.router.navigateByUrl(previousUrl);
+        break;
+      case 'packs':
+        // Si el usuario viene de 'packs', redirigir a la URL anterior
+        this.router.navigateByUrl(previousUrl);
+        break;
+      case 'businesses'||'routes':
+        // Si el usuario viene de 'businesses' o 'routes', redirigir a 'home'
+        this.router.navigate(['/main/home']);
+        break;
+      default:
+        // Comprobaciones adicionales para otros casos
+        if (currentUrl.includes('/main/packs')) {
+          // Si la URL actual incluye '/main/packs', redirigir a 'home'
+          this.router.navigate(['/main/home']);
+        } else if (previousUrl.includes('/packs')) {
+          // Si la URL anterior incluye '/packs', redirigir a la URL anterior
+          this.router.navigateByUrl(previousUrl);
+        } else {
+          // En caso de que no se controle la URL recivida, retroceder un nivel
+          this.router.navigate(['../'], { relativeTo: this.actRoute });
+        }
+        break;
     }
 }
-
 
 
   public getRouteImageSrc(base64: any): any {
@@ -412,15 +427,15 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
   }
 
   valorationStars(star:number, stars:number): string{
-    let result: string 
-    
+    let result: string
+
     if(star-1 == Math.trunc(stars) && star == Math.round(stars)){
       result="star_half_white"
     }
     else  if(star >stars){
       result="star_white"
     }
-    
+
     return result
   }
 }

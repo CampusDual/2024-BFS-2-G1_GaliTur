@@ -196,6 +196,8 @@ export class BusinessEditComponent {
             alert("Impossible to query data!");
           }
         });
+    }else{
+      this.comboCity.clearValue();
     }
   }
 

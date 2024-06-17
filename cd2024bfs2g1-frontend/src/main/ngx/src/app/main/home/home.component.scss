@@ -403,31 +403,33 @@ button {
 }    
 
 .text-overlay {
+  padding-top: 40px;
+  padding-bottom: 30px;
   position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white; /* ajusta el color del texto según sea necesario */
-    text-align: center;
-    z-index: 10;
-    width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white; /* ajusta el color del texto según sea necesario */
+  text-align: center;
+  z-index: 10;
+  width: 100%;
   hr {
     width: 3.5em;
-    margin-top: -11px;
+    margin-top: -12px;
     margin-bottom: 10px;
     border-style: solid;
   }
   h2 {
-      font-weight: 250;
-      margin: 0;
-      font-size: 1.8em;
+    font-weight: 250;
+    margin: 0;
+    font-size: 1.8em;
   }
   h4 {
-      font-weight: 10;
-      margin: 0;
-      font-size: 1.3em;
+    font-size: 1.3em;
+    font-weight: 10;
+    margin: 0;
   }
-}    
+}  
 
 .info-container {
   color: #444240;
@@ -439,7 +441,7 @@ button {
 .cardHeader {
   width: 80%;
   text-align: center;
-  background-color: #615e5b;
+  background-color: #52733B;
   color: white;
   padding-left: 10px;
   padding-top: 10px;
@@ -509,3 +511,40 @@ button {
   }
 }
 
+.front-price{
+  font-size: 16px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+
+}
+
+.ratingNumber {
+  margin-right: 5px;
+  font-size: 16px;
+  margin-bottom: -2px;
+
+}
+
+.star {
+  color: rgb(237, 218, 7);
+  font-size: 25px;
+  height: 25px;
+  width: 25px;
+}
+
+.extra-info {
+  justify-self: center;
+  margin-inline: auto;
+  margin-top: 25px;
+  margin-bottom: -60px;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.euro {
+  font-size: 18px;
+}

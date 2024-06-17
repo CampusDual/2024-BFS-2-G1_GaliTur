@@ -242,3 +242,8 @@ o-row{
 :host ::ng-deep .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label  {
     margin-top: 0px !important;
 }
+
+:host ::ng-deep .o-table .o-table-container .mat-mdc-table.medium .o-table-no-results span {
+    color: transparent !important;
+
+}

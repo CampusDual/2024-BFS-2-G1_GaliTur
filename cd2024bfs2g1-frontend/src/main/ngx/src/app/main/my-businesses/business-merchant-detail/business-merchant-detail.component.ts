@@ -61,10 +61,10 @@ export class BusinessMerchantDetailComponent implements OnInit {
       .subscribe((result) => {
         if (result.data.length) {
 
-          this.confirmDeleteDialog(data, false);
+          this.confirmDeleteDialog(data, true);
         }else{
 
-          this.confirmDeleteDialog(data, true);
+          this.confirmDeleteDialog(data, false);
         }
       });
   }

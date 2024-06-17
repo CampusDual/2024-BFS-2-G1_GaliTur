@@ -1,82 +1,45 @@
-<div fxFill fxLayout="column" fxLayoutAlign="space-evenly center" class="mainPanel">
-    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
-        <o-button class="backButton" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary" (click)="backToHome(data)"></o-button>
-        <p class="titulo"><strong>{{ data.name }}</strong></p>
-    </div>
-    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px" class="routesSecond">
-        <div fxLayout="column" fxFlex="30">
-            <o-gallery *ngIf="data.galleryImages; else no_photo" [gallery-images]="data.galleryImages"  [gallery-options]="galleryOptions" class="o-gallery"></o-gallery>
-            <ng-template #no_photo>
-                <img src="./assets/images/logo.png" class="noImageRoute">
-            </ng-template>
+<div fxFill fxLayout="column" fxLayoutAlign="center center" class="mainPanel">
+
+    <div fxLayout="column" class="routesSecond" >
+        <div fxLayout="row" class="title-container">
+            <o-button class="back-button" attr="fab2" type="ICON" icon="arrow_back" color="primary" (click)="backToHome(data)"></o-button>
+
+            <p class="titulo">{{ data.name }}</p>
         </div>
-        
-        <div fxLayout="column">
-            <o-row class="o-rows" class="description" attr="container" icon="description" mat
-                        title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" elevation="1"
-                        aria-orientation="vertical" appearance="outline">
-                <span class="descriptionText" *ngIf="data.description; else no_description">
-                    <mat-icon></mat-icon><span>{{ data.description }}</span>
-                </span>
-                <ng-template #no_description>
-                    <span><mat-icon></mat-icon><span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span></span>
-                </ng-template>
-            </o-row>
-            <br>
-            <div fxLayout="row" class="divDeBotones">
-                <o-row class="o-rows" class="information" attr="container" icon="info" mat
-                        title="{{'INFO' | oTranslate }}" layout-align="start stretch" elevation="1"
-                        aria-orientation="vertical" appearance="outline">
-                        <div fxLayout="row" class="estimatedDuration" >
-                            <div class="tooltipDuration" *ngIf="data.estimated_distance; else no_estimated_distance">
-                                <mat-icon class="clockTooltip">hiking</mat-icon>
-                                <span class="tooltiptextDuration">{{ "estimated_distance" | oTranslate }}</span>
-                            </div>
-                            <span *ngIf="data.estimated_distance">
-                                {{ convertDistance(data.estimated_distance) }}  
-                            </span>
-                            <ng-template #no_estimated_distance>
-                                <div class="tooltipDuration">
-                                    <mat-icon class="clockTooltipDetail">hiking</mat-icon>
-                                    <span class="tooltiptextDuration">{{ "NO_ESTIMATED_DISTANCE" | oTranslate }}</span>
-                                </div>
-                                <span>-</span>
-                            </ng-template>
-                            <div class="tooltipDuration" *ngIf="data.estimated_distance; else no_estimated_duration">
-                                <mat-icon class="clockTooltip">schedule</mat-icon>
-                                <span class="tooltiptextDuration">{{ "estimated_duration" | oTranslate }}</span>
-                            </div>
-                            <span *ngIf="data.estimated_distance">
-                                {{ convertTime(data.estimated_distance) }}
-                            </span>
-                            <ng-template #no_estimated_duration>
-                                <div class="tooltipDuration">
-                                    <mat-icon class="clockTooltipDetail">schedule</mat-icon>
-                                    <span class="tooltiptextDuration">{{ "NO_ESTIMATED_DURATION" | oTranslate }}</span>
-                                </div>
-                                <span>-</span>
-                            </ng-template>
-                        </div>
-                <div class="difficulty" [ngClass]="'di-' + data.difficulty">
-                    <div class="tooltipDifficulty">
-                        <mat-icon class="helpTooltip">help</mat-icon>
-                        <span class="tooltiptextDifficulty">{{getDifficultad(data.difficulty)  | oTranslate }}</span>
-                    </div>
-                    <span *ngIf="data.difficulty; else no_difficulty">
-                        <mat-icon  [ngClass]="getIconColorClass(data.difficulty)" *ngFor="let _ of [].constructor(data.difficulty)">eco</mat-icon>
-                        <mat-icon  *ngFor="let _ of [].constructor(4 - data.difficulty)">eco</mat-icon>
-                    </span>
-                    <ng-template #no_difficulty>
-                        <span>{{ "NO_DATA_AVAILABLE" | oTranslate}}</span>
-                    </ng-template>
-                </div>
-                <div fxLayout="column" class="landmarkInfo">
-                    <button (click)="openDetailLandmark(data)" class="custom-button">
-                        <mat-icon> location_on </mat-icon><strong>{{ "landmark" | oTranslate}}</strong>
-                    </button>
-                </div>
+        <div fxLayout="row" class="content" >
+            <div class="image-container">
+                <img class="img-cover" [src]="getImageSrc(data.img_code)">
+            </div>
+
+            <div fxLayout="column" class="data-container">
+                <o-row class="o-rows"  attr="container" icon="description" mat
+                    title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" elevation="1"
+                    aria-orientation="vertical" appearance="outline">
+                    <ul class="list-to-desc">
+                        <p>{{data.description}}</p>
+                    </ul>
+                </o-row>
+                <o-row class="o-rows"  attr="container" title="{{'INFO' | oTranslate }}" icon="info"
+                    layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+                    <ul class="list-with-spaces" style="list-style-type: none;">
+                        <li *ngIf="data.estimated_distance"><i><mat-icon matTooltip="{{'estimated_distance' | oTranslate }}">directions_run</mat-icon></i> {{convertDistance(data.estimated_distance)}}</li>
+                        <li *ngIf="!data.estimated_distance"><i><mat-icon matTooltip="{{'estimated_distance' | oTranslate }}">directions_run</mat-icon></i> - km</li>
+
+                        <li *ngIf="data.estimated_distance"><i><mat-icon matTooltip="{{'estimated_duration' | oTranslate }}">timer</mat-icon></i> {{convertTime(data.estimated_distance)}}</li>
+                        <li *ngIf="!data.estimated_distance"><i><mat-icon matTooltip="{{'estimated_duration' | oTranslate }}">timer</mat-icon></i> - min</li>
+
+                        <li><i><mat-icon matTooltip="{{'difficulty' | oTranslate }}">eco</mat-icon></i> {{getDifficultad(data.difficulty) | oTranslate}}</li>
+
+                        <li *ngIf="data.is_accessible is true"><i><mat-icon matTooltip="{{'accessible' | oTranslate }}">accessible</mat-icon></i>{{'accessible' | oTranslate }}</li>
+                    </ul>
                 </o-row>
             </div>
+        </div>
+
+        <div fxLayout="column" class="button-container" *ngIf="num_landmarks">
+            <button  (click)="openDetailLandmark(data)" class="main-button">
+                <mat-icon> location_on </mat-icon><span>{{ "landmark" | oTranslate}}</span>
+            </button>
         </div>
     </div>
 </div>

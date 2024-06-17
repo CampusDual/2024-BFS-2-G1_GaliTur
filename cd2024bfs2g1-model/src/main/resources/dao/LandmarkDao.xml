@@ -29,6 +29,20 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="getNumberOfLandmarks">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        COUNT(l.landmark_id) AS num_landmarks
+                    FROM
+                        ${mainschema}.route_landmark rl
+                        INNER JOIN ${mainschema}.landmark l
+                        ON l.landmark_id=rl.landmark_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
         <Query id="getLandmarksDetail">
             <Sentence>
                 <![CDATA[

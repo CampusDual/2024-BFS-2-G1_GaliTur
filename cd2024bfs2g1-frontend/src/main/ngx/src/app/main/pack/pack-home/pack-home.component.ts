@@ -3,7 +3,7 @@ import { Component, Injector, ViewChild, TemplateRef } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { DomSanitizer } from "@angular/platform-browser";
 import { Expression, FilterExpressionUtils, OCurrencyInputComponent, OFormComponent, OFormValue, OGridComponent, OntimizeService } from "ontimize-web-ngx";
-import { Router } from "@angular/router";
+import { ActivatedRoute, NavigationExtras, Router } from "@angular/router";
 
 @Component({
   selector: "app-pack-home",
@@ -26,6 +26,7 @@ export class PackHomeComponent {
     protected dialog: MatDialog,
     protected sanitizer: DomSanitizer,
     private router: Router,
+    private route: ActivatedRoute
   ) {
     this.ontimizeService.configureService(
       this.ontimizeService.getDefaultServiceConfiguration("packs")
@@ -35,10 +36,18 @@ export class PackHomeComponent {
 
   ngOnInit() {}
 
-  public openDetail(data: any): void {
-    PackHomeComponent.page = 1;
-    this.router.navigate(['packs/' + data.pck_id]);
-  }
+
+
+    //Metodo para redirect dinamico de rutas
+    openDetail(data: any): void {
+      PackHomeComponent.page = 1;
+      const currentUrl = this.router.url; // Capturar la URL actual
+      const navigationExtras: NavigationExtras = {
+        state: { previousUrl: currentUrl },
+        relativeTo: this.route  // Enviar la URL actual como navigation state
+      };
+      this.router.navigate(['/packs/' + data.id], navigationExtras);
+    }
 
   public getImageSrc(base64: any): any {
     return base64
@@ -98,9 +107,9 @@ export class PackHomeComponent {
         }
         if (fil.attr === 'pd_date_begin') {
           /* Si nos fijamos en el error que daba en el back, funcion buildExpressionEquals genera esta consulta "AND  (UPPER(pd_date_begin) = UPPER( '2024-06-02 00:00:00.000' ))"
-              el problema radica en que esto esta preparado para strings, de ahí la función UPPER, y cuando le aplica el UPPER al timestamp "pd_date_begin" da error. 
+              el problema radica en que esto esta preparado para strings, de ahí la función UPPER, y cuando le aplica el UPPER al timestamp "pd_date_begin" da error.
               Error del back: "ERROR: function upper(timestamp without time zone) does not exist"
-              Para solucionar esto en vez de hacer la solicitud directamente a la fecha en la BBDD hacemos una pequeña subconsulta que convierte la fecha 
+              Para solucionar esto en vez de hacer la solicitud directamente a la fecha en la BBDD hacemos una pequeña subconsulta que convierte la fecha
               a un "string" con el formato de la fecha sin hora, aparte de pasarle la fecha que selecciona el usuario con el mismo formato y en tipo string.
           */
 
@@ -108,12 +117,12 @@ export class PackHomeComponent {
           filters.push(FilterExpressionUtils.buildExpressionEquals(consulta, fil.value));
 
         }
-        
+
       }
     });
 
     if (filters.length > 0) {
-      return filters.reduce((exp1, exp2) => 
+      return filters.reduce((exp1, exp2) =>
         FilterExpressionUtils.buildComplexExpression(exp1, exp2, 'AND')
       );
     } else {
@@ -123,7 +132,7 @@ export class PackHomeComponent {
 
   clearFilter () {
     const fieldsToClear = ['pck_name', 'pck_days', 'pck_price_min', 'pck_price_max', 'pck_participants', 'gui_c_name', 'pd_date_begin'];
-    this.filterForm.clearFieldValues(fieldsToClear);  
+    this.filterForm.clearFieldValues(fieldsToClear);
   }
 
   @ViewChild("minPrice") protected minPrice: OCurrencyInputComponent;

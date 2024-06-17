@@ -1,327 +1,366 @@
 /*title styles*/
 .title-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .title{
-    font-weight: bold;
-    font-size: 25px;
-    font-family: Poppins;
-    margin-top: 0px;
-    margin-bottom: 5px;
-  }
+.title {
+  font-weight: bold;
+  font-size: 25px;
+  font-family: Poppins;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
 /* packCard structure */
 .packCard {
-    width: 400px;
-    min-width: 300px;
-    background-color: #eff1f3;
-    border-radius: 10px;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    transform: scale(0.925);
+  width: 400px;
+  min-width: 300px;
+  background-color: #eff1f3;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.925);
 }
 
 .businessCard img {
-    justify-content: center;
+  justify-content: center;
 }
 
 /* Image div for pack card structure */
 .packCard img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 /* pack card structure font size */
 .packCard .office {
-    font-size: 0.8em;
+  font-size: 0.8em;
 }
 
 /* Image modifiers for pack card image */
 .preview-image {
-    border-radius: 10px;
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 /* card content styles */
 .cardContent {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 /* image styles */
 .cardImg {
-    width: 50%;
-    height: 160px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 50%;
+  height: 160px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* info styles */
 .cardInfo {
-    width: 50%;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    margin-left: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  width: 50%;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 /* icon styles */
 .icon {
-    margin-bottom: -10px;
-    font-size: 16px;
-    color: #84A45A;
+  margin-bottom: -10px;
+  font-size: 16px;
+  color: #84a45a;
 }
 
 /* info list styles */
 .list {
-    padding: 0;
+  padding: 0;
     margin: 0;
     list-style: none;
+    row-gap: 15px;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
 }
 
 /* pack not available card styles */
 .not-available {
-    opacity: 0.5;
-    filter: grayscale(100%);
-    position: relative;
+  opacity: 0.5;
+  filter: grayscale(100%);
+  position: relative;
 }
 
 /* pack not available message styles */
 .unavailable-message {
-    z-index: 2;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-size: 20px;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 20px;
 }
 
 /* deep styling for grid sort and search input */
 :host ::ng-deep .o-grid-sort {
+  min-width: 325px;
+  mat-form-field {
     min-width: 325px;
-    mat-form-field {
-        min-width: 325px;
-    }
+  }
 }
 
 :host ::ng-deep .o-search-input {
-    span {
-        color: whitesmoke;
-    }
+  span {
+    color: whitesmoke;
+  }
 }
 
 /* hover effect for pack card */
 .packCard:hover {
-    box-shadow: 0 0 15px rgba(113, 94, 78, 1);
-    transform: scale(0.9325);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+  box-shadow: 0 0 15px rgba(113, 94, 78, 1);
+  transform: scale(0.9325);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
-.route-name:hover{
-    overflow: auto;
-    overflow-y: hidden;
-}
-
-.button_star{
-    background: transparent;
-    border: none;
+.route-name:hover {
+  overflow: auto;
+  overflow-y: hidden;
 }
 
-.star {
-    cursor: pointer;
-    transition: color 0.2s;
-    color: rgba(113, 94, 78, 1);
+.button_star {
+  background: transparent;
+  border: none;
 }
 
-/* Seleccionar la estrella y todas las anteriores para cambiar su color */
-.button_star:hover,
-.button_star:hover ~ .button_star{
-    .star{
-        background: linear-gradient(to top, rgba(94,60,6,1) 22%, rgba(9,121,19,1) 28%, rgba(51,193,13,1) 83%);
-      -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
-    }
-}
 
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
-    background-color: transparent;
-    width: 380px;
-    height: 240px;
-    perspective: 1000px; /* Remove this if you don't want the 3D effect */
-    border-radius: 10px;
-
+  background-color: transparent;
+  width: 380px;
+  height: 240px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  border-radius: 10px;
 }
 .flip-card:hover {
-    cursor: pointer;
-
+  cursor: pointer;
 }
 
 /* This container is needed to position the front and back side */
 .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    border-radius: 10px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  border-radius: 10px;
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
 .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 /* Position the front and back side */
-.flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden; /* Safari */
-    backface-visibility: hidden;
-    border-radius: 10px;
-    padding: 1px;
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  border-radius: 10px;
+  padding: 1px;
 }
 
 .flip-card-front {
-    position: absolute;
-    background-color: #bbb;
-    color: black;
+  position: absolute;
+  background-color: #bbb;
+  color: black;
 }
 
 .flip-card-front::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 1;
-    border-radius: 10px;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  border-radius: 10px;
 }
 
 /* Style the back side */
 .flip-card-back {
-    background-color: #ccc6c0;
-    color: white;
-    transform: rotateY(180deg);
+  background-color: #ccc6c0;
+  color: white;
+  transform: rotateY(180deg);
 }
 
 .pack-img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    position: relative; /* Asegura que la imagen esté debajo del overlay */
-    z-index: 0; /* Coloca la imagen debajo del overlay */
-    border-radius: 10px;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: relative; /* Asegura que la imagen esté debajo del overlay */
+  z-index: 0; /* Coloca la imagen debajo del overlay */
+  border-radius: 10px;
 }
 
 .text-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white; /* ajusta el color del texto según sea necesario */
-    text-align: center;
-    z-index: 10;
-    width: 100%;
-    hr {
-        width: 3.5em;
-        margin-top: -12px;
-        margin-bottom: 10px;
-        border-style: solid;
-    }
-    h2 {
-        font-weight: 250;
-        margin: 0;
-        font-size: 1.8em;
-    }
-    h4 {
-        font-weight: 10;
-        margin: 0;
-    }
+  padding-top: 40px;
+  padding-bottom: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white; /* ajusta el color del texto según sea necesario */
+  text-align: center;
+  z-index: 10;
+  width: 100%;
+  hr {
+    width: 3.5em;
+    margin-top: -12px;
+    margin-bottom: 10px;
+    border-style: solid;
+  }
+  h2 {
+    font-weight: 250;
+    margin: 0;
+    font-size: 1.8em;
+  }
+  h4 {
+    font-weight: 10;
+    margin: 0;
+  }
 }
 
 .info-container {
-    color: #444240;
-    margin-top: 9%;
-    justify-content: center;
-
-
+  color: #444240;
+  margin-top: 9%;
+  justify-content: center;
 }
 
 /* card header styles */
 .cardHeader {
-    width: 80%;
-    text-align: center;
-    background-color: #615e5b;
-    color: white;
-    padding-left: 10px;
-    padding-top: 10px;
-    padding-bottom: 4px;
-    padding-right: 10px;
-    margin-inline: auto;
-    margin-bottom: 16px;
-    box-sizing: border-box;
-    border-radius: 10px 10px 10px 10px;
+  width: 80%;
+  text-align: center;
+  background-color: #52733b;
+  color: white;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 4px;
+  padding-right: 10px;
+  margin-inline: auto;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border-radius: 10px 10px 10px 10px;
 }
 
 .pack-info-title {
-    font-size: 1.25em;
-    font-weight: 500;
-    overflow: hidden;
-    white-space: nowrap;
-    display: inline-block;
-    text-overflow: ellipsis;
-    width: calc(90%);
+  font-size: 1.25em;
+  font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  text-overflow: ellipsis;
+  width: calc(90%);
 }
 
 /* icon styles */
 .icon {
-    margin-bottom: -10px;
-    font-size: 16px;
-    color: #444240;
-    margin-right: 4px;
+  margin-bottom: -10px;
+  font-size: 16px;
+  color: #444240;
+  margin-right: 4px;
 }
 
 /* info list styles */
 .list {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    row-gap: 5px;
-    justify-content: space-around;
-    display: flex;
-    flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  row-gap: 15px;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
 }
 
 .pack-name {
-    overflow: hidden;
-    white-space: wrap;
-    display: inline-block;
-    text-overflow: ellipsis;
-    width: calc(90%);
-    span {
-        font-size: 1.7em;
-
-    }
+  overflow: hidden;
+  white-space: wrap;
+  display: inline-block;
+  text-overflow: ellipsis;
+  width: calc(90%);
+  span {
+    font-size: 1.7em;
+  }
 }
 
-:host ::ng-deep .mat-mdc-paginator-container .mat-mdc-paginator-page-size{
-    visibility: hidden !important;
+:host ::ng-deep .mat-mdc-paginator-container .mat-mdc-paginator-page-size {
+  visibility: hidden !important;
+}
+
+.full-page {
+  height: 77vh;
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    width: 32vh;
+  }
+  .o-data-toolbar {
+    align-items: start;
+    .title {
+      font-size: 25px;
+      margin-right: 70px;
+      font-weight: bold;
+    }
+  }
+}
+
+.front-price{
+  font-size: 16px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+
+}
+
+.ratingNumber {
+  margin-right: 5px;
+  font-size: 16px;
+  margin-bottom: -2px;
+
+}
+
+.star {
+  color: rgb(237, 218, 7);
+  font-size: 25px;
+  height: 25px;
+  width: 25px;
+}
+
+.extra-info {
+  justify-self: center;
+  margin-inline: auto;
+  margin-top: 25px;
+  margin-bottom: -60px;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.euro {
+  font-size: 18px;
 }

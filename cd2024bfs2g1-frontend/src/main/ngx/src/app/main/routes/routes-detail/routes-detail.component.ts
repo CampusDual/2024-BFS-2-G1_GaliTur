@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ViewLandmarkDetailComponent } from './view-landmark-detail/view-landmark-detail.component';
@@ -15,11 +15,11 @@ import { LandmarksService } from 'src/app/shared/services/landmarks.service';
 })
 export class RoutesDetailComponent implements OnInit{
   galleryOptions: any;
-
+  num_landmarks: number;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private ontimizeService: OntimizeService,
+    private ontimizelandmarkService: OntimizeService,
     protected sanitizer: DomSanitizer,
     protected dialog: MatDialog,
     protected landmarkService: LandmarksService,
@@ -27,7 +27,7 @@ export class RoutesDetailComponent implements OnInit{
     private router: Router,
     private actRoute: ActivatedRoute
     ) {
-    this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration("landmarks"));
+    
     this.galleryOptions = [
       {
         image: true,
@@ -39,17 +39,27 @@ export class RoutesDetailComponent implements OnInit{
       }
     ]
     this.dialogRef.disableClose = true;
-
+    
    }
 
+
+
   ngOnInit(){
+    const confLandmark =
+      this.ontimizelandmarkService.getDefaultServiceConfiguration("landmarks");
+    this.ontimizelandmarkService.configureService(confLandmark);
+    this.ontimizelandmarkService.query({route_id: this.data.route_id}, ['num_landmarks'], 'route_landmark' ).subscribe((landmarkData) => {
+      this.num_landmarks=landmarkData.data[0]['num_landmarks'];
+    });
   }
 
   public openDetailLandmark(data: any): void {
-
+    const confLandmark =
+      this.ontimizelandmarkService.getDefaultServiceConfiguration("landmarks");
+    this.ontimizelandmarkService.configureService(confLandmark);
     const landmarkCoordinates= []
 
-       this.ontimizeService.query({route_id: data.route_id}, ['name', 'l.landmark_id', 'coordinates'], 'landmark' ).subscribe((landmarkData) => {
+       this.ontimizelandmarkService.query({route_id: data.route_id}, ['name', 'l.landmark_id', 'coordinates'], 'landmark' ).subscribe((landmarkData) => {
         data['landmark'] = landmarkData.data
         this.dialog.open(ViewLandmarkDetailComponent, {
           height: '800px',
@@ -82,11 +92,11 @@ public convertTime(metros: number):  string {
   const minutosRestantes = minutos % 60;
 
   if (horas == 0 && minutosRestantes != 0) {
-      return `${minutosRestantes}min`;
+      return `${minutosRestantes} min`;
   } else if (horas != 0 && minutosRestantes == 0) {
-      return `${horas}h`;
+      return `${horas} h`;
   } else {
-      return `${horas}h ${minutosRestantes}min`;
+      return `${horas} h ${minutosRestantes} min`;
   }
 }
 
@@ -100,14 +110,18 @@ convertDistance(metros: number){
   metrosRestantes = Number(metrosRestantesDecimal);
 
   if (kilometros == 0 && metrosRestantes != 0) {
-    return `${metrosRestantes}m`;
+    return `${metrosRestantes} m`;
   } else if (kilometros != 0 && metrosRestantes == 0) {
-    return `${kilometros}km`;
+    return `${kilometros} km`;
   } else if (kilometros != 0 && metrosRestantes != 0) {
-    return `${kilometros},${metrosRestantes}km`;
+    return `${kilometros},${metrosRestantes} km`;
   } else {
-    return '0m';
+    return '0 m';
   }
+}
+
+public getImageSrc(base64: any): any {
+  return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/home-image.jpeg";
 }
 
 getIconColorClass(difficulty: number): string {
@@ -123,16 +137,16 @@ getIconColorClass(difficulty: number): string {
     }
   }
 
-getDifficultad(difficulty: number): string {
-  switch(difficulty) {
-    case 1:
-        return 'Dificultad: Fácil';
-    case 2:
-        return 'Dificultad: Intermedio';
-    case 3:
-        return 'Dificultad: Difícil';
-    case 4:
-        return 'Dificultad: Extremo';
+  getDifficultad(difficulty: number): string {
+    switch(difficulty) {
+      case 1:
+          return 'Dificultad_facil';
+      case 2:
+          return 'Dificultad_intermedia';
+      case 3:
+          return 'Dificultad_dificil';
+      case 4:
+          return 'Dificultad_extremo';
     }
   }
 }

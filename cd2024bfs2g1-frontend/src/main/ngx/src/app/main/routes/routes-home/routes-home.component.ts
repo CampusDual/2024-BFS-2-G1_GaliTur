@@ -25,23 +25,26 @@ galleryOptions: any;
   ) {
 
   }
-  
+
   ngAfterViewInit(): void {
     const idRutaActual = +this.getRouteId();
     const confRoute =
       this.ontimizerouteService.getDefaultServiceConfiguration("routes");
     this.ontimizerouteService.configureService(confRoute);
+    
     if(!isNaN(idRutaActual)){
       this.ontimizerouteService
       .query(
         { route_id: idRutaActual },
-        ["route_id","name", "description", "estimated_distance", "difficulty"],
+        ["route_id","name", "description", "estimated_distance", "difficulty","is_accessible"],
         "route"
       )
       .subscribe((response) => {
         this.openDetail(response.data[0]);
       });
     }
+
+    
   }
 
 
@@ -63,11 +66,12 @@ galleryOptions: any;
       }
 
       this.dialog.open(RoutesDetailComponent, {
-        height: '700px',
+        height: '650px',
         width: '1200px',
         data: data
       });
     })
+    
   }
   public convertTime(metros: number):  string {
 
@@ -80,11 +84,11 @@ galleryOptions: any;
     const minutosRestantes = minutos % 60;
 
     if (horas == 0 && minutosRestantes != 0) {
-        return `${minutosRestantes}min`;
+        return `${minutosRestantes} min`;
     } else if (horas != 0 && minutosRestantes == 0) {
-        return `${horas}h`;
+        return `${horas} h`;
     } else {
-        return `${horas}h ${minutosRestantes}min`;
+        return `${horas} h ${minutosRestantes} min`;
     }
   }
 
@@ -126,25 +130,13 @@ galleryOptions: any;
   getDifficultad(difficulty: number): string {
     switch(difficulty) {
       case 1:
-          return 'Dificultad: Fácil';
+          return 'Dificultad_facil';
       case 2:
-          return 'Dificultad: Intermedio';
+          return 'Dificultad_intermedia';
       case 3:
-          return 'Dificultad: Difícil';
+          return 'Dificultad_dificil';
       case 4:
-          return 'Dificultad: Extremo';
-    }
-  }
-  getDifficultad2(difficulty: number): string {
-    switch(difficulty) {
-      case 1:
-          return 'Dificultad Fácil';
-      case 2:
-          return 'Dificultad Intermedia';
-      case 3:
-          return 'Dificultad Difícil';
-      case 4:
-          return 'Dificultad Extremo';
+          return 'Dificultad_extremo';
     }
   }
 }
