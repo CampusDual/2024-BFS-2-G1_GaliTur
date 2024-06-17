@@ -62,7 +62,7 @@
                                 <div class="pack_title">
                                     <h1 class="image-title"> {{pack.pck_name}} </h1>
                                 </div>
-                              <div class="valoration_container">
+                                <div class="valoration_container">
 
                                         <div class="valoration_average"  *ngIf="avg.rating_avg !=null">
                                             <div fxLayout="column" class="valoration_data">
@@ -77,6 +77,8 @@
                                                 <p>({{avg.rating_count}})</p>
                                             </div>
                                         </div>
+
+
                                 </div>
                                 <img class="image-logo" [src]="getImageSrc(imagePack.img_code)">
                             </div>
