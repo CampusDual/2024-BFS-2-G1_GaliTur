@@ -215,14 +215,14 @@
         <Query id="packPerDays">
             <Sentence>
                 <![CDATA[
-                select '>10' as rango,
+                select '>10 D' as rango,
                 COUNT(*) AS days
                  FROM
                         ${mainschema}.pack P
                     WHERE pck_days is not null
                     and pck_days  >10
                     union
-                    select '6-10' as rango,
+                    select '6-10 D' as rango,
                 COUNT(*) AS days
                 FROM
                         ${mainschema}.pack P
@@ -230,7 +230,7 @@
                     and pck_days  between 6 and 10
                     union
                     select
-                    '1-5' as rango,
+                    '1-5 D' as rango,
                 COUNT(*) AS days
                 from
                         ${mainschema}.pack P
@@ -244,19 +244,19 @@
                 <![CDATA[
             SELECT rango, packs
                 FROM (
-                    SELECT '>50' AS rango, COUNT(*) AS packs, 4 AS orden
+                    SELECT '>50 €' AS rango, COUNT(*) AS packs, 4 AS orden
                     FROM ${mainschema}.pack
                     WHERE pck_price IS NOT NULL AND pck_price > 50
                     UNION
-                    SELECT '21-50' AS rango, COUNT(*) AS packs, 3 AS orden
+                    SELECT '21-50 €' AS rango, COUNT(*) AS packs, 3 AS orden
                     FROM ${mainschema}.pack
                     WHERE pck_price IS NOT NULL AND pck_price BETWEEN 21 AND 50
                     UNION
-                    SELECT '11-20' AS rango, COUNT(*) AS packs, 2 AS orden
+                    SELECT '11-20 €' AS rango, COUNT(*) AS packs, 2 AS orden
                     FROM ${mainschema}.pack
                     WHERE pck_price IS NOT NULL AND pck_price BETWEEN 11 AND 20
                     UNION
-                    SELECT '1-10' AS rango, COUNT(*) AS packs, 1 AS orden
+                    SELECT '1-10 €' AS rango, COUNT(*) AS packs, 1 AS orden
                     FROM ${mainschema}.pack
                     WHERE pck_price IS NOT NULL AND pck_price BETWEEN 1 AND 10
                 ) AS subquery
@@ -270,19 +270,19 @@
                 <![CDATA[
                    SELECT
                     CASE
-                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (12, 1, 2) THEN 'Winter'
-                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (3, 4, 5) THEN 'Spring'
-                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (6, 7, 8) THEN 'Summer'
-                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (9, 10, 11) THEN 'Autumn'
+                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (12, 1, 2) THEN 'WINTER'
+                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (3, 4, 5) THEN 'SPRING'
+                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (6, 7, 8) THEN 'SUMMER'
+                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (9, 10, 11) THEN 'AUTUMN'
                     END AS estacion,
                     COUNT(*) AS cantidad
                 FROM ${mainschema}.pack_date
                 GROUP BY
                     CASE
-                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (12, 1, 2) THEN 'Winter'
-                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (3, 4, 5) THEN 'Spring'
-                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (6, 7, 8) THEN 'Summer'
-                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (9, 10, 11) THEN 'Autumn'
+                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (12, 1, 2) THEN 'WINTER'
+                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (3, 4, 5) THEN 'SPRING'
+                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (6, 7, 8) THEN 'SUMMER'
+                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (9, 10, 11) THEN 'AUTUMN'
                     END
                 ORDER BY estacion;
                 ]]>
