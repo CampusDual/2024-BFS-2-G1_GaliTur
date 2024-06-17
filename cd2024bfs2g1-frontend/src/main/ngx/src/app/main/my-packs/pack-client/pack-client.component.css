@@ -169,6 +169,7 @@
     backface-visibility: hidden;
     border-radius: 10px;
     padding: 1px;
+    z-index: 1;
 }   
   
 .flip-card-front {
