@@ -18,11 +18,15 @@ import java.util.Map;
 @Service("RestaurantService")
 public class RestaurantService implements IRestaurantService {
 
-    @Autowired
-    private DefaultOntimizeDaoHelper daoHelper;
+    private final DefaultOntimizeDaoHelper daoHelper;
+    private final RestaurantDao restaurantDao;
+
 
     @Autowired
-    private RestaurantDao restaurantDao;
+    public RestaurantService(DefaultOntimizeDaoHelper daoHelper, RestaurantDao restaurantDao) {
+        this.daoHelper = daoHelper;
+        this.restaurantDao = restaurantDao;
+    }
 
     @Override
     public EntityResult restaurantQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {

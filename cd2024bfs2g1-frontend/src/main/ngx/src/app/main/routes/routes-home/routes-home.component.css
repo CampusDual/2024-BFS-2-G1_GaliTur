@@ -11,8 +11,8 @@
 }
 
 .routeCard:hover {
-  box-shadow: 0 0 8px rgba(40, 63, 28, 0.55); 
-  transform: scale(1.04); 
+  box-shadow: 0 0 8px rgba(40, 63, 28, 0.55);
+  transform: scale(1.04);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
@@ -26,8 +26,8 @@
   margin-top: 8px;
   border-radius: 10px;
   background-color: #52733B;
-  height: 45px;
-  color: #ffffff; 
+  height: 34px;
+  color: #ffffff;
 }
 
 .containerDatos {
@@ -121,6 +121,7 @@
   padding: 5px;
 }
 
+
 .tooltipHomeDuration {
   margin-bottom: 5px;
 }
@@ -132,7 +133,7 @@
 
 .tooltipHomeDuration:hover .tooltiptextHomeDuration {
   visibility: visible;
-  transform: scale(0.9);
+  transform: scale(0.5);
   opacity: 1;
 }
 
@@ -147,7 +148,7 @@
 .name {
   width: 270px;
   text-align: left;
-  font-size: 22px;
+  font-size: 1.2em;
   border-radius: 20px;
   font-family: Arial;
   align-items: center;
@@ -160,6 +161,15 @@
 
 .leafsDifficulty {
   margin-top: 15px;
+  mat-icon {
+    margin-right: 5px;
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+}
+.empty-leafs {
+  color: rgba(255, 255, 255, 0.548);
+
 }
 
 .duration, .difficulty {
@@ -167,6 +177,31 @@
   align-items: center;
   justify-content: center;
   margin-top: 10px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  row-gap: 10px;
+  max-height: 190px;
+  z-index: 2;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-left: -25px;
+
+  mat-icon {
+    color: black !important;
+    margin-bottom: -6.5px;
+    font-size: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      color: #615e5b !important;
+      transform: scale(1.06);
+    }
+  }
 }
 
 .card {
@@ -226,26 +261,22 @@
 }
 
 .icon-difficulty-1 {
-  color: #69b704e7;
+  color: #a3e77a;
 }
 
 .icon-difficulty-2 {
-  color: #d1cb1fde;
+  color: #e2dd8a;
 }
 
 .icon-difficulty-3 {
-  color: #f69c15;
+  color: #fabf72;
 }
 
 .icon-difficulty-4 {
-  color: #dc1d0f;
+  color: #f4817c;
 }
 
-mat-icon {
-  margin-right: 6px;
-  margin-left: 6px;
-  vertical-align: middle;
-}
+
 
 .full-page {
   height: 77vh;
@@ -261,3 +292,188 @@ mat-icon {
       }
   }
 }
+.guion{
+  margin-right: 10px;
+}
+
+
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-card {
+    background-color: transparent;
+    width: 380px;
+    height: 240px;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    border-radius: 10px;
+
+}
+.flip-card:hover {
+    cursor: pointer;
+
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    border-radius: 10px;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    border-radius: 10px;
+    padding: 1px;
+    z-index: 1;
+}
+
+.flip-card-front {
+    position: absolute;
+    background-color: #bbb;
+    color: black;
+}
+
+.flip-card-front::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    border-radius: 10px;
+}
+
+/* Style the back side */
+.flip-card-back {
+    background-color: #ccc6c0;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.pack-img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: relative; /* Asegura que la imagen esté debajo del overlay */
+    z-index: 0; /* Coloca la imagen debajo del overlay */
+    border-radius: 10px;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* ajusta el color del texto según sea necesario */
+    text-align: center;
+    z-index: 10;
+    width: 100%;
+    hr {
+        width: 3.5em;
+        margin-top: -12px;
+        margin-bottom: 10px;
+        border-style: solid;
+    }
+    h2 {
+        font-weight: 250;
+        margin: 0;
+        font-size: 1.8em;
+    }
+    h4 {
+        font-weight: 10;
+        margin: 0;
+    }
+}
+
+.info-container {
+    color: #444240;
+    margin-top: 9%;
+    justify-content: center;
+
+
+}
+
+/* card header styles */
+.cardHeader {
+  width: 80%;
+  text-align: center;
+  background-color: #52733B;
+  color: white;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 4px;
+  padding-right: 10px;
+  margin-inline: auto;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border-radius: 10px 10px 10px 10px;
+  display: flex; 
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.pack-info-title {
+  font-size: 1.25em;
+  font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  text-overflow: ellipsis;
+  width: calc(90%);
+
+
+
+  
+}
+
+/* icon styles */
+.icon {
+    margin-bottom: -10px;
+    font-size: 17px;
+    color: #444240;
+    margin-right: 4px;
+}
+
+/* info list styles */
+.list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    row-gap: 15px;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+}
+
+.pack-name {
+    overflow: hidden;
+    white-space: wrap;
+    display: inline-block;
+    text-overflow: ellipsis;
+    width: calc(90%);
+    span {
+        font-size: 1.7em;
+
+    }
+}
+
+
+:host ::ng-deep .mat-mdc-paginator-container .mat-mdc-paginator-page-size{
+  visibility: hidden !important;
+}
+
+

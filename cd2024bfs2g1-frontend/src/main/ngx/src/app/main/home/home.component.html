@@ -1,20 +1,87 @@
-<div class="body-container">
-  <div class="header">
-    <div class="logo" ><img src="{{getLogoImageSrc()}}" class="logo-image"></div>
-    <div class="main-title">{{'HOME-TITLE' | oTranslate}}</div>
-    <div class="sub-title">{{'HOME-SUBTITLE' | oTranslate}}</div>
-  </div>
-  <div class="content">
-    <div class="image-placeholder">
-      <img src="{{getContentImageSrc()}}" class="main-image">
+<o-grid #popularsPackGrid class="o-grid-popular-packs" attr="packGrid" service="packs" entity="popularPacks" keys="P.pck_id"
+    columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;img_code;gui_c_name;pck_days;" oHidden></o-grid>
+
+<div class="background-container">
+  <div class="body-container">
+    <div class="header">
+      <div class="logo">
+        <img src="{{ getLogoImageSrc() }}" class="logo-image">
+      </div>
+      <div class="main-title">{{ 'HOME-TITLE' | oTranslate }}</div>
+      <div class="sub-title">{{ 'HOME-SUBTITLE' | oTranslate }}</div>
     </div>
-    <div class="text-content">
-        <h1>{{'HOME-CONTENT-TITLE' | oTranslate}}</h1>
-        <p>{{'HOME-CONTENT-DESCRIPTION' | oTranslate}}</p>
-        <button class="main-button" (click)="openPacks()">{{'HOME-CONTENT-BUTTON' | oTranslate}}</button>
-        <!-- Este botón está comentado para en un futuro darle funcionalidad, llevando al usuario a una pagina de saber más o algo del estilo -->
-        <!--<button class="secondary-button" > <mat-icon class="icon">info_outline</mat-icon>{{'HOME-CONTENT-SECONDARY-BUTTON' | oTranslate}}</button>-->
+    <div class="content">
+      <div class="image-placeholder">
+        <img src="{{ getContentImageSrc() }}" class="main-image">
+      </div>
+      <div class="text-content">
+        <h1>{{ 'HOME-CONTENT-TITLE' | oTranslate }}</h1>
+        <p>{{ 'HOME-CONTENT-DESCRIPTION' | oTranslate }}</p>
+        <button class="main-button" (click)="openPacks()">{{ 'HOME-CONTENT-BUTTON' | oTranslate }}</button>
+      </div>
+    </div>
+
+    <div *ngIf="popularsPackGrid.dataArray.length < 1 || popularsPackGrid.dataArray.length == null" class="blank-div"></div>
+
+    <div><mat-icon (click)="openPopularPacks()" class="down-icon">arrow_downward</mat-icon></div>
+    <div id="visibleGrid" class="grid-container" *ngIf="popularsPackGrid.dataArray.length > 0">
+      <div class="popularPacks-title-container">
+        <p class="title">{{'POPULAR_PACKS' |oTranslate }}</p>
+      </div>
+      <div class="popularPacks-sub-title">
+        <p>{{'POPULAR_PACKS_SUBTITLE'| oTranslate}}</p>
+    </div>
+    <div class="grid-container">
+      <o-grid #popularsPackGrid class="o-grid-popular-packs" attr="packGrid" service="packs" entity="popularPacks" keys="P.pck_id"
+      columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;img_code;gui_c_name;pck_days;rating_avg" query-rows="10"
+      refresh-button="false" quick-filter="false" pagination-controls="true" detail-mode="false" page-size-options="true"
+      show-page-size="false" cols="2" gutter-size="1px" show-footer="no" grid-item-height="380px">
+      <o-grid-item *ngFor="let data of packsWithRank">
+        <div (click)="openDetailPack(data)" class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img class="pack-img" [src]="getImageSrc(data.img_code)" alt="Avatar">
+              <div class="text-overlay">
+                <div class="pack-name"><span class="pack-name">{{data.pck_name}}</span></div>
+                <hr/>
+                <h4>{{data.gui_c_name}}</h4>
+                <div class="extra-info">
+                  <div class="rating">
+                    <span class="ratingNumber" *ngIf="!data.rating_avg">-</span>
+                    <span class="ratingNumber" *ngIf="data.rating_avg">{{ data.rating_avg }}</span>
+                    <mat-icon class="star">grade</mat-icon>
+                  </div>
+                  <p class="front-price">{{data.pck_price}} <span class="euro">€</span></p>
+                </div>
+
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <div class="info-container">
+                <div class="cardHeader">
+                  <span class="pack-info-title">{{data.pck_name}}</span>
+                </div>
+
+                <h3></h3>
+                <div fxLayout="row" fxLayoutAlign="space-around stretch">
+                  <ul style="list-style-type: none;" class="list">
+                    <li><mat-icon class="icon">payments</mat-icon>{{data.pck_price}} €</li>
+                    <li *ngIf="!data.pck_days"><mat-icon class="icon">timer</mat-icon>-</li>
+                    <li *ngIf="data.pck_days && data.pck_days == 1"><mat-icon class="icon">timer</mat-icon>{{data.pck_days}} {{'DAY' | oTranslate}}</li>
+                    <li *ngIf="data.pck_days && data.pck_days > 1"><mat-icon class="icon">timer</mat-icon>{{data.pck_days}} {{'DAYS' | oTranslate}}</li>
+                    <li *ngIf="data.pck_participants && data.pck_participants == 1"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}} {{'PERSON' | oTranslate}}</li>
+                    <li *ngIf="data.pck_participants && data.pck_participants > 1"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}} {{'PEOPLE' | oTranslate}}</li>
+                    <li><mat-icon class="icon">pin_drop</mat-icon>{{data.gui_c_name}}</li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </o-grid-item>
+  </o-grid>
     </div>
   </div>
 </div>
-
+</div>

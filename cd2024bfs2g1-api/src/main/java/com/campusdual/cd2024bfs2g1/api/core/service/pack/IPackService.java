@@ -3,8 +3,6 @@ package com.campusdual.cd2024bfs2g1.api.core.service.pack;
 import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
-import com.ontimize.jee.common.security.PermissionsProviderSecured;
-import org.springframework.security.access.annotation.Secured;
 
 import java.text.ParseException;
 import java.util.List;
@@ -13,6 +11,16 @@ import java.util.Map;
 public interface IPackService {
 
     EntityResult packQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
+
+
+    EntityResult packPerDaysQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException;
+
+    EntityResult packByPriceQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException;
+
+    EntityResult packByStationQuery(Map<String, Object> keyMap, List<String> attrList)
+            throws OntimizeJEERuntimeException;
 
     EntityResult packImageQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 
@@ -25,6 +33,12 @@ public interface IPackService {
     EntityResult packDetailQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
     EntityResult packCancelDetailQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 
+    AdvancedEntityResult packRatingPaginationQuery(Map<String, Object> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
+            throws OntimizeJEERuntimeException;
+
+    AdvancedEntityResult allPacksRatingPaginationQuery(Map<String, Object> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
+            throws OntimizeJEERuntimeException;
+
     EntityResult packInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException, ParseException;
 
 
@@ -36,10 +50,10 @@ public interface IPackService {
     EntityResult packDaysQuery(Map<String, Object> keyMap, List<String> attrList)
             throws OntimizeJEERuntimeException;
 
-
-
     EntityResult packClientQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
     EntityResult packAndBookingDetailQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
+
+    EntityResult packRatingQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 
     EntityResult allPacksQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 
@@ -53,4 +67,7 @@ public interface IPackService {
 
     AdvancedEntityResult packClientPaginationQuery(Map<String, Object> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy);
 
+    EntityResult popularPacksQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
+
+    EntityResult avgAndCountQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 }

@@ -14,7 +14,7 @@ o-checkbox {
 }
 
 .toggleFirst {
-    margin-bottom: 30px; 
+    margin-bottom: 30px;
     margin-top: 25px;
 }
 
@@ -39,13 +39,13 @@ h3 {
 .radiobutton {
     margin-right: 10%;
     flex: 1; /* Distribuye el espacio disponible de manera equitativa entre los botones de radio */
-    
+
 }
 
 mat-radio-group{
     margin-left: 2%;
-    margin-top: 4%;   
-    
+    margin-top: 4%;
+
 }
 
 .o-image{
@@ -118,10 +118,3 @@ span {
 ::ng-deep .mat-primary .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-full{
     background-color: #52733B !important;
 }
-
-
-
-
-
-
-

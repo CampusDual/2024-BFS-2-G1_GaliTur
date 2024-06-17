@@ -26,7 +26,7 @@
                     <h1 *ngFor="let business of businessForm.dataArray"> {{business.bsn_name}}</h1>
                 </div>
 
-                
+
 
 
                 <!-- Imagen del business -->
@@ -86,7 +86,7 @@
 
                     </o-row>
                     </details>
-                    
+
                 </div>
 
 
@@ -151,7 +151,7 @@
                                     {{ languageKey.trim() | oTranslate }}<span *ngIf="!isLastLanguage(languageKey, agencyGuide.gui_language)">, </span>
                                 </ng-container>
                             </li>
-                            
+
                             <li *ngFor="let agencyGuide of agencyGuideForm.dataArray">
                                 <strong><i>{{'ZONE' | oTranslate }}: </i></strong>{{agencyGuide.gui_zone | oTranslate }}
                             </li>
@@ -163,12 +163,12 @@
                             </li>
                         </ul>
                     </o-row>
-                    
+
                 </div>
             </div>
         </o-form>
 
-        
+
     </mat-card>
 </div>
 

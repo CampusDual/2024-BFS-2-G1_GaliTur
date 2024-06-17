@@ -1,5 +1,5 @@
 import { DomSanitizer } from '@angular/platform-browser';
-import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnInit, ViewEncapsulation, HostListener,Renderer2 } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {AuthService, NavigationService, ServiceResponse, OUserInfoService, DialogService} from 'ontimize-web-ngx';
@@ -14,6 +14,54 @@ import { UserInfoService } from '../shared/services/user-info.service';
   encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
+  coverEyes(): void {
+    const leftHand = document.querySelector('.hand.left') as HTMLElement;
+    const rightHand = document.querySelector('.hand.right') as HTMLElement;
+    const mouth = document.querySelector('.mouth') as HTMLElement;
+    const eyeR = document.querySelector('.eye.right') as HTMLElement;
+    const eyeL = document.querySelector('.eye.left') as HTMLElement;
+    const pupilR = document.querySelector('.pupil.right') as HTMLElement;
+    const pupilL = document.querySelector('.pupil.left') as HTMLElement;
+
+    eyeR.style.background = '#818f45';
+    eyeL.style.background = '#818f45';
+    pupilR.style.visibility = 'hidden';
+    pupilL.style.visibility = 'hidden';
+    mouth.style.borderRadius = '50%';
+    mouth.style.height = '20px'; // Ajusta el tamaño del círculo según sea necesario
+    mouth.style.width='13px';
+    mouth.style.height='13px';
+    leftHand.style.transform = 'translateX(80%) translateY(-40%) rotate(-140deg)';
+    rightHand.style.transform = 'translateX(-80%) translateY(-40%) rotate(140deg)';
+  }
+
+  uncoverEyes(): void {
+    const leftHand = document.querySelector('.hand.left') as HTMLElement;
+    const rightHand = document.querySelector('.hand.right') as HTMLElement;
+    const mouth = document.querySelector('.mouth') as HTMLElement;
+    const eyeR = document.querySelector('.eye.right') as HTMLElement;
+    const eyeL = document.querySelector('.eye.left') as HTMLElement;
+    const pupilR = document.querySelector('.pupil.right') as HTMLElement;
+    const pupilL = document.querySelector('.pupil.left') as HTMLElement;
+
+    eyeR.style.background = 'White';
+    eyeL.style.background = 'White';
+    pupilR.style.visibility = 'visible';
+    pupilL.style.visibility = 'visible';
+    pupilR.style.background = 'black';
+    pupilL.style.background = 'black';
+    mouth.style.borderTopLeftRadius = '30%';
+    mouth.style.borderTopRightRadius = '30%';
+    mouth.style.borderBottomLeftRadius = '100%';
+    mouth.style.borderBottomRightRadius = '100%';
+    mouth.style.height = '5px';
+    mouth.style.width='25px';
+    mouth.style.height='10px';
+    leftHand.style.transform = 'translateX(-0%) rotate(-0deg)';
+    rightHand.style.transform = 'translateX(0%) rotate(0deg)';
+
+  }
+
   public loginForm: UntypedFormGroup = new UntypedFormGroup({});
   public userCtrl: UntypedFormControl = new UntypedFormControl('', Validators.required);
   public pwdCtrl: UntypedFormControl = new UntypedFormControl('', Validators.required);
@@ -23,6 +71,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private actRoute: ActivatedRoute,
+    private renderer: Renderer2,
     private router: Router,
     protected dialogService: DialogService,
     @Inject(NavigationService) private navigationService: NavigationService,
@@ -59,6 +108,30 @@ export class LoginComponent implements OnInit {
       this.authService.clearSessionData();
     }
   }
+
+  @HostListener('document:mousemove', ['$event'])
+  onMouseMove(event: MouseEvent) {
+    const pupils = document.querySelectorAll('.pupil');
+    const eyes = document.querySelectorAll('.eye');
+
+    pupils.forEach((pupil, index) => {
+      const eye = eyes[index];
+      const rect = eye.getBoundingClientRect();
+
+      const eyeX = rect.left + rect.width / 2;
+      const eyeY = rect.top + rect.height / 2;
+
+      const angle = Math.atan2(event.clientY - eyeY, event.clientX - eyeX); // Calculamos el ángulo
+
+      const distanceX =9;
+      const distanceY = 12; // Distancia de movimiento de la pupila
+      const pupilX = Math.cos(angle) * distanceX; // Movimiento horizontal
+      const pupilY = Math.sin(angle) * distanceY; // Movimiento vertical
+
+      this.renderer.setStyle(pupil, 'transform', `translate(${pupilX}px, ${pupilY}px)`);
+    });
+  }
+
 
   public login() {
     const userName = this.loginForm.value.username;

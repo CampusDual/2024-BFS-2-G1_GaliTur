@@ -35,13 +35,6 @@ export class BusinessHomeComponent {
       state: { previousUrl: currentUrl } // Enviar la URL actual como navigation state
     };
     this.router.navigate(['businesses/' + data.bsn_id], navigationExtras);
-}
-
-  truncateName(name: string): string {
-    if (name.length > 30) {
-        return name.substr(0, 30) + '...';
-    } else {
-        return name;
-    }
   }
+
 }

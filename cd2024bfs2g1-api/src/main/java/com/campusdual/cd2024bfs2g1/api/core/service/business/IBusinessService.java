@@ -12,10 +12,26 @@ public interface IBusinessService {
 
     EntityResult businessQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 
+    EntityResult businessRestaurantQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
+
+    EntityResult businessRestaurantUpdate(Map<String, Object> attributesValues, Map<String, Object> keysValues) throws OntimizeJEERuntimeException;
+
+    EntityResult businessDownDateQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
+
+    AdvancedEntityResult businessDownDatePaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy);
+
+    EntityResult businessRestaurantInsert(Map<String, Object> keysValues) throws OntimizeJEERuntimeException;
+
+    EntityResult typesOfBusinessesQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
+
     EntityResult businessMerchantQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 
 
     EntityResult businessInsert(Map<String, Object> keysValues) throws OntimizeJEERuntimeException;
+
+
+
+    EntityResult businessDownDateDelete(Map<String, Object> keysValues) throws OntimizeJEERuntimeException;
 
     EntityResult businessUpdate(Map<String, Object> attributesValues, Map<String, Object> keysValues) throws OntimizeJEERuntimeException;
 
@@ -23,6 +39,10 @@ public interface IBusinessService {
 
     AdvancedEntityResult businessPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy);
 
+    AdvancedEntityResult businessMerchantPaginationQuery(Map<String, Object> keysValues, List<String> attributes, int recordNumber, int startIndex, List<?> orderBy);
+
     EntityResult businessOfPackQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
+
+
 }
 

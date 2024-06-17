@@ -66,7 +66,7 @@ export class PackRoutesComponent {
       this.updateSelectedRoutesIds();
     });
   }
-  
+
 
   protected configureService() {
     // Configure the service using the configuration defined in the `app.services.config.ts` file
@@ -120,12 +120,12 @@ export class PackRoutesComponent {
       "R.pck_id": parseInt(this.data.packId),
       assigned_date: this.comboBoxDay.getValue()
     };
-    const columns = ["R.route_id","name","estimated_duration","difficulty","description"];
+    const columns = ["R.route_id","name","estimated_distance","difficulty","description"];
     this.service.query(filter, columns, "routePack").subscribe((resp) => {
       if (resp.code === 0) {
         // resp.data contains the data retrieved from the server
         this.AssignedRoutes = resp.data;
-       
+
       } else {
         alert("Impossible to query data!");
       }
@@ -138,14 +138,14 @@ export class PackRoutesComponent {
 
     const filter = {
     };
-    const columns = ["R.route_id","name","estimated_duration","difficulty","description"];
+    const columns = ["R.route_id","name","estimated_distance","difficulty","description"];
     this.service.query(filter, columns, "routeImage").subscribe((resp) => {
       if (resp.code === 0) {
         // resp.data contains the data retrieved from the server
         this.NotAsgRoutes = resp.data;
         this.NotAsgRoutes = this.compareLists();
         this.table.setDataArray(this.NotAsgRoutes);
-       
+
       } else {
         alert("Impossible to query data!");
       }
@@ -162,7 +162,7 @@ export class PackRoutesComponent {
         console.warn('One or both lists are not defined yet.');
         return this.NotAsgRoutes;
     }
-    
+
 }
 
 setRoutesData() {
@@ -173,7 +173,7 @@ setRoutesData() {
 
   insertRoutePack() {
     this.configureRouteService();
-  
+
     if (this.selectedRoutesIds.length === 0) {
       const config: OSnackBarConfig = {
         action: "",
@@ -185,7 +185,7 @@ setRoutesData() {
       this.snackBarService.open("ROUTEPACK.ERROR", config);
       return;
     }
-  
+
     for (let rt of this.selectedRoutesIds) {
       this.route_service
         .insert(
@@ -224,7 +224,7 @@ setRoutesData() {
   }
 
   public getImageSrc(base64: any): any {
- 
+
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/logo-walking.png";
   }
 
@@ -265,8 +265,8 @@ setRoutesData() {
     else {
        return horas + "h " + minutosRestantes + "min";
     }
-  
-    
+
+
   }
 
   getIconColorClass(difficulty: number): string {
@@ -296,6 +296,6 @@ setRoutesData() {
       }
     }
 
-   
+
 
 }

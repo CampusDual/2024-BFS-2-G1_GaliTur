@@ -25,8 +25,8 @@ ignore-default-navigation="yes" class="custom-form">
                     </div>
                     <br>
                     <div fxLayout="column">
-                        <o-integer-input  class="txt" attr="estimated_duration"
-                        sql-type="NUMERIC" enabled="yes" min="1" max="5000" label="{{'estimated_duration' | oTranslate }} (min)"></o-integer-input>
+                        <o-integer-input  class="txt" attr="estimated_distance"
+                        sql-type="NUMERIC" enabled="yes" min="1" max="60000" required="no" label="{{'estimated_distance' | oTranslate }} (m)"></o-integer-input>
                     </div>
                     <br>
                     <div fxLayout="column">
@@ -35,14 +35,18 @@ ignore-default-navigation="yes" class="custom-form">
                         visible-columns="difficultyText" required="yes"></o-combo>
                     </div>
                     <br>
-                    <div fxLayout="column">
-                        <o-slide-toggle attr="is_draft" class="txt" label="{{ 'is_draft' | oTranslate }}" read-only="no"></o-slide-toggle>
+                    <div fxLayout="row" class="toolTipContainer">
+                        <o-slide-toggle attr="is_accessible" class="slice" label="{{ 'is_accessible' | oTranslate }}" read-only="no"  matTooltip="{{ 'Explanation_is_accessible' | oTranslate }}"  matTooltipPosition="after"></o-slide-toggle>
+                    </div>
+                    <br>
+                    <div fxLayout="row"  class="toolTipContainer">
+                        <o-slide-toggle attr="is_draft" class="slice" label="{{ 'is_draft' | oTranslate }}" read-only="no" matTooltip="{{'draft' | oTranslate}}"  matTooltipPosition="after"></o-slide-toggle>
                     </div>
 
                 </div>
                 <div fxLayout="column" class="imageInput">
                     <div fxLayout="column">
-                        <o-image id="image" label="{{ 'IMAGE' | oTranslate }}" height="50" auto-fit="yes" class="img" attr="images" sql-type="OTHER" entity="image" service="images" image-type="base64"></o-image>
+                        <o-image id="image" label="{{ 'IMAGE' | oTranslate }}" height="50" auto-fit="yes" class="img" attr="images" sql-type="OTHER" entity="image" service="images" image-type="base64" required="yes"></o-image>
                     </div>
                 </div>
         </div>

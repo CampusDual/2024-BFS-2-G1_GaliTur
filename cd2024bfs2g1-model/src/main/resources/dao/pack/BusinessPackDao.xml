@@ -51,7 +51,9 @@
                         ON BP.pck_id=P.pck_id
                         INNER JOIN ${mainschema}.bsn_business B
                         ON B.bsn_id=BP.bsn_id
-                    #WHERE#
+                     WHERE
+                    B.bsn_down_date is null
+                    #WHERE_CONCAT#
                     #ORDER#
                 ]]>
             </Sentence>

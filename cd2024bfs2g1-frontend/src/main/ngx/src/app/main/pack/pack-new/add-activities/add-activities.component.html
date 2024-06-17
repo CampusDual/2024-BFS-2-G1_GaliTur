@@ -1,5 +1,10 @@
-<div style="display: flex;justify-content: flex-end;">
-<o-button label="{{'button_table_finish' | oTranslate }}" class="end_btn" icon="check" (click)="goBack()"></o-button>
+<div style="display: flex; justify-content: space-between; width: 100%;">
+  <div style="display: flex; justify-content: flex-start;">
+    <h2>Pack: {{pack_name}}</h2> 
+  </div>
+  <div style="display: flex; justify-content: flex-end; margin-right: 170px; margin-top: 19px">
+    <o-button label="{{'button_table_finish' | oTranslate }}" class="end_btn" icon="check" (click)="goBack()"></o-button>
+  </div>
 </div>
 <o-row class="principal">
  
@@ -25,8 +30,8 @@
   <o-column class="principal">
     
       <div class="div-table">
-        <o-table #tableRoutes keys="route_pack_id" columns="name;estimated_duration;difficulty;assigned_date" title="ROUTES"
-          visible-columns="name;estimated_duration;difficulty" insert-button="no" delete-button="no" refresh-button="no"
+        <o-table #tableRoutes keys="route_pack_id" columns="name;estimated_distance;difficulty;assigned_date" title="ROUTES"
+          visible-columns="name;estimated_distance;difficulty" insert-button="no" delete-button="no" refresh-button="no"
           pagination-controls="yes" detail-mode="none" export-button="no" query-rows="50"
           show-charts-on-demand-option="no" auto-adjust="no" fixed-header="yes" sort-columns="assigned_date" expand-groups-same-level="false" collapse-grouped-columns="yes"
           select-all-checkbox-visible="yes" select-all-checkbox="yes">

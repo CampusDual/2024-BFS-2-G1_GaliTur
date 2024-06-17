@@ -2,7 +2,7 @@
 
 
     <o-button class="back-button" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary"
-        (click)="openPacks()"></o-button>
+        (click)="backToHome()"></o-button>
 
 
     <mat-card class="mainCard"
@@ -10,11 +10,10 @@
 
 
 
-        <o-form #pform class="mainForm" #form attr="packDetail" service="packs" entity="pack"
-            keys="pck_id;gui_c_id" header-actions="false" undo-button="false"
-            show-header-actions-text="false"
-            columns="pck_id;pck_name;pck_description;pck_price;pck_participants;gui_c_id"
-            show-header-navigation="no" class="fill-form" show-header="no">
+        <o-form #pform class="mainForm" #form attr="packDetail" service="packs" entity="pack" keys="pck_id;gui_c_id"
+            header-actions="false" undo-button="false" show-header-actions-text="false"
+            columns="pck_id;pck_name;pck_description;pck_price;pck_participants;gui_c_id" show-header-navigation="no"
+            class="fill-form" show-header="no">
 
             <!-- Almaceno el pack que he clicado -->
             <o-grid #packForm attr="packDetail" service="packs" entity="packDetail" keys="P.pck_id;P.gui_c_id;pcs_id"
@@ -22,19 +21,24 @@
                 parent-keys="pck_id" refresh-button="false" quick-filter="false" oHidden />
 
             <!-- Almaceno los business del pack -->
-            <o-grid #gridBusinessesOfPack attr="businessGrid" service="businesses" entity="businessOfPack" keys="B.bsn_id;BSP.pck_id;BSP.pck_id"
-                columns="B.bsn_id;B.merchant_id;B.bsn_name;B.bsn_type;B.bsn_photos;BSP.pck_id;BSP.bsn_pack_id;assigned_date"
-                query-rows="16" parent-keys="pck_id" oHidden/>
+            <o-grid #gridBusinessesOfPack attr="businessGrid" service="businesses" entity="businessOfPack"
+                keys="B.bsn_id;BSP.pck_id;BSP.pck_id"
+                columns="B.bsn_id;B.merchant_id;B.bsn_name;B.bsn_type;B.bsn_photos;BSP.pck_id;BSP.bsn_pack_id;assigned_date;bsn_website;bsn_schedule"
+                query-rows="16" parent-keys="pck_id" oHidden />
 
             <!-- Almaceno las rutas de un pack -->
-            <o-grid #gridRoutesOfPack attr="routesHome" title="ROUTES" service="routes" entity="routesOfPack" keys="r.route_id;rp.pck_id;"
-                columns="r.route_id;r.name;r.estimated_duration;r.difficulty;i.img_code;rp.pck_id;rp.assigned_date"
-                query-rows="8" orderable="true" parent-keys="pck_id" oHidden/>
+            <o-grid #gridRoutesOfPack attr="routesHome" title="ROUTES" service="routes" entity="routesOfPack"
+                keys="r.route_id;rp.pck_id;"
+                columns="r.route_id;r.name;r.estimated_distance;r.difficulty;i.img_code;rp.pck_id;rp.assigned_date"
+                query-rows="8" orderable="true" parent-keys="pck_id" oHidden />
 
             <!-- Almaceno la ciudad del pack -->
             <o-grid #gui_cities attr="guiCities" service="guideCities" entity="guideCities" keys="gui_c_id"
                 columns="gui_z_id;gui_c_id;gui_c_name" visible-columns="gui_z_id;gui_c_id;gui_c_name"
                 parent-keys="gui_c_id" refresh-button="false" quick-filter="false" oHidden />
+
+            <o-grid #gridPackRatingavg attr="gridPackRating" service="packs" entity="avgAndCount" keys="PB.pd_id;P.pck_id:PB.pbk_booking_id"
+            columns="rating_avg,rating_count" parent-keys="P.pck_id:pck_id" oHidden/>
 
             <!-- Div que contendrá toda la informacion del pack -->
             <div class="main-container">
@@ -52,40 +56,79 @@
                 <!--Recorrido entre tablas para sacar la imagen correspondiente al pack-->
                 <span *ngFor="let pack of packForm.dataArray">
                     <span *ngFor="let imagePack of imagesPackForm.dataArray">
+                        <span *ngFor="let avg of gridPackRatingavg.dataArray">
                         <span *ngIf="imagePack.img_id == 1">
                             <div class="div-image-container">
-                                <h1 class="image-title"> {{pack.pck_name}} </h1>
+                                <div class="pack_title">
+                                    <h1 class="image-title"> {{pack.pck_name}} </h1>
+                                </div>
+                              <div class="valoration_container">
+
+                                        <div class="valoration_average"  *ngIf="avg.rating_avg !=null">
+                                            <div fxLayout="column" class="valoration_data">
+                                                <h1>{{avg.rating_avg}}</h1>
+                                                <div>
+                                                    <mat-icon [ngClass]="valorationStars(1,avg.rating_avg)">star</mat-icon>
+                                                    <mat-icon [ngClass]="valorationStars(2,avg.rating_avg)">star</mat-icon>
+                                                    <mat-icon [ngClass]="valorationStars(3,avg.rating_avg)">star</mat-icon>
+                                                    <mat-icon [ngClass]="valorationStars(4,avg.rating_avg)">star</mat-icon>
+                                                    <mat-icon [ngClass]="valorationStars(5,avg.rating_avg)">star</mat-icon>
+                                                </div>
+                                                <p>({{avg.rating_count}})</p>
+                                            </div>
+                                        </div>
+
+
+                                </div>
                                 <img class="image-logo" [src]="getImageSrc(imagePack.img_code)">
                             </div>
                         </span>
                         <span *ngIf="imagePack.img_id != 1">
                             <div class="div-image-container">
-                                <h1 class="image-title"> {{pack.pck_name}} </h1>
+                                <div class="pack_title">
+                                    <h1 class="image-title"> {{pack.pck_name}} </h1>
+                                </div>
+                                <div class="valoration_container">
+
+                                        <div class="valoration_average"  *ngIf="avg.rating_avg !=null">
+                                            <div fxLayout="column" class="valoration_data">
+                                                <h1>{{avg.rating_avg}}</h1>
+                                                <div>
+                                                    <mat-icon [ngClass]="valorationStars(1,avg.rating_avg)">star</mat-icon>
+                                                    <mat-icon [ngClass]="valorationStars(2,avg.rating_avg)">star</mat-icon>
+                                                    <mat-icon [ngClass]="valorationStars(3,avg.rating_avg)">star</mat-icon>
+                                                    <mat-icon [ngClass]="valorationStars(4,avg.rating_avg)">star</mat-icon>
+                                                    <mat-icon [ngClass]="valorationStars(5,avg.rating_avg)">star</mat-icon>
+                                                </div>
+                                                <p>({{avg.rating_count}})</p>
+                                            </div>
+                                        </div>
+
+
+                                </div>
+
                                 <img class="image" [src]="getImageSrc(imagePack.img_code)">
                             </div>
+
+                        </span>
                         </span>
                     </span>
                 </span>
-                <div  class="reserve-container" *ngIf="!checkAuthStatus() && parsePermissions('reserve-container')">
+                <div class="reserve-container" *ngIf="!checkAuthStatus() && parsePermissions('reserve-container')">
 
                     <!-- Combo box que muestra los intervalos de fechas disponibles para la reserva con su botón correspondiente -->
                     <div class="reserve-container">
-                    <div class="div-combo-container">
-                        <o-combo
-                        #packDateCombo
-                        value-column="pd_id"
-                        keys="pd_id"
-                        columns="pck_id;pd_id;pd_date_begin;pd_date_end"
-                        visible-columns="pd_date_begin;pd_date_end"
-                        multiple="no" null-selection="no" required="yes"
-                        label="{{ 'DATE_RANGE' | oTranslate}}"
-                        ></o-combo>
-                    </div>
-                    <div class="div-active-pack-container">
-                        <p class="active-pack"
-                        (click)="bookPack(packDateCombo.getDataArray())">{{ 'BOOK'| oTranslate }}
-                        </p>
-                    </div>
+                        <div class="div-combo-container">
+                            <o-combo #packDateCombo value-column="pd_id" keys="pd_id"
+                                columns="pck_id;pd_id;pd_date_begin;pd_date_end"
+                                visible-columns="pd_date_begin;pd_date_end" multiple="no" null-selection="no"
+                                required="yes" label="{{ 'DATE_RANGE' | oTranslate}}"></o-combo>
+                        </div>
+                        <div class="div-active-pack-container">
+                            <p class="active-pack" (click)="bookPack(packDateCombo.getDataArray())">{{ 'BOOK'|
+                                oTranslate }}
+                            </p>
+                        </div>
                     </div>
 
                 </div>
@@ -96,9 +139,7 @@
                     <o-row class="o-rows" class="left" attr="container" icon="description" mat
                         title="{{'DESCRIPTION' | oTranslate }}" layout-align="start stretch" elevation="1"
                         aria-orientation="vertical" appearance="outline">
-                        <ul class="list-to-desc">
-                            <li *ngFor="let packs of packForm.dataArray">{{packs.pck_description}}</li>
-                        </ul>
+                        <li *ngFor="let packs of packForm.dataArray" class="list-to-desc">{{packs.pck_description}} </li>
                     </o-row>
 
 
@@ -111,14 +152,20 @@
                     <o-row class="o-rows" class="right" attr="container" title="{{'INFO' | oTranslate }}" icon="info"
                         layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
                         <ul class="list-with-spaces">
-                            <li *ngIf="!packs.pck_days"><strong><i>{{'DAYS' | oTranslate }}: </i></strong>{{'NOT_SPECIFIED' | oTranslate}}</li>
-                            <li *ngIf="packs.pck_days && packs.pck_days > 0"><strong><i>{{'DAYS' | oTranslate }}: </i></strong>{{packs.pck_days}}</li>
-                            <li *ngIf="packs.pck_participants "><strong><i>{{'TRAVELLERS' | oTranslate }}: </i></strong>{{packs.pck_participants}}</li>
-                            <li *ngIf="!packs.pck_participants"><strong><i>{{'TRAVELLERS' | oTranslate }}: </i></strong>{{'NOT_SPECIFIED' | oTranslate}}</li>
+                            <li *ngIf="!packs.pck_days"><strong><i>{{'DAYS' | oTranslate }}:
+                                    </i></strong>{{'NOT_SPECIFIED' | oTranslate}}</li>
+                            <li *ngIf="packs.pck_days && packs.pck_days > 0"><strong><i>{{'DAYS' | oTranslate }}:
+                                    </i></strong>{{packs.pck_days}}</li>
+                            <li *ngIf="packs.pck_participants "><strong><i>{{'TRAVELLERS' | oTranslate }}:
+                                    </i></strong>{{packs.pck_participants}}</li>
+                            <li *ngIf="!packs.pck_participants"><strong><i>{{'TRAVELLERS' | oTranslate }}:
+                                    </i></strong>{{'NOT_SPECIFIED' | oTranslate}}</li>
                             <span *ngFor="let city of gui_cities.dataArray">
                                 <span *ngIf="packs.gui_c_id == city.gui_c_id">
                                     <span *ngFor="let zone of gui_zones.dataArray">
-                                        <li *ngIf="city.gui_z_id == zone.gui_z_id"><strong><i>{{'PLACE' | oTranslate }}: </i></strong> {{city.gui_c_name | oTranslate}}, {{zone.gui_z_name | oTranslate}}</li>
+                                        <li *ngIf="city.gui_z_id == zone.gui_z_id"><strong><i>{{'PLACE' | oTranslate }}:
+                                                </i></strong> {{city.gui_c_name | oTranslate}}, {{zone.gui_z_name |
+                                            oTranslate}}</li>
                                     </span>
                                 </span>
                             </span>
@@ -131,41 +178,78 @@
                 <o-form #daySelectorForm show-header-navigation="false" show-header="no">
                     <div class="reserve-container">
                         <div class="div-combo-days-container">
-                            <o-combo attr="assigned_date" class="combo-box-dates" label=" {{ 'COMBO-BOX-DAYS-TITLE' | oTranslate }} " [static-data]="arrayDias"
-                                value-column="day" columns="day" visible-columns="day" tooltip="{{'COMBO-BOX-DAYS-DESC' | oTranslate }}" null-selection-label="{{ 'ALL-DAYS' | oTranslate }}"></o-combo>
+                            <o-combo #comboDays attr="assigned_date" class="combo-box-dates"
+                                label=" {{ 'COMBO-BOX-DAYS-TITLE' | oTranslate }} " [static-data]="arrayDias"
+                                value-column="day" columns="day" visible-columns="day"
+                                tooltip="{{'COMBO-BOX-DAYS-DESC' | oTranslate }}"
+                                null-selection-label="{{ 'ALL-DAYS' | oTranslate }}"></o-combo>
                         </div>
                     </div>
-                    <o-filter-builder #filterBuilder attr="thefilter"
-                        filters="assigned_date:assigned_date;" [target]="gridBusinessesOfPack" query-on-change="yes" query-on-change-delay="500" [expression-builder]="createFilter"></o-filter-builder>
+                    <o-filter-builder #filterBuilder attr="thefilter" filters="assigned_date:assigned_date;"
+                        [target]="gridBusinessesOfPack" query-on-change="yes" query-on-change-delay="500"
+                        [expression-builder]="createFilter"></o-filter-builder>
 
-                    <o-filter-builder #filterBuilder2 attr="thefilter"
-                        filters="assigned_date:assigned_date;" [target]="gridRoutesOfPack" query-on-change="yes" query-on-change-delay="500" [expression-builder]="createFilter"></o-filter-builder>
+                    <o-filter-builder #filterBuilder2 attr="thefilter" filters="assigned_date:assigned_date;"
+                        [target]="gridRoutesOfPack" query-on-change="yes" query-on-change-delay="500"
+                        [expression-builder]="createFilter"></o-filter-builder>
 
-                    </o-form>
+                </o-form>
 
                 <!-- Muestro todos las rutas en un grid -->
                 <div class="routes-container">
-                    <o-row class="o-row-o-grid-container" title="{{ 'ROUTES' | oTranslate }}" icon="map" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+                    <o-row class="o-row-o-grid-container" title="{{ 'ROUTES' | oTranslate }}" icon="map"
+                        layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
                         <div class="o-grid-container">
-                            <o-grid opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false"
-                            show-page-size="false" disable-page-size-calculation="true" cols="2" gutter-size="1px" grid-item-height="215px">
+                            <p *ngIf="gridRoutesOfPack.dataArray.length == 0" class="no-business-card">
+                                <span
+                                    *ngIf="comboDays.getValue() != 0 && comboDays.getValue() != null">{{"NO_ROUTES_TODAY"
+                                    | oTranslate}} {{comboDays.getValue()}} !</span>
+                                <span
+                                    *ngIf="comboDays.getValue() == 0 || comboDays.getValue() == null">{{"NO_ROUTES_IN_PACK"
+                                    | oTranslate}}</span>
+                            </p>
+                            <o-grid *ngIf="gridRoutesOfPack.dataArray.length > 0" opacity="0" refresh-button="false"
+                                quick-filter="false" pagination-controls="false" detail-mode="false"
+                                page-size-options="false" show-page-size="false" disable-page-size-calculation="true"
+                                cols="2" gutter-size="1px" grid-item-height="215px">
                                 <o-grid-item *ngFor="let data of gridRoutesOfPack.dataArray">
-                                    <div (click)="openDetailRoutes(data)" fxLayout="column" fxLayoutAlign="center" class="mat-elevation-z1 routeCard">
-                                        <div class="card-header">
-                                            <div class="route-name">
-                                                <span class="pack-name">{{ data.name}}</span>
+                                    <div (click)="openDetailRoutes(data)"
+                                        class="flip-card">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front">
+                                                <img class="preview-image" [src]="getRouteImageSrc(data.img_code)">
+                                                <div class="text-overlay">
+                                                    <div class="card-name"><span class="card-name">{{ data.name}}</span></div><hr/>
+                                                    <div class="leafsDifficulty">
+                                                        <span *ngIf="data.difficulty; else no_difficulty">
+                                                          <mat-icon
+                                                            [ngClass]="getIconColorClass(data.difficulty)"
+                                                            *ngFor="let _ of [].constructor(data.difficulty)"
+                                                            >eco</mat-icon
+                                                          >
+                                                          <mat-icon class="empty-leafs" *ngFor="let _ of [].constructor(4 - data.difficulty)"
+                                                            >eco</mat-icon
+                                                          >
+                                                        </span>
+                                                        <ng-template #no_difficulty>
+                                                          <span>{{ "NO_DATA_AVAILABLE" | oTranslate }}</span>
+                                                        </ng-template>
+                                                      </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="card-content">
-                                            <div class="content-image-item">
-                                                <img class="preview-image" [src]="getRouteImageSrc(data.img_code)" height="80px">
-                                            </div>
-                                            <div class="content-list-item">
-                                                <ul class="list-with-spaces" style="list-style-type: none;">
-                                                    <li *ngIf="!data.estimated_duration" matTooltip="{{'N0_ESTIMATED_DURATION'|oTranslate}}"><mat-icon class="icon">timer</mat-icon>- Min</li>
-                                                    <li *ngIf="data.estimated_duration" matTooltip="{{'estimated_duration'|oTranslate}}"><mat-icon class="icon">timer</mat-icon>{{data.estimated_duration}} Min</li>
-                                                    <li><mat-icon class="icon" matTooltip="{{'difficulty'|oTranslate}}">eco</mat-icon>{{getDifficultad(data.difficulty) | oTranslate }}</li>
-                                                </ul>
+                                            <div class="flip-card-back">
+                                                <div class="info-container">
+                                                    <div class="cardHeader">
+                                                        <span class="pack-info-title">{{data.name}}</span>
+                                                    </div>
+                                                    <div class="content-list-item">
+                                                        <ul class="list" style="list-style-type: none;">
+                                                            <li *ngIf="!data.estimated_distance"><mat-icon matTooltip="{{'NO_ESTIMATED_DISTANCE'|oTranslate}}" class="icon">directions_run</mat-icon>- Km</li>
+                                                            <li *ngIf="data.estimated_distance"><mat-icon matTooltip="{{'ESTIMATED_DISTANCE'|oTranslate}}" class="icon">directions_run</mat-icon>{{data.estimated_distance}} Km</li>
+                                                            <li><mat-icon class="icon" matTooltip="{{'difficulty'|oTranslate}}">eco</mat-icon>{{getDifficultad(data.difficulty) | oTranslate }}</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -177,32 +261,91 @@
 
                 <!-- Muestro todos los negocios en un grid -->
                 <div class="business-container">
-                    <o-row class="o-row-o-grid-container" title="{{ 'BUSINESSES' | oTranslate }}" icon="business" layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
+                    <o-row class="o-row-o-grid-container" title="{{ 'BUSINESSES' | oTranslate }}" icon="business"
+                        layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
                         <div class="o-grid-container">
-                            <o-grid  opacity="0" refresh-button="false" quick-filter="false" pagination-controls="false" detail-mode="false" page-size-options="false"
-                            show-page-size="false" disable-page-size-calculation="true" cols="2" gutter-size="1px" grid-item-height="245px">
-                                <o-grid-item *ngFor="let data of gridBusinessesOfPack.dataArray" >
-                                    <div (click)="openDetailBusiness(data)" fxLayout="column" fxLayoutAlign="space-evenly center" class="mat-elevation-z1 businessCard">
-                                        <div class="card-header">
-                                            <div class="business-title">
-                                                <div class="business-icon">
-                                                    <span *ngIf="data.bsn_type === 'Restaurant'" matTooltip="{{'Restaurant'|oTranslate}}"><mat-icon class="type-icon" >restaurant</mat-icon></span>
-                                                    <span *ngIf="data.bsn_type === 'Lodging'"><mat-icon class="type-icon" matTooltip="{{ 'Lodging' | oTranslate }}">house</mat-icon></span>
-                                                    <span *ngIf="data.bsn_type === 'AgencyGuide'"><mat-icon class="type-icon" matTooltip="{{ 'AgencyGuide' | oTranslate }}">flight</mat-icon></span>
+                            <p *ngIf="gridBusinessesOfPack.dataArray.length == 0" class="no-business-card">
+                                <span
+                                    *ngIf="comboDays.getValue() != 0 && comboDays.getValue() != null">{{"NO_BUSINESS_TODAY"|oTranslate}}
+                                    {{comboDays.getValue()}} !</span>
+                                <span
+                                    *ngIf="comboDays.getValue() == 0 || comboDays.getValue() == null">{{"NO_BUSINESS_IN_PACK"|oTranslate}}</span>
+                            </p>
+                            <o-grid *ngIf="gridBusinessesOfPack.dataArray.length > 0" opacity="0" refresh-button="false"
+                                quick-filter="false" pagination-controls="false" detail-mode="false"
+                                page-size-options="false" show-page-size="false" disable-page-size-calculation="true" no
+                                cols="2" gutter-size="1px" grid-item-height="215px">
+                                <o-grid-item *ngFor="let data of gridBusinessesOfPack.dataArray">
+                                    <div (click)="openDetailBusiness(data)"
+                                    class="flip-card">
+                                    <div class="flip-card-inner">
+                                        <div class="flip-card-front">
+                                            <img class="preview-image" [src]="getRouteImageSrc(data.img_code)">
+                                            <div class="text-overlay">
+                                                <div class="card-name"><span class="card-name">{{ truncateName(data.bsn_name)}}</span></div><hr/>
+                                                <span *ngIf="data.bsn_type === 'Restaurant'"><mat-icon class="type-icon">restaurant</mat-icon>{{ data.bsn_type | oTranslate }}</span>
+                                                <span *ngIf="data.bsn_type === 'Lodging'"><mat-icon class="type-icon">house</mat-icon> {{ data.bsn_type | oTranslate }}</span>
+                                                <span *ngIf="data.bsn_type === 'AgencyGuide'"><mat-icon class="type-icon">flight</mat-icon>{{data.bsn_type | oTranslate }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="flip-card-back">
+                                            <div class="info-container">
+                                                <div class="cardHeader">
+                                                    <span class="pack-info-title">{{data.bsn_name}}</span>
                                                 </div>
-                                                <div class="business-name">
-                                                    <span class="pack-name">{{ data.bsn_name}}</span>
+                                                <div class="content-list-item">
+                                                    <ul class="list" style="list-style-type: none;">
+                                                        <li><mat-icon class="icon">hourglass_bottom</mat-icon>{{data.bsn_schedule}}</li>
+                                                        <li><mat-icon class="icon">language</mat-icon> {{data.bsn_website}}</li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
                                         <img class="preview-image" [src]="getImageSrc(data.bsn_photos)" height="120px">
                                     </div>
+                                </div>
                                 </o-grid-item>
                             </o-grid>
                         </div>
                     </o-row>
                 </div>
 
+                <div class="rating-container" >
+                    <details class="details" >
+                        <summary>{{"VALORATIONS" | oTranslate}}</summary>
+                        <o-grid #gridPackRating attr="gridPackRating" service="packBookings" entity="packbookingClientUserDatePack" keys="C.client_id;US.usr_id;PB.pd_id;PC.pck_id"
+                        columns="US.usr_name;PB.pbk_rating_date;PB.pbk_stars;PB.pbk_comment" parent-keys="PC.pck_id:pck_id" orderable="yes" sortable-columns="pbk_rating_date:desc;pbk_stars:desc;pbk_rating_date:desc;pbk_stars:desc"
+                        query-rows="8" pageable="yes" page-size-options="8" pagination-controls="true" sort-column="pbk_rating_date:desc" cols="1"
+                        opacity="0" refresh-button="false" quick-filter-columns="pbk_comment" gutter-size="0px" grid-item-height="245px">
+                            <o-grid-item *ngFor="let data of gridPackRating.dataArray">
+                                <div fxLayout="column" class="mat-elevation-z1 valorations">
+
+                                    <div fxLayout="row">
+                                        <div class="card-valorations-header">
+                                            <div class="rating-title">
+                                                <div class="valoracions-name">
+
+                                                    <span class="user-name">{{data.usr_name}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 1?'star_color':''">star</mat-icon>
+                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 2?'star_color':''">star</mat-icon>
+                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 3?'star_color':''">star</mat-icon>
+                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 4?'star_color':''">star</mat-icon>
+                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 5?'star_color':''">star</mat-icon>
+                                        <p id="date-rating">{{getDate(data.pbk_rating_date)}}</p>
+                                    </div>
+                                    <o-row *ngIf="data.pbk_comment != null" class="o-row-coment" attr="container"
+                                        title="COMENT" layout-align="start stretch" elevation="1"
+                                        aria-orientation="vertical" appearance="outline">
+                                        <p class="list-to-desc">{{data.pbk_comment}}</p>
+                                    </o-row>
+                                </div>
+                            </o-grid-item>
+                        </o-grid>
+                    </details>
+                </div>
 
             </div>
         </o-form>

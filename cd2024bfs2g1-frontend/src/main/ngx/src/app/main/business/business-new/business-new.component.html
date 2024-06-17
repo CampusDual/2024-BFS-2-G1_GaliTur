@@ -166,7 +166,7 @@
                 <o-combo attr="comboLanguages" oLocker
                 oLockerMode="disable" label="{{ 'SELECT_LANGUAGE' | oTranslate }}" multiple="yes" service="guideLanguages" translate="yes"
                     entity="guideLanguage" sort="ASC" value-column="gui_l_id" columns="gui_l_id;gui_l_name"
-                    visible-columns="gui_l_name" separator=", " fxFlex required="yes">
+                    visible-columns="gui_l_name" separator=", " fxFlex required="yes" searchable="yes">
                 </o-combo>
             </o-column>
             <o-column style="padding-left: 3%;" id="formZones">
@@ -181,7 +181,7 @@
                 <o-combo id="comboCity" #comboCity attr="comboCity" label="{{ 'SELECT_CITY' | oTranslate }}" multiple="yes" translate="yes"
                     query-method="query" sort="ASC" service="guideCities" entity="guideCities" value-column="gui_c_id"
                     columns="gui_c_name" visible-columns="gui_c_name" keys="gui_c_id"
-                    [query-on-event]="comboZone.onValueChange" parent-keys="gui_z_id:comboZone[gui_z_id]">
+                    [query-on-event]="comboZone.onValueChange" parent-keys="gui_z_id:comboZone[gui_z_id]" searchable="yes" required="yes">
                 </o-combo>
 
             </o-column>

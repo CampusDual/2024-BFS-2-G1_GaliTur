@@ -5,8 +5,6 @@ import com.ontimize.jee.server.dao.jdbc.OntimizeJdbcDaoSupport;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Lazy
 @Repository("PackDao")
 @ConfigurationFile(configurationFile = "dao/pack/PackDao.xml", configurationFilePlaceholder = "dao/placeholders.properties")
@@ -30,4 +28,14 @@ public class PackDao extends OntimizeJdbcDaoSupport {
     public static String PCK_DETAIL = "packDetail";
     public static String PCK_CANCEL_DETAIL = "packCancelDetail";
     public static String PCK_DETAILS_QUERY = "packsDetails";
+    public static String PCK_POPULARS_QUERY = "popularPacks";
+    public static String PCK_PER_DAYS_QUERY = "packPerDays";
+    public static String PCK_BY_PRICE_QUERY = "packByPrice";
+    public static String PCK_BY_STATION_QUERY = "packByStation";
+    public static String PCK_RATING_AVG_QUERY = "multiRatingAVG";
+
+    public static String PCK_ALL_RATING_AVG_QUERY = "allRatingAVG";
+    public static String PCK_RATING_AVG_COUNT_QUERY = "AvgAndCount";
+
+
 }

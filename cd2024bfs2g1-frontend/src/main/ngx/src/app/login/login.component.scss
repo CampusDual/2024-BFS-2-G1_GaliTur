@@ -5,10 +5,10 @@
 }
 
 //Paleta de colores a utilizar
-$primary-color: #909f43; // Color verde neutro 
-$secondary-color: #495635; // Color verde oscuro 
-$background-color: #F0F4C3; // Color de fondo claro 
-$text-color: #715e4e; // Color marron oscuro 
+$primary-color: #909f43; // Color verde neutro
+$secondary-color: #495635; // Color verde oscuro
+$background-color: #F0F4C3; // Color de fondo claro
+$text-color: #715e4e; // Color marron oscuro
 $input-bg-color: #dbded0;
 $input-border-color: #AED581;
 $button-color: #715e4e;
@@ -25,10 +25,10 @@ $card-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   @include center-flex;
   background: linear-gradient(135deg, #909f43, #495635); //Degradado
 
-  //Estilos al logo con el nombre 
+  //Estilos al logo con el nombre
   .header-login {
     position: fixed;
-    top: 70px;
+    top: 60px;
     width: 100%;
     @include center-flex;
     justify-content: center;
@@ -39,11 +39,12 @@ $card-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       flex-direction: column;
 
       img {
-        max-height: 40px;
+        max-height: 60px;
+        margin-bottom: -7px;
       }
 
       .app-name {
-        font-size: 32px;
+        font-size: 35px;
         font-weight: 700;
         color: #FFFFFF;
         text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
@@ -60,7 +61,7 @@ $card-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     border-radius: 12px;
     text-align: center;
     backdrop-filter: blur(10px);
-    margin-top: 70px;
+    margin-top: 80px;
 
     .login-title-container {
       margin-bottom: 24px;
@@ -157,7 +158,7 @@ $card-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         color: $button-color;
         font-size: 16px;
         padding: 10px 20px;
-        border: 1px solid $button-color; 
+        border: 1px solid $button-color;
         border-radius: 5px;
         cursor: pointer;
         box-shadow: none;
@@ -199,9 +200,177 @@ $card-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     display: flex;
     color: #e3e6d8;
   }
-  
+
    .mat-mdc-button.mat-unthemed {
     --mdc-text-button-label-text-color: #e3e6d8 !important;
   }
+
+  .login-container{
+    margin-bottom: 10px;
+  }
+  .chractherContainer{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    align-content: center;
+  }
+
+  .character {
+    position: relative;
+    border-radius: 15px;
+    width: 150px;
+    height: 100px; /* Ajusta la altura del personaje */
+    background-size: 150px; /* Ajusta el tamaño de la imagen para cubrir todo el contenedor */
+    background-repeat: no-repeat;
+    background-position: center; /* Centra la imagen de la mochila */
+    z-index: 1; /* Asegura que la mochila esté detrás de la cara */
+    overflow: hidden; /* Oculta cualquier contenido que se desborde de la mochila */
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    align-content: center;
+}
+
+.body{
+  background: #818f45;
+  height: 100px;
+  border-radius: 25%;
+  width: 100px;
+}
+
+.eyes {
+  display: flex;
+  justify-content: center;
+}
+
+.eyeContainer{
+  background: #a2b35b;
+  height: 50px;
+  width: 40px;
+  margin: 5px;
+  border-top-left-radius: 45%;
+  border-top-right-radius: 45%;
+  border-bottom-left-radius: 45%;
+  border-bottom-right-radius: 45%;
+  margin-top: 10px;
+}
+
+
+.eye {
+  width: 30px; /* Ajusta el tamaño de los ojos */
+  height: 40px; /* Ajusta el tamaño de los ojos */
+  background: #ffffff; /* Color del ojo */
+  top: 5px;
+  border-top-left-radius: 45%;
+  border-top-right-radius: 45%;
+  border-bottom-left-radius: 45%;
+  border-bottom-right-radius: 45%;
+  margin: 0 5px 0px 5px;
+  position: relative;
+  z-index: 0; /* Ajusto el z-index para que se pinte por encima de las manos */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Sombra para los ojos */
+}
+.pupil{
+  width: 21px; /* Ajusta el tamaño de los ojos */
+  height: 21px; /* Ajusta el tamaño de los ojos */
+  top: 10px; /* Ajusta la posición vertical de los ojos */
+  left: 1px;
+  background: #000000; /* Color del ojo */
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  margin: 0 5px 0px 5px;
+  position: relative;
+  z-index: 0; /* Ajusto el z-index para que se pinte por encima de las manos */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Sombra para los ojos */
+}
+.pupilW{
+  width: 10px; /* Ajusta el tamaño de los ojos */
+  height: 10px; /* Ajusta el tamaño de los ojos */
+  top: 1px;
+  right: 4px;
+  background: #ffffff; /* Color del ojo */
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  margin: 0 5px 0px 5px;
+  position: relative;
+  z-index: 0; /* Ajusto el z-index para que se pinte por encima de las manos */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Sombra para los ojos */
+}
+
+
+.eye.left {
+  transition: transform 0.5s ease;
+}
+
+.eye.right {
+  transition: transform 0.5s ease;
+}
+
+.pupil.left {
+  transition: transform 0.5s ease;
+  background: #302e2e;
+}
+
+.pupil.right {
+  transition: transform 0.5s ease;
+  background: #302e2e;
+}
+
+.mouth {
+  width: 25px;
+  height: 10px;
+  background: #fffdfd; /* Color de la boca */
+  position: absolute;
+  top: 65px; /* Ajusta la posición vertical de la boca */
+  left: 50%;
+  border-top-left-radius: 30%;
+  border-top-right-radius: 30%;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  transform: translateX(-50%);
+  transition: height 0.5s ease; /* Animación de encogimiento */
+}
+
+
+.hands {
+    position: absolute;
+    top: 45px; /* Mueve las manos ligeramente hacia abajo */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    width: 140px; /* Ajusta el ancho de las manos */
+}
+
+.hand {
+    width: 20px; /* Ajusta el ancho de las manos */
+    height: 50px; /* Ajusta la altura de las manos */
+    border-radius: 10px 10px 10px 10px;
+    position: relative;
+    z-index: 1; /* Ajusto el z-index para que las manos se pinten debajo de los ojos */
+    transition: transform 0.5s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Sombra para las manos */
+}
+
+
+.hand.left {
+    background: #818f45;
+}
+
+.hand.right {
+    background: #818f45;
+}
+
+
+.left {
+
+}
+
+.right {
+}
 }
 

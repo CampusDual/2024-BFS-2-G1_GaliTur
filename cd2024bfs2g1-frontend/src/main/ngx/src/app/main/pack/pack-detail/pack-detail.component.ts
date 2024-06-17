@@ -16,6 +16,7 @@ import {
 } from "ontimize-web-ngx";
 import {PackHomeComponent} from "../pack-home/pack-home.component";
 import {UserInfoService} from "../../../shared/services/user-info.service";
+import { PackValorationComponent } from "../../my-packs/pack-valoration/pack-valoration.component";
 
 @Component({
   selector: "app-pack-detail",
@@ -36,6 +37,7 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
   protected availableDates: Set<any> = new Set // TODO: CHECK IF NEEDED
   protected bussineses: Array<any> // TODO: CHECK IF NEEDED
   protected routes: Array<any> // TODO: CHECK IF NEEDED
+  dialogRef: any;
   constructor(
     protected sanitizer: DomSanitizer,
     private router: Router,
@@ -46,6 +48,7 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
     protected injector: Injector,
     protected bookingService: OntimizeService,
     protected snackBarService: SnackBarService,
+    private actRoute: ActivatedRoute,
     @Inject(AuthService) private authService: AuthService,
     @Inject(UserInfoService) private userInfoService: UserInfoService,
     @Inject(OntimizeService) protected service: OntimizeService
@@ -135,7 +138,73 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
         this.router.navigate(["..", "main", "pack-client"])
       });
   }
+  public convertTime(metros: number):  string {
 
+    let minutos = Math.floor(metros * 0.011);
+    if(minutos == 0){
+      minutos = 1;
+    }
+
+    const horas = Math.floor(minutos / 60);
+    const minutosRestantes = minutos % 60;
+
+    if (horas == 0 && minutosRestantes != 0) {
+        return `${minutosRestantes}min`;
+    } else if (horas != 0 && minutosRestantes == 0) {
+        return `${horas}h`;
+    } else {
+        return `${horas}h ${minutosRestantes}min`;
+    }
+  }
+
+  convertDistance(metros: number){
+  let kilometros = Math.floor(metros / 1000);
+  let metrosRestantes = Number((metros % 1000).toFixed(1));
+
+  let metrosRestantesStr = metrosRestantes.toString();
+  let metrosRestantesDecimal = metrosRestantesStr.split('.')[0].slice(0, 2);
+
+  metrosRestantes = Number(metrosRestantesDecimal);
+
+
+  if (kilometros == 0 && metrosRestantes != 0) {
+      return `${metrosRestantes} m`;
+  } else if (kilometros != 0 && metrosRestantes == 0) {
+      return `${kilometros} km`;
+  } else if (kilometros != 0 && metrosRestantes != 0) {
+      return `${kilometros},${metrosRestantes} km`;
+  } else {
+      return '0 m';
+  }
+}
+
+
+
+  getIconColorClass(difficulty: number): string {
+    switch(difficulty) {
+        case 1:
+            return 'icon-difficulty-1';
+        case 2:
+            return 'icon-difficulty-2';
+        case 3:
+            return 'icon-difficulty-3';
+        case 4:
+            return 'icon-difficulty-4';
+    }
+  }
+
+  getDifficultad2(difficulty: number): string {
+    switch(difficulty) {
+      case 1:
+          return 'Dificultad Fácil';
+      case 2:
+          return 'Dificultad Intermedia';
+      case 3:
+          return 'Dificultad Difícil';
+      case 4:
+          return 'Dificultad Extremo';
+    }
+  }
   populateDates() {
     const confPack = this.packDateService.getDefaultServiceConfiguration('packDates');
     this.packDateService.configureService(confPack);
@@ -199,9 +268,45 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
   }
 
 
+  public backToHome(): void {
+    const currentUrl = this.router.url; // Capturar la URL actual
+    const previousUrl = history.state && history.state.previousUrl ? history.state.previousUrl : '';
+
+    // Regex para aislar el segmento de la url relevante para el switch statement
+    const relevantSegment = previousUrl.split('/')[2] || '';
+
+    switch (relevantSegment) {
+      case 'home':
+        // Si el usuario viene de 'home', redirigir a la URL anterior
+        this.router.navigateByUrl(previousUrl);
+        break;
+      case 'packs':
+        // Si el usuario viene de 'packs', redirigir a la URL anterior
+        this.router.navigateByUrl(previousUrl);
+        break;
+      case 'businesses'||'routes':
+        // Si el usuario viene de 'businesses' o 'routes', redirigir a 'home'
+        this.router.navigate(['/main/home']);
+        break;
+      default:
+        // Comprobaciones adicionales para otros casos
+        if (currentUrl.includes('/main/packs')) {
+          // Si la URL actual incluye '/main/packs', redirigir a 'home'
+          this.router.navigate(['/main/home']);
+        } else if (previousUrl.includes('/packs')) {
+          // Si la URL anterior incluye '/packs', redirigir a la URL anterior
+          this.router.navigateByUrl(previousUrl);
+        } else {
+          // En caso de que no se controle la URL recivida, retroceder un nivel
+          this.router.navigate(['../'], { relativeTo: this.actRoute });
+        }
+        break;
+    }
+}
+
 
   public getRouteImageSrc(base64: any): any {
-    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/logo-walking.png";
+    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl("data:image/*;base64," + base64) : "./assets/images/home-image.jpeg";
   }
 
   getDifficultad(difficulty: number): string {
@@ -256,7 +361,7 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
 
     getDays() {
       const filter = {
-        pck_id: this.route.snapshot.params["pck_id"],
+        pck_id: +this.route.snapshot.params["pck_id"],
       };
       const confPack = this.packDateService.getDefaultServiceConfiguration('packs');
       this.packDateService.configureService(confPack);
@@ -310,5 +415,27 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
         return true
       }
       return permissions.visible
+  }
+
+  //TODO: Cambiar metodo por uno responsive (text-overflow: ellipsis)
+  truncateName(name: string): string {
+    if (name.length > 30) {
+        return name.substr(0, 30) + '...';
+    } else {
+        return name;
+    }
+  }
+
+  valorationStars(star:number, stars:number): string{
+    let result: string
+
+    if(star-1 == Math.trunc(stars) && star == Math.round(stars)){
+      result="star_half_white"
+    }
+    else  if(star >stars){
+      result="star_white"
+    }
+
+    return result
   }
 }

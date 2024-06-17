@@ -1,56 +1,44 @@
-<o-grid
-  #businessGrid
-  attr="businessGrid"
-  title="BUSINESSES"
-  service="businesses"
-  entity="business"
-  keys="b.bsn_id"
+<o-grid #businessGrid attr="businessGrid" title="BUSINESSES" service="businesses" entity="business" keys="b.bsn_id"
   columns="b.bsn_id;merchant_id;bsn_name;bsn_type;bsn_description;bsn_cif;bsn_address;bsn_phone;bsn_email;bsn_creation_date;bsn_down_date;bsn_photos;bsn_website;bsn_schedule"
-  query-rows="8"
-  page-size-options="8;16;24"
-  orderable="true"
-  sort-column="bsn_creation_date:desc"
+  query-rows="8" page-size-options="8" orderable="true" sort-column="bsn_creation_date:desc"
   sortable-columns="bsn_name;bsn_type;bsn_creation_date;bsn_name:desc;bsn_type:desc;bsn_creation_date:desc"
-  refresh-button="true"
-  quick-filter-columns="bsn_name;bsn_type"
-  filter-case-sensitive="yes"
-  pageable="yes"
-  pagination-controls="true"
-  gutter-size="8px"
-  fixed-header="yes"
-  grid-item-height="350px"
-  detail-mode="none"
-  insert-button-floatable="no"
-  class="full-page"
->
+  refresh-button="true" quick-filter-columns="bsn_name;bsn_type" filter-case-sensitive="yes" pageable="yes"
+  pagination-controls="true" gutter-size="8px" fixed-header="yes" grid-item-height="350px" detail-mode="none"
+  insert-button-floatable="no" class="full-page">
   <o-grid-item *ngFor="let data of businessGrid.dataArray">
-    <div
-      (click)="openDetail(data)"
-      fxLayout="column"
-      fxLayoutAlign="space-evenly center"
-      class="mat-elevation-z1 businessCard"
-    >
-      <img
-        class="preview-image"
-        [src]="getImageSrc(data.bsn_photos)"
-        width="300px"
-        height="200px"
-      />
-      <span
-        ><strong>{{ truncateName(data.bsn_name) }}</strong></span
-      >
-      <span *ngIf="data.bsn_type === 'Restaurant'"
-        ><mat-icon class="type-icon">restaurant</mat-icon
-        ><em>{{ data.bsn_type | oTranslate }}</em></span
-      >
-      <span *ngIf="data.bsn_type === 'Lodging'"
-        ><mat-icon class="type-icon">house</mat-icon>
-        <em>{{ data.bsn_type | oTranslate }}</em></span
-      >
-      <span *ngIf="data.bsn_type === 'AgencyGuide'"
-        ><mat-icon class="type-icon">flight</mat-icon
-        ><em>{{ data.bsn_type | oTranslate }}</em></span
-      >
+    <div (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-evenly center"
+      class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img class="pack-img" [src]="getImageSrc(data.bsn_photos)" width="300px" height="200px" />
+          <div class="text-overlay">
+            <span class="pack-name"><span class="pack-name">{{ data.bsn_name }}</span></span>
+            <hr>
+            <span *ngIf="data.bsn_type === 'Restaurant'"><mat-icon class="type-icon">restaurant</mat-icon>{{ data.bsn_type | oTranslate }}</span>
+            <span *ngIf="data.bsn_type === 'Lodging'"><mat-icon class="type-icon">house</mat-icon> {{ data.bsn_type | oTranslate }}</span>
+            <span *ngIf="data.bsn_type === 'AgencyGuide'"><mat-icon class="type-icon">flight</mat-icon>{{data.bsn_type | oTranslate }}</span>
+          </div>
+          
+        </div>
+      
+
+      <div class="flip-card-back">
+        <div class="info-container">
+          <div class="cardHeader">
+            <span class="pack-info-title">{{data.bsn_name}}</span>
+          </div>
+          <h3></h3>
+          <div fxLayout="row" fxLayoutAlign="space-around stretch">
+            <ul class="list">
+              <li><i><mat-icon class="icon" matTooltip="{{'horario_apertura' | oTranslate }}" matTooltipPosition="before">hourglass_bottom</mat-icon></i>{{data.bsn_schedule}}</li>
+              <li><i><mat-icon class="icon"  matTooltip="{{'numero_telefono' | oTranslate }}" matTooltipPosition="before">phone_in_talk</mat-icon></i>{{data.bsn_phone}}</li>
+              <li><i><mat-icon class="icon"  matTooltip="{{'sitio_web' | oTranslate }}" matTooltipPosition="before">language</mat-icon></i> {{data.bsn_website}}</li>
+          </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
     </div>
   </o-grid-item>
 </o-grid>

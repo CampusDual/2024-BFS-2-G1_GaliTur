@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -49,6 +50,59 @@ public class BusinessService implements IBusinessService {
 
 
         return this.daoHelper.query(this.businessDao, keysValues, attributes);
+    }
+
+
+
+    @Override
+    public EntityResult businessRestaurantQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        attributes.remove("rest_menu");
+        attributes.remove("gui_language");
+        attributes.remove("gui_zone");
+        attributes.remove("gui_city");
+        EntityResult er = this.daoHelper.query(this.businessDao, keysValues, attributes);
+        ArrayList <String> business = (ArrayList<String>) er.get(BusinessDao.TYPE);
+        String businessType = business.get(0);
+        if(businessType.equals("Restaurant")){
+            attributes.add("rest_menu");
+            return this.daoHelper.query(this.businessDao, keysValues, attributes, "restaurantBusinesses");
+
+        }else if(businessType.equals("Lodging")){
+            return this.daoHelper.query(this.businessDao, keysValues, attributes, "lodgingBusinesses");
+        }else if(businessType.equals("AgencyGuide")){
+            attributes.add("gui_language");
+            attributes.add("gui_zone");
+            attributes.add("gui_city");
+            return this.daoHelper.query(this.businessDao, keysValues, attributes, "agencyBusinesses");
+
+        }
+        return null;
+    }
+
+    @Override
+    public EntityResult businessRestaurantUpdate(Map<String, Object> attributesValues, Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
+        return this.daoHelper.update(this.businessDao, attributesValues, keysValues);
+    }
+
+
+    @Override
+    public EntityResult typesOfBusinessesQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.businessDao, keysValues, attributes,businessDao.QUERY_TYPE_OF_BUSINESSES);
+    }
+
+    @Override
+    public EntityResult businessDownDateQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.businessDao, keysValues, attributes, BusinessDao.QUERY_BUSINESS_DOWN_DATE);
+    }
+
+    @Override
+    public AdvancedEntityResult businessDownDatePaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy) {
+        return this.daoHelper.paginationQuery(this.businessDao, keysValues, attributes, recordNumber, startIndex, orderBy, BusinessDao.QUERY_BUSINESS_DOWN_DATE);
+    }
+
+    @Override
+    public EntityResult businessRestaurantInsert(Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
+        return this.daoHelper.insert(this.businessDao, keysValues);
     }
 
     @Override
@@ -166,7 +220,7 @@ public class BusinessService implements IBusinessService {
         hotelServicesService.hotelServicesInsert(dataMap);
     }
 
-    private static Map guideAgencyDataProcessor(Map<String, Object> dataMap) {
+    public static Map guideAgencyDataProcessor(Map<String, Object> dataMap) {
         switch ((int) dataMap.get("comboZone")) {
             case 1:
                 dataMap.remove("comboZone");
@@ -768,7 +822,7 @@ public class BusinessService implements IBusinessService {
                 case 192:
                     cityName = "CHANDREXA DE QUEIXA";
                     break;
-                 case 193:
+                case 193:
                     cityName = "COLES";
                     break;
                 case 194:
@@ -1150,66 +1204,71 @@ public class BusinessService implements IBusinessService {
         String concatLanguages = "";
         String languageName = "";
 
-        for (Integer num : languagesValues) {
-            switch (num) {
-                case 1:
-                    languageName = "SPANISH";
-                    break;
-                case 2:
-                    languageName = "GALICIAN";
-                    break;
-                case 3:
-                    languageName = "ENGLISH";
-                    break;
-                case 4:
-                    languageName = "GERMAN";
-                    break;
-                case 5:
-                    languageName = "PORTUGUESE";
-                    break;
-                case 6:
-                    languageName = "FRENCH";
-                    break;
-                case 7:
-                    languageName = "RUSSIAN";
-                    break;
-                case 8:
-                    languageName = "ITALIAN";
-                    break;
-                case 9:
-                    languageName = "BASQUE";
-                    break;
-                case 10:
-                    languageName = "CATALAN";
-                    break;
-                case 11:
-                    languageName = "POLISH";
-                    break;
-                case 12:
-                    languageName = "UKRAINIAN";
-                    break;
-                case 13:
-                    languageName = "DUTCH";
-                    break;
-                case 14:
-                    languageName = "CHINESE";
-                    break;
-                case 15:
-                    languageName = "ARABIC";
-                    break;
+        if(languagesValues!=null){
+            for (Integer num : languagesValues) {
+                switch (num) {
+                    case 1:
+                        languageName = "SPANISH";
+                        break;
+                    case 2:
+                        languageName = "GALICIAN";
+                        break;
+                    case 3:
+                        languageName = "ENGLISH";
+                        break;
+                    case 4:
+                        languageName = "GERMAN";
+                        break;
+                    case 5:
+                        languageName = "PORTUGUESE";
+                        break;
+                    case 6:
+                        languageName = "FRENCH";
+                        break;
+                    case 7:
+                        languageName = "RUSSIAN";
+                        break;
+                    case 8:
+                        languageName = "ITALIAN";
+                        break;
+                    case 9:
+                        languageName = "BASQUE";
+                        break;
+                    case 10:
+                        languageName = "CATALAN";
+                        break;
+                    case 11:
+                        languageName = "POLISH";
+                        break;
+                    case 12:
+                        languageName = "UKRAINIAN";
+                        break;
+                    case 13:
+                        languageName = "DUTCH";
+                        break;
+                    case 14:
+                        languageName = "CHINESE";
+                        break;
+                    case 15:
+                        languageName = "ARABIC";
+                        break;
+                }
+
+                concatLanguages += languageName + ", ";
             }
 
-            concatLanguages += languageName + ", ";
+            if (concatLanguages.endsWith(",")) {
+                concatLanguages = concatLanguages.substring(0, concatLanguages.length() - 1);
+            }
+
+
+            dataMap.remove("comboLanguages");
+            concatLanguages = concatLanguages.substring(0, concatLanguages.length() - 2);
+            dataMap.put(AgencyGuideDao.LANGUAGE, concatLanguages);
+
+
         }
 
-        if (concatLanguages.endsWith(",")) {
-            concatLanguages = concatLanguages.substring(0, concatLanguages.length() - 1);
-        }
-
-
-        dataMap.remove("comboLanguages");
-        concatLanguages = concatLanguages.substring(0, concatLanguages.length() - 2);
-        dataMap.put(AgencyGuideDao.LANGUAGE, concatLanguages);
 
         return dataMap;
     }
@@ -1234,11 +1293,27 @@ public class BusinessService implements IBusinessService {
         }
 
 
+
         return null;
     }
 
 
+    /**
+     * Insert DOWN DATE in Business
+     * @param keysValues
+     * @return
+     * @throws OntimizeJEERuntimeException
+     */
+    @Override
+    public EntityResult businessDownDateDelete(Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
+        Map<String, Object> attributesValues = new HashMap<>();
 
+        LocalDate ld = LocalDate.now();
+
+        attributesValues.put(BusinessDao.DOWN_DATE, ld);
+
+        return this.daoHelper.update(this.businessDao, attributesValues, keysValues);
+    }
 
     @Override
     public EntityResult businessUpdate(Map<String, Object> attributesValues, Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
@@ -1256,7 +1331,15 @@ public class BusinessService implements IBusinessService {
     }
 
     @Override
+    public AdvancedEntityResult businessMerchantPaginationQuery(Map<String, Object> keysValues, List<String> attributes, int recordNumber, int startIndex, List<?> orderBy) {
+        keysValues.put(MerchantDao.MERCHANT_ID, merchantService.getMerchantId());
+
+        return this.daoHelper.paginationQuery(this.businessDao, keysValues, attributes, recordNumber, startIndex, orderBy, BusinessDao.QUERY_BUSINESS_DOWN_DATE);
+    }
+
+    @Override
     public EntityResult businessOfPackQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.businessDao, keysValues, attributes, BusinessDao.QUERY_BUSINESS_OF_PACK);
     }
+
 }

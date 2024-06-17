@@ -1,7 +1,7 @@
 <div class="dialog-content-margin">
     <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px" >
         <o-button class="backButton" attr="fab2" type="ICON" icon="arrow_back" layout-padding color="primary" (click)="backToDetail(data) "></o-button>
-        <p class="titulo"><strong>{{ "landmark" | oTranslate}}</strong> </p>
+        <p class="titulo">{{ data.name }} </p>
     </div>
     <br>
     <div class="landmark-container">
@@ -10,7 +10,9 @@
             <div fxFlex="5%"></div>
             <div fxFlex="65%">
                 <div class="landmark-map">
-                    <o-map #oMapMarker center="42.886958, -8.389286" zoom="8" min-zoom="3" max-zoom="20" zoom-control="yes"search-control="no" layer-panel-visible="no" fxFlex>
+                    <o-map #oMapMarker center="42.886958, -8.389286" zoom="8" min-zoom="3" max-zoom="20" 
+                    zoom-control="yes" search-control="no" layer-panel-visible="no"
+                     show-base-layers-menu="no" fxFlex  search-control-button-visible="no">
                         <ng-container *ngIf="data.landmark.length">
                         <o-map-layer   *ngFor="let landmark of data.landmark" layer-type="marker" layer-id="{{landmark.landmark_id}}"
                             [layer-center]="landmark.coordinates"
@@ -22,9 +24,13 @@
             </div>
             <div fxFlex="5%"></div>
             <div fxFlex="20%">
-                <o-row class="container" attr="container" aria-orientation="vertical">
-                    <p><button *ngFor="let landmark of data.landmark" (click)="zoomPointlandmark(landmark)" class="landmarkName">{{ landmark.name }}</button><p>
-                </o-row>
+                <o-row class="o-rows" class="listLandmarks" attr="container" mat icon="location_on" 
+                mat title="{{'landmark' | oTranslate }}" layout-align="start stretch" elevation="1"
+                aria-orientation="vertical" appearance="outline">
+                    <o-row class="container" attr="container" aria-orientation="vertical">
+                        <p><button *ngFor="let landmark of data.landmark" (click)="zoomPointlandmark(landmark)" class="landmarkName"> {{ landmark.name }}</button><p>
+                    </o-row>
+            </o-row>
             </div>
         </div>
     </div>

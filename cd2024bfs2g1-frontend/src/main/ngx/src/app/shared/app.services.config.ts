@@ -64,5 +64,5 @@ export const SERVICE_CONFIG: Object = {
   },
   'routePacks': {
     'path': '/routePacks'
-  }
+  },
 };

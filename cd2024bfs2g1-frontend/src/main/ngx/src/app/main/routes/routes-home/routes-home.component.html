@@ -3,19 +3,19 @@
   attr="routesHome"
   title="ROUTES"
   service="routes"
-  entity="route"
+  entity="routeNotDraft"
   keys="r.route_id"
-  columns="r.route_id;name;description;estimated_duration;difficulty;creation_date;img_code"
+  columns="r.route_id;name;description;estimated_distance;difficulty;is_accessible;creation_date;img_code"
   query-rows="8"
-  page-size-options="8;16;24"
+  page-size-options="8"
   orderable="true"
   sort-column="creation_date:desc"
-  sortable-columns="creation_date;name;estimated_duration;difficulty;creation_date:desc;name:desc;estimated_duration:desc;difficulty:desc"
+  sortable-columns="creation_date;name;estimated_distance;difficulty;creation_date:desc;name:desc;estimated_distance:desc;difficulty:desc"
   quick-filter-columns="name;difficulty"
   filter-case-sensitive="yes"
   pageable="yes"
   pagination-controls="true"
-  gutter-size="8px"
+  gutter-size="1px"
   fixed-header="yes"
   grid-item-height="350px"
   detail-mode="none"
@@ -23,79 +23,58 @@
   class="full-page"
 >
   <o-grid-item *ngFor="let data of routesGrid.dataArray" class="gridItem">
-    <!--Contenedor principal-->
-    <div
-      *ngIf="!data.isdraft"
-      (click)="openDetail(data)"
-      fxLayout="column"
-      fxLayoutAlign="space-evenly center"
-      [ngClass]="'card-'"
-      class="routeCard"
-    >
-      <!--Contenedor Nombre Ruta-->
-      <div class="routeName">
-        <mat-icon>location_on</mat-icon>
-        <span class="name"
-          ><strong class="nameStrong">{{ data.name }} </strong></span
-        >
-      </div>
-      <!--Contenedor Dificultad, Duracion y Imagen-->
-      <div Class="containerDatos">
-        <!--Contenedor Imagen Ruta-->
-        <img
-          class="preview-image"
-          [src]="getImageSrc(data.img_code)"
-          width="350px"
-          height="125px"
-        />
-
-        <!--Dificultad-->
-        <div class="leafsDifficulty">
-          <span *ngIf="data.difficulty; else no_difficulty">
-            <div class="tooltipHomeDifficulty">
-              <mat-icon class="helpTooltipHome">help</mat-icon>
-              <span class="tooltiptextHomeDifficulty">{{
-                getDifficultad(data.difficulty) | oTranslate
-              }}</span>
+    <div (click)="openDetail(data)" class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img class="pack-img" [src]="getImageSrc(data.img_code)" alt="Avatar">
+          <div class="text-overlay">
+            <div class="pack-name"><span class="pack-name">{{data.name}}</span></div>
+            <hr/>
+            <!--Dificultad-->
+            <div class="leafsDifficulty">
+              <span *ngIf="data.difficulty; else no_difficulty">
+                <mat-icon
+                  [ngClass]="getIconColorClass(data.difficulty)"
+                  *ngFor="let _ of [].constructor(data.difficulty)"
+                  >eco</mat-icon
+                >
+                <mat-icon class="empty-leafs" *ngFor="let _ of [].constructor(4 - data.difficulty)"
+                  >eco</mat-icon
+                >
+              </span>
+              <ng-template #no_difficulty>
+                <span>{{ "NO_DATA_AVAILABLE" | oTranslate }}</span>
+              </ng-template>
             </div>
-            <mat-icon
-              [ngClass]="getIconColorClass(data.difficulty)"
-              *ngFor="let _ of [].constructor(data.difficulty)"
-              >eco</mat-icon
-            >
-            <mat-icon *ngFor="let _ of [].constructor(4 - data.difficulty)"
-              >eco</mat-icon
-            >
-          </span>
-          <ng-template #no_difficulty>
-            <span>{{ "NO_DATA_AVAILABLE" | oTranslate }}</span>
-          </ng-template>
-        </div>
-
-        <!--Duracion estimada-->
-        <div fxLayout="row" class="duration">
-          <div
-            class="tooltipHomeDuration"
-            *ngIf="data.estimated_duration; else no_estimated_duration"
-          >
-            <mat-icon class="clockTooltipHome">schedule</mat-icon>
-            <span class="tooltiptextHomeDuration">{{
-              "estimated_duration" | oTranslate
-            }}</span>
           </div>
-          <span *ngIf="data.estimated_duration">
-            {{ convertTime(data.estimated_duration) }}
-          </span>
-          <ng-template #no_estimated_duration>
-            <div class="tooltipHomeDuration">
-              <a><mat-icon class="clockTooltipHome">schedule</mat-icon>-</a>
-              <span class="tooltiptextHomeDuration">{{
-                "N0_ESTIMATED_DURATION" | oTranslate
-              }}</span>
+        </div>
+        <div class="flip-card-back">
+          <div class="info-container">
+            <div class="cardHeader">
+              <span><mat-icon class="titleIcon" *ngIf="data.is_accessible is true" matTooltip="{{'accessible' | oTranslate }}" matTooltipPosition="after"> accessible</mat-icon></span>
+              <span class="pack-info-title">{{data.name}} </span>
             </div>
-          </ng-template>
+            <h3></h3>
+            <div fxLayout="row" fxLayoutAlign="space-around stretch">
+              <ul style="list-style-type: none;" class="list">
+                <li *ngIf="data.estimated_distance"><mat-icon class="icon">directions_run</mat-icon>{{convertDistance(data.estimated_distance)}}</li>
+                <li *ngIf="!data.estimated_distance"><mat-icon class="icon">directions_run</mat-icon>- km</li>
+
+                <li *ngIf="data.estimated_distance"><mat-icon class="icon">schedule</mat-icon>{{convertTime(data.estimated_distance)}}</li>
+                <li *ngIf="!data.estimated_distance"><mat-icon class="icon">schedule</mat-icon>- min</li>
+
+               <li><i><mat-icon matTooltip="{{'difficulty' | oTranslate }}" matTooltipPosition="before">eco</mat-icon></i> {{getDifficultad(data.difficulty) | oTranslate }}</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </o-grid-item>
 </o-grid>
+
+
+
+
+
+

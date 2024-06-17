@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { OGalleryModule } from 'ontimize-web-ngx-gallery';
 import { BusinessDetailComponent } from './business-detail/business-detail.component';
 import { BusinessHomeComponent } from './business-home/business-home.component';
-import { GalleryComponent, GalleryImage } from 'ontimize-web-ngx-gallery';
 import { BusinessRoutingModule } from './business-routing.module';
 import { BusinessNewComponent } from './business-new/business-new.component';
 import { OFormModule, OntimizeWebModule } from 'ontimize-web-ngx';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,9 +17,11 @@ import { OFormModule, OntimizeWebModule } from 'ontimize-web-ngx';
   imports: [
     CommonModule,
     OntimizeWebModule,
-    BusinessRoutingModule,  
+    BusinessRoutingModule,
     OFormModule,
-    OGalleryModule
+    OGalleryModule,
+    SharedModule,
+
   ]
 })
 export class BusinessModule { }
