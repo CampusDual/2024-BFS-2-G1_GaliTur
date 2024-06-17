@@ -467,6 +467,9 @@
   "pbk_rating_date": "Rating date",
   "pbk_comment": "Comment",
   "POST_VALORATION": "Rate",
-  "RATED": "Thanks for your rating!"
+  "RATED": "Thanks for your rating!",
+  "horario_apertura": "Opening Hours",
+  "numero_telefono": "Telephone Number",
+  "sitio_web" : "Website"
 }
 

@@ -478,8 +478,10 @@
   "pbk_rating_date": "Fecha de valoración",
   "pbk_comment": "Comentario",
   "POST_VALORATION": "Valorar",
-  "RATED": "¡Gracias por su valoración!"
-
+  "RATED": "¡Gracias por su valoración!",
+  "horario_apertura": "Horario Apertura",
+  "numero_telefono": "Teléfono",
+  "sitio_web" : "Sitio Web"
 }
 
 

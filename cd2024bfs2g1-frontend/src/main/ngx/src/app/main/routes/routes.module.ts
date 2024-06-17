@@ -23,7 +23,7 @@ import { RoutesDetailComponent } from './routes-detail/routes-detail.component';
     AddLandmarkComponent,
     ViewAllLandmarkComponent,
     ViewLandmarkDetailComponent,
-   
+
   ],
   imports: [
     SharedModule,
@@ -32,7 +32,6 @@ import { RoutesDetailComponent } from './routes-detail/routes-detail.component';
     RoutesRoutingModule,
     OntimizeWebModule,
     OGalleryModule,
-    SharedModule
   ],
   providers:[RouteService]
 })

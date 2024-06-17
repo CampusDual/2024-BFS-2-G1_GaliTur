@@ -127,6 +127,7 @@
   background-color: #ccc6c0;   
   color: white;
   transform: rotateY(180deg);
+  z-index: 1; 
 } 
 /* info list styles */
 .list {
@@ -137,6 +138,7 @@
   justify-content: space-around;
   display: flex;
   flex-direction: column;
+  z-index: 2; 
 }
 
 .info-container {
