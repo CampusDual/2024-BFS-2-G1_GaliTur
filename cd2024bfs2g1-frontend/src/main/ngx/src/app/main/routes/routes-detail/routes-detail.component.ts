@@ -69,23 +69,6 @@ export class RoutesDetailComponent implements OnInit{
       })
   }
 
-
-  coverEyes(): void {
-    const leftHand = document.querySelector('.hand.left') as HTMLElement;
-    const rightHand = document.querySelector('.hand.right') as HTMLElement;
-
-    leftHand.style.transform = 'rotate(20deg)';
-    rightHand.style.transform = 'rotate(-20deg)';
-  }
-
-  uncoverEyes(): void {
-    const leftHand = document.querySelector('.hand.left') as HTMLElement;
-    const rightHand = document.querySelector('.hand.right') as HTMLElement;
-
-    leftHand.style.transform = 'rotate(-45deg)';
-    rightHand.style.transform = 'rotate(45deg)';
-  }
-
   public backToHome(data:any): void {
     const previousUrl = history.state && history.state.previousUrl ? history.state.previousUrl : '';
     //Si el usuario viene de packs-detail redigir a la url anterior para que vea el pack en el que estaba
@@ -109,11 +92,11 @@ public convertTime(metros: number):  string {
   const minutosRestantes = minutos % 60;
 
   if (horas == 0 && minutosRestantes != 0) {
-      return `${minutosRestantes}min`;
+      return `${minutosRestantes} min`;
   } else if (horas != 0 && minutosRestantes == 0) {
-      return `${horas}h`;
+      return `${horas} h`;
   } else {
-      return `${horas}h ${minutosRestantes}min`;
+      return `${horas} h ${minutosRestantes} min`;
   }
 }
 
@@ -127,13 +110,13 @@ convertDistance(metros: number){
   metrosRestantes = Number(metrosRestantesDecimal);
 
   if (kilometros == 0 && metrosRestantes != 0) {
-    return `${metrosRestantes}m`;
+    return `${metrosRestantes} m`;
   } else if (kilometros != 0 && metrosRestantes == 0) {
-    return `${kilometros}km`;
+    return `${kilometros} km`;
   } else if (kilometros != 0 && metrosRestantes != 0) {
-    return `${kilometros},${metrosRestantes}km`;
+    return `${kilometros},${metrosRestantes} km`;
   } else {
-    return '0m';
+    return '0 m';
   }
 }
 
@@ -157,13 +140,13 @@ getIconColorClass(difficulty: number): string {
   getDifficultad(difficulty: number): string {
     switch(difficulty) {
       case 1:
-          return 'Fácil';
+          return 'Dificultad_facil';
       case 2:
-          return 'Intermedia';
+          return 'Dificultad_intermedia';
       case 3:
-          return 'Difícil';
+          return 'Dificultad_dificil';
       case 4:
-          return 'Extremo';
+          return 'Dificultad_extremo';
     }
   }
 }
