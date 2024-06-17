@@ -29,6 +29,7 @@
 .contenedor_imagen {
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 430px;
   width: 45%;
   padding: 10px 10px 10px 20px;
@@ -112,6 +113,12 @@
 
 }
 
-.slide-toggle{
+.checkbox{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   width: 20%;
+}
+
+o-checkbox{
+  margin-right: 20px;
 }

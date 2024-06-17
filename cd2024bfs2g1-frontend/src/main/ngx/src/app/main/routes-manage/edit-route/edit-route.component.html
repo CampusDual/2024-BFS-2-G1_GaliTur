@@ -26,9 +26,9 @@
           <o-combo attr="difficulty" label="{{ 'COMBO_DIFFICULTY' | oTranslate }}"[static-data]="difficultyArray"
                    value-column="difficultyCode" columns="difficultyCode;difficultyText" null-selection="no"
                    visible-columns="difficultyText" required="yes"></o-combo>
-        <div class="slide-toggle">
-          <o-slide-toggle attr="is_accessible" label="{{ 'is_accessible' | oTranslate }}" read-only="no" matTooltip="{{ 'Explanation_is_accessible' | oTranslate }}"  matTooltipPosition="after"></o-slide-toggle>
-          <o-slide-toggle attr="is_draft" label="{{ 'is_draft' | oTranslate }}" read-only="no" matTooltip="{{'draft' | oTranslate}}"  matTooltipPosition="after"></o-slide-toggle>
+        <div class="checkbox">
+          <o-checkbox attr="is_accessible" label="{{ 'accessible' | oTranslate }}" read-only="no" matTooltip="{{ 'Explanation_is_accessible' | oTranslate }}"  matTooltipPosition="after"></o-checkbox>
+          <o-checkbox attr="is_draft" label="{{ 'DRAFT' | oTranslate }}" read-only="no" matTooltip="{{'draft' | oTranslate}}"  matTooltipPosition="after"></o-checkbox>
         </div>
 
         </div>

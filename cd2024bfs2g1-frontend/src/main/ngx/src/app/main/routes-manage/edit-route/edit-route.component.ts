@@ -17,7 +17,7 @@ import { FormControl, ValidatorFn } from "@angular/forms";
   templateUrl: "./edit-route.component.html",
   styleUrls: ["./edit-route.component.css"],
 })
-export class EditRouteComponent implements AfterViewInit {
+export class EditRouteComponent  {
   datosTabla: any[] = [];
   idRutaActual: number;
   nameActualRoute: String;
@@ -37,24 +37,22 @@ export class EditRouteComponent implements AfterViewInit {
     this.blankValidator.push(this.lengthInvalid)
   }
 
-  ngAfterViewInit(): void {
-    console.log('Datos que tiene la tabla: ', this.datosTabla = this.landmarkTable.dataSource.getColumnData('coordinates'))
-  }
-
   onDeleteLandMark() {
     this.sendDeleteMessage();
   }
 
   async onClickLandmark(event: any) {
-    this.actualLandkmarkId = null;
-    this.actualCoordinates = null;
-    this.actualLandkmarkId = event.row.landmark_id;
-    this.actualCoordinates = event.row.coordinates;
+    if(this.oMap){
+      this.actualLandkmarkId = null;
+      this.actualCoordinates = null;
+      this.actualLandkmarkId = event.row.landmark_id;
+      this.actualCoordinates = event.row.coordinates;
     if (this.actualCoordinates != null) {
       this.addMarkerOnMap(this.actualCoordinates)
       await this.delay(300);
       this.oMap.getMapService().setZoom(12);
     } else alert("Lo sentimos, el punto de interes no cuenta con coordenadas");
+    }
   }
   splitCoordinates(actualCoordinates:any):string[]{
     const coordinatesArrayAux = this.actualCoordinates.split(",");
@@ -76,7 +74,6 @@ export class EditRouteComponent implements AfterViewInit {
   onClickMap(table:OTableComponent) {
     this.mostrarMapa = !this.mostrarMapa;
     this.datosTabla = table.dataSource.getAllRendererData()
-    console.log(this.datosTabla)
   }
   async delay(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
