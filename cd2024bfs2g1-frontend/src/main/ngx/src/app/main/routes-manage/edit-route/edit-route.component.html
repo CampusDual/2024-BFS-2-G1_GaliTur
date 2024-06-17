@@ -35,7 +35,7 @@
         <div fxLayout="column" fxFlexAlign="center" class="contenedor_imagen">
           <o-form attr="routeImageTable" service="routes" entity="routeImageForEdit"
                   keys="route_id;image_route_id" parent-keys="route_id"
-                  message-service-type="customMessageManageRoute" show-header="yes"
+                  message-service-type="customMessageServiceTypeRoutes" show-header="yes"
                   show-header-navigation="no">
             <o-text-input attr="route_id" sql-type="INTEGER" enabled="no" oHidden></o-text-input>
             <o-image id="img_code" attr="img_code" empty-image="assets/images/no-image.png"
