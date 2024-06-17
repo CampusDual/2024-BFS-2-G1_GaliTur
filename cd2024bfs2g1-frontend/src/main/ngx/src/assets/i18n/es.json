@@ -473,7 +473,13 @@
   "is_accessible": "¿Es accesible?",
   "Explanation_is_accessible":"Esta ruta es accesible para personas con algún tipo de discapacidad.",
   "draft": "Si tu ruta no está finalizada, te permite guardar los datos ingresados ​​hasta el momento.",
-  "RATING.CONFIRMED": "Pack valorado"
+  "RATING.CONFIRMED": "Pack valorado",
+  "pbk_stars": "Estrella",
+  "pbk_rating_date": "Fecha de valoración",
+  "pbk_comment": "Comentario",
+  "POST_VALORATION": "Valorar",
+  "RATED": "¡Gracias por su valoración!"
+
 }
 
 

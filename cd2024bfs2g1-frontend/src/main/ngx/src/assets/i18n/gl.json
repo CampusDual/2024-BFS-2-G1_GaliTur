@@ -708,7 +708,12 @@
     "is_accessible": "¿É accesible?",
     "Explanation_is_accessible":"Esta ruta é accesible para persoas con algún tipo de discapacidade.",
     "draft": "Se a túa ruta non está rematada, permíteche gardar os datos introducidos ata agora.",
-    "RATING.CONFIRMED": "Pack valorado"
+    "RATING.CONFIRMED": "Pack valorado",
+    "pbk_stars": "Estrela",
+    "pbk_rating_date": "Fecha de valoración",
+    "pbk_comment": "Comentario",
+    "POST_VALORATION": "Valorar",
+    "RATED": "Grazas pola sua valoración!"
   }
 
 

@@ -27,4 +27,5 @@ public class PackBookingDao extends OntimizeJdbcDaoSupport {
 
 
     public static final String PBK_BOOKING_CLIENT_USER_DATE_PACK_QUERY = "bookingClientUserDatePack";
+    public static final String PBK_BOOKING_DATE_PACK_QUERY = "bookingDatePack";
 }

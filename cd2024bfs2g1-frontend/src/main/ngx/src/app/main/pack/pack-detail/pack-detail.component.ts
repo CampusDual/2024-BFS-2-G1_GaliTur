@@ -361,7 +361,7 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
 
     getDays() {
       const filter = {
-        pck_id: this.route.snapshot.params["pck_id"],
+        pck_id: +this.route.snapshot.params["pck_id"],
       };
       const confPack = this.packDateService.getDefaultServiceConfiguration('packs');
       this.packDateService.configureService(confPack);

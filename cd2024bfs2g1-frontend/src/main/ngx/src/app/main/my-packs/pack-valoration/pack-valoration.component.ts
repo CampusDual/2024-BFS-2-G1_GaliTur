@@ -85,6 +85,7 @@ export class PackValorationComponent {
         };
         this.snackBarService.open("BOOKING.CONFIRMED", config);
         this.dialogRef.close();
+        window.location.reload();
       });
   }
 

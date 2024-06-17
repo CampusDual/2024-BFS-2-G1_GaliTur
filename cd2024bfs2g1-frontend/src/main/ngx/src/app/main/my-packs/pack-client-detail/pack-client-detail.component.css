@@ -164,6 +164,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 25px;
 }
 
 .cancel-pack{
@@ -589,7 +590,7 @@
   .valorations{
       width: 100%;
       height: auto;
-      background-color: #ccc6c0;
+      background-color: #e7e6e6;
       border-radius: 10px;
       padding: 16px;
       overflow-x: hidden;
@@ -598,18 +599,19 @@
   .card-valorations-header{
       width: auto;
       align-content:start;
-      background-color:rgba(113, 94, 78, 1);
+      background-color:#a2c07b;
       color: white;
       padding-left: 5px;
       padding-right: 5px;
-      margin-bottom: 16px;
+      margin-right: 16px;
+      margin-bottom: 20px;
       box-sizing: border-box;
       border-radius: 10px;
       padding: 0px 2%;
   }
 
   #date-rating{
-      margin: 0px;
+      margin: 0.8%;
   }
 
   .star {
@@ -625,10 +627,7 @@
   }
 
   .star_color{
-      background: linear-gradient(to top, rgba(94,60,6,1) 22%, rgba(9,121,19,1) 28%, rgba(51,193,13,1) 83%);
-        -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+      color: rgb(238, 202, 1);;
   }
 
   .list-to-desc{
@@ -721,13 +720,26 @@
 .button_star:hover,
 .button_star:hover ~ .button_star{
     .star{
-        background: linear-gradient(to top, rgba(94,60,6,1) 22%, rgba(9,121,19,1) 28%, rgba(51,193,13,1) 83%);
-      -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
+        color: rgb(238, 202, 1);;
     }
 }
 
+#valorated_title{
+    margin: 0.5% 2%;
+    color: #84A45A;
+
+}
+
+#valorated_star{
+    margin: 0;
+    color: rgb(238, 202, 1);
+    margin: 0.5% 0;
+}
+
+#valorated_number{
+    margin: 0;
+    color:#52733B;
+}
 
 
 
