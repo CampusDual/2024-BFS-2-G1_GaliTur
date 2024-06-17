@@ -329,7 +329,7 @@
                     <details class="details">
                         <summary>{{"VALORATIONS" | oTranslate}}</summary>
                         <o-grid #gridPackRating attr="gridPackRating" service="packBookings" entity="packbookingClientUserDatePack" keys="C.client_id;US.usr_id;PB.pd_id;PC.pck_id"
-                        columns="US.usr_name;PB.pbk_rating_date;PB.pbk_stars;PB.pbk_comment" parent-keys="PC.pck_id:pck_id" orderable="yes" sortable-columns="pbk_rating_date:desc;pbk_stars:desc;pbk_rating_date:desc;pbk_stars:desc"
+                        columns="US.usr_name;PB.pbk_rating_date;PB.pbk_stars;PB.pbk_comment" parent-keys="PC.pck_id:pck_id" orderable="yes" sortable-columns="pbk_rating_date;pbk_stars;pbk_rating_date:desc;pbk_stars:desc"
                         query-rows="8" pageable="yes" page-size-options="8" pagination-controls="true" sort-column="pbk_rating_date:desc" cols="1"
                         opacity="0" refresh-button="false" quick-filter-columns="pbk_comment" gutter-size="0px" grid-item-height="245px">
                             <o-grid-item *ngFor="let data of gridPackRating.dataArray">
