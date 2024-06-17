@@ -224,10 +224,10 @@
   "DATE_RANGE": "Select dates",
   "SEPARATOR": " to ",
   "COMBO_DIFFICULTY": "Select difficulty",
-  "EASY": "EASY",
-  "INTERMEDIATE": "INTERMEDIATE",
-  "HARD": "HARD",
-  "EXTREME": "EXTREME",
+  "EASY": "Easy",
+  "INTERMEDIATE": "Intermediate",
+  "HARD": "Hard",
+  "EXTREME": "Extreme",
   "MYPACKS": "My Packs",
   "CLICK_MENU": "Click to see the restaurant menu",
   "MESSAGES_INSERTED_LANDMARK": "Landmark inserted successfully",
@@ -459,7 +459,7 @@
   "SHOW_MAP": "View map",
   "CLEAR_FILTER":"Clear",
   "accessible": "Accessible",
-  "is_accessible": "¿Is accessible?",
+  "is_accessible": "Is accessible?",
   "Explanation_is_accessible":"This route is accessible to people with some type of disability.",
   "draft": "If your route is not finished, it allows you to save the data entered so far."
 }

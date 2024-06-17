@@ -45,7 +45,6 @@ export class ManageAllRoutesComponent {
       data: { mensaje: mensaje, packs: packs },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log("El resultado es ", result);
       if (result) {
         this.deleteRoute(route_id);
       } else return;
