@@ -754,5 +754,6 @@
     justify-content: center;
     display: flex;
 }
-
-
+summary:hover {
+  cursor: pointer;
+}

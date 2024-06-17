@@ -77,7 +77,7 @@
                             <div class="div-image-container">
                                 <h1 class="image-title"> {{pack.pck_name}} </h1>
                                 <div class="valoration_container">
-                                    
+
                                     <div class="valoration_average"  *ngIf="avg.rating_avg !=null">
                                         <div fxLayout="column" id="valoration_data">
                                             <h1>{{avg.rating_avg}}</h1>
@@ -91,8 +91,8 @@
                                             <p>({{avg.rating_count}})</p>
                                         </div>
                                     </div>
-                                
-                                
+
+
                                 </div>
                                 <img class="image" [src]="getImageSrc(imagePack.img_code)">
                             </div>
@@ -352,7 +352,7 @@
                                         <p id="date-rating">{{getDate(data.pbk_rating_date)}}</p>
                                     </div>
                                     <o-row *ngIf="data.pbk_comment != null" class="o-row-coment" attr="container"
-                                        title="COMENT" layout-align="start stretch" elevation="1"
+                                        title="{{ 'COMENT' | oTranslate }}" layout-align="start stretch" elevation="1"
                                         aria-orientation="vertical" appearance="outline">
                                         <p class="list-to-desc">{{data.pbk_comment}}</p>
                                     </o-row>
