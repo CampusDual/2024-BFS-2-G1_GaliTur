@@ -54,6 +54,7 @@ export class EditRouteComponent  {
     } else alert("Lo sentimos, el punto de interes no cuenta con coordenadas");
     }
   }
+  
   splitCoordinates(actualCoordinates:any):string[]{
     const coordinatesArrayAux = this.actualCoordinates.split(",");
     return coordinatesArrayAux
