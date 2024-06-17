@@ -36,6 +36,9 @@
                 columns="P.pck_id;pck_name;pck_description;pck_price;pck_participants;pck_days;pd_date_begin;pd_date_end;pcs_id;P.gui_c_id;pbk_booking_id;pbk_stars"
                 parent-keys="pbk_booking_id" refresh-button="false" quick-filter="false" oHidden />
 
+            <o-grid #gridPackRatingavg attr="gridPackRating" service="packs" entity="avgAndCount" keys="PB.pd_id;P.pck_id:PB.pbk_booking_id"
+            columns="rating_avg,rating_count" parent-keys="P.pck_id:pck_id" oHidden/>
+
             <!-- Almaceno el pack que he clicado -->
             <o-grid #cancelPackForm attr="packCancelDetail" service="packs" entity="packCancelDetail" keys="PB.pbk_booking_id"
             columns="PB.pbk_booking_id"
@@ -63,6 +66,7 @@
                 <!--Recorrido entre tablas para sacar la imagen correspondiente al pack-->
                 <span *ngFor="let pack of packForm.dataArray">
                     <span *ngFor="let imagePack of imagesPackForm.dataArray">
+                        <span *ngFor="let avg of gridPackRatingavg.dataArray">
                         <span *ngIf="imagePack.img_id == 1">
                             <div class="div-image-container">
                                 <h1 class="image-title"> {{pack.pck_name}} </h1>
@@ -72,6 +76,24 @@
                         <span *ngIf="imagePack.img_id != 1">
                             <div class="div-image-container">
                                 <h1 class="image-title"> {{pack.pck_name}} </h1>
+                                <div class="valoration_container">
+                                    
+                                    <div class="valoration_average"  *ngIf="avg.rating_avg !=null">
+                                        <div fxLayout="column" id="valoration_data">
+                                            <h1>{{avg.rating_avg}}</h1>
+                                            <div>
+                                                <mat-icon [ngClass]="valorationStars(1,avg.rating_avg)">star</mat-icon>
+                                                <mat-icon [ngClass]="valorationStars(2,avg.rating_avg)">star</mat-icon>
+                                                <mat-icon [ngClass]="valorationStars(3,avg.rating_avg)">star</mat-icon>
+                                                <mat-icon [ngClass]="valorationStars(4,avg.rating_avg)">star</mat-icon>
+                                                <mat-icon [ngClass]="valorationStars(5,avg.rating_avg)">star</mat-icon>
+                                            </div>
+                                            <p>({{avg.rating_count}})</p>
+                                        </div>
+                                    </div>
+                                
+                                
+                                </div>
                                 <img class="image" [src]="getImageSrc(imagePack.img_code)">
                             </div>
                         </span>
@@ -97,6 +119,7 @@
                             <h2 id="valorated_number">{{pack.pbk_stars}}</h2>
                             <p id="valorated_title">{{'RATED' | oTranslate }}</p>
                         </div>
+                        </span>
                     </span>
                 </span>
 

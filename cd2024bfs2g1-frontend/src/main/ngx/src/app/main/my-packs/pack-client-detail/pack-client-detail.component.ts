@@ -277,5 +277,18 @@ export class PackClientDetailComponent implements OnInit{
     })
   }
 
+  valorationStars(star:number, stars:number): string{
+    let result: string
+
+    if(star-1 == Math.trunc(stars) && star == Math.round(stars)){
+      result="star_half_white"
+    }
+    else  if(star >stars){
+      result="star_white"
+    }
+
+    return result
+  }
+
 }
 
