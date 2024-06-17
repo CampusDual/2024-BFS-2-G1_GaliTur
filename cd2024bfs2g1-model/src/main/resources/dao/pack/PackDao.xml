@@ -293,6 +293,7 @@
             <Sentence>
                 <![CDATA[
                     SELECT
+                    AVG(PB.pbk_stars) AS rating_avg,
                         p.pck_id,
                         p.pck_name,
                         p.pck_description,
@@ -307,6 +308,8 @@
                         pack p
                     JOIN
                         pack_date pd ON p.pck_id = pd.pck_id
+                    INNER JOIN
+                        ${mainschema}.pack_booking PB ON pd.pd_id=PB.pd_id
                     JOIN
                         ${mainschema}.image_pack IP ON P.pck_id=IP.pck_id
                     JOIN

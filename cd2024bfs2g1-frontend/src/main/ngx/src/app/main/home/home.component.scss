@@ -509,3 +509,23 @@ button {
   }
 }
 
+.rating {
+  display: flex;
+  align-items: center;
+  margin-left: 45%;
+  margin-top: 4%;
+}
+
+.ratingNumber {
+  margin-right: 5px;
+  font-size: 16px;
+  margin-top: 2%;
+}
+
+.star {
+  color: rgb(237, 218, 7);
+  font-size: 25px;
+  height: 25px;
+  width: 25px;
+}
+
