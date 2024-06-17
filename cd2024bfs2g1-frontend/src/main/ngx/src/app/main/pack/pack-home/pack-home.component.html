@@ -51,6 +51,7 @@
     <o-grid #packGrid attr="packGrid" service="packs" entity="allPacksRating" keys="id"
     columns="id;pck_name;pck_description;pck_price;pck_participants;gui_c_name;img_code;pck_days;creation;rating_avg"
     query-rows="8" page-size-options="8" orderable="true" sort-column="creation:desc"
+    sortable-columns="pck_name;pck_participants;gui_c_name;pck_name:desc:desc;pck_participants:desc;gui_c_name:desc"
     quick-filter="false"
     insert-button="false" refresh-button="false" pageable="yes" pagination-controls="true" gutter-size="4px"
     fixed-header="yes" grid-item-height="280px" detail-mode="none" insert-button-floatable="no">
