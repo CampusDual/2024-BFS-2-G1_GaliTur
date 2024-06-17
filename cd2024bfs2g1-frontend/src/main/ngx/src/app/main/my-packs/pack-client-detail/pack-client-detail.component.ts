@@ -268,7 +268,7 @@ export class PackClientDetailComponent implements OnInit{
 
   openValoration(stars: Number, data: any): void{
     this.dialog.open(PackValorationComponent, {
-      height: '40%',
+      height: '37%',
       width: '40%',
       data: {
         stars: stars,

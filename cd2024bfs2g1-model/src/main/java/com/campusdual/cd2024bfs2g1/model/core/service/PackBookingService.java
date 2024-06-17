@@ -93,8 +93,8 @@ public class PackBookingService implements IPackBookingService {
     }
 
     @Override
-    public EntityResult packbookingClientUserDatePackQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
-        return this.daoHelper.query(this.packBookingDao, keysValues, attributes,
+    public EntityResult packbookingClientUserDatePackPaginationQuery(Map<String, Object> keysValues, List<String> attributes, int recordNumber, int startIndex, List<?> orderBy) throws OntimizeJEERuntimeException {
+        return this.daoHelper.paginationQuery(this.packBookingDao, keysValues, attributes, recordNumber, startIndex, orderBy,
                 PackBookingDao.PBK_BOOKING_CLIENT_USER_DATE_PACK_QUERY);
     }
 

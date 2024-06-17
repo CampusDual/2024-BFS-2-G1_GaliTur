@@ -63,7 +63,25 @@
                         </span>
                         <span *ngIf="imagePack.img_id != 1">
                             <div class="div-image-container">
-                                <h1 class="image-title"> {{pack.pck_name}} </h1>
+                                <div class="pack_title">
+                                    <h1 class="image-title"> {{pack.pck_name}} </h1>
+                                </div>
+                                <div class="valoration_container">
+                                    <div class="valoration_average">
+                                        <div fxLayout="column" id="valoration_data" >
+                                            <h1>4.1</h1>
+                                            <div>
+                                                <mat-icon [ngClass]="valorationStars(1,4.1)">star</mat-icon>
+                                                <mat-icon [ngClass]="valorationStars(2,4.1)">star</mat-icon>
+                                                <mat-icon [ngClass]="valorationStars(3,4.1)">star</mat-icon>
+                                                <mat-icon [ngClass]="valorationStars(4,4.1)">star</mat-icon>
+                                                <mat-icon [ngClass]="valorationStars(5,4.1)">star</mat-icon>
+                                            </div>
+                                            <p>(23)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                                 <img class="image" [src]="getImageSrc(imagePack.img_code)">
                             </div>
                         </span>
@@ -271,13 +289,12 @@
                     <details class="details">
                         <summary>{{"VALORATIONS" | oTranslate}}</summary>
                         <o-grid #gridPackRating attr="gridPackRating" service="packBookings" entity="packbookingClientUserDatePack" keys="C.client_id;US.usr_id;PB.pd_id;PC.pck_id"
-                        columns="US.usr_name;PB.pbk_rating_date;PB.pbk_stars;PB.pbk_comment" parent-keys="PC.pck_id:pck_id"
-                        query-rows="8"  page-size-options="8"
-                        opacity="0" refresh-button="false" quick-filter="false" 
-                        cols="1" gutter-size="1px" grid-item-height="245px">
+                        columns="US.usr_name;PB.pbk_rating_date;PB.pbk_stars;PB.pbk_comment" parent-keys="PC.pck_id:pck_id" orderable="yes" sortable-columns="pbk_rating_date:desc;pbk_stars:desc;pbk_rating_date:desc;pbk_stars:desc"
+                        query-rows="8" pageable="yes" page-size-options="8" pagination-controls="true" sort-column="pbk_rating_date:desc" cols="1"
+                        opacity="0" refresh-button="false" quick-filter-columns="pbk_comment" gutter-size="0px" grid-item-height="245px">
                             <o-grid-item *ngFor="let data of gridPackRating.dataArray">
                                 <div fxLayout="column" class="mat-elevation-z1 valorations">
-                                    <p id="date-rating">{{getDate(data.pbk_rating_date)}}</p>
+                                    
                                     <div fxLayout="row">
                                         <div class="card-valorations-header">
                                             <div class="rating-title">
@@ -287,11 +304,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 1?'star_color':''">park</mat-icon>
-                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 2?'star_color':''">park</mat-icon>
-                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 3?'star_color':''">park</mat-icon>
-                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 4?'star_color':''">park</mat-icon>
-                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 5?'star_color':''">park</mat-icon>
+                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 1?'star_color':''">star</mat-icon>
+                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 2?'star_color':''">star</mat-icon>
+                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 3?'star_color':''">star</mat-icon>
+                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 4?'star_color':''">star</mat-icon>
+                                        <mat-icon class="star" [ngClass]="data.pbk_stars >= 5?'star_color':''">star</mat-icon>
+                                        <p id="date-rating">{{getDate(data.pbk_rating_date)}}</p>
                                     </div>
                                     <o-row *ngIf="data.pbk_comment != null" class="o-row-coment" attr="container"
                                         title="COMENT" layout-align="start stretch" elevation="1"
