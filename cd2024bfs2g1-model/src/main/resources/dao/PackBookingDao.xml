@@ -57,7 +57,7 @@
                     GROUP BY
                         P.pck_name
                     ORDER BY
-                        media ASC
+                        media DESC
                     LIMIT 5
 
                 ]]>
@@ -80,7 +80,7 @@
                     GROUP BY
                         P.pck_name
                     ORDER BY
-                        media DESC
+                        media ASC
                     LIMIT 5
 
                 ]]>
