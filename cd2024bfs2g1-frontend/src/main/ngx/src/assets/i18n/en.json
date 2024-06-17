@@ -236,10 +236,10 @@
   "button_table_finish": "Finish",
   "NOT_SPECIFIED": "Not specified",
   "REGISTER_BUTTON": "Register",
-  "Dificultad_intermedia": "Difficulty Intermediate",
-  "Dificultad_facil": "Difficulty Easy",
-  "Dificultad_dificil": "Difficulty Hard",
-  "Dificultad_extremo": "Difficulty Extreme",
+  "Dificultad_intermedia": "Intermediate",
+  "Dificultad_facil": "Easy",
+  "Dificultad_dificil": "Hard",
+  "Dificultad_extremo": "Extreme",
   "BOOK": "Reserve",
   "BOOKING.CONFIRMED": "Booking confirmed",
   "BOOKED": "Reserved",
@@ -459,5 +459,8 @@
   "SHOW_MAP": "View map",
   "CLEAR_FILTER":"Clear",
   "accessible": "Accessible",
+  "is_accessible": "¿Is accessible?",
+  "Explanation_is_accessible":"This route is accessible to people with some type of disability.",
+  "draft": "If your route is not finished, it allows you to save the data entered so far.",
   "RATING.CONFIRMED": "Pack rated"
 }

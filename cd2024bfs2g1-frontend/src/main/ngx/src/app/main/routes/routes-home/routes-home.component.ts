@@ -31,6 +31,7 @@ galleryOptions: any;
     const confRoute =
       this.ontimizerouteService.getDefaultServiceConfiguration("routes");
     this.ontimizerouteService.configureService(confRoute);
+    
     if(!isNaN(idRutaActual)){
       this.ontimizerouteService
       .query(
@@ -42,6 +43,8 @@ galleryOptions: any;
         this.openDetail(response.data[0]);
       });
     }
+
+    
   }
 
 
@@ -68,6 +71,7 @@ galleryOptions: any;
         data: data
       });
     })
+    
   }
   public convertTime(metros: number):  string {
 
@@ -80,11 +84,11 @@ galleryOptions: any;
     const minutosRestantes = minutos % 60;
 
     if (horas == 0 && minutosRestantes != 0) {
-        return `${minutosRestantes}min`;
+        return `${minutosRestantes} min`;
     } else if (horas != 0 && minutosRestantes == 0) {
-        return `${horas}h`;
+        return `${horas} h`;
     } else {
-        return `${horas}h ${minutosRestantes}min`;
+        return `${horas} h ${minutosRestantes} min`;
     }
   }
 

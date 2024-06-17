@@ -236,10 +236,10 @@
   "MESSAGES_FORM_CHANGES_WILL_BE_LOST_LANDMARK": "¿Estás realmente seguro de que quieres hacer esto? Todos los cambios se perderán.",
   "landmark_id": "Id",
   "button_table_finish": "Finalizar",
-  "Dificultad_intermedia": "Dificultad Intermedio",
-  "Dificultad_facil": "Dificultad Fácil",
-  "Dificultad_dificil": "Dificultad Difícil",
-  "Dificultad_extremo": "Dificultad Extremo",
+  "Dificultad_intermedia": "Intermedio",
+  "Dificultad_facil": "Fácil",
+  "Dificultad_dificil": "Difícil",
+  "Dificultad_extremo": "Extremo",
   "MYPACKS": "Mis Packs",
   "pck_date_begin": "Fecha de Inicio",
   "gui_c_name": "Ciudad",
@@ -470,6 +470,9 @@
   "SHOW_MAP": "Ver mapa",
   "CLEAR_FILTER":"Limpiar",
   "accessible": "Accesible",
+  "is_accessible": "¿Es accesible?",
+  "Explanation_is_accessible":"Esta ruta es accesible para personas con algún tipo de discapacidad.",
+  "draft": "Si tu ruta no está finalizada, te permite guardar los datos ingresados ​​hasta el momento.",
   "RATING.CONFIRMED": "Pack valorado"
 }
 

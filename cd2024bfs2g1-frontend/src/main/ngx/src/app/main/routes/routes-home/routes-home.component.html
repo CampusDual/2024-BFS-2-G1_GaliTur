@@ -51,18 +51,19 @@
         <div class="flip-card-back">
           <div class="info-container">
             <div class="cardHeader">
-              <span class="pack-info-title">{{data.name}}</span>
+              <span><mat-icon class="titleIcon" *ngIf="data.is_accessible is true" matTooltip="{{'accessible' | oTranslate }}" matTooltipPosition="after"> accessible</mat-icon></span>
+              <span class="pack-info-title">{{data.name}} </span>
             </div>
             <h3></h3>
             <div fxLayout="row" fxLayoutAlign="space-around stretch">
               <ul style="list-style-type: none;" class="list">
                 <li *ngIf="data.estimated_distance"><mat-icon class="icon">directions_run</mat-icon>{{convertDistance(data.estimated_distance)}}</li>
-                <li *ngIf="!data.estimated_distance"><mat-icon class="icon">directions_run</mat-icon>- Km</li>
+                <li *ngIf="!data.estimated_distance"><mat-icon class="icon">directions_run</mat-icon>- km</li>
 
                 <li *ngIf="data.estimated_distance"><mat-icon class="icon">schedule</mat-icon>{{convertTime(data.estimated_distance)}}</li>
-                <li *ngIf="!data.estimated_distance"><mat-icon class="icon">schedule</mat-icon>- Min</li>
+                <li *ngIf="!data.estimated_distance"><mat-icon class="icon">schedule</mat-icon>- min</li>
 
-                <li><mat-icon class="icon">eco</mat-icon>{{ getDifficultad(data.difficulty) | oTranslate }}</li>
+               <li><i><mat-icon matTooltip="{{'difficulty' | oTranslate }}" matTooltipPosition="before">eco</mat-icon></i> {{getDifficultad(data.difficulty) | oTranslate }}</li>
               </ul>
             </div>
           </div>

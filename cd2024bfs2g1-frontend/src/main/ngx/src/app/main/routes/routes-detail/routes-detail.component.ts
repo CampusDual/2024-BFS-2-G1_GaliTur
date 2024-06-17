@@ -15,11 +15,11 @@ import { LandmarksService } from 'src/app/shared/services/landmarks.service';
 })
 export class RoutesDetailComponent implements OnInit{
   galleryOptions: any;
-
+  num_landmarks: number;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private ontimizeService: OntimizeService,
+    private ontimizelandmarkService: OntimizeService,
     protected sanitizer: DomSanitizer,
     protected dialog: MatDialog,
     protected landmarkService: LandmarksService,
@@ -27,7 +27,7 @@ export class RoutesDetailComponent implements OnInit{
     private router: Router,
     private actRoute: ActivatedRoute
     ) {
-    this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration("landmarks"));
+    
     this.galleryOptions = [
       {
         image: true,
@@ -39,19 +39,27 @@ export class RoutesDetailComponent implements OnInit{
       }
     ]
     this.dialogRef.disableClose = true;
-
+    
    }
 
 
 
   ngOnInit(){
+    const confLandmark =
+      this.ontimizelandmarkService.getDefaultServiceConfiguration("landmarks");
+    this.ontimizelandmarkService.configureService(confLandmark);
+    this.ontimizelandmarkService.query({route_id: this.data.route_id}, ['num_landmarks'], 'route_landmark' ).subscribe((landmarkData) => {
+      this.num_landmarks=landmarkData.data[0]['num_landmarks'];
+    });
   }
 
   public openDetailLandmark(data: any): void {
-
+    const confLandmark =
+      this.ontimizelandmarkService.getDefaultServiceConfiguration("landmarks");
+    this.ontimizelandmarkService.configureService(confLandmark);
     const landmarkCoordinates= []
 
-       this.ontimizeService.query({route_id: data.route_id}, ['name', 'l.landmark_id', 'coordinates'], 'landmark' ).subscribe((landmarkData) => {
+       this.ontimizelandmarkService.query({route_id: data.route_id}, ['name', 'l.landmark_id', 'coordinates'], 'landmark' ).subscribe((landmarkData) => {
         data['landmark'] = landmarkData.data
         this.dialog.open(ViewLandmarkDetailComponent, {
           height: '800px',
@@ -59,23 +67,6 @@ export class RoutesDetailComponent implements OnInit{
           data: data,
         });
       })
-  }
-
-
-  coverEyes(): void {
-    const leftHand = document.querySelector('.hand.left') as HTMLElement;
-    const rightHand = document.querySelector('.hand.right') as HTMLElement;
-
-    leftHand.style.transform = 'rotate(20deg)';
-    rightHand.style.transform = 'rotate(-20deg)';
-  }
-
-  uncoverEyes(): void {
-    const leftHand = document.querySelector('.hand.left') as HTMLElement;
-    const rightHand = document.querySelector('.hand.right') as HTMLElement;
-
-    leftHand.style.transform = 'rotate(-45deg)';
-    rightHand.style.transform = 'rotate(45deg)';
   }
 
   public backToHome(data:any): void {
@@ -101,11 +92,11 @@ public convertTime(metros: number):  string {
   const minutosRestantes = minutos % 60;
 
   if (horas == 0 && minutosRestantes != 0) {
-      return `${minutosRestantes}min`;
+      return `${minutosRestantes} min`;
   } else if (horas != 0 && minutosRestantes == 0) {
-      return `${horas}h`;
+      return `${horas} h`;
   } else {
-      return `${horas}h ${minutosRestantes}min`;
+      return `${horas} h ${minutosRestantes} min`;
   }
 }
 
@@ -119,13 +110,13 @@ convertDistance(metros: number){
   metrosRestantes = Number(metrosRestantesDecimal);
 
   if (kilometros == 0 && metrosRestantes != 0) {
-    return `${metrosRestantes}m`;
+    return `${metrosRestantes} m`;
   } else if (kilometros != 0 && metrosRestantes == 0) {
-    return `${kilometros}km`;
+    return `${kilometros} km`;
   } else if (kilometros != 0 && metrosRestantes != 0) {
-    return `${kilometros},${metrosRestantes}km`;
+    return `${kilometros},${metrosRestantes} km`;
   } else {
-    return '0m';
+    return '0 m';
   }
 }
 
@@ -149,13 +140,13 @@ getIconColorClass(difficulty: number): string {
   getDifficultad(difficulty: number): string {
     switch(difficulty) {
       case 1:
-          return 'Fácil';
+          return 'Dificultad_facil';
       case 2:
-          return 'Intermedia';
+          return 'Dificultad_intermedia';
       case 3:
-          return 'Difícil';
+          return 'Dificultad_dificil';
       case 4:
-          return 'Extremo';
+          return 'Dificultad_extremo';
     }
   }
 }
