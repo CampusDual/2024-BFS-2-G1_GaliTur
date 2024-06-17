@@ -389,5 +389,20 @@ select
                 ]]>
             </Sentence>
         </Query>
+        <Query id="AvgAndCount">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        AVG(PB.pbk_stars) AS rating_avg,
+                        COUNT(pd.pd_id) AS rating_count
+                    FROM
+                        ${mainschema}.pack p
+                            INNER JOIN ${mainschema}.pack_date pd ON p.pck_id = pd.pck_id
+                            INNER JOIN ${mainschema}.pack_booking pb ON pd.pd_id = pb.pd_id
+                    WHERE PB.pbk_stars IS NOT NULL AND #WHERE#
+
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

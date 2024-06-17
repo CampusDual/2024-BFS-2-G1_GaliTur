@@ -308,4 +308,9 @@ public class PackService implements IPackService {
     public EntityResult popularPacksQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.packDao, keyMap, attrList, PackDao.PCK_POPULARS_QUERY);
     }
+
+    @Override
+    public EntityResult avgAndCountQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.packDao, keyMap, attrList, PCK_RATING_AVG_COUNT_QUERY);
+    }
 }

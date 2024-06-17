@@ -69,5 +69,5 @@ public interface IPackService {
 
     EntityResult popularPacksQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 
-
+    EntityResult avgAndCountQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 }
