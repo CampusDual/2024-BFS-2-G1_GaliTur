@@ -366,6 +366,7 @@ button {
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
   border-radius: 10px;
+  z-index: 1;
 }   
 
 .flip-card-front {
@@ -480,6 +481,17 @@ button {
   justify-content: space-around;
   display: flex;
   flex-direction: column;
+  mat-icon {
+    color: black !important;
+    margin-bottom: -6.5px;
+    font-size: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      color: #615e5b !important;
+      transform: scale(1.06);
+    }
+  }
 }
 
 /*rank text styles*/
