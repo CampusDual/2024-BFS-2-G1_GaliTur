@@ -281,6 +281,8 @@ o-text-input, o-integer-input, o-currency-input, o-date-input, o-combo {
 }    
 
 .text-overlay {
+    padding-top: 40px;
+    padding-bottom: 30px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -290,21 +292,21 @@ o-text-input, o-integer-input, o-currency-input, o-date-input, o-combo {
     z-index: 10;
     width: 100%;
     hr {
-        width: 3.5em;
-        margin-top: -12px;
-        margin-bottom: 10px;
-        border-style: solid;
+      width: 3.5em;
+      margin-top: -12px;
+      margin-bottom: 10px;
+      border-style: solid;
     }
     h2 {
-        font-weight: 250;
-        margin: 0;
-        font-size: 1.8em;
+      font-weight: 250;
+      margin: 0;
+      font-size: 1.8em;
     }
     h4 {
-        font-weight: 10;
-        margin: 0;
+      font-weight: 10;
+      margin: 0;
     }
-}    
+  }
 
 .info-container {
     color: #444240;
@@ -387,19 +389,19 @@ o-text-input, o-integer-input, o-currency-input, o-date-input, o-combo {
 
 .front-price{
     font-size: 16px;
-}
-
-.rating {
+  }
+  
+  .rating {
     display: flex;
     align-items: center;
-    margin-left: 45%;
-    margin-top: 4%;
+  
   }
   
   .ratingNumber {
     margin-right: 5px;
     font-size: 16px;
-    margin-top: 2%;
+    margin-bottom: -2px;
+  
   }
   
   .star {
@@ -407,4 +409,18 @@ o-text-input, o-integer-input, o-currency-input, o-date-input, o-combo {
     font-size: 25px;
     height: 25px;
     width: 25px;
+  }
+  
+  .extra-info {
+    justify-self: center;
+    margin-inline: auto;
+    margin-top: 25px;
+    margin-bottom: -60px;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+  }
+  
+  .euro {
+    font-size: 18px;
   }
