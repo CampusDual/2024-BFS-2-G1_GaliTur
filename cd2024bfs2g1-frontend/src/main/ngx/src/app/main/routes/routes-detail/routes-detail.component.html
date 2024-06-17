@@ -23,10 +23,10 @@
                     layout-align="start stretch" elevation="1" appearance="outline" opacity="0">
                     <ul class="list-with-spaces" style="list-style-type: none;">
                         <li *ngIf="data.estimated_distance"><i><mat-icon matTooltip="{{'estimated_distance' | oTranslate }}">directions_run</mat-icon></i> {{convertDistance(data.estimated_distance)}}</li>
-                        <li *ngIf="!data.estimated_distance"><i><mat-icon matTooltip="{{'estimated_distance' | oTranslate }}">directions_run</mat-icon></i> - Km</li>
+                        <li *ngIf="!data.estimated_distance"><i><mat-icon matTooltip="{{'estimated_distance' | oTranslate }}">directions_run</mat-icon></i> - km</li>
 
                         <li *ngIf="data.estimated_distance"><i><mat-icon matTooltip="{{'estimated_duration' | oTranslate }}">timer</mat-icon></i> {{convertTime(data.estimated_distance)}}</li>
-                        <li *ngIf="!data.estimated_distance"><i><mat-icon matTooltip="{{'estimated_durtaion' | oTranslate }}">timer</mat-icon></i> - Min</li>
+                        <li *ngIf="!data.estimated_distance"><i><mat-icon matTooltip="{{'estimated_duration' | oTranslate }}">timer</mat-icon></i> - min</li>
 
                         <li><i><mat-icon matTooltip="{{'difficulty' | oTranslate }}">eco</mat-icon></i> {{getDifficultad(data.difficulty) | oTranslate}}</li>
 
@@ -36,8 +36,8 @@
             </div>
         </div>
 
-        <div fxLayout="column" class="button-container">
-            <button (click)="openDetailLandmark(data)" class="main-button">
+        <div fxLayout="column" class="button-container" *ngIf="num_landmarks">
+            <button  (click)="openDetailLandmark(data)" class="main-button">
                 <mat-icon> location_on </mat-icon><span>{{ "landmark" | oTranslate}}</span>
             </button>
         </div>

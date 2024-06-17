@@ -10,6 +10,8 @@ public interface ILandmarkService {
 
     public EntityResult landmarkQuery(Map<String, Object> keyMap, List<String> attrList);
 
+    EntityResult route_landmarkQuery(Map<String, Object> keyMap, List<String> attrList);
+
     EntityResult landmarkOfRouteQuery(Map<String, Object> keyMap, List<String> attrList);
 
     public EntityResult landmarkInsert(Map<String, Object> attrMap);
