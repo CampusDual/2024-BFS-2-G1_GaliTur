@@ -399,8 +399,8 @@ select
                         ${mainschema}.pack p
                             INNER JOIN ${mainschema}.pack_date pd ON p.pck_id = pd.pck_id
                             INNER JOIN ${mainschema}.pack_booking pb ON pd.pd_id = pb.pd_id
-                    WHERE PB.pbk_stars IS NOT NULL AND #WHERE#
-
+                    WHERE PB.pbk_stars IS NOT NULL
+                    #WHERE_CONCAT#
                 ]]>
             </Sentence>
         </Query>
