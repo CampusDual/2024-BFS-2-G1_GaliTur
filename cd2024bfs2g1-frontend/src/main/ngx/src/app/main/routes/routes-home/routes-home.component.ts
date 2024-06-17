@@ -15,7 +15,6 @@ import { ActivatedRoute} from '@angular/router';
 export class RoutesHomeComponent {
 
 galleryOptions: any;
-num_landmarks: number;
 
   constructor(
     protected dialog: MatDialog,
