@@ -98,7 +98,7 @@
 
                                     <div class="valoration_average"  *ngIf="avg.rating_avg !=null">
                                         <div fxLayout="column" class="valoration_data">
-                                            <h1>{{avg.rating_avg}}</h1>
+                                            <h1>{{roundRatingAvg(avg.rating_avg)}}</h1>
                                             <div>
                                                 <mat-icon [ngClass]="valorationStars(1,avg.rating_avg)">star</mat-icon>
                                                 <mat-icon [ngClass]="valorationStars(2,avg.rating_avg)">star</mat-icon>
