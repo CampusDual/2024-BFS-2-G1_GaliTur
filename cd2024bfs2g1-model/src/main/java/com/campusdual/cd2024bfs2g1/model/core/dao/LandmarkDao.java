@@ -21,5 +21,6 @@ public class LandmarkDao  extends OntimizeJdbcDaoSupport {
     public static final String ATTR_LONGITUDE = "longitude";
     public static final String QUERY_LANDMARK_NAME = "getLandmarksDetail";
     public static final String QUERY_LANDMARKS = "getLandmarks";
+    public static final String QUERY_NUMBER_LANDMARK = "getNumberOfLandmarks";
 
 }

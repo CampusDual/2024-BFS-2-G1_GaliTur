@@ -3,6 +3,7 @@ package com.campusdual.cd2024bfs2g1.model.core.service;
 import com.campusdual.cd2024bfs2g1.api.core.service.IPackBookingService;
 import com.campusdual.cd2024bfs2g1.model.core.dao.ClientDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.PackBookingDao;
+import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackDateDao;
 import com.campusdual.cd2024bfs2g1.model.core.dao.pack.PackStateDao;
 import com.campusdual.cd2024bfs2g1.model.core.service.pack.PackDateService;
@@ -74,6 +75,7 @@ public class PackBookingService implements IPackBookingService {
 
     @Override
     public EntityResult  packBookingUpdate(Map<String, Object> attributesValues, Map<String, Object> keysValues) throws OntimizeJEERuntimeException {
+
         return this.daoHelper.update(this.packBookingDao, attributesValues, keysValues);
     }
 
@@ -90,4 +92,16 @@ public class PackBookingService implements IPackBookingService {
 
     }
 
+    @Override
+    public EntityResult packbookingClientUserDatePackPaginationQuery(Map<String, Object> keysValues, List<String> attributes, int recordNumber, int startIndex, List<?> orderBy) throws OntimizeJEERuntimeException {
+        return this.daoHelper.paginationQuery(this.packBookingDao, keysValues, attributes, recordNumber, startIndex, orderBy,
+                PackBookingDao.PBK_BOOKING_CLIENT_USER_DATE_PACK_QUERY);
+    }
+
+    @Override
+    public EntityResult packBookingDatePackQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        keysValues.put("PB." + PackBookingDao.PBK_BOOKING_ID, keysValues.remove(PackBookingDao.PBK_BOOKING_ID));
+        return this.daoHelper.query(this.packBookingDao, keysValues, attributes,
+                PackBookingDao.PBK_BOOKING_DATE_PACK_QUERY);
+    }
 }

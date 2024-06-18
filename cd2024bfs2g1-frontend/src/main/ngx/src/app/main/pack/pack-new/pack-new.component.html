@@ -6,8 +6,8 @@
           <o-text-input id="text" attr="pck_name" max-length="40" label="{{ 'PACK_NAME' | oTranslate }}"
                     required="yes" [validators]="nameValidators">
         <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}"></o-validator>
-      </o-text-input>
-      <o-textarea-input id="description" attr="pck_description" label="{{ 'DESCRIPTION' | oTranslate }}" width="100%" rows="6"
+        </o-text-input>
+        <o-textarea-input id="description" attr="pck_description" label="{{ 'DESCRIPTION' | oTranslate }}" width="100%" rows="6"
                         class="form-field" required="yes" max-length="250" [validators]="descValidators">
         <o-validator error-name="blankInvalid" error-text="{{ 'BLANK_ERROR' | oTranslate }}" ></o-validator>
         <o-validator error-name="descLengthInvalid" error-text="{{ 'VALIDATOR.PACK_DESC_MAX_LENGTH' | oTranslate }}" ></o-validator>

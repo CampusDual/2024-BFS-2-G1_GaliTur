@@ -98,6 +98,105 @@
                 ]]>
             </Sentence>
         </Query>
+
+        <Query id="multiRatingAVG">
+            <Sentence>
+                <![CDATA[
+                 WITH temp_table AS (
+                    SELECT
+                        AVG(PB.pbk_stars) AS rating_avg, P.pck_id AS id, pck_name, pck_description , pck_price , pck_participants , gui_c_name , img_code , pck_days , pd_date_begin , pd_date_end , pcs_id , P.creation_date AS creation, P.gui_c_id AS city, pbk_booking_id
+                    FROM
+                        ${mainschema}.pack P
+                        INNER JOIN ${mainschema}.image_pack IP
+                        ON P.pck_id=IP.pck_id
+                        INNER JOIN ${mainschema}.image I
+                        ON IP.img_id=I.image_id
+                        INNER JOIN ${mainschema}.gui_cities GC
+                        ON P.gui_c_id=GC.gui_c_id
+                        INNER JOIN ${mainschema}.pack_date PD
+                        ON P.pck_id=PD.pck_id
+                        INNER JOIN ${mainschema}.pack_booking PB
+                        ON PD.pd_id=PB.pd_id
+                    #WHERE#
+                    GROUP BY
+                     P.pck_id,
+                     IP.imp_id,
+                     I.image_id,
+                     GC.gui_z_id,
+                     GC.gui_c_id,
+                     PD.pd_id,
+                     PB.pbk_booking_id
+                    #ORDER#
+                    )
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        temp_table
+                ]]>
+            </Sentence>
+        </Query>
+
+        <Query id="allRatingAVG">
+            <Sentence>
+                <![CDATA[
+                 WITH temp_table AS (
+                    select DISTINCT
+	rating_avg,
+	P.pck_id as id,
+	pck_name,
+	pck_description ,
+	pck_price ,
+	pck_participants ,
+	gui_c_name ,
+	img_code ,
+	pck_days ,
+	P.creation_date as creation,
+	P.gui_c_id as city
+from
+	pack P
+inner join ${mainschema}.image_pack IP
+                        on
+	P.pck_id = IP.pck_id
+inner join ${mainschema}.image I
+                        on
+	IP.img_id = I.image_id
+inner join ${mainschema}.gui_cities GC
+                        on
+	P.gui_c_id = GC.gui_c_id
+inner join (
+	select
+		distinct pck_id,
+		pd_date_begin
+	from
+		pack_date pd
+where
+	PD.pcs_id = 1
+ ) spd on
+	P.pck_id = spd.pck_id
+left join (
+select
+		pck_id,
+		AVG(PB.pbk_stars) as rating_avg
+	from
+		pack_date pd
+	INNER join ${mainschema}.pack_booking PB
+                        on
+		PD.pd_id = PB.pd_id
+ group by pck_id
+                            ) spb
+                        on
+	P.pck_id = spb.pck_id
+	#WHERE#
+                    #ORDER#
+                    )
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        temp_table
+                ]]>
+            </Sentence>
+        </Query>
+
         <Query id="packDetail">
             <Sentence>
                 <![CDATA[
@@ -149,9 +248,10 @@
                         Z.gui_z_name;
                    #ORDER#
                 ]]>
+
             </Sentence>
         </Query>
-       <Query id="packCancelDetail">
+        <Query id="packCancelDetail">
             <Sentence>
                 <![CDATA[
                     SELECT
@@ -177,14 +277,14 @@
         <Query id="packPerDays">
             <Sentence>
                 <![CDATA[
-                select '>10' as rango,
+                select '>10 D' as rango,
                 COUNT(*) AS days
                  FROM
                         ${mainschema}.pack P
                     WHERE pck_days is not null
                     and pck_days  >10
                     union
-                    select '6-10' as rango,
+                    select '6-10 D' as rango,
                 COUNT(*) AS days
                 FROM
                         ${mainschema}.pack P
@@ -192,7 +292,7 @@
                     and pck_days  between 6 and 10
                     union
                     select
-                    '1-5' as rango,
+                    '1-5 D' as rango,
                 COUNT(*) AS days
                 from
                         ${mainschema}.pack P
@@ -206,19 +306,19 @@
                 <![CDATA[
             SELECT rango, packs
                 FROM (
-                    SELECT '>50' AS rango, COUNT(*) AS packs, 4 AS orden
+                    SELECT '>50 €' AS rango, COUNT(*) AS packs, 4 AS orden
                     FROM ${mainschema}.pack
                     WHERE pck_price IS NOT NULL AND pck_price > 50
                     UNION
-                    SELECT '21-50' AS rango, COUNT(*) AS packs, 3 AS orden
+                    SELECT '21-50 €' AS rango, COUNT(*) AS packs, 3 AS orden
                     FROM ${mainschema}.pack
                     WHERE pck_price IS NOT NULL AND pck_price BETWEEN 21 AND 50
                     UNION
-                    SELECT '11-20' AS rango, COUNT(*) AS packs, 2 AS orden
+                    SELECT '11-20 €' AS rango, COUNT(*) AS packs, 2 AS orden
                     FROM ${mainschema}.pack
                     WHERE pck_price IS NOT NULL AND pck_price BETWEEN 11 AND 20
                     UNION
-                    SELECT '1-10' AS rango, COUNT(*) AS packs, 1 AS orden
+                    SELECT '1-10 €' AS rango, COUNT(*) AS packs, 1 AS orden
                     FROM ${mainschema}.pack
                     WHERE pck_price IS NOT NULL AND pck_price BETWEEN 1 AND 10
                 ) AS subquery
@@ -232,19 +332,19 @@
                 <![CDATA[
                    SELECT
                     CASE
-                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (12, 1, 2) THEN 'Winter'
-                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (3, 4, 5) THEN 'Spring'
-                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (6, 7, 8) THEN 'Summer'
-                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (9, 10, 11) THEN 'Autumn'
+                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (12, 1, 2) THEN 'WINTER'
+                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (3, 4, 5) THEN 'SPRING'
+                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (6, 7, 8) THEN 'SUMMER'
+                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (9, 10, 11) THEN 'AUTUMN'
                     END AS estacion,
                     COUNT(*) AS cantidad
                 FROM ${mainschema}.pack_date
                 GROUP BY
                     CASE
-                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (12, 1, 2) THEN 'Winter'
-                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (3, 4, 5) THEN 'Spring'
-                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (6, 7, 8) THEN 'Summer'
-                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (9, 10, 11) THEN 'Autumn'
+                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (12, 1, 2) THEN 'WINTER'
+                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (3, 4, 5) THEN 'SPRING'
+                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (6, 7, 8) THEN 'SUMMER'
+                        WHEN EXTRACT(MONTH FROM pd_date_begin) IN (9, 10, 11) THEN 'AUTUMN'
                     END
                 ORDER BY estacion;
                 ]]>
@@ -255,6 +355,7 @@
             <Sentence>
                 <![CDATA[
                     SELECT
+                    AVG(PB.pbk_stars) AS rating_avg,
                         p.pck_id,
                         p.pck_name,
                         p.pck_description,
@@ -269,6 +370,8 @@
                         pack p
                     JOIN
                         pack_date pd ON p.pck_id = pd.pck_id
+                    INNER JOIN
+                        ${mainschema}.pack_booking PB ON pd.pd_id=PB.pd_id
                     JOIN
                         ${mainschema}.image_pack IP ON P.pck_id=IP.pck_id
                     JOIN
@@ -283,6 +386,21 @@
                         reservation_count DESC
                     LIMIT 10;
 
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="AvgAndCount">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        AVG(PB.pbk_stars) AS rating_avg,
+                        COUNT(pd.pd_id) AS rating_count
+                    FROM
+                        ${mainschema}.pack p
+                            INNER JOIN ${mainschema}.pack_date pd ON p.pck_id = pd.pck_id
+                            INNER JOIN ${mainschema}.pack_booking pb ON pd.pd_id = pb.pd_id
+                    WHERE PB.pbk_stars IS NOT NULL
+                    #WHERE_CONCAT#
                 ]]>
             </Sentence>
         </Query>

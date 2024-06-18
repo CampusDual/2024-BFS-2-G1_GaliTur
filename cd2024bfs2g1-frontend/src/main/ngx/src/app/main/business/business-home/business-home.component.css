@@ -102,6 +102,7 @@
     backface-visibility: hidden;
     border-radius: 10px;
     padding: 1px;
+     z-index: 1; 
 }   
   
 .flip-card-front {
@@ -137,6 +138,31 @@
     justify-content: space-around;
     display: flex;
     flex-direction: column;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  row-gap: 10px;
+  max-height: 190px;
+  z-index: 2;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-left: -25px;
+
+  mat-icon {
+    color: black !important;
+    margin-bottom: -6.5px;
+    font-size: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      color: #615e5b !important;
+      transform: scale(1.06);
+    }
+  }
 }
 
 .info-container {

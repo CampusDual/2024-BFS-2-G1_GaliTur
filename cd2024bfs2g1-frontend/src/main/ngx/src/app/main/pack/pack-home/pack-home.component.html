@@ -47,14 +47,16 @@
       [expression-builder]="createFilter"></o-filter-builder>
   </o-form>
   <div class="grid-container">
-    <o-grid #packGrid attr="packGrid" service="packs" entity="allPacks" keys="pck_id"
-    columns="pck_id;pck_name;pck_description;pck_price;pck_participants;gui_c_name;img_code;pck_days;creation_date"
-    query-rows="8" page-size-options="8" orderable="true"
-    sort-column="creation_date:desc"
-    sortable-columns="pck_name;gui_c_name;creation_date;pck_name:desc;gui_c_name:desc;creation_date:desc" quick-filter="false"
-    insert-button="false" refresh-button="false" pageable="yes"
-    pagination-controls="true" gutter-size="4px" fixed-header="yes" grid-item-height="280px" detail-mode="none"
-    insert-button-floatable="no">
+
+    <o-grid #packGrid attr="packGrid" service="packs" entity="allPacksRating" keys="id"
+    columns="id;pck_name;pck_description;pck_price;pck_participants;gui_c_name;img_code;pck_days;creation;rating_avg"
+    query-rows="8" page-size-options="8" orderable="true" sort-column="creation:desc"
+    sortable-columns="pck_name;pck_participants;gui_c_name;pck_name:desc:desc;pck_participants:desc;gui_c_name:desc"
+    quick-filter="false"
+    insert-button="false" refresh-button="false" pageable="yes" pagination-controls="true" gutter-size="4px"
+    fixed-header="yes" grid-item-height="280px" detail-mode="none" insert-button-floatable="no">
+
+
     <o-grid-item *ngFor="let data of packGrid.dataArray">
       <div (click)="openDetail(data)" class="flip-card">
         <div class="flip-card-inner">
@@ -64,7 +66,15 @@
               <div class="pack-name"><span class="pack-name">{{data.pck_name}}</span></div>
               <hr/>
               <h4>{{data.gui_c_name}}</h4>
-              <p class="front-price">{{data.pck_price}} $</p>
+              <div class="extra-info">
+                <div class="rating">
+                  <span class="ratingNumber" *ngIf="!data.rating_avg">-</span>
+                  <span class="ratingNumber" *ngIf="data.rating_avg">{{ data.rating_avg }}</span>
+                  <mat-icon class="star">grade</mat-icon>
+                </div>
+                <p class="front-price">{{data.pck_price}} <span class="euro">€</span></p>
+              </div>
+
             </div>
           </div>
           <div class="flip-card-back">
@@ -75,14 +85,14 @@
               <h3></h3>
               <div fxLayout="row" fxLayoutAlign="space-around stretch">
                 <ul style="list-style-type: none;" class="list">
-                  <li *ngIf="data.pck_participants && data.pck_participants == 1"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}} {{'PERSON' | oTranslate}}</li>
-                  <li *ngIf="data.pck_participants && data.pck_participants > 1"><mat-icon class="icon">groups</mat-icon>{{data.pck_participants}} {{'PEOPLE' | oTranslate}}</li>
-                        
-                  <li *ngIf="!data.pck_days"><mat-icon class="icon">timer</mat-icon>-</li>
-                  <li *ngIf="data.pck_days && data.pck_days == 1"><mat-icon class="icon">timer</mat-icon>{{data.pck_days}} {{'DAY' | oTranslate}}</li>
-                  <li *ngIf="data.pck_days && data.pck_days > 1"><mat-icon class="icon">timer</mat-icon>{{data.pck_days}} {{'DAYS' | oTranslate}}</li>
+                  <li *ngIf="data.pck_participants && data.pck_participants == 1"><mat-icon class="icon" matTooltip="{{'pck_participants' | oTranslate }}" matTooltipPosition="before">groups</mat-icon>{{data.pck_participants}} {{'PERSON' | oTranslate}}</li>
+                  <li *ngIf="data.pck_participants && data.pck_participants > 1"><mat-icon class="icon" matTooltip="{{'pck_participants' | oTranslate }}" matTooltipPosition="before">groups</mat-icon>{{data.pck_participants}} {{'PEOPLE' | oTranslate}}</li>
 
-                  <li><mat-icon class="icon">payments</mat-icon>{{data.pck_price}} €</li>
+                  <li *ngIf="!data.pck_days"><mat-icon class="icon">timer</mat-icon>-</li>
+                  <li *ngIf="data.pck_days && data.pck_days == 1"><mat-icon class="icon" matTooltip="{{'DAYS' | oTranslate }}" matTooltipPosition="before">timer</mat-icon>{{data.pck_days}} {{'DAY' | oTranslate}}</li>
+                  <li *ngIf="data.pck_days && data.pck_days > 1"><mat-icon class="icon" matTooltip="{{'DAYS' | oTranslate }}" matTooltipPosition="before">timer</mat-icon>{{data.pck_days}} {{'DAYS' | oTranslate}}</li>
+
+                  <li><mat-icon class="icon" matTooltip="{{'Price' | oTranslate }}" matTooltipPosition="before">payments</mat-icon>{{data.pck_price}} €</li>
                 </ul>
               </div>
             </div>
@@ -92,6 +102,6 @@
     </o-grid-item>
 </o-grid>
 
-  
+
   </div>
 </div>
