@@ -421,7 +421,7 @@
   margin-bottom: 16px;
   box-sizing: border-box;
   border-radius: 10px 10px 10px 10px;
-  display: flex; 
+  display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
@@ -437,12 +437,12 @@
 
 
 
-  
+
 }
 
 /* icon styles */
 .icon {
-    margin-bottom: -10px;
+    margin-bottom: 20px;
     font-size: 17px;
     color: #444240;
     margin-right: 4px;

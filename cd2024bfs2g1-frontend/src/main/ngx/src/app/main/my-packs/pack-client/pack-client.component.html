@@ -39,14 +39,14 @@
             <div fxLayout="row" fxLayoutAlign="space-around stretch">
               <ul style="list-style-type: none;" class="list">
 
-                <li><mat-icon class="icon">payments</mat-icon>{{data.pck_price}} €</li>
-                <li *ngIf="!data.pck_participants"><mat-icon class="icon">groups</mat-icon>{{'-'}}</li>
+                <li><mat-icon class="icon" matTooltip="{{'Price' | oTranslate }}" matTooltipPosition="before">payments</mat-icon>{{data.pck_price}} €</li>
+                <li *ngIf="!data.pck_participants"><mat-icon class="icon" matTooltip="{{'pck_participants' | oTranslate }}" matTooltipPosition="before">groups</mat-icon>{{'-'}}</li>
                 <li *ngIf="data.pck_participants && data.pck_participants == 1"><mat-icon
-                    class="icon">groups</mat-icon>{{data.pck_participants}} {{'PERSON' | oTranslate}}</li>
+                    class="icon" matTooltip="{{'pck_participants' | oTranslate }}" matTooltipPosition="before">groups</mat-icon>{{data.pck_participants}} {{'PERSON' | oTranslate}}</li>
                 <li *ngIf="data.pck_participants && data.pck_participants > 1"><mat-icon
-                    class="icon">groups</mat-icon>{{data.pck_participants}} {{'PEOPLE' | oTranslate}}</li>
+                    class="icon" matTooltip="{{'pck_participants' | oTranslate }}" matTooltipPosition="before">groups</mat-icon>{{data.pck_participants}} {{'PEOPLE' | oTranslate}}</li>
 
-                <li><mat-icon class="icon">calendar_month</mat-icon> {{formatDate(data.pd_date_begin)}} -
+                <li><mat-icon class="icon" matTooltip="{{'DATE_R' | oTranslate }}" matTooltipPosition="before">calendar_month</mat-icon> {{formatDate(data.pd_date_begin)}} -
                   {{formatDate(data.pd_date_end)}}</li>
               </ul>
             </div>
