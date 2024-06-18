@@ -136,7 +136,7 @@ public class PackService implements IPackService {
     @Override
     public EntityResult packDaysQuery(Map<String, Object> keyMap, List<String> attrList)
             throws OntimizeJEERuntimeException {
-        Integer n = (Integer) keyMap.get(PackDao.PCK_ID);
+        int n = Integer.parseInt((String) keyMap.get(PackDao.PCK_ID));
         keyMap.put(PackDao.PCK_ID, n);
         EntityResult er = this.daoHelper.query(this.packDao, keyMap, attrList);
         List<Integer> lista = (List<Integer>) er.get(PackDao.PCK_DAYS);
