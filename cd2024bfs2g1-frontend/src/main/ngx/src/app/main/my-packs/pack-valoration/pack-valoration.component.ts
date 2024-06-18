@@ -83,7 +83,7 @@ export class PackValorationComponent {
           iconPosition: "left",
           cssClass: "snackbar",
         };
-        this.snackBarService.open("BOOKING.CONFIRMED", config);
+        this.snackBarService.open("RATING.CONFIRMED", config);
         this.dialogRef.close();
         window.location.reload();
       });
