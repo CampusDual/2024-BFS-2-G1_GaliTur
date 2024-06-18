@@ -290,5 +290,8 @@ export class PackClientDetailComponent implements OnInit{
     return result
   }
 
+  roundRatingAvg(ratingAvg: number) {
+    return parseFloat(ratingAvg.toFixed(2)).toString();
+  }
 }
 

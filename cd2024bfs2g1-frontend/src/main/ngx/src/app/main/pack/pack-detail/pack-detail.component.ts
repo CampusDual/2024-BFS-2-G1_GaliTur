@@ -438,4 +438,8 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
 
     return result
   }
+
+  roundRatingAvg(ratingAvg: number) {
+    return parseFloat(ratingAvg.toFixed(2)).toString();
+  }
 }
