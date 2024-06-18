@@ -22,7 +22,7 @@
             <div class="extra-info">
               <div class="rating">
                 <span class="ratingNumber" *ngIf="!data.rating_avg">-</span>
-                <span class="ratingNumber" *ngIf="data.rating_avg">{{ data.rating_avg }}</span>
+                <span class="ratingNumber" *ngIf="data.rating_avg">{{ roundRatingAvg(data.rating_avg) }}</span>
                 <mat-icon class="star">grade</mat-icon>
               </div>
               <p class="front-price">{{data.pck_price}} <span class="euro">€</span></p>

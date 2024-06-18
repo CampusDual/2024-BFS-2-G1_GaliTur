@@ -149,4 +149,8 @@ export class PackHomeComponent {
       this.maxPrice.clearValue();
     }
   }
+
+  roundRatingAvg(ratingAvg: number) {
+    return parseFloat(ratingAvg.toFixed(2)).toString();
+  }
 }
