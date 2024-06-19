@@ -18,11 +18,11 @@
           <div class="text-overlay">
             <div class="pack-name"><span class="pack-name">{{data.pck_name}}</span></div>
             <hr/>
-            <h4>{{data.gui_c_name}}</h4>
+            <h4>{{data.gui_c_name | oTranslate }}</h4>
             <div class="extra-info">
               <div class="rating">
                 <span class="ratingNumber" *ngIf="!data.rating_avg">-</span>
-                <span class="ratingNumber" *ngIf="data.rating_avg">{{ data.rating_avg }}</span>
+                <span class="ratingNumber" *ngIf="data.rating_avg">{{ roundRatingAvg(data.rating_avg) }}</span>
                 <mat-icon class="star">grade</mat-icon>
               </div>
               <p class="front-price">{{data.pck_price}} <span class="euro">€</span></p>

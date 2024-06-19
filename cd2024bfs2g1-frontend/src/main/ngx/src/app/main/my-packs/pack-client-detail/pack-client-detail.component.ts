@@ -163,7 +163,7 @@ export class PackClientDetailComponent implements OnInit{
 
   getDays() {
     const filter = {
-      pck_id: this.route.snapshot.params["pck_id"],
+      pck_id: this.pckId.toString(),
     };
     const confPack = this.packDateService.getDefaultServiceConfiguration('packs');
     this.packDateService.configureService(confPack);
@@ -290,5 +290,8 @@ export class PackClientDetailComponent implements OnInit{
     return result
   }
 
+  roundRatingAvg(ratingAvg: number) {
+    return parseFloat(ratingAvg.toFixed(2)).toString();
+  }
 }
 

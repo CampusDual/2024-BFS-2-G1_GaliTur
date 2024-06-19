@@ -50,6 +50,7 @@ public interface IPackService {
     EntityResult packDaysQuery(Map<String, Object> keyMap, List<String> attrList)
             throws OntimizeJEERuntimeException;
 
+
     EntityResult packClientQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
     EntityResult packAndBookingDetailQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 

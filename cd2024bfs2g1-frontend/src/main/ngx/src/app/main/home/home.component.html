@@ -44,11 +44,12 @@
               <div class="text-overlay">
                 <div class="pack-name"><span class="pack-name">{{data.pck_name}}</span></div>
                 <hr/>
-                <h4>{{data.gui_c_name}}</h4>
+                <h4># {{data.rank}}</h4>
                 <div class="extra-info">
                   <div class="rating">
                     <span class="ratingNumber" *ngIf="!data.rating_avg">-</span>
-                    <span class="ratingNumber" *ngIf="data.rating_avg">{{ data.rating_avg }}</span>
+                    <span class="ratingNumber" *ngIf="data.rating_avg">{{ roundRatingAvg(data.rating_avg) }}</span>
+                  
                     <mat-icon class="star">grade</mat-icon>
                   </div>
                   <p class="front-price">{{data.pck_price}} <span class="euro">€</span></p>
@@ -71,7 +72,7 @@
                     <li *ngIf="data.pck_days && data.pck_days > 1"><mat-icon class="icon" matTooltip="{{'DAYS' | oTranslate }}" matTooltipPosition="before">timer</mat-icon>{{data.pck_days}} {{'DAYS' | oTranslate}}</li>
                     <li *ngIf="data.pck_participants && data.pck_participants == 1"><mat-icon class="icon" matTooltip="{{'pck_participants' | oTranslate }}" matTooltipPosition="before">groups</mat-icon>{{data.pck_participants}} {{'PERSON' | oTranslate}}</li>
                     <li *ngIf="data.pck_participants && data.pck_participants > 1"><mat-icon class="icon" matTooltip="{{'pck_participants' | oTranslate }}" matTooltipPosition="before">groups</mat-icon>{{data.pck_participants}} {{'PEOPLE' | oTranslate}}</li>
-                    <li><mat-icon class="icon" matTooltip="{{'PCK_CITY' | oTranslate }}" matTooltipPosition="before">pin_drop</mat-icon>{{data.gui_c_name}}</li>
+                    <li><mat-icon class="icon" matTooltip="{{'PCK_CITY' | oTranslate }}" matTooltipPosition="before">pin_drop</mat-icon>{{data.gui_c_name | oTranslate }}</li>
                   </ul>
                 </div>
 

@@ -105,7 +105,7 @@
 #coment{
     margin: 2%;
     width: 100%;
-    background-color: rgba(177, 168, 161, 0.658);
+    background-color: #ccc6c0;
     .mat-textarea {
         resize: none;
     }

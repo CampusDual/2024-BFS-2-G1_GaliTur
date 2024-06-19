@@ -99,4 +99,8 @@ export class PackClientComponent {
     });
   }
 
+  roundRatingAvg(ratingAvg: number) {
+    return parseFloat(ratingAvg.toFixed(2)).toString();
+  }
+
 }

@@ -84,4 +84,8 @@ export class HomeComponent implements AfterViewInit {
     const visibleGrid = document.getElementById('visibleGrid');
     visibleGrid.scrollIntoView({ behavior: 'smooth' });
   }
+
+  roundRatingAvg(ratingAvg: number) {
+    return parseFloat(ratingAvg.toFixed(2)).toString();
+  }
 }
