@@ -794,6 +794,13 @@ summary {
   padding-bottom: 20px;
 }
 
-summary:hover {
-  cursor: pointer;
+
+summary:hover {  
+        cursor: pointer;
+}
+
+
+.rating-container {
+    padding-inline-start: 25px;
+    padding-inline-end: 25px;
 }

@@ -117,7 +117,7 @@ export class RegisterMerchantComponent {
 
   usernameCharsValidator(control: AbstractControl): ValidationErrors | null{
     try{
-      const regex = /^[A-Za-z_\-.]*$/
+      const regex = /^[A-Za-z_\-.\d]*$/
       const inputValue = control.value;
 
       if(regex.test(inputValue)){
