@@ -280,7 +280,7 @@
                                     class="flip-card">
                                     <div class="flip-card-inner">
                                         <div class="flip-card-front">
-                                            <img class="preview-image" [src]="getRouteImageSrc(data.img_code)">
+                                            <img class="preview-image" [src]="getRouteImageSrc(data.bsn_photos)">
                                             <div class="text-overlay">
                                                 <div class="card-name"><span class="card-name">{{ truncateName(data.bsn_name)}}</span></div><hr/>
                                                 <span *ngIf="data.bsn_type === 'Restaurant'"><mat-icon class="type-icon">restaurant</mat-icon>{{ data.bsn_type | oTranslate }}</span>
@@ -301,7 +301,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <img class="preview-image" [src]="getImageSrc(data.bsn_photos)" height="120px">
                                     </div>
                                 </div>
                                 </o-grid-item>
