@@ -18,7 +18,7 @@
           <div class="text-overlay">
             <div class="pack-name"><span class="pack-name">{{data.pck_name}}</span></div>
             <hr/>
-            <h4>{{data.gui_c_name}}</h4>
+            <h4>{{data.gui_c_name | oTranslate }}</h4>
             <div class="extra-info">
               <div class="rating">
                 <span class="ratingNumber" *ngIf="!data.rating_avg">-</span>

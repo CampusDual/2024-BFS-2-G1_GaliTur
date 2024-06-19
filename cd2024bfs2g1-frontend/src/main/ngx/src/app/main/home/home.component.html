@@ -72,7 +72,7 @@
                     <li *ngIf="data.pck_days && data.pck_days > 1"><mat-icon class="icon" matTooltip="{{'DAYS' | oTranslate }}" matTooltipPosition="before">timer</mat-icon>{{data.pck_days}} {{'DAYS' | oTranslate}}</li>
                     <li *ngIf="data.pck_participants && data.pck_participants == 1"><mat-icon class="icon" matTooltip="{{'pck_participants' | oTranslate }}" matTooltipPosition="before">groups</mat-icon>{{data.pck_participants}} {{'PERSON' | oTranslate}}</li>
                     <li *ngIf="data.pck_participants && data.pck_participants > 1"><mat-icon class="icon" matTooltip="{{'pck_participants' | oTranslate }}" matTooltipPosition="before">groups</mat-icon>{{data.pck_participants}} {{'PEOPLE' | oTranslate}}</li>
-                    <li><mat-icon class="icon" matTooltip="{{'PCK_CITY' | oTranslate }}" matTooltipPosition="before">pin_drop</mat-icon>{{data.gui_c_name}}</li>
+                    <li><mat-icon class="icon" matTooltip="{{'PCK_CITY' | oTranslate }}" matTooltipPosition="before">pin_drop</mat-icon>{{data.gui_c_name | oTranslate }}</li>
                   </ul>
                 </div>
 
