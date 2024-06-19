@@ -14,6 +14,7 @@ import { UserInfoService } from '../shared/services/user-info.service';
   encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
+  
   coverEyes(): void {
     const leftHand = document.querySelector('.hand.left') as HTMLElement;
     const rightHand = document.querySelector('.hand.right') as HTMLElement;
@@ -178,5 +179,9 @@ export class LoginComponent implements OnInit {
   }
   goToRegistrer() {
     this.router.navigate([ '../', 'register'], { relativeTo: this.actRoute })
+  }
+
+  goHome(){
+    this.router.navigate(['home'])
   }
 }

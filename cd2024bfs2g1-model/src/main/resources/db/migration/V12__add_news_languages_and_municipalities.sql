@@ -11,30 +11,6 @@ VALUES
 (nextval('gui_language_gui_l_id_seq'::regclass), 'CHINESE'),
 (nextval('gui_language_gui_l_id_seq'::regclass), 'ARABIC');
 
-DELETE FROM public.gui_cities
-WHERE gui_c_id=1;
-DELETE FROM public.gui_cities
-WHERE gui_c_id=2;
-DELETE FROM public.gui_cities
-WHERE gui_c_id=3;
-DELETE FROM public.gui_cities
-WHERE gui_c_id=4;
-DELETE FROM public.gui_cities
-WHERE gui_c_id=5;
-DELETE FROM public.gui_cities
-WHERE gui_c_id=6;
-DELETE FROM public.gui_cities
-WHERE gui_c_id=7;
-DELETE FROM public.gui_cities
-WHERE gui_c_id=8;
-DELETE FROM public.gui_cities
-WHERE gui_c_id=9;
-DELETE FROM public.gui_cities
-WHERE gui_c_id=10;
-DELETE FROM public.gui_cities
-WHERE gui_c_id=11;
-DELETE FROM public.gui_cities
-WHERE gui_c_id=12;
 
 INSERT INTO public.gui_cities (gui_z_id, gui_c_id, gui_c_name)
 VALUES
