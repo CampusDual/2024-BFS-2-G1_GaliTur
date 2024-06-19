@@ -163,12 +163,12 @@ export class PackClientDetailComponent implements OnInit{
 
   getDays() {
     const filter = {
-      pck_id: this.pckId,
+      pck_id: this.pckId.toString(),
     };
     const confPack = this.packDateService.getDefaultServiceConfiguration('packs');
     this.packDateService.configureService(confPack);
     const columns = ["pck_name", "pck_days"];
-    this.service.query(filter, columns, "packDaysClient").subscribe((resp) => {
+    this.service.query(filter, columns, "packDays").subscribe((resp) => {
       if (resp.code === 0) {
         // resp.data contains the data retrieved from the server
 
