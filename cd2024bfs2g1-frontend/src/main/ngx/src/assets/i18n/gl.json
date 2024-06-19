@@ -718,8 +718,9 @@
     "horario_apertura": "Horario Apertura",
     "numero_telefono": "Teléfono",
     "sitio_web" : "Sitio Web",
-  "COMENT": "Comentario",
-  "VALORATIONS": "Valoracións"
+    "COMENT": "Comentario",
+    "VALORATIONS": "Valoracións",
+    "NO_DATES": "Non hai datas dispoñibles!"
   }
 
 

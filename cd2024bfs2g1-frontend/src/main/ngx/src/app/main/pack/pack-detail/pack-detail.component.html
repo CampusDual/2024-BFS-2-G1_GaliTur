@@ -32,6 +32,11 @@
                 columns="r.route_id;r.name;r.estimated_distance;r.difficulty;i.img_code;rp.pck_id;rp.assigned_date"
                 query-rows="8" orderable="true" parent-keys="pck_id" oHidden />
 
+            <!--Almaceno las fechas disponibles-->
+            <o-grid #packDateGrid value-column="pd_id" keys="pd_id"
+            columns="pck_id;pd_id;pd_date_begin;pd_date_end"
+            visible-columns="pd_date_begin;pd_date_end" oHidden></o-grid>
+
             <!-- Almaceno la ciudad del pack -->
             <o-grid #gui_cities attr="guiCities" service="guideCities" entity="guideCities" keys="gui_c_id"
                 columns="gui_z_id;gui_c_id;gui_c_name" visible-columns="gui_z_id;gui_c_id;gui_c_name"
@@ -115,9 +120,9 @@
                     </span>
                 </span>
                 <div class="reserve-container" *ngIf="!checkAuthStatus() && parsePermissions('reserve-container')">
-
+                    
                     <!-- Combo box que muestra los intervalos de fechas disponibles para la reserva con su botón correspondiente -->
-                    <div class="reserve-container">
+                    <div class="reserve-container" *ngIf="packDateGrid.dataArray.length > 0">
                         <div class="div-combo-container">
                             <o-combo #packDateCombo value-column="pd_id" keys="pd_id"
                                 columns="pck_id;pd_id;pd_date_begin;pd_date_end"
@@ -129,6 +134,10 @@
                                 oTranslate }}
                             </p>
                         </div>
+                    </div>
+
+                    <div class="no-dates-div" *ngIf="packDateGrid.dataArray.length == 0">
+                        <h4>{{ 'NO_DATES' | oTranslate}}</h4>
                     </div>
 
                 </div>

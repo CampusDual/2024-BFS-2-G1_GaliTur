@@ -772,3 +772,8 @@ summary:hover {
 ::ng-deep .o-grid .o-grid-container .o-grid-no-results{
     margin-top: 35px !important;
 }
+
+.no-dates-div {
+    margin-inline: auto;
+    
+}

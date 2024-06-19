@@ -7,35 +7,6 @@
     </div>
   </div>
   <div class="login-card">
-    <div class="login-container">
-      <div class="chractherContainer">
-      <div class="character">
-        <div class="body">
-          <div class="eyes">
-            <div class="eyeContainer">
-              <div class="eye left">
-                <div class="pupil left">
-                  <div class="pupilW left"></div>
-                </div>
-              </div>
-            </div>
-            <div class="eyeContainer">
-              <div class="eye right">
-                <div class="pupil right">
-                  <div class="pupilW right"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-          <div class="mouth"></div>
-        <div class="hands">
-            <div class="hand left"></div>
-            <div class="hand right"></div>
-        </div>
-      </div>
-      </div>
-      </div>
     <div class="login-title-container">
       <p class="session-expired text" *ngIf="sessionExpired">{{ 'ERROR_SESSION_EXPIRED' | oTranslate }}</p>
       <span class="title_text">{{ 'LOGIN_TITLE' | oTranslate }}</span>
@@ -49,8 +20,7 @@
         </mat-error>
       </mat-form-field>
       <mat-form-field fxFill>
-        <input matInput #password placeholder="{{ 'PASSWORD' | oTranslate }}" id="password" type="password" (focus)="coverEyes()" (blur)="uncoverEyes()"
-          [formControl]="pwdCtrl">
+        <input matInput #password placeholder="{{ 'PASSWORD' | oTranslate }}" id="password" type="password" [formControl]="pwdCtrl">
         <mat-error *ngIf="pwdCtrl.hasError('required')">
           {{ 'ERROR_PASS_REQUIRED' | oTranslate }}
         </mat-error>
