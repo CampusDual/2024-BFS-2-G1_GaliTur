@@ -362,6 +362,18 @@
 
 .button-container {
   height: 10%;
+}
 
+.accesible-icon {
+  align-self: center;
+  margin-left: -50px;
+  margin-right: 25px;
+  z-index: 2;
+  color: white;
+
+  font-size: 1.65em;
+
+
+  
 }
 

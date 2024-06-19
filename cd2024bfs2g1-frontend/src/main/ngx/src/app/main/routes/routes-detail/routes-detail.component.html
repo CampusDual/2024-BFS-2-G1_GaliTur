@@ -5,6 +5,8 @@
             <o-button class="back-button" attr="fab2" type="ICON" icon="arrow_back" color="primary" (click)="backToHome(data)"></o-button>
 
             <p class="titulo">{{ data.name }}</p>
+
+            <mat-icon *ngIf="data.is_accessible is true" class="accesible-icon" matTooltip="{{'accessible' | oTranslate }}">accessible</mat-icon>
         </div>
         <div fxLayout="row" class="content" >
             <div class="image-container">
@@ -29,8 +31,6 @@
                         <li *ngIf="!data.estimated_distance"><i><mat-icon matTooltip="{{'estimated_duration' | oTranslate }}">timer</mat-icon></i> - min</li>
 
                         <li><i><mat-icon matTooltip="{{'difficulty' | oTranslate }}">eco</mat-icon></i> {{getDifficultad(data.difficulty) | oTranslate}}</li>
-
-                        <li *ngIf="data.is_accessible is true"><i><mat-icon matTooltip="{{'accessible' | oTranslate }}">accessible</mat-icon></i>{{'accessible' | oTranslate }}</li>
                     </ul>
                 </o-row>
             </div>
