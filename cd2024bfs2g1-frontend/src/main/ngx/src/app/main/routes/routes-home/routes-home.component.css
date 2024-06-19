@@ -434,6 +434,8 @@
   display: inline-block;
   text-overflow: ellipsis;
   width: calc(90%);
+  margin-inline: auto;
+  justify-content: center;
 
 
 
@@ -474,6 +476,10 @@
 
 :host ::ng-deep .mat-mdc-paginator-container .mat-mdc-paginator-page-size{
   visibility: hidden !important;
+}
+
+.titleIcon {
+  font-size: 1.5em;
 }
 
 

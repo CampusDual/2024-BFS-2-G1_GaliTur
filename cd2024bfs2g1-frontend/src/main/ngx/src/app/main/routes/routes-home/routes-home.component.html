@@ -51,8 +51,9 @@
         <div class="flip-card-back">
           <div class="info-container">
             <div class="cardHeader">
+              <span class="pack-info-title">{{data.name}} </span>       
               <span><mat-icon class="titleIcon" *ngIf="data.is_accessible is true" matTooltip="{{'accessible' | oTranslate }}" matTooltipPosition="after"> accessible</mat-icon></span>
-              <span class="pack-info-title">{{data.name}} </span>
+
             </div>
             <h3></h3>
             <div fxLayout="row" fxLayoutAlign="space-around stretch">
