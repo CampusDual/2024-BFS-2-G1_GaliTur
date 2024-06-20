@@ -41,7 +41,7 @@ export class HomeComponent implements AfterViewInit {
   }
 
   public getContentImageSrc(): any {
-    return "./assets/images/home-image.jpeg";
+    return "./assets/images/home-image-2.png";
   }
 
   public openDetail(data: any): void {

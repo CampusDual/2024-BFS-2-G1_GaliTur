@@ -25,5 +25,4 @@ public class RouteDao extends OntimizeJdbcDaoSupport {
     public static final String QUERY_ROUTES_OF_PACK = "routesOfPack";
     public static final String QUERY_ROUTES_ACCORDING_DIFFICULTY = "routesAccordingDifficulty";
     public static final String QUERY_SEARCH_PACKS = "searchForPacks";
-
 }

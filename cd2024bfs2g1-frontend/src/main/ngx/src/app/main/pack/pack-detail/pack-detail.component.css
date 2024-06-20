@@ -764,4 +764,16 @@ summary:hover {
 .rating-container {
     padding-inline-start: 25px;
     padding-inline-end: 25px;
+    
+
+    padding-block: 15px;
+}
+
+::ng-deep .o-grid .o-grid-container .o-grid-no-results{
+    margin-top: 35px !important;
+}
+
+.no-dates-div {
+    margin-inline: auto;
+    
 }
