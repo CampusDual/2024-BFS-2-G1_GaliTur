@@ -375,3 +375,14 @@
 .euro {
   font-size: 18px;
 }
+
+
+.pack-name {
+  font-size: 1.25em;
+  font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  text-overflow: ellipsis;
+  width: calc(90%);
+}
