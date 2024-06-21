@@ -28,11 +28,13 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
   @ViewChild("packDatesForm") packDatesForm: OGridComponent
   @ViewChild("packDateCombo") packDateCombo: OComboComponent
   @ViewChild("packDaysCombo") packDaysCombo: OComboComponent
+  @ViewChild("packDateGrid") packDateGrid: OGridComponent
   protected isPackInstance: boolean
 
   public arrayDias = [];
   public selectedDay;
   public selectedComboDay;
+  public hasDates = true;
 
   protected availableDates: Set<any> = new Set // TODO: CHECK IF NEEDED
   protected bussineses: Array<any> // TODO: CHECK IF NEEDED
@@ -64,6 +66,7 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.populateDates()
+    console.log(this.packDateGrid)
   }
 
   public getImageSrc(base64: any): any {
@@ -227,6 +230,9 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
             date.pd_date_end = new Date(date.pd_date_end).toLocaleDateString()
           })
           this.packDateCombo.setDataArray(result.data)
+          this.hasDates = true;
+        }else{
+          this.hasDates = false;
         }
       });
   }

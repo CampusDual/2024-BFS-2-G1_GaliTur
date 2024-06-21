@@ -29,7 +29,7 @@ export class BusinessNewComponent {
   ]
 
   insertBusiness($event:Event){
-    this.router.navigate(['main/businesses/'])
+    this.router.navigate(['main/business-merchant/', $event["bsn_id"]])
 
   }
 
