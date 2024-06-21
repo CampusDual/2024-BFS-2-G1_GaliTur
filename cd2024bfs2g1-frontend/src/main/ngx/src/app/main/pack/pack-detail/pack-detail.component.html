@@ -253,8 +253,8 @@
                                                     </div>
                                                     <div class="content-list-item">
                                                         <ul class="list" style="list-style-type: none;">
-                                                            <li *ngIf="!data.estimated_distance"><mat-icon matTooltip="{{'NO_ESTIMATED_DISTANCE'|oTranslate}}" class="icon">directions_run</mat-icon>- Km</li>
-                                                            <li *ngIf="data.estimated_distance"><mat-icon matTooltip="{{'ESTIMATED_DISTANCE'|oTranslate}}" class="icon">directions_run</mat-icon>{{data.estimated_distance}} Km</li>
+                                                            <li *ngIf="!data.estimated_distance"><mat-icon matTooltip="{{'NO_ESTIMATED_DISTANCE'|oTranslate}}" class="icon">directions_run</mat-icon>- km</li>
+                                                            <li *ngIf="data.estimated_distance"><mat-icon matTooltip="{{'ESTIMATED_DISTANCE'|oTranslate}}" class="icon">directions_run</mat-icon>{{convertDistance(data.estimated_distance)}}</li>
                                                             <li><mat-icon class="icon" matTooltip="{{'difficulty'|oTranslate}}">eco</mat-icon>{{getDifficultad(data.difficulty) | oTranslate }}</li>
                                                         </ul>
                                                     </div>
