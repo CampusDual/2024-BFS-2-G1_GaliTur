@@ -193,6 +193,8 @@ select
                         #COLUMNS#
                     FROM
                         temp_table
+                    #WHERE#
+                    #ORDER#
                 ]]>
             </Sentence>
         </Query>
