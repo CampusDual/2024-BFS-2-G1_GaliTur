@@ -3,6 +3,8 @@ spring:
     jdbc-url: jdbc:postgresql://45.84.210.174:65432/cd2024bfs2g1
     username: testuser
     password: testuser
+  flyway:
+    enabled: false
 environment:
   profile: local
 
