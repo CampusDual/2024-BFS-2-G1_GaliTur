@@ -28,7 +28,6 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
   @ViewChild("packDatesForm") packDatesForm: OGridComponent
   @ViewChild("packDateCombo") packDateCombo: OComboComponent
   @ViewChild("packDaysCombo") packDaysCombo: OComboComponent
-  @ViewChild("packDateGrid") packDateGrid: OGridComponent
   protected isPackInstance: boolean
 
   public arrayDias = [];
@@ -66,7 +65,6 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.populateDates()
-    console.log(this.packDateGrid)
   }
 
   public getImageSrc(base64: any): any {
