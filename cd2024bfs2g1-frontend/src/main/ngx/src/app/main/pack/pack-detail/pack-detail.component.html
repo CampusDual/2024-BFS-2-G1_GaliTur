@@ -115,9 +115,9 @@
                     </span>
                 </span>
                 <div class="reserve-container" *ngIf="!checkAuthStatus() && parsePermissions('reserve-container')">
-
+                    
                     <!-- Combo box que muestra los intervalos de fechas disponibles para la reserva con su botón correspondiente -->
-                    <div class="reserve-container">
+                    <div class="reserve-container" *ngIf="hasDates">
                         <div class="div-combo-container">
                             <o-combo #packDateCombo value-column="pd_id" keys="pd_id"
                                 columns="pck_id;pd_id;pd_date_begin;pd_date_end"
@@ -129,6 +129,10 @@
                                 oTranslate }}
                             </p>
                         </div>
+                    </div>
+
+                    <div class="no-dates-div" *ngIf="!hasDates">
+                        <h4>{{ 'NO_DATES' | oTranslate}}</h4>
                     </div>
 
                 </div>
@@ -244,8 +248,8 @@
                                                     </div>
                                                     <div class="content-list-item">
                                                         <ul class="list" style="list-style-type: none;">
-                                                            <li *ngIf="!data.estimated_distance"><mat-icon matTooltip="{{'NO_ESTIMATED_DISTANCE'|oTranslate}}" class="icon">directions_run</mat-icon>- Km</li>
-                                                            <li *ngIf="data.estimated_distance"><mat-icon matTooltip="{{'ESTIMATED_DISTANCE'|oTranslate}}" class="icon">directions_run</mat-icon>{{data.estimated_distance}} Km</li>
+                                                            <li *ngIf="!data.estimated_distance"><mat-icon matTooltip="{{'NO_ESTIMATED_DISTANCE'|oTranslate}}" class="icon">directions_run</mat-icon>- km</li>
+                                                            <li *ngIf="data.estimated_distance"><mat-icon matTooltip="{{'ESTIMATED_DISTANCE'|oTranslate}}" class="icon">directions_run</mat-icon>{{convertDistance(data.estimated_distance)}}</li>
                                                             <li><mat-icon class="icon" matTooltip="{{'difficulty'|oTranslate}}">eco</mat-icon>{{getDifficultad(data.difficulty) | oTranslate }}</li>
                                                         </ul>
                                                     </div>
@@ -280,7 +284,7 @@
                                     class="flip-card">
                                     <div class="flip-card-inner">
                                         <div class="flip-card-front">
-                                            <img class="preview-image" [src]="getRouteImageSrc(data.img_code)">
+                                            <img class="preview-image" [src]="getRouteImageSrc(data.bsn_photos)">
                                             <div class="text-overlay">
                                                 <div class="card-name"><span class="card-name">{{ truncateName(data.bsn_name)}}</span></div><hr/>
                                                 <span *ngIf="data.bsn_type === 'Restaurant'"><mat-icon class="type-icon">restaurant</mat-icon>{{ data.bsn_type | oTranslate }}</span>
@@ -301,7 +305,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <img class="preview-image" [src]="getImageSrc(data.bsn_photos)" height="120px">
                                     </div>
                                 </div>
                                 </o-grid-item>
@@ -310,9 +313,9 @@
                     </o-row>
                 </div>
                 
-<div class="rating-container">
-    <h2>{{'VALORATIONS' | oTranslate}}</h2>
-</div>
+                <div class="rating-container">
+                    <h2>{{'VALORATIONS' | oTranslate}}</h2>
+                </div>
                 <div class="rating-container" >
                     
                         

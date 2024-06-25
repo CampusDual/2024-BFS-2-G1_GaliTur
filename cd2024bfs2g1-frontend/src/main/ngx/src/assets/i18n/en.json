@@ -327,6 +327,7 @@
   "SAN SADURNINO": "SAN SADURNIÑO",
   "VALDOVINO": "VALVODIÑO",
   "creation_date": "Creation date",
+  "creation": "Creation date",
   "RUSSIAN": "RUSSIAN",
   "ITALIAN": "ITALIAN",
   "BASQUE": "BASQUE",
@@ -473,6 +474,7 @@
   "numero_telefono": "Telephone Number",
   "sitio_web" : "Website",
   "COMENT": "Coment",
-  "VALORATIONS": "Ratings"
+  "VALORATIONS": "Ratings",
+  "NO_DATES": "There are no dates available!"
 }
 

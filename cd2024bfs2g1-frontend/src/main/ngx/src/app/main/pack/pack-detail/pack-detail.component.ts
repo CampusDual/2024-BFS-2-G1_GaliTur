@@ -33,6 +33,7 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
   public arrayDias = [];
   public selectedDay;
   public selectedComboDay;
+  public hasDates = true;
 
   protected availableDates: Set<any> = new Set // TODO: CHECK IF NEEDED
   protected bussineses: Array<any> // TODO: CHECK IF NEEDED
@@ -227,6 +228,9 @@ export class PackDetailComponent implements OnInit, AfterViewInit {
             date.pd_date_end = new Date(date.pd_date_end).toLocaleDateString()
           })
           this.packDateCombo.setDataArray(result.data)
+          this.hasDates = true;
+        }else{
+          this.hasDates = false;
         }
       });
   }

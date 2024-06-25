@@ -347,6 +347,7 @@
   "DUTCH": "HOLANDÉS",
   "ARABIC": "ÁRABE",
   "creation_date": "Fecha de creación",
+  "creation": "Fecha de creación",
   "PEOPLE": "Personas",
   "PERSON": "Persona",
   "SELECT_DAY": "Seleccione día",
@@ -484,7 +485,8 @@
   "numero_telefono": "Teléfono",
   "sitio_web" : "Sitio Web",
   "COMENT": "Comentario",
-  "VALORATIONS": "Valoraciones"
+  "VALORATIONS": "Valoraciones",
+  "NO_DATES": "¡No hay fechas disponibles!"
 }
 
 
